@@ -7,9 +7,10 @@ router.get('/', (req, res) => {
   const query = `
     SELECT * FROM "characters";
   `;
-  
+
   pool.query(query)
     .then(result => {
+        console.log('resultd sre', result.rows);
       res.send(result.rows);
     })
     .catch(err => {

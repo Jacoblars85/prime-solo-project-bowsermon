@@ -1,9 +1,11 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function HomePage() {
-  const history = useHistory()
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
 
   useEffect(() => {

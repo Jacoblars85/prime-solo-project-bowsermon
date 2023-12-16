@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 
 // Used to store all the characters
 const characters = (state = [], action) => {
+    console.log('action.payload:', action.payload);
     switch (action.type) {
       case 'SET_CHARACTERS':
         return action.payload;

@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import BackButton from '../BackButton/BackButton';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Characters() {
 
-    const characters = useSelector(store => store.characters);
+    const characters = useSelector(store => store.character.characters);
 
     const user = useSelector((store) => store.user);
 
@@ -14,8 +13,17 @@ function Characters() {
 
     return (
         <div className="characters">
+<ul>
+        {characters.map(character => {
+            return (
+                <div>
 
+                <li>{character.name}</li>
 
+                </div>
+            )
+        })}
+        </ul>
 
 
             <BackButton />
