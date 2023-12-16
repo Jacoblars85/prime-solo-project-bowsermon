@@ -19,6 +19,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PersonIcon from '@mui/icons-material/Person';
 import DeleteAccount from '../DeleteAccount/DeleteAccount';
 import ChangeUsername from '../ChangeUsername/ChangeUsername';
+import HomeIcon from '@mui/icons-material/Home';
+import HomeButton from '../HomeButton/HomeButton';
 
 export default function Settings() {
   const [state, setState] = React.useState({
@@ -51,6 +53,21 @@ export default function Settings() {
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <PersonIcon /> : <img height={25} width={25} src='/images/Coin_-_New_Super_Mario_Bros.webp' />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <Divider />
+
+      <List>
+        {[<HomeButton />].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <HomeIcon /> : <HomeIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
