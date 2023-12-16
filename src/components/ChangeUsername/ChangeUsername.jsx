@@ -1,25 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-function ChangeUsername(props) {
+function ChangeUsername() {
+    const history = useHistory();
 
-  const dispatch = useDispatch();
+    const changeUsername = () => {
+        history.push(`/changename`)
 
-  const user = useSelector((store) => store.user);
+    };
 
-
-  const changeUsername = () => {
-        
-    dispatch({
-        type: 'SAGA_CHANGE_USERNAME',
-        payload: user.id
-    })
-   
-};
-
-  return (
-    <p onClick={changeUsername}>Change Username</p>
-  );
+    return (
+        <p onClick={changeUsername}>Change Username</p>
+    );
 }
 
 export default ChangeUsername;

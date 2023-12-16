@@ -29,17 +29,15 @@ function* fetchUser() {
 function* changeUsername(action) {
 
   console.log('action.payload', action.payload);
+
   try {
-     
       const response = yield axios({
           method: 'PUT',
-          url: `/api/user/${action.payload.userID}`,
-          data: action.payload.nameChange
+          url: `/api/user/${action.payload}`,
+          data: action.payload
       })
-
       yield put({
           type: 'FETCH_USER',
-
       })
   } catch (error) {
       console.log('Unable to update username from server', error);

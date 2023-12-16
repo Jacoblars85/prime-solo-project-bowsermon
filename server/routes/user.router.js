@@ -77,10 +77,10 @@ router.put("/:id", (req, res) => {
   const sqlText = `
   UPDATE "user"
     SET "username" = ($1)
-    WHERE "id" = '${req.params.id}';
+    WHERE "id" = '${req.body.userID}';
     `;
 
-  const sqlValues = [req.body.category_id];
+  const sqlValues = [req.body.newName];
 
   pool
     .query(sqlText, sqlValues)
@@ -104,24 +104,16 @@ router.delete("/:id", (req, res) => {
 
   pool
     .query(sqlText)
-
-
-
     .then(result => {
-
 
       // Now handle the user_characters reference:
       const insertNewUserQuery = `
       DELETE FROM "user_characters"
         WHERE "id" = ${req.params.id};`
 
-
       // SECOND QUERY DELETES user_id from user_characeters
       pool.query(insertNewUserQuery)
-
-
         .then(result => {
-
 
           // Now handle the user_characters reference:
           const insertNewUserQuery = `
@@ -130,8 +122,6 @@ router.delete("/:id", (req, res) => {
 
           // Third QUERY DELETES user from user table
           pool.query(insertNewUserQuery)
-
-
 
             // was here for basic
             .then((result) => {
