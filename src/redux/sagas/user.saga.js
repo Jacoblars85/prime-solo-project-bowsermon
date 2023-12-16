@@ -24,8 +24,48 @@ function* fetchUser() {
   }
 }
 
+
+// Changing the users username
+function* changeUsername(action) {
+
+  console.log('action.payload', action.payload);
+  try {
+     
+      const response = yield axios({
+          method: 'PUT',
+          url: `/api/user/${action.payload.userID}`,
+          data: action.payload.nameChange
+      })
+
+      yield put({
+          type: 'FETCH_USER',
+
+      })
+  } catch (error) {
+      console.log('Unable to update username from server', error);
+  }
+}
+
+//delete account of current user
+function* deleteAccount(action) {
+  console.log('action.payload', action.payload);
+  try {
+      const response = yield axios({
+          method: 'DELETE',
+          url: `/api/user/${action.payload}`
+      })
+      yield put({
+          type: 'FETCH_USER',
+      })
+  } catch (error) {
+      console.log('Unable to delete account from server', error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('SAGA_CHANGE_USERNAME', changeUsername);
+  yield takeLatest('SAGA_DELETE_ACCOUNT', deleteAccount);
 }
 
 export default userSaga;

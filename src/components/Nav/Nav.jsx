@@ -26,7 +26,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <span className='navLink'>Score: {user.coins}</span>
+            <span className='navLink'><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</span>
 
             {/* <Link className="navLink" to="/user">
               Home

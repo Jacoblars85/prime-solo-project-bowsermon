@@ -15,6 +15,10 @@ import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useDispatch, useSelector } from 'react-redux';
+import PersonIcon from '@mui/icons-material/Person';
+import DeleteAccount from '../DeleteAccount/DeleteAccount';
+import ChangeUsername from '../ChangeUsername/ChangeUsername';
 
 export default function Settings() {
   const [state, setState] = React.useState({
@@ -23,6 +27,8 @@ export default function Settings() {
     bottom: false,
     right: false,
   });
+
+  const user = useSelector((store) => store.user);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -40,11 +46,11 @@ export default function Settings() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {[`${user.username}`, `${user.coins}`].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <PersonIcon /> : <img height={25} width={25} src='/images/Coin_-_New_Super_Mario_Bros.webp' />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -55,7 +61,7 @@ export default function Settings() {
       <Divider />
 
       <List>
-        {[<LogOutButton />, 'Change Username'].map((text, index) => (
+        {[<LogOutButton />, <ChangeUsername />].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -70,7 +76,7 @@ export default function Settings() {
       <Divider />
       
       <List>
-        {['Delete Account'].map((text, index) => (
+        {[<DeleteAccount />].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

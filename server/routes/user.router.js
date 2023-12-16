@@ -71,4 +71,86 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+
+router.put("/:id", (req, res) => {
+
+  const sqlText = `
+  UPDATE "user"
+    SET "username" = ($1)
+    WHERE "id" = '${req.params.id}';
+    `;
+
+  const sqlValues = [req.body.category_id];
+
+  pool
+    .query(sqlText, sqlValues)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("Error in user.router PUT changing name,", err);
+      res.sendStatus(500);
+    });
+});
+
+
+// delete the users account
+router.delete("/:id", (req, res) => {
+
+  const sqlText = `
+    DELETE FROM "completed_levels"
+      WHERE "id" = ${req.params.id};
+      `;
+
+  pool
+    .query(sqlText)
+
+
+
+    .then(result => {
+
+
+      // Now handle the user_characters reference:
+      const insertNewUserQuery = `
+      DELETE FROM "user_characters"
+        WHERE "id" = ${req.params.id};`
+
+
+      // SECOND QUERY DELETES user_id from user_characeters
+      pool.query(insertNewUserQuery)
+
+
+        .then(result => {
+
+
+          // Now handle the user_characters reference:
+          const insertNewUserQuery = `
+        DELETE FROM "user"
+          WHERE "id" = ${req.params.id};`
+
+          // Third QUERY DELETES user from user table
+          pool.query(insertNewUserQuery)
+
+
+
+            // was here for basic
+            .then((result) => {
+              res.sendStatus(201);
+            })
+        }).catch(err => {
+          // catch for third query
+          console.log('in the third', err);
+          res.sendStatus(500)
+        })
+    }).catch(err => {
+      // catch for second query
+      console.log('in the second', err);
+      res.sendStatus(500)
+    })
+    .catch((err) => {
+      console.log("Error in user.router DELETE, deleting account", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
