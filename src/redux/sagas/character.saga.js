@@ -13,6 +13,8 @@ function* fetchAllCharacters() {
       console.log('fetchAllCharacters error:', error);
     }
   }
+
+
   
 
 function* characterSaga() {

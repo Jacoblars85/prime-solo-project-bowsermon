@@ -25,7 +25,31 @@ router.post('/register', (req, res, next) => {
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
+
+    // new stuff to add basic character to new user
+    .then(result => {
+      // ID IS HERE!
+      console.log('New user Id:', result.rows[0].id);
+      const createdUserId = result.rows[0].id
+
+      // Now handle the user_characters reference:
+      const insertNewUserQuery = `
+        INSERT INTO "user_characters" 
+          ("user_id", "character_id")
+          VALUES
+          ($1, 1);
+      `;
+      const insertNewUserValues = [createdUserId]
+      // SECOND QUERY ADDS user_id to user_characeters
+      pool.query(insertNewUserQuery, insertNewUserValues)
+        // was here for basic
+        .then(() => res.sendStatus(201))
+    }).catch(err => {
+      // catch for second query
+      console.log(err);
+      res.sendStatus(500)
+    })
+    // for the first query
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);
