@@ -62,7 +62,7 @@ export default function Settings() {
 
       <List>
         {[<LogOutButton />, <ChangeUsername />].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <LogoutIcon /> : <ManageAccountsIcon /> }

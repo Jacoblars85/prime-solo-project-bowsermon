@@ -7,7 +7,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
-  
+
   const goToNextPage = (params) => {
 
     history.push(`/${params}`)
@@ -17,7 +17,6 @@ function HomePage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-
 
       <button onClick={() => goToNextPage('characters')}>Characters</button>
       <button onClick={() => goToNextPage('shop')}>Shop(closed)</button>

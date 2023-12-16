@@ -40,6 +40,7 @@ function* changeUsername(action) {
           type: 'FETCH_USER',
       })
   } catch (error) {
+    alert('you cant do that')
       console.log('Unable to update username from server', error);
   }
 }

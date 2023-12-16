@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import BackButton from '../BackButton/BackButton';
 
 function ChangeUserNameFrom() {
     const [newUsername, setNewUsername] = useState('');
@@ -11,6 +12,7 @@ function ChangeUserNameFrom() {
     const dispatch = useDispatch();
 
     const changeUsername = (e) => {
+        e.preventDefault()
         dispatch({
             type: 'SAGA_CHANGE_USERNAME',
             payload: {
@@ -37,6 +39,8 @@ function ChangeUserNameFrom() {
                     />
                 </label>
             </div>
+
+            <BackButton />
 
             <button>Submit</button>
         </form>
