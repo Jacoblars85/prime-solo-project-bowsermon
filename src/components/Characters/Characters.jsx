@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackButton from '../BackButton/BackButton';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Characters() {
+    const dispatch = useDispatch();
 
     const characters = useSelector(store => store.character.characters);
 
     const user = useSelector((store) => store.user);
 
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+      }, []);
 
     console.log('this is the characters', characters);
 
@@ -16,7 +20,7 @@ function Characters() {
             <ul>
                 {characters.map(character => {
                     return (
-                        <div>
+                        <div key={character.id}>
 
                             <li>{character.name}</li>
 

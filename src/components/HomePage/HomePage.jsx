@@ -8,9 +8,9 @@ function HomePage() {
 
   const user = useSelector((store) => store.user);
 
-  useEffect(() => {
-    dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+  // }, []);
 
   const goToNextPage = (params) => {
 
