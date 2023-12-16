@@ -13,17 +13,17 @@ function Characters() {
 
     return (
         <div className="characters">
-<ul>
-        {characters.map(character => {
-            return (
-                <div>
+            <ul>
+                {characters.map(character => {
+                    return (
+                        <div>
 
-                <li>{character.name}</li>
+                            <li>{character.name}</li>
 
-                </div>
-            )
-        })}
-        </ul>
+                        </div>
+                    )
+                })}
+            </ul>
 
 
             <BackButton />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import Settings from '../Settings/Settings';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -25,23 +26,27 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <span>Score: {user.coins}</span>
+            <span className='navLink'>Score: {user.coins}</span>
 
-            <Link className="navLink" to="/user">
+            {/* <Link className="navLink" to="/user">
               Home
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
 
-            <LogOutButton className="navLink" />
+            <div className='navLink'>
+              <Settings />
+              </div>
+
+            {/* <LogOutButton className="navLink" /> */}
           </>
         )}
 
-        <Link className="navLink" to="/about">
+        {/* <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
