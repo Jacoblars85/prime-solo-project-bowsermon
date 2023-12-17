@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import BackButton from '../BackButton/BackButton';
 
 
 function Battle() {
+
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
+      }, []);
+
+
+    const dispatch = useDispatch();
+
+    const basicAttacks = useSelector((store) => store.character.basicAttacks);
+    const characters = useSelector(store => store.character.characters);
+    const levelEnemy = useSelector(store => store.character.levelEnemy);
+    const user = useSelector(store => store.user);
+
+    console.log('basic', basicAttacks);
+    console.log('character', characters);
+    console.log('enemy', levelEnemy);
 
     let enemy = {
         name: 'toad',
@@ -109,6 +125,8 @@ function Battle() {
             <p>this is the text box: {textBox}</p>
 
             <br />
+
+            {/* need to disable button until enemy attacks */}
 
             <button onClick={() => battle('unique')}>unique</button>
             <button onClick={() => battle('punch')}>punch</button>

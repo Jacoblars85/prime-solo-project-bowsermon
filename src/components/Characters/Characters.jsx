@@ -10,7 +10,7 @@ function Characters() {
     const user = useSelector((store) => store.user);
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
       }, []);
 
     console.log('this is the characters', characters);
