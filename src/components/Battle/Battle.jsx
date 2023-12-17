@@ -4,6 +4,7 @@ import BackButton from '../BackButton/BackButton';
 
 
 function Battle() {
+
     let enemy = {
         name: 'toad',
         attackName: 'headbutt',
@@ -22,6 +23,7 @@ function Battle() {
 
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
     const [characterHp, setCharacterHp] = useState(character.hp);
+    const [textBox, setTextBox] = useState('');
 
 
     const attack = (attackType) => {
@@ -43,7 +45,11 @@ function Battle() {
     };
 
     const enemyAttack = () => {
-        setCharacterHp(characterHp - enemy.damage)
+
+        setTimeout(() => {
+            setCharacterHp(characterHp - enemy.damage)
+        }, 5000);
+
         if (characterHp <= 0) {
             setCharacterHp(0)
             alert('you lose!')
@@ -53,52 +59,54 @@ function Battle() {
         return characterHp;
     };
 
-    const textBox = (attackType) => {
+    const characterTextBox = (attackType) => {
         let damage = 0
 
         if (attackType === 'unique') {
             damage = character.unique
-            console.log(`${character.name} used ${character.attackName} and it did ${damage} damage`);
+            setTextBox(`${character.name} used ${character.attackName} and it did ${damage} damage`);
             return damage
         } else if (attackType === 'punch') {
             damage = character.punch
-            console.log(`${character.name} used ${attackType} and it did ${damage} damage`);
+            setTextBox(`${character.name} used ${attackType} and it did ${damage} damage`);
             return damage
         } else if (attackType === 'poke') {
             damage = character.poke
-            console.log(`${character.name} used ${attackType} and it did ${damage} damage`);
+            setTextBox(`${character.name} used ${attackType} and it did ${damage} damage`);
             return damage
         }
-
     };
-
 
     const enemyTextBox = () => {
 
-
-        console.log(`${enemy.name} used ${enemy.attackName} and it did ${enemy.damage} damage`);
+        setTimeout(() => {
+            setTextBox(`${enemy.name} used ${enemy.attackName} and it did ${enemy.damage} damage`);
+        }, 5000);
 
     };
-
 
     const battle = (attackType) => {
 
         attack(attackType);
-        textBox(attackType);
+        characterTextBox(attackType);
         enemyAttack();
         enemyTextBox();
 
-
     };
-
-
 
     return (
         <div className="battle">
 
-            {characterHp}
+            <p>Goomba hp: {characterHp}</p>
+
             <br />
-            {enemyHp}
+
+            <p>toad hp: {enemyHp}</p>
+
+            <br />
+
+
+            <p>this is the text box: {textBox}</p>
 
             <br />
 
@@ -107,6 +115,7 @@ function Battle() {
             <button onClick={() => battle('poke')}>poke</button>
 
             <br />
+
             <BackButton />
         </div>
     );
