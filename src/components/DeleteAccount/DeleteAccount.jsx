@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+
+
 function DeleteAccount() {
 
     const user = useSelector((store) => store.user);
@@ -12,12 +14,18 @@ function DeleteAccount() {
 
 
     const deleteAccount = () => {
-        history.push(`/`)
+       
+        history.push(`/registration`)
         
         dispatch({
             type: 'SAGA_DELETE_ACCOUNT',
             payload: user.id
         })
+
+    };
+
+    const comfimation = () => {
+     
 
     };
     
