@@ -23,6 +23,7 @@ function Characters() {
                         <div key={character.id}>
 
                             <li>{character.name}</li>
+                            <img height={100} width={100} src={character.profile_pic}/>
 
                         </div>
                     )
