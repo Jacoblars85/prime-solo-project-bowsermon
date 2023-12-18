@@ -9,7 +9,6 @@ function Battle() {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
       }, []);
 
-
     const dispatch = useDispatch();
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);

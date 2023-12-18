@@ -5,10 +5,20 @@ const pool = require('../modules/pool')
 router.get('/character/:id', (req, res) => {
 console.log('im in character get');
   const query = `
-  SELECT * FROM "user_characters"
-  INNER JOIN "characters"
-      ON "user_characters"."character_id" = "characters"."id"
-  WHERE "user_id" = ${req.params.id};
+  SELECT "user_characters"."id" as "id",
+		"user_characters"."user_id" as "user_id",
+		"user_characters"."character_id",
+		"characters"."name",
+		"characters"."profile_pic",
+		"characters"."hp",
+		"characters"."stamina",
+		"characters"."unique_attack",
+		"characters"."unique_damage",
+		"characters"."unique_stamina"
+ FROM "user_characters"
+	INNER JOIN "characters"
+    	ON "user_characters"."character_id" = "characters"."id"
+    WHERE "user_id" = ${req.params.id};
   `;
 
   pool.query(query)
@@ -60,6 +70,31 @@ console.log('im in basic route');
         })
     
     });
+
+
+    router.post('/', (req, res) => {
+        
+        console.log('req.body', req.body);
+    
+        const insertCharacterQuery = `
+          INSERT INTO "user_characters" 
+            ("user_id", "character_id")
+            VALUES
+            ($1, $2);
+        `;
+        const insertCharacterValue = [
+            req.body.userID,
+            req.body.characterID
+        ]
+    
+        pool.query(insertCharacterQuery, insertCharacterValue)
+            .then(result => {
+                res.sendStatus(201);
+            }).catch(err => {
+                console.log('err in post route', err);
+                res.sendStatus(500)
+            })
+    })
   
 
 
