@@ -16,10 +16,14 @@ function Battle() {
     const levelEnemy = useSelector(store => store.character.levelEnemy);
     const user = useSelector(store => store.user);
 
+    let characterOne = characters[0];
+
+    let enemyOne = levelEnemy[0];
+
 
     console.log('basic', basicAttacks);
-    console.log('character', characters);
-    console.log('enemy', levelEnemy);
+    console.log('character', characterOne);
+    console.log('enemy', enemyOne);
 
     let enemy = {
         name: 'toad',
@@ -42,72 +46,69 @@ function Battle() {
     const [textBox, setTextBox] = useState('');
 
 
-    const attack = (attackType) => {
+    const attack = (attackType, basicAttacks, characterOne) => {
 
         if (attackType === 'unique') {
-            setEnemyHp(enemyHp - character.unique)
+            setEnemyHp(enemyHp - characterOne.unique_damage)
         } else if (attackType === 'punch') {
-            setEnemyHp(enemyHp - character.punch)
+            setEnemyHp(enemyHp - basicAttacks[0].damage)
         } else if (attackType === 'poke') {
-            setEnemyHp(enemyHp - character.poke)
+            setEnemyHp(enemyHp - basicAttacks[1].damage)
         }
-        if (enemyHp <= 0) {
-            setEnemyHp(0)
-            alert('you win!')
-        }
+
         console.log('enemy hp', enemyHp);
 
         return enemyHp;
     };
 
-    const enemyAttack = () => {
+    const enemyAttack = (enemyOne) => {
 
         setTimeout(() => {
-            setCharacterHp(characterHp - enemy.damage)
+            setCharacterHp(characterHp - enemyOne.unique_damage)
         }, 5000);
 
-        if (characterHp <= 0) {
-            setCharacterHp(0)
-            alert('you lose!')
-        }
+
         console.log('my hp', characterHp);
 
         return characterHp;
     };
 
-    const characterTextBox = (attackType) => {
-        let damage = 0
+    const characterTextBox = (attackType, basicAttacks, characterOne) => {
 
         if (attackType === 'unique') {
-            damage = character.unique
-            setTextBox(`${character.name} used ${character.attackName} and it did ${damage} damage`);
-            return damage
+            setTextBox(`${characterOne.name} used ${characterOne.unique_attack} and it did ${characterOne.unique_damage} damage`);
         } else if (attackType === 'punch') {
-            damage = character.punch
-            setTextBox(`${character.name} used ${attackType} and it did ${damage} damage`);
-            return damage
+            setTextBox(`${characterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
         } else if (attackType === 'poke') {
-            damage = character.poke
-            setTextBox(`${character.name} used ${attackType} and it did ${damage} damage`);
-            return damage
+            setTextBox(`${characterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
         }
     };
 
-    const enemyTextBox = () => {
+    const enemyTextBox = (enemyOne) => {
 
         setTimeout(() => {
-            setTextBox(`${enemy.name} used ${enemy.attackName} and it did ${enemy.damage} damage`);
+            setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack} and it did ${enemyOne.unique_damage} damage`);
         }, 5000);
 
     };
 
+    const decideWinner = () => {
+        if (enemyHp <= 0) {
+            setEnemyHp(0)
+            return alert('you win!')
+        } else if (characterHp <= 0) {
+            setCharacterHp(0)
+            return alert('you lose!')
+        }
+    };
+
     const battle = (attackType) => {
 
-        attack(attackType);
-        characterTextBox(attackType);
-        enemyAttack();
-        enemyTextBox();
-
+        attack(attackType, basicAttacks, characterOne);
+        characterTextBox(attackType, basicAttacks, characterOne);
+        enemyAttack(enemyOne);
+        enemyTextBox(enemyOne);
+        decideWinner();
     };
 
     return (
@@ -128,7 +129,7 @@ function Battle() {
 
             {/* need to disable button until enemy attacks */}
 
-            <button onClick={() => battle('unique')}>unique</button>
+            <button onClick={() => battle('unique')}>{character.attackName}</button>
             <button onClick={() => battle('punch')}>punch</button>
             <button onClick={() => battle('poke')}>poke</button>
 

@@ -61,6 +61,22 @@ function* fetchAllCharacters(action) {
   }
 
 
+  function* takeCoinsAway(action) {
+    console.log('action.payload', action.payload);
+    try {
+        const response = yield axios({
+            method: 'PUT',
+            url: `/api/characters/${action.payload.userID}`
+        })
+        yield put({
+            type: 'FETCH_USER',
+        })
+    } catch (error) {
+        console.log('Unable to put coins away from server', error);
+    }
+}
+
+
   
 
 function* characterSaga() {
@@ -69,6 +85,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchBasicAttacks);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
+  yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
 
 }
 

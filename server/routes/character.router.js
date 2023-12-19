@@ -96,6 +96,27 @@ router.get('/basic', (req, res) => {
                 res.sendStatus(500)
             })
     })
+
+    router.put("/:id", (req, res) => {
+
+        const sqlText = `
+        UPDATE "user"
+          SET "coins" = "coins" - 15
+          WHERE "id" = '${req.params.id}';
+          `;
+      
+     
+        pool
+          .query(sqlText)
+          .then((result) => {
+            res.sendStatus(201);
+          })
+          .catch((err) => {
+            console.log("Error in character.router PUT,", err);
+            res.sendStatus(500);
+          });
+      });
+      
   
 
 

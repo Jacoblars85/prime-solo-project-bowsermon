@@ -8,6 +8,10 @@ function Shop() {
     const user = useSelector((store) => store.user);
 
     const getRandomCharacter = () => {
+        if (user.coins < 15) {
+            return alert('you are broke, sorry')
+        }
+
         let randomNum = Math.floor(Math.random() * 2 + 1);
 
 
@@ -17,7 +21,7 @@ function Shop() {
             type: 'SAGA_POST_NEW_CHARACTER',
             payload: {
                 characterID: randomNum,
-                userID: user.id
+                userID: user.id,
             }
         });
 
