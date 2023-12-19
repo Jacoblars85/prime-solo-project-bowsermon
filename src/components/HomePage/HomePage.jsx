@@ -19,7 +19,7 @@ function HomePage() {
       <p>Your ID is: {user.id}</p>
 
       <button onClick={() => goToNextPage('characters')}>Characters</button>
-      <button onClick={() => goToNextPage('shop')}>Shop(closed)</button>
+      <button onClick={() => goToNextPage('shop')}>Shop</button>
       <button onClick={() => goToNextPage('battle')}>Campaign</button>
     </div>
   );

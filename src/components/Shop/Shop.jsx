@@ -10,7 +10,7 @@ function Shop() {
     const getRandomCharacter = () => {
         if (user.coins < 15) {
             return alert('you are broke, sorry')
-        }
+        } else {
 
         let randomNum = Math.floor(Math.random() * 2 + 1);
 
@@ -25,7 +25,7 @@ function Shop() {
             }
         });
 
-
+    }
     };
 
 
