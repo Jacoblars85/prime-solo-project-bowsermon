@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import BackButton from '../BackButton/BackButton';
 import { useDispatch, useSelector } from 'react-redux';
+import CharacterItem from '../CharacterItem/CharacterItem'
 
 function Characters() {
     const dispatch = useDispatch();
@@ -10,25 +11,24 @@ function Characters() {
     const user = useSelector((store) => store.user);
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
+        dispatch({ type: 'SAGA_FETCH_CHARACTERS', payload: user.id });
       }, []);
 
     console.log('this is the characters', characters);
 
     return (
-        <div className="characters">
-            <ul>
+        <div className="characterBox">
+         
                 {characters.map(character => {
                     return (
                         <div key={character.id}>
-
-                            <li>{character.name}</li>
-                            <img height={100} width={100} src={character.profile_pic}/>
+                           
+                            <CharacterItem character={character}/>
 
                         </div>
                     )
                 })}
-            </ul>
+    
 
 
             <BackButton />

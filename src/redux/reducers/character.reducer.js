@@ -10,14 +10,6 @@ const characters = (state = [], action) => {
         return state;
     }
   }
-  
-  // reducer to collect the current
-  const enemy = (state = [], action) => {
-    if (action.type === '') {
-      return action.payload 
-  }
-  return state;
-  }
 
   const basicAttacks = (state = {}, action) => {
     if (action.type === 'SET_BASIC_ATTACKS') {
@@ -40,7 +32,6 @@ const characters = (state = [], action) => {
 
   export default combineReducers({
     characters,
-    enemy,
     basicAttacks,
     levelEnemy,
   });

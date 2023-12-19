@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/character/:id', (req, res) => {
-console.log('im in character get');
+// console.log('im in character get');
   const query = `
   SELECT "user_characters"."id" as "id",
 		"user_characters"."user_id" as "user_id",
@@ -34,7 +34,8 @@ console.log('im in character get');
 
 
 router.get('/basic', (req, res) => {
-console.log('im in basic route');
+// console.log('im in basic route');
+
     const query = `
       SELECT * FROM "basic_attacks";
     `;
@@ -52,7 +53,7 @@ console.log('im in basic route');
 
 
   router.get('/enemy', (req, res) => {
-    console.log('im in enemy get');
+    // console.log('im in enemy get');
       const query = `
       SELECT * FROM "levels"
       INNER JOIN "characters"
@@ -74,7 +75,7 @@ console.log('im in basic route');
 
     router.post('/', (req, res) => {
         
-        console.log('req.body', req.body);
+        // console.log('req.body', req.body);
     
         const insertCharacterQuery = `
           INSERT INTO "user_characters" 

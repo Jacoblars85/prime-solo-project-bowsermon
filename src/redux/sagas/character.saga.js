@@ -64,6 +64,7 @@ function* fetchAllCharacters(action) {
   
 
 function* characterSaga() {
+  yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchBasicAttacks);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchLevelEnemy);

@@ -7,7 +7,7 @@ function Battle() {
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
-      }, []);
+    }, []);
 
     const dispatch = useDispatch();
 
@@ -15,6 +15,7 @@ function Battle() {
     const characters = useSelector(store => store.character.characters);
     const levelEnemy = useSelector(store => store.character.levelEnemy);
     const user = useSelector(store => store.user);
+
 
     console.log('basic', basicAttacks);
     console.log('character', characters);
