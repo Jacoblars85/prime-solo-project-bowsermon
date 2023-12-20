@@ -54,7 +54,7 @@ function* deleteAccount(action) {
           url: `/api/user/${action.payload}`
       })
       yield put({
-          type: 'FETCH_USER',
+          type: 'LOGOUT',
       })
   } catch (error) {
       console.log('Unable to delete account from server', error);

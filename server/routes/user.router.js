@@ -109,7 +109,8 @@ router.delete("/:id", (req, res) => {
       // Now handle the user_characters reference:
       const insertNewUserQuery = `
       DELETE FROM "user_characters"
-        WHERE "id" = ${req.params.id};`
+        WHERE "user_id" = ${req.params.id};
+        `
 
       // SECOND QUERY DELETES user_id from user_characeters
       pool.query(insertNewUserQuery)
