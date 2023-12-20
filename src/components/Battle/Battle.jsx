@@ -17,7 +17,6 @@ function Battle() {
     const user = useSelector(store => store.user);
 
     let characterOne = characters[0];
-
     let enemyOne = levelEnemy[0];
 
 
@@ -28,7 +27,6 @@ function Battle() {
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [characterHp, setCharacterHp] = useState(characterOne.hp);
     const [textBox, setTextBox] = useState('');
-
 
     const attack = (attackType, basicAttacks, characterOne) => {
 
