@@ -78,11 +78,11 @@ export default function Settings() {
       <Divider />
 
       <List>
-        {[<LogOutButton />, <ChangeUsername />].map((text, index) => (
+        {[<ChangeUsername />, <DeleteAccount />].map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <LogoutIcon /> : <ManageAccountsIcon /> }
+                {index % 2 === 0 ? <ManageAccountsIcon /> : <DeleteForeverIcon /> }
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -93,11 +93,11 @@ export default function Settings() {
       <Divider />
       
       <List>
-        {[<DeleteAccount />].map((text, index) => (
+        {[<LogOutButton />].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DeleteForeverIcon />
+                <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

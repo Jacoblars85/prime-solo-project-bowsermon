@@ -116,11 +116,11 @@ input {
 /* my own css */
 
 
-.characterBox {
+/* .characterBox {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   justify-content: space-around;
   row-gap: 10px;
   column-gap: 10px;
@@ -145,7 +145,7 @@ ul {
 
 h5 {
   margin: 0px;
-}
+} */
 
 
 

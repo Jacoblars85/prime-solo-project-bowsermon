@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 
 // Used to store all the characters
-const characters = (state = [], action) => {
+const characters = (state = [{}], action) => {
     switch (action.type) {
       case 'SET_CHARACTERS':
         return action.payload;
@@ -11,7 +11,7 @@ const characters = (state = [], action) => {
     }
   }
 
-  const basicAttacks = (state = {}, action) => {
+  const basicAttacks = (state = [], action) => {
     if (action.type === 'SET_BASIC_ATTACKS') {
       return action.payload 
   }
@@ -19,7 +19,7 @@ const characters = (state = [], action) => {
   }
 
 
-  const levelEnemy = (state = {}, action) => {
+  const levelEnemy = (state = [{}], action) => {
     if (action.type === 'SET_LEVEL_ENEMY') {
       return action.payload 
   }

@@ -14,9 +14,9 @@ function DeleteAccount() {
 
 
     const deleteAccount = () => {
-       
+
         history.push(`/registration`)
-        
+
         dispatch({
             type: 'SAGA_DELETE_ACCOUNT',
             payload: user.id
@@ -25,13 +25,22 @@ function DeleteAccount() {
     };
 
     const comfimation = () => {
-     
+        return (
+            <div>
+
+                <h6>Are you sure?</h6>
+
+                <button onClick={deleteAccount}>yes</button>
+                <button>no</button>
+
+            </div>
+        )
 
     };
-    
+
 
     return (
-        <p onClick={deleteAccount}>Delete Account</p>
+        <p onClick={comfimation}>Delete Account</p>
     );
 }
 

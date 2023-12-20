@@ -22,27 +22,11 @@ function Battle() {
 
 
     console.log('basic', basicAttacks);
-    console.log('character', characterOne);
+    console.log('character', characterOne.hp);
     console.log('enemy', enemyOne);
 
-    let enemy = {
-        name: 'toad',
-        attackName: 'headbutt',
-        hp: 50,
-        damage: 10
-    }
-
-    let character = {
-        name: 'goomba',
-        attackName: 'charge',
-        hp: 50,
-        unique: 20,
-        punch: 5,
-        poke: 1
-    }
-
-    const [enemyHp, setEnemyHp] = useState(enemy.hp);
-    const [characterHp, setCharacterHp] = useState(character.hp);
+    const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
+    const [characterHp, setCharacterHp] = useState(characterOne.hp);
     const [textBox, setTextBox] = useState('');
 
 
@@ -114,11 +98,11 @@ function Battle() {
     return (
         <div className="battle">
 
-            <p>Goomba hp: {characterHp}</p>
+            <p>{characterOne.name} hp: {characterHp}</p>
 
             <br />
 
-            <p>toad hp: {enemyHp}</p>
+            <p>{enemyOne.name} hp: {enemyHp}</p>
 
             <br />
 
@@ -129,7 +113,7 @@ function Battle() {
 
             {/* need to disable button until enemy attacks */}
 
-            <button onClick={() => battle('unique')}>{character.attackName}</button>
+            <button onClick={() => battle('unique')}>{characterOne.unique_attack}</button>
             <button onClick={() => battle('punch')}>punch</button>
             <button onClick={() => battle('poke')}>poke</button>
 

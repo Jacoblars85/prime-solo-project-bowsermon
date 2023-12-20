@@ -24,26 +24,28 @@ function ChangeUserNameFrom() {
     };
 
     return (
-        <form className="formPanel" onSubmit={changeUsername}>
-            <h2>Change Username</h2>
+        <div>
+            <form className="formPanel" onSubmit={changeUsername}>
+                <h2>Change Username</h2>
 
-            <div>
-                <label htmlFor="username">
-                    Username:
-                    <input
-                        type="text"
-                        name="username"
-                        required
-                        value={newUsername}
-                        onChange={(e) => setNewUsername(e.target.value)}
-                    />
-                </label>
-            </div>
+                <div>
+                    <label htmlFor="username">
+                        Username:
+                        <input
+                            type="text"
+                            name="username"
+                            required
+                            value={newUsername}
+                            onChange={(e) => setNewUsername(e.target.value)}
+                        />
+                    </label>
+                </div>
+
+                <button>Submit</button>
+            </form>
 
             <BackButton />
-
-            <button>Submit</button>
-        </form>
+        </div>
     );
 }
 
