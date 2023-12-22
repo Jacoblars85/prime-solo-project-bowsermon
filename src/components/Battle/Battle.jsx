@@ -100,24 +100,42 @@ function Battle() {
     return (
         <div className="battle">
 
-            <p>{characterOne.name} hp: {characterHp}</p>
+            <div className='character'>
+                {/* <p>{characterOne.name} hp: {characterHp}</p> */}
+                <progress id="hp-meter" value="100" max="100">{characterOne.name} hp: {characterHp}</progress>
+                <img height={200} width={200} src={characterOne.battle_pic} />
+
+            </div>
+
 
             <br />
 
-            <p>{enemyOne.name} hp: {enemyHp}</p>
+
+            <div className='enemy'>
+                {/* <p>{enemyOne.name} hp: {enemyHp}</p> */}
+                <progress id="hp-meter" value="100" max="100">{enemyOne.name} hp: {enemyHp}</progress>
+                <img height={250} width={200} src={enemyOne.profile_pic} />
+
+            </div>
+
+
+            <br />
+
+            <div className='textBox'>
+                <p>this is the text box: {textBox}</p>
+            </div>
+
 
             <br />
 
 
-            <p>this is the text box: {textBox}</p>
+            <div className='attacks'>
+                {/* need to disable button until enemy attacks */}
+                <button onClick={() => battle('unique')}>{characterOne.unique_attack}</button>
+                <button onClick={() => battle('punch')}>punch</button>
+                <button onClick={() => battle('poke')}>poke</button>
+            </div>
 
-            <br />
-
-            {/* need to disable button until enemy attacks */}
-
-            <button onClick={() => battle('unique')}>{characterOne.unique_attack}</button>
-            <button onClick={() => battle('punch')}>punch</button>
-            <button onClick={() => battle('poke')}>poke</button>
 
             <br />
 

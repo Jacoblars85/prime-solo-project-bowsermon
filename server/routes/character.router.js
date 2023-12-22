@@ -14,7 +14,8 @@ router.get('/character/:id', (req, res) => {
 		"characters"."stamina",
 		"characters"."unique_attack",
 		"characters"."unique_damage",
-		"characters"."unique_stamina"
+		"characters"."unique_stamina",
+        "characters"."battle_pic"
  FROM "user_characters"
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
