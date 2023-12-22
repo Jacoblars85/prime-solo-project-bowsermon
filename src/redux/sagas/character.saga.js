@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 // This will grab all the characters 
 function* fetchAllCharacters(action) {
-  console.log('action.payload', action.payload);
+  // console.log('action.payload', action.payload);
     try {
       const characterResponse = yield axios.get(`/api/characters/character/${action.payload}`);
       yield put({
@@ -62,7 +62,7 @@ function* fetchAllCharacters(action) {
 
 
   function* takeCoinsAway(action) {
-    console.log('action.payload', action.payload);
+    // console.log('action.payload', action.payload);
     try {
         const response = yield axios({
             method: 'PUT',
@@ -77,6 +77,41 @@ function* fetchAllCharacters(action) {
 }
 
 
+function* giveUserCoins(action) {
+  // console.log('action.payload', action.payload);
+  try {
+      const response = yield axios({
+          method: 'PUT',
+          url: `/api/characters/sell/${action.payload.userID}`
+      })
+      yield put({
+          type: 'FETCH_USER',
+      })
+  } catch (error) {
+      console.log('Unable to put coins to server', error);
+  }
+}
+
+
+function* deleteCharacter(action) {
+  // console.log('action.payload', action.payload);
+  try {
+      const response = yield axios({
+          method: 'DELETE',
+          url: `/api/characters/sell/${action.payload.userID}`,
+          data: {
+            characterID: action.payload.characterID
+          }
+      })
+      yield put({
+          type: 'SAGA_FETCH_CHARACTERS',
+          payload: action.payload.userID,
+      })
+  } catch (error) {
+      console.log('Unable to delete character from server', error);
+  }
+}
+
   
 
 function* characterSaga() {
@@ -86,6 +121,9 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
+  yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);
+  yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
+
 
 }
 

@@ -99,7 +99,7 @@ router.delete("/:id", (req, res) => {
 
   const sqlText = `
     DELETE FROM "completed_levels"
-      WHERE "id" = ${req.params.id};
+      WHERE "user_id" = ${req.params.id};
       `;
 
   pool

@@ -19,13 +19,12 @@ function Characters() {
     return (
         <div className="characterBox">
          
-                {characters.map(character => {
+                {characters && characters.map(character => {
                     return (
-                        <div key={character.id}>
                            
-                            <CharacterItem character={character}/>
+                            <CharacterItem key={character.id} character={character}/>
 
-                        </div>
+                    
                     )
                 })}
     

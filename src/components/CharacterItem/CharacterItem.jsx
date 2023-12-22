@@ -1,7 +1,30 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 function CharacterItem({ character }) {
     const [isPicture, setIsPicture] = useState(false)
+
+    const user = useSelector(store => store.user);
+
+    const dispatch = useDispatch();
+
+
+    const setStarter = () => {
+      dispatch({ 
+        type: 'SET_CURRENT_CHARACTERS', 
+        payload: character 
+      });
+    }
+
+    const sellCharacter = () => {
+      dispatch({ 
+        type: 'SAGA_SELL_CHARACTER', 
+        payload: {characterID: character.id,
+                  userID: user.id }
+      });
+    }
+
 
     const togglePicture = () => {
       setIsPicture(!isPicture)
@@ -15,7 +38,9 @@ function CharacterItem({ character }) {
             <p>{character.hp} hp</p>
             <p>{character.unique_attack} attack</p>
             <p>{character.unique_damage} damage</p>
-            <button id={character.id} >Sell</button>
+            <button id={character.id} onClick={sellCharacter} >Sell</button>
+            <button id={character.id} onClick={setStarter} >Start</button>
+
 
 
             </div>

@@ -11,6 +11,15 @@ const characters = (state = [{}], action) => {
     }
   }
 
+  const currentCharacter = (state = [{character_id: 1, hp: 50, id: 15, name: "Goomba", profile_pic: "images/Goomba2.webp", stamina: 25, unique_attack: "charge", unique_damage: 10, unique_stamina: 10, user_id: 9}], action) => {
+    switch (action.type) {
+      case 'SET_CURRENT_CHARACTERS':
+        return action.payload;
+      default:
+        return state;
+    }
+  }
+
   const basicAttacks = (state = [], action) => {
     if (action.type === 'SET_BASIC_ATTACKS') {
       return action.payload 
@@ -34,5 +43,6 @@ const characters = (state = [{}], action) => {
     characters,
     basicAttacks,
     levelEnemy,
+    currentCharacter,
   });
   
