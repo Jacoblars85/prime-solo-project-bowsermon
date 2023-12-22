@@ -5,9 +5,9 @@ import BackButton from '../BackButton/BackButton';
 
 function Battle() {
 
-    useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
-    }, []);
+    // useEffect(() => {
+    //     dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
+    // }, []);
 
     const dispatch = useDispatch();
 

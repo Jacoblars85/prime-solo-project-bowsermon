@@ -8,6 +8,10 @@ function HomePage() {
 
   const user = useSelector((store) => store.user);
 
+  useEffect(() => {
+    dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
+}, []);
+
   const goToNextPage = (params) => {
 
     history.push(`/${params}`)
