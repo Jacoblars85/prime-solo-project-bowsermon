@@ -12,7 +12,7 @@ function Shop() {
             return alert('you are broke, sorry')
         } else {
 
-        let randomNum = Math.floor(Math.random() * 2 + 1);
+        let randomNum = Math.floor(Math.random() * 3 + 1);
 
 
         console.log('random number', randomNum);
