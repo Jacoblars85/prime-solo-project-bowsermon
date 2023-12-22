@@ -17,6 +17,8 @@ function Battle() {
     const levelEnemy = useSelector(store => store.character.levelEnemy);
     const user = useSelector(store => store.user);
 
+
+    // make starter[0] the character one but async error with that
     let characterOne = characters[0];
     let enemyOne = levelEnemy[0];
 

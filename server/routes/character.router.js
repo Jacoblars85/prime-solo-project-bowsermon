@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/character/:id', (req, res) => {
-    console.log('im in character get');
+    // console.log('im in character get');
     const query = `
   SELECT "user_characters"."id" as "id",
 		"user_characters"."user_id" as "user_id",

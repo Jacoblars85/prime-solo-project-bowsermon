@@ -10,12 +10,12 @@ function HomePage() {
 
   useEffect(() => {
     dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
-}, []);
+  }, []);
 
   const goToNextPage = (params) => {
 
     history.push(`/${params}`)
-};
+  };
 
   return (
     <div className="container">

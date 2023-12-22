@@ -12,22 +12,21 @@ function Characters() {
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS', payload: user.id });
-      }, []);
+    }, []);
 
     console.log('this is the characters', characters);
 
     return (
         <div className="characterBox">
-         
-                {characters && characters.map(character => {
-                    return (
-                           
-                            <CharacterItem key={character.id} character={character}/>
 
-                    
-                    )
-                })}
-    
+            {characters && characters.map(character => {
+                return (
+
+                    <CharacterItem key={character.id} character={character} />
+
+                )
+            })}
+
 
 
             <BackButton />
