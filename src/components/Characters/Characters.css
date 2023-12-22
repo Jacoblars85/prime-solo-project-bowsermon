@@ -1,0 +1,34 @@
+.characterBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border: 1px solid blue; */
+    justify-content: space-around;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    /* height: 970px;
+    width: 1170px; */
+  }
+  
+  .single-box {
+    border: 1px solid black;
+    height: 170px;
+    width: 170px;
+    justify-content: space-around;
+    text-align: center;
+    padding-left: 0px;
+  }
+  
+  .singleBoxUl {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    padding-left: 37px;
+  }
+  
+  h5 {
+    margin: 0px;
+  }
+  

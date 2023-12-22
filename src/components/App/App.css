@@ -113,39 +113,5 @@ input {
 
 
 
-/* my own css */
-
-
-/* .characterBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid blue;
-  justify-content: space-around;
-  row-gap: 10px;
-  column-gap: 10px;
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-.single-box {
-  border: 2px solid black;
-  height: 170px;
-  width: 170px;
-  justify-content: space-around;
-  text-align: center;
-}
-
-ul {
-  height: 170px;
-  width: 170px;
-  text-align: center;
-  padding-left: 0px;
-}
-
-h5 {
-  margin: 0px;
-} */
-
 
 

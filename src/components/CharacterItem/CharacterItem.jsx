@@ -1,3 +1,4 @@
+import { Padding } from '@mui/icons-material';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -59,7 +60,7 @@ function CharacterItem({ character }) {
 
       <h5>{character.name}</h5>
 
-      <ul onClick={togglePicture}> {displayText()} </ul>
+      <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
 
       <button id={character.id} onClick={setStarter} >Start</button>

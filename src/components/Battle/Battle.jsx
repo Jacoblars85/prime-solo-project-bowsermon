@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BackButton from '../BackButton/BackButton';
+import './Battle.css';
 
 
 function Battle() {
