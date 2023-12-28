@@ -40,22 +40,33 @@ function Battle() {
     const [characterHp, setCharacterHp] = useState(characterOne.hp);
     const [textBox, setTextBox] = useState('');
 
-
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const [openWinner, setWinnerOpen] = useState(false);
     const [openLoser, setLoserOpen] = useState(false);
-  
+
     const handleWinnerClose = () => {
         history.push(`/user`)
-        dispatch({ 
-            type: 'SAGA_USER_WON_THE_BATTLE', 
-            payload: user.id });
+        dispatch({
+            type: 'SAGA_USER_WON_THE_BATTLE',
+            payload: user.id
+        });
     };
 
     const handleLoserClose = () => {
         history.push(`/user`)
     };
-    
+
+
+    const disableButtons = () => {
+        
+        setIsDisabled(true)
+
+        setTimeout(() => {
+            setIsDisabled(false);
+        }, 5500);
+        
+    };
 
     const attack = (attackType, basicAttacks, characterOne) => {
 
@@ -114,7 +125,8 @@ function Battle() {
     };
 
     const battle = (attackType) => {
-
+        
+        disableButtons();
         attack(attackType, basicAttacks, characterOne);
         characterTextBox(attackType, basicAttacks, characterOne);
         enemyAttack(enemyOne);
@@ -162,9 +174,9 @@ function Battle() {
             <div className='attacks'>
 
                 {/* need to disable button until enemy attacks */}
-                <button onClick={() => battle('unique')} className='uniqueAttack' >{characterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')} className='punchAttack' >punch</button>
-                <button onClick={() => battle('poke')} className='pokeAttack' >poke</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={isDisabled} >{characterOne.unique_attack}</button>
+                <button onClick={() => battle('punch')} className='punchAttack' disabled={isDisabled} >punch</button>
+                <button onClick={() => battle('poke')} className='pokeAttack' disabled={isDisabled} >poke</button>
 
             </div>
 
@@ -176,49 +188,49 @@ function Battle() {
             </div>
 
 
-       
-    <Fragment>
-      <Dialog
-        open={openWinner}
-        onClose={handleWinnerClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Congrats, you win!!"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Click the close button to go back home and collect your 5 coins!
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleWinnerClose} autoFocus> Close </Button>
-        </DialogActions>
-      </Dialog>
-    </Fragment>
+            {/* for the winner  */}
+            <Fragment>
+                <Dialog
+                    open={openWinner}
+                    onClose={handleWinnerClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Congrats, you win!!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Click the close button to go back home and collect your 5 coins!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleWinnerClose} autoFocus> Close </Button>
+                    </DialogActions>
+                </Dialog>
+            </Fragment>
+            {/* for the loser */}
+            <Fragment>
+                <Dialog
+                    open={openLoser}
+                    onClose={handleLoserClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"You Lost, better luck next time pal."}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            You Suck, click the close button to go home and try again!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleLoserClose} autoFocus> Close </Button>
+                    </DialogActions>
+                </Dialog>
+            </Fragment>
 
-    <Fragment>
-      <Dialog
-        open={openLoser}
-        onClose={handleLoserClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"You Lost, better luck next time pal."}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            You Suck, click the close button to go home and try again!
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleLoserClose} autoFocus> Close </Button>
-        </DialogActions>
-      </Dialog>
-    </Fragment>
-  
 
         </div>
     );

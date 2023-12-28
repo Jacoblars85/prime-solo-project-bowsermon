@@ -14,6 +14,11 @@ body:has(.attacks button:active:not(:disabled)) {
     animation-iteration-count: infinite;
 }
 
+/* body:has(.attacks button:active:not(:disabled)) {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+} */
+
 
 
 /* https://www.w3schools.com/howto/howto_css_shake_image.asp */
@@ -68,7 +73,7 @@ progress {
     height: 30px;
     width: 70%;
     background: white;
-    /* margin: 0px auto -30px auto; */
+    margin: 0px auto -30px auto;
     display: block;
     border: 2px solid black;
 }
@@ -87,7 +92,6 @@ progress {
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
-    /* padding-bottom: 10px; */
     font-size: 20px;
     /* text-shadow: 0px 0px 9px #ff0000; */
 }
@@ -140,9 +144,9 @@ progress {
 .attacks {
     position: absolute;
     top: 67%;
-    left: 75%;
+    left: 81.7%;
     display: flex;
-    width: 360px;
+    width: 260px;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-content: space-around;
@@ -174,7 +178,7 @@ progress {
 
 .textBox {
     position: absolute;
-    top: 80%;
+    top: 79.5%;
     left: 50%;
     width: 400px;
     height: 100px;
@@ -183,6 +187,7 @@ progress {
     text-align: center;
     font-size: 20px;
     padding-top: 50px;
+
 }
 
 /* .batlle {
