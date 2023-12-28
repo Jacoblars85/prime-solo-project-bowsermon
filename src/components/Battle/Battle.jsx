@@ -145,10 +145,6 @@ function Battle() {
 
             </div>
 
-
-            <br />
-
-
             <div className='enemy'>
 
                 <p>{enemyOne.name} hp: {enemyHp}</p>
@@ -157,36 +153,23 @@ function Battle() {
 
             </div>
 
-
-            <br />
-
-
             <div className='textBox'>
 
                 <p>{textBox}</p>
 
             </div>
 
-
-
-
-
             <div className='attacks'>
 
-                {/* need to disable button until enemy attacks */}
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={isDisabled} >{characterOne.unique_attack}</button>
                 <button onClick={() => battle('punch')} className='punchAttack' disabled={isDisabled} >punch</button>
                 <button onClick={() => battle('poke')} className='pokeAttack' disabled={isDisabled} >poke</button>
 
             </div>
 
-
-            <br />
-
             <div className='backButton'>
                 <BackButton />
             </div>
-
 
             {/* for the winner  */}
             <Fragment>

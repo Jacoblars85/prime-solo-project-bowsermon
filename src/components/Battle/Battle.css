@@ -14,10 +14,11 @@ body:has(.attacks button:active:not(:disabled)) {
     animation-iteration-count: infinite;
 }
 
-/* body:has(.attacks button:active:not(:disabled)) {
+body:has(.attacks button:active:not(:disabled)) {
     animation: shake 0.5s;
+    animation-delay: 5s;
     animation-iteration-count: infinite;
-} */
+}
 
 
 
@@ -190,20 +191,3 @@ progress {
 
 }
 
-/* .batlle {
-    display: flex;
-    height: 650px;
-    width: 1300px;
-    border: 1px solid blue;
-    overflow-y: hidden;
-}
-
-.attacks {
-    justify-content: flex-end;
-    display: flex;
-
-}
-
-.attacks button {
-    padding: 50px;
-} */
