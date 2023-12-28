@@ -101,9 +101,10 @@ function Battle() {
         <div className="battle">
 
             <div className='character'>
-                {/* <p>{characterOne.name} hp: {characterHp}</p> */}
-                <progress id="hp-meter" value="100" max="100">{characterOne.name} hp: {characterHp}</progress>
-                <img height={200} width={200} src={characterOne.battle_pic} />
+
+                <p>{characterOne.name} hp: {characterHp}</p>
+                <progress id="hp-meter" value="100" max="100"></progress>
+                <img height={300} width={300} src={characterOne.profile_pic} />
 
             </div>
 
@@ -112,34 +113,43 @@ function Battle() {
 
 
             <div className='enemy'>
-                {/* <p>{enemyOne.name} hp: {enemyHp}</p> */}
-                <progress id="hp-meter" value="100" max="100">{enemyOne.name} hp: {enemyHp}</progress>
-                <img height={250} width={200} src={enemyOne.profile_pic} />
+
+                <p>{enemyOne.name} hp: {enemyHp}</p>
+                <progress id="hp-meter" value="100" max="100"></progress>
+                <img height={300} width={200} src={enemyOne.battle_pic} />
 
             </div>
 
 
             <br />
+
 
             <div className='textBox'>
+
                 <p>this is the text box: {textBox}</p>
+
             </div>
 
 
-            <br />
+
 
 
             <div className='attacks'>
+
                 {/* need to disable button until enemy attacks */}
-                <button onClick={() => battle('unique')}>{characterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')}>punch</button>
-                <button onClick={() => battle('poke')}>poke</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' >{characterOne.unique_attack}</button>
+                <button onClick={() => battle('punch')} className='punchAttack' >punch</button>
+                <button onClick={() => battle('poke')} className='pokeAttack' >poke</button>
+
             </div>
 
 
             <br />
 
-            <BackButton />
+            <div className='backButton'>
+                <BackButton />
+            </div>
+
         </div>
     );
 }

@@ -13,6 +13,7 @@ function DeleteAccount() {
 
     };
 
+
     return (
         <p onClick={comfimation}>Delete Account</p>
     );

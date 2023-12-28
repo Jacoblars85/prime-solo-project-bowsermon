@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './HomePage.css';
+import Nav from '../Nav/Nav';
+
 
 function HomePage() {
   const history = useHistory();
@@ -20,6 +22,9 @@ function HomePage() {
 
   return (
     <div className="container">
+      
+      <Nav />
+
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
 

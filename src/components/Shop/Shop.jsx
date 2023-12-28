@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BackButton from '../BackButton/BackButton';
 import './Shop.css';
+import Nav from '../Nav/Nav';
+
 
 function Shop() {
 
@@ -33,6 +35,8 @@ function Shop() {
 
     return (
         <div className="shop">
+
+            <Nav />
 
             <h2>Shop</h2>
 

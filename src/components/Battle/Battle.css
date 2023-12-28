@@ -1,3 +1,11 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+
 /* Make the screen shake when you click on it
   (for attacks)
  */
@@ -6,23 +14,27 @@
     animation-iteration-count: infinite;
 }
 
-html, body {
-    margin: 0;
-    height: 100%;
+body:has( .freaky-fungus.dead) {
+    animation: shake 0.5s;
+    animation-delay: 1.8s;
+    animation-iteration-count: 3;
 }
 
-.img-bg {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
+/* https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.enemy {
-    position: absolute;
-    top: 10%;
-    right: 10%;
-}
 
 progress {
     height: 30px;
@@ -30,9 +42,14 @@ progress {
     background: white;
     margin: 0px auto -30px auto;
     display: block;
+    border: 2px solid black;
 }
 
-.attacks progress {
+.enemy progress {
+    margin-top: -60px;
+}
+
+.character progress {
     margin-top: -60px;
 }
 
@@ -40,20 +57,97 @@ progress {
     background: red;
 }
 
-.attacks progress::-webkit-progress-value {
+.character progress::-webkit-progress-value {
     background: green;
 }
 
-.hp-text {
-    width: 100%;
-    color: white;
-    font-family: sans-serif;
-    font-weight: bold;
-    text-align: center;
-    padding-bottom: 10px;
-    font-size: 20px;
-    text-shadow: 0px 0px 9px #ff0000;
+.character {
+    position: absolute;
+    top: 40%;
+    left: 13%;
+    display: flex;
+    width: 360px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    border: 1px solid blue;
 }
+
+.enemy {
+    position: absolute;
+    top: 7%;
+    right: 20%;
+    border: 1px solid blue;
+}
+
+
+
+
+/* my own css */
+
+
+.attacks {
+    position: absolute;
+    top: 67%;
+    left: 75%;
+    display: flex;
+    width: 360px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: space-around;
+    border: 1px solid blue;
+}
+
+.attacks button {
+    position: relative;
+    width: 125px;
+    height: 125px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+    margin-right: 2px;
+    background-size: cover;
+    cursor: pointer;
+}
+
+
+.backButton {
+    position: absolute;
+    top: 94%;
+    left: -17%;
+    display: flex;
+    width: 360px;
+    justify-content: flex-end;
+    
+}
+
+
+.textBox {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 400px;
+    height: 150px;
+    background-color: lightgrey;
+    border: 3px solid black;
+}
+
+/* .batlle {
+    display: flex;
+    height: 650px;
+    width: 1300px;
+    border: 1px solid blue;
+    overflow-y: hidden;
+}
+
+.attacks {
+    justify-content: flex-end;
+    display: flex;
+
+}
+
+.attacks button {
+    padding: 50px;
+} */
 
 
 

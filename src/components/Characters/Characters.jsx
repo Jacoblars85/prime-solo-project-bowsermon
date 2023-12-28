@@ -3,6 +3,8 @@ import BackButton from '../BackButton/BackButton';
 import { useDispatch, useSelector } from 'react-redux';
 import CharacterItem from '../CharacterItem/CharacterItem'
 import './Characters.css';
+import Nav from '../Nav/Nav';
+
 
 function Characters() {
     const dispatch = useDispatch();
@@ -19,6 +21,8 @@ function Characters() {
 
     return (
         <div >
+            <Nav />
+            
         <div className="characterBox">
 
             {characters && characters.map(character => {
