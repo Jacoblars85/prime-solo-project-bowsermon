@@ -127,7 +127,6 @@ router.put("/sell/:id", (req, res) => {
           WHERE "id" = '${req.params.id}';
           `;
 
-
     pool
         .query(sqlText)
         .then((result) => {

@@ -33,7 +33,7 @@ function* changeUsername(action) {
   try {
       const response = yield axios({
           method: 'PUT',
-          url: `/api/user/${action.payload}`,
+          url: `/api/user/change/${action.payload}`,
           data: action.payload
       })
       yield put({
@@ -61,10 +61,28 @@ function* deleteAccount(action) {
   }
 }
 
+//give user coins when they won a battle
+function* giveUserCoinsForWinning(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/user/won/${action.payload}`
+    })
+    yield put({
+      type: 'FETCH_USER',
+    })
+  } catch (error) {
+    console.log('Unable to put coins for win to server', error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('SAGA_CHANGE_USERNAME', changeUsername);
   yield takeLatest('SAGA_DELETE_ACCOUNT', deleteAccount);
+  yield takeLatest('SAGA_USER_WON_THE_BATTLE', giveUserCoinsForWinning);
+
 }
 
 export default userSaga;

@@ -72,7 +72,7 @@ router.post('/logout', (req, res) => {
 });
 
 
-router.put("/:id", (req, res) => {
+router.put("/change/:id", (req, res) => {
 
   const sqlText = `
   UPDATE "user"
@@ -142,6 +142,26 @@ router.delete("/:id", (req, res) => {
       console.log("Error in user.router DELETE, deleting account", err);
       res.sendStatus(500);
     });
+});
+
+
+router.put("/won/:id", (req, res) => {
+
+  const sqlText = `
+      UPDATE "user"
+        SET "coins" = "coins" + 5
+        WHERE "id" = '${req.params.id}';
+        `;
+
+  pool
+      .query(sqlText)
+      .then((result) => {
+          res.sendStatus(201);
+      })
+      .catch((err) => {
+          console.log("Error in user.router /won PUT,", err);
+          res.sendStatus(500);
+      });
 });
 
 module.exports = router;
