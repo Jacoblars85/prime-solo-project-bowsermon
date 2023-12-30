@@ -10,12 +10,22 @@ body {
   (for attacks)
  */
 body:has(.attacks button:active:not(:disabled)) {
-    animation: shake 0.5s;
+    animation: shake 0.6s;
     animation-iteration-count: infinite;
 }
 
-body:has(.attacks button:active:not(:disabled)) {
-    animation: shake 0.5s;
+.enemyPicAttack {
+    margin-right: 1100px;
+    margin-top: 200px;
+}
+
+.chacracterPicAttack {
+    margin-left: 1100px;
+    margin-top: -400px;
+}
+
+body:has(.shake ) {
+    animation: shake 0.6s;
     animation-delay: 5s;
     animation-iteration-count: infinite;
 }
@@ -79,15 +89,17 @@ progress {
     border: 2px solid black;
 }
 
-.enemy progress {
+.enemy progress, .shake progress {
     margin-top: -25px;
 }
 
 .character progress {
     margin-top: -25px;
+position:static;
 }
 
-.enemy p, .character p {
+
+.enemy p, .character p, .shake p {
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
@@ -101,14 +113,6 @@ progress {
     margin-top: -10px;
     text-shadow: 0px 0px 9px #00ff00;
 } */
-
-.enemy progress::-webkit-progress-value {
-    background: red;
-}
-
-.character progress::-webkit-progress-value {
-    background: green;
-}
 
 .character {
     position: absolute;
@@ -124,7 +128,7 @@ progress {
     column-gap: 20px;
 }
 
-.enemy {
+.enemy, .shake{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -165,7 +169,6 @@ progress {
     cursor: pointer;
 }
 
-
 .backButton {
     position: absolute;
     top: 94%;
@@ -175,7 +178,6 @@ progress {
     justify-content: flex-end;
 
 }
-
 
 .textBox {
     position: absolute;

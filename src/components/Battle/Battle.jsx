@@ -41,6 +41,12 @@ function Battle() {
     const [textBox, setTextBox] = useState('');
 
     const [isDisabled, setIsDisabled] = useState(false);
+    const [enemyClassName, setEnemyClassName] = useState("enemy");
+    const [enemyPicAttack, setEnemyPicAttack] = useState("");
+    const [characterPicAttack, setCharacterPicAttack] = useState("");
+
+
+
 
     const [openWinner, setWinnerOpen] = useState(false);
     const [openLoser, setLoserOpen] = useState(false);
@@ -59,16 +65,22 @@ function Battle() {
 
 
     const disableButtons = () => {
-        
+
         setIsDisabled(true)
 
         setTimeout(() => {
             setIsDisabled(false);
         }, 5500);
-        
+
     };
 
     const attack = (attackType, basicAttacks, characterOne) => {
+
+        setCharacterPicAttack("chacracterPicAttack")
+
+        setTimeout(() => {
+            setCharacterPicAttack("")
+        }, 250);
 
         if (attackType === 'unique') {
             setEnemyHp(enemyHp - characterOne.unique_damage)
@@ -85,10 +97,18 @@ function Battle() {
 
     const enemyAttack = (enemyOne) => {
 
+        setEnemyClassName("shake")
+
         setTimeout(() => {
             setCharacterHp(characterHp - enemyOne.unique_damage)
+            setEnemyClassName("enemy")
+            setEnemyPicAttack("enemyPicAttack")
         }, 5000);
 
+
+        setTimeout(() => {
+            setEnemyPicAttack("")
+        }, 5250);
 
         console.log('my hp', characterHp);
 
@@ -125,7 +145,7 @@ function Battle() {
     };
 
     const battle = (attackType) => {
-        
+
         disableButtons();
         attack(attackType, basicAttacks, characterOne);
         characterTextBox(attackType, basicAttacks, characterOne);
@@ -141,15 +161,15 @@ function Battle() {
 
                 <p>{characterOne.name} hp: {characterHp}</p>
                 <progress id="hp-meter" value={characterHp} max={characterOne.hp}></progress>
-                <img height={300} width={300} src={characterOne.profile_pic} />
+                <img className={characterPicAttack} height={300} width={300} src={characterOne.profile_pic} />
 
             </div>
 
-            <div className='enemy'>
+            <div className={enemyClassName}>
 
                 <p>{enemyOne.name} hp: {enemyHp}</p>
                 <progress id="hp-meter" value={enemyHp} max={enemyOne.hp}></progress>
-                <img height={300} width={200} src={enemyOne.battle_pic} />
+                <img className={enemyPicAttack} height={300} width={200} src={enemyOne.battle_pic} />
 
             </div>
 
