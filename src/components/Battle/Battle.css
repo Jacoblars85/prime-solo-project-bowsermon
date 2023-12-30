@@ -3,7 +3,11 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
+    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/Screenshot 2023-12-30 at 1.58.41 PM.png");
+    height: 10px;
 }
+
+
 
 
 /* Make the screen shake when you click on it

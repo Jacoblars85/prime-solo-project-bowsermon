@@ -212,6 +212,7 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
+            
             {/* for the loser */}
             <Fragment>
                 <Dialog
