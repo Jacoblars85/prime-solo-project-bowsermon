@@ -80,7 +80,7 @@ function Battle() {
 
         setTimeout(() => {
             setCharacterPicAttack("")
-        }, 250);
+        }, 150);
 
         if (attackType === 'unique') {
             setEnemyHp(enemyHp - characterOne.unique_damage)
@@ -108,7 +108,7 @@ function Battle() {
 
         setTimeout(() => {
             setEnemyPicAttack("")
-        }, 5250);
+        }, 5150);
 
         console.log('my hp', characterHp);
 
