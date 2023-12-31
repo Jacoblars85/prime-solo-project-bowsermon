@@ -21,17 +21,27 @@ function HomePage() {
   };
 
   return (
-    <div className="container">
-
+    <div>
       <Nav />
 
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <div className="homePage">
 
-      <button onClick={() => goToNextPage('characters')}>Characters</button>
-      <button onClick={() => goToNextPage('shop')}>Shop</button>
-      <button onClick={() => goToNextPage('battle')}>Campaign</button>
-      
+
+        <h2>Welcome, {user.username}!</h2>
+
+        <div className="starterHomeView">
+
+          <h3>Starter</h3>
+          <p>goomba</p>
+
+        </div>
+
+
+        <button className="characterButton" onClick={() => goToNextPage('characters')}>Characters</button>
+        <button className="shopButton" onClick={() => goToNextPage('shop')}>Shop</button>
+        <button className="campaignButton" onClick={() => goToNextPage('battle')}>Campaign</button>
+
+      </div>
     </div>
   );
 }

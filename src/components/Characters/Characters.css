@@ -1,19 +1,35 @@
+/* html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+} */
+
+
+.battle html, body {
+    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/ExportBackgroundnomoveclound.webp");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: right;
+
+}
+
+
 .characterBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
     justify-content: space-around;
     row-gap: 10px;
     column-gap: 10px;
     margin-left: 100px;
     margin-right: 100px;
-    /* height: 970px;
-    width: 1170px; */
+    height: 640px;
   }
   
   .single-box {
-    border: 1px solid black;
+    border: 3px solid black;
     height: 170px;
     width: 170px;
     justify-content: space-around;
