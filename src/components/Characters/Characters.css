@@ -5,9 +5,8 @@ body {
     width: 100%;
 } */
 
-
-.battle html, body {
-    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/ExportBackgroundnomoveclound.webp");
+.characterBox html, body {
+    background-image: url("");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: right;
@@ -23,10 +22,16 @@ body {
     justify-content: space-around;
     row-gap: 10px;
     column-gap: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 20px;
+    width: 1120px;
     height: 640px;
   }
+
+.characterBox h2 {
+  position: absolute;
+  text-align: center;
+  margin-top: -30px;
+}
   
   .single-box {
     border: 3px solid black;
@@ -47,4 +52,27 @@ body {
   h5 {
     margin: 0px;
   }
+
+  .starterCharacterView {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    top: 14.5%;
+    left: 81%;
+    border: 3px solid black;
+    width: 250px;
+    height: 638px;
+    justify-content: center;
+    background-color: azure;
+}
+
+.backButton {
+  position: absolute;
+  top: 94%;
+  left: -17%;
+  display: flex;
+  width: 360px;
+  justify-content: flex-end;
+
+}
   
