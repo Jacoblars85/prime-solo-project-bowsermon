@@ -1,8 +1,22 @@
-/* body {
+/* html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+} */
+
+.container {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+/* .container , html {
     background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/5ba1b238827f3.webp");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    float: left;
-    width: auto;
+    background-size: 100%;
     opacity: 100%;
+
 } */

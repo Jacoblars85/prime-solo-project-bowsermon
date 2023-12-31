@@ -3,9 +3,33 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
-    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/Screenshot 2023-12-30 at 1.58.41 PM.png");
-    height: 10px;
 }
+
+
+/* .battle html, body {
+    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/cartoon-grass-seamless-pattern-600nw-613849544.webp"), url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/6c5059b41d18a6bf960618cc18a8ae13.png");
+    background-repeat: repeat-x, repeat-x;
+    background-size: 35%, 22.88%;
+    background-position-y: bottom, top;
+
+} */
+
+.battle html, body {
+    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/ExportBackgroundnomoveclound.webp");
+    background-repeat: no-repeat;
+    background-size: 96.3%;
+    background-position-y: right;
+
+}
+
+
+/* .battle html, body {
+    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/RockForest.webp");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: right;
+
+} */
 
 
 
@@ -99,8 +123,8 @@ progress {
 }
 
 .character progress {
-    margin-top: 48px;
-position: absolute;
+    margin-top: 45px;
+    position: absolute;
 }
 
 

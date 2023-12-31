@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <div className="container">
-      
+
       <Nav />
 
       <h2>Welcome, {user.username}!</h2>
@@ -31,6 +31,7 @@ function HomePage() {
       <button onClick={() => goToNextPage('characters')}>Characters</button>
       <button onClick={() => goToNextPage('shop')}>Shop</button>
       <button onClick={() => goToNextPage('battle')}>Campaign</button>
+      
     </div>
   );
 }

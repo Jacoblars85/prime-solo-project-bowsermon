@@ -46,8 +46,6 @@ function Battle() {
     const [characterPicAttack, setCharacterPicAttack] = useState("");
 
 
-
-
     const [openWinner, setWinnerOpen] = useState(false);
     const [openLoser, setLoserOpen] = useState(false);
 
@@ -212,7 +210,7 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
-            
+
             {/* for the loser */}
             <Fragment>
                 <Dialog
