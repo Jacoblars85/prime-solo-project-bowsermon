@@ -5,27 +5,26 @@ body {
     width: 100%;
 } */
 
-.characterBox html, body {
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: right;
-
-}
-
+/* .characterBox html, body {
+  background: radial-gradient(circle, #0d0d0e 10%, transparent 11%),radial-gradient(circle at bottom left, #0d0d0e 5%, transparent 6%),radial-gradient(circle at bottom right, #0d0d0e 5%, transparent 6%),radial-gradient(circle at top left, #0d0d0e 5%, transparent 6%),radial-gradient(circle at top right, #0d0d0e 5%, transparent 6%);
+      background-size: 1em 1em;
+      background-color: #ffffff;
+      opacity: 1
+} */
 
 .characterBox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 1px solid blue;
-    justify-content: space-around;
-    row-gap: 10px;
-    column-gap: 10px;
-    margin-left: 20px;
-    width: 1120px;
-    height: 640px;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+  justify-content: space-around;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin-left: 20px;
+  width: 1120px;
+  height: 640px;
+
+}
 
 .characterBox h2 {
   position: absolute;
@@ -33,29 +32,34 @@ body {
   margin-top: -30px;
 }
   
-  .single-box {
-    border: 3px solid black;
-    height: 170px;
-    width: 170px;
-    justify-content: space-around;
-    text-align: center;
-    padding-left: 0px;
-  }
+.single-box {
+  border: 3px solid whiteblack;
+  height: 170px;
+  width: 170px;
+  justify-content: space-around;
+  text-align: center;
+  padding-left: 0px;
+  background-color: black;
+
+}
   
-  .singleBoxUl {
+.singleBoxUl {
     height: 100px;
     width: 100px;
     text-align: center;
     padding-left: 37px;
-  }
+    color: white;
+}
   
-  h5 {
-    margin: 0px;
-  }
+h5 {
+  margin: 0px;
+  color: white;
+}
 
   .starterCharacterView {
     position: absolute;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     top: 14.5%;
     left: 81%;

@@ -30,22 +30,25 @@ function Characters() {
 
             <div className="characterBox">
 
-            <h2>Characters</h2>
+                <h2>Characters</h2>
 
                 {characters && characters.map(character => {
                     return (
                         <div key={character.id}>
-                            <CharacterItem  character={character} />
+                            <CharacterItem character={character} />
                         </div>
                     )
                 })}
 
                 <div className="starterCharacterView">
 
-                    <h2>starter</h2>
+                    <h2>Starter</h2>
+
                     {starter && starter.map(start => {
                         return (
-                       <StarterItem start={start}/>
+
+                            <StarterItem start={start} />
+                            
                         )
                     })}
 
