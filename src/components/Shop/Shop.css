@@ -13,3 +13,30 @@
     background-position-y: right;
     
 } */
+
+.randomCharacter {
+    position: absolute;
+    /* border: 3px solid black; */
+    height: 300px;
+    width: 200px;
+    top: 25%;
+    left: 43.5%;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+
+
+.backButton {
+    position: absolute;
+    top: 94%;
+    left: -17%;
+    display: flex;
+    width: 360px;
+    justify-content: flex-end;
+
+}
