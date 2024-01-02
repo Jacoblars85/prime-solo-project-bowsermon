@@ -43,8 +43,7 @@ function Shop() {
             dispatch({
                 type: 'SAGA_POST_NEW_CHARACTER',
                 payload: {
-                    characterID: randomNum,
-                    userID: user.id,
+                    characterID: randomNum
                 }
             });
 
@@ -100,35 +99,6 @@ function Shop() {
             <div className='backButton'>
                 <BackButton />
             </div>
-
-
-            {/* <Fragment>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Open
-                </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Use Google's location service?"}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            Let Google help apps determine location. This means sending anonymous
-                            location data to Google, even when no apps are running.
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>No</Button>
-                        <Button onClick={handleClose} autoFocus>
-                            Yes
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </Fragment> */}
 
 
         </div>

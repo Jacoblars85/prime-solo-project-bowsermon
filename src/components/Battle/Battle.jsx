@@ -53,8 +53,7 @@ function Battle() {
     const handleWinnerClose = () => {
         history.push(`/user`)
         dispatch({
-            type: 'SAGA_USER_WON_THE_BATTLE',
-            payload: user.id
+            type: 'SAGA_USER_WON_THE_BATTLE'
         });
     };
 
