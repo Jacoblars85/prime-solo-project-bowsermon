@@ -14,7 +14,7 @@ body {
 
 } */
 
-/* this one is the front runner */
+
 /* .battle html, body {
     background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/ExportBackgroundnomoveclound.webp");
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ body {
 } */
 
 
-/* .battle html, body {
+/* #battle {
     background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/RockForest.webp");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -148,8 +148,8 @@ progress {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    top: 30%;
-    left: 3%;
+    top: 34%;
+    left: 20%;
     border: 1px solid blue;
     width: 400px;
     height: 400px;
@@ -160,8 +160,8 @@ progress {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    top: 1%;
-    right: 8%;
+    top: 5%;
+    right: 18%;
     border: 1px solid blue;
     width: 400px;
     height: 400px;

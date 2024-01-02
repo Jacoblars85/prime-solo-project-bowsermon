@@ -9,7 +9,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import background from '../../public/images/ExportBackgroundnomoveclound.webp';
+import background from '../../ExportBackgroundnomoveclound.webp';
 
 
 function Battle() {
@@ -154,11 +154,16 @@ function Battle() {
 
     return (
         <div className="battle"
-            style={{
-                backgroundImage: `url(images/ExportBackgroundnomoveclound.webp)`,
-                backgroundRepeat: `no-repeat`,
-                backgroundSize: `100%`
-            }}>
+        style={{
+            backgroundImage: `url(${background})`,
+            backgroundRepeat: `no-repeat`,
+            backgroundSize: `cover`,
+            height: `100vh`,
+            width: `100vw`,
+        }}>
+            
+
+             
 
             <div className='character'>
 
@@ -237,7 +242,7 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
-
+           
         </div>
     );
 }
