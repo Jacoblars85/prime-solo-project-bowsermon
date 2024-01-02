@@ -44,12 +44,12 @@ body:has(.attacks button:active:not(:disabled)) {
 }
 
 .enemyPicAttack {
-    margin-right: 1100px;
+    margin-right: 700px;
     margin-top: 200px;
 }
 
 .chacracterPicAttack {
-    margin-left: 1100px;
+    margin-left: 700px;
     position: absolute;
 
 }
@@ -119,11 +119,7 @@ progress {
     border: 2px solid black;
 }
 
-.enemy progress, .shake progress {
-    margin-top: -25px;
-}
-
-.character progress {
+.enemy progress, .shake progress, .character progress {
     margin-top: 45px;
     position: absolute;
 }
