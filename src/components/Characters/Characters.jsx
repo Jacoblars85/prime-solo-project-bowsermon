@@ -15,7 +15,7 @@ function Characters() {
     const user = useSelector((store) => store.user);
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_CHARACTERS', payload: user.id });
+        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
     // console.log('this is the characters', characters);
@@ -48,7 +48,7 @@ function Characters() {
                         return (
 
                             <StarterItem start={start} />
-                            
+
                         )
                     })}
 

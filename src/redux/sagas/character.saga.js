@@ -67,12 +67,12 @@ function* postNewUserCharacter(action) {
 }
 
 
-function* takeCoinsAway(action) {
+function* takeCoinsAway() {
   // console.log('action.payload', action.payload);
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/${action.payload.userID}`
+      url: `/api/characters/buy`
     })
     yield put({
       type: 'FETCH_USER',
@@ -83,12 +83,12 @@ function* takeCoinsAway(action) {
 }
 
 
-function* giveUserCoins(action) {
+function* giveUserCoins() {
   // console.log('action.payload', action.payload);
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/sell/${action.payload.userID}`
+      url: `/api/characters/sell`
     })
     yield put({
       type: 'FETCH_USER',
@@ -104,7 +104,7 @@ function* deleteCharacter(action) {
   try {
     const response = yield axios({
       method: 'DELETE',
-      url: `/api/characters/sell/${action.payload.userID}`,
+      url: `/api/characters/sell`,
       data: {
         characterID: action.payload.characterID
       }

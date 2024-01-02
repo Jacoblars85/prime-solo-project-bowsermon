@@ -15,7 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 function Battle() {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
+        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO'});
     }, []);
 
     

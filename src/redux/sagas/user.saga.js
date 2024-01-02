@@ -28,12 +28,12 @@ function* fetchUser() {
 // Changing the users username
 function* changeUsername(action) {
 
-  console.log('action.payload', action.payload);
+  // console.log('action.payload', action.payload);
 
   try {
       const response = yield axios({
           method: 'PUT',
-          url: `/api/user/change/${action.payload}`,
+          url: `/api/user/change`,
           data: action.payload
       })
       yield put({
@@ -46,12 +46,12 @@ function* changeUsername(action) {
 }
 
 //delete account of current user
-function* deleteAccount(action) {
-  console.log('action.payload', action.payload);
+function* deleteAccount() {
+  // console.log('action.payload', action.payload);
   try {
       const response = yield axios({
           method: 'DELETE',
-          url: `/api/user/${action.payload}`
+          url: `/api/user`
       })
       yield put({
           type: 'LOGOUT',
@@ -62,12 +62,12 @@ function* deleteAccount(action) {
 }
 
 //give user coins when they won a battle
-function* giveUserCoinsForWinning(action) {
+function* giveUserCoinsForWinning() {
   // console.log('action.payload', action.payload);
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/user/won/${action.payload}`
+      url: `/api/user/won`
     })
     yield put({
       type: 'FETCH_USER',

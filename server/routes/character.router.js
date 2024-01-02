@@ -98,12 +98,12 @@ router.post('/', (req, res) => {
         })
 })
 
-router.put("/:id", (req, res) => {
+router.put("/buy", (req, res) => {
 
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" - 15
-          WHERE "id" = '${req.params.id}';
+          WHERE "id" = '${[req.user.id]}';
           `;
 
 
@@ -119,12 +119,12 @@ router.put("/:id", (req, res) => {
 });
 
 
-router.put("/sell/:id", (req, res) => {
+router.put("/sell", (req, res) => {
 
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" + 10
-          WHERE "id" = '${req.params.id}';
+          WHERE "id" = '${[req.user.id]}';
           `;
 
     pool
@@ -139,7 +139,7 @@ router.put("/sell/:id", (req, res) => {
 });
 
 
-router.delete("/sell/:id", (req, res) => {
+router.delete("/sell", (req, res) => {
 
     const sqlText = `
     DELETE FROM "user_characters"

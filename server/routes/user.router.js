@@ -72,12 +72,12 @@ router.post('/logout', (req, res) => {
 });
 
 
-router.put("/change/:id", (req, res) => {
+router.put("/change", (req, res) => {
 
   const sqlText = `
   UPDATE "user"
     SET "username" = ($1)
-    WHERE "id" = '${req.body.userID}';
+    WHERE "id" = '${[req.user.id]}';
     `;
 
   const sqlValues = [req.body.newName];
@@ -95,11 +95,11 @@ router.put("/change/:id", (req, res) => {
 
 
 // delete the users account
-router.delete("/:id", (req, res) => {
+router.delete("/", (req, res) => {
 
   const sqlText = `
     DELETE FROM "completed_levels"
-      WHERE "user_id" = ${req.params.id};
+      WHERE "user_id" = ${[req.user.id]};
       `;
 
   pool
@@ -109,7 +109,7 @@ router.delete("/:id", (req, res) => {
       // Now handle the user_characters reference:
       const insertNewUserQuery = `
       DELETE FROM "user_characters"
-        WHERE "user_id" = ${req.params.id};
+        WHERE "user_id" = ${[req.user.id]};
         `
 
       // SECOND QUERY DELETES user_id from user_characeters
@@ -119,7 +119,7 @@ router.delete("/:id", (req, res) => {
           // Now handle the user_characters reference:
           const insertNewUserQuery = `
         DELETE FROM "user"
-          WHERE "id" = ${req.params.id};`
+          WHERE "id" = ${[req.user.id]};`
 
           // Third QUERY DELETES user from user table
           pool.query(insertNewUserQuery)
@@ -145,12 +145,12 @@ router.delete("/:id", (req, res) => {
 });
 
 
-router.put("/won/:id", (req, res) => {
+router.put("/won/", (req, res) => {
 
   const sqlText = `
       UPDATE "user"
         SET "coins" = "coins" + 5
-        WHERE "id" = '${req.params.id}';
+        WHERE "id" = '${[req.user.id]}';
         `;
 
   pool
