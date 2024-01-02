@@ -2,10 +2,10 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // This will grab all the characters 
-function* fetchAllCharacters(action) {
+function* fetchAllCharacters() {
   // console.log('action.payload', action.payload);
   try {
-    const characterResponse = yield axios.get(`/api/characters/character/${action.payload}`);
+    const characterResponse = yield axios.get(`/api/characters/character`);
     yield put({
       type: 'SET_CHARACTERS',
       payload: characterResponse.data
@@ -23,6 +23,9 @@ function* fetchBasicAttacks() {
       type: 'SET_BASIC_ATTACKS',
       payload: basicResponse.data
     });
+    yield put({
+      type: 'SAGA_FETCH_LEVEL_ENEMY'
+    });
   } catch (error) {
     console.log('fetchBasicAttacks error:', error);
   }
@@ -35,6 +38,9 @@ function* fetchLevelEnemy() {
     yield put({
       type: 'SET_LEVEL_ENEMY',
       payload: EnemyResponse.data
+    });
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS'
     });
   } catch (error) {
     console.log('fetchLevelEnemy error:', error);
@@ -105,7 +111,7 @@ function* deleteCharacter(action) {
     })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
-      payload: action.payload.userID,
+      // payload: action.payload.userID,
     })
   } catch (error) {
     console.log('Unable to delete character from server', error);
@@ -116,9 +122,8 @@ function* deleteCharacter(action) {
 
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
-  yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchBasicAttacks);
-  yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchLevelEnemy);
+  yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
   yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);

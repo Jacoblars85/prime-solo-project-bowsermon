@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/character/:id', (req, res) => {
+router.get('/character', (req, res) => {
     // console.log('im in character get');
     const query = `
   SELECT "user_characters"."id" as "id",
@@ -19,7 +19,7 @@ router.get('/character/:id', (req, res) => {
  FROM "user_characters"
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
-    WHERE "user_id" = ${req.params.id};
+    WHERE "user_id" = ${[req.user.id]};
   `;
 
     pool.query(query)

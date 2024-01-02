@@ -9,22 +9,23 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+// import background from '../../public/images/ExportBackgroundnomoveclound.webp';
 
 
 function Battle() {
-
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO', payload: user.id });
     }, []);
 
-    const dispatch = useDispatch();
+    
     const history = useHistory()
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
-    const characters = useSelector(store => store.character.characters);
-    const starter = useSelector(store => store.character.starter);
-    const levelEnemy = useSelector(store => store.character.levelEnemy);
-    const user = useSelector(store => store.user);
+    const characters = useSelector((store) => store.character.characters);
+    const starter = useSelector((store) => store.character.starter);
+    const levelEnemy = useSelector((store) => store.character.levelEnemy);
+    const user = useSelector((store) => store.user);
 
 
     // make starter[0] the character one but async error with that
@@ -153,7 +154,12 @@ function Battle() {
     };
 
     return (
-        <div className="battle">
+        <div className="battle"
+            style={{
+                backgroundImage: `url(images/ExportBackgroundnomoveclound.webp)`,
+                backgroundRepeat: `no-repeat`,
+                backgroundSize: `100%`
+            }}>
 
             <div className='character'>
 
@@ -232,7 +238,6 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
-
 
         </div>
     );
