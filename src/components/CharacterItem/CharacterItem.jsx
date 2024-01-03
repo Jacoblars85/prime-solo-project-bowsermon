@@ -12,8 +12,8 @@ function CharacterItem({ character }) {
 
   const setStarter = () => {
     dispatch({
-      type: 'SET_CURRENT_CHARACTERS',
-      payload: character
+      type: 'SAGA_SET_STARTER',
+      payload: character.id
     });
   }
 
@@ -21,8 +21,7 @@ function CharacterItem({ character }) {
     dispatch({
       type: 'SAGA_SELL_CHARACTER',
       payload: {
-        characterID: character.id,
-        userID: user.id
+        characterID: character.id
       }
     });
   }
@@ -40,8 +39,6 @@ function CharacterItem({ character }) {
           <p>{character.hp} hp</p>
           <p>{character.unique_attack} attack</p>
           <p>{character.unique_damage} damage</p>
-          {/* <button id={character.id} onClick={sellCharacter} >Sell</button>
-          <button id={character.id} onClick={setStarter} >Start</button> */}
 
         </div>
       )

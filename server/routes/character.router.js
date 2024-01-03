@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
             ($1, $2);
         `;
     const insertCharacterValue = [
-        req.body.userID,
+        req.user.id,
         req.body.characterID
     ]
 
@@ -153,6 +153,73 @@ router.delete("/sell", (req, res) => {
         })
         .catch((err) => {
             console.log("Error in user.router DELETE, deleting account", err);
+            res.sendStatus(500);
+        });
+});
+
+
+router.get('/starter', (req, res) => {
+    console.log('im in character get', req.user.id);
+    const query = `
+    SELECT "user_characters"."id" as "id",
+    "user_characters"."user_id" as "user_id",
+    "user_characters"."character_id",
+    "characters"."name",
+    "characters"."profile_pic",
+    "characters"."hp",
+    "characters"."stamina",
+    "characters"."unique_attack",
+    "characters"."unique_damage",
+    "characters"."unique_stamina",
+    "characters"."battle_pic"
+FROM "user_characters"
+INNER JOIN "characters"
+    ON "user_characters"."character_id" = "characters"."id"
+WHERE "user_characters"."starter" = TRUE ;
+
+  `;
+
+    pool.query(query)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all characters', err);
+            res.sendStatus(500)
+        })
+
+});
+
+
+router.put("/starter/:id", (req, res) => {
+
+    const sqlText = `
+    UPDATE "user_characters"
+  SET "starter" = FALSE
+    WHERE "user_id" = ${[req.user.id]};
+      `;
+
+    pool.query(sqlText)
+        .then((result) => {
+
+            const insertNewUserQuery = `
+        UPDATE "user_characters"
+          SET "starter" = TRUE
+          WHERE "id" = ${req.params.id};
+          `;
+
+            pool.query(insertNewUserQuery)
+                .then(result => {
+
+                    res.sendStatus(201);
+                })
+        }).catch(err => {
+            // catch for second query
+            console.log('in the second', err);
+            res.sendStatus(500)
+        })
+        .catch((err) => {
+            console.log("Error in character.router /sell PUT,", err);
             res.sendStatus(500);
         });
 });

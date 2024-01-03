@@ -54,7 +54,6 @@ function* postNewUserCharacter(action) {
       method: 'POST',
       url: '/api/characters',
       data: {
-        userID: action.payload.userID,
         characterID: action.payload.characterID
       }
     })
@@ -119,6 +118,36 @@ function* deleteCharacter(action) {
 }
 
 
+function* fetchStarter() {
+  // console.log('action.payload', action.payload);
+  try {
+    const starterResponse = yield axios.get(`/api/characters/starter`);
+    yield put({
+      type: 'SET_STARTER',
+      payload: starterResponse.data
+    });
+  } catch (error) {
+    console.log('FETCHSTARTER error:', error);
+  }
+}
+
+
+function* setStarter(action) {
+  console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/starter/${action.payload}`
+    })
+    yield put({
+      type: 'SAGA_FETCH_STARTER',
+    })
+  } catch (error) {
+    console.log('Unable to put starter to server', error);
+  }
+}
+
+
 
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
@@ -128,6 +157,8 @@ function* characterSaga() {
   yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
   yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);
   yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
+  yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
+  yield takeLatest('SAGA_SET_STARTER', setStarter);
 
 
 }
