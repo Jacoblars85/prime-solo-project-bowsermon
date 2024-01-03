@@ -23,13 +23,13 @@ body {
   margin-left: 20px;
   width: 1120px;
   height: 640px;
-
+  padding-top: 10px;
 }
 
 .characterBox h2 {
   position: absolute;
   text-align: center;
-  margin-top: -30px;
+  margin-top: -40px;
 }
   
 .single-box {
@@ -68,6 +68,12 @@ h5 {
     height: 638px;
     justify-content: center;
     background-color: azure;
+}
+
+.starterCharacterView h2 {
+  position: absolute;
+  text-align: center;
+  margin-top: -32px;
 }
 
 .backButton {

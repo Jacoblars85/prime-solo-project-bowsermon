@@ -83,10 +83,22 @@ function Battle() {
 
         if (attackType === 'unique') {
             setEnemyHp(enemyHp - starterOne.unique_damage)
+            if (enemyHp - starterOne.unique_damage <= 0) {
+                setEnemyHp(0)
+                setWinnerOpen(true)
+            } 
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
+            if (enemyHp - basicAttacks[0].damage <= 0) {
+                setEnemyHp(0)
+                setWinnerOpen(true)
+            } 
         } else if (attackType === 'poke') {
             setEnemyHp(enemyHp - basicAttacks[1].damage)
+            if (enemyHp - basicAttacks[1].damage <= 0) {
+                setEnemyHp(0)
+                setWinnerOpen(true)
+            } 
         }
 
         console.log('enemy hp', enemyHp);
@@ -100,6 +112,10 @@ function Battle() {
 
         setTimeout(() => {
             setCharacterHp(characterHp - enemyOne.unique_damage)
+            if (characterHp - enemyOne.unique_damage <= 0) {
+                setCharacterHp(0)
+                setLoserOpen(true)
+            }
             setEnemyClassName("enemy")
             setEnemyPicAttack("enemyPicAttack")
         }, 3000);
@@ -133,15 +149,6 @@ function Battle() {
 
     };
 
-    const decideWinner = () => {
-        if (enemyHp <= 0) {
-            setEnemyHp(0)
-            return setWinnerOpen(true)
-        } else if (characterHp <= 0) {
-            setCharacterHp(0)
-            return setLoserOpen(true)
-        }
-    };
 
     const battle = (attackType) => {
 
@@ -150,7 +157,7 @@ function Battle() {
         characterTextBox(attackType, basicAttacks, starterOne);
         enemyAttack(enemyOne);
         enemyTextBox(enemyOne);
-        decideWinner(enemyHp, characterHp);
+
     };
 
     return (
