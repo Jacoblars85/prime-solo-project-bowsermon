@@ -21,8 +21,44 @@ import DeleteAccount from '../DeleteAccount/DeleteAccount';
 import ChangeUsername from '../ChangeUsername/ChangeUsername';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeButton from '../HomeButton/HomeButton';
+import { useHistory } from 'react-router-dom';
+
+
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Settings() {
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const deleteAccount = () => {
+
+    history.push(`/login`)
+    
+    dispatch({
+        type: 'SAGA_DELETE_ACCOUNT',
+    })
+    
+};
+
+
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -78,11 +114,11 @@ export default function Settings() {
       <Divider />
 
       <List>
-        {[<ChangeUsername />, <DeleteAccount />].map((text, index) => (
+        {[<ChangeUsername />, <p onClick={handleClickOpen}>Delete Account</p>].map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <ManageAccountsIcon /> : <DeleteForeverIcon /> }
+                {index % 2 === 0 ? <ManageAccountsIcon /> : <DeleteForeverIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -91,7 +127,7 @@ export default function Settings() {
       </List>
 
       <Divider />
-      
+
       <List>
         {[<LogOutButton />].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -121,10 +157,34 @@ export default function Settings() {
           </Drawer>
         </React.Fragment>
       ))}
+
+      <React.Fragment>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Are you sure you want to delete your account?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Deleting your account cannot be undone. Once deleted, it will be gone for good. Thank You For Playing!
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={deleteAccount} autoFocus>
+              Agree
+            </Button>
+            <Button onClick={handleClose}>Disagree</Button>
+          </DialogActions>
+        </Dialog>
+      </React.Fragment>
     </div>
   );
 }
-  
+
 
 
 

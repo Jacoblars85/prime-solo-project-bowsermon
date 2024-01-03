@@ -16,10 +16,6 @@ function CharacterItem({ character }) {
 
   const dispatch = useDispatch();
 
-//   useEffect(() => {
-//     dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
-// }, [character.starter]);
-
   const [open, setOpen] = useState(false);
   
     const handleClose = () => {
@@ -52,8 +48,6 @@ function CharacterItem({ character }) {
     setOpen(true);
 
   }
-
-
 
   const togglePicture = () => {
     setIsPicture(!isPicture)
