@@ -1,6 +1,6 @@
 import LogOutButton from '../LogOutButton/LogOutButton';
 import SettingsIcon from '@mui/icons-material/Settings';
-import * as React from 'react';
+import React, { useState, Fragment } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -10,21 +10,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonIcon from '@mui/icons-material/Person';
-import DeleteAccount from '../DeleteAccount/DeleteAccount';
 import ChangeUsername from '../ChangeUsername/ChangeUsername';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeButton from '../HomeButton/HomeButton';
 import { useHistory } from 'react-router-dom';
-
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -37,7 +31,7 @@ export default function Settings() {
 
   const dispatch = useDispatch();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,9 +51,7 @@ export default function Settings() {
     
 };
 
-
-
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -146,7 +138,7 @@ export default function Settings() {
   return (
     <div>
       {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}><SettingsIcon /> </Button>
           <Drawer
             anchor={anchor}
@@ -155,10 +147,10 @@ export default function Settings() {
           >
             {list(anchor)}
           </Drawer>
-        </React.Fragment>
+        </Fragment>
       ))}
 
-      <React.Fragment>
+      <Fragment>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -180,7 +172,7 @@ export default function Settings() {
             <Button onClick={handleClose}>Disagree</Button>
           </DialogActions>
         </Dialog>
-      </React.Fragment>
+      </Fragment>
     </div>
   );
 }
