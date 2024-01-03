@@ -31,6 +31,7 @@ function Battle() {
     // make starter[0] the character one but async error with that
     let characterOne = characters[0];
     let enemyOne = levelEnemy[0];
+    let starterOne = starter[0];
 
     console.log('starter', starter);
     console.log('basic', basicAttacks);
@@ -38,7 +39,7 @@ function Battle() {
     console.log('enemy', enemyOne);
 
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
-    const [characterHp, setCharacterHp] = useState(characterOne.hp);
+    const [characterHp, setCharacterHp] = useState(starterOne.hp);
     const [textBox, setTextBox] = useState('');
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -72,7 +73,7 @@ function Battle() {
 
     };
 
-    const attack = (attackType, basicAttacks, characterOne) => {
+    const attack = (attackType, basicAttacks, starterOne) => {
 
         setCharacterPicAttack("chacracterPicAttack")
 
@@ -81,7 +82,7 @@ function Battle() {
         }, 150);
 
         if (attackType === 'unique') {
-            setEnemyHp(enemyHp - characterOne.unique_damage)
+            setEnemyHp(enemyHp - starterOne.unique_damage)
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
         } else if (attackType === 'poke') {
@@ -113,14 +114,14 @@ function Battle() {
         return characterHp;
     };
 
-    const characterTextBox = (attackType, basicAttacks, characterOne) => {
+    const characterTextBox = (attackType, basicAttacks, starterOne) => {
 
         if (attackType === 'unique') {
-            setTextBox(`${characterOne.name} used ${characterOne.unique_attack} and it did ${characterOne.unique_damage} damage`);
+            setTextBox(`${starterOne.name} used ${starterOne.unique_attack} and it did ${starterOne.unique_damage} damage`);
         } else if (attackType === 'punch') {
-            setTextBox(`${characterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
+            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
         } else if (attackType === 'poke') {
-            setTextBox(`${characterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
+            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
         }
     };
 
@@ -145,8 +146,8 @@ function Battle() {
     const battle = (attackType) => {
 
         disableButtons();
-        attack(attackType, basicAttacks, characterOne);
-        characterTextBox(attackType, basicAttacks, characterOne);
+        attack(attackType, basicAttacks, starterOne);
+        characterTextBox(attackType, basicAttacks, starterOne);
         enemyAttack(enemyOne);
         enemyTextBox(enemyOne);
         decideWinner(enemyHp, characterHp);
@@ -164,9 +165,9 @@ function Battle() {
 
             <div className='character'>
 
-                <p>{characterOne.name} hp: {characterHp}</p>
-                <progress id="hp-meter" value={characterHp} max={characterOne.hp}></progress>
-                <img className={characterPicAttack} height={300} width={300} src={characterOne.profile_pic} />
+                <p>{starterOne.name} hp: {characterHp}</p>
+                <progress id="hp-meter" value={characterHp} max={starterOne.hp}></progress>
+                <img className={characterPicAttack} height={300} width={300} src={starterOne.profile_pic} />
 
             </div>
 
@@ -186,7 +187,7 @@ function Battle() {
 
             <div className='attacks'>
 
-                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={isDisabled} >{characterOne.unique_attack}</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={isDisabled} >{starterOne.unique_attack}</button>
                 <button onClick={() => battle('punch')} className='punchAttack' disabled={isDisabled} >punch</button>
                 <button onClick={() => battle('poke')} className='pokeAttack' disabled={isDisabled} >poke</button>
 

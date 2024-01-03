@@ -6,9 +6,14 @@ function* fetchAllCharacters() {
   // console.log('action.payload', action.payload);
   try {
     const characterResponse = yield axios.get(`/api/characters/character`);
+    const starterResponse = yield axios.get(`/api/characters/starter`);
     yield put({
       type: 'SET_CHARACTERS',
       payload: characterResponse.data
+    });
+    yield put({
+      type: 'SET_STARTER',
+      payload: starterResponse.data
     });
   } catch (error) {
     console.log('fetchAllCharacters error:', error);

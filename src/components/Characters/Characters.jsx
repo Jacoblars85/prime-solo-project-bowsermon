@@ -16,6 +16,7 @@ function Characters() {
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+        // dispatch({ type: 'SAGA_FETCH_STARTER' });
     }, []);
 
     // console.log('this is the characters', characters);
