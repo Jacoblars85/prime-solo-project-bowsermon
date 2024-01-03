@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './HomePage.css';
 import Nav from '../Nav/Nav';
+import StarterItem from '../StarterItem/StarterItem';
 
 
 function HomePage() {
@@ -10,9 +11,11 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+  const starter = useSelector(store => store.character.starter);
+
 
   useEffect(() => {
-    dispatch({ type: 'SAGA_FETCH_BATTLE_INFO'});
+    dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
   }, []);
 
   const goToNextPage = (params) => {
@@ -31,9 +34,15 @@ function HomePage() {
 
         <div className="starterHomeView">
 
-          <h3>Starter</h3>
-          <p>goomba</p>
+          <h2>Starter</h2>
 
+          {starter.map(start => {
+            return (
+
+              <StarterItem start={start} />
+
+            )
+          })}
         </div>
 
 

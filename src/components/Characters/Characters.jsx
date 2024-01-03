@@ -33,7 +33,7 @@ function Characters() {
 
                 <h2>Characters</h2>
 
-                {characters && characters.map(character => {
+                {characters.map(character => {
                     return (
                         <div key={character.id}>
                             <CharacterItem character={character} />
@@ -45,7 +45,7 @@ function Characters() {
 
                     <h2>Starter</h2>
 
-                    {starter && starter.map(start => {
+                    {starter.map(start => {
                         return (
 
                             <StarterItem start={start} />
