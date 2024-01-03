@@ -11,7 +11,7 @@ const characters = (state = [{}], action) => {
   }
 }
 
-const starter = (state = [{ character_id: 1, hp: 50, id: 15, name: "Goomba", profile_pic: "images/Goomba2.webp", stamina: 25, unique_attack: "charge", unique_damage: 10, unique_stamina: 10, user_id: 9 }], action) => {
+const starter = (state = [{}], action) => {
   switch (action.type) {
     case 'SET_STARTER':
       return action.payload;

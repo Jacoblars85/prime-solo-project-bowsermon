@@ -35,9 +35,9 @@ router.post('/register', (req, res, next) => {
       // Now handle the user_characters reference:
       const insertNewUserQuery = `
         INSERT INTO "user_characters" 
-          ("user_id", "character_id")
+          ("user_id", "character_id", "starter")
           VALUES
-          ($1, 1);
+          ($1, 1, TRUE);
       `;
       const insertNewUserValues = [createdUserId]
       // SECOND QUERY ADDS user_id to user_characeters

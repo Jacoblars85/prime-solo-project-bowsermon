@@ -175,7 +175,7 @@ router.get('/starter', (req, res) => {
 FROM "user_characters"
 INNER JOIN "characters"
     ON "user_characters"."character_id" = "characters"."id"
-WHERE "user_characters"."starter" = TRUE ;
+WHERE "user_characters"."starter" = TRUE AND "user_id" = ${[req.user.id]};
 
   `;
 
