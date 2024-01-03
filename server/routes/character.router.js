@@ -160,7 +160,7 @@ router.delete("/sell", (req, res) => {
 
 
 router.get('/starter', (req, res) => {
-    console.log('im in character get', req.user.id);
+    // console.log('im in character get', req.user.id);
     const query = `
     SELECT "user_characters"."id" as "id",
     "user_characters"."user_id" as "user_id",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
@@ -15,10 +15,10 @@ import background from '../../ExportBackgroundnomoveclound.webp';
 function Battle() {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO'});
+        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
     }, []);
 
-    
+
     const history = useHistory()
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
@@ -41,6 +41,10 @@ function Battle() {
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [characterHp, setCharacterHp] = useState(starterOne.hp);
     const [textBox, setTextBox] = useState('');
+
+    const characterRef = useRef(starterOne.hp);
+    const enemyRef = useRef(enemyOne.hp);
+
 
     const [isDisabled, setIsDisabled] = useState(false);
     const [enemyClassName, setEnemyClassName] = useState("enemy");
@@ -85,25 +89,36 @@ function Battle() {
             setEnemyHp(enemyHp - starterOne.unique_damage)
             if (enemyHp - starterOne.unique_damage <= 0) {
                 setEnemyHp(0)
-                setWinnerOpen(true)
-            } 
+                return setWinnerOpen(true)
+            }
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
             if (enemyHp - basicAttacks[0].damage <= 0) {
                 setEnemyHp(0)
                 setWinnerOpen(true)
-            } 
+            }
         } else if (attackType === 'poke') {
             setEnemyHp(enemyHp - basicAttacks[1].damage)
             if (enemyHp - basicAttacks[1].damage <= 0) {
                 setEnemyHp(0)
                 setWinnerOpen(true)
-            } 
+            }
         }
 
         console.log('enemy hp', enemyHp);
 
         return enemyHp;
+    };
+
+    const characterTextBox = (attackType, basicAttacks, starterOne) => {
+
+        if (attackType === 'unique') {
+            setTextBox(`${starterOne.name} used ${starterOne.unique_attack} and it did ${starterOne.unique_damage} damage`);
+        } else if (attackType === 'punch') {
+            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
+        } else if (attackType === 'poke') {
+            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
+        }
     };
 
     const enemyAttack = (enemyOne) => {
@@ -129,18 +144,7 @@ function Battle() {
 
         return characterHp;
     };
-
-    const characterTextBox = (attackType, basicAttacks, starterOne) => {
-
-        if (attackType === 'unique') {
-            setTextBox(`${starterOne.name} used ${starterOne.unique_attack} and it did ${starterOne.unique_damage} damage`);
-        } else if (attackType === 'punch') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
-        } else if (attackType === 'poke') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
-        }
-    };
-
+    
     const enemyTextBox = (enemyOne) => {
 
         setTimeout(() => {
@@ -162,13 +166,13 @@ function Battle() {
 
     return (
         <div className="battle"
-        style={{
-            backgroundImage: `url(${background})`,
-            backgroundRepeat: `no-repeat`,
-            backgroundSize: `cover`,
-            height: `100vh`,
-            width: `100vw`,
-        }}>
+            style={{
+                backgroundImage: `url(${background})`,
+                backgroundRepeat: `no-repeat`,
+                backgroundSize: `cover`,
+                height: `100vh`,
+                width: `100vw`,
+            }}>
 
             <div className='character'>
 
@@ -247,7 +251,7 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
-           
+
         </div>
     );
 }
