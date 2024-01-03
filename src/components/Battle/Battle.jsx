@@ -101,12 +101,12 @@ function Battle() {
             setCharacterHp(characterHp - enemyOne.unique_damage)
             setEnemyClassName("enemy")
             setEnemyPicAttack("enemyPicAttack")
-        }, 4000);
+        }, 3000);
 
 
         setTimeout(() => {
             setEnemyPicAttack("")
-        }, 4150);
+        }, 3150);
 
         console.log('my hp', characterHp);
 
@@ -128,7 +128,7 @@ function Battle() {
 
         setTimeout(() => {
             setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack} and it did ${enemyOne.unique_damage} damage`);
-        }, 4000);
+        }, 3000);
 
     };
 
@@ -149,7 +149,7 @@ function Battle() {
         characterTextBox(attackType, basicAttacks, characterOne);
         enemyAttack(enemyOne);
         enemyTextBox(enemyOne);
-        decideWinner();
+        decideWinner(enemyHp, characterHp);
     };
 
     return (

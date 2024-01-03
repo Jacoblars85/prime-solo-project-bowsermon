@@ -44,13 +44,13 @@ function Characters() {
 
                     <h2>Starter</h2>
 
-                    {/* {starter && starter.map(start => {
+                    {starter && starter.map(start => {
                         return (
 
                             <StarterItem start={start} />
 
                         )
-                    })} */}
+                    })}
 
                 </div>
 
