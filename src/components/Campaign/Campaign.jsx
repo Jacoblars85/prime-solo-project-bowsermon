@@ -13,7 +13,7 @@ function Campaign() {
             <div className="campaign">
 
                 <div className='levelOne'>
-                    
+
                     <button>level 1</button>
 
                 </div>
@@ -44,7 +44,10 @@ function Campaign() {
 
             </div>
 
-            <BackButton />
+            <div className='backButton'>
+                <BackButton />
+            </div>
+            
         </div>
     );
 }

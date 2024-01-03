@@ -205,10 +205,10 @@ progress {
 
 .textBox {
     position: absolute;
-    top: 79.5%;
-    left: 50%;
-    width: 400px;
-    height: 100px;
+    top: 70.5%;
+    left: 49%;
+    width: 450px;
+    height: 165px;
     background-color: lightgrey;
     border: 3px solid black;
     text-align: center;

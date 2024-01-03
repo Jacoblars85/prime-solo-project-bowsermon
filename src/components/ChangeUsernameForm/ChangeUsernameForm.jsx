@@ -44,7 +44,9 @@ function ChangeUserNameFrom() {
                 <button>Submit</button>
             </form>
 
-            <BackButton />
+            <div className='backButton'>
+                <BackButton />
+            </div>
         </div>
     );
 }
