@@ -16,7 +16,10 @@ function Characters() {
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
-        // dispatch({ type: 'SAGA_FETCH_STARTER' });
+    }, []);
+
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
     // console.log('this is the characters', characters);
@@ -24,6 +27,7 @@ function Characters() {
     let starterOne = starter[0];
 
     console.log('the starter', starterOne);
+    console.log('this is characters', characters);
 
     return (
         <div >
