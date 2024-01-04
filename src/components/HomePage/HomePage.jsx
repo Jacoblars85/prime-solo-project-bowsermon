@@ -14,9 +14,9 @@ function HomePage() {
   const starter = useSelector(store => store.character.starter);
 
 
-  useEffect(() => {
-    dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
+  // }, []);
 
   const goToNextPage = (params) => {
 

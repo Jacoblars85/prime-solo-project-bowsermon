@@ -29,7 +29,7 @@ function* fetchBasicAttacks() {
       payload: basicResponse.data
     });
     yield put({
-      type: 'SAGA_FETCH_LEVEL_ENEMY'
+      type: 'SAGA_FETCH_CHARACTERS',
     });
   } catch (error) {
     console.log('fetchBasicAttacks error:', error);
@@ -37,15 +37,14 @@ function* fetchBasicAttacks() {
 }
 
 
-function* fetchLevelEnemy() {
+function* fetchLevelEnemy(action) {
+  console.log('action. payloaad in level', action.payload);
   try {
-    const EnemyResponse = yield axios.get('/api/characters/enemy');
+    const enemyResponse = yield axios.get(`/api/characters/enemy/${action.payload}`);
+    console.log('enemy response', enemyResponse);
     yield put({
       type: 'SET_LEVEL_ENEMY',
-      payload: EnemyResponse.data
-    });
-    yield put({
-      type: 'SAGA_FETCH_CHARACTERS'
+      payload: enemyResponse.data
     });
   } catch (error) {
     console.log('fetchLevelEnemy error:', error);

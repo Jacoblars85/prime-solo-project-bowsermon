@@ -54,13 +54,24 @@ router.get('/basic', (req, res) => {
 });
 
 
-router.get('/enemy', (req, res) => {
+router.get('/enemy/:id', (req, res) => {
     // console.log('im in enemy get');
     const query = `
-      SELECT * FROM "levels"
-      INNER JOIN "characters"
-          ON "levels"."enemy_id" = "characters"."id"
-      WHERE "levels"."id" = 1;
+    SELECT "levels"."id" as "level_id",
+        "levels"."enemy_id" as "enemy_id",
+        "levels"."name" as "level_name",
+        "characters"."name",
+        "characters"."profile_pic",
+        "characters"."hp",
+        "characters"."stamina",
+        "characters"."unique_attack",
+        "characters"."unique_damage",
+        "characters"."unique_stamina",
+        "characters"."battle_pic"
+            FROM "levels"
+        INNER JOIN "characters"
+            ON "levels"."enemy_id" = "characters"."id"
+        WHERE "levels"."id" = ${req.params.id};
       `;
 
     pool.query(query)
@@ -68,7 +79,7 @@ router.get('/enemy', (req, res) => {
             res.send(result.rows);
         })
         .catch(err => {
-            console.log('ERROR: Get all enemies', err);
+            console.log('ERROR: Get the enemies', err);
             res.sendStatus(500)
         })
 
