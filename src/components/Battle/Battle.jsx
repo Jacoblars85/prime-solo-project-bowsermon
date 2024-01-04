@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 import './Battle.css';
 import Button from '@mui/material/Button';
@@ -14,8 +14,16 @@ import background from '../../ExportBackgroundnomoveclound.webp';
 
 function Battle() {
     const dispatch = useDispatch();
+
+    const { id } = useParams();
+
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
+    }, []);
+
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_LEVEL_ENEMY',
+        payload: id  });
     }, []);
 
 

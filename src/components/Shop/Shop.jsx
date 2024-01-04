@@ -63,10 +63,6 @@ function Shop() {
 
                     <h4>Random Character Box</h4>
 
-                    {/* <img height={200} width={200} src="images/1200px-Question_Block_-_Nintendo_JP_website.webp" /> */}
-
-                    {/* <img onClick={handleClickOpen} height={200} width={200} src="images/1200px-ItemBoxMK8.webp" /> */}
-
                     <p>15 coins</p>
 
                     <Fragment>
