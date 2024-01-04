@@ -147,11 +147,6 @@ progress {
 }
 
 
-
-
-/* my own css */
-
-
 .attacks {
     position: absolute;
     top: 67%;
@@ -173,6 +168,17 @@ progress {
     margin-right: 2px;
     background-size: cover;
     cursor: pointer;
+}
+
+.attacks button:disabled {
+    position: relative;
+    width: 125px;
+    height: 125px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+    margin-right: 2px;
+    background-size: cover;
+    cursor: default;
 }
 
 .backButton {

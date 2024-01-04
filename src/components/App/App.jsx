@@ -15,7 +15,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -24,7 +23,6 @@ import Battle from '../Battle/Battle';
 import Shop from '../Shop/Shop';
 import Characters from '../Characters/Characters';
 import ChangeUserNameFrom from '../ChangeUsernameForm/ChangeUsernameForm';
-import ConfirmDelete from '../ComfirmDelete/ComfirmDelete';
 
 import './App.css';
 
@@ -66,18 +64,10 @@ function App() {
           <ProtectedRoute
             // logged in shows HomePage else shows LoginPage
             exact
-            path="/user"
+            path="/home"
           >
             <HomePage />
           </ProtectedRoute>
-
-          {/* <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute> */}
 
 
 
@@ -102,9 +92,6 @@ function App() {
             <ChangeUserNameFrom />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/confirmDelete">
-            <ConfirmDelete />
-          </ProtectedRoute>
 
 
 
@@ -117,7 +104,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -131,7 +118,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -145,7 +132,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

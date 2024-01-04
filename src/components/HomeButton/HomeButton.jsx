@@ -8,7 +8,7 @@ function HomeButton() {
 
     const goToHome = () => {
 
-        history.push(`/user`)
+        history.push(`/home`)
     };
 
     return (

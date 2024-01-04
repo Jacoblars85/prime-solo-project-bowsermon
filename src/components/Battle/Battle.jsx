@@ -53,14 +53,14 @@ function Battle() {
     const [openLoser, setLoserOpen] = useState(false);
 
     const handleWinnerClose = () => {
-        history.push(`/user`)
+        history.push(`/home`)
         dispatch({
             type: 'SAGA_USER_WON_THE_BATTLE'
         });
     };
 
     const handleLoserClose = () => {
-        history.push(`/user`)
+        history.push(`/home`)
     };
 
 

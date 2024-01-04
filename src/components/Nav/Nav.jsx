@@ -28,19 +28,10 @@ function Nav() {
           <>
             <span className='navLink'><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</span>
 
-            {/* <Link className="navLink" to="/user">
-              Home
-            </Link> */}
-
-            {/* <Link className="navLink" to="/info">
-              Info Page
-            </Link> */}
-
             <div className='navLink'>
               <Settings />
               </div>
 
-            {/* <LogOutButton className="navLink" /> */}
           </>
         )}
 
