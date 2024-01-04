@@ -7,7 +7,6 @@ import BackButton from '../BackButton/BackButton';
 function ChangeUserNameFrom() {
     const [newUsername, setNewUsername] = useState('');
 
-    const user = useSelector((store) => store.user);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -16,11 +15,10 @@ function ChangeUserNameFrom() {
         dispatch({
             type: 'SAGA_CHANGE_USERNAME',
             payload: {
-                userID: user.id,
                 newName: newUsername
             }
         })
-        history.push(`/user`)
+        history.push(`/home`)
     };
 
     return (
@@ -52,3 +50,5 @@ function ChangeUserNameFrom() {
 }
 
 export default ChangeUserNameFrom;
+
+

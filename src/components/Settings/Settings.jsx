@@ -24,32 +24,57 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 
 export default function Settings() {
 
   const history = useHistory();
-
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleDeleteClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleDeleteClose = () => {
     setOpen(false);
   };
 
   const deleteAccount = () => {
-
     history.push(`/login`)
-    
+
     dispatch({
-        type: 'SAGA_DELETE_ACCOUNT',
+      type: 'SAGA_DELETE_ACCOUNT',
     })
-    
+  };
+
+
+
+  const [formOpen, setFormOpen] = useState(false);
+
+  const handleFormClickOpen = () => {
+    setFormOpen(true);
+  };
+
+  const handleFormClose = () => {
+    setFormOpen(false);
+  };
+
+  const changeUsername = (e) => {
+    e.preventDefault()
+    dispatch({
+        type: 'SAGA_CHANGE_USERNAME',
+        payload: {
+            newName: newUsername
+        }
+    })
+    history.push(`/home`)
 };
+
+
+
+
 
   const [state, setState] = useState({
     top: false,
@@ -106,7 +131,7 @@ export default function Settings() {
       <Divider />
 
       <List>
-        {[<ChangeUsername />, <p onClick={handleClickOpen}>Delete Account</p>].map((text, index) => (
+        {[<p onClick={handleFormClickOpen}>Change Username</p>, <p onClick={handleDeleteClickOpen}>Delete Account</p>].map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -150,10 +175,11 @@ export default function Settings() {
         </Fragment>
       ))}
 
+      {/* delete diolog */}
       <Fragment>
         <Dialog
           open={open}
-          onClose={handleClose}
+          onClose={handleDeleteClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
@@ -167,12 +193,43 @@ export default function Settings() {
           </DialogContent>
           <DialogActions>
             <Button onClick={deleteAccount} autoFocus>
-              Agree
+              Delete
             </Button>
-            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleDeleteClose}>Cancel</Button>
           </DialogActions>
         </Dialog>
       </Fragment>
+
+
+      {/* change user name diolog */}
+      <Fragment>
+        <Dialog open={formOpen} onClose={handleFormClose}>
+          <DialogTitle>Change Username</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To subscribe to this website, please enter your email address here. We
+              will send updates occasionally.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              value={newUsername}
+              label="Username"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={(e) => changeUsername(e.target.value)}>Submit</Button>
+            <Button onClick={handleFormClose}>Cancel</Button>
+          </DialogActions>
+        </Dialog>
+      </Fragment>
+
+
+
     </div>
   );
 }
