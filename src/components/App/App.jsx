@@ -80,7 +80,7 @@ function App() {
             <Characters />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/battle">
+          <ProtectedRoute exact path="/battle/:id">
             <Battle />
           </ProtectedRoute>
 

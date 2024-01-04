@@ -48,9 +48,9 @@ function HomePage() {
           </div>
 
 
-          <button className="characterButton" onClick={() => goToNextPage('characters')}>Characters</button>
-          <button className="shopButton" onClick={() => goToNextPage('shop')}>Shop</button>
-          <button className="campaignButton" onClick={() => goToNextPage('battle')}>Campaign</button>
+          <button className="characterButton" onClick={() => history.push(`/characters`)}>Characters</button>
+          <button className="shopButton" onClick={() => history.push(`/shop`)}>Shop</button>
+          <button className="campaignButton" onClick={() => history.push(`/campaign`)}>Campaign</button>
 
         </div>
 
