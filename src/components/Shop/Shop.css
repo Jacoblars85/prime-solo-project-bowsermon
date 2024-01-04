@@ -28,15 +28,19 @@ h2 {
     text-align: center;
 }
 
+.randomCharacter img {
+    cursor: pointer;
+}
+
 
 
 
 .backButton {
     position: absolute;
-    top: 94%;
+    top: 74%;
     left: -17%;
     display: flex;
     width: 360px;
     justify-content: flex-end;
-
+    cursor: pointer;
 }

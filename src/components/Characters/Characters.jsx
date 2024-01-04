@@ -31,39 +31,40 @@ function Characters() {
 
     return (
         <div >
-            <Nav />
 
-            <div className="characterBox">
+                <Nav />
 
-                <h2>Characters</h2>
+                <div className="characterBox">
 
-                {characters.map(character => {
-                    return (
-                        <div key={character.id}>
-                            <CharacterItem character={character} />
-                        </div>
-                    )
-                })}
+                    <h2>Characters</h2>
 
-                <div className="starterCharacterView">
-
-                    <h2>Starter</h2>
-
-                    {starter.map(start => {
+                    {characters.map(character => {
                         return (
-
-                            <StarterItem start={start} />
-
+                            <div key={character.id}>
+                                <CharacterItem character={character} />
+                            </div>
                         )
                     })}
 
+                    <div className="starterCharacterView">
+
+                        <h2>Starter</h2>
+
+                        {starter.map(start => {
+                            return (
+
+                                <StarterItem start={start} />
+
+                            )
+                        })}
+
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div className='backButton'>
-                <BackButton />
-            </div>
+                <div className='backButton'>
+                    <BackButton />
+                </div>
 
         </div>
     );

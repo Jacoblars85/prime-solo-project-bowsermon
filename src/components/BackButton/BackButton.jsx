@@ -5,7 +5,6 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 function BackButton() {
     const history = useHistory()
-    const user = useSelector((store) => store.user);
 
     const goToHome = () => {
 

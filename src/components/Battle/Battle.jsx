@@ -28,22 +28,19 @@ function Battle() {
     const user = useSelector((store) => store.user);
 
 
-    // make starter[0] the character one but async error with that
-    let characterOne = characters[0];
+    // let characterOne = characters[0];
     let enemyOne = levelEnemy[0];
     let starterOne = starter[0];
 
+
     console.log('starter', starter);
     console.log('basic', basicAttacks);
-    console.log('character', characterOne);
+    // console.log('character', characterOne);
     console.log('enemy', enemyOne);
 
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [characterHp, setCharacterHp] = useState(starterOne.hp);
     const [textBox, setTextBox] = useState('');
-
-    const characterRef = useRef(starterOne.hp);
-    const enemyRef = useRef(enemyOne.hp);
 
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -144,7 +141,7 @@ function Battle() {
 
         return characterHp;
     };
-    
+
     const enemyTextBox = (enemyOne) => {
 
         setTimeout(() => {

@@ -25,32 +25,35 @@ function HomePage() {
 
   return (
     <div>
-      <Nav />
 
-      <div className="homePage">
+        <Nav />
 
 
-        <h2>Welcome, {user.username}!</h2>
+        <div className="homePage">
 
-        <div className="starterHomeView">
 
-          <h2>Starter</h2>
+          <h2>Welcome, {user.username}!</h2>
 
-          {starter.map(start => {
-            return (
+          <div className="starterHomeView">
 
-              <StarterItem start={start} />
+            <h2>Starter</h2>
 
-            )
-          })}
+            {starter.map(start => {
+              return (
+
+                <StarterItem start={start} />
+
+              )
+            })}
+          </div>
+
+
+          <button className="characterButton" onClick={() => goToNextPage('characters')}>Characters</button>
+          <button className="shopButton" onClick={() => goToNextPage('shop')}>Shop</button>
+          <button className="campaignButton" onClick={() => goToNextPage('battle')}>Campaign</button>
+
         </div>
 
-
-        <button className="characterButton" onClick={() => goToNextPage('characters')}>Characters</button>
-        <button className="shopButton" onClick={() => goToNextPage('shop')}>Shop</button>
-        <button className="campaignButton" onClick={() => goToNextPage('battle')}>Campaign</button>
-
-      </div>
     </div>
   );
 }
