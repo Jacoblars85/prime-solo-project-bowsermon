@@ -1,16 +1,4 @@
-/* html,
-body {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-} */
 
-/* .characterBox html, body {
-  background: radial-gradient(circle, #0d0d0e 10%, transparent 11%),radial-gradient(circle at bottom left, #0d0d0e 5%, transparent 6%),radial-gradient(circle at bottom right, #0d0d0e 5%, transparent 6%),radial-gradient(circle at top left, #0d0d0e 5%, transparent 6%),radial-gradient(circle at top right, #0d0d0e 5%, transparent 6%);
-      background-size: 1em 1em;
-      background-color: #ffffff;
-      opacity: 1
-} */
 
 .characterBox {
   display: flex;
@@ -42,13 +30,29 @@ body {
   background-color: black;
 
 }
+
+.single-box img{
+  cursor: pointer;
+
+}
   
 .singleBoxUl {
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    padding-left: 37px;
-    color: white;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  padding-left: 37px;
+  color: white;
+  cursor: pointer;
+
+}
+
+.starterSingleBoxUl {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  padding-left: 37px;
+  color: black;
+  cursor: pointer;
 }
   
 h5 {
@@ -68,12 +72,17 @@ h5 {
     height: 638px;
     justify-content: center;
     background-color: azure;
+
 }
 
 .starterCharacterView h2 {
   position: absolute;
   text-align: center;
   margin-top: -32px;
+}
+
+.starterCharacterView img {
+cursor: pointer;
 }
 
 .backButton {
@@ -83,6 +92,7 @@ h5 {
   display: flex;
   width: 360px;
   justify-content: flex-end;
+  cursor: pointer;
 
 }
   

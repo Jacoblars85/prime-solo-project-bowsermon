@@ -6,23 +6,6 @@ body {
                                                 
 }
 
-
-/* .homePage html, body {
-    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/c633c20ede82f0e0ced7d570dbe3a1f3.gif");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: top;
-
-} */
-
-/* .homePage html, body {
-    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/deem3o4-f8cdf742-6461-4a45-9a36-5d60cda3ecc1.png");
-    background-repeat: repeat;
-    background-size: 15%;
-    background-position-y: right;
-    
-} */
-
 .characterButton {
     position: absolute;
     top: 25%;
