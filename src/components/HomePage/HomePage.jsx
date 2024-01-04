@@ -14,14 +14,9 @@ function HomePage() {
   const starter = useSelector(store => store.character.starter);
 
 
-  // useEffect(() => {
-  //   dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
-  // }, []);
-
-  const goToNextPage = (params) => {
-
-    history.push(`/${params}`)
-  };
+  useEffect(() => {
+    dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
+  }, []);
 
   return (
     <div>

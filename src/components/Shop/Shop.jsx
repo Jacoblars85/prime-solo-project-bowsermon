@@ -36,7 +36,7 @@ function Shop() {
             return alert('you are broke, sorry')
         } else {
 
-            let randomNum = Math.floor(Math.random() * 3 + 1);
+            let randomNum = Math.floor(Math.random() * 7 + 1);
 
             console.log('random number', randomNum);
 
