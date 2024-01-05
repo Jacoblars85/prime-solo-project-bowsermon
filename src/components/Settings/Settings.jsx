@@ -15,7 +15,6 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonIcon from '@mui/icons-material/Person';
-import ChangeUsername from '../ChangeUsername/ChangeUsername';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeButton from '../HomeButton/HomeButton';
 import { useHistory } from 'react-router-dom';
@@ -60,9 +59,6 @@ export default function Settings() {
 
 
 
-
-  // const [newUsername, setNewUsername] = useState('');
-
   const [formOpen, setFormOpen] = useState(false);
 
   const handleFormClickOpen = () => {
@@ -73,13 +69,6 @@ export default function Settings() {
     setFormOpen(false);
   };
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'SET_USERNAME',
-  //     payload: user.name
-  //   })
-  // }, [])
-
 const handleNameChange = (newName) => {
   dispatch({
     type: 'CHANGE_USERNAME',
@@ -89,8 +78,7 @@ const handleNameChange = (newName) => {
 
 const resetNameChange = () => {
   dispatch({
-    type: 'RESET_USERNAME',
-    payload: user.username
+    type: 'FETCH_USER',
   })
   setFormOpen(false);
 }
@@ -100,14 +88,8 @@ const applyEdits = (e) => {
     type: 'SAGA_CHANGE_USERNAME',
     payload: editUsername.username
   })
-
-  history.push('/home')
+  setFormOpen(false);
 }
-
-
-
-
-
 
   const [state, setState] = useState({
     top: false,
@@ -116,7 +98,6 @@ const applyEdits = (e) => {
     right: false,
   });
 
- 
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

@@ -27,7 +27,6 @@ const editUsername = (state = {}, action) => {
 // user will be on the redux state at:
 // state.user
 
-
 export default combineReducers({
   userReducer,
   editUsername,
