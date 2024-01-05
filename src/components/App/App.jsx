@@ -22,7 +22,6 @@ import Campaign from '../Campaign/Campaign';
 import Battle from '../Battle/Battle';
 import Shop from '../Shop/Shop';
 import Characters from '../Characters/Characters';
-import ChangeUserNameFrom from '../ChangeUsernameForm/ChangeUsernameForm';
 
 import './App.css';
 
@@ -86,10 +85,6 @@ function App() {
 
           <ProtectedRoute exact path="/campaign">
             <Campaign />
-          </ProtectedRoute>
-
-          <ProtectedRoute exact path="/changename">
-            <ChangeUserNameFrom />
           </ProtectedRoute>
 
 
