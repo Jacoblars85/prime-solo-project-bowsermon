@@ -31,10 +31,8 @@ function Battle() {
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
     const characters = useSelector((store) => store.character.characters);
-
     const starter = useSelector((store) => store.character.starter);
     const levelEnemy = useSelector((store) => store.character.levelEnemy);
-    
     const user = useSelector((store) => store.user.userReducer);
 
 
@@ -159,7 +157,6 @@ function Battle() {
 
     };
 
-
     const battle = (attackType) => {
 
         disableButtons();
@@ -190,7 +187,7 @@ function Battle() {
 
             <div className={enemyClassName}>
 
-                <p>{enemyOne.name} hp: {enemyHp}</p>
+                {<p>{enemyOne.name} hp: {enemyHp}</p>}
                 <progress id="hp-meter" value={enemyHp} max={enemyOne.hp}></progress>
                 <img className={enemyPicAttack} height={300} width={200} src={enemyOne.battle_pic} />
 

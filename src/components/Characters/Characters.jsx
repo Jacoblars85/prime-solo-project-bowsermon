@@ -18,10 +18,6 @@ function Characters() {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
-    useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
-    }, []);
-
     // console.log('this is the characters', characters);
 
     let starterOne = starter[0];
