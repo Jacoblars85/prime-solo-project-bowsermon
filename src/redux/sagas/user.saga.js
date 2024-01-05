@@ -28,7 +28,7 @@ function* fetchUser() {
 // Changing the users username
 function* changeUsername(action) {
 
-  console.log('action.payload', action.payload);
+  // console.log('action.payload', action.payload);
 
   try {
       const response = yield axios({

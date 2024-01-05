@@ -73,7 +73,7 @@ router.post('/logout', (req, res) => {
 
 
 router.put("/change", (req, res) => {
-console.log('req.body', req.body.newName);
+// console.log('req.body', req.body.newName);
   const sqlText = `
   UPDATE "user"
     SET "username" = ($1)
