@@ -31,8 +31,10 @@ function Battle() {
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
     const characters = useSelector((store) => store.character.characters);
+
     const starter = useSelector((store) => store.character.starter);
     const levelEnemy = useSelector((store) => store.character.levelEnemy);
+    
     const user = useSelector((store) => store.user.userReducer);
 
 
@@ -41,9 +43,8 @@ function Battle() {
     let starterOne = starter[0];
 
 
-    console.log('starter', starter);
+    console.log('starter', starterOne);
     console.log('basic', basicAttacks);
-    // console.log('character', characterOne);
     console.log('enemy', enemyOne);
 
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);

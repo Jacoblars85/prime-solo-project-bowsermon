@@ -22,8 +22,10 @@ function Campaign() {
             type: 'SAGA_FETCH_LEVEL_ENEMY',
             payload: params 
         });
-
-        history.push(`/battle/${params}`)
+        setTimeout(() => {
+            history.push(`/battle/${params}`)
+        }, 50);
+        // history.push(`/battle/${params}`)
     };
 
 
