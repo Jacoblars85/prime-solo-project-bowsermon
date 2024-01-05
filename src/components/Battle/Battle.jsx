@@ -33,7 +33,7 @@ function Battle() {
     const characters = useSelector((store) => store.character.characters);
     const starter = useSelector((store) => store.character.starter);
     const levelEnemy = useSelector((store) => store.character.levelEnemy);
-    const user = useSelector((store) => store.user);
+    const user = useSelector((store) => store.user.userReducer);
 
 
     // let characterOne = characters[0];

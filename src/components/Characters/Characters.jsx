@@ -12,7 +12,7 @@ function Characters() {
 
     const characters = useSelector(store => store.character.characters);
     const starter = useSelector(store => store.character.starter);
-    const user = useSelector((store) => store.user);
+    const user = useSelector((store) => store.user.userReducer);
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });

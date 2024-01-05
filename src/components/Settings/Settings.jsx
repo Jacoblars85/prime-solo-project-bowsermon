@@ -1,6 +1,6 @@
 import LogOutButton from '../LogOutButton/LogOutButton';
 import SettingsIcon from '@mui/icons-material/Settings';
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -31,6 +31,15 @@ export default function Settings() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const user = useSelector((store) => store.user.userReducer);
+  const editUsername = useSelector((store) => store.user.editUsername);
+
+  console.log('user', user);
+  console.log('edit user', editUsername);
+
+
+
+
   const [open, setOpen] = useState(false);
 
   const handleDeleteClickOpen = () => {
@@ -51,6 +60,9 @@ export default function Settings() {
 
 
 
+
+  // const [newUsername, setNewUsername] = useState('');
+
   const [formOpen, setFormOpen] = useState(false);
 
   const handleFormClickOpen = () => {
@@ -61,16 +73,37 @@ export default function Settings() {
     setFormOpen(false);
   };
 
-  const changeUsername = (e) => {
-    e.preventDefault()
-    dispatch({
-        type: 'SAGA_CHANGE_USERNAME',
-        payload: {
-            newName: newUsername
-        }
-    })
-    history.push(`/home`)
-};
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'SET_USERNAME',
+  //     payload: user.name
+  //   })
+  // }, [])
+
+const handleNameChange = (newName) => {
+  dispatch({
+    type: 'CHANGE_USERNAME',
+    payload: newName
+  })
+}
+
+const resetNameChange = () => {
+  dispatch({
+    type: 'RESET_USERNAME',
+    payload: user.username
+  })
+  setFormOpen(false);
+}
+
+const applyEdits = (e) => {
+  dispatch({
+    type: 'SAGA_CHANGE_USERNAME',
+    payload: editUsername.username
+  })
+
+  history.push('/home')
+}
+
 
 
 
@@ -83,7 +116,7 @@ export default function Settings() {
     right: false,
   });
 
-  const user = useSelector((store) => store.user);
+ 
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -207,23 +240,23 @@ export default function Settings() {
           <DialogTitle>Change Username</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address here. We
-              will send updates occasionally.
+              To change your username, please enter your new username here. You can change it again if you want a new name.
             </DialogContentText>
             <TextField
               autoFocus
               margin="dense"
               id="name"
-              value={newUsername}
-              label="Username"
+              value={editUsername.username || ''}
+              onChange={(e) => handleNameChange(e.target.value)}
+              label="New Username"
               type="text"
               fullWidth
               variant="standard"
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={(e) => changeUsername(e.target.value)}>Submit</Button>
-            <Button onClick={handleFormClose}>Cancel</Button>
+            <Button onClick={applyEdits}>Submit</Button>
+            <Button onClick={resetNameChange}>Cancel</Button>
           </DialogActions>
         </Dialog>
       </Fragment>

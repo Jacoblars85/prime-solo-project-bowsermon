@@ -28,13 +28,13 @@ function* fetchUser() {
 // Changing the users username
 function* changeUsername(action) {
 
-  // console.log('action.payload', action.payload);
+  console.log('action.payload', action.payload);
 
   try {
       const response = yield axios({
           method: 'PUT',
           url: `/api/user/change`,
-          data: action.payload
+          data: {newName: action.payload}
       })
       yield put({
           type: 'FETCH_USER',

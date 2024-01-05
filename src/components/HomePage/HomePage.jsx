@@ -10,7 +10,7 @@ function HomePage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector(store => store.character.starter);
 
 

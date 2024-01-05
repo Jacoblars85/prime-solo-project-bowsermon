@@ -15,7 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 function Shop() {
 
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.user);
+    const user = useSelector((store) => store.user.userReducer);
 
     const [open, setOpen] = useState(false);
 

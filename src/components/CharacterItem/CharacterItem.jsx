@@ -11,7 +11,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 function CharacterItem({ character }) {
   const [isPicture, setIsPicture] = useState(false)
 
-  const user = useSelector(store => store.user);
+  const user = useSelector(store => store.user.userReducer);
   const starter = useSelector(store => store.character.starter);
 
   const dispatch = useDispatch();

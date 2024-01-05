@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 function HomeButton() {
     const history = useHistory()
-    const user = useSelector((store) => store.user);
+    const user = useSelector((store) => store.user.userReducer);
 
     const goToHome = () => {
 
