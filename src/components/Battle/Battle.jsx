@@ -45,8 +45,11 @@ function Battle() {
     console.log('basic', basicAttacks);
     console.log('enemy', enemyOne);
 
-    const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
+
     const [characterHp, setCharacterHp] = useState(starterOne.hp);
+    const [characterStamina, setCharacterStamina] = useState(starterOne.stamina);
+    const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
+    const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
     const [textBox, setTextBox] = useState('');
 
 
@@ -179,16 +182,29 @@ function Battle() {
 
             <div className='character'>
 
-                <p>{starterOne.name} hp: {characterHp}</p>
-                <progress id="hp-meter" value={characterHp} max={starterOne.hp}></progress>
-                <img className={characterPicAttack} height={300} width={300} src={starterOne.profile_pic} />
+                <p className="hp-text">{starterOne.name} hp: {characterHp}</p>
+
+                <p className="stamina-text">{starterOne.name} stamina: {characterStamina}</p>
+
+
+                <progress className="hp-meter" value={characterHp} max={starterOne.hp}></progress>
+
+                <progress className="stamina-meter" value={characterStamina} max={starterOne.stamina}></progress>
+
+                <img className={characterPicAttack} src={starterOne.profile_pic} />
 
             </div>
 
             <div className={enemyClassName}>
 
-                {<p>{enemyOne.name} hp: {enemyHp}</p>}
-                <progress id="hp-meter" value={enemyHp} max={enemyOne.hp}></progress>
+                <p className="hp-text">{enemyOne.name} hp: {enemyHp}</p>
+
+                <p className="stamina-text">{enemyOne.name} stamina: {enemyStamina}</p>
+
+                <progress className="hp-meter" value={enemyHp} max={enemyOne.hp}></progress>
+
+                <progress className="stamina-meter" value={enemyStamina} max={enemyOne.stamina}></progress>
+
                 <img className={enemyPicAttack} height={300} width={200} src={enemyOne.battle_pic} />
 
             </div>

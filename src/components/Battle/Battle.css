@@ -92,22 +92,54 @@ body:has(.shake ) {
 }
 
 
-progress {
+/* progress {
+    position: absolute;
     height: 30px;
     width: 70%;
     background: white;
     margin: 0px auto -30px auto;
     display: block;
     border: 2px solid black;
-}
+} */
 
-.enemy progress, .shake progress, .character progress {
-    margin-top: 45px;
+.hp-meter {
     position: absolute;
+    top: 4.3%;
+    position: absolute;
+    height: 30px;
+    width: 70%;
+    background: white;
+    margin: 0px auto -30px auto;
+    display: block;
+    border: 2px solid black;
+
+}
+
+.hp-meter::-webkit-progress-value {
+    background: red;
+}
+
+.stamina-meter {
+    position: absolute;
+    top: 17%;
+    position: absolute;
+    height: 20px;
+    width: 70%;
+    background: white;
+    margin: 0px auto -30px auto;
+    display: block;
+    border: 2px solid black;
+
+}
+
+.stamina-meter::-webkit-progress-value {
+background: blue;
 }
 
 
-.enemy p, .character p, .shake p {
+.hp-text {
+    position: absolute;
+    top: -6%;
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
@@ -117,10 +149,18 @@ progress {
     /* text-shadow: 0px 0px 9px #ff0000; */
 }
 
-/* .character p, .enemy p {
-    margin-top: -10px;
-    text-shadow: 0px 0px 9px #00ff00;
-} */
+.stamina-text {
+    position: absolute;
+    top: 6.5%;
+    width: 100%;
+    /* color: white; */
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    /* text-shadow: 0px 0px 9px #ff0000; */
+}
+
 
 .character {
     position: absolute;
@@ -134,6 +174,14 @@ progress {
     justify-content: center;
 }
 
+.character img {
+    position: absolute;
+    top: 23%;
+    border: 1px solid blue;
+    width: 300px;
+    height: 300px;
+}
+
 .enemy, .shake{
     position: absolute;
     display: flex;
@@ -144,6 +192,14 @@ progress {
     width: 400px;
     height: 400px;
     justify-content: center;
+}
+
+.enemy img, .shake img {
+    position: absolute;
+    top: 23%;
+    border: 1px solid blue;
+    width: 200px;
+    height: 300px;
 }
 
 

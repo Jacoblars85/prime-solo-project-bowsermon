@@ -53,6 +53,8 @@ function CharacterItem({ character }) {
   }
 
   const toggleNewClass = () => {
+    console.log(character.id);
+    
     dispatch({
       type: 'SAGA_SET_OLD',
       payload: character.id
