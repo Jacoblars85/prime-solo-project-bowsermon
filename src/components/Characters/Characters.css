@@ -21,7 +21,18 @@
 }
   
 .single-box {
-  border: 3px solid whiteblack;
+  border: 3px solid white;
+  height: 170px;
+  width: 170px;
+  justify-content: space-around;
+  text-align: center;
+  padding-left: 0px;
+  background-color: black;
+
+}
+
+.new {
+  border: 3px solid yellow;
   height: 170px;
   width: 170px;
   justify-content: space-around;

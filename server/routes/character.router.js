@@ -9,6 +9,7 @@ router.get('/character', (req, res) => {
 		"user_characters"."user_id" as "user_id",
 		"user_characters"."character_id",
         "user_characters"."starter",
+        "user_characters"."new",
 		"characters"."name",
 		"characters"."profile_pic",
 		"characters"."hp",
@@ -230,6 +231,25 @@ router.put("/starter/:id", (req, res) => {
             // catch for second query
             console.log('in the second', err);
             res.sendStatus(500)
+        })
+        .catch((err) => {
+            console.log("Error in character.router /sell PUT,", err);
+            res.sendStatus(500);
+        });
+});
+
+router.put("/new/:id", (req, res) => {
+
+    const sqlText = `
+    UPDATE "user_characters"
+    SET "new" = FALSE
+    WHERE "id" = ${req.params.id};
+          `;
+
+    pool
+        .query(sqlText)
+        .then((result) => {
+            res.sendStatus(201);
         })
         .catch((err) => {
             console.log("Error in character.router /sell PUT,", err);

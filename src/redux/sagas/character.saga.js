@@ -38,7 +38,7 @@ function* fetchBasicAttacks() {
 
 
 function* fetchLevelEnemy(action) {
-  console.log('action. payloaad in level', action.payload);
+  // console.log('action. payloaad in level', action.payload);
   try {
     const enemyResponse = yield axios.get(`/api/characters/enemy/${action.payload}`);
     console.log('enemy response', enemyResponse);
@@ -151,6 +151,23 @@ function* setStarter(action) {
   }
 }
 
+function* changeNewStatus(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/new/${action.payload}`
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put new to server', error);
+  }
+}
+
+
+
 
 
 function* characterSaga() {
@@ -163,6 +180,8 @@ function* characterSaga() {
   yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
   yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
   yield takeLatest('SAGA_SET_STARTER', setStarter);
+  yield takeLatest('SAGA_SET_OLD', changeNewStatus);
+
 
 
 }

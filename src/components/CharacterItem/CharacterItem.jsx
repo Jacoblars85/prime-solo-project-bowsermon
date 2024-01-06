@@ -29,7 +29,6 @@ function CharacterItem({ character }) {
     });
   }
 
-
   const sellCharacter = () => {
     if (character.id === starter[0].id) {
       setOpen(false);
@@ -53,6 +52,17 @@ function CharacterItem({ character }) {
     setIsPicture(!isPicture)
   }
 
+  const toggleNewClass = () => {
+    dispatch({
+      type: 'SAGA_SET_OLD',
+      payload: character.id
+    });
+  }
+
+  const doNothing = () => {
+   
+  }
+
   const displayText = () => {
     if (isPicture) {
       return (
@@ -74,15 +84,16 @@ function CharacterItem({ character }) {
   }
 
   return (
-    <div className="single-box">
+    <div className={character.new ? "new" : "single-box"} onMouseOver={character.new ? toggleNewClass : doNothing }>
 
       <h5>{character.name}</h5>
 
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
-
       <button id={character.id} onClick={setStarter} >Start</button>
       <button id={character.id} onClick={confirmSale} >Sell</button>
+
+      <p>{character.new ? "new" : ""}</p>
     
 
 
@@ -103,9 +114,9 @@ function CharacterItem({ character }) {
         </DialogContent>
         <DialogActions>
         <Button onClick={sellCharacter} autoFocus>
-            Agree
+            Yes
           </Button>
-          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>Close</Button>
           
         </DialogActions>
       </Dialog>
