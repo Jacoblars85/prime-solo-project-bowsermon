@@ -11,18 +11,20 @@ function Campaign() {
     const history = useHistory()
     const dispatch = useDispatch();
 
-  const user = useSelector((store) => store.user.userReducer);
+    const user = useSelector((store) => store.user.userReducer);
+    // const levelsCompleted = useSelector((store) => store.user.usersLevelsCompleted);
+
 
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
-      }, []);
+    }, []);
 
     const goToTheBattle = (params) => {
         console.log('paramas', params);
         dispatch({
             type: 'SAGA_FETCH_LEVEL_ENEMY',
-            payload: params 
+            payload: params
         });
         setTimeout(() => {
             history.push(`/battle/${params}`)
@@ -54,25 +56,25 @@ function Campaign() {
 
             <div className='levelTwo'>
 
-                <button onClick={() => goToTheBattle(2)} disabled={user.level_one_complete ? false : true}>level 2</button>
+                <button onClick={() => goToTheBattle(2)} disabled={user.level_1_completed ? false : true}>level 2</button>
 
             </div>
 
             <div className='levelThree'>
 
-                <button onClick={() => goToTheBattle(3)} disabled={user.level_two_complete  ? false : true}>level 3</button>
+                <button onClick={() => goToTheBattle(3)} disabled={user.level_2_completed ? false : true}>level 3</button>
 
             </div>
 
             <div className='levelFour'>
 
-                <button onClick={() => goToTheBattle(4)} disabled={user.level_three_complete  ? false : true}>level 4</button>
+                <button onClick={() => goToTheBattle(4)} disabled={user.level_3_completed ? false : true}>level 4</button>
 
             </div>
 
             <div className='levelFive'>
 
-                <button onClick={() => goToTheBattle(5)} disabled={user.level_four_complete  ? false : true}>level 5</button>
+                <button onClick={() => goToTheBattle(5)} disabled={user.level_4_completed ? false : true}>level 5</button>
 
             </div>
 
