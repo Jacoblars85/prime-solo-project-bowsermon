@@ -12,7 +12,6 @@ function Campaign() {
     const dispatch = useDispatch();
 
     const user = useSelector((store) => store.user.userReducer);
-    // const levelsCompleted = useSelector((store) => store.user.usersLevelsCompleted);
 
 
 
