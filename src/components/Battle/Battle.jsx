@@ -23,8 +23,10 @@ function Battle() {
     }, []);
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_LEVEL_ENEMY',
-        payload: id  });
+        dispatch({
+            type: 'SAGA_FETCH_LEVEL_ENEMY',
+            payload: id
+        });
     }, []);
 
 
@@ -70,7 +72,7 @@ function Battle() {
         history.push(`/campaign`)
         dispatch({
             type: 'SAGA_USER_WON_THE_BATTLE',
-            payload: {levelId: enemyOne.level_id}
+            payload: { levelId: enemyOne.level_id }
         });
     };
 
@@ -88,7 +90,7 @@ function Battle() {
     //         }
 
     //     }, 4550);
-            
+
     // };
 
 
@@ -98,7 +100,7 @@ function Battle() {
 
         setTimeout(() => {
             setIsDisabled(false);
-            
+
             // setRoundOver(true);
 
         }, 4500);
@@ -139,6 +141,23 @@ function Battle() {
             }
         }
 
+        // setTimeout(() => {
+
+        //     if (enemyStamina === 0) {
+
+        //         setEnemyClassName("shake")
+        //         setEnemyHp(enemyHp - 5)
+    
+        //         if (enemyHp - 5 <= 0) {
+        //             setEnemyHp(0)
+        //             setWinnerOpen(true)
+        //         }
+                  
+        //     }
+
+        // }, 3000);
+        
+
         console.log('enemy hp', enemyHp);
 
         return enemyHp;
@@ -155,25 +174,52 @@ function Battle() {
         }
     };
 
-    const enemyAttack = (enemyOne) => {
-
-        setEnemyClassName("shake")
+    const enemyAttack = (enemyOne, basicAttacks) => {
 
         setTimeout(() => {
-            setCharacterHp(characterHp - enemyOne.unique_damage)
-            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-            if (characterHp - enemyOne.unique_damage <= 0) {
-                setCharacterHp(0)
-                setLoserOpen(true)
-            }
-            setEnemyClassName("enemy")
-            setEnemyPicAttack("enemyPicAttack")
+            if (enemyStamina >= enemyOne.unique_stamina) {
+
+                setCharacterHp(characterHp - enemyOne.unique_damage)
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                if (characterHp - enemyOne.unique_damage <= 0) {
+                    setCharacterHp(0)
+                    setLoserOpen(true)
+                }
+                setEnemyPicAttack("enemyPicAttack")
+                setEnemyClassName("shake")
+
+            } else if (enemyStamina >= basicAttacks[0].stamina) {
+                setCharacterHp(characterHp - basicAttacks[0].damage)
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                if (characterHp - basicAttacks[0].damage <= 0) {
+                    setCharacterHp(0)
+                    setLoserOpen(true)
+                }
+                setEnemyPicAttack("enemyPicAttack")
+                setEnemyClassName("shake")
+
+            } else if (enemyStamina >= basicAttacks[1].stamina) {
+                setCharacterHp(characterHp - basicAttacks[1].damage)
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                if (characterHp - basicAttacks[1].damage <= 0) {
+                    setCharacterHp(0)
+                    setLoserOpen(true)
+                }
+                setEnemyPicAttack("enemyPicAttack")
+                setEnemyClassName("shake")
+
+            } 
+
         }, 3000);
 
 
         setTimeout(() => {
             setEnemyPicAttack("")
+            setEnemyClassName("enemy")
         }, 3150);
 
         console.log('my hp', characterHp);
@@ -181,36 +227,47 @@ function Battle() {
         return characterHp;
     };
 
-    const enemyTextBox = (enemyOne) => {
+    const enemyTextBox = (enemyOne, basicAttacks) => {
 
         setTimeout(() => {
-            setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack}. It did ${enemyOne.unique_damage} damage and took ${enemyOne.unique_stamina} stamina.`);
+
+            if (enemyStamina >= enemyOne.unique_stamina) {
+
+                setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack}. It did ${enemyOne.unique_damage} damage and took ${enemyOne.unique_stamina} stamina.`);
+     
+            } else if (enemyStamina >= basicAttacks[0].stamina) {
+   
+                setTextBox(`${enemyOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
+
+            } else if (enemyStamina >= basicAttacks[1].stamina) {
+            
+                setTextBox(`${enemyOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
+
+            } else if (enemyStamina === 0) {
+           
+                setTextBox(`${enemyOne.name} tried to attack but it failed. They have no more stamina and could not move.`);
+
+            }
+
         }, 3000);
 
     };
 
-    const disableButtons = () => {
-
-        if (characterStamina < starterOne.unique_stamina) {
-            
-        }
-
-    };
 
     const battle = (attackType) => {
 
         disableAllButtons();
         attack(attackType, basicAttacks, starterOne);
         characterTextBox(attackType, basicAttacks, starterOne);
-        enemyAttack(enemyOne);
-        enemyTextBox(enemyOne);
+        enemyAttack(enemyOne, basicAttacks);
+        enemyTextBox(enemyOne, basicAttacks);
 
     };
 
     return (
         <div className="battle"
             style={{
-                backgroundImage: `url(${enemyOne.level_id % 2 ? lakeBackground : forestBackground })`,
+                backgroundImage: `url(${enemyOne.level_id % 2 ? lakeBackground : forestBackground})`,
                 backgroundRepeat: `no-repeat`,
                 backgroundSize: `cover`,
                 height: `100vh`,
@@ -255,8 +312,8 @@ function Battle() {
             <div className='attacks' >
 
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')} className='punchAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >punch</button>
-                <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >poke</button>
+                <button onClick={() => battle('punch')} className='punchAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
+                <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
 
             </div>
 
