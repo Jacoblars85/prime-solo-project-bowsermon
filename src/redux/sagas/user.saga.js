@@ -62,18 +62,19 @@ function* deleteAccount() {
 }
 
 //give user coins when they won a battle
-function* giveUserCoinsForWinning() {
-  // console.log('action.payload', action.payload);
+function* giveUserAllForWinning(action) {
+  console.log('action.payload', action.payload);
   try {
-    const response = yield axios({
-      method: 'PUT',
-      url: `/api/user/won`
-    })
+    const response = yield axios.put(`/api/user/won`);
+    const postResponse = yield axios.post(`/api/user/won/${action.payload.levelId}`);
     yield put({
       type: 'FETCH_USER',
     })
+    yield put({
+      type: 'SET_LEVELS_COMPLETED',
+    })
   } catch (error) {
-    console.log('Unable to put coins for win to server', error);
+    console.log('Unable to put coins and changed level won for win to server', error);
   }
 }
 
@@ -81,7 +82,7 @@ function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('SAGA_CHANGE_USERNAME', changeUsername);
   yield takeLatest('SAGA_DELETE_ACCOUNT', deleteAccount);
-  yield takeLatest('SAGA_USER_WON_THE_BATTLE', giveUserCoinsForWinning);
+  yield takeLatest('SAGA_USER_WON_THE_BATTLE', giveUserAllForWinning);
 
 }
 

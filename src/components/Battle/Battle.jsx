@@ -9,7 +9,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import background from '../../ExportBackgroundnomoveclound.webp';
+import lakeBackground from '../../ExportBackgroundnomoveclound.webp';
+import forestBackground from '../../RockForest.webp';
 
 
 function Battle() {
@@ -59,27 +60,47 @@ function Battle() {
     const [characterPicAttack, setCharacterPicAttack] = useState("");
 
 
+    // const [roundOver, setRoundOver] = useState(false);
+
+
     const [openWinner, setWinnerOpen] = useState(false);
     const [openLoser, setLoserOpen] = useState(false);
 
     const handleWinnerClose = () => {
-        history.push(`/home`)
+        history.push(`/campaign`)
         dispatch({
-            type: 'SAGA_USER_WON_THE_BATTLE'
+            type: 'SAGA_USER_WON_THE_BATTLE',
+            payload: {levelId: enemyOne.level_id}
         });
     };
 
     const handleLoserClose = () => {
-        history.push(`/home`)
+        history.push(`/campaign`)
     };
 
+    // const checkRoundOver = () => {
 
-    const disableButtons = () => {
+    //     setTimeout(() => {
+    //         if (roundOver === true) {
+    //             setCharacterStamina(characterStamina + 5)
+    //             setEnemyStamina(enemyStamina + 5)
+    //             setRoundOver(false)
+    //         }
+
+    //     }, 4550);
+            
+    // };
+
+
+    const disableAllButtons = () => {
 
         setIsDisabled(true)
 
         setTimeout(() => {
             setIsDisabled(false);
+            
+            // setRoundOver(true);
+
         }, 4500);
 
     };
@@ -94,18 +115,24 @@ function Battle() {
 
         if (attackType === 'unique') {
             setEnemyHp(enemyHp - starterOne.unique_damage)
+            setCharacterStamina(characterStamina - starterOne.unique_stamina)
+
             if (enemyHp - starterOne.unique_damage <= 0) {
                 setEnemyHp(0)
                 return setWinnerOpen(true)
             }
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
+            setCharacterStamina(characterStamina - basicAttacks[0].stamina)
+
             if (enemyHp - basicAttacks[0].damage <= 0) {
                 setEnemyHp(0)
                 setWinnerOpen(true)
             }
         } else if (attackType === 'poke') {
             setEnemyHp(enemyHp - basicAttacks[1].damage)
+            setCharacterStamina(characterStamina - basicAttacks[1].stamina)
+
             if (enemyHp - basicAttacks[1].damage <= 0) {
                 setEnemyHp(0)
                 setWinnerOpen(true)
@@ -120,11 +147,11 @@ function Battle() {
     const characterTextBox = (attackType, basicAttacks, starterOne) => {
 
         if (attackType === 'unique') {
-            setTextBox(`${starterOne.name} used ${starterOne.unique_attack} and it did ${starterOne.unique_damage} damage`);
+            setTextBox(`${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`);
         } else if (attackType === 'punch') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack} and it did ${basicAttacks[0].damage} damage`);
+            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
         } else if (attackType === 'poke') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack} and it did ${basicAttacks[1].damage} damage`);
+            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
         }
     };
 
@@ -134,6 +161,8 @@ function Battle() {
 
         setTimeout(() => {
             setCharacterHp(characterHp - enemyOne.unique_damage)
+            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
             if (characterHp - enemyOne.unique_damage <= 0) {
                 setCharacterHp(0)
                 setLoserOpen(true)
@@ -155,14 +184,22 @@ function Battle() {
     const enemyTextBox = (enemyOne) => {
 
         setTimeout(() => {
-            setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack} and it did ${enemyOne.unique_damage} damage`);
+            setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack}. It did ${enemyOne.unique_damage} damage and took ${enemyOne.unique_stamina} stamina.`);
         }, 3000);
+
+    };
+
+    const disableButtons = () => {
+
+        if (characterStamina < starterOne.unique_stamina) {
+            
+        }
 
     };
 
     const battle = (attackType) => {
 
-        disableButtons();
+        disableAllButtons();
         attack(attackType, basicAttacks, starterOne);
         characterTextBox(attackType, basicAttacks, starterOne);
         enemyAttack(enemyOne);
@@ -173,7 +210,7 @@ function Battle() {
     return (
         <div className="battle"
             style={{
-                backgroundImage: `url(${background})`,
+                backgroundImage: `url(${enemyOne.level_id % 2 ? lakeBackground : forestBackground })`,
                 backgroundRepeat: `no-repeat`,
                 backgroundSize: `cover`,
                 height: `100vh`,
@@ -215,11 +252,11 @@ function Battle() {
 
             </div>
 
-            <div className='attacks'>
+            <div className='attacks' >
 
-                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={isDisabled} >{starterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')} className='punchAttack' disabled={isDisabled} >punch</button>
-                <button onClick={() => battle('poke')} className='pokeAttack' disabled={isDisabled} >poke</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
+                <button onClick={() => battle('punch')} className='punchAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >punch</button>
+                <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >poke</button>
 
             </div>
 

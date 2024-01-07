@@ -145,7 +145,7 @@ router.delete("/", (req, res) => {
 });
 
 
-router.put("/won/", (req, res) => {
+router.put("/won", (req, res) => {
 
   const sqlText = `
       UPDATE "user"
@@ -162,6 +162,48 @@ router.put("/won/", (req, res) => {
           console.log("Error in user.router /won PUT,", err);
           res.sendStatus(500);
       });
+});
+
+router.post('/won/:id', (req, res) => {
+
+  console.log('req.body', req.params.id);
+
+  const insertCharacterQuery = `
+        INSERT INTO "completed_levels" 
+          ("user_id", "level_id", "complete")
+          VALUES
+          ($1, $2, TRUE);
+      `;
+  const insertCharacterValue = [
+      req.user.id,
+      req.params.id
+  ]
+
+  pool.query(insertCharacterQuery, insertCharacterValue)
+      .then(result => {
+          res.sendStatus(201);
+      }).catch(err => {
+          console.log('err in post route', err);
+          res.sendStatus(500)
+      })
+})
+
+router.get('/completed', (req, res) => {
+  // console.log('im in basic route');
+
+  const query = `
+    SELECT * FROM "basic_attacks";
+  `;
+
+  pool.query(query)
+      .then(result => {
+          res.send(result.rows);
+      })
+      .catch(err => {
+          console.log('ERROR: Get all basic attacks', err);
+          res.sendStatus(500)
+      })
+
 });
 
 module.exports = router;

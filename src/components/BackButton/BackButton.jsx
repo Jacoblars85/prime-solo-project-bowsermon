@@ -8,7 +8,7 @@ function BackButton() {
 
     const goToHome = () => {
 
-        history.goBack()
+        history.push(`/home`)
     };
 
 

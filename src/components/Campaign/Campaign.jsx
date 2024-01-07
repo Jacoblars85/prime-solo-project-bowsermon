@@ -11,6 +11,8 @@ function Campaign() {
     const history = useHistory()
     const dispatch = useDispatch();
 
+  const user = useSelector((store) => store.user.userReducer);
+
 
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
@@ -25,7 +27,6 @@ function Campaign() {
         setTimeout(() => {
             history.push(`/battle/${params}`)
         }, 50);
-        // history.push(`/battle/${params}`)
     };
 
 
@@ -47,31 +48,31 @@ function Campaign() {
 
             <div className='levelOne'>
 
-                <button onClick={() => goToTheBattle(1)}>level 1</button>
+                <button onClick={() => goToTheBattle(1)} >level 1</button>
 
             </div>
 
             <div className='levelTwo'>
 
-                <button onClick={() => goToTheBattle(2)}>level 2</button>
+                <button onClick={() => goToTheBattle(2)} disabled={user.level_one_complete ? false : true}>level 2</button>
 
             </div>
 
             <div className='levelThree'>
 
-                <button onClick={() => goToTheBattle(3)} >level 3</button>
+                <button onClick={() => goToTheBattle(3)} disabled={user.level_two_complete  ? false : true}>level 3</button>
 
             </div>
 
             <div className='levelFour'>
 
-                <button onClick={() => goToTheBattle(4)} >level 4</button>
+                <button onClick={() => goToTheBattle(4)} disabled={user.level_three_complete  ? false : true}>level 4</button>
 
             </div>
 
             <div className='levelFive'>
 
-                <button onClick={() => goToTheBattle(5)} >level 5</button>
+                <button onClick={() => goToTheBattle(5)} disabled={user.level_four_complete  ? false : true}>level 5</button>
 
             </div>
 
