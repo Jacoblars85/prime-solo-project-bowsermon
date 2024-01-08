@@ -27,16 +27,22 @@ function Shop() {
 
     // console.log('characters', characters[characters.length-1].name);
 
-    const [open, setOpen] = useState(false);
-    const [prizeOpen, setPrizeOpen] = useState(false);
+    const [randomOpen, setRandomOpen] = useState(false);
+    const [healthOpen, setHealthOpen] = useState(false);
+    const [staminaOpen, setStaminaOpen] = useState(false);
+    const [maxOpen, setMaxOpen] = useState(false);
 
 
-    const handleClickOpen = () => {
-        setOpen(true);
+
+    // const [prizeOpen, setPrizeOpen] = useState(false);
+
+
+    const handleRandomClickOpen = () => {
+        setRandomOpen(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleRandomClose = () => {
+        setRandomOpen(false);
     };
 
     // const handlePrizeClose = () => {
@@ -51,7 +57,7 @@ function Shop() {
     const getRandomCharacter = () => {
 
         if (user.coins < 15) {
-            setOpen(false);
+            setRandomOpen(false);
             return alert('you are broke, sorry')
         } else {
 
@@ -66,6 +72,87 @@ function Shop() {
                 }
             });
             history.push(`/characters`)
+        }
+    };
+
+
+    const handleHealthClickOpen = () => {
+        setHealthOpen(true);
+    };
+
+    const handleHealthClose = () => {
+        setHealthOpen(false);
+    };
+
+    const buyHealthPot = () => {
+
+        if (user.coins < 10) {
+            setHealthOpen(false);
+            return alert('you are broke broke, sorry')
+        } else {
+
+            dispatch({
+                type: 'SAGA_BUY_POTION',
+                payload: {
+                    potionId: 1
+                }
+            });
+            history.push(`/home`)
+        }
+    };
+
+
+
+    const handleStaminaClickOpen = () => {
+        setStaminaOpen(true);
+    };
+
+    const handleStaminaClose = () => {
+        setStaminaOpen(false);
+    };
+
+    const buyStaminaPot = () => {
+
+        if (user.coins < 10) {
+            setStaminaOpen(false);
+            return alert('you are broke broke, sorry')
+        } else {
+
+            dispatch({
+                type: 'SAGA_BUY_POTION',
+                payload: {
+                    potionId: 2
+                }
+            });
+            history.push(`/home`)
+        }
+    };
+
+
+
+
+    const handleMaxClickOpen = () => {
+        setMaxOpen(true);
+    };
+
+    const handleMaxClose = () => {
+        setMaxOpen(false);
+    };
+
+    const buyMaxPot = () => {
+
+        if (user.coins < 10) {
+            setMaxOpen(false);
+            return alert('you are broke, sorry')
+        } else {
+
+            dispatch({
+                type: 'SAGA_BUY_POTION',
+                payload: {
+                    potionId: 3
+                }
+            });
+            history.push(`/home`)
         }
     };
 
@@ -85,10 +172,10 @@ function Shop() {
                 <p>15 coins</p>
 
                 <Fragment>
-                    <img onClick={handleClickOpen} height={200} width={200} src="images/1200px-ItemBoxMK8.webp" />
+                    <img onClick={handleRandomClickOpen} height={200} width={200} src="images/1200px-ItemBoxMK8.webp" />
                     <Dialog
-                        open={open}
-                        onClose={handleClose}
+                        open={randomOpen}
+                        onClose={handleRandomClose}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
@@ -104,7 +191,108 @@ function Shop() {
                             <Button onClick={getRandomCharacter} autoFocus>
                                 Yes
                             </Button>
-                            <Button onClick={handleClose}>No</Button>
+                            <Button onClick={handleRandomClose}>No</Button>
+                        </DialogActions>
+                    </Dialog>
+                </Fragment>
+
+            </div>
+
+            <div className='healthPot'>
+
+                <h4>Health Pot</h4>
+
+                <p>10 coins</p>
+
+                <Fragment>
+                    <img onClick={handleHealthClickOpen} height={200} width={200} src="images/healthPotion.png" />
+                    <Dialog
+                        open={healthOpen}
+                        onClose={handleHealthClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Are you sure you want a Health Pot?"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                A health pot will cost 10 coins and you can not get a refund.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={buyHealthPot} autoFocus>
+                                Yes
+                            </Button>
+                            <Button onClick={handleHealthClose}>No</Button>
+                        </DialogActions>
+                    </Dialog>
+                </Fragment>
+
+            </div>
+
+
+            <div className='staminaPot'>
+
+                <h4>Stamina Pot</h4>
+
+                <p>10 coins</p>
+
+                <Fragment>
+                    <img onClick={handleStaminaClickOpen} height={200} width={200} src="images/staminaPotion.png" />
+                    <Dialog
+                        open={staminaOpen}
+                        onClose={handleStaminaClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Are you sure you want a Stamina Pot?"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                            A stamina pot will cost 10 coins and you can not get a refund.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={buyStaminaPot} autoFocus>
+                                Yes
+                            </Button>
+                            <Button onClick={handleStaminaClose}>No</Button>
+                        </DialogActions>
+                    </Dialog>
+                </Fragment>
+
+            </div>
+
+
+            <div className='maxPot'>
+
+                <h4>Max Pot</h4>
+
+                <p>20 coins</p>
+
+                <Fragment>
+                    <img onClick={handleMaxClickOpen} height={200} width={200} src="images/maxPotion.png" />
+                    <Dialog
+                        open={maxOpen}
+                        onClose={handleMaxClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Are you sure you want a Max Pot?"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                            A max pot will cost 20 coins and you can not get a refund.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={buyMaxPot} autoFocus>
+                                Yes
+                            </Button>
+                            <Button onClick={handleMaxClose}>No</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>

@@ -3,45 +3,39 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
-router.get('/items', (req, res) => {
-    // console.log('im in basic route');
+// router.get('/items', (req, res) => {
+//     // console.log('im in basic route');
 
-    const query = `
-      SELECT * FROM "items";
-    `;
+//     const query = `
+//       SELECT * FROM "items";
+//     `;
 
-    pool.query(query)
-        .then(result => {
-            res.send(result.rows);
-        })
-        .catch(err => {
-            console.log('ERROR: Get all items', err);
-            res.sendStatus(500)
-        })
+//     pool.query(query)
+//         .then(result => {
+//             res.send(result.rows);
+//         })
+//         .catch(err => {
+//             console.log('ERROR: Get all items', err);
+//             res.sendStatus(500)
+//         })
 
-});
+// });
 
 
 router.get('/inventory', (req, res) => {
-    // console.log('im in character get');
+
     const query = `
-  SELECT "user_characters"."id" as "id",
-		"user_characters"."user_id" as "user_id",
-		"user_characters"."character_id",
-        "user_characters"."starter",
-        "user_characters"."new",
-		"characters"."name",
-		"characters"."profile_pic",
-		"characters"."hp",
-		"characters"."stamina",
-		"characters"."unique_attack",
-		"characters"."unique_damage",
-		"characters"."unique_stamina",
-        "characters"."battle_pic"
- FROM "user_characters"
-	INNER JOIN "characters"
-    	ON "user_characters"."character_id" = "characters"."id"
-    WHERE "user_id" = ${[req.user.id]};
+    SELECT "user_inventory"."id" as "id",
+            "user_inventory"."user_id" as "user_id",
+            "user_inventory"."items_id" as "items_id",
+            "user_inventory"."number" as "number",
+            "items"."name",
+            "items"."hp",
+            "items"."stamina"
+    FROM "user_inventory"
+        INNER JOIN "items"
+    ON "user_inventory"."items_id" = "items"."id"
+        WHERE "user_id" = ${[req.user.id]};
   `;
 
     pool.query(query)
@@ -56,26 +50,35 @@ router.get('/inventory', (req, res) => {
 });
 
 
-router.put("/buy/:id", (req, res) => {
+router.put("/potion/:id", (req, res) => {
 
     const sqlText = `
-    UPDATE "user_characters"
-  SET "starter" = FALSE
-    WHERE "user_id" = ${[req.user.id]};
+    UPDATE "user_inventory"
+    SET "number" = "number" + 1
+      WHERE "user_id" = ${[req.user.id]} AND "items_id" = ${req.params.id};
+  
       `;
 
     pool.query(sqlText)
         .then((result) => {
+            let insertNewUserQuery;
 
-            const insertNewUserQuery = `
-        UPDATE "user_characters"
-          SET "starter" = TRUE
-          WHERE "id" = ${req.params.id};
-          `;
+            if (req.params.id === '1' || req.params.id === '2') {
+                insertNewUserQuery = `
+                    UPDATE "user"
+                      SET "coins" = "coins" - 10
+                      WHERE "id" = ${[req.user.id]};
+                      `;
+            } else if (req.params.id === '3') {
+                 insertNewUserQuery = `
+                    UPDATE "user"
+                      SET "coins" = "coins" - 20
+                      WHERE "id" = ${[req.user.id]};
+                      `;
+            }
 
             pool.query(insertNewUserQuery)
                 .then(result => {
-
                     res.sendStatus(201);
                 })
         }).catch(err => {
@@ -88,6 +91,9 @@ router.put("/buy/:id", (req, res) => {
             res.sendStatus(500);
         });
 });
+
+
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 .randomCharacter {
     position: absolute;
     /* border: 3px solid black; */
@@ -10,11 +8,55 @@
     text-align: center;
 }
 
+.healthPot {
+    position: absolute;
+    /* border: 3px solid black; */
+    height: 300px;
+    width: 200px;
+    top: 25%;
+    left: 12.5%;
+    text-align: center;
+}
+
+.staminaPot {
+    position: absolute;
+    /* border: 3px solid black; */
+    height: 300px;
+    width: 200px;
+    top: 25%;
+    left: 75%;
+    text-align: center;
+}
+
+.maxPot {
+    position: absolute;
+    /* border: 3px solid black; */
+    height: 300px;
+    width: 200px;
+    top: 62%;
+    left: 43.5%;
+    text-align: center;
+}
+
+
+
 h2 {
     text-align: center;
 }
 
 .randomCharacter img {
+    cursor: pointer;
+}
+
+.healthPot img {
+    cursor: pointer;
+}
+
+.staminaPot img {
+    cursor: pointer;
+}
+
+.maxPot img {
     cursor: pointer;
 }
 
