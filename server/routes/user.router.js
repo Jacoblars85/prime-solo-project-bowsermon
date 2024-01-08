@@ -37,13 +37,36 @@ router.post('/register', (req, res, next) => {
         INSERT INTO "user_characters" 
           ("user_id", "character_id", "starter")
           VALUES
-          ($1, 1, TRUE);
+          ($1, 1, TRUE) 
+          RETURNING user_id;
       `;
       const insertNewUserValues = [createdUserId]
       // SECOND QUERY ADDS user_id to user_characeters
       pool.query(insertNewUserQuery, insertNewUserValues)
-        // was here for basic
-        .then(() => res.sendStatus(201))
+        .then(result => {
+          // ID IS HERE!
+          console.log('New user Id:', result.rows[0].user_id);
+          const createdUserId = result.rows[0].user_id
+
+          // Now handle the user_characters reference:
+          const insertNewUserQuery = `
+          INSERT INTO "user_inventory" 
+            ("user_id", "items_id", "number")
+            VALUES
+            ($1, 1, 0),
+            ($1, 2, 0),
+            ($1, 3, 0);
+        `;
+          const insertNewUserValues = [createdUserId]
+
+          pool.query(insertNewUserQuery, insertNewUserValues)
+            // was here for basic
+            .then(() => res.sendStatus(201))
+        }).catch(err => {
+          // catch for third query
+          console.log(err);
+          res.sendStatus(500)
+        })
     }).catch(err => {
       // catch for second query
       console.log(err);
@@ -154,28 +177,28 @@ router.put("/won/:id", (req, res) => {
     `;
 
   pool.query(sqlText)
-      .then((result) => {
+    .then((result) => {
 
-          const insertNewUserQuery = `
+      const insertNewUserQuery = `
       UPDATE "user"
         SET "level_${req.params.id}_completed" = TRUE
         WHERE "id" = ${[req.user.id]};
         `;
 
-          pool.query(insertNewUserQuery)
-              .then(result => {
+      pool.query(insertNewUserQuery)
+        .then(result => {
 
-                  res.sendStatus(201);
-              })
-      }).catch(err => {
-          // catch for second query
-          console.log('in the second', err);
-          res.sendStatus(500)
-      })
-      .catch((err) => {
-          console.log("Error in user.router /won PUT,", err);
-          res.sendStatus(500);
-      });
+          res.sendStatus(201);
+        })
+    }).catch(err => {
+      // catch for second query
+      console.log('in the second', err);
+      res.sendStatus(500)
+    })
+    .catch((err) => {
+      console.log("Error in user.router /won PUT,", err);
+      res.sendStatus(500);
+    });
 });
 
 

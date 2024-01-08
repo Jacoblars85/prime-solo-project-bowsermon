@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 
-const inventory = (state = [{}], action) => {
+const items = (state = [], action) => {
     switch (action.type) {
       case 'SET_ITEMS':
         return action.payload;
@@ -13,7 +13,7 @@ const inventory = (state = [{}], action) => {
 
 
 export default combineReducers({
-    inventory,
+    items,
    
   });
   
