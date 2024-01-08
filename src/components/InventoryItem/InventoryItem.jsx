@@ -6,6 +6,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 
 
 function InventoryItem({ inventoryItem }) {
@@ -74,6 +76,10 @@ function InventoryItem({ inventoryItem }) {
     }
   }
 
+  const valuetext = (value) => {
+    return `${value}°C`;
+  }
+
   return (
     <div className={inventoryItem.new ? "new_item" : "item_box"} onMouseOver={inventoryItem.new ? toggleNewClass : doNothing }>
 
@@ -82,6 +88,20 @@ function InventoryItem({ inventoryItem }) {
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
       <p>amount: {inventoryItem.number}</p>
+
+      <Box sx={{ width: 170 }}>
+      <Slider
+        aria-label="Temperature"
+        defaultValue={0}
+        getAriaValueText={valuetext}
+        valueLabelDisplay="auto"
+        step={1}
+        marks
+        min={1}
+        max={inventoryItem.number}
+        disabled={inventoryItem.number === 0 ? true : false}
+      />
+    </Box>
 
       <button id={inventoryItem.id} onClick={confirmSale} >Sell</button>
 
@@ -119,3 +139,4 @@ function InventoryItem({ inventoryItem }) {
 }
 
 export default InventoryItem;
+
