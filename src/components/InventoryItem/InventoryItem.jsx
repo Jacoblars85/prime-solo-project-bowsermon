@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-function CharacterItem({ character }) {
+function InventoryItem({ inventoryItem }) {
   const [isPicture, setIsPicture] = useState(false)
 
   const user = useSelector(store => store.user.userReducer);
@@ -22,22 +22,12 @@ function CharacterItem({ character }) {
       setOpen(false);
     };
 
-  const setStarter = () => {
-    dispatch({
-      type: 'SAGA_SET_STARTER',
-      payload: character.id
-    });
-  }
 
   const sellCharacter = () => {
-    if (character.id === starter[0].id) {
-      setOpen(false);
-      return alert("you can't sell your starter")
-    }
     dispatch({
       type: 'SAGA_SELL_CHARACTER',
       payload: {
-        characterID: character.id
+        characterID: inventoryItem.id
       }
     })
     setOpen(false);
@@ -53,11 +43,11 @@ function CharacterItem({ character }) {
   }
 
   const toggleNewClass = () => {
-    console.log(character.id);
+    console.log(inventoryItem.id);
     
     dispatch({
       type: 'SAGA_SET_OLD',
-      payload: character.id
+      payload: inventoryItem.id
     });
   }
 
@@ -70,35 +60,32 @@ function CharacterItem({ character }) {
       return (
         <div className='description'>
 
-          <p>{character.hp} hp</p>
-          <p>{character.stamina} stamina</p>
-          <p>{character.unique_attack} attack</p>
-          <p>{character.unique_damage} damage</p>
-          <p>{character.unique_stamina} stamina cost</p>
-
+          <p>{inventoryItem.hp} hp</p>
+          <p>{inventoryItem.stamina} stamina</p>
 
         </div>
       )
     } else {
       return (
         <div>
-          <img height={100} width={100} src={character.profile_pic} />
+          <img height={100} width={100} src={inventoryItem.pic} />
         </div>
       )
     }
   }
 
   return (
-    <div className={character.new ? "new" : "single-box"} onMouseOver={character.new ? toggleNewClass : doNothing }>
+    <div className={inventoryItem.new ? "new_item" : "item_box"} onMouseOver={inventoryItem.new ? toggleNewClass : doNothing }>
 
-      <h5>{character.name}</h5>
+      <h5>{inventoryItem.name}</h5>
 
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
-      <button id={character.id} onClick={setStarter} >Start</button>
-      <button id={character.id} onClick={confirmSale} >Sell</button>
+      <p>amount: {inventoryItem.number}</p>
 
-      <p>{character.new ? "new" : ""}</p>
+      <button id={inventoryItem.id} onClick={confirmSale} >Sell</button>
+
+      {/* <p>{inventoryItem.new ? "new" : ""}</p> */}
     
 
 
@@ -110,11 +97,11 @@ function CharacterItem({ character }) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {`Are you sure you want to sell ${character.name}`}
+          {`Are you sure you want to sell ${inventoryItem.name}`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You will receive 10 coins if you sell {character.name}. You will have to buy the new character box to have the chance to get {character.name} back.
+            You will receive 5 coins if you sell {inventoryItem.name}. You will have to buy the another {inventoryItem.name}, to have this in the battle.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -131,4 +118,4 @@ function CharacterItem({ character }) {
   )
 }
 
-export default CharacterItem;
+export default InventoryItem;

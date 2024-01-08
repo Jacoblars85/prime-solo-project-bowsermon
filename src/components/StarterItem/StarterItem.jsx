@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function StarterItem({ start }) {
   const [isPicture, setIsPicture] = useState(false)
- 
+
   const togglePicture = () => {
     setIsPicture(!isPicture)
   }
@@ -15,8 +15,10 @@ function StarterItem({ start }) {
         <div className='description'>
 
           <p>{start.hp} hp</p>
+          <p>{start.stamina} stamina</p>
           <p>{start.unique_attack} attack</p>
           <p>{start.unique_damage} damage</p>
+          <p>{start.unique_stamina} stamina cost</p>
 
         </div>
       )

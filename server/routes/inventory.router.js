@@ -3,24 +3,6 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
-// router.get('/items', (req, res) => {
-//     // console.log('im in basic route');
-
-//     const query = `
-//       SELECT * FROM "items";
-//     `;
-
-//     pool.query(query)
-//         .then(result => {
-//             res.send(result.rows);
-//         })
-//         .catch(err => {
-//             console.log('ERROR: Get all items', err);
-//             res.sendStatus(500)
-//         })
-
-// });
-
 
 router.get('/inventory', (req, res) => {
 
@@ -31,7 +13,8 @@ router.get('/inventory', (req, res) => {
             "user_inventory"."number" as "number",
             "items"."name",
             "items"."hp",
-            "items"."stamina"
+            "items"."stamina",
+            "items"."pic"
     FROM "user_inventory"
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"
