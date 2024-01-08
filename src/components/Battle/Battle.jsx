@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, useRef } from 'react';
+import React, { useState, useEffect, Fragment, useRef, forwardRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
@@ -11,6 +11,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import lakeBackground from '../../ExportBackgroundnomoveclound.webp';
 import forestBackground from '../../RockForest.webp';
+import ListItemText from '@mui/material/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
+
 
 
 function Battle() {
@@ -29,8 +40,11 @@ function Battle() {
         });
     }, []);
 
-
     const history = useHistory()
+
+    const Transition = forwardRef(function Transition(props, ref) {
+        return <Slide direction="up" ref={ref} {...props} />;
+      });
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
     const characters = useSelector((store) => store.character.characters);
@@ -63,6 +77,18 @@ function Battle() {
 
 
     // const [roundOver, setRoundOver] = useState(false);
+
+
+
+    const [inventoryOpen, setInventoryOpen] = useState(false);
+
+    const handleInventoryOpen = () => {
+        setInventoryOpen(true);
+    };
+
+    const handleInventoryClose = () => {
+        setInventoryOpen(false);
+    };
 
 
     const [openWinner, setWinnerOpen] = useState(false);
@@ -147,16 +173,16 @@ function Battle() {
 
         //         setEnemyClassName("shake")
         //         setEnemyHp(enemyHp - 5)
-    
+
         //         if (enemyHp - 5 <= 0) {
         //             setEnemyHp(0)
         //             setWinnerOpen(true)
         //         }
-                  
+
         //     }
 
         // }, 3000);
-        
+
 
         console.log('enemy hp', enemyHp);
 
@@ -212,7 +238,7 @@ function Battle() {
                 setEnemyPicAttack("enemyPicAttack")
                 setEnemyClassName("shake")
 
-            } 
+            }
 
         }, 3000);
 
@@ -234,17 +260,17 @@ function Battle() {
             if (enemyStamina >= enemyOne.unique_stamina) {
 
                 setTextBox(`${enemyOne.name} used ${enemyOne.unique_attack}. It did ${enemyOne.unique_damage} damage and took ${enemyOne.unique_stamina} stamina.`);
-     
+
             } else if (enemyStamina >= basicAttacks[0].stamina) {
-   
+
                 setTextBox(`${enemyOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
 
             } else if (enemyStamina >= basicAttacks[1].stamina) {
-            
+
                 setTextBox(`${enemyOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
 
             } else if (enemyStamina === 0) {
-           
+
                 setTextBox(`${enemyOne.name} tried to attack but it failed. They have no more stamina and could not move.`);
 
             }
@@ -276,13 +302,10 @@ function Battle() {
 
             <div className='character'>
 
-                <p className="hp-text">{starterOne.name} hp: {characterHp}</p>
-
-                <p className="stamina-text">{starterOne.name} stamina: {characterStamina}</p>
-
+                <p className="hp-text"> hp: {characterHp}</p>
+                <p className="stamina-text"> stamina: {characterStamina}</p>
 
                 <progress className="hp-meter" value={characterHp} max={starterOne.hp}></progress>
-
                 <progress className="stamina-meter" value={characterStamina} max={starterOne.stamina}></progress>
 
                 <img className={characterPicAttack} src={starterOne.profile_pic} />
@@ -291,12 +314,10 @@ function Battle() {
 
             <div className={enemyClassName}>
 
-                <p className="hp-text">{enemyOne.name} hp: {enemyHp}</p>
-
-                <p className="stamina-text">{enemyOne.name} stamina: {enemyStamina}</p>
+                <p className="hp-text"> hp: {enemyHp}</p>
+                <p className="stamina-text">stamina: {enemyStamina}</p>
 
                 <progress className="hp-meter" value={enemyHp} max={enemyOne.hp}></progress>
-
                 <progress className="stamina-meter" value={enemyStamina} max={enemyOne.stamina}></progress>
 
                 <img className={enemyPicAttack} height={300} width={200} src={enemyOne.battle_pic} />
@@ -312,7 +333,8 @@ function Battle() {
             <div className='attacks' >
 
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')} className='punchAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
+                <button onClick={() => battle('punch')} className='kickAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
+                <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
                 <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
 
             </div>
@@ -364,6 +386,48 @@ function Battle() {
                     </DialogActions>
                 </Dialog>
             </Fragment>
+
+
+            <Fragment>
+                <Dialog
+                    fullScreen
+                    open={inventoryOpen}
+                    onClose={handleInventoryClose}
+                    TransitionComponent={Transition}
+                >
+                    <AppBar sx={{ position: 'relative' }}>
+                        <Toolbar>
+                            <IconButton
+                                edge="start"
+                                color="inherit"
+                                onClick={handleInventoryClose}
+                                aria-label="close"
+                            >
+                                <CloseIcon />
+                            </IconButton>
+                            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                                Sound
+                            </Typography>
+                            <Button autoFocus color="inherit" onClick={handleInventoryClose}>
+                                save
+                            </Button>
+                        </Toolbar>
+                    </AppBar>
+                    <List>
+                        <ListItem button>
+                            <ListItemText primary="Phone ringtone" secondary="Titania" />
+                        </ListItem>
+                        <Divider />
+                        <ListItem button>
+                            <ListItemText
+                                primary="Default notification ringtone"
+                                secondary="Tethys"
+                            />
+                        </ListItem>
+                    </List>
+                </Dialog>
+            </Fragment>
+
 
         </div>
     );

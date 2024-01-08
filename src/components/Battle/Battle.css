@@ -6,21 +6,20 @@ body {
 }
 
 
-/* .battle html, body {
-    background-image: url("/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/RockForest.webp");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-x: right;
-
-} */
-
-
-
-
 /* Make the screen shake when you click on it
   (for attacks)
  */
-body:has(.attacks button:active:not(:disabled)) {
+body:has(.uniqueAttack:active:not(:disabled)) {
+    animation: shake 0.6s;
+    animation-iteration-count: infinite;
+}
+
+body:has(.kickAttack:active:not(:disabled)) {
+    animation: shake 0.6s;
+    animation-iteration-count: infinite;
+}
+
+body:has(.pokeAttack:active:not(:disabled)) {
     animation: shake 0.6s;
     animation-iteration-count: infinite;
 }
@@ -90,6 +89,16 @@ body:has(.shake ) {
     }
 }
 
+  
+  @keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
 
 .hp-meter {
     position: absolute;
@@ -125,7 +134,6 @@ body:has(.shake ) {
 background: blue;
 }
 
-
 .hp-text {
     position: absolute;
     top: -6%;
@@ -150,7 +158,6 @@ background: blue;
     /* text-shadow: 0px 0px 9px #ff0000; */
 }
 
-
 .character {
     position: absolute;
     display: flex;
@@ -161,6 +168,7 @@ background: blue;
     width: 400px;
     height: 400px;
     justify-content: center;
+    
 }
 
 .character img {
@@ -169,6 +177,8 @@ background: blue;
     border: 1px solid blue;
     width: 300px;
     height: 300px;
+    animation: MoveUpDown 3s linear infinite;
+
 }
 
 .enemy, .shake{
@@ -189,8 +199,9 @@ background: blue;
     border: 1px solid blue;
     width: 200px;
     height: 300px;
-}
+    animation: MoveUpDown 3s linear infinite;
 
+}
 
 .attacks {
     position: absolute;
