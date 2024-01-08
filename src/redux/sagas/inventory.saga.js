@@ -36,9 +36,9 @@ import { put, takeLatest } from 'redux-saga/effects';
         method: 'PUT',
         url: `/api/inventory/potion/${action.payload.potionId}`
       })
-    //   yield put({
-    //     type: 'SET_USERS_INVENTORY',
-    //   })
+      yield put({
+        type: 'SAGA_FETCH_IVENTORY',
+      })
       yield put({
         type: 'FETCH_USER',
       })

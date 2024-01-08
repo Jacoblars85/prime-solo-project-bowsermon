@@ -45,6 +45,8 @@ function HomePage() {
 
           <button className="characterButton" onClick={() => history.push(`/characters`)}>Characters</button>
           <button className="shopButton" onClick={() => history.push(`/shop`)}>Shop</button>
+          <button className="inventoryButton" onClick={() => history.push(`/inventory`)}>Inventory</button>
+
           <button className="campaignButton" onClick={() => history.push(`/campaign`)}>Campaign</button>
 
         </div>

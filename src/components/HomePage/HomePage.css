@@ -26,6 +26,16 @@ body {
 
 }
 
+.inventoryButton {
+    position: absolute;
+    top: 45%;
+    left: 0.1%;
+    height: 50px;
+    width: 300px;
+    cursor: pointer;
+
+}
+
 
 .campaignButton {
     position: absolute;
