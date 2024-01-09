@@ -35,6 +35,9 @@ function Shop() {
 
 
 
+
+
+
     // const [prizeOpen, setPrizeOpen] = useState(false);
 
 
@@ -85,11 +88,12 @@ function Shop() {
         setHealthOpen(false);
     };
 
-    const buyHealthPot = () => {
+    const buyHealthPot = (healthValue) => {
 
-        console.log(value);
+        console.log(healthValue);
+        console.log(healthValue * 10);
 
-        if (user.coins < 10) {
+        if (user.coins < healthValue * 10) {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
         } else {
@@ -104,6 +108,17 @@ function Shop() {
         }
     };
 
+    const healthValuetext = (healthvalues) => {
+        // console.log(value);
+        return healthvalues;
+    }
+
+    const [healthValue, setHealthValue] = useState(0);
+
+    const handleHealthChange = (event, newHealthValue) => {
+        setHealthValue(newHealthValue);
+    };
+
 
 
     const handleStaminaClickOpen = () => {
@@ -114,9 +129,12 @@ function Shop() {
         setStaminaOpen(false);
     };
 
-    const buyStaminaPot = () => {
+    const buyStaminaPot = (staminaValue) => {
 
-        if (user.coins < 10) {
+console.log(staminaValue);
+console.log(staminaValue * 10);
+
+        if (user.coins < staminaValue * 10) {
             setStaminaOpen(false);
             return alert('you are broke broke, sorry')
         } else {
@@ -131,6 +149,17 @@ function Shop() {
         }
     };
 
+    const staminaValuetext = (value) => {
+        // console.log(value);
+        return value;
+    }
+
+    const [staminaValue, setStaminaValue] = useState(0);
+
+    const handleStaminaChange = (event, newStaminaValue) => {
+        setStaminaValue(newStaminaValue);
+    };
+
 
 
 
@@ -142,9 +171,11 @@ function Shop() {
         setMaxOpen(false);
     };
 
-    const buyMaxPot = () => {
+    const buyMaxPot = (maxValue) => {
+console.log(maxValue );
+console.log(maxValue * 20);
 
-        if (user.coins < 10) {
+        if (user.coins < maxValue * 20) {
             setMaxOpen(false);
             return alert('you are broke, sorry')
         } else {
@@ -159,12 +190,17 @@ function Shop() {
         }
     };
 
-    const valuetext = (value) => {
+    const maxValuetext = (value) => {
         // console.log(value);
         return value;
-      }
+    }
 
-      console.log(valuetext());
+    const [maxValue, setMaxValue] = useState(0);
+
+    const handleMaxChange = (event, newMaxValue) => {
+        setMaxValue(newMaxValue);
+    };
+
 
 
 
@@ -223,15 +259,15 @@ function Shop() {
                         aria-describedby="alert-dialog-description"
                     >
                         <DialogTitle id="alert-dialog-title">
-                            {"Are you sure you want a Health Pot?"}
+                            {`Are you sure you want ${healthValue} of the Health Potions?`}
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                A health pot will cost 10 coins and you can not get a refund.
+                                This will cost {healthValue * 10} coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={buyHealthPot} autoFocus>
+                            <Button onClick={() => buyHealthPot(healthValue)} autoFocus>
                                 Yes
                             </Button>
                             <Button onClick={handleHealthClose}>No</Button>
@@ -242,8 +278,10 @@ function Shop() {
                 <Box sx={{ width: 170 }}>
                     <Slider
                         aria-label="Amount"
-                        defaultValue={0}
-                        getAriaValueText={valuetext}
+                        defaultValue={1}
+                        value={healthValue}
+                        onChange={handleHealthChange}
+                        getAriaValueText={healthValuetext}
                         valueLabelDisplay="auto"
                         step={1}
                         marks
@@ -270,15 +308,15 @@ function Shop() {
                         aria-describedby="alert-dialog-description"
                     >
                         <DialogTitle id="alert-dialog-title">
-                            {"Are you sure you want a Stamina Pot?"}
+                            {`Are you sure you want ${staminaValue} of the Stamina Potions?`}
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                A stamina pot will cost 10 coins and you can not get a refund.
+                                This will cost {staminaValue * 10} coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={buyStaminaPot} autoFocus>
+                            <Button onClick={() => buyStaminaPot(staminaValue)} autoFocus>
                                 Yes
                             </Button>
                             <Button onClick={handleStaminaClose}>No</Button>
@@ -289,8 +327,10 @@ function Shop() {
                 <Box sx={{ width: 170 }}>
                     <Slider
                         aria-label="Temperature"
-                        defaultValue={0}
-                        getAriaValueText={valuetext}
+                        defaultValue={1}
+                        value={staminaValue}
+                        onChange={handleStaminaChange}
+                        getAriaValueText={staminaValuetext}
                         valueLabelDisplay="auto"
                         step={1}
                         marks
@@ -317,15 +357,17 @@ function Shop() {
                         aria-describedby="alert-dialog-description"
                     >
                         <DialogTitle id="alert-dialog-title">
-                            {"Are you sure you want a Max Pot?"}
+                        {`Are you sure you want ${maxValue} of the Max Potions?`}
+
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                A max pot will cost 20 coins and you can not get a refund.
+                            This will cost {maxValue * 20} coins and you can not get a refund.
+
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={buyMaxPot} autoFocus>
+                            <Button onClick={() => buyMaxPot(maxValue)} autoFocus>
                                 Yes
                             </Button>
                             <Button onClick={handleMaxClose}>No</Button>
@@ -336,8 +378,10 @@ function Shop() {
                 <Box sx={{ width: 170 }}>
                     <Slider
                         aria-label="Temperature"
-                        defaultValue={0}
-                        getAriaValueText={valuetext}
+                        defaultValue={1}
+                        value={maxValue}
+                        onChange={handleMaxChange}
+                        getAriaValueText={maxValuetext}
                         valueLabelDisplay="auto"
                         step={1}
                         marks
