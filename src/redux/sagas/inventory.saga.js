@@ -50,7 +50,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
   function* sellPotion(action) {
-    console.log('action.payload', action.payload);
+    // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',

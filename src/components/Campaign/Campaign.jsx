@@ -19,6 +19,10 @@ function Campaign() {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
     }, []);
 
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_IVENTORY' });
+    }, []);
+
     const goToTheBattle = (params) => {
         console.log('paramas', params);
         dispatch({

@@ -18,6 +18,10 @@ function HomePage() {
     dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
   }, []);
 
+  useEffect(() => {
+    dispatch({ type: 'SAGA_FETCH_IVENTORY' });
+}, []);
+
   return (
     <div>
 

@@ -40,6 +40,10 @@ function Battle() {
         });
     }, []);
 
+    useEffect(() => {
+        dispatch({ type: 'SAGA_FETCH_IVENTORY' });
+    }, []);
+
     const history = useHistory()
 
     const Transition = forwardRef(function Transition(props, ref) {
@@ -51,11 +55,20 @@ function Battle() {
     const starter = useSelector((store) => store.character.starter);
     const levelEnemy = useSelector((store) => store.character.levelEnemy);
     const user = useSelector((store) => store.user.userReducer);
+    const inventory = useSelector((store) => store.inventory.inventory);
 
+console.log('inventory',inventory);
 
     // let characterOne = characters[0];
     let enemyOne = levelEnemy[0];
     let starterOne = starter[0];
+
+    let healthPot = inventory[0];
+    let staminaPot = inventory[2];
+    let maxPot = inventory[3];
+
+    console.log('healthpot', healthPot);
+
 
 
     console.log('starter', starterOne);
@@ -80,13 +93,19 @@ function Battle() {
 
 
 
-    const [inventoryOpen, setInventoryOpen] = useState(false);
+    const [inventoryOpen, setInventoryOpen] = useState(null);
 
     const handleInventoryOpen = () => {
         setInventoryOpen(true);
     };
 
     const handleInventoryClose = () => {
+        setInventoryOpen(false);
+    };
+
+    const usePotion = (potion) => {
+console.log('potion clicked', potion);
+
         setInventoryOpen(false);
     };
 
@@ -165,6 +184,16 @@ function Battle() {
                 setEnemyHp(0)
                 setWinnerOpen(true)
             }
+        } else if (attackType === 'health') {
+            setCharacterHp(characterHp + 25)
+
+        } else if (attackType === 'stamina') {
+            setCharacterStamina(characterStamina + 30)
+
+        } else if (attackType === 'max') {
+            setCharacterHp(characterHp + 20)
+            setCharacterStamina(characterStamina + 25)
+
         }
 
         // setTimeout(() => {
@@ -334,7 +363,7 @@ function Battle() {
 
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
                 <button onClick={() => battle('punch')} className='kickAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
-                <button onClick={() => handleInventoryOpen()} className='inventory' disabled={isDisabled} >Inventory</button>
+                <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
                 <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
 
             </div>
@@ -395,35 +424,48 @@ function Battle() {
                     onClose={handleInventoryClose}
                     TransitionComponent={Transition}
                 >
-                    <AppBar sx={{ position: 'relative' }}>
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
                         <Toolbar>
                             <IconButton
                                 edge="start"
                                 color="inherit"
                                 onClick={handleInventoryClose}
                                 aria-label="close"
+                                // aria-expanded
                             >
                                 <CloseIcon />
                             </IconButton>
-                            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                                Sound
+                            <Typography sx={{ ml: 73.5, flex: 1, }} variant="h4" component="div">
+                                Inventory
                             </Typography>
                             <Button autoFocus color="inherit" onClick={handleInventoryClose}>
-                                save
+                                close
                             </Button>
                         </Toolbar>
                     </AppBar>
                     <List>
-                        <ListItem button>
-                            <ListItemText primary="Phone ringtone" secondary="Titania" />
+                        <ListItem >
+                    <img  height={200} width={200} src="images/healthPotion.png" />
+                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button disabled={healthPot === 0 ? true : false} onClick={() => usePotion(healthPot)} >Use Potion</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                        <ListItem >
+                    <img height={200} width={200} src="images/staminaPotion.png" />
+                            <ListItemText sx={{ ml: 55 }}
+                                primary="Stamina Potion"
+                                secondary="0 hp | 30 stamina"
+                            /><Button disabled={staminaPot === 0 ? true : false} onClick={() => usePotion(staminaPot)} >Use Potion</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                        <ListItem >
+                    <img  height={200} width={200} src="images/maxPotion.png" />
+                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button disabled={maxPot === 0 ? true : false} onClick={() => usePotion(maxPot)} >Use Potion</Button>
                         </ListItem>
                         <Divider />
-                        <ListItem button>
-                            <ListItemText
-                                primary="Default notification ringtone"
-                                secondary="Tethys"
-                            />
-                        </ListItem>
                     </List>
                 </Dialog>
             </Fragment>

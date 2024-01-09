@@ -11,7 +11,7 @@ const items = (state = [], action) => {
   }
 
 
-  const inventory = (state = [], action) => {
+  const inventory = (state = [{}], action) => {
     switch (action.type) {
       case 'SET_USERS_INVENTORY':
         return action.payload;
