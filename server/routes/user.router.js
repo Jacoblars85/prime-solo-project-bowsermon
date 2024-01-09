@@ -100,10 +100,10 @@ router.put("/change", (req, res) => {
   const sqlText = `
   UPDATE "user"
     SET "username" = ($1)
-    WHERE "id" = '${[req.user.id]}';
+    WHERE "id" = '$2';
     `;
 
-  const sqlValues = [req.body.newName];
+  const sqlValues = [req.body.newName, req.user.id];
 
   pool
     .query(sqlText, sqlValues)
@@ -173,10 +173,12 @@ router.put("/won/:id", (req, res) => {
   const sqlText = `
   UPDATE "user"
         SET "coins" = "coins" + 10
-        WHERE "id" = '${[req.user.id]}';
+        WHERE "id" = '$1';
     `;
 
-  pool.query(sqlText)
+  const sqlValues = [req.user.id];
+
+  pool.query(sqlText, sqlValues)
     .then((result) => {
 
       const insertNewUserQuery = `

@@ -38,10 +38,13 @@ console.log(req.body.amountNum);
     const sqlText = `
     UPDATE "user_inventory"
     SET "number" = "number" + ${req.body.amountNum}
-      WHERE "user_id" = ${[req.user.id]} AND "items_id" = ${req.params.id};
+      WHERE "user_id" = $1 AND "items_id" = $2;
       `;
 
-    pool.query(sqlText)
+      const insertValue = [req.user.id, req.params.id]
+
+
+    pool.query(sqlText, insertValue)
         .then((result) => {
             let insertNewUserQuery;
 
@@ -56,19 +59,20 @@ console.log(req.body.amountNum);
                 insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${healthNum}
-                      WHERE "id" = ${[req.user.id]}
+                      WHERE "id" = $1
                       RETURNING "coins";
                       `;
             } else if (req.params.id === '3') {
                  insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${maxNum}
-                      WHERE "id" = ${[req.user.id]}
+                      WHERE "id" = $1
                       RETURNING "coins";
                       `;
             }
+            const insertValue = [req.user.id]
 
-            pool.query(insertNewUserQuery)
+            pool.query(insertNewUserQuery, insertValue)
                 .then(result => {
                     console.log("result.rows in server:", result.rows)
                     res.sendStatus(201);
