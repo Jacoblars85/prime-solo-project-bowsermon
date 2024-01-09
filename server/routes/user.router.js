@@ -172,7 +172,7 @@ router.put("/won/:id", (req, res) => {
 
   const sqlText = `
   UPDATE "user"
-        SET "coins" = "coins" + 5
+        SET "coins" = "coins" + 10
         WHERE "id" = '${[req.user.id]}';
     `;
 

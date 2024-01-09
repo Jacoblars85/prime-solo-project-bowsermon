@@ -132,7 +132,7 @@ router.put("/buy", (req, res) => {
 });
 
 
-router.put("/sell", (req, res) => {
+router.put("/sell/character", (req, res) => {
 
     const sqlText = `
         UPDATE "user"

@@ -91,7 +91,7 @@ function* giveUserCoins() {
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/sell`
+      url: `/api/characters/sell/character`
     })
     yield put({
       type: 'FETCH_USER',

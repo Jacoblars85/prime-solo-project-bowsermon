@@ -25,15 +25,15 @@ function InventoryItem({ inventoryItem }) {
     };
 
 
-  const sellCharacter = () => {
-    dispatch({
-      type: 'SAGA_SELL_ITEM',
-      payload: {
-        characterID: inventoryItem.id
-      }
-    })
-    setOpen(false);
-  }
+//   const sellCharacter = () => {
+//     dispatch({
+//       type: 'SAGA_SELL_ITEM',
+//       payload: {
+//         characterID: inventoryItem.id
+//       }
+//     })
+//     setOpen(false);
+//   }
 
   const confirmSale = () => {
     setOpen(true);
@@ -44,14 +44,14 @@ function InventoryItem({ inventoryItem }) {
     setIsPicture(!isPicture)
   }
 
-  const toggleNewClass = () => {
-    console.log(inventoryItem.id);
+//   const toggleNewClass = () => {
+//     console.log(inventoryItem.id);
     
-    // dispatch({
-    //   type: 'SAGA_SET_OLD',
-    //   payload: inventoryItem.id
-    // });
-  }
+//     // dispatch({
+//     //   type: 'SAGA_SET_OLD',
+//     //   payload: inventoryItem.id
+//     // });
+//   }
 
   const doNothing = () => {
    
@@ -93,7 +93,7 @@ function InventoryItem({ inventoryItem }) {
 
       
 <div className='slider'>
-      <Box sx={{ width: 170 }}>
+      {/* <Box sx={{ width: 170 }}>
       <Slider
         aria-label="Temperature"
         defaultValue={0}
@@ -105,15 +105,15 @@ function InventoryItem({ inventoryItem }) {
         max={inventoryItem.number}
         disabled={inventoryItem.number === 0 ? true : false}
       />
-    </Box>
+    </Box> */}
     </div>
-      <button id={inventoryItem.id} onClick={confirmSale} >Sell</button>
+      {/* <button id={inventoryItem.id} onClick={confirmSale} >Sell</button> */}
 
       {/* <p>{inventoryItem.new ? "new" : ""}</p> */}
     
 
 
-<Fragment>
+{/* <Fragment>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -136,7 +136,7 @@ function InventoryItem({ inventoryItem }) {
           
         </DialogActions>
       </Dialog>
-    </Fragment>
+    </Fragment> */}
 
     </div>
   )

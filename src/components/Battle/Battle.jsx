@@ -334,7 +334,7 @@ function Battle() {
 
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
                 <button onClick={() => battle('punch')} className='kickAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
-                <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
+                <button onClick={() => handleInventoryOpen()} className='inventory' disabled={isDisabled} >Inventory</button>
                 <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
 
             </div>

@@ -97,11 +97,12 @@ function Shop() {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
         } else {
-
+            console.log("healthValue:", healthValue)
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
-                    potionId: 1
+                    potionId: 1,
+                    amountNum: healthValue
                 }
             });
             history.push(`/home`)
@@ -142,7 +143,8 @@ console.log(staminaValue * 10);
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
-                    potionId: 2
+                    potionId: 2,
+                    amountNum: staminaValue
                 }
             });
             history.push(`/home`)
@@ -183,7 +185,8 @@ console.log(maxValue * 20);
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
-                    potionId: 3
+                    potionId: 3,
+                    amountNum: maxValue
                 }
             });
             history.push(`/home`)

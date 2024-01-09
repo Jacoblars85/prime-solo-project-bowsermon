@@ -34,34 +34,43 @@ router.get('/inventory', (req, res) => {
 
 
 router.put("/potion/:id", (req, res) => {
-
+console.log(req.body.amountNum);
     const sqlText = `
     UPDATE "user_inventory"
-    SET "number" = "number" + 1
+    SET "number" = "number" + ${req.body.amountNum}
       WHERE "user_id" = ${[req.user.id]} AND "items_id" = ${req.params.id};
-  
       `;
 
     pool.query(sqlText)
         .then((result) => {
             let insertNewUserQuery;
 
+            let healthNum = req.body.amountNum * 10;
+
+            let maxNum = req.body.amountNum * 20;
+
+            console.log(healthNum);
+
+
             if (req.params.id === '1' || req.params.id === '2') {
                 insertNewUserQuery = `
                     UPDATE "user"
-                      SET "coins" = "coins" - 10
-                      WHERE "id" = ${[req.user.id]};
+                      SET "coins" = "coins" - ${healthNum}
+                      WHERE "id" = ${[req.user.id]}
+                      RETURNING "coins";
                       `;
             } else if (req.params.id === '3') {
                  insertNewUserQuery = `
                     UPDATE "user"
-                      SET "coins" = "coins" - 20
-                      WHERE "id" = ${[req.user.id]};
+                      SET "coins" = "coins" - ${maxNum}
+                      WHERE "id" = ${[req.user.id]}
+                      RETURNING "coins";
                       `;
             }
 
             pool.query(insertNewUserQuery)
                 .then(result => {
+                    console.log("result.rows in server:", result.rows)
                     res.sendStatus(201);
                 })
         }).catch(err => {

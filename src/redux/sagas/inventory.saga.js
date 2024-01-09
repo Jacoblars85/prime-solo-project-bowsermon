@@ -34,7 +34,8 @@ import { put, takeLatest } from 'redux-saga/effects';
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/potion/${action.payload.potionId}`
+        url: `/api/inventory/potion/${action.payload.potionId}`,
+        data: {amountNum: action.payload.amountNum}
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
