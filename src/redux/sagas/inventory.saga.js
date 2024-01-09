@@ -30,11 +30,11 @@ import { put, takeLatest } from 'redux-saga/effects';
   }
 
   function* buyPotion(action) {
-    console.log('action.payload', action.payload.potionId);
+    // console.log('action.payload', action.payload.potionId);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/potion/${action.payload.potionId}`,
+        url: `/api/inventory/buy/potion/${action.payload.potionId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -49,18 +49,22 @@ import { put, takeLatest } from 'redux-saga/effects';
   }
 
 
-  function* sellItem() {
-    // console.log('action.payload', action.payload);
+  function* sellPotion(action) {
+    console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/characters/sell`
+        url: `/api/inventory/sell/potion/${action.payload.potionId}`,
+        data: {amountNum: action.payload.amountNum}
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
       })
+      yield put({
+        type: 'FETCH_USER',
+      })
     } catch (error) {
-      console.log('Unable to sell items to server', error);
+      console.log('Unable to put potion into server', error);
     }
   }
 
@@ -70,7 +74,7 @@ import { put, takeLatest } from 'redux-saga/effects';
     // yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_POTION', buyPotion);
-    yield takeLatest('SAGA_BUY_POTION', sellItem);
+    yield takeLatest('SAGA_SELL_ITEM', sellPotion);
 
 
 

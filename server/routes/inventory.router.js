@@ -33,8 +33,8 @@ router.get('/inventory', (req, res) => {
 });
 
 
-router.put("/potion/:id", (req, res) => {
-console.log(req.body.amountNum);
+router.put("/buy/potion/:id", (req, res) => {
+// console.log(req.body.amountNum);
     const sqlText = `
     UPDATE "user_inventory"
     SET "number" = "number" + ${req.body.amountNum}
@@ -52,7 +52,7 @@ console.log(req.body.amountNum);
 
             let maxNum = req.body.amountNum * 20;
 
-            console.log(healthNum);
+            // console.log(healthNum);
 
 
             if (req.params.id === '1' || req.params.id === '2') {
@@ -74,7 +74,6 @@ console.log(req.body.amountNum);
 
             pool.query(insertNewUserQuery, insertValue)
                 .then(result => {
-                    console.log("result.rows in server:", result.rows)
                     res.sendStatus(201);
                 })
         }).catch(err => {
@@ -87,6 +86,61 @@ console.log(req.body.amountNum);
             res.sendStatus(500);
         });
 });
+
+
+router.put("/sell/potion/:id", (req, res) => {
+    console.log(req.body.amountNum);
+        const sqlText = `
+        UPDATE "user_inventory"
+        SET "number" = "number" - ${req.body.amountNum}
+          WHERE "user_id" = $1 AND "items_id" = $2;
+          `;
+    
+          const insertValue = [req.user.id, req.params.id]
+    
+    
+        pool.query(sqlText, insertValue)
+            .then((result) => {
+                let insertNewUserQuery;
+    
+                let healthNum = req.body.amountNum * 5;
+    
+                let maxNum = req.body.amountNum * 10;
+    
+                console.log(healthNum);
+    
+    
+                if (req.params.id === '1' || req.params.id === '2') {
+                    insertNewUserQuery = `
+                        UPDATE "user"
+                          SET "coins" = "coins" + ${healthNum}
+                          WHERE "id" = $1
+                          RETURNING "coins";
+                          `;
+                } else if (req.params.id === '3') {
+                     insertNewUserQuery = `
+                        UPDATE "user"
+                          SET "coins" = "coins" + ${maxNum}
+                          WHERE "id" = $1
+                          RETURNING "coins";
+                          `;
+                }
+                const insertValue = [req.user.id]
+    
+                pool.query(insertNewUserQuery, insertValue)
+                    .then(result => {
+                        res.sendStatus(201);
+                    })
+            }).catch(err => {
+                // catch for second query
+                console.log('in the second', err);
+                res.sendStatus(500)
+            })
+            .catch((err) => {
+                console.log("Error in inventory.router /buy PUT,", err);
+                res.sendStatus(500);
+            });
+    });
 
 
 
