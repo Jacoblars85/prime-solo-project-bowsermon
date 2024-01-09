@@ -4,13 +4,14 @@ import { useHistory, useParams } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 import './Shop.css';
 import Nav from '../Nav/Nav';
-
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 
 
 function Shop() {
@@ -86,6 +87,8 @@ function Shop() {
 
     const buyHealthPot = () => {
 
+        console.log(value);
+
         if (user.coins < 10) {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
@@ -155,6 +158,13 @@ function Shop() {
             history.push(`/home`)
         }
     };
+
+    const valuetext = (value) => {
+        // console.log(value);
+        return value;
+      }
+
+      console.log(valuetext());
 
 
 
@@ -229,6 +239,19 @@ function Shop() {
                     </Dialog>
                 </Fragment>
 
+                <Box sx={{ width: 170 }}>
+                    <Slider
+                        aria-label="Amount"
+                        defaultValue={0}
+                        getAriaValueText={valuetext}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        marks
+                        min={1}
+                        max={5}
+                    />
+                </Box>
+
             </div>
 
 
@@ -251,7 +274,7 @@ function Shop() {
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                            A stamina pot will cost 10 coins and you can not get a refund.
+                                A stamina pot will cost 10 coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
@@ -262,6 +285,19 @@ function Shop() {
                         </DialogActions>
                     </Dialog>
                 </Fragment>
+
+                <Box sx={{ width: 170 }}>
+                    <Slider
+                        aria-label="Temperature"
+                        defaultValue={0}
+                        getAriaValueText={valuetext}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        marks
+                        min={1}
+                        max={5}
+                    />
+                </Box>
 
             </div>
 
@@ -285,7 +321,7 @@ function Shop() {
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                            A max pot will cost 20 coins and you can not get a refund.
+                                A max pot will cost 20 coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
@@ -296,6 +332,19 @@ function Shop() {
                         </DialogActions>
                     </Dialog>
                 </Fragment>
+
+                <Box sx={{ width: 170 }}>
+                    <Slider
+                        aria-label="Temperature"
+                        defaultValue={0}
+                        getAriaValueText={valuetext}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        marks
+                        min={1}
+                        max={5}
+                    />
+                </Box>
 
             </div>
 

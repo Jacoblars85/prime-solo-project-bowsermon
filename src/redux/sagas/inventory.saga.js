@@ -48,11 +48,29 @@ import { put, takeLatest } from 'redux-saga/effects';
   }
 
 
+  function* sellItem() {
+    // console.log('action.payload', action.payload);
+    try {
+      const response = yield axios({
+        method: 'PUT',
+        url: `/api/characters/sell`
+      })
+      yield put({
+        type: 'SAGA_FETCH_IVENTORY',
+      })
+    } catch (error) {
+      console.log('Unable to sell items to server', error);
+    }
+  }
+
+
 
   function* inventorySaga() {
     // yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_POTION', buyPotion);
+    yield takeLatest('SAGA_BUY_POTION', sellItem);
+
 
 
    

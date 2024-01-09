@@ -21,6 +21,26 @@
     justify-content: space-around;
     text-align: center;
     padding-left: 0px;
-    background-color: black;
-  
+    /* background-color: black; */
+    
+  }
+
+  .slider {
+padding-top: 10px;
+  }
+
+  .amountOfItems p{
+    position: relative;
+    top: -240%;
+    right: -85%;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 30px;
+    margin: 0px;
+    margin-top: -32px;
+
   }

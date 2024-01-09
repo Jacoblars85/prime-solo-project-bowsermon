@@ -27,7 +27,7 @@ function InventoryItem({ inventoryItem }) {
 
   const sellCharacter = () => {
     dispatch({
-      type: 'SAGA_SELL_CHARACTER',
+      type: 'SAGA_SELL_ITEM',
       payload: {
         characterID: inventoryItem.id
       }
@@ -47,10 +47,10 @@ function InventoryItem({ inventoryItem }) {
   const toggleNewClass = () => {
     console.log(inventoryItem.id);
     
-    dispatch({
-      type: 'SAGA_SET_OLD',
-      payload: inventoryItem.id
-    });
+    // dispatch({
+    //   type: 'SAGA_SET_OLD',
+    //   payload: inventoryItem.id
+    // });
   }
 
   const doNothing = () => {
@@ -83,12 +83,16 @@ function InventoryItem({ inventoryItem }) {
   return (
     <div className={inventoryItem.new ? "new_item" : "item_box"} onMouseOver={inventoryItem.new ? toggleNewClass : doNothing }>
 
+<div className='amountOfItems'>
+    <p >{inventoryItem.number}X</p>
+    </div>
+
       <h5>{inventoryItem.name}</h5>
 
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
-      <p>amount: {inventoryItem.number}</p>
-
+      
+<div className='slider'>
       <Box sx={{ width: 170 }}>
       <Slider
         aria-label="Temperature"
@@ -102,7 +106,7 @@ function InventoryItem({ inventoryItem }) {
         disabled={inventoryItem.number === 0 ? true : false}
       />
     </Box>
-
+    </div>
       <button id={inventoryItem.id} onClick={confirmSale} >Sell</button>
 
       {/* <p>{inventoryItem.new ? "new" : ""}</p> */}
