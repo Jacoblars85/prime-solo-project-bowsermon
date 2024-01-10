@@ -22,6 +22,10 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 
+const Transition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 
 
 function Battle() {
@@ -46,9 +50,6 @@ function Battle() {
 
     const history = useHistory()
 
-    const Transition = forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
-      });
 
     const basicAttacks = useSelector((store) => store.character.basicAttacks);
     const characters = useSelector((store) => store.character.characters);
@@ -57,7 +58,7 @@ function Battle() {
     const user = useSelector((store) => store.user.userReducer);
     const inventory = useSelector((store) => store.inventory.inventory);
 
-console.log('inventory',inventory);
+    console.log('inventory', inventory);
 
     // let characterOne = characters[0];
     let enemyOne = levelEnemy[0];
@@ -95,6 +96,8 @@ console.log('inventory',inventory);
 
     const [inventoryOpen, setInventoryOpen] = useState(null);
 
+
+
     const handleInventoryOpen = () => {
         setInventoryOpen(true);
     };
@@ -103,11 +106,11 @@ console.log('inventory',inventory);
         setInventoryOpen(false);
     };
 
-    const usePotion = (potion) => {
-console.log('potion clicked', potion);
+    //     const usePotion = (potion) => {
+    // console.log('potion clicked', potion);
 
-        setInventoryOpen(false);
-    };
+    //         setInventoryOpen(false);
+    //     };
 
 
     const [openWinner, setWinnerOpen] = useState(false);
@@ -154,7 +157,6 @@ console.log('potion clicked', potion);
 
     const attack = (attackType, basicAttacks, starterOne) => {
 
-        setCharacterPicAttack("chacracterPicAttack")
 
         setTimeout(() => {
             setCharacterPicAttack("")
@@ -164,6 +166,8 @@ console.log('potion clicked', potion);
             setEnemyHp(enemyHp - starterOne.unique_damage)
             setCharacterStamina(characterStamina - starterOne.unique_stamina)
 
+            setCharacterPicAttack("chacracterPicAttack")
+
             if (enemyHp - starterOne.unique_damage <= 0) {
                 setEnemyHp(0)
                 return setWinnerOpen(true)
@@ -171,6 +175,8 @@ console.log('potion clicked', potion);
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
             setCharacterStamina(characterStamina - basicAttacks[0].stamina)
+
+            setCharacterPicAttack("chacracterPicAttack")
 
             if (enemyHp - basicAttacks[0].damage <= 0) {
                 setEnemyHp(0)
@@ -180,19 +186,30 @@ console.log('potion clicked', potion);
             setEnemyHp(enemyHp - basicAttacks[1].damage)
             setCharacterStamina(characterStamina - basicAttacks[1].stamina)
 
+            setCharacterPicAttack("chacracterPicAttack")
+
             if (enemyHp - basicAttacks[1].damage <= 0) {
                 setEnemyHp(0)
                 setWinnerOpen(true)
             }
         } else if (attackType === 'health') {
+
             setCharacterHp(characterHp + 25)
 
+            setInventoryOpen(false);
+
         } else if (attackType === 'stamina') {
+
             setCharacterStamina(characterStamina + 30)
 
+            setInventoryOpen(false);
+
         } else if (attackType === 'max') {
+
             setCharacterHp(characterHp + 20)
             setCharacterStamina(characterStamina + 25)
+
+            setInventoryOpen(false);
 
         }
 
@@ -226,17 +243,33 @@ console.log('potion clicked', potion);
             setTextBox(`${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
         } else if (attackType === 'poke') {
             setTextBox(`${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
+        } else if (attackType === 'health') {
+            setTextBox(`${starterOne.name} used a health potion and it healed 25 hp.`);
+        } else if (attackType === 'stamina') {
+            setTextBox(`${starterOne.name} used a stamina potion and it gave 30 stamina back.`);
+        } else if (attackType === 'max') {
+            setTextBox(`${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
         }
     };
 
-    const enemyAttack = (enemyOne, basicAttacks) => {
+    const enemyAttack = (attackType, enemyOne, basicAttacks) => {
 
-        setTimeout(() => {
+            setTimeout(() => {
 
             if (enemyStamina >= enemyOne.unique_stamina) {
 
-                setCharacterHp(characterHp - enemyOne.unique_damage)
+                if (attackType === 'health') {
+
+                    setCharacterHp(characterHp + 25 - enemyOne.unique_damage)
+        
+                    
+                } else {
+                    setCharacterHp(characterHp - enemyOne.unique_damage)
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                }
+
+                // setCharacterHp(characterHp - enemyOne.unique_damage)
+                // setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
                 if (characterHp - enemyOne.unique_damage <= 0) {
                     setCharacterHp(0)
@@ -314,7 +347,7 @@ console.log('potion clicked', potion);
         disableAllButtons();
         attack(attackType, basicAttacks, starterOne);
         characterTextBox(attackType, basicAttacks, starterOne);
-        enemyAttack(enemyOne, basicAttacks);
+        enemyAttack(attackType, enemyOne, basicAttacks);
         enemyTextBox(enemyOne, basicAttacks);
 
     };
@@ -416,7 +449,7 @@ console.log('potion clicked', potion);
                 </Dialog>
             </Fragment>
 
-
+            {/* Inventory dialog */}
             <Fragment>
                 <Dialog
                     fullScreen
@@ -431,39 +464,39 @@ console.log('potion clicked', potion);
                                 color="inherit"
                                 onClick={handleInventoryClose}
                                 aria-label="close"
-                                // aria-expanded
+                            // aria-expanded
                             >
                                 <CloseIcon />
                             </IconButton>
                             <Typography sx={{ ml: 73.5, flex: 1, }} variant="h4" component="div">
                                 Inventory
                             </Typography>
-                            <Button autoFocus color="inherit" onClick={handleInventoryClose}>
+                            {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
                                 close
-                            </Button>
+                            </Button> */}
                         </Toolbar>
                     </AppBar>
                     <List>
                         <ListItem >
-                    <img  height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button disabled={healthPot === 0 ? true : false} onClick={() => usePotion(healthPot)} >Use Potion</Button>
+                            <img height={200} width={200} src="images/healthPotion.png" />
+                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button disabled={healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
-                    <img height={200} width={200} src="images/staminaPotion.png" />
+                            <img height={200} width={200} src="images/staminaPotion.png" />
                             <ListItemText sx={{ ml: 55 }}
                                 primary="Stamina Potion"
                                 secondary="0 hp | 30 stamina"
-                            /><Button disabled={staminaPot === 0 ? true : false} onClick={() => usePotion(staminaPot)} >Use Potion</Button>
+                            /><Button disabled={staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
-                    <img  height={200} width={200} src="images/maxPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button disabled={maxPot === 0 ? true : false} onClick={() => usePotion(maxPot)} >Use Potion</Button>
+                            <img height={200} width={200} src="images/maxPotion.png" />
+                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button disabled={maxPot === 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
                         </ListItem>
                         <Divider />
                     </List>

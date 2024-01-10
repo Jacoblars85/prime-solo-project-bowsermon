@@ -38,10 +38,10 @@ router.put("/buy/potion/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_inventory"
     SET "number" = "number" + ${req.body.amountNum}
-      WHERE "user_id" = $1 AND "items_id" = $2;
+      WHERE "user_id" = ${[req.user.id]} AND "items_id" = $1;
       `;
 
-      const insertValue = [req.user.id, req.params.id]
+      const insertValue = [req.params.id]
 
 
     pool.query(sqlText, insertValue)
@@ -59,20 +59,19 @@ router.put("/buy/potion/:id", (req, res) => {
                 insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${healthNum}
-                      WHERE "id" = $1
+                      WHERE "id" = ${[req.user.id]}
                       RETURNING "coins";
                       `;
             } else if (req.params.id === '3') {
                  insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${maxNum}
-                      WHERE "id" = $1
+                      WHERE "id" = ${[req.user.id]}
                       RETURNING "coins";
                       `;
             }
-            const insertValue = [req.user.id]
 
-            pool.query(insertNewUserQuery, insertValue)
+            pool.query(insertNewUserQuery)
                 .then(result => {
                     res.sendStatus(201);
                 })
@@ -93,10 +92,10 @@ router.put("/sell/potion/:id", (req, res) => {
         const sqlText = `
         UPDATE "user_inventory"
         SET "number" = "number" - ${req.body.amountNum}
-          WHERE "user_id" = $1 AND "items_id" = $2;
+          WHERE "user_id" = ${[req.user.id]} AND "items_id" = $2;
           `;
     
-          const insertValue = [req.user.id, req.params.id]
+          const insertValue = [req.params.id]
     
     
         pool.query(sqlText, insertValue)
@@ -114,20 +113,20 @@ router.put("/sell/potion/:id", (req, res) => {
                     insertNewUserQuery = `
                         UPDATE "user"
                           SET "coins" = "coins" + ${healthNum}
-                          WHERE "id" = $1
+                          WHERE "id" = ${[req.user.id]}
                           RETURNING "coins";
                           `;
                 } else if (req.params.id === '3') {
                      insertNewUserQuery = `
                         UPDATE "user"
                           SET "coins" = "coins" + ${maxNum}
-                          WHERE "id" = $1
+                          WHERE "id" = ${[req.user.id]}
                           RETURNING "coins";
                           `;
                 }
-                const insertValue = [req.user.id]
+         
     
-                pool.query(insertNewUserQuery, insertValue)
+                pool.query(insertNewUserQuery)
                     .then(result => {
                         res.sendStatus(201);
                     })

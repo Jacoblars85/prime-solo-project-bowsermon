@@ -95,10 +95,9 @@ router.post('/', (req, res) => {
           INSERT INTO "user_characters" 
             ("user_id", "character_id")
             VALUES
-            ($1, $2);
+            (${[req.user.id]}, $1);
         `;
     const insertCharacterValue = [
-        req.user.id,
         req.body.characterID
     ]
 
@@ -116,10 +115,9 @@ router.put("/buy", (req, res) => {
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" - 15
-          WHERE "id" = $1;
+          WHERE "id" = ${[req.user.id]};
           `;
 
-          const insertValue = [req.user.id]
     pool
         .query(sqlText, insertValue)
         .then((result) => {
@@ -137,10 +135,9 @@ router.put("/sell/character", (req, res) => {
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" + 10
-          WHERE "id" = $1;
+          WHERE "id" = ${[req.user.id]};
           `;
 
-          const insertValue = [req.user.id]
 
     pool
         .query(sqlText, insertValue)
@@ -212,10 +209,10 @@ router.put("/starter/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
   SET "starter" = FALSE
-    WHERE "user_id" = $1;
+    WHERE "user_id" = ${[req.user.id]};
       `;
 
-      const insertValue = [req.user.id]
+
 
 
     pool.query(sqlText, insertValue)
@@ -224,8 +221,10 @@ router.put("/starter/:id", (req, res) => {
             const insertNewUserQuery = `
         UPDATE "user_characters"
           SET "starter" = TRUE
-          WHERE "id" = ${req.params.id};
+          WHERE "id" = $1;
           `;
+
+          const sqlValues = [req.params.id]
 
             pool.query(insertNewUserQuery)
                 .then(result => {
