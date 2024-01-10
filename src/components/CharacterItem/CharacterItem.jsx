@@ -22,15 +22,33 @@ function CharacterItem({ character }) {
       setOpen(false);
     };
 
-  const setStarter = () => {
-    dispatch({
-      type: 'SAGA_SET_STARTER',
-      payload: character.id
-    });
+  const setStarterOne = () => {
+
+    if (character.id === starter[1].id) {
+      alert("can't do that")
+    } else {
+      dispatch({
+        type: 'SAGA_SET_STARTER_ONE',
+        payload: character.id
+      });
+    }
+  }
+
+  const setStarterTwo = () => {
+
+    if (character.id === starter[0].id) {
+      alert("can't do that")
+    } else {
+      dispatch({
+        type: 'SAGA_SET_STARTER_TWO',
+        payload: character.id
+      });
+    }
+    
   }
 
   const sellCharacter = () => {
-    if (character.id === starter[0].id) {
+    if (character.id === starter[0].id || character.id === starter[1].id) {
       setOpen(false);
       return alert("you can't sell your starter")
     }
@@ -95,10 +113,15 @@ function CharacterItem({ character }) {
 
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
-      <button id={character.id} onClick={setStarter} >Start</button>
+      <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
+      <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
       <button id={character.id} onClick={confirmSale} >Sell</button>
 
       <p>{character.new ? "new" : ""}</p>
+
+      <p>{character.starter_1 ? "Starter 1" : ""}</p>
+
+      <p>{character.starter_2 ? "Starter 2" : ""}</p>
     
 
 

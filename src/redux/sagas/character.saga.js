@@ -114,7 +114,6 @@ function* deleteCharacter(action) {
     })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
-      // payload: action.payload.userID,
     })
   } catch (error) {
     console.log('Unable to delete character from server', error);
@@ -136,18 +135,39 @@ function* fetchStarter() {
 }
 
 
-function* setStarter(action) {
+function* setStarterOne(action) {
   // console.log('action.payload', action.payload);
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/starter/${action.payload}`
+      url: `/api/characters/starter/one/${action.payload}`
     })
     yield put({
       type: 'SAGA_FETCH_STARTER',
     })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
   } catch (error) {
-    console.log('Unable to put starter to server', error);
+    console.log('Unable to put starter to 1  server', error);
+  }
+}
+
+function* setStarterTwo(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/starter/two/${action.payload}`
+    })
+    yield put({
+      type: 'SAGA_FETCH_STARTER',
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put starter 2 to server', error);
   }
 }
 
@@ -179,7 +199,8 @@ function* characterSaga() {
   yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);
   yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
   yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
-  yield takeLatest('SAGA_SET_STARTER', setStarter);
+  yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
+  yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
 
 

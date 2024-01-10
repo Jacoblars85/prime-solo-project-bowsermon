@@ -8,7 +8,8 @@ router.get('/character', (req, res) => {
   SELECT "user_characters"."id" as "id",
 		"user_characters"."user_id" as "user_id",
 		"user_characters"."character_id",
-        "user_characters"."starter",
+        "user_characters"."starter_1",
+        "user_characters"."starter_2",
         "user_characters"."new",
 		"characters"."name",
 		"characters"."profile_pic",
@@ -21,7 +22,8 @@ router.get('/character', (req, res) => {
  FROM "user_characters"
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
-    WHERE "user_id" = ${[req.user.id]};
+    WHERE "user_id" = ${[req.user.id]}
+    ORDER BY "character_id", "id" ASC;
   `;
 
     pool.query(query)
@@ -119,7 +121,7 @@ router.put("/buy", (req, res) => {
           `;
 
     pool
-        .query(sqlText, insertValue)
+        .query(sqlText)
         .then((result) => {
             res.sendStatus(201);
         })
@@ -140,7 +142,7 @@ router.put("/sell/character", (req, res) => {
 
 
     pool
-        .query(sqlText, insertValue)
+        .query(sqlText)
         .then((result) => {
             res.sendStatus(201);
         })
@@ -176,7 +178,8 @@ router.get('/starter', (req, res) => {
     SELECT "user_characters"."id" as "id",
     "user_characters"."user_id" as "user_id",
     "user_characters"."character_id",
-    "user_characters"."starter",
+    "user_characters"."starter_1",
+    "user_characters"."starter_2",
     "characters"."name",
     "characters"."profile_pic",
     "characters"."hp",
@@ -188,7 +191,8 @@ router.get('/starter', (req, res) => {
 FROM "user_characters"
 INNER JOIN "characters"
     ON "user_characters"."character_id" = "characters"."id"
-WHERE "user_characters"."starter" = TRUE AND "user_id" = ${[req.user.id]};
+WHERE "user_characters"."starter_1" = TRUE OR "user_characters"."starter_2" = TRUE AND "user_id" = ${[req.user.id]}
+    ORDER BY "starter_1" DESC;
 
   `;
 
@@ -204,29 +208,26 @@ WHERE "user_characters"."starter" = TRUE AND "user_id" = ${[req.user.id]};
 });
 
 
-router.put("/starter/:id", (req, res) => {
+router.put("/starter/one/:id", (req, res) => {
 
     const sqlText = `
     UPDATE "user_characters"
-  SET "starter" = FALSE
+  SET "starter_1" = FALSE
     WHERE "user_id" = ${[req.user.id]};
       `;
 
-
-
-
-    pool.query(sqlText, insertValue)
+    pool.query(sqlText)
         .then((result) => {
 
             const insertNewUserQuery = `
         UPDATE "user_characters"
-          SET "starter" = TRUE
-          WHERE "id" = $1;
+          SET "starter_1" = TRUE
+          WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
           `;
 
-          const sqlValues = [req.params.id]
+            const sqlValues = [req.params.id]
 
-            pool.query(insertNewUserQuery)
+            pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
 
                     res.sendStatus(201);
@@ -237,7 +238,43 @@ router.put("/starter/:id", (req, res) => {
             res.sendStatus(500)
         })
         .catch((err) => {
-            console.log("Error in character.router /sell PUT,", err);
+            console.log("Error in character.router /startrer 1 PUT,", err);
+            res.sendStatus(500);
+        });
+});
+
+
+router.put("/starter/two/:id", (req, res) => {
+
+    const sqlText = `
+    UPDATE "user_characters"
+  SET "starter_2" = FALSE
+    WHERE "user_id" = ${[req.user.id]};
+      `;
+
+    pool.query(sqlText)
+        .then((result) => {
+
+            const insertNewUserQuery = `
+        UPDATE "user_characters"
+          SET "starter_2" = TRUE
+          WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+          `;
+
+            const sqlValues = [req.params.id]
+
+            pool.query(insertNewUserQuery, sqlValues)
+                .then(result => {
+
+                    res.sendStatus(201);
+                })
+        }).catch(err => {
+            // catch for second query
+            console.log('in the second', err);
+            res.sendStatus(500)
+        })
+        .catch((err) => {
+            console.log("Error in character.router /starter 2 PUT,", err);
             res.sendStatus(500);
         });
 });
@@ -250,7 +287,7 @@ router.put("/new/:id", (req, res) => {
     WHERE "id" = $1;
           `;
 
-      const insertValue = [req.params.id]
+    const insertValue = [req.params.id]
 
 
     pool
@@ -259,7 +296,7 @@ router.put("/new/:id", (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log("Error in character.router /sell PUT,", err);
+            console.log("Error in character.router /new PUT,", err);
             res.sendStatus(500);
         });
 });
