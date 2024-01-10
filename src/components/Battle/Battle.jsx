@@ -27,7 +27,9 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
+const SwitchTransition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function Battle() {
     const dispatch = useDispatch();
@@ -78,8 +80,8 @@ function Battle() {
     console.log('enemy', enemyOne);
 
 
-    const [characterHp, setCharacterHp] = useState(starterOne.hp);
-    const [characterStamina, setCharacterStamina] = useState(starterOne.stamina);
+    const [starterOneHp, setStarterOneHp] = useState(starterOne.hp);
+    const [starterOneStamina, setStarterOneStamina] = useState(starterOne.stamina);
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
     const [textBox, setTextBox] = useState('');
@@ -97,8 +99,6 @@ function Battle() {
 
     const [inventoryOpen, setInventoryOpen] = useState(null);
 
-
-
     const handleInventoryOpen = () => {
         setInventoryOpen(true);
     };
@@ -107,11 +107,19 @@ function Battle() {
         setInventoryOpen(false);
     };
 
-    //     const usePotion = (potion) => {
-    // console.log('potion clicked', potion);
 
-    //         setInventoryOpen(false);
-    //     };
+
+    const [switchOpen, setSwitchOpen] = useState(null);
+
+
+
+    const handleSwitchOpen = () => {
+        setSwitchOpen(true);
+    };
+
+    const handleSwitchClose = () => {
+        setSwitchOpen(false);
+    };
 
 
     const [openWinner, setWinnerOpen] = useState(false);
@@ -165,7 +173,7 @@ function Battle() {
 
         if (attackType === 'unique') {
             setEnemyHp(enemyHp - starterOne.unique_damage)
-            setCharacterStamina(characterStamina - starterOne.unique_stamina)
+            setStarterOneStamina(starterOneStamina - starterOne.unique_stamina)
 
             setCharacterPicAttack("chacracterPicAttack")
 
@@ -175,7 +183,7 @@ function Battle() {
             }
         } else if (attackType === 'punch') {
             setEnemyHp(enemyHp - basicAttacks[0].damage)
-            setCharacterStamina(characterStamina - basicAttacks[0].stamina)
+            setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina)
 
             setCharacterPicAttack("chacracterPicAttack")
 
@@ -185,7 +193,7 @@ function Battle() {
             }
         } else if (attackType === 'poke') {
             setEnemyHp(enemyHp - basicAttacks[1].damage)
-            setCharacterStamina(characterStamina - basicAttacks[1].stamina)
+            setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina)
 
             setCharacterPicAttack("chacracterPicAttack")
 
@@ -195,11 +203,11 @@ function Battle() {
             }
         } else if (attackType === 'health') {
 
-            setCharacterHp(characterHp + 25)
+            setStarterOneHp(starterOneHp + 25)
 
-            if (characterHp + 25 > starterOne.hp) {
+            if (starterOneHp + 25 > starterOne.hp) {
 
-                setCharacterHp(starterOne.hp)
+                setStarterOneHp(starterOne.hp)
             }
 
             setInventoryOpen(false);
@@ -213,11 +221,11 @@ function Battle() {
 
         } else if (attackType === 'stamina') {
 
-            setCharacterStamina(characterStamina + 30)
+            setStarterOneStamina(starterOneStamina + 30)
 
-            if (characterStamina + 30 > starterOne.stamina) {
+            if (starterOneStamina + 30 > starterOne.stamina) {
 
-                setCharacterHp(starterOne.stamina)
+                setStarterOneStamina(starterOne.stamina)
             }
 
             setInventoryOpen(false);
@@ -231,14 +239,14 @@ function Battle() {
 
         } else if (attackType === 'max') {
 
-            setCharacterHp(characterHp + 20)
-            setCharacterStamina(characterStamina + 25)
+            setStarterOneHp(starterOneHp + 20)
+            setStarterOneStamina(starterOneStamina + 25)
 
-            if (characterHp + 20 > starterOne.hp) {
-                setCharacterHp(starterOne.hp)
+            if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp)
 
-            } else if (characterStamina + 25 > starterOne.stamina) {
-                setCharacterStamina(starterOne.stamina)
+            } else if (starterOneStamina + 25 > starterOne.stamina) {
+                setStarterOneStamina(starterOne.stamina)
 
             }
 
@@ -283,42 +291,42 @@ function Battle() {
 
                 if (attackType === 'health') {
 
-                    if (characterHp + 25 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - enemyOne.unique_damage)
+                    if (starterOneHp + 25 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 25 - enemyOne.unique_damage)
+                        setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                     }
 
-                    if (characterHp + 25 - enemyOne.unique_damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else if (attackType === 'max') {
 
-                    if (characterHp + 20 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - enemyOne.unique_damage)
+                    if (starterOneHp + 20 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 20 - enemyOne.unique_damage)
+                        setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                     }
 
-                    if (characterHp + 20 - enemyOne.unique_damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else {
-                    setCharacterHp(characterHp - enemyOne.unique_damage)
+                    setStarterOneHp(starterOneHp - enemyOne.unique_damage)
                     setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-                    if (characterHp - enemyOne.unique_damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp - enemyOne.unique_damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 }
@@ -330,42 +338,42 @@ function Battle() {
 
                 if (attackType === 'health') {
 
-                    if (characterHp + 25 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - basicAttacks[0].damage)
+                    if (starterOneHp + 25 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 25 - basicAttacks[0].damage)
+                        setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                     }
 
-                    if (characterHp + 25 - basicAttacks[0].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else if (attackType === 'max') {
 
-                    if (characterHp + 20 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - basicAttacks[0].damage)
+                    if (starterOneHp + 20 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 20 - basicAttacks[0].damage)
+                        setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                     }
 
-                    if (characterHp + 20 - basicAttacks[0].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else {
-                    setCharacterHp(characterHp - basicAttacks[0].damage)
+                    setStarterOneHp(starterOneHp - basicAttacks[0].damage)
                     setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                    if (characterHp - basicAttacks[0].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp - basicAttacks[0].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 }
@@ -377,43 +385,43 @@ function Battle() {
 
                 if (attackType === 'health') {
 
-                    if (characterHp + 25 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - basicAttacks[1].damage)
+                    if (starterOneHp + 25 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 25 - basicAttacks[1].damage)
+                        setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                     }
 
-                    if (characterHp + 25 - basicAttacks[1].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else if (attackType === 'max') {
 
-                    if (characterHp + 20 > starterOne.hp) {
-                        setCharacterHp(starterOne.hp - basicAttacks[1].damage)
+                    if (starterOneHp + 20 > starterOne.hp) {
+                        setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
                     } else {
 
-                        setCharacterHp(characterHp + 20 - basicAttacks[1].damage)
+                        setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                     }
 
 
-                    if (characterHp + 20 - basicAttacks[1].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 } else {
-                    setCharacterHp(characterHp - basicAttacks[1].damage)
+                    setStarterOneHp(starterOneHp - basicAttacks[1].damage)
                     setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
-                    if (characterHp - basicAttacks[1].damage <= 0) {
-                        setCharacterHp(0)
+                    if (starterOneHp - basicAttacks[1].damage <= 0) {
+                        setStarterOneHp(0)
                         setLoserOpen(true)
                     }
                 }
@@ -428,9 +436,9 @@ function Battle() {
             setEnemyClassName("enemy")
         }, 3150);
 
-        console.log('my hp', characterHp);
+        console.log('my hp', starterOneHp);
 
-        return characterHp;
+        return starterOneHp;
     };
 
     const enemyTextBox = (enemyOne, basicAttacks) => {
@@ -482,11 +490,11 @@ function Battle() {
 
             <div className='character'>
 
-                <p className="hp-text"> hp: {characterHp}</p>
-                <p className="stamina-text"> stamina: {characterStamina}</p>
+                <p className="hp-text"> hp: {starterOneHp}</p>
+                <p className="stamina-text"> stamina: {starterOneStamina}</p>
 
-                <progress className="hp-meter" value={characterHp} max={starterOne.hp}></progress>
-                <progress className="stamina-meter" value={characterStamina} max={starterOne.stamina}></progress>
+                <progress className="hp-meter" value={starterOneHp} max={starterOne.hp}></progress>
+                <progress className="stamina-meter" value={starterOneStamina} max={starterOne.stamina}></progress>
 
                 <img className={characterPicAttack} src={starterOne.profile_pic} />
 
@@ -512,10 +520,12 @@ function Battle() {
 
             <div className='attacks' >
 
-                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={characterStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
-                <button onClick={() => battle('punch')} className='kickAttack' disabled={characterStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
                 <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
-                <button onClick={() => battle('poke')} className='pokeAttack' disabled={characterStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={starterOneStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
+                <button onClick={handleSwitchOpen} className='switch' disabled={isDisabled} >Switch</button>
+                <button onClick={() => battle('punch')} className='kickAttack' disabled={starterOneStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
+
+                {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
 
             </div>
 
@@ -567,6 +577,55 @@ function Battle() {
                 </Dialog>
             </Fragment>
 
+             {/* Switching character dialog */}
+             <Fragment>
+                <Dialog
+                    fullScreen
+                    open={switchOpen}
+                    onClose={handleSwitchClose}
+                    TransitionComponent={SwitchTransition}
+                >
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
+                        <Toolbar>
+                            <IconButton
+                                edge="start"
+                                color="inherit"
+                                onClick={handleSwitchClose}
+                                aria-label="close"
+                            // aria-expanded
+                            >
+                                <CloseIcon />
+                            </IconButton>
+                            <Typography sx={{ ml: 65.5, flex: 1, }} variant="h4" component="div">
+                                Choose A Character
+                            </Typography>
+                            {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
+                                close
+                            </Button> */}
+                        </Toolbar>
+                    </AppBar>
+                    <List>
+                        <ListItem >
+                            <img height={200} width={200} src="images/healthPotion.png" />
+                            <ListItemText sx={{ ml: 55 }} primary="Starter 1" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                        <ListItem >
+                            <img height={200} width={200} src="images/staminaPotion.png" />
+                            <ListItemText sx={{ ml: 55 }}
+                                primary="Starter 2"
+                                secondary="0 hp | 30 stamina"
+                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                    </List>
+                </Dialog>
+            </Fragment>
+
             {/* Inventory dialog */}
             <Fragment>
                 <Dialog
@@ -597,7 +656,7 @@ function Battle() {
                     <List>
                         <ListItem >
                             <img height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot.number === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
