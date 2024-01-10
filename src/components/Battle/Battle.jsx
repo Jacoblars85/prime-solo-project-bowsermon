@@ -21,6 +21,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
+import { number } from 'prop-types';
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -196,6 +197,11 @@ function Battle() {
 
             setCharacterHp(characterHp + 25)
 
+            if (characterHp + 25 > starterOne.hp) {
+
+                setCharacterHp(starterOne.hp)
+            }
+
             setInventoryOpen(false);
 
             dispatch({
@@ -208,6 +214,11 @@ function Battle() {
         } else if (attackType === 'stamina') {
 
             setCharacterStamina(characterStamina + 30)
+
+            if (characterStamina + 30 > starterOne.stamina) {
+
+                setCharacterHp(starterOne.stamina)
+            }
 
             setInventoryOpen(false);
 
@@ -223,6 +234,14 @@ function Battle() {
             setCharacterHp(characterHp + 20)
             setCharacterStamina(characterStamina + 25)
 
+            if (characterHp + 20 > starterOne.hp) {
+                setCharacterHp(starterOne.hp)
+
+            } else if (characterStamina + 25 > starterOne.stamina) {
+                setCharacterStamina(starterOne.stamina)
+
+            }
+
             setInventoryOpen(false);
 
             dispatch({
@@ -233,23 +252,6 @@ function Battle() {
             })
 
         }
-
-        // setTimeout(() => {
-
-        //     if (enemyStamina === 0) {
-
-        //         setEnemyClassName("shake")
-        //         setEnemyHp(enemyHp - 5)
-
-        //         if (enemyHp - 5 <= 0) {
-        //             setEnemyHp(0)
-        //             setWinnerOpen(true)
-        //         }
-
-        //     }
-
-        // }, 3000);
-
 
         console.log('enemy hp', enemyHp);
 
@@ -278,10 +280,18 @@ function Battle() {
         setTimeout(() => {
 
             if (enemyStamina >= enemyOne.unique_stamina) {
+
                 if (attackType === 'health') {
 
-                    setCharacterHp(characterHp + 25 - enemyOne.unique_damage)
-                    setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                    if (characterHp + 25 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - enemyOne.unique_damage)
+                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 25 - enemyOne.unique_damage)
+                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                    }
 
                     if (characterHp + 25 - enemyOne.unique_damage <= 0) {
                         setCharacterHp(0)
@@ -289,8 +299,15 @@ function Battle() {
                     }
                 } else if (attackType === 'max') {
 
-                    setCharacterHp(characterHp + 20 - enemyOne.unique_damage)
-                    setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                    if (characterHp + 20 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - enemyOne.unique_damage)
+                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 20 - enemyOne.unique_damage)
+                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                    }
 
                     if (characterHp + 20 - enemyOne.unique_damage <= 0) {
                         setCharacterHp(0)
@@ -305,7 +322,7 @@ function Battle() {
                         setLoserOpen(true)
                     }
                 }
-                
+
                 setEnemyPicAttack("enemyPicAttack")
                 setEnemyClassName("shake")
 
@@ -313,8 +330,15 @@ function Battle() {
 
                 if (attackType === 'health') {
 
-                    setCharacterHp(characterHp + 25 - basicAttacks[0].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                    if (characterHp + 25 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 25 - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                    }
 
                     if (characterHp + 25 - basicAttacks[0].damage <= 0) {
                         setCharacterHp(0)
@@ -322,8 +346,15 @@ function Battle() {
                     }
                 } else if (attackType === 'max') {
 
-                    setCharacterHp(characterHp + 20 - basicAttacks[0].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                    if (characterHp + 20 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 20 - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                    }
 
                     if (characterHp + 20 - basicAttacks[0].damage <= 0) {
                         setCharacterHp(0)
@@ -346,8 +377,15 @@ function Battle() {
 
                 if (attackType === 'health') {
 
-                    setCharacterHp(characterHp + 25 - basicAttacks[1].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                    if (characterHp + 25 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 25 - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                    }
 
                     if (characterHp + 25 - basicAttacks[1].damage <= 0) {
                         setCharacterHp(0)
@@ -355,8 +393,16 @@ function Battle() {
                     }
                 } else if (attackType === 'max') {
 
-                    setCharacterHp(characterHp + 20 - basicAttacks[1].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                    if (characterHp + 20 > starterOne.hp) {
+                        setCharacterHp(starterOne.hp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                    } else {
+
+                        setCharacterHp(characterHp + 20 - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                    }
+
 
                     if (characterHp + 20 - basicAttacks[1].damage <= 0) {
                         setCharacterHp(0)
@@ -551,7 +597,7 @@ function Battle() {
                     <List>
                         <ListItem >
                             <img height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot.number === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
@@ -561,14 +607,14 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary="Stamina Potion"
                                 secondary="0 hp | 30 stamina"
-                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
+                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
                             <img height={200} width={200} src="images/maxPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={maxPot === 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={maxPot && maxPot.number === 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
                         </ListItem>
                         <Divider />
                     </List>
