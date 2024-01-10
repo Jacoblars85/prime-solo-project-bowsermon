@@ -21,7 +21,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { number } from 'prop-types';
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -61,42 +60,47 @@ function Battle() {
     const user = useSelector((store) => store.user.userReducer);
     const inventory = useSelector((store) => store.inventory.inventory);
 
-    console.log('inventory', inventory);
-
-    // let characterOne = characters[0];
+    // setting each starter/enemy to a varriable
     let enemyOne = levelEnemy[0];
     let starterOne = starter[0];
+    let starterTwo = starter[1];
 
+
+    // setting names for each item in the array
     let healthPot = inventory[0];
-    let staminaPot = inventory[2];
-    let maxPot = inventory[3];
+    let staminaPot = inventory[1];
+    let maxPot = inventory[2];
 
+    // the inventory object and first health pot
+    console.log('inventory', inventory);
     console.log('healthpot', healthPot);
 
 
+    // starters
+    console.log('starterOne', starterOne);
+    console.log('starterTwo', starterTwo);
 
-    console.log('starter', starterOne);
+    // basic attack
     console.log('basic', basicAttacks);
+    // level enemy
     console.log('enemy', enemyOne);
 
 
+    // All the local state being used in the battle
     const [starterOneHp, setStarterOneHp] = useState(starterOne.hp);
     const [starterOneStamina, setStarterOneStamina] = useState(starterOne.stamina);
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
     const [textBox, setTextBox] = useState('');
 
-
+    // features that get triggered as the battle goes on
     const [isDisabled, setIsDisabled] = useState(false);
     const [enemyClassName, setEnemyClassName] = useState("enemy");
     const [enemyPicAttack, setEnemyPicAttack] = useState("");
     const [characterPicAttack, setCharacterPicAttack] = useState("");
 
 
-    // const [roundOver, setRoundOver] = useState(false);
-
-
-
+    // All the inventory dialog functions
     const [inventoryOpen, setInventoryOpen] = useState(null);
 
     const handleInventoryOpen = () => {
@@ -108,10 +112,8 @@ function Battle() {
     };
 
 
-
+    // All of the Switch dialog functions
     const [switchOpen, setSwitchOpen] = useState(null);
-
-
 
     const handleSwitchOpen = () => {
         setSwitchOpen(true);
@@ -121,10 +123,11 @@ function Battle() {
         setSwitchOpen(false);
     };
 
-
+    // state values to open dialog if you win or lose
     const [openWinner, setWinnerOpen] = useState(false);
     const [openLoser, setLoserOpen] = useState(false);
 
+    // gives money to user and sends you to the campaign page
     const handleWinnerClose = () => {
         history.push(`/campaign`)
         dispatch({
@@ -133,24 +136,12 @@ function Battle() {
         });
     };
 
+    // sends you to the campaign page when you lose
     const handleLoserClose = () => {
         history.push(`/campaign`)
     };
 
-    // const checkRoundOver = () => {
-
-    //     setTimeout(() => {
-    //         if (roundOver === true) {
-    //             setCharacterStamina(characterStamina + 5)
-    //             setEnemyStamina(enemyStamina + 5)
-    //             setRoundOver(false)
-    //         }
-
-    //     }, 4550);
-
-    // };
-
-
+    // after doing an action, this will disable buttons for 4.5 sec
     const disableAllButtons = () => {
 
         setIsDisabled(true)
@@ -164,6 +155,7 @@ function Battle() {
 
     };
 
+    // this is for the users attacks or actions
     const attack = (attackType, basicAttacks, starterOne) => {
 
 
@@ -266,6 +258,7 @@ function Battle() {
         return enemyHp;
     };
 
+    // after an action it reads it and puts it on the screen
     const characterTextBox = (attackType, basicAttacks, starterOne) => {
 
         if (attackType === 'unique') {
@@ -283,6 +276,7 @@ function Battle() {
         }
     };
 
+    // after 3.5 seconds after user attacks, this will do all of the enemys attacks
     const enemyAttack = (attackType, enemyOne, basicAttacks) => {
 
         setTimeout(() => {
@@ -441,6 +435,7 @@ function Battle() {
         return starterOneHp;
     };
 
+    // after 3.5 seconds this will run and put whatever enemy did on the screen
     const enemyTextBox = (enemyOne, basicAttacks) => {
 
         setTimeout(() => {
@@ -467,7 +462,7 @@ function Battle() {
 
     };
 
-
+    // holds every battle funtions inside and in order
     const battle = (attackType) => {
 
         disableAllButtons();
@@ -488,6 +483,7 @@ function Battle() {
                 width: `100vw`,
             }}>
 
+            {/* Character postion */}
             <div className='character'>
 
                 <p className="hp-text"> hp: {starterOneHp}</p>
@@ -500,6 +496,7 @@ function Battle() {
 
             </div>
 
+            {/* enmey postion */}
             <div className={enemyClassName}>
 
                 <p className="hp-text"> hp: {enemyHp}</p>
@@ -512,12 +509,14 @@ function Battle() {
 
             </div>
 
+            {/* text box postion */}
             <div className='textBox'>
 
                 <p>{textBox}</p>
 
             </div>
 
+            {/* attack buttons postion */}
             <div className='attacks' >
 
                 <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
@@ -529,6 +528,7 @@ function Battle() {
 
             </div>
 
+            {/* back button */}
             <div className='backButton'>
                 <BackButton />
             </div>
@@ -577,8 +577,8 @@ function Battle() {
                 </Dialog>
             </Fragment>
 
-             {/* Switching character dialog */}
-             <Fragment>
+            {/* Switching character dialog */}
+            <Fragment>
                 <Dialog
                     fullScreen
                     open={switchOpen}
@@ -656,7 +656,7 @@ function Battle() {
                     <List>
                         <ListItem >
                             <img height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot.number == 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
@@ -666,14 +666,14 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary="Stamina Potion"
                                 secondary="0 hp | 30 stamina"
-                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
+                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot.number == 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
                             <img height={200} width={200} src="images/maxPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={maxPot && maxPot.number === 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={maxPot && maxPot.number == 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
                         </ListItem>
                         <Divider />
                     </List>
