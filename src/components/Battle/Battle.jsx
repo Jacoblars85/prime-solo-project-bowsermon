@@ -96,7 +96,7 @@ function Battle() {
     const [starterTwoStamina, setStarterTwoStamina] = useState(starterTwo.stamina);
     // Starter picture/hp/stamina on the screen
 
-     // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
+    // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
     // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
     const [characterPicture, setCharacterPicture] = useState(starterOne.profile_pic);
     const [currentId, setCurrentId] = useState(starterOne.id);
@@ -280,7 +280,7 @@ function Battle() {
                 setSwitchOpen(false);
             }
         } else if (currentId === starterTwo.id) {
-            
+
             if (attackType === 'unique') {
                 setEnemyHp(enemyHp - starterTwo.unique_damage)
                 setStarterOneStamina(starterTwoStamina - starterTwo.unique_stamina)
@@ -379,7 +379,7 @@ function Battle() {
                 setCharacterPicture(starterOne.profile_pic)
                 setSwitchOpen(false);
 
-            } 
+            }
         }
 
         console.log('enemy hp', enemyHp);
@@ -405,7 +405,7 @@ function Battle() {
                 setTextBox(`${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
             } else if (attackType === 'starterTwo') {
                 setTextBox(`${starterOne.name} switched out into ${starterTwo.name}.`);
-            } 
+            }
 
         } else if (currentId === starterTwo.id) {
             if (attackType === 'unique') {
@@ -422,9 +422,9 @@ function Battle() {
                 setTextBox(`${starterTwo.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
             } else if (attackType === 'starterOne') {
                 setTextBox(`${starterTwo.name} switched out into ${starterOne.name}.`);
-            } 
+            }
         }
-        
+
     };
 
     // after 3.5 seconds after user attacks, this will do all of the enemys attacks
@@ -432,148 +432,358 @@ function Battle() {
 
         setTimeout(() => {
 
-            if (enemyStamina >= enemyOne.unique_stamina) {
+            if (currentId === starterOne.id) {
 
-                if (attackType === 'health') {
+                if (enemyStamina >= enemyOne.unique_stamina) {
 
-                    if (starterOneHp + 25 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
+                    if (attackType === 'health') {
+
+                        if (starterOneHp + 25 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                        }
+
+                        if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterOneHp + 20 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                        }
+
+                        if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterTwo') {
+
+                        setStarterTwoHp(starterTwoHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
 
                     } else {
-
-                        setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage)
+                        setStarterOneHp(starterOneHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        if (starterOneHp - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
                     }
 
-                    if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else if (attackType === 'max') {
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
 
-                    if (starterOneHp + 20 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - enemyOne.unique_damage)
-                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                } else if (enemyStamina >= basicAttacks[0].stamina) {
+
+                    if (attackType === 'health') {
+
+                        if (starterOneHp + 25 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                        }
+
+                        if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterOneHp + 20 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                        }
+
+                        if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterTwo') {
+
+                        setStarterTwoHp(starterTwoHp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
 
                     } else {
+                        setStarterOneHp(starterOneHp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                        setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage)
+                        if (starterOneHp - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    }
+
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
+
+                } else if (enemyStamina >= basicAttacks[1].stamina) {
+
+                    if (attackType === 'health') {
+
+                        if (starterOneHp + 25 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                        }
+
+                        if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterOneHp + 20 > starterOne.hp) {
+                            setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        } else {
+
+                            setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                        }
+
+
+                        if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterTwo') {
+
+                        setStarterTwoHp(starterTwoHp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+
+                    } else {
+                        setStarterOneHp(starterOneHp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        if (starterOneHp - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+                    }
+
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
+                }
+            } else if (currentId === starterTwo.id) {
+
+                if (enemyStamina >= enemyOne.unique_stamina) {
+
+                    if (attackType === 'health') {
+
+                        if (starterTwoHp + 25 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 25 - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                        }
+
+                        if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterTwoHp + 20 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 20 - enemyOne.unique_damage)
+                            setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                        }
+
+                        if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterOne') {
+
+                        setStarterOneHp(starterOneHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        if (starterOneHp - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+
+                    } else {
+                        setStarterTwoHp(starterTwoHp - enemyOne.unique_damage)
+                        setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+
+                        if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
                     }
 
-                    if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else {
-                    setStarterOneHp(starterOneHp - enemyOne.unique_damage)
-                    setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
 
-                    if (starterOneHp - enemyOne.unique_damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
+                } else if (enemyStamina >= basicAttacks[0].stamina) {
+
+                    if (attackType === 'health') {
+
+                        if (starterTwoHp + 25 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 25 - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                        }
+
+                        if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterTwoHp + 20 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 20 - basicAttacks[0].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+                        }
+
+                        if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterOne') {
+
+                        setStarterOneHp(starterOneHp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        if (starterOneHp - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+
+                    } else {
+                        setStarterTwoHp(starterTwoHp - basicAttacks[0].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
+
+                        if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
                     }
+
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
+
+                } else if (enemyStamina >= basicAttacks[1].stamina) {
+
+                    if (attackType === 'health') {
+
+                        if (starterTwoHp + 25 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 25 - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                        }
+
+                        if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'max') {
+
+                        if (starterTwoHp + 20 > starterTwo.hp) {
+                            setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        } else {
+
+                            setStarterTwoHp(starterTwoHp + 20 - basicAttacks[1].damage)
+                            setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+                        }
+
+
+                        if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    } else if (attackType === 'starterOne') {
+
+                        setStarterOneHp(starterOneHp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        if (starterOneHp - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            setLoserOpen(true)
+                        }
+
+                    } else {
+                        setStarterTwoHp(starterTwoHp - basicAttacks[1].damage)
+                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
+
+                        if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            setLoserOpen(true)
+                        }
+                    }
+
+                    setEnemyPicAttack("enemyPicAttack")
+                    setEnemyClassName("shake")
                 }
 
-                setEnemyPicAttack("enemyPicAttack")
-                setEnemyClassName("shake")
-
-            } else if (enemyStamina >= basicAttacks[0].stamina) {
-
-                if (attackType === 'health') {
-
-                    if (starterOneHp + 25 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
-
-                    } else {
-
-                        setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
-                    }
-
-                    if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else if (attackType === 'max') {
-
-                    if (starterOneHp + 20 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - basicAttacks[0].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
-
-                    } else {
-
-                        setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
-                    }
-
-                    if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else {
-                    setStarterOneHp(starterOneHp - basicAttacks[0].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
-
-                    if (starterOneHp - basicAttacks[0].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                }
-
-                setEnemyPicAttack("enemyPicAttack")
-                setEnemyClassName("shake")
-
-            } else if (enemyStamina >= basicAttacks[1].stamina) {
-
-                if (attackType === 'health') {
-
-                    if (starterOneHp + 25 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
-
-                    } else {
-
-                        setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
-                    }
-
-                    if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else if (attackType === 'max') {
-
-                    if (starterOneHp + 20 > starterOne.hp) {
-                        setStarterOneHp(starterOne.hp - basicAttacks[1].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
-
-                    } else {
-
-                        setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage)
-                        setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
-                    }
-
-
-                    if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                } else {
-                    setStarterOneHp(starterOneHp - basicAttacks[1].damage)
-                    setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
-
-                    if (starterOneHp - basicAttacks[1].damage <= 0) {
-                        setStarterOneHp(0)
-                        setLoserOpen(true)
-                    }
-                }
-
-                setEnemyPicAttack("enemyPicAttack")
-                setEnemyClassName("shake")
             }
+
+
         }, 3000);
 
         setTimeout(() => {
