@@ -77,8 +77,8 @@ function Battle() {
 
 
     // starters
-    // console.log('starterOne', starterOne);
-    // console.log('starterTwo', starterTwo);
+    console.log('starterOne', starterOne);
+    console.log('starterTwo', starterTwo);
 
     // basic attack
     // console.log('basic', basicAttacks);
@@ -95,9 +95,11 @@ function Battle() {
     const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
     const [starterTwoStamina, setStarterTwoStamina] = useState(starterTwo.stamina);
     // Starter picture/hp/stamina on the screen
+
+     // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
+    // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
     const [characterPicture, setCharacterPicture] = useState(starterOne.profile_pic);
-    const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
-    const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
+    const [currentId, setCurrentId] = useState(starterOne.id);
     const [maxHp, setMaxHp] = useState(starterOne.hp);
     const [maxStamina, setMaxStamina] = useState(starterOne.stamina);
 
@@ -173,117 +175,212 @@ function Battle() {
     // this is for the users attacks or actions
     const attack = (attackType, basicAttacks, starterOne) => {
 
-
         setTimeout(() => {
             setCharacterPicAttack("")
         }, 150);
 
-        if (attackType === 'unique') {
-            setEnemyHp(enemyHp - starterOne.unique_damage)
-            setStarterOneStamina(starterOneStamina - starterOne.unique_stamina)
+        if (currentId === starterOne.id) {
 
-            setCharacterPicAttack("chacracterPicAttack")
+            if (attackType === 'unique') {
+                setEnemyHp(enemyHp - starterOne.unique_damage)
+                setStarterOneStamina(starterOneStamina - starterOne.unique_stamina)
 
-            if (enemyHp - starterOne.unique_damage <= 0) {
-                setEnemyHp(0)
-                return setWinnerOpen(true)
-            }
-        } else if (attackType === 'punch') {
-            setEnemyHp(enemyHp - basicAttacks[0].damage)
-            setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina)
+                setCharacterPicAttack("chacracterPicAttack")
 
-            setCharacterPicAttack("chacracterPicAttack")
-
-            if (enemyHp - basicAttacks[0].damage <= 0) {
-                setEnemyHp(0)
-                setWinnerOpen(true)
-            }
-        } else if (attackType === 'poke') {
-            setEnemyHp(enemyHp - basicAttacks[1].damage)
-            setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina)
-
-            setCharacterPicAttack("chacracterPicAttack")
-
-            if (enemyHp - basicAttacks[1].damage <= 0) {
-                setEnemyHp(0)
-                setWinnerOpen(true)
-            }
-        } else if (attackType === 'health') {
-
-            setStarterOneHp(starterOneHp + 25)
-
-            if (starterOneHp + 25 > starterOne.hp) {
-
-                setStarterOneHp(starterOne.hp)
-            }
-
-            setInventoryOpen(false);
-
-            dispatch({
-                type: 'SAGA_USE_POTION',
-                payload: {
-                    potionId: 1,
+                if (enemyHp - starterOne.unique_damage <= 0) {
+                    setEnemyHp(0)
+                    return setWinnerOpen(true)
                 }
-            })
+            } else if (attackType === 'punch') {
+                setEnemyHp(enemyHp - basicAttacks[0].damage)
+                setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina)
 
-        } else if (attackType === 'stamina') {
+                setCharacterPicAttack("chacracterPicAttack")
 
-            setStarterOneStamina(starterOneStamina + 30)
-
-            if (starterOneStamina + 30 > starterOne.stamina) {
-
-                setStarterOneStamina(starterOne.stamina)
-            }
-
-            setInventoryOpen(false);
-
-            dispatch({
-                type: 'SAGA_USE_POTION',
-                payload: {
-                    potionId: 2,
+                if (enemyHp - basicAttacks[0].damage <= 0) {
+                    setEnemyHp(0)
+                    setWinnerOpen(true)
                 }
-            })
+            } else if (attackType === 'poke') {
+                setEnemyHp(enemyHp - basicAttacks[1].damage)
+                setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina)
 
-        } else if (attackType === 'max') {
+                setCharacterPicAttack("chacracterPicAttack")
 
-            setStarterOneHp(starterOneHp + 20)
-            setStarterOneStamina(starterOneStamina + 25)
-
-            if (starterOneHp + 20 > starterOne.hp) {
-                setStarterOneHp(starterOne.hp)
-
-            } else if (starterOneStamina + 25 > starterOne.stamina) {
-                setStarterOneStamina(starterOne.stamina)
-
-            }
-
-            setInventoryOpen(false);
-
-            dispatch({
-                type: 'SAGA_USE_POTION',
-                payload: {
-                    potionId: 3,
+                if (enemyHp - basicAttacks[1].damage <= 0) {
+                    setEnemyHp(0)
+                    setWinnerOpen(true)
                 }
-            })
+            } else if (attackType === 'health') {
 
-        } else if (attackType === 'starterOne') {
+                setStarterOneHp(starterOneHp + 25)
 
-            setCurrentCharacterHp(starterOneHp)
-            setCurrentCharacterStamina(starterOneStamina)
-            setMaxHp(starterOne.hp)
-            setMaxStamina(starterOne.stamina)
-            setCharacterPicture(starterOne.profile_pic)
-            setSwitchOpen(false);
+                if (starterOneHp + 25 > starterOne.hp) {
 
-        } else if (attackType === 'starterTwo') {
+                    setStarterOneHp(starterOne.hp)
+                }
 
-            setCurrentCharacterHp(starterTwoHp)
-            setCurrentCharacterStamina(starterTwoStamina)
-            setMaxHp(starterTwo.hp)
-            setMaxStamina(starterTwo.stamina)
-            setCharacterPicture(starterTwo.profile_pic)
-            setSwitchOpen(false);
-        } 
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 1,
+                    }
+                })
+
+            } else if (attackType === 'stamina') {
+
+                setStarterOneStamina(starterOneStamina + 30)
+
+                if (starterOneStamina + 30 > starterOne.stamina) {
+
+                    setStarterOneStamina(starterOne.stamina)
+                }
+
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 2,
+                    }
+                })
+
+            } else if (attackType === 'max') {
+
+                setStarterOneHp(starterOneHp + 20)
+                setStarterOneStamina(starterOneStamina + 25)
+
+                if (starterOneHp + 20 > starterOne.hp) {
+                    setStarterOneHp(starterOne.hp)
+
+                } else if (starterOneStamina + 25 > starterOne.stamina) {
+                    setStarterOneStamina(starterOne.stamina)
+
+                }
+
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 3,
+                    }
+                })
+
+            } else if (attackType === 'starterTwo') {
+
+                // setCurrentCharacterHp(starterTwoHp)
+                // setCurrentCharacterStamina(starterTwoStamina)
+                setCurrentId(starterTwo.id)
+                setMaxHp(starterTwo.hp)
+                setMaxStamina(starterTwo.stamina)
+                setCharacterPicture(starterTwo.profile_pic)
+                setSwitchOpen(false);
+            }
+        } else if (currentId === starterTwo.id) {
+            
+            if (attackType === 'unique') {
+                setEnemyHp(enemyHp - starterTwo.unique_damage)
+                setStarterOneStamina(starterTwoStamina - starterTwo.unique_stamina)
+
+                setCharacterPicAttack("chacracterPicAttack")
+
+                if (enemyHp - starterTwo.unique_damage <= 0) {
+                    setEnemyHp(0)
+                    return setWinnerOpen(true)
+                }
+            } else if (attackType === 'punch') {
+                setEnemyHp(enemyHp - basicAttacks[0].damage)
+                setStarterOneStamina(starterTwoStamina - basicAttacks[0].stamina)
+
+                setCharacterPicAttack("chacracterPicAttack")
+
+                if (enemyHp - basicAttacks[0].damage <= 0) {
+                    setEnemyHp(0)
+                    setWinnerOpen(true)
+                }
+            } else if (attackType === 'poke') {
+                setEnemyHp(enemyHp - basicAttacks[1].damage)
+                setStarterOneStamina(starterTwoStamina - basicAttacks[1].stamina)
+
+                setCharacterPicAttack("chacracterPicAttack")
+
+                if (enemyHp - basicAttacks[1].damage <= 0) {
+                    setEnemyHp(0)
+                    setWinnerOpen(true)
+                }
+            } else if (attackType === 'health') {
+
+                setStarterOneHp(starterTwoHp + 25)
+
+                if (starterTwoHp + 25 > starterTwo.hp) {
+
+                    setStarterOneHp(starterTwo.hp)
+                }
+
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 1,
+                    }
+                })
+
+            } else if (attackType === 'stamina') {
+
+                setStarterOneStamina(starterTwoStamina + 30)
+
+                if (starterTwoStamina + 30 > starterTwo.stamina) {
+
+                    setStarterOneStamina(starterTwo.stamina)
+                }
+
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 2,
+                    }
+                })
+
+            } else if (attackType === 'max') {
+
+                setStarterOneHp(starterTwoHp + 20)
+                setStarterOneStamina(starterTwoStamina + 25)
+
+                if (starterTwoHp + 20 > starterTwo.hp) {
+                    setStarterOneHp(starterTwo.hp)
+
+                } else if (starterTwoStamina + 25 > starterTwo.stamina) {
+                    setStarterOneStamina(starterTwo.stamina)
+
+                }
+
+                setInventoryOpen(false);
+
+                dispatch({
+                    type: 'SAGA_USE_POTION',
+                    payload: {
+                        potionId: 3,
+                    }
+                })
+
+            } else if (attackType === 'starterOne') {
+
+                // setCurrentCharacterHp(starterOneHp)
+                // setCurrentCharacterStamina(starterOneStamina)
+                setCurrentId(starterOne.id)
+                setMaxHp(starterOne.hp)
+                setMaxStamina(starterOne.stamina)
+                setCharacterPicture(starterOne.profile_pic)
+                setSwitchOpen(false);
+
+            } 
+        }
 
         console.log('enemy hp', enemyHp);
 
@@ -293,19 +390,41 @@ function Battle() {
     // after an action it reads it and puts it on the screen
     const characterTextBox = (attackType, basicAttacks, starterOne) => {
 
-        if (attackType === 'unique') {
-            setTextBox(`${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`);
-        } else if (attackType === 'punch') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
-        } else if (attackType === 'poke') {
-            setTextBox(`${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
-        } else if (attackType === 'health') {
-            setTextBox(`${starterOne.name} used a health potion and it healed 25 hp.`);
-        } else if (attackType === 'stamina') {
-            setTextBox(`${starterOne.name} used a stamina potion and it gave 30 stamina back.`);
-        } else if (attackType === 'max') {
-            setTextBox(`${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
+        if (currentId === starterOne.id) {
+            if (attackType === 'unique') {
+                setTextBox(`${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`);
+            } else if (attackType === 'punch') {
+                setTextBox(`${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
+            } else if (attackType === 'poke') {
+                setTextBox(`${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
+            } else if (attackType === 'health') {
+                setTextBox(`${starterOne.name} used a health potion and it healed 25 hp.`);
+            } else if (attackType === 'stamina') {
+                setTextBox(`${starterOne.name} used a stamina potion and it gave 30 stamina back.`);
+            } else if (attackType === 'max') {
+                setTextBox(`${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
+            } else if (attackType === 'starterTwo') {
+                setTextBox(`${starterOne.name} switched out into ${starterTwo.name}.`);
+            } 
+
+        } else if (currentId === starterTwo.id) {
+            if (attackType === 'unique') {
+                setTextBox(`${starterTwo.name} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`);
+            } else if (attackType === 'punch') {
+                setTextBox(`${starterTwo.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`);
+            } else if (attackType === 'poke') {
+                setTextBox(`${starterTwo.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`);
+            } else if (attackType === 'health') {
+                setTextBox(`${starterTwo.name} used a health potion and it healed 25 hp.`);
+            } else if (attackType === 'stamina') {
+                setTextBox(`${starterTwo.name} used a stamina potion and it gave 30 stamina back.`);
+            } else if (attackType === 'max') {
+                setTextBox(`${starterTwo.name} used a max potion. It healed 20 hp and gave 25 stamina back.`);
+            } else if (attackType === 'starterOne') {
+                setTextBox(`${starterTwo.name} switched out into ${starterOne.name}.`);
+            } 
         }
+        
     };
 
     // after 3.5 seconds after user attacks, this will do all of the enemys attacks
@@ -518,11 +637,11 @@ function Battle() {
             {/* Character position */}
             <div className='character'>
 
-                <p className="hp-text"> hp: {characterPicture === starterOne.profile_pic ? starterOneHp : starterTwoHp}</p>
-                <p className="stamina-text"> stamina: {currentCharacterStamina}</p>
+                <p className="hp-text"> hp: {currentId === starterOne.id ? starterOneHp : starterTwoHp}</p>
+                <p className="stamina-text"> stamina: {currentId === starterOne.id ? starterOneStamina : starterTwoStamina}</p>
 
-                <progress className="hp-meter" value={characterPicture === starterOne.profile_pic ? starterOneHp : starterTwoHp} max={maxHp}></progress>
-                <progress className="stamina-meter" value={currentCharacterStamina} max={maxStamina}></progress>
+                <progress className="hp-meter" value={currentId === starterOne.id ? starterOneHp : starterTwoHp} max={maxHp}></progress>
+                <progress className="stamina-meter" value={currentId === starterOne.id ? starterOneStamina : starterTwoStamina} max={maxStamina}></progress>
 
                 <img className={characterPicAttack} src={characterPicture} />
 
@@ -639,9 +758,9 @@ function Battle() {
                     <List>
                         <ListItem >
                             <img height={200} width={200} src={starterOne.profile_pic} />
-                            <ListItemText sx={{ ml: 55 }} 
-                            primary={`starter 1: ${starterOne.name}`}
-                            secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
+                            <ListItemText sx={{ ml: 55 }}
+                                primary={`starter 1: ${starterOne.name}`}
+                                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
                             <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterOne.profile_pic ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
@@ -651,8 +770,8 @@ function Battle() {
                             <img height={200} width={200} src={starterTwo.profile_pic} />
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
-                                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`}/>
-                                <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterTwo.profile_pic ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterTwo.profile_pic ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
