@@ -1084,7 +1084,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 1: ${starterOne.name}`}
                                 secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -1094,7 +1094,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
                                 secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
