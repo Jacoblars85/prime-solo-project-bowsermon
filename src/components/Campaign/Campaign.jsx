@@ -53,31 +53,31 @@ function Campaign() {
 
             <div className='levelOne'>
 
-                <button onClick={() => goToTheBattle(1)} >level 1</button>
+                <button onClick={() => goToTheBattle(1)} >1</button>
 
             </div>
 
             <div className='levelTwo'>
 
-                <button onClick={() => goToTheBattle(2)} disabled={user.level_1_completed ? false : true}>level 2</button>
+                <button onClick={() => goToTheBattle(2)} disabled={user.level_1_completed ? false : true}>2</button>
 
             </div>
 
             <div className='levelThree'>
 
-                <button onClick={() => goToTheBattle(3)} disabled={user.level_2_completed ? false : true}>level 3</button>
+                <button onClick={() => goToTheBattle(3)} disabled={user.level_2_completed ? false : true}>3</button>
 
             </div>
 
             <div className='levelFour'>
 
-                <button onClick={() => goToTheBattle(4)} disabled={user.level_3_completed ? false : true}>level 4</button>
+                <button onClick={() => goToTheBattle(4)} disabled={user.level_3_completed ? false : true}>4</button>
 
             </div>
 
             <div className='levelFive'>
 
-                <button onClick={() => goToTheBattle(5)} disabled={user.level_4_completed ? false : true}>level 5</button>
+                <button onClick={() => goToTheBattle(5)} disabled={user.level_4_completed ? false : true}>5</button>
 
             </div>
 

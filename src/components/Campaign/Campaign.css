@@ -5,32 +5,122 @@ body {
     width: 100%;
 }
 
-.levelOne {
+.levelOne button {
     position: absolute;
-    top: 75%;
-    left: 49.9%;
+    top: 73.5%;
+    left: 50.5%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
 }
 
-.levelTwo {
-    position: absolute;
-    top: 44%;
-    left: 62%;
+.levelOne button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
 }
 
-.levelThree {
+.levelOne button:hover:not(:disabled) {
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
+}
+
+.levelTwo button {
     position: absolute;
-    top: 21%;
+    top: 41%;
+    left: 64%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelTwo button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelTwo button:hover:not(:disabled) {
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
+}
+
+.levelThree button {
+    position: absolute;
+    top: 19.7%;
     left: 54%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
 }
 
-.levelFour {
-    position: absolute;
-    top: 40%;
-    left: 44%;
+.levelThree button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
 }
 
-.levelFive {
+.levelThree button:hover:not(:disabled){
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
+}
+
+.levelFour button {
     position: absolute;
-    top: 67%;
-    left: 34%;
+    top: 39%;
+    left: 44.9%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelFour button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelFour button:hover:not(:disabled) {
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
+}
+
+.levelFive button {
+    position: absolute;
+    top: 65%;
+    left: 35%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelFive button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelFive button:hover:not(:disabled){
+    width: 45px;
+    height: 45px;
+    font-size: 35px;
 }
