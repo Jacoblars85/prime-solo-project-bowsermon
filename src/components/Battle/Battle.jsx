@@ -86,11 +86,24 @@ function Battle() {
     console.log('enemy', enemyOne);
 
 
-    // All the local state being used in the battle
+    // starter one hp and stamina
     const [starterOneHp, setStarterOneHp] = useState(starterOne.hp);
     const [starterOneStamina, setStarterOneStamina] = useState(starterOne.stamina);
+    // starter two hp and stamina
+    const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
+    const [starterTwoStamina, setStarterTwoStamina] = useState(starterTwo.stamina);
+    // Starter picture/hp/stamina on the screen
+    const [characterPicture, setCharacterPicture] = useState(starterOne.profile_pic);
+    const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
+    const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
+    const [maxHp, setMaxHp] = useState(starterOne.hp);
+    const [maxStamina, setMaxStamina] = useState(starterOne.stamina);
+
+
+    // enemy hp and stamina
     const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
     const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
+    // text box for actions
     const [textBox, setTextBox] = useState('');
 
     // features that get triggered as the battle goes on
@@ -251,7 +264,24 @@ function Battle() {
                 }
             })
 
-        }
+        } else if (attackType === 'starterOne') {
+
+            setCurrentCharacterHp(starterOneHp)
+            setCurrentCharacterStamina(starterOneStamina)
+            setMaxHp(starterOne.hp)
+            setMaxStamina(starterOne.stamina)
+            setCharacterPicture(starterOne.profile_pic)
+            setSwitchOpen(false);
+
+        } else if (attackType === 'starterTwo') {
+
+            setCurrentCharacterHp(starterTwoHp)
+            setCurrentCharacterStamina(starterTwoStamina)
+            setMaxHp(starterTwo.hp)
+            setMaxStamina(starterTwo.stamina)
+            setCharacterPicture(starterTwo.profile_pic)
+            setSwitchOpen(false);
+        } 
 
         console.log('enemy hp', enemyHp);
 
@@ -483,20 +513,20 @@ function Battle() {
                 width: `100vw`,
             }}>
 
-            {/* Character postion */}
+            {/* Character position */}
             <div className='character'>
 
-                <p className="hp-text"> hp: {starterOneHp}</p>
-                <p className="stamina-text"> stamina: {starterOneStamina}</p>
+                <p className="hp-text"> hp: {currentCharacterHp}</p>
+                <p className="stamina-text"> stamina: {currentCharacterStamina}</p>
 
-                <progress className="hp-meter" value={starterOneHp} max={starterOne.hp}></progress>
-                <progress className="stamina-meter" value={starterOneStamina} max={starterOne.stamina}></progress>
+                <progress className="hp-meter" value={currentCharacterHp} max={maxHp}></progress>
+                <progress className="stamina-meter" value={currentCharacterStamina} max={maxStamina}></progress>
 
-                <img className={characterPicAttack} src={starterOne.profile_pic} />
+                <img className={characterPicAttack} src={characterPicture} />
 
             </div>
 
-            {/* enmey postion */}
+            {/* enmey position */}
             <div className={enemyClassName}>
 
                 <p className="hp-text"> hp: {enemyHp}</p>
@@ -509,14 +539,14 @@ function Battle() {
 
             </div>
 
-            {/* text box postion */}
+            {/* text box position */}
             <div className='textBox'>
 
                 <p>{textBox}</p>
 
             </div>
 
-            {/* attack buttons postion */}
+            {/* attack buttons position */}
             <div className='attacks' >
 
                 <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
@@ -606,18 +636,21 @@ function Battle() {
                     </AppBar>
                     <List>
                         <ListItem >
-                            <img height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Starter 1" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot === 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                            <img height={200} width={200} src={starterOne.profile_pic} />
+                            <ListItemText sx={{ ml: 55 }} 
+                            primary={`starter 1: ${starterOne.name}`}
+                            secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
-                            <img height={200} width={200} src="images/staminaPotion.png" />
+                            <img height={200} width={200} src={starterTwo.profile_pic} />
                             <ListItemText sx={{ ml: 55 }}
-                                primary="Starter 2"
-                                secondary="0 hp | 30 stamina"
-                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot === 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
+                                primary={`starter 2: ${starterTwo.name}`}
+                                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`}/>
+                                <Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot === 0 ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
