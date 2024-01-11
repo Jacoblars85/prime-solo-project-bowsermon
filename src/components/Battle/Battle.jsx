@@ -325,7 +325,7 @@ function Battle() {
 
             if (attackType === 'unique') {
                 setEnemyHp(enemyHp - starterTwo.unique_damage)
-                setStarterOneStamina(starterTwoStamina - starterTwo.unique_stamina)
+                setStarterTwoStamina(starterTwoStamina - starterTwo.unique_stamina)
 
                 setCharacterPicAttack("chacracterPicAttack")
 
@@ -335,7 +335,7 @@ function Battle() {
                 }
             } else if (attackType === 'punch') {
                 setEnemyHp(enemyHp - basicAttacks[0].damage)
-                setStarterOneStamina(starterTwoStamina - basicAttacks[0].stamina)
+                setStarterTwoStamina(starterTwoStamina - basicAttacks[0].stamina)
 
                 setCharacterPicAttack("chacracterPicAttack")
 
@@ -345,7 +345,7 @@ function Battle() {
                 }
             } else if (attackType === 'poke') {
                 setEnemyHp(enemyHp - basicAttacks[1].damage)
-                setStarterOneStamina(starterTwoStamina - basicAttacks[1].stamina)
+                setStarterTwoStamina(starterTwoStamina - basicAttacks[1].stamina)
 
                 setCharacterPicAttack("chacracterPicAttack")
 
@@ -355,11 +355,11 @@ function Battle() {
                 }
             } else if (attackType === 'health') {
 
-                setStarterOneHp(starterTwoHp + 25)
+                setStarterTwoHp(starterTwoHp + 25)
 
                 if (starterTwoHp + 25 > starterTwo.hp) {
 
-                    setStarterOneHp(starterTwo.hp)
+                    setStarterTwoHp(starterTwo.hp)
                 }
 
                 setInventoryOpen(false);
@@ -373,11 +373,11 @@ function Battle() {
 
             } else if (attackType === 'stamina') {
 
-                setStarterOneStamina(starterTwoStamina + 30)
+                setStarterTwoStamina(starterTwoStamina + 30)
 
                 if (starterTwoStamina + 30 > starterTwo.stamina) {
 
-                    setStarterOneStamina(starterTwo.stamina)
+                    setStarterTwoStamina(starterTwo.stamina)
                 }
 
                 setInventoryOpen(false);
@@ -391,14 +391,15 @@ function Battle() {
 
             } else if (attackType === 'max') {
 
-                setStarterOneHp(starterTwoHp + 20)
-                setStarterOneStamina(starterTwoStamina + 25)
+                setStarterTwoHp(starterTwoHp + 20)
+                setStarterTwoStamina(starterTwoStamina + 25)
 
                 if (starterTwoHp + 20 > starterTwo.hp) {
-                    setStarterOneHp(starterTwo.hp)
+                    setStarterTwoHp(starterTwo.hp)
 
-                } else if (starterTwoStamina + 25 > starterTwo.stamina) {
-                    setStarterOneStamina(starterTwo.stamina)
+                } 
+                if (starterTwoStamina + 25 > starterTwo.stamina) {
+                    setStarterTwoStamina(starterTwo.stamina)
 
                 }
 
