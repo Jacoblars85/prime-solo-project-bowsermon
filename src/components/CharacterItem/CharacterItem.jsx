@@ -17,10 +17,10 @@ function CharacterItem({ character }) {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const setStarterOne = () => {
 
@@ -44,7 +44,7 @@ function CharacterItem({ character }) {
         payload: character.id
       });
     }
-    
+
   }
 
   const sellCharacter = () => {
@@ -72,7 +72,7 @@ function CharacterItem({ character }) {
 
   const toggleNewClass = () => {
     console.log(character.id);
-    
+
     dispatch({
       type: 'SAGA_SET_OLD',
       payload: character.id
@@ -80,7 +80,7 @@ function CharacterItem({ character }) {
   }
 
   const doNothing = () => {
-   
+
   }
 
   const displayText = () => {
@@ -88,26 +88,34 @@ function CharacterItem({ character }) {
       return (
         <div className='description'>
 
-          <p>{character.hp} hp</p>
-          <p>{character.stamina} stamina</p>
-          <p>{character.unique_attack} attack</p>
-          <p>{character.unique_damage} damage</p>
-          <p>{character.unique_stamina} stamina cost</p>
+          <p className='characterTextHp'>{character.hp} hp</p>
+          <p className='characterTextStamina'>{character.stamina} stamina</p>
+          <p>{character.unique_attack}</p>
+          <p className='characterTextHp'>{character.unique_damage} damage</p>
+          <p className='characterTextStamina'>{character.unique_stamina} stamina cost</p>
 
 
         </div>
       )
     } else {
       return (
-        <div>
-          <img height={100} width={100} src={character.profile_pic} />
+        <div className='characterPictures'>
+          <img src={character.profile_pic} />
         </div>
       )
     }
   }
 
   return (
-    <div className={character.new ? "new" : "single-box"} onMouseOver={character.new ? toggleNewClass : doNothing }>
+    <div className={character.new ? "new" : "single-box"} onMouseOver={character.new ? toggleNewClass : doNothing}>
+
+<div className='starterPTag'>
+
+<p>{character.new ? "new" : character.starter_1 ? "Starter 1" : ""}</p>
+
+<p>{character.starter_2 ? "Starter 2" : ""}</p>
+
+</div>
 
       <h5>{character.name}</h5>
 
@@ -117,38 +125,36 @@ function CharacterItem({ character }) {
       <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
       <button id={character.id} onClick={confirmSale} >Sell</button>
 
-      <p>{character.new ? "new" : ""}</p>
-
-      <p>{character.starter_1 ? "Starter 1" : ""}</p>
-
-      <p>{character.starter_2 ? "Starter 2" : ""}</p>
-    
+      {/* <p>{character.new ? "new" : ""}</p> */}
 
 
-<Fragment>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {`Are you sure you want to sell ${character.name}`}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            You will receive 10 coins if you sell {character.name}. You will have to buy the new character box to have the chance to get {character.name} back.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-        <Button onClick={sellCharacter} autoFocus>
-            Yes
-          </Button>
-          <Button onClick={handleClose}>Close</Button>
-          
-        </DialogActions>
-      </Dialog>
-    </Fragment>
+
+
+
+      <Fragment>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {`Are you sure you want to sell ${character.name}`}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              You will receive 10 coins if you sell {character.name}. You will have to buy the new character box to have the chance to get {character.name} back.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={sellCharacter} autoFocus>
+              Yes
+            </Button>
+            <Button onClick={handleClose}>Close</Button>
+
+          </DialogActions>
+        </Dialog>
+      </Fragment>
 
     </div>
   )

@@ -24,8 +24,8 @@ function StarterItem({ start }) {
       )
     } else {
       return (
-        <div>
-          <img height={100} width={100} src={start.profile_pic} />
+        <div className='starterPictures'>
+          <img src={start.profile_pic} />
         </div>
       )
     }

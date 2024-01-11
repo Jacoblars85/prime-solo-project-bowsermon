@@ -1,4 +1,6 @@
-
+@keyframes blink { 
+  50% { border-color: white; } 
+}
 
 .characterBox {
   display: flex;
@@ -11,90 +13,189 @@
   margin-left: 20px;
   width: 1120px;
   height: 640px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .characterBox h2 {
   position: absolute;
   text-align: center;
-  margin-top: -40px;
+  margin-top: -49px;
 }
   
 .single-box {
   border: 3px solid white;
-  height: 170px;
-  width: 170px;
+  height: 190px;
+  width: 190px;
   justify-content: space-around;
   text-align: center;
-  padding-left: 0px;
+  /* padding-left: 0px; */
   background-color: black;
-
+  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
+  background-repeat: repeat-x;
+  background-size: 5vh;
+  background-position-y: 150px;
 }
 
-.new {
-  border: 3px solid yellow;
-  height: 170px;
-  width: 170px;
-  justify-content: space-around;
-  text-align: center;
-  padding-left: 0px;
-  background-color: black;
-
+.single-box h5 {
+  margin: -3px;
+  color: white;
+  font-size: larger;
 }
 
-.single-box img{
+.characterPictures img {
   cursor: pointer;
-
+  height: 140px;
+  width: 140px;
 }
   
 .singleBoxUl {
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   text-align: center;
-  padding-left: 37px;
+  margin-left: 29px;
   color: white;
   cursor: pointer;
+  padding: 0px;
 
+}
+
+.singleBoxUl p {
+  margin: 0px;
+  text-align: center;
+
+}
+
+.characterTextHp {
+  color: red;
+}
+
+.characterTextStamina {
+  color: lime;
+}
+
+.new {
+  animation-name: blink ;
+  animation-duration: .4s ;
+  /* animation-timing-function: step-end ; */
+  animation-iteration-count: infinite ;
+  border: 4px dotted yellow;
+
+  height: 190px;
+  width: 190px;
+  justify-content: space-around;
+  text-align: center;
+  /* padding-left: 0px; */
+  background-color: black;
+  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
+  background-repeat: repeat-x;
+  background-size: 5vh;
+  background-position-y: 150px;
+
+}
+
+.new h5 {
+  margin: -3px;
+  color: white;
+  font-size: larger;
+}
+
+.starterPTag {
+  position: absolute;
+ top: 12.7%;
+ width: 190px;
+ height: 15px;
+}
+
+
+
+
+
+
+
+.starterCharacterView {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 14.5%;
+  left: 81%;
+  border: 3px solid black;
+  width: 250px;
+  height: 627px;
+  justify-content: center;
+  background-color: rgb(81, 205, 246);
+  padding-top: 20px;
+}
+
+.starter-single-box {
+  height: 328.8px;
+  width: 250px;
+  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/pixelGrassBlock.jpeg);
+  background-repeat: repeat-x;
+  background-size: 10vh;
+  background-position-y: 220px;
 }
 
 .starterSingleBoxUl {
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   text-align: center;
   padding-left: 37px;
-  color: black;
+  /* color: black; */
   cursor: pointer;
+  padding-left: 0px;
+
 }
   
-h5 {
+.starterCharacterView h5 {
   margin: 0px;
-  color: white;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 14px;
 }
 
-  .starterCharacterView {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    top: 14.5%;
-    left: 81%;
-    border: 3px solid black;
-    width: 250px;
-    height: 638px;
-    justify-content: center;
-    background-color: azure;
 
-}
-
-.starterCharacterView h2 {
+/* .starterCharacterView h2 {
   position: absolute;
   text-align: center;
   margin-top: -32px;
+} */
+
+.starterPictures img {
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  padding-left: 6px;
+  margin-top: -5px;
+  
+}
+  
+
+.starterOneHeader {
+  position: absolute;
+  top: 20.4%;
+  right: 2.6%;
+  z-index: 1;
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  font-size: 28px;
 }
 
-.starterCharacterView img {
-cursor: pointer;
+.starterTwoHeader {
+  position: absolute;
+  position: absolute;
+  top: 61.4%;
+  right: 2.6%;
+  z-index: 1;
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  font-size: 28px;
 }
+
+
 
 .backButton {
   position: absolute;
@@ -106,4 +207,3 @@ cursor: pointer;
   cursor: pointer;
 
 }
-  
