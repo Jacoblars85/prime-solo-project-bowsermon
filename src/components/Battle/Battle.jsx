@@ -30,6 +30,11 @@ const SwitchTransition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
+const DeadTransition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function Battle() {
     const dispatch = useDispatch();
 
@@ -139,6 +144,43 @@ function Battle() {
     const handleSwitchClose = () => {
         setSwitchOpen(false);
     };
+
+
+
+
+    const [deadOpen, setDeadOpen] = useState(null);
+
+    const handleDeadOpen = () => {
+        setDeadOpen(true);
+    };
+
+    const handleDeadClose = () => {
+        setDeadOpen(false);
+    };
+
+    const deadSwitch = (switchType) => {
+
+        if (switchType === 'starterOne') {
+
+            setCurrentId(starterOne.id)
+            setMaxHp(starterOne.hp)
+            setMaxStamina(starterOne.stamina)
+            setCharacterPicture(starterOne.profile_pic)
+            setDeadOpen(false);
+
+        } else if (switchType === 'starterTwo') {
+
+            setCurrentId(starterTwo.id)
+            setMaxHp(starterTwo.hp)
+            setMaxStamina(starterTwo.stamina)
+            setCharacterPicture(starterTwo.profile_pic)
+            setDeadOpen(false);
+        }
+
+    };
+
+
+
 
     // state values to open dialog if you win or lose
     const [openWinner, setWinnerOpen] = useState(false);
@@ -448,9 +490,12 @@ function Battle() {
                             setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                         }
 
-                        if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                        if (starterOneHp + 25 - enemyOne.unique_damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
 
@@ -464,27 +509,37 @@ function Battle() {
                             setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                         }
 
-                        if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                        if (starterOneHp + 20 - enemyOne.unique_damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
+
                     } else if (attackType === 'starterTwo') {
 
                         setStarterTwoHp(starterTwoHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-                        if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                        if (starterTwoHp - enemyOne.unique_damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
 
                     } else {
                         setStarterOneHp(starterOneHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-                        if (starterOneHp - enemyOne.unique_damage <= 0) {
+                        if (starterOneHp - enemyOne.unique_damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -505,9 +560,13 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                         }
 
-                        if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                        if (starterOneHp + 25 - basicAttacks[0].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
+
                         }
                     } else if (attackType === 'max') {
 
@@ -521,27 +580,36 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                         }
 
-                        if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                        if (starterOneHp + 20 - basicAttacks[0].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'starterTwo') {
 
                         setStarterTwoHp(starterTwoHp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                        if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                        if (starterTwoHp - basicAttacks[0].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
 
                     } else {
                         setStarterOneHp(starterOneHp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                        if (starterOneHp - basicAttacks[0].damage <= 0) {
+                        if (starterOneHp - basicAttacks[0].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -562,9 +630,12 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                         }
 
-                        if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                        if (starterOneHp + 25 - basicAttacks[1].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
 
@@ -578,28 +649,35 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                         }
 
-
-                        if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                        if (starterOneHp + 20 - basicAttacks[1].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'starterTwo') {
 
                         setStarterTwoHp(starterTwoHp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
-                        if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                        if (starterTwoHp - basicAttacks[1].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
-
                     } else {
                         setStarterOneHp(starterOneHp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
-                        if (starterOneHp - basicAttacks[1].damage <= 0) {
+                        if (starterOneHp - basicAttacks[1].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -622,9 +700,12 @@ function Battle() {
                             setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                         }
 
-                        if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
+                        if (starterTwoHp + 25 - enemyOne.unique_damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
 
@@ -638,27 +719,36 @@ function Battle() {
                             setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
                         }
 
-                        if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
+                        if (starterTwoHp + 20 - enemyOne.unique_damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
 
                         setStarterOneHp(starterOneHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-                        if (starterOneHp - enemyOne.unique_damage <= 0) {
+                        if (starterOneHp - enemyOne.unique_damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - enemyOne.unique_damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
 
                     } else {
                         setStarterTwoHp(starterTwoHp - enemyOne.unique_damage)
                         setEnemyStamina(enemyStamina - enemyOne.unique_stamina)
 
-                        if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                        if (starterTwoHp - enemyOne.unique_damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -679,9 +769,12 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                         }
 
-                        if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
+                        if (starterTwoHp + 25 - basicAttacks[0].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
 
@@ -695,27 +788,36 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
                         }
 
-                        if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
+                        if (starterTwoHp + 20 - basicAttacks[0].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
 
                         setStarterOneHp(starterOneHp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                        if (starterOneHp - basicAttacks[0].damage <= 0) {
+                        if (starterOneHp - basicAttacks[0].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - basicAttacks[0].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
 
                     } else {
                         setStarterTwoHp(starterTwoHp - basicAttacks[0].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[0].stamina)
 
-                        if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                        if (starterTwoHp - basicAttacks[0].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -736,9 +838,12 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                         }
 
-                        if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
+                        if (starterTwoHp + 25 - basicAttacks[1].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
 
@@ -752,28 +857,36 @@ function Battle() {
                             setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
                         }
 
-
-                        if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
+                        if (starterTwoHp + 20 - basicAttacks[1].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
 
                         setStarterOneHp(starterOneHp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
-                        if (starterOneHp - basicAttacks[1].damage <= 0) {
+                        if (starterOneHp - basicAttacks[1].damage <= 0 && starterTwoHp <= 0) {
                             setStarterOneHp(0)
                             setLoserOpen(true)
+                        } else if (starterOneHp - basicAttacks[1].damage <= 0) {
+                            setStarterOneHp(0)
+                            handleDeadOpen()
                         }
 
                     } else {
                         setStarterTwoHp(starterTwoHp - basicAttacks[1].damage)
                         setEnemyStamina(enemyStamina - basicAttacks[1].stamina)
 
-                        if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                        if (starterTwoHp - basicAttacks[1].damage <= 0 && starterOneHp <= 0) {
                             setStarterTwoHp(0)
                             setLoserOpen(true)
+                        } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                            setStarterTwoHp(0)
+                            handleDeadOpen()
                         }
                     }
 
@@ -881,9 +994,9 @@ function Battle() {
             <div className='attacks' >
 
                 <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
-                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={starterOneStamina < starterOne.unique_stamina ? true : isDisabled} >{starterOne.unique_attack}</button>
+                <button onClick={() => battle('unique')} className='uniqueAttack' disabled={currentId === starterOne.id ? starterOneStamina < starterOne.unique_stamina ? true : isDisabled : starterTwoStamina < starterTwo.unique_stamina ? true : isDisabled} >{currentId === starterOne.id ? starterOne.unique_attack : starterTwo.unique_attack}</button>
                 <button onClick={handleSwitchOpen} className='switch' disabled={isDisabled} >Switch</button>
-                <button onClick={() => battle('punch')} className='kickAttack' disabled={starterOneStamina < basicAttacks[0].stamina ? true : isDisabled} >{basicAttacks[0].attack}</button>
+                <button onClick={() => battle('punch')} className='kickAttack' disabled={currentId === starterOne.id ? starterOneStamina < basicAttacks[0].stamina ? true : isDisabled : starterTwoStamina < basicAttacks[0].stamina ? true : isDisabled}>{basicAttacks[0].attack}</button>
 
                 {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
 
@@ -971,7 +1084,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 1: ${starterOne.name}`}
                                 secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterOne.profile_pic ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -981,7 +1094,55 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
                                 secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterTwo.profile_pic ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                    </List>
+                </Dialog>
+            </Fragment>
+
+
+            {/* Dead switching character dialog */}
+            <Fragment>
+                <Dialog
+                    fullScreen
+                    open={deadOpen}
+                    onClose={handleDeadClose}
+                    TransitionComponent={DeadTransition}
+                >
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
+                        <Toolbar>
+                            <IconButton
+                                edge="start"
+                                color="inherit"
+                                onClick={handleDeadClose}
+                                aria-label="close"
+                            >
+                            </IconButton>
+                            <Typography sx={{ ml: 65.5, flex: 1, }} variant="h4" component="div">
+                                Choose A Character
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <List>
+                        <ListItem >
+                            <img height={200} width={200} src={starterOne.profile_pic} />
+                            <ListItemText sx={{ ml: 55 }}
+                                primary={`starter 1: ${starterOne.name}`}
+                                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => deadSwitch('starterOne')} >Change Starter</Button>
+                        </ListItem>
+
+                        <Divider />
+
+                        <ListItem >
+                            <img height={200} width={200} src={starterTwo.profile_pic} />
+                            <ListItemText sx={{ ml: 55 }}
+                                primary={`starter 2: ${starterTwo.name}`}
+                                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => deadSwitch('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
