@@ -191,7 +191,7 @@ router.get('/starter', (req, res) => {
 FROM "user_characters"
 INNER JOIN "characters"
     ON "user_characters"."character_id" = "characters"."id"
-WHERE "user_characters"."starter_1" = TRUE OR "user_characters"."starter_2" = TRUE AND "user_id" = ${[req.user.id]}
+WHERE "user_characters"."starter_1" = TRUE AND "user_id" = ${[req.user.id]} OR "user_characters"."starter_2" = TRUE AND "user_id" = ${[req.user.id]}
     ORDER BY "starter_1" DESC;
 
   `;
