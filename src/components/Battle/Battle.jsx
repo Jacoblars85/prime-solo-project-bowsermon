@@ -72,18 +72,20 @@ function Battle() {
     let maxPot = inventory[2];
 
     // the inventory object and first health pot
-    console.log('inventory', inventory);
-    console.log('healthpot', healthPot);
+    // console.log('inventory', inventory);
+    // console.log('healthpot', healthPot);
 
 
     // starters
-    console.log('starterOne', starterOne);
-    console.log('starterTwo', starterTwo);
+    // console.log('starterOne', starterOne);
+    // console.log('starterTwo', starterTwo);
 
     // basic attack
-    console.log('basic', basicAttacks);
-    // level enemy
-    console.log('enemy', enemyOne);
+    // console.log('basic', basicAttacks);
+    // // level enemy
+    // console.log('enemy', enemyOne);
+
+    // console.log('currenthp', currentCharacterHp);
 
 
     // starter one hp and stamina
@@ -516,10 +518,10 @@ function Battle() {
             {/* Character position */}
             <div className='character'>
 
-                <p className="hp-text"> hp: {currentCharacterHp}</p>
+                <p className="hp-text"> hp: {characterPicture === starterOne.profile_pic ? starterOneHp : starterTwoHp}</p>
                 <p className="stamina-text"> stamina: {currentCharacterStamina}</p>
 
-                <progress className="hp-meter" value={currentCharacterHp} max={maxHp}></progress>
+                <progress className="hp-meter" value={characterPicture === starterOne.profile_pic ? starterOneHp : starterTwoHp} max={maxHp}></progress>
                 <progress className="stamina-meter" value={currentCharacterStamina} max={maxStamina}></progress>
 
                 <img className={characterPicAttack} src={characterPicture} />
@@ -640,7 +642,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }} 
                             primary={`starter 1: ${starterOne.name}`}
                             secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterOne.profile_pic ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -650,7 +652,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
                                 secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`}/>
-                                <Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot === 0 ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                                <Button sx={{ color: 'black', fontSize: 20 }} disabled={characterPicture === starterTwo.profile_pic ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />

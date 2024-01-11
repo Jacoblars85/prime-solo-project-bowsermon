@@ -31,7 +31,7 @@ function Campaign() {
         });
         setTimeout(() => {
             history.push(`/battle/${params}`)
-        }, 50);
+        }, 150);
     };
 
 
