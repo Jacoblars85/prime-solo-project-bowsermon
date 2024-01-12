@@ -152,10 +152,10 @@ function CharacterItem({ character }) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={sellCharacter} autoFocus>
-              Yes
+            <Button sx={{ color: 'black', fontSize: 20 }} onClick={sellCharacter} autoFocus>
+              Sell
             </Button>
-            <Button onClick={handleClose}>Close</Button>
+            <Button sx={{ color: 'black', fontSize: 20 }} onClick={handleClose}>Close</Button>
 
           </DialogActions>
         </Dialog>
