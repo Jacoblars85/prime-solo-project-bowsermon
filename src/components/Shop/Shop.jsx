@@ -15,6 +15,9 @@ import Slider from '@mui/material/Slider';
 import InfoIcon from '@mui/icons-material/Info';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function Shop() {
@@ -52,14 +55,6 @@ function Shop() {
         setRandomOpen(false);
     };
 
-    // const handlePrizeClose = () => {
-    //     setPrizeOpen(false);
-    // };
-
-    // const handlePrizeClickOpen = () => {
-    //     setPrizeOpen(true);
-    // };
-
 
     const getRandomCharacter = () => {
 
@@ -72,15 +67,35 @@ function Shop() {
 
             console.log('random number', randomNum);
 
+            setOpenRandomSnack(true)
+
             dispatch({
                 type: 'SAGA_POST_NEW_CHARACTER',
                 payload: {
                     characterID: randomNum
                 }
             });
-            // history.push(`/characters`)
+
         }
     };
+
+    const [openRandomSnack, setOpenRandomSnack] = useState(false);
+
+
+    // const handleRandomSnackClick = () => {
+    //     setOpenRandomSnack(true);
+    // };
+
+    const handleRandomSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenRandomSnack(false);
+    };
+
+
+
 
 
     const handleHealthClickOpen = () => {
@@ -101,6 +116,9 @@ function Shop() {
             return alert('you are broke broke, sorry')
         } else {
             console.log("healthValue:", healthValue)
+
+            setOpenHealthSnack(true);
+
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
@@ -108,7 +126,7 @@ function Shop() {
                     amountNum: healthValue
                 }
             });
-            // history.push(`/home`)
+
         }
     };
 
@@ -135,6 +153,23 @@ function Shop() {
     };
 
 
+    const [openHealthSnack, setOpenHealthSnack] = useState(false);
+
+    const handleHealthSnackClick = () => {
+        setOpenHealthSnack(true);
+    };
+
+    const handleHealthSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenHealthSnack(false);
+    };
+
+
+
+
 
     const handleStaminaClickOpen = () => {
         setStaminaOpen(true);
@@ -154,6 +189,8 @@ function Shop() {
             return alert('you are broke broke, sorry')
         } else {
 
+            setOpenStaminaSnack(true);
+
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
@@ -161,7 +198,7 @@ function Shop() {
                     amountNum: staminaValue
                 }
             });
-            // history.push(`/home`)
+
         }
     };
 
@@ -186,6 +223,23 @@ function Shop() {
         setAnchorElStamina(null);
     };
 
+    const [openStaminaSnack, setOpenStaminaSnack] = useState(false);
+
+    const handleStaminaSnackClick = () => {
+        setOpenStaminaSnack(true);
+    };
+
+    const handleStaminaSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenStaminaSnack(false);
+    };
+
+
+
+
 
 
 
@@ -206,6 +260,8 @@ function Shop() {
             return alert('you are broke, sorry')
         } else {
 
+            setOpenMaxSnack(true);
+
             dispatch({
                 type: 'SAGA_BUY_POTION',
                 payload: {
@@ -213,7 +269,7 @@ function Shop() {
                     amountNum: maxValue
                 }
             });
-            // history.push(`/home`)
+
         }
     };
 
@@ -228,7 +284,6 @@ function Shop() {
         setMaxValue(newMaxValue);
     };
 
-
     const [anchorElMax, setAnchorElMax] = useState(null);
     const openMaxInfo = Boolean(anchorElMax);
 
@@ -237,6 +292,21 @@ function Shop() {
     };
     const handleMaxInfoClose = () => {
         setAnchorElMax(null);
+    };
+
+
+    const [openMaxSnack, setOpenMaxSnack] = useState(false);
+
+    const handleMaxSnackClick = () => {
+        setOpenMaxSnack(true);
+    };
+
+    const handleMaxSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenMaxSnack(false);
     };
 
 
@@ -516,34 +586,55 @@ function Shop() {
                 <BackButton />
             </div>
 
-            {/* <Fragment>
-                <Dialog
-                    open={prizeOpen}
-                    onClose={handlePrizeClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {`You got a ${characters[characters.length - 1].name}`}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            <img height={100} width={100} src={characters[characters.length - 1].profile_pic} />
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handlePrizeClose} autoFocus>
-                            Close
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </Fragment> */}
+            <div>
+                {/* <Button onClick={handleRandomSnackClick}>Open simple snackbar</Button> */}
+                <Snackbar
+                    open={openRandomSnack}
+                    autoHideDuration={6000}
+                    onClose={handleRandomSnackClose}
+                    message="Random Character Is Added"
+                    // action={action}
+                    // key={vertical + horizontal}
+                />
+
+
+                {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
+                <Snackbar
+                    open={openHealthSnack}
+                    autoHideDuration={4000}
+                    onClose={handleHealthSnackClose}
+                    message="Your Health Potion has been Sent to Your Inventory"
+                // action={action}
+              
+                />
+
+                {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
+                <Snackbar
+                    open={openStaminaSnack}
+                    autoHideDuration={4000}
+                    onClose={handleStaminaSnackClose}
+                    message="The Stamina Potion has been Sent to Your Inventory"
+                // action={action}
+                
+                />
+
+                <Snackbar
+                    open={openMaxSnack}
+                    autoHideDuration={4000}
+                    onClose={handleMaxSnackClose}
+                    message="The Max Potion has been Sent to Your Inventory"
+                // action={action}
+                
+                />
+            </div>
 
         </div>
     );
 }
 
 export default Shop;
+
+
 
 
 
