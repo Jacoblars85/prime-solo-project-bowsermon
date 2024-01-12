@@ -12,6 +12,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import InfoIcon from '@mui/icons-material/Info';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 function Shop() {
@@ -75,7 +78,7 @@ function Shop() {
                     characterID: randomNum
                 }
             });
-            history.push(`/characters`)
+            // history.push(`/characters`)
         }
     };
 
@@ -105,7 +108,7 @@ function Shop() {
                     amountNum: healthValue
                 }
             });
-            history.push(`/home`)
+            // history.push(`/home`)
         }
     };
 
@@ -121,6 +124,17 @@ function Shop() {
     };
 
 
+    const [anchorElHealth, setAnchorElHealth] = useState(null);
+    const openHealthInfo = Boolean(anchorElHealth);
+
+    const handleInfoHealthClick = (event) => {
+        setAnchorElHealth(event.currentTarget);
+    };
+    const handleHealthInfoClose = () => {
+        setAnchorElHealth(null);
+    };
+
+
 
     const handleStaminaClickOpen = () => {
         setStaminaOpen(true);
@@ -132,8 +146,8 @@ function Shop() {
 
     const buyStaminaPot = (staminaValue) => {
 
-console.log(staminaValue);
-console.log(staminaValue * 10);
+        console.log(staminaValue);
+        console.log(staminaValue * 10);
 
         if (user.coins < staminaValue * 10) {
             setStaminaOpen(false);
@@ -147,7 +161,7 @@ console.log(staminaValue * 10);
                     amountNum: staminaValue
                 }
             });
-            history.push(`/home`)
+            // history.push(`/home`)
         }
     };
 
@@ -162,6 +176,16 @@ console.log(staminaValue * 10);
         setStaminaValue(newStaminaValue);
     };
 
+    const [anchorElStamina, setAnchorElStamina] = useState(null);
+    const openStaminaInfo = Boolean(anchorElStamina);
+
+    const handleInfoStaminaClick = (event) => {
+        setAnchorElStamina(event.currentTarget);
+    };
+    const handleStaminaInfoClose = () => {
+        setAnchorElStamina(null);
+    };
+
 
 
 
@@ -174,8 +198,8 @@ console.log(staminaValue * 10);
     };
 
     const buyMaxPot = (maxValue) => {
-console.log(maxValue );
-console.log(maxValue * 20);
+        console.log(maxValue);
+        console.log(maxValue * 20);
 
         if (user.coins < maxValue * 20) {
             setMaxOpen(false);
@@ -189,7 +213,7 @@ console.log(maxValue * 20);
                     amountNum: maxValue
                 }
             });
-            history.push(`/home`)
+            // history.push(`/home`)
         }
     };
 
@@ -205,6 +229,17 @@ console.log(maxValue * 20);
     };
 
 
+    const [anchorElMax, setAnchorElMax] = useState(null);
+    const openMaxInfo = Boolean(anchorElMax);
+
+    const handleInfoMaxClick = (event) => {
+        setAnchorElMax(event.currentTarget);
+    };
+    const handleMaxInfoClose = () => {
+        setAnchorElMax(null);
+    };
+
+
 
 
     return (
@@ -212,13 +247,13 @@ console.log(maxValue * 20);
 
             <Nav />
 
-            <h2>Shop</h2>
+            <h2 className='shopHeader'>Shop</h2>
 
             <div className='randomCharacter'>
 
                 <h4>Random Character Box</h4>
 
-                <p>15 coins</p>
+                <h5>15x <img className='randomCharacterCoins' height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp' /></h5>
 
                 <Fragment>
                     <img onClick={handleRandomClickOpen} height={200} width={200} src="images/1200px-ItemBoxMK8.webp" />
@@ -237,10 +272,10 @@ console.log(maxValue * 20);
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={getRandomCharacter} autoFocus>
-                                Yes
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={getRandomCharacter} autoFocus>
+                                Buy
                             </Button>
-                            <Button onClick={handleRandomClose}>No</Button>
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleRandomClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
@@ -251,7 +286,34 @@ console.log(maxValue * 20);
 
                 <h4>Health Pot</h4>
 
-                <p>10 coins</p>
+                <div className='healthPotInfo'>
+
+                    <Button
+                        id="basic-button"
+                        aria-controls={openHealthInfo ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openHealthInfo ? 'true' : undefined}
+                        onClick={handleInfoHealthClick}
+                        sx={{ color: 'white' }}
+                    >
+                        <InfoIcon />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorElHealth}
+                        open={openHealthInfo}
+                        onClose={handleHealthInfoClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleHealthInfoClose}>+25 HP</MenuItem>
+                    </Menu>
+
+                </div>
+
+                <h5>10x <img className='healthPotCoin' height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp' /> </h5>
+
 
                 <Fragment>
                     <img onClick={handleHealthClickOpen} height={200} width={200} src="images/healthPotion.png" />
@@ -270,15 +332,15 @@ console.log(maxValue * 20);
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={() => buyHealthPot(healthValue)} autoFocus>
-                                Yes
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyHealthPot(healthValue)} autoFocus>
+                                Buy
                             </Button>
-                            <Button onClick={handleHealthClose}>No</Button>
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleHealthClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
 
-                <Box sx={{ width: 170 }}>
+                <Box sx={{ width: 200 }}>
                     <Slider
                         aria-label="Amount"
                         defaultValue={1}
@@ -290,17 +352,44 @@ console.log(maxValue * 20);
                         marks
                         min={1}
                         max={5}
+                        sx={{ color: 'white' }}
                     />
                 </Box>
 
             </div>
 
-
             <div className='staminaPot'>
 
                 <h4>Stamina Pot</h4>
 
-                <p>10 coins</p>
+
+                <div className='staminaPotInfo'>
+
+                    <Button
+                        id="basic-button"
+                        aria-controls={openStaminaInfo ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openStaminaInfo ? 'true' : undefined}
+                        onClick={handleInfoStaminaClick}
+                        sx={{ color: 'white' }}
+                    >
+                        <InfoIcon />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorElStamina}
+                        open={openStaminaInfo}
+                        onClose={handleStaminaInfoClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleStaminaInfoClose}>+30 Stamina</MenuItem>
+                    </Menu>
+
+                </div>
+
+                <h5>10x <img className='staminaPotCoin' height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp' /></h5>
 
                 <Fragment>
                     <img onClick={handleStaminaClickOpen} height={200} width={200} src="images/staminaPotion.png" />
@@ -319,15 +408,15 @@ console.log(maxValue * 20);
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={() => buyStaminaPot(staminaValue)} autoFocus>
-                                Yes
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyStaminaPot(staminaValue)} autoFocus>
+                                Buy
                             </Button>
-                            <Button onClick={handleStaminaClose}>No</Button>
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleStaminaClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
 
-                <Box sx={{ width: 170 }}>
+                <Box sx={{ width: 200 }}>
                     <Slider
                         aria-label="Temperature"
                         defaultValue={1}
@@ -339,17 +428,44 @@ console.log(maxValue * 20);
                         marks
                         min={1}
                         max={5}
+                        sx={{ color: 'white' }}
                     />
                 </Box>
 
             </div>
 
-
             <div className='maxPot'>
 
                 <h4>Max Pot</h4>
 
-                <p>20 coins</p>
+                <div className='maxPotInfo'>
+
+                    <Button
+                        id="basic-button"
+                        aria-controls={openMaxInfo ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openMaxInfo ? 'true' : undefined}
+                        onClick={handleInfoMaxClick}
+                        sx={{ color: 'white' }}
+                    >
+                        <InfoIcon />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorElMax}
+                        open={openMaxInfo}
+                        onClose={handleMaxInfoClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleMaxInfoClose}>+20 HP</MenuItem>
+                        <MenuItem onClick={handleMaxInfoClose}>+25 Stamina</MenuItem>
+                    </Menu>
+
+                </div>
+
+                <h5>20x <img className='maxPotCoins' height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp' /></h5>
 
                 <Fragment>
                     <img onClick={handleMaxClickOpen} height={200} width={200} src="images/maxPotion.png" />
@@ -360,25 +476,25 @@ console.log(maxValue * 20);
                         aria-describedby="alert-dialog-description"
                     >
                         <DialogTitle id="alert-dialog-title">
-                        {`Are you sure you want ${maxValue} of the Max Potions?`}
+                            {`Are you sure you want ${maxValue} of the Max Potions?`}
 
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                            This will cost {maxValue * 20} coins and you can not get a refund.
+                                This will cost {maxValue * 20} coins and you can not get a refund.
 
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={() => buyMaxPot(maxValue)} autoFocus>
-                                Yes
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyMaxPot(maxValue)} autoFocus>
+                                Buy
                             </Button>
-                            <Button onClick={handleMaxClose}>No</Button>
+                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleMaxClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
 
-                <Box sx={{ width: 170 }}>
+                <Box sx={{ width: 200 }}>
                     <Slider
                         aria-label="Temperature"
                         defaultValue={1}
@@ -390,6 +506,7 @@ console.log(maxValue * 20);
                         marks
                         min={1}
                         max={5}
+                        sx={{ color: 'white' }}
                     />
                 </Box>
 
@@ -427,5 +544,6 @@ console.log(maxValue * 20);
 }
 
 export default Shop;
+
 
 
