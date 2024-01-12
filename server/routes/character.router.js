@@ -23,7 +23,7 @@ router.get('/character', (req, res) => {
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
     WHERE "user_id" = ${[req.user.id]}
-    ORDER BY "character_id", "id" ASC;
+    ORDER BY "character_id", "id" DESC;
   `;
 
     pool.query(query)

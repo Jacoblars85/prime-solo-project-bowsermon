@@ -32,15 +32,12 @@ function Shop() {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
-    // console.log('characters', characters[characters.length-1].name);
+    // console.log('characters', characters.length);
 
     const [randomOpen, setRandomOpen] = useState(false);
     const [healthOpen, setHealthOpen] = useState(false);
     const [staminaOpen, setStaminaOpen] = useState(false);
     const [maxOpen, setMaxOpen] = useState(false);
-
-
-
 
 
 
@@ -57,34 +54,34 @@ function Shop() {
 
 
     const getRandomCharacter = () => {
-
-        if (user.coins < 15) {
+        
+        if (user.coins < 15 || characters.length >= 10) {
             setRandomOpen(false);
-            return alert('you are broke, sorry')
+            return alert('you can not do that, sorry')
         } else {
 
             let randomNum = Math.floor(Math.random() * 7 + 1);
 
             console.log('random number', randomNum);
 
-            setOpenRandomSnack(true)
-
+            setRandomOpen(false);
+            
             dispatch({
                 type: 'SAGA_POST_NEW_CHARACTER',
                 payload: {
                     characterID: randomNum
                 }
             });
-
+            setRandomOpen(true);
         }
     };
 
     const [openRandomSnack, setOpenRandomSnack] = useState(false);
 
 
-    // const handleRandomSnackClick = () => {
-    //     setOpenRandomSnack(true);
-    // };
+    const handleRandomSnackClick = () => {
+        setOpenRandomSnack(true);
+    };
 
     const handleRandomSnackClose = (event, reason) => {
         if (reason === 'clickaway') {

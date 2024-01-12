@@ -2,37 +2,60 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 1px solid black;
+    border: 3px solid black;
     justify-content: space-around;
     row-gap: 10px;
     column-gap: 10px;
     margin-left: 20px;
     margin-right: 20px;
     width: 1400px;
-    height: 540px;
-    padding-top: 10px;
-
+    height: 560px;
+    margin-top: 10px;
+    align-items: center;
   }
 
   .item_box {
+    /* display: flex; */
+    flex-direction: column;
     border: 3px solid white;
-    height: 170px;
-    width: 170px;
-    justify-content: space-around;
+    height: 300px;
+    width: 300px;
+    justify-content: center;
     text-align: center;
     padding-left: 0px;
     /* background-color: black; */
     
   }
 
-  .slider {
-padding-top: 10px;
+  .item_box h3 {
+    margin: 0;
+    margin-top: -10px;
+    font-size: 25px;
   }
+
+  .potionImg {
+    height: 200px;
+    width: 200px;
+    margin-top: -15px;
+    padding-left: 10px;
+  }
+
+.slider {
+    margin-top: -10px;
+    padding-left: 60px;
+}
+
+.singleItemBoxUl {
+    height: 200px;
+    width: 200px;
+    /* margin-top: -15px;
+    padding-left: 20px; */
+}
 
   .amountOfItems p{
     position: relative;
     top: -240%;
-    right: -85%;
+    right: -90%;
     background-color: white;
     border: 3px solid black;
     border-radius: 50%;
@@ -43,4 +66,13 @@ padding-top: 10px;
     margin: 0px;
     margin-top: -32px;
 
+  }
+
+
+  .inventory h2 {
+    text-align: center;
+    font-size: 40px;
+    margin: 0px;
+    /* padding-bottom: 10px; */
+    margin-top: -20px;
   }

@@ -83,8 +83,8 @@ function InventoryItem({ inventoryItem }) {
             )
         } else {
             return (
-                <div>
-                    <img height={100} width={100} src={inventoryItem.pic} />
+                <div className='potionImg'>
+                    <img  src={inventoryItem.pic} />
                 </div>
             )
         }
@@ -92,15 +92,15 @@ function InventoryItem({ inventoryItem }) {
 
 
     return (
-        <div className={inventoryItem.new ? "new_item" : "item_box"} onMouseOver={inventoryItem.new ? toggleNewClass : doNothing}>
+        <div className={"item_box"}>
 
             <div className='amountOfItems'>
                 <p >{inventoryItem.number}X</p>
             </div>
 
-            <h5>{inventoryItem.name}</h5>
+            <h3>{inventoryItem.name}</h3>
 
-            <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
+            <ul className='singleItemBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
 
             <div className='slider'>
@@ -117,12 +117,13 @@ function InventoryItem({ inventoryItem }) {
                         min={1}
                         max={inventoryItem.number}
                         disabled={inventoryItem.number === 0 ? true : false}
+                        sx={{ color: 'blue' }}
                     />
                 </Box>
             </div>
+
             <button id={inventoryItem.id} onClick={confirmSale} disabled={inventoryItem.number === 0 ? true : false}>Sell</button>
 
-            {/* <p>{inventoryItem.new ? "new" : ""}</p> */}
 
 
 
