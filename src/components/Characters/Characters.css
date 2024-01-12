@@ -2,6 +2,18 @@
   50% { border-color: white; } 
 }
 
+@keyframes animate{ 
+  0%{ 
+    opacity: 0; 
+  } 
+  50%{ 
+    opacity: 0.7; 
+  } 
+  100%{ 
+    opacity: 0; 
+  } 
+} 
+
 .characterBox {
   display: flex;
   flex-direction: row;
@@ -93,6 +105,15 @@
 
 }
 
+.new p {
+  animation-name: animate ;
+  animation-duration: .7s ;
+  animation-timing-function: step-end ;
+  animation-iteration-count: infinite ;
+  color: yellow;
+
+}
+
 .new h5 {
   margin: -3px;
   color: white;
@@ -104,6 +125,20 @@
  top: 12.7%;
  width: 190px;
  height: 15px;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 190px;
+  height: 40px;
+  padding-top: 6px;
+  justify-content: center;
+}
+
+.buttonBox button{
+  width: 95px;
 }
 
 

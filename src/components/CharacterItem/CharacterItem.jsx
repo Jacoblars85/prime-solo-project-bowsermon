@@ -109,21 +109,26 @@ function CharacterItem({ character }) {
   return (
     <div className={character.new ? "new" : "single-box"} onMouseOver={character.new ? toggleNewClass : doNothing}>
 
-<div className='starterPTag'>
+      <div className='starterPTag'>
 
-<p>{character.new ? "new" : character.starter_1 ? "Starter 1" : ""}</p>
+        <p>{character.new ? "new" : character.starter_1 ? "Starter 1" : ""}</p>
 
-<p>{character.starter_2 ? "Starter 2" : ""}</p>
+        <p>{character.starter_2 ? "Starter 2" : ""}</p>
 
-</div>
+      </div>
 
       <h5>{character.name}</h5>
 
       <ul className='singleBoxUl' onClick={togglePicture}> {displayText()} </ul>
 
-      <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
-      <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
-      <button id={character.id} onClick={confirmSale} >Sell</button>
+      <div className='buttonBox'>
+
+        <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
+        <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
+        <button id={character.id} onClick={confirmSale} >Sell</button>
+
+      </div>
+
 
       {/* <p>{character.new ? "new" : ""}</p> */}
 
