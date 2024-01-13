@@ -1,5 +1,5 @@
 @keyframes blink { 
-  50% { border-color: white; } 
+  50% { border-color: black; } 
 }
 
 @keyframes animate{ 
@@ -20,18 +20,21 @@
   flex-wrap: wrap;
   border: 3px solid black;
   justify-content: space-around;
-  row-gap: 10px;
+  /* row-gap: 10px; */
   column-gap: 10px;
   margin-left: 20px;
   width: 1120px;
-  height: 626px;
-  padding-top: 20px;
+  height: 605px;
+  padding-top: 30px;
+  margin-top: 40px;
 }
 
 .characterBox h2 {
   position: absolute;
   text-align: center;
-  margin-top: -49px;
+  margin-top: -77px;
+  font-size: 40px;
+  text-shadow: 1px 1px white;
 }
   
 .single-box {
@@ -44,7 +47,7 @@
   background-color: black;
   background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
   background-repeat: repeat-x;
-  background-size: 5vh;
+  background-size: 6vh;
   background-position-y: 150px;
 }
 
@@ -80,18 +83,35 @@
 
 .characterTextHp {
   color: red;
+  text-shadow: 1px 1px black;
+  font-size: larger;
+  margin: 0px;
 }
 
 .characterTextStamina {
   color: lime;
+  text-shadow: 1px 1px black;
+  font-size: larger;
+  margin: 0px;
+}
+
+.characterTextBoxAttack {
+  font-size: larger;
+  padding-top: 8px;
+}
+
+.characterTextAttack {
+  text-shadow: 1px 1px white;
+  font-size: larger;
+  margin-bottom: 0px;
 }
 
 .new {
   animation-name: blink ;
-  animation-duration: .4s ;
+  animation-duration: .9s ;
   /* animation-timing-function: step-end ; */
   animation-iteration-count: infinite ;
-  border: 4px dotted yellow;
+  border: 3px solid yellow;
 
   height: 190px;
   width: 190px;
@@ -101,18 +121,18 @@
   background-color: black;
   background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
   background-repeat: repeat-x;
-  background-size: 5vh;
+  background-size: 6vh;
   background-position-y: 150px;
 
 }
 
 .new p {
   animation-name: animate ;
-  animation-duration: .7s ;
+  animation-duration: .9s ;
   animation-timing-function: step-end ;
   animation-iteration-count: infinite ;
   color: yellow;
-
+  text-shadow: black;
 }
 
 .new h5 {
@@ -125,10 +145,13 @@
 
 .starterPTag {
   position: relative;
-  margin-top: -39px;
+  margin-top: -60px;
+  padding-bottom: 6px;
   width: 190px;
   height: 15px;
   text-align: center;
+  text-shadow: 1px 1px white;
+  font-size: 28px;
 }
 
 .buttonBox {
@@ -160,11 +183,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  top: 14.5%;
+  top: 15.8%;
   left: 81%;
   border: 3px solid black;
   width: 250px;
-  height: 627px;
+  height: 617px;
   justify-content: center;
   background-color: rgb(81, 205, 246);
   padding-top: 20px;
@@ -175,7 +198,7 @@
   width: 250px;
   background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/pixelGrassBlock.jpeg);
   background-repeat: repeat-x;
-  background-size: 10vh;
+  background-size: 8.7vh;
   background-position-y: 220px;
 }
 
@@ -193,9 +216,10 @@
 .starterCharacterView h5 {
   margin: 0px;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
   padding-top: 14px;
+  text-shadow: 1px 1px white;
 }
 
 
@@ -210,14 +234,14 @@
   height: 200px;
   width: 200px;
   padding-left: 6px;
-  margin-top: -5px;
+  margin-top: -6px;
   
 }
   
 
 .starterOneHeader {
   position: absolute;
-  top: 20.4%;
+  top: 25.4%;
   right: 2.6%;
   z-index: 1;
   height: 50px;
@@ -229,13 +253,34 @@
 .starterTwoHeader {
   position: absolute;
   position: absolute;
-  top: 61.4%;
+  top: 66.4%;
   right: 2.6%;
   z-index: 1;
   height: 50px;
   width: 200px;
   text-align: center;
   font-size: 28px;
+}
+
+
+.starterTextHp {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.starterTextStamina {
+  color: lime;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.starterTextAttack {
+  text-shadow: 1px 1px white;
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 

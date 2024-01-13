@@ -378,7 +378,7 @@ function Shop() {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem sx={{ color: 'red', textShadow: '1px 0px black', fontSize: '20px', fontWeight: 'bold' }} onClick={handleHealthInfoClose}>+25 HP</MenuItem>
+                        <MenuItem sx={{ color: 'red', textShadow: '1px 1px black', fontSize: '20px', fontWeight: 'bold', fontFamily: 'New Super Mario Font U' }} onClick={handleHealthInfoClose}>+25 HP</MenuItem>
                     </Menu>
 
                 </div>
@@ -455,7 +455,7 @@ function Shop() {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem sx={{ color: 'limegreen', textShadow: '1px 0px black', fontSize: '20px', fontWeight: 'bold' }} onClick={handleStaminaInfoClose}>+30 Stamina</MenuItem>
+                        <MenuItem sx={{ color: 'limegreen', textShadow: '1px 1px black', fontSize: '20px', fontWeight: 'bold', fontFamily: 'New Super Mario Font U' }} onClick={handleStaminaInfoClose}>+30 Stamina</MenuItem>
                     </Menu>
 
                 </div>
@@ -530,8 +530,8 @@ function Shop() {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem sx={{ color: 'red', textShadow: '1px 0px black', fontSize: '20px', fontWeight: 'bold' }} onClick={handleMaxInfoClose}>+20 HP</MenuItem>
-                        <MenuItem sx={{ color: 'limegreen', textShadow: '1px 0px black', fontSize: '20px', fontWeight: 'bold' }} onClick={handleMaxInfoClose}>+25 Stamina</MenuItem>
+                        <MenuItem sx={{ color: 'red', textShadow: '1px 1px black', fontSize: '20px', fontWeight: 'bold', fontFamily: 'New Super Mario Font U' }} onClick={handleMaxInfoClose}>+20 HP</MenuItem>
+                        <MenuItem sx={{ color: 'limegreen', textShadow: '1px 1px black', fontSize: '20px', fontWeight: 'bold', fontFamily: 'New Super Mario Font U' }} onClick={handleMaxInfoClose}>+25 Stamina</MenuItem>
                     </Menu>
 
                 </div>

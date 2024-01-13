@@ -14,11 +14,11 @@ function StarterItem({ start }) {
       return (
         <div className='description'>
 
-          <p className='characterTextHp'>{start.hp} hp</p>
-          <p className='characterTextStamina'>{start.stamina} stamina</p>
-          <p>{start.unique_attack}</p>
-          <p className='characterTextHp'>{start.unique_damage} damage</p>
-          <p className='characterTextStamina'>{start.unique_stamina} stamina cost</p>
+          <p className='starterTextHp'>{start.hp} hp</p>
+          <p className='starterTextStamina'>{start.stamina} stamina</p>
+          <p className='starterTextAttack'>{start.unique_attack}</p>
+          <p className='starterTextHp'>{start.unique_damage} damage</p>
+          <p className='starterTextStamina'>{start.unique_stamina} stamina</p>
 
         </div>
       )

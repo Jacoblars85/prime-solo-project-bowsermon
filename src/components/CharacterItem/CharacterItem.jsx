@@ -90,9 +90,9 @@ function CharacterItem({ character }) {
 
           <p className='characterTextHp'>{character.hp} hp</p>
           <p className='characterTextStamina'>{character.stamina} stamina</p>
-          <p>{character.unique_attack}</p>
+          <p className='characterTextBoxAttack'>{character.unique_attack}</p>
           <p className='characterTextHp'>{character.unique_damage} damage</p>
-          <p className='characterTextStamina'>{character.unique_stamina} stamina cost</p>
+          <p className='characterTextStamina'>{character.unique_stamina} stamina</p>
 
 
         </div>
@@ -143,19 +143,19 @@ function CharacterItem({ character }) {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
+          <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U' }}>
             {`Are you sure you want to sell ${character.name}`}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U' }}>
               You will receive 10 coins if you sell {character.name}. You will have to buy the new character box to have the chance to get {character.name} back.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button sx={{ color: 'black', fontSize: 20 }} onClick={sellCharacter} autoFocus>
+            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} onClick={sellCharacter} autoFocus>
               Sell
             </Button>
-            <Button sx={{ color: 'black', fontSize: 20 }} onClick={handleClose}>Close</Button>
+            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} onClick={handleClose}>Close</Button>
 
           </DialogActions>
         </Dialog>
