@@ -1015,16 +1015,16 @@ function Battle() {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">
+                    <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                         {"Congrats, you win!!"}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
+                        <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             Click the close button to go back home and collect your 5 coins!
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleWinnerClose} autoFocus> Close </Button>
+                        <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', color: 'black', fontSize: 16 }} onClick={handleWinnerClose} autoFocus> Close </Button>
                     </DialogActions>
                 </Dialog>
             </Fragment>
@@ -1037,16 +1037,16 @@ function Battle() {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">
+                    <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                         {"You Lost, better luck next time pal."}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
+                        <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             You Suck, click the close button to go home and try again!
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleLoserClose} autoFocus> Close </Button>
+                        <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }} onClick={handleLoserClose} autoFocus> Close </Button>
                     </DialogActions>
                 </Dialog>
             </Fragment>
@@ -1059,7 +1059,7 @@ function Battle() {
                     onClose={handleSwitchClose}
                     TransitionComponent={SwitchTransition}
                 >
-                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black', fontFamily: 'New Super Mario Font U',  }}>
                         <Toolbar>
                             <IconButton
                                 edge="start"
@@ -1070,7 +1070,7 @@ function Battle() {
                             >
                                 <CloseIcon />
                             </IconButton>
-                            <Typography sx={{ ml: 65.5, flex: 1, }} variant="h4" component="div">
+                            <Typography sx={{ ml: 65.5, flex: 1, fontFamily: 'New Super Mario Font U', }} variant="h4" component="div">
                                 Choose A Character
                             </Typography>
                             {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
@@ -1084,7 +1084,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 1: ${starterOne.name}`}
                                 secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => battle('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -1094,7 +1094,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
                                 secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => battle('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -1112,7 +1112,7 @@ function Battle() {
                     onClose={handleDeadClose}
                     TransitionComponent={DeadTransition}
                 >
-                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black', fontFamily: 'New Super Mario Font U' }}>
                         <Toolbar>
                             <IconButton
                                 edge="start"
@@ -1121,7 +1121,7 @@ function Battle() {
                                 aria-label="close"
                             >
                             </IconButton>
-                            <Typography sx={{ ml: 65.5, flex: 1, }} variant="h4" component="div">
+                            <Typography sx={{ ml: 65.5, flex: 1, fontFamily: 'New Super Mario Font U' }} variant="h4" component="div">
                                 Choose A Character
                             </Typography>
                         </Toolbar>
@@ -1132,7 +1132,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 1: ${starterOne.name}`}
                                 secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => deadSwitch('starterOne')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={currentId === starterOne.id ? true : starterOneHp <= 0 ? true : false} onClick={() => deadSwitch('starterOne')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -1142,7 +1142,7 @@ function Battle() {
                             <ListItemText sx={{ ml: 55 }}
                                 primary={`starter 2: ${starterTwo.name}`}
                                 secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.hp} stamina`} />
-                            <Button sx={{ color: 'black', fontSize: 20 }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => deadSwitch('starterTwo')} >Change Starter</Button>
+                            <Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={currentId === starterTwo.id ? true : starterTwoHp <= 0 ? true : false} onClick={() => deadSwitch('starterTwo')} >Change Starter</Button>
                         </ListItem>
 
                         <Divider />
@@ -1159,7 +1159,7 @@ function Battle() {
                     onClose={handleInventoryClose}
                     TransitionComponent={Transition}
                 >
-                    <AppBar sx={{ position: 'relative', backgroundColor: 'black' }}>
+                    <AppBar sx={{ position: 'relative', backgroundColor: 'black', fontFamily: 'New Super Mario Font U' }}>
                         <Toolbar>
                             <IconButton
                                 edge="start"
@@ -1170,7 +1170,7 @@ function Battle() {
                             >
                                 <CloseIcon />
                             </IconButton>
-                            <Typography sx={{ ml: 73.5, flex: 1, }} variant="h4" component="div">
+                            <Typography sx={{ ml: 73.5, flex: 1, fontFamily: 'New Super Mario Font U',  }} variant="h4" component="div">
                                 Inventory
                             </Typography>
                             {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
@@ -1181,24 +1181,24 @@ function Battle() {
                     <List>
                         <ListItem >
                             <img height={200} width={200} src="images/healthPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={healthPot && healthPot.number == 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55, fontFamily: 'New Super Mario Font U' }} primary="Health Potion" secondary="25 hp | 0 stamina" /><Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={healthPot && healthPot.number == 0 ? true : false} onClick={() => battle('health')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
                             <img height={200} width={200} src="images/staminaPotion.png" />
-                            <ListItemText sx={{ ml: 55 }}
+                            <ListItemText sx={{ ml: 55, fontFamily: 'New Super Mario Font U' }}
                                 primary="Stamina Potion"
                                 secondary="0 hp | 30 stamina"
-                            /><Button sx={{ color: 'black', fontSize: 20 }} disabled={staminaPot && staminaPot.number == 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
+                            /><Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={staminaPot && staminaPot.number == 0 ? true : false} onClick={() => battle('stamina')} >Use Potion</Button>
                         </ListItem>
 
                         <Divider />
 
                         <ListItem >
                             <img height={200} width={200} src="images/maxPotion.png" />
-                            <ListItemText sx={{ ml: 55 }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20 }} disabled={maxPot && maxPot.number == 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
+                            <ListItemText sx={{ ml: 55, fontFamily: 'New Super Mario Font U' }} primary="Max Potion" secondary="20 hp | 25 stamina" /><Button sx={{ color: 'black', fontSize: 20, fontFamily: 'New Super Mario Font U' }} disabled={maxPot && maxPot.number == 0 ? true : false} onClick={() => battle('max')} >Use Potion</Button>
                         </ListItem>
                         <Divider />
                     </List>
