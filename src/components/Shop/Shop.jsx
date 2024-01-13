@@ -334,19 +334,19 @@ function Shop() {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle id="alert-dialog-title">
+                        <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', fontSize: '30px' }}>
                             {"Are you sure?"}
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
+                            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', fontSize: '18px' }}>
                                 This will cost 15 coins and you may get multiple of the same character.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={getRandomCharacter} autoFocus>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={getRandomCharacter} autoFocus>
                                 Buy
                             </Button>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleRandomClose}>Close</Button>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={handleRandomClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
@@ -394,19 +394,19 @@ function Shop() {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle id="alert-dialog-title">
+                        <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             {`Are you sure you want ${healthValue} of the Health Potions?`}
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
+                            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                                 This will cost {healthValue * 10} coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyHealthPot(healthValue)} autoFocus>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={() => buyHealthPot(healthValue)} autoFocus>
                                 Buy
                             </Button>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleHealthClose}>Close</Button>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={handleHealthClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
@@ -470,19 +470,19 @@ function Shop() {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle id="alert-dialog-title">
+                        <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             {`Are you sure you want ${staminaValue} of the Stamina Potions?`}
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
+                            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                                 This will cost {staminaValue * 10} coins and you can not get a refund.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyStaminaPot(staminaValue)} autoFocus>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={() => buyStaminaPot(staminaValue)} autoFocus>
                                 Buy
                             </Button>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleStaminaClose}>Close</Button>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={handleStaminaClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>
@@ -546,21 +546,21 @@ function Shop() {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle id="alert-dialog-title">
+                        <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             {`Are you sure you want ${maxValue} of the Max Potions?`}
 
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
+                            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                                 This will cost {maxValue * 20} coins and you can not get a refund.
 
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={() => buyMaxPot(maxValue)} autoFocus>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={() => buyMaxPot(maxValue)} autoFocus>
                                 Buy
                             </Button>
-                            <Button sx={{ color: 'black', fontSize: 16 }} onClick={handleMaxClose}>Close</Button>
+                            <Button sx={{ color: 'black', fontSize: 16, fontFamily: 'New Super Mario Font U' }} onClick={handleMaxClose}>Close</Button>
                         </DialogActions>
                     </Dialog>
                 </Fragment>

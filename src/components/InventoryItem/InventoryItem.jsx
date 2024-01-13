@@ -134,19 +134,19 @@ function InventoryItem({ inventoryItem }) {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">
+                    <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                         {`Are you sure you want to sell ${potValue} ${inventoryItem.name}s`}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
+                        <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
                             You will receive {potValue * 5} coins if you sell {inventoryItem.name}s. 
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => sellPot(potValue)} autoFocus>
+                        <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', color: 'black' }} onClick={() => sellPot(potValue)} autoFocus>
                             Yes
                         </Button>
-                        <Button onClick={handleClose}>Close</Button>
+                        <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', color: 'black' }} onClick={handleClose}>Close</Button>
 
                     </DialogActions>
                 </Dialog>

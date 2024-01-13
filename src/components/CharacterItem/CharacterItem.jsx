@@ -143,11 +143,11 @@ function CharacterItem({ character }) {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U' }}>
+          <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
             {`Are you sure you want to sell ${character.name}`}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U' }}>
+            <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
               You will receive 10 coins if you sell {character.name}. You will have to buy the new character box to have the chance to get {character.name} back.
             </DialogContentText>
           </DialogContent>
