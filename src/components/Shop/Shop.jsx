@@ -55,9 +55,13 @@ function Shop() {
 
     const getRandomCharacter = () => {
         
-        if (user.coins < 15 || characters.length >= 10) {
+        if (user.coins < 15 ) {
             setRandomOpen(false);
-            return alert('you can not do that, sorry')
+            return alert('you are broke, sorry')
+        } else if (characters.length >= 10) {
+            setRandomOpen(false);
+            return alert('you can only have 10 characters')
+            
         } else {
 
             let randomNum = Math.floor(Math.random() * 7 + 1);
@@ -65,14 +69,14 @@ function Shop() {
             console.log('random number', randomNum);
 
             setRandomOpen(false);
-            
+
             dispatch({
                 type: 'SAGA_POST_NEW_CHARACTER',
                 payload: {
                     characterID: randomNum
                 }
             });
-            setRandomOpen(true);
+            setOpenRandomSnack(true)
         }
     };
 
@@ -417,7 +421,7 @@ function Shop() {
                         valueLabelDisplay="auto"
                         step={1}
                         marks
-                        min={1}
+                        min={0}
                         max={5}
                         sx={{ color: 'white' }}
                     />
@@ -493,7 +497,7 @@ function Shop() {
                         valueLabelDisplay="auto"
                         step={1}
                         marks
-                        min={1}
+                        min={0}
                         max={5}
                         sx={{ color: 'white' }}
                     />
@@ -571,7 +575,7 @@ function Shop() {
                         valueLabelDisplay="auto"
                         step={1}
                         marks
-                        min={1}
+                        min={0}
                         max={5}
                         sx={{ color: 'white' }}
                     />

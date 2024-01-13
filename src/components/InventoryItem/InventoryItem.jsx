@@ -74,10 +74,10 @@ function InventoryItem({ inventoryItem }) {
     const displayText = () => {
         if (isPicture) {
             return (
-                <div className='description'>
+                <div className='statDescription'>
 
-                    <p>{inventoryItem.hp} hp</p>
-                    <p>{inventoryItem.stamina} stamina</p>
+                    <p className='statHpText'>{inventoryItem.hp} hp</p>
+                    <p className='statStaminaText'>{inventoryItem.stamina} stamina</p>
 
                 </div>
             )
@@ -114,7 +114,7 @@ function InventoryItem({ inventoryItem }) {
                         valueLabelDisplay="auto"
                         step={1}
                         marks
-                        min={1}
+                        min={0}
                         max={inventoryItem.number}
                         disabled={inventoryItem.number === 0 ? true : false}
                         sx={{ color: 'blue' }}
@@ -122,7 +122,7 @@ function InventoryItem({ inventoryItem }) {
                 </Box>
             </div>
 
-            <button id={inventoryItem.id} onClick={confirmSale} disabled={inventoryItem.number === 0 ? true : false}>Sell</button>
+            <button className='sellButton' onClick={confirmSale} disabled={inventoryItem.number === 0 ? true : false}>Sell</button>
 
 
 
