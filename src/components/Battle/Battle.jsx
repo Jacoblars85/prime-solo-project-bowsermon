@@ -102,7 +102,7 @@ function Battle() {
 
     // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
     // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
-    const [characterPicture, setCharacterPicture] = useState(starterOne.profile_pic);
+    const [characterPicture, setCharacterPicture] = useState(starterOne.battle_pic);
     const [currentId, setCurrentId] = useState(starterOne.id);
     const [maxHp, setMaxHp] = useState(starterOne.hp);
     const [maxStamina, setMaxStamina] = useState(starterOne.stamina);
@@ -317,7 +317,7 @@ function Battle() {
                 setCurrentId(starterTwo.id)
                 setMaxHp(starterTwo.hp)
                 setMaxStamina(starterTwo.stamina)
-                setCharacterPicture(starterTwo.profile_pic)
+                setCharacterPicture(starterTwo.battle_pic)
                 setSwitchOpen(false);
             }
         } else if (currentId === starterTwo.id) {
@@ -418,7 +418,7 @@ function Battle() {
                 setCurrentId(starterOne.id)
                 setMaxHp(starterOne.hp)
                 setMaxStamina(starterOne.stamina)
-                setCharacterPicture(starterOne.profile_pic)
+                setCharacterPicture(starterOne.battle_pic)
                 setSwitchOpen(false);
 
             }
