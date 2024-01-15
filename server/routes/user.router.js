@@ -121,7 +121,7 @@ router.put("/change", (req, res) => {
 router.delete("/", (req, res) => {
 
   const sqlText = `
-    DELETE FROM "completed_levels"
+    DELETE FROM "user_inventory"
       WHERE "user_id" = ${[req.user.id]};
       `;
 

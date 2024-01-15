@@ -12,6 +12,7 @@ function Campaign() {
     const dispatch = useDispatch();
 
     const user = useSelector((store) => store.user.userReducer);
+    const starter = useSelector((store) => store.character.starter);
 
 
 
@@ -53,7 +54,7 @@ function Campaign() {
 
             <div className='levelOne'>
 
-                <button onClick={() => goToTheBattle(1)} >1</button>
+                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? true : false} >1</button>
 
             </div>
 
