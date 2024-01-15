@@ -164,6 +164,11 @@
   justify-content: center;
 }
 
+.buttonBox button:hover {
+  background-color: #757777;
+  text-decoration: none;
+}
+
 .buttonBox button{
   width: 95px;
   background-color: black;
@@ -295,4 +300,9 @@
   justify-content: flex-end;
   cursor: pointer;
 
+}
+
+.backButton:hover {
+  background-color: #757777;
+  text-decoration: none;
 }

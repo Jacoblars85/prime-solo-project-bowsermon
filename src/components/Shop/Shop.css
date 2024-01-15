@@ -196,3 +196,8 @@
     justify-content: flex-end;
     cursor: pointer;
 }
+
+.backButton:hover {
+    background-color: #757777;
+    text-decoration: none;
+  }

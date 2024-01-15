@@ -24,9 +24,10 @@ body {
 }
 
 .levelOne button:hover:not(:disabled) {
-    width: 45px;
+    /* width: 45px;
     height: 45px;
-    font-size: 35px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
 }
 
 .levelTwo button {
@@ -48,9 +49,10 @@ body {
 }
 
 .levelTwo button:hover:not(:disabled) {
-    width: 45px;
+    /* width: 45px;
     height: 45px;
-    font-size: 35px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
 }
 
 .levelThree button {
@@ -72,9 +74,10 @@ body {
 }
 
 .levelThree button:hover:not(:disabled){
-    width: 45px;
+    /* width: 45px;
     height: 45px;
-    font-size: 35px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
 }
 
 .levelFour button {
@@ -96,9 +99,10 @@ body {
 }
 
 .levelFour button:hover:not(:disabled) {
-    width: 45px;
+    /* width: 45px;
     height: 45px;
-    font-size: 35px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
 }
 
 .levelFive button {
@@ -120,7 +124,15 @@ body {
 }
 
 .levelFive button:hover:not(:disabled){
-    width: 45px;
+    /* width: 45px;
     height: 45px;
-    font-size: 35px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+
 }
+
+
+.backButton:hover {
+    background-color: #757777;
+    text-decoration: none;
+  }

@@ -993,7 +993,7 @@ function Battle() {
             {/* attack buttons position */}
             <div className='attacks' >
 
-                <button onClick={handleInventoryOpen} className='inventory' disabled={isDisabled} >Inventory</button>
+                <button onClick={handleInventoryOpen} className='inventoryMove' disabled={isDisabled} >Inventory</button>
                 <button onClick={() => battle('unique')} className='uniqueAttack' disabled={currentId === starterOne.id ? starterOneStamina < starterOne.unique_stamina ? true : isDisabled : starterTwoStamina < starterTwo.unique_stamina ? true : isDisabled} >{currentId === starterOne.id ? starterOne.unique_attack : starterTwo.unique_attack}</button>
                 <button onClick={handleSwitchOpen} className='switch' disabled={isDisabled} >Switch</button>
                 <button onClick={() => battle('punch')} className='kickAttack' disabled={currentId === starterOne.id ? starterOneStamina < basicAttacks[0].stamina ? true : isDisabled : starterTwoStamina < basicAttacks[0].stamina ? true : isDisabled}>{basicAttacks[0].attack}</button>

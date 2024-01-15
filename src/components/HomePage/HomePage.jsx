@@ -31,7 +31,7 @@ function HomePage() {
         <div className="homePage">
 
 
-          <h2>Welcome, {user.username}!</h2>
+          {/* <h2>Welcome, {user.username}!</h2> */}
 
           <div className="starterHomeView">
 

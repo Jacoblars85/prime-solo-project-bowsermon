@@ -67,8 +67,17 @@
     color: white;
 }
 
+.sellButton:hover:not(:disabled) {
+  background-color: #757777;
+  text-decoration: none;
+}
+
+
+
 .sellButton:disabled {
     cursor:default;
+  background-color: #c2c9c9;
+
 }
 
 
@@ -112,6 +121,11 @@
     margin: 0px;
     margin-top: -32px;
 
+  }
+
+  .backButton:hover {
+    background-color: #757777;
+    text-decoration: none;
   }
 
 

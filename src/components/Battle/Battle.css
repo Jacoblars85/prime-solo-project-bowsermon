@@ -95,7 +95,7 @@ body:has(.shake ) {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(8px);
+      transform: translateY(3px);
     }
   }
 
@@ -104,7 +104,7 @@ body:has(.shake ) {
     position: absolute;
     top: 4.3%;
     position: absolute;
-    height: 30px;
+    height: 35px;
     width: 70%;
     background: white;
     margin: 0px auto -30px auto;
@@ -119,9 +119,9 @@ body:has(.shake ) {
 
 .stamina-meter {
     position: absolute;
-    top: 17%;
+    top: 15%;
     position: absolute;
-    height: 20px;
+    height: 25px;
     width: 70%;
     background: white;
     margin: 0px auto -30px auto;
@@ -136,25 +136,27 @@ background: limegreen;
 
 .hp-text {
     position: absolute;
-    top: -6%;
+    top: -1.5%;
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
+    z-index: 1;
     /* text-shadow: 0px 0px 9px #ff0000; */
 }
 
 .stamina-text {
     position: absolute;
-    top: 6.5%;
+    top: 10.3%;
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
     font-size: 20px;
+    z-index: 1;
     /* text-shadow: 0px 0px 9px #ff0000; */
 }
 
@@ -164,7 +166,7 @@ background: limegreen;
     flex-wrap: wrap;
     top: 34%;
     left: 20%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 400px;
     height: 400px;
     justify-content: center;
@@ -174,10 +176,10 @@ background: limegreen;
 .character img {
     position: absolute;
     top: 23%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 300px;
     height: 300px;
-    animation: MoveUpDown 3s linear infinite;
+    animation: MoveUpDown .8s linear infinite;
 
 }
 
@@ -187,7 +189,7 @@ background: limegreen;
     flex-wrap: wrap;
     top: 5%;
     right: 18%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 400px;
     height: 400px;
     justify-content: center;
@@ -196,10 +198,10 @@ background: limegreen;
 .enemy img, .shake img {
     position: absolute;
     top: 23%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 200px;
     height: 300px;
-    animation: MoveUpDown 3s linear infinite;
+    animation: MoveUpDown .8s linear infinite;
 
 }
 
@@ -212,7 +214,7 @@ background: limegreen;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-content: space-around;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .attacks button {
@@ -237,6 +239,79 @@ background: limegreen;
     cursor: default;
 }
 
+.inventoryMove {
+    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/InventoryButtonPic.png);
+    background-color: #757777; 
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+}
+
+.inventoryMove:hover {
+    background-color: white;
+    text-decoration: none;
+  }
+
+
+.uniqueAttack {
+    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/uniqueAttackButtonPic.png);
+    background-color: #757777;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+}
+
+.uniqueAttack:hover {
+    background-color: white;
+    text-decoration: none;
+  }
+
+
+.switch {
+    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/switchButtonPic.png);
+    background-color: #757777;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+    /* text-shadow: 3px 3px white; */
+    
+}
+
+.switch:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+  }
+
+
+.kickAttack {
+    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/kickAttackButtonPic.png);
+    background-color: #757777;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+}
+
+.kickAttack:hover {
+    background-color: white;
+    text-decoration: none;
+  }
+
+
+
+
 .backButton {
     position: absolute;
     top: 94%;
@@ -248,16 +323,21 @@ background: limegreen;
 
 }
 
+.backButton:hover {
+    background-color: #757777;
+    text-decoration: none;
+  }
+
 .textBox {
     position: absolute;
     top: 70.5%;
     left: 49%;
     width: 450px;
     height: 165px;
-    background-color: lightgrey;
+    background-color: #757777;
     border: 3px solid black;
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     padding-top: 50px;
 
 }
