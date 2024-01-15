@@ -197,19 +197,19 @@ const applyEdits = (e) => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
+          <DialogTitle id="alert-dialog-title"  sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
             {"Are you sure you want to delete your account?"}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id="alert-dialog-description"  sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
               Deleting your account cannot be undone. Once deleted, it will be gone for good. Thank You For Playing!
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={deleteAccount} autoFocus>
+            <Button  sx={{ fontFamily: 'New Super Mario Font U', color: 'black', fontSize: '16px' }} onClick={deleteAccount} autoFocus>
               Delete
             </Button>
-            <Button onClick={handleDeleteClose}>Cancel</Button>
+            <Button  sx={{ fontFamily: 'New Super Mario Font U', color: 'black', fontSize: '16px' }} onClick={handleDeleteClose}>Cancel</Button>
           </DialogActions>
         </Dialog>
       </Fragment>
@@ -218,9 +218,9 @@ const applyEdits = (e) => {
       {/* change user name diolog */}
       <Fragment>
         <Dialog open={formOpen} onClose={handleFormClose}>
-          <DialogTitle>Change Username</DialogTitle>
+          <DialogTitle  sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>Change Username</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText  sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
               To change your username, please enter your new username here. You can change it again if you want a new name.
             </DialogContentText>
             <TextField
@@ -236,8 +236,8 @@ const applyEdits = (e) => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={applyEdits}>Submit</Button>
-            <Button onClick={resetNameChange}>Cancel</Button>
+            <Button sx={{ fontFamily: 'New Super Mario Font U', color: 'black', fontSize: '16px' }} onClick={applyEdits}>Submit</Button>
+            <Button sx={{ fontFamily: 'New Super Mario Font U', color: 'black', fontSize: '16px' }} onClick={resetNameChange}>Cancel</Button>
           </DialogActions>
         </Dialog>
       </Fragment>
