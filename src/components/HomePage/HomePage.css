@@ -20,7 +20,7 @@ body {
 }
 
 .characterButton:hover {
-    background-color: #757777;
+    background-color: #a1a3a3;
     text-decoration: none;
   }
 
@@ -38,7 +38,7 @@ body {
 }
 
 .shopButton:hover {
-    background-color: #757777;
+    background-color: #a1a3a3;
     text-decoration: none;
   }
 
@@ -56,7 +56,7 @@ body {
 }
 
 .inventoryButton:hover {
-    background-color: #757777;
+    background-color: #a1a3a3;
     text-decoration: none;
   }
 
@@ -82,7 +82,7 @@ body {
 }
 
 .campaignButton:hover {
-    background-color: #757777;
+    background-color: #a1a3a3;
     text-decoration: none;
   }
 
@@ -233,7 +233,7 @@ body {
   }
 
   .backButton:hover {
-    background-color: #757777;
+    background-color: #a1a3a3;
     text-decoration: none;
   }
 

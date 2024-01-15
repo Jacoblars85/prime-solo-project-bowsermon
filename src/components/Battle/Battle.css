@@ -241,7 +241,7 @@ background: limegreen;
 
 .inventoryMove {
     background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/InventoryButtonPic.png);
-    background-color: #757777; 
+    background-color: #b0b3b3; 
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -258,7 +258,7 @@ background: limegreen;
 
 .uniqueAttack {
     background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/uniqueAttackButtonPic.png);
-    background-color: #757777;
+    background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -275,7 +275,7 @@ background: limegreen;
 
 .switch {
     background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/switchButtonPic.png);
-    background-color: #757777;
+    background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -295,7 +295,7 @@ background: limegreen;
 
 .kickAttack {
     background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/kickAttackButtonPic.png);
-    background-color: #757777;
+    background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -324,7 +324,7 @@ background: limegreen;
 }
 
 .backButton:hover {
-    background-color: #757777;
+    background-color: #777878;
     text-decoration: none;
   }
 
@@ -334,7 +334,7 @@ background: limegreen;
     left: 49%;
     width: 450px;
     height: 165px;
-    background-color: #757777;
+    background-color: #b0b3b3;
     border: 3px solid black;
     text-align: center;
     font-size: 30px;
