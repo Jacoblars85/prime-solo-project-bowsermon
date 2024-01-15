@@ -144,7 +144,7 @@ const applyEdits = (e) => {
 
       <Divider />
 
-      <List>
+      <List >
         {[<p onClick={handleFormClickOpen}>Change Username</p>, <p onClick={handleDeleteClickOpen}>Delete Account</p>].map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton>

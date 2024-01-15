@@ -189,14 +189,15 @@
   width: 250px;
   height: 617px;
   justify-content: center;
-  background-color: rgb(81, 205, 246);
+  background-color: rgb(56, 188, 233);
   padding-top: 20px;
 }
 
 .starter-single-box {
   height: 328.8px;
   width: 250px;
-  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/pixelGrassBlock.jpeg);
+  /* background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/pixelGrassBlock.jpeg); */
+  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/brickBlock.png);
   background-repeat: repeat-x;
   background-size: 8.7vh;
   background-position-y: 220px;

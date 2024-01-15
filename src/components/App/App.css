@@ -31,14 +31,15 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #fafdfd;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: black;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin-top: 40px;
 }
 
 .btn_sizeMin {
@@ -57,7 +58,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #757777;
   text-decoration: none;
 }
 
@@ -65,17 +66,18 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #dbd7d7;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: #f0e9e9;
+  margin-top: 0px;
 }
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #1b1d1d;
+  color: #272828;
 }
 
 /* --------------------------------------------------------------------------------
@@ -99,14 +101,18 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
-  width: 400px;
+  width: 600px;
+  height: 300px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
+  margin-top: 100px;
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  text-align: center;
 }
+
 
 input {
   margin: 5px;
