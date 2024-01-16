@@ -27,9 +27,14 @@ function Shop() {
 
     const user = useSelector((store) => store.user.userReducer);
     const characters = useSelector(store => store.character.characters);
+    const starter = useSelector((store) => store.character.starter);
+
+    // useEffect(() => {
+    //     dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+    // }, []);
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
+        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
     }, []);
 
     // console.log('characters', characters.length);
@@ -115,6 +120,9 @@ function Shop() {
         if (user.coins < healthValue * 10) {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
+        } else if (starter.length === 1) {
+            setHealthOpen(false);
+            return alert('you must buy a character first, sorry')
         } else {
             console.log("healthValue:", healthValue)
 
@@ -188,6 +196,9 @@ function Shop() {
         if (user.coins < staminaValue * 10) {
             setStaminaOpen(false);
             return alert('you are broke broke, sorry')
+        } else if (starter.length === 1) {
+            setStaminaOpen(false);
+            return alert('you must buy a character first, sorry')
         } else {
 
             setOpenStaminaSnack(true);
@@ -259,6 +270,9 @@ function Shop() {
         if (user.coins < maxValue * 20) {
             setMaxOpen(false);
             return alert('you are broke, sorry')
+        } else if (starter.length === 1) {
+            setMaxOpen(false);
+            return alert('you must buy a character first, sorry')
         } else {
 
             setOpenMaxSnack(true);
