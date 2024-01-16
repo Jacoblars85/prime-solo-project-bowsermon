@@ -472,7 +472,7 @@ function Battle() {
     // after 3.5 seconds after user attacks, this will do all of the enemys attacks
     const enemyAttack = (attackType, enemyOne, basicAttacks) => {
 
-        setTimeout(() => {
+        const enemyAttackTimeOut = setTimeout(() => {
 
             if (currentId === starterOne.id) {
 
