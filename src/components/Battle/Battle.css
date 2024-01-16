@@ -240,7 +240,7 @@ background: limegreen;
 }
 
 .inventoryMove {
-    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/InventoryButtonPic.png);
+    background-image: url('/public/images/InventoryButtonPic.png');
     background-color: #b0b3b3; 
     background-repeat: no-repeat;
     background-size: 50%;
@@ -257,7 +257,7 @@ background: limegreen;
 
 
 .uniqueAttack {
-    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/uniqueAttackButtonPic.png);
+    background-image: url("/public/images/uniqueAttackButtonPic.png");
     background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
@@ -274,7 +274,7 @@ background: limegreen;
 
 
 .switch {
-    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/switchButtonPic.png);
+    background-image: url('/public/images/switchButtonPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
@@ -294,7 +294,7 @@ background: limegreen;
 
 
 .kickAttack {
-    background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/kickAttackButtonPic.png);
+    background-image: url('/public/images/kickAttackButtonPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
     background-size: 50%;
