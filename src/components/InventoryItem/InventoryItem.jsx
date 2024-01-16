@@ -58,14 +58,6 @@ function InventoryItem({ inventoryItem }) {
         setIsPicture(!isPicture)
     }
 
-    //   const toggleNewClass = () => {
-    //     console.log(inventoryItem.id);
-
-    //     // dispatch({
-    //     //   type: 'SAGA_SET_OLD',
-    //     //   payload: inventoryItem.id
-    //     // });
-    //   }
 
     const doNothing = () => {
 
@@ -144,7 +136,7 @@ function InventoryItem({ inventoryItem }) {
                     </DialogContent>
                     <DialogActions>
                         <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', color: 'black' }} onClick={() => sellPot(potValue)} autoFocus>
-                            Yes
+                            Sell
                         </Button>
                         <Button sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center', color: 'black' }} onClick={handleClose}>Close</Button>
 

@@ -18,7 +18,8 @@ router.get('/inventory', (req, res) => {
     FROM "user_inventory"
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"
-        WHERE "user_id" = ${[req.user.id]};
+        WHERE "user_id" = ${[req.user.id]}
+        ORDER BY "items_id" ASC;
   `;
 
     pool.query(query)

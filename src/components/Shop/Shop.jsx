@@ -120,7 +120,7 @@ function Shop() {
         if (user.coins < healthValue * 10) {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
-        } else if (starter.length === 1) {
+        } else if (characters.length === 1) {
             setHealthOpen(false);
             return alert('you must buy a character first, sorry')
         } else {
@@ -132,7 +132,8 @@ function Shop() {
                 type: 'SAGA_BUY_POTION',
                 payload: {
                     potionId: 1,
-                    amountNum: healthValue
+                    amountNum: healthValue,
+
                 }
             });
 
@@ -196,7 +197,7 @@ function Shop() {
         if (user.coins < staminaValue * 10) {
             setStaminaOpen(false);
             return alert('you are broke broke, sorry')
-        } else if (starter.length === 1) {
+        } else if (characters.length === 1) {
             setStaminaOpen(false);
             return alert('you must buy a character first, sorry')
         } else {
@@ -270,7 +271,7 @@ function Shop() {
         if (user.coins < maxValue * 20) {
             setMaxOpen(false);
             return alert('you are broke, sorry')
-        } else if (starter.length === 1) {
+        } else if (characters.length === 1) {
             setMaxOpen(false);
             return alert('you must buy a character first, sorry')
         } else {
