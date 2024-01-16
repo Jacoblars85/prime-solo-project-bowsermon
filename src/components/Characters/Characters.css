@@ -45,7 +45,7 @@
   text-align: center;
   /* padding-left: 0px; */
   background-color: black;
-  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
+  background-image: url('/public/images/bowserBlock.png');
   background-repeat: repeat-x;
   background-size: 6vh;
   background-position-y: 150px;
@@ -119,7 +119,7 @@
   text-align: center;
   /* padding-left: 0px; */
   background-color: black;
-  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/bowserBlock.png);
+  background-image: url('/public/images/bowserBlock.png');
   background-repeat: repeat-x;
   background-size: 6vh;
   background-position-y: 150px;
@@ -201,8 +201,8 @@
 .starter-single-box {
   height: 328.8px;
   width: 250px;
-  /* background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/pixelGrassBlock.jpeg); */
-  background-image: url(/Users/jacoblars85/Desktop/code/tier3/solo-project/prime-solo-project-kingdom-clash/public/images/brickBlock.png);
+  /* background-image: url(/public/images/pixelGrassBlock.jpeg); */
+  background-image: url('/public/images/brickBlock.png');
   background-repeat: repeat-x;
   background-size: 8.7vh;
   background-position-y: 220px;
