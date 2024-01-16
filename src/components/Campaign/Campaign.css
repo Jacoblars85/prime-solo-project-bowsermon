@@ -32,8 +32,8 @@ body {
 
 .levelTwo button {
     position: absolute;
-    top: 41%;
-    left: 64%;
+    top: 73.5%;
+    left: 50.5%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
@@ -57,8 +57,8 @@ body {
 
 .levelThree button {
     position: absolute;
-    top: 19.7%;
-    left: 54%;
+    top: 41%;
+    left: 64%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
@@ -73,7 +73,7 @@ body {
     background-color: rgb(119, 116, 116);
 }
 
-.levelThree button:hover:not(:disabled){
+.levelThree button:hover:not(:disabled) {
     /* width: 45px;
     height: 45px;
     font-size: 35px; */
@@ -82,8 +82,8 @@ body {
 
 .levelFour button {
     position: absolute;
-    top: 39%;
-    left: 44.9%;
+    top: 41%;
+    left: 64%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
@@ -105,10 +105,12 @@ body {
     background-color: rgb(171, 6, 6);
 }
 
+
+
 .levelFive button {
     position: absolute;
-    top: 65%;
-    left: 35%;
+    top: 19.7%;
+    left: 54%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
@@ -124,6 +126,131 @@ body {
 }
 
 .levelFive button:hover:not(:disabled){
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+}
+
+.levelSix button {
+    position: absolute;
+    top: 19.7%;
+    left: 54%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelSix button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelSix button:hover:not(:disabled){
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+}
+
+.levelSeven button {
+    position: absolute;
+    top: 19.7%;
+    left: 54%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelSeven button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelSeven button:hover:not(:disabled){
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+}
+
+.levelEight button {
+    position: absolute;
+    top: 39%;
+    left: 44.9%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelEight button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelEight button:hover:not(:disabled) {
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+}
+
+.levelNine button {
+    position: absolute;
+    top: 39%;
+    left: 44.9%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelNine button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelNine button:hover:not(:disabled) {
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+}
+
+.levelTen button {
+    position: absolute;
+    top: 65%;
+    left: 35%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.levelTen button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.levelTen button:hover:not(:disabled){
     /* width: 45px;
     height: 45px;
     font-size: 35px; */

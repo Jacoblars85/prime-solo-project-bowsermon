@@ -53,33 +53,43 @@ function Campaign() {
             <Nav />
 
             <div className='levelOne'>
-
-                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? true : false} >1</button>
-
+                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? true : false}>1</button>
             </div>
 
             <div className='levelTwo'>
-
                 <button onClick={() => goToTheBattle(2)} disabled={user.level_1_completed ? false : true}>2</button>
-
             </div>
 
             <div className='levelThree'>
-
                 <button onClick={() => goToTheBattle(3)} disabled={user.level_2_completed ? false : true}>3</button>
-
             </div>
 
             <div className='levelFour'>
-
                 <button onClick={() => goToTheBattle(4)} disabled={user.level_3_completed ? false : true}>4</button>
-
             </div>
 
             <div className='levelFive'>
-
                 <button onClick={() => goToTheBattle(5)} disabled={user.level_4_completed ? false : true}>5</button>
+            </div>
 
+            <div className='levelSix'>
+                <button onClick={() => goToTheBattle(6)} disabled={user.level_5_completed ? false : true}>6</button>
+            </div>
+
+            <div className='levelSeven'>
+                <button onClick={() => goToTheBattle(7)} disabled={user.level_6_completed ? false : true}>7</button>
+            </div>
+
+            <div className='levelEight'>
+                <button onClick={() => goToTheBattle(8)} disabled={user.level_7_completed ? false : true}>8</button>
+            </div>
+
+            <div className='levelNine'>
+                <button onClick={() => goToTheBattle(9)} disabled={user.level_8_completed ? false : true}>9</button>
+            </div>
+
+            <div className='levelTen'>
+                <button onClick={() => goToTheBattle(10)} disabled={user.level_9_completed ? false : true}>10</button>
             </div>
 
 
