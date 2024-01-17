@@ -250,10 +250,15 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.inventoryMove:hover {
+.inventoryMove:hover:not(:disabled) {
     background-color: white;
     text-decoration: none;
   }
+
+  .inventoryMove:disabled {
+    cursor: default;
+    opacity: 50%;
+}
 
 
 .uniqueAttack {
@@ -267,10 +272,15 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.uniqueAttack:hover {
+.uniqueAttack:hover:not(:disabled) {
     background-color: white;
     text-decoration: none;
   }
+
+  .uniqueAttack:disabled {
+    cursor: default;
+    opacity: 50%;
+}
 
 
 .switch {
@@ -286,11 +296,16 @@ background: limegreen;
     
 }
 
-.switch:hover {
+.switch:hover:not(:disabled) {
     background-color: white;
     color: black;
     text-decoration: none;
   }
+
+.switch:disabled {
+    cursor: default;
+    opacity: 50%;
+}
 
 
 .kickAttack {
@@ -304,10 +319,15 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.kickAttack:hover {
+.kickAttack:hover:not(:disabled) {
     background-color: white;
     text-decoration: none;
   }
+
+  .kickAttack:disabled {
+    cursor: default;
+    opacity: 50%;
+}
 
 
 
@@ -329,16 +349,18 @@ background: limegreen;
   }
 
 .textBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 70.5%;
     left: 49%;
     width: 450px;
-    height: 165px;
+    height: 205px;
     background-color: #b0b3b3;
     border: 3px solid black;
     text-align: center;
     font-size: 30px;
-    padding-top: 50px;
 
 }
 
