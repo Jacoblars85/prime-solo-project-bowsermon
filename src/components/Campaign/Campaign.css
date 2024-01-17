@@ -7,19 +7,26 @@ body {
 
 .levelOne button {
     position: absolute;
-    top: 73.5%;
-    left: 50.5%;
+    top: 74%;
+    left: 44%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
+    text-align: center;
+    padding-bottom: 10px;
 }
 
+/* .levelOne {
+    margin-top: -10px;
+} */
+
 .levelOne button:disabled {
-    cursor:default;
+    cursor: default;
     background-color: rgb(119, 116, 116);
 }
 
@@ -32,15 +39,16 @@ body {
 
 .levelTwo button {
     position: absolute;
-    top: 73.5%;
-    left: 50.5%;
+    top: 73%;
+    left: 54%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelTwo button:disabled {
@@ -57,15 +65,16 @@ body {
 
 .levelThree button {
     position: absolute;
-    top: 41%;
-    left: 64%;
+    top: 53.5%;
+    left: 59%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelThree button:disabled {
@@ -90,7 +99,8 @@ body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelFour button:disabled {
@@ -109,15 +119,16 @@ body {
 
 .levelFive button {
     position: absolute;
-    top: 19.7%;
-    left: 54%;
+    top: 17.5%;
+    left: 62%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelFive button:disabled {
@@ -142,7 +153,8 @@ body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelSix button:disabled {
@@ -159,15 +171,16 @@ body {
 
 .levelSeven button {
     position: absolute;
-    top: 19.7%;
-    left: 54%;
+    top: 17.4%;
+    left: 43.7%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelSeven button:disabled {
@@ -192,7 +205,8 @@ body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelEight button:disabled {
@@ -209,15 +223,16 @@ body {
 
 .levelNine button {
     position: absolute;
-    top: 39%;
-    left: 44.9%;
+    top: 50.3%;
+    left: 35.1%;
     background-color: rgb(237, 9, 9);
     outline: 3px solid black;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelNine button:disabled {
@@ -242,7 +257,8 @@ body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'New Super Mario Font U';
 }
 
 .levelTen button:disabled {
