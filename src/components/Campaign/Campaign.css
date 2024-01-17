@@ -18,12 +18,13 @@ body {
     font-size: 40px;
     font-family: 'New Super Mario Font U';
     text-align: center;
-    padding-bottom: 10px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* .levelOne {
-    margin-top: -10px;
-} */
+
 
 .levelOne button:disabled {
     cursor: default;
@@ -49,6 +50,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelTwo button:disabled {
@@ -75,6 +79,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelThree button:disabled {
@@ -101,6 +108,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelFour button:disabled {
@@ -129,6 +139,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelFive button:disabled {
@@ -155,6 +168,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelSix button:disabled {
@@ -181,6 +197,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelSeven button:disabled {
@@ -207,6 +226,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelEight button:disabled {
@@ -233,6 +255,9 @@ body {
     height: 40px;
     font-size: 40px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelNine button:disabled {
@@ -257,8 +282,11 @@ body {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 40px;
+    font-size: 35px;
     font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .levelTen button:disabled {
