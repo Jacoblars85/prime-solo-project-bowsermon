@@ -52,6 +52,10 @@ function Campaign() {
 
             <Nav />
 
+            <div className='warning'>
+                {starter.length === 1 ? "Must Have 2 Starters to Play Level 1" : ""}
+            </div>
+
             <div className='levelOne'>
                 <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? true : false}>1</button>
             </div>
