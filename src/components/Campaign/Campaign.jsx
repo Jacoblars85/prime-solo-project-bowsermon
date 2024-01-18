@@ -32,7 +32,7 @@ function Campaign() {
         });
         setTimeout(() => {
             history.push(`/battle/${params}`)
-        }, 350);
+        }, 450);
     };
 
 
