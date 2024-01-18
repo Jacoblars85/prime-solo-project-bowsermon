@@ -9,7 +9,7 @@ body {
 /* Make the screen shake when you click on it
   (for attacks)
  */
-body:has(.uniqueAttack:active:not(:disabled)) {
+/* body:has(.uniqueAttack:active:not(:disabled)) {
     animation: shake 0.6s;
     animation-iteration-count: infinite;
 }
@@ -20,6 +20,11 @@ body:has(.kickAttack:active:not(:disabled)) {
 }
 
 body:has(.pokeAttack:active:not(:disabled)) {
+    animation: shake 0.6s;
+    animation-iteration-count: infinite;
+} */
+
+body:has(.shakeTheScreen ) {
     animation: shake 0.6s;
     animation-iteration-count: infinite;
 }
