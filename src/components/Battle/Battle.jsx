@@ -1078,7 +1078,7 @@ function Battle() {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description" sx={{ fontFamily: 'New Super Mario Font U', textAlign: 'center' }}>
-                            Click the close button to go back home and collect your 5 coins!
+                            You've unlocked the next level! Click the close button to go back home and collect your 10 coins!
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
