@@ -315,12 +315,27 @@
   font-size: 28px;
 }
 
+.mainStatTextForStarter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* height: 60px;
+  width: 190px; */
+}
+
+/* .mainStatTextForStarter p {
+  width: 120px;
+} */
+
 
 .starterTextHp {
   color: red;
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
+  width: 200px;
 }
 
 .starterTextStamina {
@@ -328,6 +343,7 @@
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
+  width: 120px;
 }
 
 .starterTextSpeed {
@@ -335,12 +351,28 @@
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
+  width: 120px;
 }
 
 .starterTextAttack {
   text-shadow: 1px 1px white;
   font-size: 20px;
   margin-bottom: 0px;
+}
+
+.starterDamageTextHp {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+  
+}
+
+.starterTextTakenStamina {
+  color: lime;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
 }
 
 

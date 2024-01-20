@@ -12,9 +12,9 @@ function StarterItem({ start }) {
   const displayText = () => {
     if (isPicture) {
       return (
-        <div className='description'>
+        <div className='descriptionForStarters'>
 
-          <div className='mainStatText'>
+          <div className='mainStatTextForStarter'>
             
             <p className='starterTextHp'>{start.hp} hp</p>
             <p className='starterTextStamina'>{start.stamina} stamina</p>
@@ -22,9 +22,10 @@ function StarterItem({ start }) {
 
           </div>
 
+        
           <p className='starterTextAttack'>{start.unique_attack}</p>
-          <p className='starterTextHp'>{start.unique_damage} damage</p>
-          <p className='starterTextStamina'>{start.unique_stamina} stamina</p>
+          <p className='starterDamageTextHp'>{start.unique_damage} damage</p>
+          <p className='starterTextTakenStamina'>{start.unique_stamina} stamina</p>
 
         </div>
       )
