@@ -19,6 +19,8 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
+import axios from 'axios';
+
 
 function Shop() {
 
@@ -59,14 +61,14 @@ function Shop() {
 
 
     const getRandomCharacter = () => {
-        
-        if (user.coins < 15 ) {
+
+        if (user.coins < 15) {
             setRandomOpen(false);
             return alert('you are broke, sorry')
         } else if (characters.length >= 10) {
             setRandomOpen(false);
             return alert('you can only have 10 characters')
-            
+
         } else {
 
             let randomNum = Math.floor(Math.random() * 7 + 1);
@@ -75,13 +77,41 @@ function Shop() {
 
             setRandomOpen(false);
 
+            // axios({
+            //     method: 'PUT',
+            //     url: '/api/characters/buy',
+            // }).then((response) => {
+
+            //     dispatch({
+            //         type: 'FETCH_USER',
+            //     });
+            // }).then((responses) => {
+
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
+
+            // axios({
+            //     method: 'POST',
+            //     url: '/api/characters',
+            //     data: {
+            //         characterID: randomNum
+            //     }
+            // }).then((response) => {
+
+            //     setOpenRandomSnack(true)
+
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
+
+
             dispatch({
                 type: 'SAGA_POST_NEW_CHARACTER',
                 payload: {
-                    characterID: randomNum
+                    characterID: randomNum,
                 }
             });
-            setOpenRandomSnack(true)
         }
     };
 
@@ -609,8 +639,8 @@ function Shop() {
                     autoHideDuration={6000}
                     onClose={handleRandomSnackClose}
                     message="Random Character Is Added"
-                    // action={action}
-                    // key={vertical + horizontal}
+                // action={action}
+                // key={vertical + horizontal}
                 />
 
 
@@ -621,7 +651,7 @@ function Shop() {
                     onClose={handleHealthSnackClose}
                     message="Your Health Potion has been Sent to Your Inventory"
                 // action={action}
-              
+
                 />
 
                 {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
@@ -631,7 +661,7 @@ function Shop() {
                     onClose={handleStaminaSnackClose}
                     message="The Stamina Potion has been Sent to Your Inventory"
                 // action={action}
-                
+
                 />
 
                 <Snackbar
@@ -640,7 +670,7 @@ function Shop() {
                     onClose={handleMaxSnackClose}
                     message="The Max Potion has been Sent to Your Inventory"
                 // action={action}
-                
+
                 />
             </div>
 

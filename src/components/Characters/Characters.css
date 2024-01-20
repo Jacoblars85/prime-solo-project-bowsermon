@@ -81,30 +81,83 @@
 
 }
 
+.descriptionForCharacterSingle {
+  width: 190px;
+  height: 114px;
+  margin-left: -29px;
+  padding-left: 0px;
+}
+
+.mainStatText {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 190px;
+}
+
+
 .characterTextHp {
   color: red;
   text-shadow: 1px 1px black;
-  font-size: larger;
+  font-size: large;
   margin: 0px;
+  width: 95px;
+  height: 22px;
+}
+
+.characterTextTotalHp {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: large;
+  margin: 0px;
+  width: 170px;
+  height: 10px;
 }
 
 .characterTextStamina {
   color: lime;
   text-shadow: 1px 1px black;
-  font-size: larger;
+  font-size: large;
   margin: 0px;
+  width: 94px;
+  height: 22px;
 }
 
+.characterTextSpeed {
+  color: yellow;
+  text-shadow: 1px 1px black;
+  font-size: larger;
+  margin: 0px;
+  width: 90px;
+  height: 22px;
+}
+
+.attackStatText {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 190px;
+}
 .characterTextBoxAttack {
   font-size: larger;
-  padding-top: 8px;
+  padding-top: 3px;
+  width: 150px;
 }
 
 .characterTextAttack {
   text-shadow: 1px 1px white;
   font-size: larger;
   margin-bottom: 0px;
+
 }
+
+
 
 .new {
   animation-name: blink ;
@@ -272,6 +325,13 @@
 
 .starterTextStamina {
   color: lime;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.starterTextSpeed {
+  color: yellow;
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;

@@ -86,14 +86,21 @@ function CharacterItem({ character }) {
   const displayText = () => {
     if (isPicture) {
       return (
-        <div className='description'>
+        <div className='descriptionForCharacterSingle'>
 
-          <p className='characterTextHp'>{character.hp} hp</p>
-          <p className='characterTextStamina'>{character.stamina} stamina</p>
-          <p className='characterTextBoxAttack'>{character.unique_attack}</p>
-          <p className='characterTextHp'>{character.unique_damage} damage</p>
-          <p className='characterTextStamina'>{character.unique_stamina} stamina</p>
+          <div className='mainStatText'>
 
+            <p className='characterTextTotalHp'>{character.hp} hp</p>
+            <p className='characterTextStamina'>{character.stamina} stamina</p>
+            <p className='characterTextSpeed'>{character.speed} speed</p>
+
+          </div>
+
+          <div className='attackStatText'>
+            <p className='characterTextBoxAttack'>{character.unique_attack}</p>
+            <p className='characterTextHp'>{character.unique_damage} damage</p>
+            <p className='characterTextStamina'>{character.unique_stamina} stamina</p>
+          </div>
 
         </div>
       )

@@ -53,6 +53,7 @@ function* fetchLevelEnemy(action) {
 
 
 function* postNewUserCharacter(action) {
+  console.log('action', action.payloaad);
   try {
     const response = yield axios({
       method: 'POST',
@@ -62,7 +63,7 @@ function* postNewUserCharacter(action) {
       }
     })
     // yield put({
-    //     type: 'SAGA_FETCH_BATTLE_INFO',
+    //    
     // })
   } catch (error) {
     console.log('Unable to posting new character to server', error);

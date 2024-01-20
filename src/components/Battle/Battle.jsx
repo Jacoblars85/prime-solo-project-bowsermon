@@ -81,8 +81,8 @@ function Battle() {
 
 
     // starters
-    console.log('starterOne', starterOne);
-    console.log('starterTwo', starterTwo);
+    // console.log('starterOne', starterOne);
+    // console.log('starterTwo', starterTwo);
 
     // basic attack
     // console.log('basic', basicAttacks);
@@ -99,6 +99,7 @@ function Battle() {
     const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
     const [starterTwoStamina, setStarterTwoStamina] = useState(starterTwo.stamina);
     // Starter picture/hp/stamina on the screen
+    
 
     // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
     // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);

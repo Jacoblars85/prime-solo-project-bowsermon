@@ -57,7 +57,7 @@ function Campaign() {
             </div>
 
             <div className='levelOne'>
-                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? true : false}>1</button>
+                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 ? false : false}>1</button>
             </div>
 
             <div className='levelTwo'>
