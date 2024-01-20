@@ -39,7 +39,7 @@ function App() {
     <Router>
       <div>
 
-      <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+      <div className="d-flex flex-column justify-content-center w-100 h-100"></div>
         
         {/* <Nav /> */}
 
