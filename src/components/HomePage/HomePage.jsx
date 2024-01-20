@@ -43,8 +43,9 @@ function HomePage() {
 
           {starter.map(start => {
             return (
-
-              <StarterItem start={start} />
+              <div key={start.id}>
+                <StarterItem key={start.id} start={start} />
+              </div>
 
             )
           })}
