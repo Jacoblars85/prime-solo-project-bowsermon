@@ -29,20 +29,22 @@ function Characters() {
         <div >
 
             <Nav />
-<div className='scroll'>
-            <div className="characterBox">
+            
+            <div className='scroll'>
 
-                <h2>Characters</h2>
+                <div className="characterBox">
 
-                {characters.map(character => {
-                    return (
-                        <div key={character.id}>
-                            <CharacterItem character={character} />
-                        </div>
-                    )
-                })}
+                    <h2>Characters</h2>
 
-            </div>
+                    {characters.map(character => {
+                        return (
+                            <div key={character.id}>
+                                <CharacterItem character={character} />
+                            </div>
+                        )
+                    })}
+
+                </div>
 
             </div>
 
