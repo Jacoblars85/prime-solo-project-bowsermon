@@ -65,11 +65,11 @@ function Shop() {
             return alert('you are broke, sorry')
         } else if (characters.length >= 20) {
             setRandomOpen(false);
-            return alert('you can only have 10 characters')
+            return alert('you can only have 20 characters')
 
         } else {
 
-            let randomNum = Math.floor(Math.random() * 7 + 1);
+            let randomNum = Math.floor(Math.random() * 9 + 1);
 
             console.log('random number', randomNum);
 
