@@ -55,9 +55,9 @@ function Characters() {
 
                     {starter.map(start => {
                         return (
-
-                            <StarterItem key={start.id} start={start} />
-
+                            <div key={start.id}>
+                                <StarterItem start={start} />
+                            </div>
                         )
                     })}
 

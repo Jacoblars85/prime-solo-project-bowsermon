@@ -112,6 +112,7 @@ function Shop() {
                     characterID: randomNum,
                 }
             });
+            setOpenRandomSnack(true)
         }
     };
 

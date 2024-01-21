@@ -304,6 +304,40 @@ router.put("/new/:id", (req, res) => {
         });
 });
 
+router.put("/starter/clear/:id", (req, res) => {
+    // console.log(req.params.id);
+    const sqlText = `
+    UPDATE "user_characters"
+        SET "starter_1" = FALSE 
+            WHERE "id" = $1;
+    `;
+
+    const sqlValues = [req.params.id]
+
+    pool.query(sqlText, sqlValues)
+        .then(result => {
+
+            const sqlText = `
+    UPDATE "user_characters"
+        SET "starter_2" = FALSE
+            WHERE "id" = $1;
+    `;
+
+    const sqlValues = [req.params.id]
+
+            pool.query(sqlText, sqlValues)
+                .then(result => {
+                    res.sendStatus(201);
+                })
+        }).catch(err => {
+            console.log("Error in 2nd character.router /clear PUT,", err);
+            res.sendStatus(500);
+        })
+        .catch((err) => {
+            console.log("Error in character.router /clear PUT,", err);
+            res.sendStatus(500);
+        });
+});
 
 
 

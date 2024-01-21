@@ -99,7 +99,7 @@ function Battle() {
     const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
     const [starterTwoStamina, setStarterTwoStamina] = useState(starterTwo.stamina);
     // Starter picture/hp/stamina on the screen
-    
+
 
     // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
     // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
@@ -511,6 +511,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
@@ -531,6 +532,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -545,6 +547,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -558,6 +561,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - enemyOne.unique_damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }
@@ -585,6 +589,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
 
                         }
@@ -606,6 +611,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'starterTwo') {
@@ -619,6 +625,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -632,6 +639,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - basicAttacks[0].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }
@@ -659,6 +667,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
@@ -679,6 +688,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'starterTwo') {
@@ -692,6 +702,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else {
@@ -704,6 +715,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - basicAttacks[1].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }
@@ -733,6 +745,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
@@ -753,6 +766,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
@@ -766,6 +780,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - enemyOne.unique_damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -779,6 +794,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }
@@ -806,6 +822,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
@@ -826,6 +843,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
@@ -839,6 +857,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - basicAttacks[0].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -852,6 +871,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }
@@ -879,6 +899,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'max') {
@@ -899,6 +920,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     } else if (attackType === 'starterOne') {
@@ -912,6 +934,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterOneHp - basicAttacks[1].damage <= 0) {
                             setStarterOneHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
 
@@ -925,6 +948,7 @@ function Battle() {
                             setLoserOpen(true)
                         } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
                             setStarterTwoHp(0)
+                            clearTimeout(characterAttackTimeOut)
                             handleDeadOpen()
                         }
                     }

@@ -62,9 +62,6 @@ function* postNewUserCharacter(action) {
         characterID: action.payload.characterID
       }
     })
-    // yield put({
-    //    
-    // })
   } catch (error) {
     console.log('Unable to posting new character to server', error);
   }
@@ -187,6 +184,24 @@ function* changeNewStatus(action) {
   }
 }
 
+function* clearStarter(action) {
+  console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/starter/clear/${action.payload}`
+    })
+    yield put({
+      type: 'SAGA_FETCH_STARTER',
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put clearing starter  server', error);
+  }
+}
+
 
 
 
@@ -203,7 +218,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
   yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
-
+  yield takeLatest('SAGA_CLEAR_STARTER', clearStarter);
 
 
 }

@@ -24,28 +24,38 @@ function CharacterItem({ character }) {
 
   const setStarterOne = () => {
 
-    if (character.id === starter[1].id) {
-      alert("can't do that")
-    } else {
+    // if (character.id === starter[1].id) {
+    //   alert("can't do that")
+    // } else {
       dispatch({
         type: 'SAGA_SET_STARTER_ONE',
         payload: character.id
       });
-    }
+    // }
   }
 
   const setStarterTwo = () => {
 
-    if (character.id === starter[0].id) {
-      alert("can't do that")
-    } else {
+    // if (character.id === starter[0].id) {
+    //   alert("can't do that")
+    // } else {
       dispatch({
         type: 'SAGA_SET_STARTER_TWO',
         payload: character.id
       });
-    }
+    // }
 
   }
+
+  const clearStarter = () => {
+
+      dispatch({
+        type: 'SAGA_CLEAR_STARTER',
+        payload: character.id
+      });
+  }
+
+
 
   const sellCharacter = () => {
     if (character.id === starter[0].id || character.id === starter[1].id) {
@@ -71,7 +81,6 @@ function CharacterItem({ character }) {
   }
 
   const toggleNewClass = () => {
-    console.log(character.id);
 
     dispatch({
       type: 'SAGA_SET_OLD',
@@ -132,6 +141,7 @@ function CharacterItem({ character }) {
 
         <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
         <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
+        <button id={character.id} onClick={clearStarter} >Remove</button>
         <button id={character.id} onClick={confirmSale} >Sell</button>
 
       </div>
