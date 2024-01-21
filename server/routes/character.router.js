@@ -309,7 +309,7 @@ router.put("/starter/clear/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
         SET "starter_1" = FALSE 
-            WHERE "id" = $1;
+            WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
     `;
 
     const sqlValues = [req.params.id]
@@ -317,10 +317,12 @@ router.put("/starter/clear/:id", (req, res) => {
     pool.query(sqlText, sqlValues)
         .then(result => {
 
+            console.log(req.params.id);
+
             const sqlText = `
     UPDATE "user_characters"
         SET "starter_2" = FALSE
-            WHERE "id" = $1;
+            WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
     `;
 
     const sqlValues = [req.params.id]
@@ -335,6 +337,58 @@ router.put("/starter/clear/:id", (req, res) => {
         })
         .catch((err) => {
             console.log("Error in character.router /clear PUT,", err);
+            res.sendStatus(500);
+        });
+});
+
+
+router.put("/starter/conditional/:id", (req, res) => {
+//  console.log('req.body', req.body);
+
+    const sqlText = `
+    UPDATE "user_characters"
+       SET "starter_${req.body.otherStarter}" = FALSE
+         WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+      `;
+
+      const sqlValues = [req.params.id]
+
+    pool.query(sqlText, sqlValues)
+        .then((result) => {
+
+            const insertNewUserQuery = `
+        UPDATE "user_characters"
+          SET "starter_${req.body.currentStarter}" = FALSE
+          WHERE "user_id" = ${[req.user.id]};
+          `;
+
+            pool.query(insertNewUserQuery)
+            .then((result) => {
+
+                const insertNewUserQuery = `
+            UPDATE "user_characters"
+              SET "starter_${req.body.currentStarter}" = TRUE
+              WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+              `;
+    
+                const sqlValues = [req.params.id]
+    
+                pool.query(insertNewUserQuery, sqlValues)
+                .then(result => {
+                    res.sendStatus(201);
+                })
+            }).catch(err => {
+                // catch for second query
+                console.log('in the third', err);
+                res.sendStatus(500)
+            })
+        }).catch(err => {
+            // catch for second query
+            console.log('in the second', err);
+            res.sendStatus(500)
+        })
+        .catch((err) => {
+            console.log("Error in character.router /starter conditionally PUT,", err);
             res.sendStatus(500);
         });
 });

@@ -24,35 +24,58 @@ function CharacterItem({ character }) {
 
   const setStarterOne = () => {
 
-    // if (character.id === starter[1].id) {
-    //   alert("can't do that")
-    // } else {
+    if (starter.length === 0) {
       dispatch({
         type: 'SAGA_SET_STARTER_ONE',
         payload: character.id
       });
-    // }
+
+    } else if (character.id === starter[1].id) {
+
+      dispatch({
+        type: 'SAGA_SET_STARTER_CONDITIONALLY',
+        payload: {
+          characterId: character.id,
+          currentStarter: 1,
+          otherStarter: 2
+        }
+      });
+
+    } else {
+      dispatch({
+        type: 'SAGA_SET_STARTER_ONE',
+        payload: character.id
+      });
+    }
   }
 
   const setStarterTwo = () => {
 
-    // if (character.id === starter[0].id) {
-    //   alert("can't do that")
-    // } else {
+    if (character.id === starter[0].id) {
+
+      dispatch({
+        type: 'SAGA_SET_STARTER_CONDITIONALLY',
+        payload: {
+          characterId: character.id,
+          currentStarter: 2,
+          otherStarter: 1
+        }
+      });
+    } else {
       dispatch({
         type: 'SAGA_SET_STARTER_TWO',
         payload: character.id
       });
-    // }
+    }
 
   }
 
   const clearStarter = () => {
 
-      dispatch({
-        type: 'SAGA_CLEAR_STARTER',
-        payload: character.id
-      });
+    dispatch({
+      type: 'SAGA_CLEAR_STARTER',
+      payload: character.id
+    });
   }
 
 
@@ -140,7 +163,7 @@ function CharacterItem({ character }) {
       <div className='buttonBox'>
 
         <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
-        <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
+        <button id={character.id} disabled={starter.length === 0 ? true : false} onClick={setStarterTwo} >Set Starter 2</button>
         <button id={character.id} onClick={clearStarter} >Remove</button>
         <button id={character.id} onClick={confirmSale} >Sell</button>
 

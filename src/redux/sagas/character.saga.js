@@ -203,6 +203,28 @@ function* clearStarter(action) {
 }
 
 
+function* setStarterConditionally(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/starter/conditional/${action.payload.characterId}`,
+      data: {
+        currentStarter: action.payload.currentStarter,
+          otherStarter: action.payload.otherStarter
+      }
+    })
+    yield put({
+      type: 'SAGA_FETCH_STARTER',
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put starter conditionally to server', error);
+  }
+}
+
 
 
 
@@ -219,7 +241,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
   yield takeLatest('SAGA_CLEAR_STARTER', clearStarter);
-
+  yield takeLatest('SAGA_SET_STARTER_CONDITIONALLY', setStarterConditionally);
 
 }
 
