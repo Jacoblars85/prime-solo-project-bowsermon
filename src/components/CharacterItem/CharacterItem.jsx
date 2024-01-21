@@ -29,43 +29,89 @@ function CharacterItem({ character }) {
         type: 'SAGA_SET_STARTER_ONE',
         payload: character.id
       });
+    } else if (starter.length === 1) {
 
-    } else if (character.id === starter[1].id) {
+      if (character.starter_2 === true) {
+        dispatch({
+          type: 'SAGA_SET_STARTER_CONDITIONALLY',
+          payload: {
+            characterId: character.id,
+            currentStarter: 1,
+            otherStarter: 2
+          }
+        });
 
-      dispatch({
-        type: 'SAGA_SET_STARTER_CONDITIONALLY',
-        payload: {
-          characterId: character.id,
-          currentStarter: 1,
-          otherStarter: 2
-        }
-      });
+      } else {
+        dispatch({
+          type: 'SAGA_SET_STARTER_ONE',
+          payload: character.id
+        });
+      }
 
-    } else {
-      dispatch({
-        type: 'SAGA_SET_STARTER_ONE',
-        payload: character.id
-      });
+    } else if (starter.length === 2) {
+      if (character.id === starter[1].id) {
+
+        dispatch({
+          type: 'SAGA_SET_STARTER_CONDITIONALLY',
+          payload: {
+            characterId: character.id,
+            currentStarter: 1,
+            otherStarter: 2
+          }
+        });
+
+      } else {
+        dispatch({
+          type: 'SAGA_SET_STARTER_ONE',
+          payload: character.id
+        });
+      }
     }
   }
 
   const setStarterTwo = () => {
 
-    if (character.id === starter[0].id) {
-
-      dispatch({
-        type: 'SAGA_SET_STARTER_CONDITIONALLY',
-        payload: {
-          characterId: character.id,
-          currentStarter: 2,
-          otherStarter: 1
-        }
-      });
-    } else {
+    if (starter.length === 0) {
       dispatch({
         type: 'SAGA_SET_STARTER_TWO',
         payload: character.id
       });
+    } else if (starter.length === 1) {
+
+      if (character.starter_1 === true) {
+        dispatch({
+          type: 'SAGA_SET_STARTER_CONDITIONALLY',
+          payload: {
+            characterId: character.id,
+            currentStarter: 2,
+            otherStarter: 1
+          }
+        });
+      } else {
+        dispatch({
+          type: 'SAGA_SET_STARTER_TWO',
+          payload: character.id
+        });
+      }
+
+    } else if (starter.length === 2) {
+
+      if (character.id === starter[0].id) {
+
+        dispatch({
+          type: 'SAGA_SET_STARTER_CONDITIONALLY',
+          payload: {
+            characterId: character.id,
+            currentStarter: 2,
+            otherStarter: 1
+          }
+        });
+      } else {
+        dispatch({
+          type: 'SAGA_SET_STARTER_TWO',
+          payload: character.id
+        });
+      }
     }
 
   }
@@ -163,7 +209,7 @@ function CharacterItem({ character }) {
       <div className='buttonBox'>
 
         <button id={character.id} onClick={setStarterOne} >Set Starter 1</button>
-        <button id={character.id} disabled={starter.length === 0 ? true : false} onClick={setStarterTwo} >Set Starter 2</button>
+        <button id={character.id} onClick={setStarterTwo} >Set Starter 2</button>
         <button id={character.id} onClick={clearStarter} >Remove</button>
         <button id={character.id} onClick={confirmSale} >Sell</button>
 
