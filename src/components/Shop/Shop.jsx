@@ -39,8 +39,6 @@ function Shop() {
         dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
     }, []);
 
-    // console.log('characters', characters.length);
-
     const [randomOpen, setRandomOpen] = useState(false);
     const [healthOpen, setHealthOpen] = useState(false);
     const [staminaOpen, setStaminaOpen] = useState(false);
@@ -65,7 +63,7 @@ function Shop() {
         if (user.coins < 15) {
             setRandomOpen(false);
             return alert('you are broke, sorry')
-        } else if (characters.length >= 10) {
+        } else if (characters.length >= 20) {
             setRandomOpen(false);
             return alert('you can only have 10 characters')
 

@@ -29,7 +29,7 @@ function Characters() {
         <div >
 
             <Nav />
-
+<div className='scroll'>
             <div className="characterBox">
 
                 <h2>Characters</h2>
@@ -42,28 +42,32 @@ function Characters() {
                     )
                 })}
 
-                <div className='starterOneHeader'>
-                    <h2>Starter 1</h2>
-                </div>
-
-                <div className='starterTwoHeader'>
-                    <h2>Starter 2</h2>
-                </div>
-
-
-                <div className="starterCharacterView">
-
-                    {starter.map(start => {
-                        return (
-                            <div key={start.id}>
-                                <StarterItem start={start} />
-                            </div>
-                        )
-                    })}
-
-                </div>
+            </div>
 
             </div>
+
+            <div className='starterOneHeader'>
+                <h2>Starter 1</h2>
+            </div>
+
+            <div className='starterTwoHeader'>
+                <h2>Starter 2</h2>
+            </div>
+
+
+            <div className="starterCharacterView">
+
+                {starter.map(start => {
+                    return (
+                        <div key={start.id}>
+                            <StarterItem start={start} />
+                        </div>
+                    )
+                })}
+
+            </div>
+
+
 
             <div className='backButton'>
                 <BackButton />

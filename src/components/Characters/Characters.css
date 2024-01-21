@@ -24,9 +24,21 @@
   column-gap: 10px;
   margin-left: 20px;
   width: 1120px;
-  height: 605px;
+  height: 1205px;
   padding-top: 30px;
   margin-top: 40px;
+  /* overflow-y: scroll;
+  scroll-margin: 20px;
+  scroll-padding: 20px;
+  scroll-snap-type: none; */
+}
+
+.scroll {
+  overflow-y: scroll;
+  scroll-margin: 20px;
+  scroll-padding: 20px;
+  scroll-snap-type: y mandatory;
+  height: 1005px;
 }
 
 .characterBox h2 {
@@ -294,7 +306,7 @@
 
 .starterOneHeader {
   position: absolute;
-  top: 25.4%;
+  top: 11%;
   right: 2.6%;
   z-index: 1;
   height: 50px;
@@ -306,7 +318,7 @@
 .starterTwoHeader {
   position: absolute;
   position: absolute;
-  top: 66.4%;
+  top: 51%;
   right: 2.6%;
   z-index: 1;
   height: 50px;
