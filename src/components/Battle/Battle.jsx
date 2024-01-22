@@ -1004,7 +1004,7 @@ function Battle() {
 
         disableAllButtons();
 
-        if (currentSpeed >= enemyOne.speed) {
+        if (currentSpeed >= enemyOne.speed || attackType === 'starterOne' || attackType === 'starterTwo' || attackType === 'health' || attackType === 'stamina' || attackType === 'max') {
 
             const enemyAttackTimeOut = setTimeout(() => {
                 enemyAttack(attackType, enemyOne, basicAttacks);
