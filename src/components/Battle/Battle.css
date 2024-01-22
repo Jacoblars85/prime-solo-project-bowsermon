@@ -287,6 +287,15 @@ background: limegreen;
     opacity: 50%;
 }
 
+/* .uniqueButtonInfo {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    z-index: 1;
+  } */
+
 
 .switch {
     background-image: url('/public/images/switchButtonPic.png');

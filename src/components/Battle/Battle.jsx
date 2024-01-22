@@ -21,6 +21,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -1083,7 +1084,15 @@ function Battle() {
 
                 {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
 
+                {/* <div className='uniqueStatInfo'>
+                    <h3>{currentId === starterOne.id ? starterOne.unique_attack : starterTwo.unique_attack}</h3>
+                    <p>{currentId === starterOne.id ? starterOne.unique_damage : starterTwo.unique_damage} damage</p>
+                    <p>{currentId === starterOne.id ? starterOne.unique_stamina : starterTwo.unique_stamina} stamina</p>
+                </div> */}
+
             </div>
+
+           {/* <InfoIcon className='uniqueButtonInfo' /> */}
 
             {/* back button */}
             <div className='backButton'>
