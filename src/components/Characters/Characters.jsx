@@ -29,7 +29,7 @@ function Characters() {
         <div >
 
             <Nav />
-            
+
             <div className='scroll'>
 
                 <div className="characterBox">
@@ -53,7 +53,7 @@ function Characters() {
             </div>
 
             <div className='starterTwoHeader'>
-                <h2>Starter 2</h2>
+                <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
             </div>
 
 

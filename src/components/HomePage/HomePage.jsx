@@ -36,7 +36,7 @@ function HomePage() {
         </div>
 
         <div className='starterTwoHomeHeader'>
-          <h2>Starter 2</h2>
+          <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
         </div>
 
         <div className="starterHomeView">
