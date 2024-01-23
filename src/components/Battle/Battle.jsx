@@ -961,12 +961,12 @@ function Battle() {
             }
 
 
-        }, 100);
+        }, 200);
 
         setTimeout(() => {
             setEnemyPicAttack("")
             setEnemyClassName("enemy")
-        }, 250);
+        }, 350);
 
         console.log('my hp', starterOneHp);
 
