@@ -4,7 +4,15 @@ It's a turn-based game, that is mixed between Mario and Pokemon. That has battle
 
 ## Demo
 
+![2024-01-26 11 22 05](https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/378abc8c-d1ad-40d2-9840-39fc67979e62)
 
+<img width="1440" alt="Screenshot 2024-01-26 at 11 23 43 AM" src="https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/8464d584-64cc-45be-9870-77bde6ce6644">
+
+![2024-01-26 11 32 27](https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/bd3ad87c-5514-4ce4-8a68-7b69419cff4e)
+
+<img width="1438" alt="Screenshot 2024-01-26 at 11 36 51 AM" src="https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/80e1fafd-b950-4909-a3f7-9d6f9fea0442">
+
+<img width="1440" alt="Screenshot 2024-01-26 at 11 37 22 AM" src="https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/e18bb917-0c73-46d4-9f28-605abbe93271">
 
 
 ## Getting Started
