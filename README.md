@@ -40,6 +40,12 @@ Description
 
 Description
 
+![2024-01-26 14 52 52](https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/d206341e-a0ff-490e-96bf-2672f46f7def)
+
+Description
+
+<img width="1440" alt="Screenshot 2024-01-26 at 2 54 44 PM" src="https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/655db191-9f02-4bed-81dd-b86242a6d5e8">
+
 
 
 
