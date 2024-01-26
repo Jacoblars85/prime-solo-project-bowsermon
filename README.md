@@ -4,7 +4,10 @@ It's a turn-based game, that is mixed between Mario and Pokemon. That has battle
 
 ## Demo
 
-Description
+Once the user is logged in, they will see this screen.
+The settings button in the top left, will open and show you everything you need.
+The users coins will be displayed next to it.
+The buttons on the screen will bring you to the corisponding page.
 
 ![2024-01-26 11 22 05](https://github.com/Jacoblars85/prime-solo-project-kingdom-clash/assets/140549863/378abc8c-d1ad-40d2-9840-39fc67979e62)
 
