@@ -1,6 +1,6 @@
 # Bowsérmon
 
-It's a turn-based game, that is mixed between Mario and Pokemon. That has battles like Pokemon and has the characters of Mario. But the story isn't like the normal Mario games. Instead of playing as Mario while he saves the Princess. You will be playing as Bowser while he steals back the Princess. You will have to buy characters and go level by level until you beat Mario at the end. 
+A turn-based game, that is mixed between Mario and Pokemon. That has battles like Pokemon and has the characters of Mario. But the story isn't like the normal Mario games. Instead of playing as Mario while he saves the Princess. You will be playing as Bowser while he steals back the Princess. You will have to buy characters and go level by level until you beat Mario at the end. 
 
 ## Demo
 
