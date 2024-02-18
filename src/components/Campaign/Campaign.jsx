@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav';
 import background from '../../il_570xN.720708044_8vd9.webp';
 import './Campaign.css';
 import { useDispatch, useSelector } from 'react-redux';
+import EastIcon from '@mui/icons-material/East';
 
 
 function Campaign() {
@@ -99,6 +100,10 @@ function Campaign() {
 
             <div className='backButton'>
                 <BackButton />
+            </div>
+
+            <div className='secretButton'>
+                {user.level_10_completed ? <button onClick={() => history.push(`/secretCampaign`)}><EastIcon fontSize='large' /> </button> : ""}
             </div>
 
         </div>

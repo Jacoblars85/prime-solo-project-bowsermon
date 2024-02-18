@@ -23,6 +23,7 @@ import Battle from '../Battle/Battle';
 import Shop from '../Shop/Shop';
 import Characters from '../Characters/Characters';
 import Inventory from '../Inventory/Inventory';
+import SecretCampaign from '../SecretCampaign/SecretCampaign';
 
 import './App.css';
 
@@ -90,6 +91,10 @@ function App() {
 
           <ProtectedRoute exact path="/campaign">
             <Campaign />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/secretCampaign">
+            <SecretCampaign />
           </ProtectedRoute>
 
 
