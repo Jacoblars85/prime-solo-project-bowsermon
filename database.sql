@@ -1,31 +1,14 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
--- CREATE TABLE "user" (
---     "id" SERIAL PRIMARY KEY,
---     "username" VARCHAR (80) UNIQUE NOT NULL,
---     "password" VARCHAR (1000) NOT NULL
--- );
-
 DROP TABLE IF EXISTS user_inventory;
-
 
 DROP TABLE IF EXISTS user_characters;
 
-
 DROP TABLE IF EXISTS "user";
-
 
 DROP TABLE IF EXISTS levels;
 
-
 DROP TABLE IF EXISTS items;
 
-
 DROP TABLE IF EXISTS characters;
-
 
 DROP TABLE IF EXISTS basic_attacks;
 
@@ -33,14 +16,19 @@ DROP TABLE IF EXISTS basic_attacks;
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "username" VARCHAR (16) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
 	"coins" INT DEFAULT 30,
 	"level_1_completed" BOOLEAN DEFAULT FALSE,
 	"level_2_completed" BOOLEAN DEFAULT FALSE,
 	"level_3_completed" BOOLEAN DEFAULT FALSE,
 	"level_4_completed" BOOLEAN DEFAULT FALSE,
-	"level_5_completed" BOOLEAN DEFAULT FALSE
+	"level_5_completed" BOOLEAN DEFAULT FALSE,
+	"level_6_completed" BOOLEAN DEFAULT FALSE,
+	"level_7_completed" BOOLEAN DEFAULT FALSE,
+	"level_8_completed" BOOLEAN DEFAULT FALSE,
+	"level_9_completed" BOOLEAN DEFAULT FALSE,
+	"level_10_completed" BOOLEAN DEFAULT FALSE
 );
 
 	
@@ -50,6 +38,7 @@ CREATE TABLE "characters" (
 	"profile_pic" VARCHAR(100),
 	"hp" INT,
 	"stamina" INT,
+	"speed" INT,
 	"unique_attack" VARCHAR(50),
 	"unique_damage" INT,
 	"unique_stamina" INT,
@@ -62,6 +51,7 @@ CREATE TABLE "user_characters" (
 	"character_id" INT NOT NULL REFERENCES "characters",
 	"starter_1" BOOLEAN DEFAULT FALSE,
 	"starter_2" BOOLEAN DEFAULT FALSE,
+	"starter_3" BOOLEAN DEFAULT FALSE,
 	"new" BOOLEAN DEFAULT TRUE);
 	
 	
@@ -92,26 +82,30 @@ CREATE TABLE "user_inventory" (
 	"items_id" INT NOT NULL REFERENCES "items",
 	"number" INT);
 	
-	
-	
 
 INSERT INTO "characters" 
-	("name", "profile_pic", "hp", "stamina", "unique_attack", "unique_damage", "unique_stamina", "battle_pic")
+	("name", "profile_pic", "hp", "stamina", "speed", "unique_attack", "unique_damage", "unique_stamina", "battle_pic")
 	VALUES 
-	('Goomba', 'images/Masthead_Goomba.png', 50, 25, 'charge', 10, 10, 'images/Masthead_Goomba.png'),
-	('Koopa Troopa', 'images/koopaTroopaProfilePic.webp', 50, 20, 'shell smash', 30, 20, 'images/koopaTroopaBattlePic.webp'),
-	('Dry Bones', 'images/Drybones.webp', 50, 50, 'bone swing', 35, 35, 'images/Drybones.webp'),
-	('Shy Guy', 'images/ShyGuyProfilePic.webp', 75, 25, 'slap', '35', 15, 'images/shyGuyBattlePic.webp'),
-	('Boo', 'images/BooProfilePic.webp', 75, 25, 'lick', 70, 20, 'images/BooProfilePic.webp'),
-	('Hammer Bro', 'images/hammerBroProfilePic.webp', 45, 60, 'hammer bash', 30, 25, 'images/Hammer_BroBattlePic.webp'),
-	('Chain Chomp', 'images/ChainChompProfilePic.webp', 20, 25, 'bite', 80, 20, 'images/chainChompBattlePic2.png'),
-	('Toad', '', 20, 15, 'headbutt', 10, 10, 'images/Toad_Portal.webp'),
-	('Toadett', '', 30, 50, 'punch', 10, 10, 'images/ToadetteBattlePic.png'),
-	('Yoshi', '', 50, 50, 'stomp', 20, 10, 'images/YoshiBattlePic.webp'),
-	('Luigi', '', 75, 50, 'punch', 70, 10, 'images/LuigiBattlePic.png'),
-	('Mario', '', 100, 50, 'upper cut', 70, 10, 'images/MarioBattlePic.png');
+	('Goomba', 'images/Masthead_Goomba.png', 30, 50, 80, 'charge', 40, 10, 'images/Masthead_Goomba.png'),
+	('Koopa Troopa', 'images/koopaTroopaProfilePic.webp', 60, 50, 55, 'shell smash', 35, 20, 'images/koopaTroopaBattlePic.webp'),
+	('Dry Bones', 'images/Drybones.webp', 50, 50, 50, 'bone swing', 50, 20, 'images/Drybones.webp'),
+	('Shy Guy', 'images/ShyGuyProfilePic.webp', 85, 20, 10, 'slap', 55, 15, 'images/shyGuyBattlePic.webp'),
+	('Boo', 'images/BooProfilePic.webp', 40, 60, 60, 'lick', 50, 20, 'images/BooProfilePic.webp'),
+	('Hammer Bro', 'images/hammerBroProfilePic.webp', 55, 60, 50, 'hammer bash', 45, 25, 'images/Hammer_BroBattlePic.webp'),
+	('Chain Chomp', 'images/ChainChompProfilePic.webp', 20, 25, 65, 'bite', 65, 25, 'images/chainChompBattlePic2.png'),
+	('Roy', 'images/RoyProfilePic.webp', 55, 25, 20, 'large pipe', 75, 15, 'images/RoyBattlePic.webp'),
+	('Morton', 'images/MortonProfilePic.webp', 100, 25, 5, 'body slam', 45, 20, 'images/MortonBattlePic.webp'),
+	('Toad', '', 50, 55, 70, 'headbutt', 25, 10, 'images/Toad_Portal.webp'),
+	('Toadett', '', 80, 50, 60, 'slap', 30, 10, 'images/ToadetteBattlePic.png'),
+	('Toadsworth', '', 90, 40, 30, 'cane wack', 35, 15, 'images/ToadsworthBattlePic.webp'),
+	('Diddy Kong', '', 85, 50, 85, 'banana shot', 55, 10, 'images/diddyKongBattleKong.webp'),
+	('Rosalina', '', 95, 40, 60, 'ice blast', 65, 10, 'images/RosalinaBattlePic.webp'),
+	('Daisy', '', 105, 40, 50, 'arm bar', 100, 10, 'images/daisyBattlePic.png'),
+	('Yoshi', '', 110, 50, 75, 'stomp', 40, 10, 'images/YoshiBattlePic.webp'),
+	('Donkey Kong', '', 135, 50, 10, 'giant punch', 70, 20, 'images/donkeyKongBattlePic.webp'),
+	('Luigi', '', 80, 100, 80, 'punch', 100, 25, 'images/LuigiBattlePic.png'),
+	('Mario', '', 125, 150, 50, 'upper cut', 65, 25, 'images/MarioBattlePic.png'); 
 
-	
 	
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
@@ -123,11 +117,16 @@ INSERT INTO "basic_attacks"
 INSERT INTO "levels" 
 	("name", "enemy_id")
 	VALUES 
-	('bowser lands', 8),
-	('forest', 9),
-	('clouds', 10),
-	('grassy land', 11),
-	('peach castle', 12);
+	('bowser lands', 10),
+	('bowser lands', 11),
+	('outside forest', 12),
+	('forest', 13),
+	('mountain', 14),
+	('bridge', 15),
+	('mountain', 16),
+	('lake', 17),
+	('lake', 18),
+	('peach castle', 19);
 	
 	
 INSERT INTO "items" 
@@ -137,5 +136,4 @@ INSERT INTO "items"
 	('stamina pot', 0, 30, 'images/staminaPotion.png'),
 	('max pot', 20, 25, 'images/maxPotion.png');
 	
-
-
+	

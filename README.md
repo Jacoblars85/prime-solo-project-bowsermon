@@ -67,81 +67,48 @@ Once user has gotten enemy hp bellow 0, this dialog will pop up.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Prerequisites
 
-What things you need to install the software and how to install them
+Before you get started, make sure you have the following software installed on your computer:
 
-```
-npm install
-```
+- [Node.js](https://nodejs.org/en)
+- [PostgreSQL](https://www.postgresql.org)
+- [Nodemon](https://nodemon.io)
 
-### Installing
+## Create Database and Table
 
-A step by step series of examples that tell you how to get a development env running
+Create a new database called `bowsermon` and create a `user` table:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+```SQL
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL
+);
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Go to the `database.sql` file and copy and paste everything into SQL
 
-## Running the tests
+If you would like to name your database something else, you will need to change `bowsermon` to the name of your new database name in `server/modules/pool.js`.
 
-Explain how to run the automated tests for this system
+## Development Setup Instructions
 
-### Break down into end to end tests
+- Run `npm install`.
+    - Be sure to take stock of `package.json` to see which dependencies you'll need to add.
+- Create a `.env` file at the root of the project and paste this line into the file:
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```plaintext
+SERVER_SESSION_SECRET=superDuperSecret
 ```
 
-## Deployment
+While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [Password Generator Plus](https://passwordsgenerator.net). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
 
-Add additional notes about how to deploy this on a live system
+- Start postgres if not running already by using opening up the [Postgres.app](https://postgresapp.com), or if using [Homebrew](https://brew.sh) you can use the command `brew services start postgresql`.
+- Run `npm run server` to start the server.
+- Run `npm run client` to start the client.
+- Navigate to `localhost:5173`.
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 * Prime Digital Academy
-* MUI
