@@ -28,7 +28,10 @@ CREATE TABLE "user" (
 	"level_7_completed" BOOLEAN DEFAULT FALSE,
 	"level_8_completed" BOOLEAN DEFAULT FALSE,
 	"level_9_completed" BOOLEAN DEFAULT FALSE,
-	"level_10_completed" BOOLEAN DEFAULT FALSE
+	"level_10_completed" BOOLEAN DEFAULT FALSE,
+	"credit_video_completed" BOOLEAN DEFAULT FALSE,
+	"secret_level_1_completed" BOOLEAN DEFAULT FALSE,
+	"secret_level_2_completed" BOOLEAN DEFAULT FALSE
 );
 
 	
@@ -82,7 +85,7 @@ CREATE TABLE "user_inventory" (
 	"items_id" INT NOT NULL REFERENCES "items",
 	"number" INT);
 	
-
+	
 INSERT INTO "characters" 
 	("name", "profile_pic", "hp", "stamina", "speed", "unique_attack", "unique_damage", "unique_stamina", "battle_pic")
 	VALUES 
@@ -104,8 +107,11 @@ INSERT INTO "characters"
 	('Yoshi', '', 110, 50, 75, 'stomp', 40, 10, 'images/YoshiBattlePic.webp'),
 	('Donkey Kong', '', 135, 50, 10, 'giant punch', 70, 20, 'images/donkeyKongBattlePic.webp'),
 	('Luigi', '', 80, 100, 80, 'punch', 100, 25, 'images/LuigiBattlePic.png'),
-	('Mario', '', 125, 150, 50, 'upper cut', 65, 25, 'images/MarioBattlePic.png'); 
+	('Mario', '', 125, 150, 50, 'upper cut', 65, 25, 'images/MarioBattlePic.png'),
+	('Waluigi', '', 90, 10, 100, 'stab', 70, 10, 'images/waluigiBattlePic.webp'),
+	('Wario', '', 140, 50, 10, 'belly flop', 70, 10, 'images/warioBattlePic.png'); 
 
+	
 	
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
@@ -126,7 +132,9 @@ INSERT INTO "levels"
 	('mountain', 16),
 	('lake', 17),
 	('lake', 18),
-	('peach castle', 19);
+	('peach castle', 19),
+	('wario berg', 20),
+	('wario skull', 21);
 	
 	
 INSERT INTO "items" 
@@ -137,3 +145,5 @@ INSERT INTO "items"
 	('max pot', 20, 25, 'images/maxPotion.png');
 	
 	
+
+
