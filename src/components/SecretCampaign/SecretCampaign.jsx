@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import BackButton from '../BackButton/BackButton';
 import { useHistory } from 'react-router-dom';
 import Nav from '../Nav/Nav';
-import background from '../../il_570xN.720708044_8vd9.webp';
+import background from '../../wariolandMap.jpeg';
 // import './Campaign.css';
 import { useDispatch, useSelector } from 'react-redux';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -37,14 +37,14 @@ function SecretCampaign() {
 
 
     return (
-        <div className="campaign"
+        <div className="secretCampaign"
             style={{
                 backgroundImage: `url(${background})`,
                 backgroundRepeat: `no-repeat`,
-                backgroundSize: `auto`,
-                backgroundColor: `#408AF7`,
+                backgroundSize: `35%`,
+                backgroundColor: `#6B96E6`,
                 height: `100vh`,
-                width: `100%`,
+                width: `100vw`,
                 backgroundPosition: `center`,
                 backgroundAttachment: `fixed`
             }}
@@ -56,12 +56,12 @@ function SecretCampaign() {
                 {starter.length === 1 || starter.length === 0 ? "Must Have 2 Starters to Play Level 1" : ""}
             </div>
 
-            <div className='levelOne'>
-                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 || starter.length === 0 ? true : false}>1</button>
+            <div className='secretLevelOne'>
+                <button onClick={() => goToTheBattle(11)} disabled={starter.length === 1 || starter.length === 0 ? true : false}>1</button>
             </div>
 
-            <div className='levelTwo'>
-                <button onClick={() => goToTheBattle(2)} disabled={starter.length === 1 || starter.length === 0 ? true : user.level_1_completed ? false : true}>2</button>
+            <div className='secretLevelTwo'>
+                <button onClick={() => goToTheBattle(12)} disabled={starter.length === 1 || starter.length === 0 ? true : user.secret_level_1_completed ? false : true}>2</button>
             </div>
 
        

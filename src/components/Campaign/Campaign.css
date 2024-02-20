@@ -358,3 +358,64 @@ body {
 .secretButton button:hover:not(:disabled){
     background-color: rgb(54, 53, 53);
 }
+
+.secretLevelOne button {
+    position: absolute;
+    top: 22%;
+    left: 36.5%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secretLevelOne button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.secretLevelOne button:hover:not(:disabled){
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+
+}
+
+
+.secretLevelTwo button {
+    position: absolute;
+    top: 18.5%;
+    left: 53.5%;
+    background-color: rgb(237, 9, 9);
+    outline: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    font-family: 'New Super Mario Font U';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secretLevelTwo button:disabled {
+    cursor:default;
+    background-color: rgb(119, 116, 116);
+}
+
+.secretLevelTwo button:hover:not(:disabled){
+    /* width: 45px;
+    height: 45px;
+    font-size: 35px; */
+    background-color: rgb(171, 6, 6);
+
+}
