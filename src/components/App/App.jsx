@@ -5,14 +5,8 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -24,7 +18,7 @@ import Shop from '../Shop/Shop';
 import Characters from '../Characters/Characters';
 import Inventory from '../Inventory/Inventory';
 import SecretCampaign from '../SecretCampaign/SecretCampaign';
-
+import EndingCredits from '../EndingCredits/EndingCredits';
 import './App.css';
 
 function App() {
@@ -95,6 +89,10 @@ function App() {
 
           <ProtectedRoute exact path="/secretCampaign">
             <SecretCampaign />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/credits">
+            <EndingCredits />
           </ProtectedRoute>
 
 
