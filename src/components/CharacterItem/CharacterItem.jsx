@@ -127,16 +127,39 @@ function CharacterItem({ character }) {
 
 
   const sellCharacter = () => {
-    if (character.id === starter[0].id || character.id === starter[1].id) {
-      setOpen(false);
-      return alert("you can't sell your starter")
-    }
-    dispatch({
-      type: 'SAGA_SELL_CHARACTER',
-      payload: {
-        characterID: character.id
+    if (starter.length === 2) {
+      if (character.id === starter[0].id || character.id === starter[1].id) {
+        setOpen(false);
+        return alert("you can't sell your starter")
+      } else {
+        dispatch({
+          type: 'SAGA_SELL_CHARACTER',
+          payload: {
+            characterID: character.id
+          }
+        })
       }
-    })
+
+    } else if (starter.length === 1) {
+      if (character.id === starter[0].id) {
+        setOpen(false);
+        return alert("you can't sell your starter")
+      } else {
+        dispatch({
+          type: 'SAGA_SELL_CHARACTER',
+          payload: {
+            characterID: character.id
+          }
+        })
+      }
+    } else {
+      dispatch({
+        type: 'SAGA_SELL_CHARACTER',
+        payload: {
+          characterID: character.id
+        }
+      })
+    }
     setOpen(false);
   }
 
