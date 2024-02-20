@@ -193,7 +193,9 @@ function Battle() {
 
     // gives money to user and sends you to the campaign page
     const handleWinnerClose = () => {
-        if (id === 10 && user.credit_video_completed === false) {
+        console.log('id', id);
+        console.log('user complete?', user.credit_video_completed);
+        if (id == 10 && user.credit_video_completed === false) {
             console.log('it is level 10');
             history.push(`/credits`)
         } else {

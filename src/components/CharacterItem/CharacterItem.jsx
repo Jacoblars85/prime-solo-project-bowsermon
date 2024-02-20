@@ -70,7 +70,6 @@ function CharacterItem({ character }) {
   }
 
   const setStarterTwo = () => {
-
     if (starter.length === 0) {
       dispatch({
         type: 'SAGA_SET_STARTER_TWO',
@@ -93,11 +92,8 @@ function CharacterItem({ character }) {
           payload: character.id
         });
       }
-
     } else if (starter.length === 2) {
-
       if (character.id === starter[0].id) {
-
         dispatch({
           type: 'SAGA_SET_STARTER_CONDITIONALLY',
           payload: {
