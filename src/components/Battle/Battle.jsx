@@ -198,6 +198,10 @@ function Battle() {
         if (id == 10 && user.credit_video_completed === false) {
             console.log('it is level 10');
             history.push(`/credits`)
+            dispatch({
+                type: 'SAGA_USER_WON_THE_BATTLE',
+                payload: { levelId: enemyOne.level_id }
+            });
         } else {
         history.push(`/campaign`)
         dispatch({
