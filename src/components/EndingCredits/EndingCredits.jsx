@@ -21,7 +21,7 @@ function EndingCredits() {
 
 
   setTimeout(() => {
-    setSkipText("Press space to skip")
+    setSkipText("Click anywhere to skip")
     setAllowingSkip(() => goHome)
   }, 1000)
 
