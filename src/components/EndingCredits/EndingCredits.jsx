@@ -12,20 +12,18 @@ function EndingCredits() {
   const [allowingSkip, setAllowingSkip] = useState();
 
   const goHome = () => {
-
     // dispatch({
     //     type: 'SAGA_FETCH_LEVEL_ENEMY',
     // });
 
         history.push(`/home`)
-
 };
 
 
   setTimeout(() => {
     setSkipText("Press space to skip")
-    setAllowingSkip(goHome)
-  }, 10000)
+    setAllowingSkip(() => goHome)
+  }, 1000)
 
   return (
     <div onClick={allowingSkip} className="endingCreditsArea">
