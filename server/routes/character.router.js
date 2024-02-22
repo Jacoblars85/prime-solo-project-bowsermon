@@ -23,11 +23,13 @@ router.get('/character', (req, res) => {
  FROM "user_characters"
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
-    WHERE "user_id" = ${[req.user.id]}
+    WHERE "user_id" = $1
     ORDER BY "character_id", "id" DESC;
   `;
 
-    pool.query(query)
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
         .then(result => {
             res.send(result.rows);
         })
@@ -76,10 +78,12 @@ router.get('/enemy/:id', (req, res) => {
             FROM "levels"
         INNER JOIN "characters"
             ON "levels"."enemy_id" = "characters"."id"
-        WHERE "levels"."id" = ${req.params.id};
+        WHERE "levels"."id" = $1;
       `;
 
-    pool.query(query)
+      const sqlValues = [req.params.id];
+
+    pool.query(query, sqlValues)
         .then(result => {
             res.send(result.rows);
         })
@@ -99,11 +103,9 @@ router.post('/', (req, res) => {
           INSERT INTO "user_characters" 
             ("user_id", "character_id")
             VALUES
-            (${[req.user.id]}, $1);
+            ($1, $2);
         `;
-    const insertCharacterValue = [
-        req.body.characterID
-    ]
+    const insertCharacterValue = [req.user.id, req.body.characterID]
 
     pool.query(insertCharacterQuery, insertCharacterValue)
         .then(result => {
@@ -119,11 +121,13 @@ router.put("/buy", (req, res) => {
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" - 15
-          WHERE "id" = ${[req.user.id]};
+          WHERE "id" = $1;
           `;
 
+          const sqlValues = [req.user.id];
+
     pool
-        .query(sqlText)
+        .query(sqlText, sqlValues)
         .then((result) => {
             res.sendStatus(201);
         })
@@ -139,12 +143,14 @@ router.put("/sell/character", (req, res) => {
     const sqlText = `
         UPDATE "user"
           SET "coins" = "coins" + 10
-          WHERE "id" = ${[req.user.id]};
+          WHERE "id" = $1;
           `;
+
+          const sqlValues = [req.user.id];
 
 
     pool
-        .query(sqlText)
+        .query(sqlText, sqlValues)
         .then((result) => {
             res.sendStatus(201);
         })
@@ -159,11 +165,13 @@ router.delete("/sell", (req, res) => {
 
     const sqlText = `
     DELETE FROM "user_characters"
-      WHERE "id" = ${req.body.characterID};
+      WHERE "id" = $1;
       `
 
+      const sqlValues = [req.body.characterID];
+
     pool
-        .query(sqlText)
+        .query(sqlText, sqlValues)
         .then((result) => {
             res.sendStatus(201);
         })
@@ -194,12 +202,13 @@ router.get('/starter', (req, res) => {
 FROM "user_characters"
 INNER JOIN "characters"
     ON "user_characters"."character_id" = "characters"."id"
-WHERE "user_characters"."starter_1" = TRUE AND "user_id" = ${[req.user.id]} OR "user_characters"."starter_2" = TRUE AND "user_id" = ${[req.user.id]}
+WHERE "user_characters"."starter_1" = TRUE AND "user_id" = $1 OR "user_characters"."starter_2" = TRUE AND "user_id" = $1
     ORDER BY "starter_1" DESC;
-
   `;
 
-    pool.query(query)
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
         .then(result => {
             res.send(result.rows);
         })
@@ -216,19 +225,21 @@ router.put("/starter/one/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
   SET "starter_1" = FALSE
-    WHERE "user_id" = ${[req.user.id]};
+    WHERE "user_id" = $1;
       `;
 
-    pool.query(sqlText)
+      const sqlValues = [req.user.id];
+
+    pool.query(sqlText, sqlValues)
         .then((result) => {
 
             const insertNewUserQuery = `
         UPDATE "user_characters"
           SET "starter_1" = TRUE
-          WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+          WHERE "id" = $1 AND "user_id" = $1;
           `;
 
-            const sqlValues = [req.params.id]
+            const sqlValues = [req.params.id, req.user.id]
 
             pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
@@ -252,19 +263,21 @@ router.put("/starter/two/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
   SET "starter_2" = FALSE
-    WHERE "user_id" = ${[req.user.id]};
+    WHERE "user_id" = $1;
       `;
 
-    pool.query(sqlText)
+      const sqlValues = [req.user.id];
+
+    pool.query(sqlText, sqlValues)
         .then((result) => {
 
             const insertNewUserQuery = `
         UPDATE "user_characters"
           SET "starter_2" = TRUE
-          WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+          WHERE "id" = $1 AND "user_id" = $2;
           `;
 
-            const sqlValues = [req.params.id]
+            const sqlValues = [req.params.id, req.user.id]
 
             pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
@@ -309,10 +322,10 @@ router.put("/starter/clear/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
         SET "starter_1" = FALSE 
-            WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+            WHERE "id" = $1 AND "user_id" = $2;
     `;
 
-    const sqlValues = [req.params.id]
+    const sqlValues = [req.params.id, req.user.id]
 
     pool.query(sqlText, sqlValues)
         .then(result => {
@@ -322,10 +335,10 @@ router.put("/starter/clear/:id", (req, res) => {
             const sqlText = `
     UPDATE "user_characters"
         SET "starter_2" = FALSE
-            WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+            WHERE "id" = $1 AND "user_id" = $2;
     `;
 
-    const sqlValues = [req.params.id]
+    const sqlValues = [req.params.id, req.user.id]
 
             pool.query(sqlText, sqlValues)
                 .then(result => {
@@ -348,10 +361,10 @@ router.put("/starter/conditional/:id", (req, res) => {
     const sqlText = `
     UPDATE "user_characters"
        SET "starter_${req.body.otherStarter}" = FALSE
-         WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+         WHERE "id" = $1 AND "user_id" = $2;
       `;
 
-      const sqlValues = [req.params.id]
+      const sqlValues = [req.params.id, req.user.id]
 
     pool.query(sqlText, sqlValues)
         .then((result) => {
@@ -359,19 +372,21 @@ router.put("/starter/conditional/:id", (req, res) => {
             const insertNewUserQuery = `
         UPDATE "user_characters"
           SET "starter_${req.body.currentStarter}" = FALSE
-          WHERE "user_id" = ${[req.user.id]};
+          WHERE "user_id" = $1;
           `;
 
-            pool.query(insertNewUserQuery)
+      const sqlValues = [req.user.id]
+
+            pool.query(insertNewUserQuery, sqlValues)
             .then((result) => {
 
                 const insertNewUserQuery = `
             UPDATE "user_characters"
               SET "starter_${req.body.currentStarter}" = TRUE
-              WHERE "id" = $1 AND "user_id" = ${[req.user.id]};
+              WHERE "id" = $1 AND "user_id" = $2;
               `;
     
-                const sqlValues = [req.params.id]
+                const sqlValues = [req.params.id, req.user.id]
     
                 pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
