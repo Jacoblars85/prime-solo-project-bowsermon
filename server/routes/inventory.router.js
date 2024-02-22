@@ -18,11 +18,13 @@ router.get('/inventory', (req, res) => {
     FROM "user_inventory"
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"
-        WHERE "user_id" = ${[req.user.id]}
+        WHERE "user_id" = $1
         ORDER BY "items_id" ASC;
   `;
 
-    pool.query(query)
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
         .then(result => {
             res.send(result.rows);
         })
@@ -38,11 +40,11 @@ router.put("/buy/potion/:id", (req, res) => {
     // console.log(req.body.amountNum);
     const sqlText = `
     UPDATE "user_inventory"
-    SET "number" = "number" + ${req.body.amountNum}
-      WHERE "user_id" = ${[req.user.id]} AND "items_id" = $1;
+    SET "number" = "number" + $1
+      WHERE "user_id" = $2 AND "items_id" = $3;
       `;
 
-    const insertValue = [req.params.id]
+    const insertValue = [req.body.amountNum, req.user.id, req.params.id]
 
 
     pool.query(sqlText, insertValue)
@@ -60,19 +62,21 @@ router.put("/buy/potion/:id", (req, res) => {
                 insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${healthNum}
-                      WHERE "id" = ${[req.user.id]}
+                      WHERE "id" = $1
                       RETURNING "coins";
                       `;
             } else if (req.params.id === '3') {
                 insertNewUserQuery = `
                     UPDATE "user"
                       SET "coins" = "coins" - ${maxNum}
-                      WHERE "id" = ${[req.user.id]}
+                      WHERE "id" = $1
                       RETURNING "coins";
                       `;
             }
 
-            pool.query(insertNewUserQuery)
+            const insertValue = [req.user.id]
+
+            pool.query(insertNewUserQuery, insertValue)
                 .then(result => {
                     res.sendStatus(201);
                 })
@@ -89,14 +93,14 @@ router.put("/buy/potion/:id", (req, res) => {
 
 
 router.put("/sell/potion/:id", (req, res) => {
-    console.log(req.body.amountNum);
+    // console.log(req.body.amountNum);
     const sqlText = `
         UPDATE "user_inventory"
-        SET "number" = "number" - ${req.body.amountNum}
-          WHERE "user_id" = ${[req.user.id]} AND "items_id" = $1;
+        SET "number" = "number" - $1
+          WHERE "user_id" = $2 AND "items_id" = $3;
           `;
 
-    const insertValue = [req.params.id]
+    const insertValue = [req.body.amountNum, req.user.id, req.params.id]
 
 
     pool.query(sqlText, insertValue)
@@ -114,20 +118,22 @@ router.put("/sell/potion/:id", (req, res) => {
                 insertNewUserQuery = `
                         UPDATE "user"
                           SET "coins" = "coins" + ${healthNum}
-                          WHERE "id" = ${[req.user.id]}
+                          WHERE "id" = $1
                           RETURNING "coins";
                           `;
             } else if (req.params.id === '3') {
                 insertNewUserQuery = `
                         UPDATE "user"
                           SET "coins" = "coins" + ${maxNum}
-                          WHERE "id" = ${[req.user.id]}
+                          WHERE "id" = $1
                           RETURNING "coins";
                           `;
             }
 
+    const insertValue = [req.user.id]
 
-            pool.query(insertNewUserQuery)
+
+            pool.query(insertNewUserQuery, insertValue)
                 .then(result => {
                     res.sendStatus(201);
                 })
@@ -145,14 +151,14 @@ router.put("/sell/potion/:id", (req, res) => {
 
 
 router.put("/use/potion/:id", (req, res) => {
-    console.log(req.body.amountNum);
+    // console.log(req.body.amountNum);
     const sqlText = `
             UPDATE "user_inventory"
             SET "number" = "number" - 1
-              WHERE "user_id" = ${[req.user.id]} AND "items_id" = $1;
+              WHERE "user_id" = $1 AND "items_id" = $2;
               `;
 
-    const insertValue = [req.params.id]
+    const insertValue = [req.user.id, req.params.id]
 
     pool.query(sqlText, insertValue)
         .then(result => {
