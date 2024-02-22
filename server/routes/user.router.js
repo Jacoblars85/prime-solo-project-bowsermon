@@ -100,10 +100,10 @@ router.put("/change", (req, res) => {
   const sqlText = `
   UPDATE "user"
     SET "username" = ($1)
-    WHERE "id" = '${[req.user.id]}';
+    WHERE "id" = $2;
     `;
 
-  const sqlValues = [req.body.newName];
+  const sqlValues = [req.body.newName, req.user.id];
 
   pool
     .query(sqlText, sqlValues)
@@ -122,30 +122,36 @@ router.delete("/", (req, res) => {
 
   const sqlText = `
     DELETE FROM "user_inventory"
-      WHERE "user_id" = ${[req.user.id]};
+      WHERE "user_id" = $1;
       `;
 
+  const sqlValues = [req.user.id];
+
   pool
-    .query(sqlText)
+    .query(sqlText, sqlValues)
     .then(result => {
 
       // Now handle the user_characters reference:
       const insertNewUserQuery = `
       DELETE FROM "user_characters"
-        WHERE "user_id" = ${[req.user.id]};
+        WHERE "user_id" = $1;
         `
 
+        const sqlValues = [req.user.id];
+
       // SECOND QUERY DELETES user_id from user_characeters
-      pool.query(insertNewUserQuery)
+      pool.query(insertNewUserQuery, sqlValues)
         .then(result => {
 
           // Now handle the user_characters reference:
           const insertNewUserQuery = `
         DELETE FROM "user"
-          WHERE "id" = ${[req.user.id]};`
+          WHERE "id" = $1;`
+
+          const sqlValues = [req.user.id];
 
           // Third QUERY DELETES user from user table
-          pool.query(insertNewUserQuery)
+          pool.query(insertNewUserQuery, sqlValues)
 
             // was here for basic
             .then((result) => {
@@ -173,21 +179,23 @@ router.put("/won/:id", (req, res) => {
   const sqlText = `
   UPDATE "user"
         SET "coins" = "coins" + 10
-        WHERE "id" = '${[req.user.id]}';
+        WHERE "id" = $1;
     `;
 
+    const sqlValues = [req.user.id];
 
-
-  pool.query(sqlText)
+  pool.query(sqlText, sqlValues)
     .then((result) => {
 
       const insertNewUserQuery = `
       UPDATE "user"
         SET "level_${req.params.id}_completed" = TRUE
-        WHERE "id" = ${[req.user.id]};
+        WHERE "id" = $1;
         `;
 
-      pool.query(insertNewUserQuery)
+        const sqlValues = [req.user.id];
+
+      pool.query(insertNewUserQuery, sqlValues)
         .then(result => {
 
           res.sendStatus(201);
