@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import video from "./Bowsermon-ending-credits.mp4";
-import './endingCredits.css';
+import "./endingCredits.css";
 
 function EndingCredits() {
   const history = useHistory();
@@ -13,21 +13,18 @@ function EndingCredits() {
 
   const goHome = () => {
     dispatch({
-        type: 'SAGA_USER_WATCHED_CREDITS',
+      type: "SAGA_USER_WATCHED_CREDITS",
     });
-
-        history.push(`/home`)
-};
-
+    history.push(`/home`);
+  };
 
   setTimeout(() => {
-    setSkipText("Click anywhere to skip")
-    setAllowingSkip(() => goHome)
-  }, 1000)
+    setSkipText("Click anywhere to skip");
+    setAllowingSkip(() => goHome);
+  }, 10000);
 
   return (
     <div onClick={allowingSkip} className="endingCreditsArea">
-
       <video autoPlay className="endingCredits">
         <source src={video} type="video/mp4" />
       </video>
