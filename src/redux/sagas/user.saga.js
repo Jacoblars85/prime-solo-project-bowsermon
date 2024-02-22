@@ -76,11 +76,28 @@ function* giveUserAllForWinning(action) {
   }
 }
 
+
+//turns watched credits to true
+function* completeWatchingCredits(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios.put("/api/user/credits");
+    yield put({
+      type: 'FETCH_USER',
+    })
+  } catch (error) {
+    console.log('Unable to finish watching credits', error);
+  }
+}
+
+
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('SAGA_CHANGE_USERNAME', changeUsername);
   yield takeLatest('SAGA_DELETE_ACCOUNT', deleteAccount);
   yield takeLatest('SAGA_USER_WON_THE_BATTLE', giveUserAllForWinning);
+  yield takeLatest('SAGA_USER_WATCHED_CREDITS', completeWatchingCredits);
 
 }
 

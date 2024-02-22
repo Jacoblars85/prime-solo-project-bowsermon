@@ -204,6 +204,29 @@ router.put("/won/:id", (req, res) => {
 });
 
 
+// user watched credits and turns it to true
+router.put("/credits", (req, res) => {
+  // console.log('are we here?');
+  const sqlText = `
+  UPDATE "user"
+    SET "credit_video_completed" = true, "coins" = "coins" + 15
+    WHERE "id" = $1;
+    `;
+
+  const sqlValues = [req.user.id];
+
+  pool
+    .query(sqlText, sqlValues)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("Error in user.router PUT changing credits to true,", err);
+      res.sendStatus(500);
+    });
+});
+
+
 
 
 module.exports = router;

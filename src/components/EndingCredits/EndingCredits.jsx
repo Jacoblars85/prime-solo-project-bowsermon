@@ -12,9 +12,9 @@ function EndingCredits() {
   const [allowingSkip, setAllowingSkip] = useState();
 
   const goHome = () => {
-    // dispatch({
-    //     type: 'SAGA_FETCH_LEVEL_ENEMY',
-    // });
+    dispatch({
+        type: 'SAGA_USER_WATCHED_CREDITS',
+    });
 
         history.push(`/home`)
 };
