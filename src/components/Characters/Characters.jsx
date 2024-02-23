@@ -18,13 +18,6 @@ function Characters() {
         dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
-    // console.log('this is the characters', characters);
-
-    let starterOne = starter[0];
-
-    console.log('the starter', starterOne);
-    console.log('this is characters', characters);
-
     return (
         <div >
 
