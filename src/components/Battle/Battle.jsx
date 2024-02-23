@@ -43,7 +43,7 @@ const DeadTransition = forwardRef(function Transition(props, ref) {
 
 function Battle() {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
@@ -60,8 +60,6 @@ function Battle() {
   useEffect(() => {
     dispatch({ type: "SAGA_FETCH_IVENTORY" });
   }, []);
-
-  const history = useHistory();
 
   const basicAttacks = useSelector((store) => store.character.basicAttacks);
   const characters = useSelector((store) => store.character.characters);
@@ -80,21 +78,6 @@ function Battle() {
   let staminaPot = inventory[1];
   let maxPot = inventory[2];
 
-  // the inventory object and first health pot
-  // console.log('inventory', inventory);
-  // console.log('healthpot', healthPot);
-
-  // starters
-  // console.log('starterOne', starterOne);
-  // console.log('starterTwo', starterTwo);
-
-  // basic attack
-  // console.log('basic', basicAttacks);
-  // // level enemy
-  // console.log('enemy', enemyOne);
-
-  // console.log('currenthp', currentCharacterHp);
-
   // starter one hp and stamina
   const [starterOneHp, setStarterOneHp] = useState(starterOne.hp);
   const [starterOneStamina, setStarterOneStamina] = useState(
@@ -105,10 +88,7 @@ function Battle() {
   const [starterTwoStamina, setStarterTwoStamina] = useState(
     starterTwo.stamina
   );
-  // Starter picture/hp/stamina on the screen
-
-  // const [currentCharacterHp, setCurrentCharacterHp] = useState(starterOneHp);
-  // const [currentCharacterStamina, setCurrentCharacterStamina] = useState(starterOneStamina);
+  // Starter picture on the screen
   const [characterPicture, setCharacterPicture] = useState(
     starterOne.battle_pic
   );
@@ -122,7 +102,7 @@ function Battle() {
   const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
   // text box for actions
   const [textBox, setTextBox] = useState("");
-
+  // when set, it will shake the screen
   const [shakeTheScreen, setShakeTheScreen] = useState("");
 
   // features that get triggered as the battle goes on
@@ -180,8 +160,6 @@ function Battle() {
       setDeadOpen(false);
     }
   };
-
-  // console.log('user', user);
 
   // state values to open dialog if you win or lose
   const [openWinner, setWinnerOpen] = useState(false);
@@ -964,7 +942,6 @@ function Battle() {
               handleDeadOpen();
             }
           }
-
           setEnemyPicAttack("enemyPicAttack");
           setEnemyClassName("shake");
         }
@@ -975,8 +952,6 @@ function Battle() {
       setEnemyPicAttack("");
       setEnemyClassName("enemy");
     }, 350);
-
-    console.log("my hp", starterOneHp);
 
     return starterOneHp;
   };
@@ -1279,9 +1254,6 @@ function Battle() {
               >
                 Choose A Character
               </Typography>
-              {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
-                                close
-                            </Button> */}
             </Toolbar>
           </AppBar>
           <List>
@@ -1467,9 +1439,6 @@ function Battle() {
               >
                 Inventory
               </Typography>
-              {/* <Button autoFocus color="inherit" onClick={handleInventoryClose}>
-                                close
-                            </Button> */}
             </Toolbar>
           </AppBar>
           <List>
