@@ -71,7 +71,7 @@ function Shop() {
 
             let randomNum = Math.floor(Math.random() * 9 + 1);
 
-            console.log('random number', randomNum);
+            // console.log('random number', randomNum);
 
             setRandomOpen(false);
 
@@ -143,9 +143,6 @@ function Shop() {
 
     const buyHealthPot = (healthValue) => {
 
-        console.log(healthValue);
-        console.log(healthValue * 10);
-
         if (user.coins < healthValue * 10) {
             setHealthOpen(false);
             return alert('you are broke broke, sorry')
@@ -153,8 +150,6 @@ function Shop() {
             setHealthOpen(false);
             return alert('you must buy a character first, sorry')
         } else {
-            console.log("healthValue:", healthValue)
-
             setOpenHealthSnack(true);
 
             dispatch({
@@ -170,7 +165,6 @@ function Shop() {
     };
 
     const healthValuetext = (healthvalues) => {
-        // console.log(value);
         return healthvalues;
     }
 
@@ -220,9 +214,6 @@ function Shop() {
 
     const buyStaminaPot = (staminaValue) => {
 
-        console.log(staminaValue);
-        console.log(staminaValue * 10);
-
         if (user.coins < staminaValue * 10) {
             setStaminaOpen(false);
             return alert('you are broke broke, sorry')
@@ -245,7 +236,6 @@ function Shop() {
     };
 
     const staminaValuetext = (value) => {
-        // console.log(value);
         return value;
     }
 
@@ -294,8 +284,6 @@ function Shop() {
     };
 
     const buyMaxPot = (maxValue) => {
-        console.log(maxValue);
-        console.log(maxValue * 20);
 
         if (user.coins < maxValue * 20) {
             setMaxOpen(false);
@@ -319,7 +307,6 @@ function Shop() {
     };
 
     const maxValuetext = (value) => {
-        // console.log(value);
         return value;
     }
 

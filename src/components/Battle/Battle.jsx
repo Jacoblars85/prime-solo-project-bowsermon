@@ -394,8 +394,6 @@ function Battle() {
       }
     }
 
-    console.log("enemy hp", enemyHp);
-
     return enemyHp;
   };
 

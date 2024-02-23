@@ -14,9 +14,6 @@ function Inventory() {
     const user = useSelector((store) => store.user.userReducer);
     const inventory = useSelector((store) => store.inventory.inventory);
 
-    console.log('inventory', inventory);
-
-
     useEffect(() => {
         dispatch({ type: 'SAGA_FETCH_IVENTORY' });
     }, []);

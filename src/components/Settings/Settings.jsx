@@ -33,12 +33,6 @@ export default function Settings() {
   const user = useSelector((store) => store.user.userReducer);
   const editUsername = useSelector((store) => store.user.editUsername);
 
-  // console.log('user', user);
-  // console.log('edit user', editUsername);
-
-
-
-
   const [open, setOpen] = useState(false);
 
   const handleDeleteClickOpen = () => {

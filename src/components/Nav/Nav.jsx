@@ -7,7 +7,6 @@ import Settings from '../Settings/Settings';
 
 function Nav() {
   const user = useSelector((store) => store.user.userReducer);
-  // console.log("user is:", user)
 
   return (
     <div className="nav">

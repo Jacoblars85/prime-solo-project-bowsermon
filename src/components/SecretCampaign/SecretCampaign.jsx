@@ -25,7 +25,6 @@ function SecretCampaign() {
     }, []);
 
     const goToTheBattle = (params) => {
-        // console.log('paramas', params);
         dispatch({
             type: 'SAGA_FETCH_LEVEL_ENEMY',
             payload: params
