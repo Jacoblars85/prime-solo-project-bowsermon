@@ -88,6 +88,7 @@ function Battle() {
   const [starterTwoStamina, setStarterTwoStamina] = useState(
     starterTwo.stamina
   );
+
   // Starter picture on the screen
   const [characterPicture, setCharacterPicture] = useState(
     starterOne.battle_pic
@@ -205,192 +206,282 @@ function Battle() {
       setShakeTheScreen("");
     }, 150);
 
-    if (currentId === starterOne.id) {
-      if (attackType === "unique") {
-        setEnemyHp(enemyHp - starterOne.unique_damage);
-        setStarterOneStamina(starterOneStamina - starterOne.unique_stamina);
+    if (starter.length === 1) {
+      if (currentId === starterOne.id) {
+        if (attackType === "unique") {
+          setEnemyHp(enemyHp - starterOne.unique_damage);
+          setStarterOneStamina(starterOneStamina - starterOne.unique_stamina);
 
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
 
-        if (enemyHp - starterOne.unique_damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          setWinnerOpen(true);
+          if (enemyHp - starterOne.unique_damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "punch") {
+          setEnemyHp(enemyHp - basicAttacks[0].damage);
+          setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[0].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "poke") {
+          setEnemyHp(enemyHp - basicAttacks[1].damage);
+          setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[1].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "health") {
+          setStarterOneHp(starterOneHp + 25);
+
+          if (starterOneHp + 25 > starterOne.hp) {
+            setStarterOneHp(starterOne.hp);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 1,
+            },
+          });
+        } else if (attackType === "stamina") {
+          setStarterOneStamina(starterOneStamina + 30);
+
+          if (starterOneStamina + 30 > starterOne.stamina) {
+            setStarterOneStamina(starterOne.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 2,
+            },
+          });
+        } else if (attackType === "max") {
+          setStarterOneHp(starterOneHp + 20);
+          setStarterOneStamina(starterOneStamina + 25);
+
+          if (starterOneHp + 20 > starterOne.hp) {
+            setStarterOneHp(starterOne.hp);
+          } else if (starterOneStamina + 25 > starterOne.stamina) {
+            setStarterOneStamina(starterOne.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 3,
+            },
+          });
         }
-      } else if (attackType === "punch") {
-        setEnemyHp(enemyHp - basicAttacks[0].damage);
-        setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina);
-
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
-
-        if (enemyHp - basicAttacks[0].damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          setWinnerOpen(true);
-        }
-      } else if (attackType === "poke") {
-        setEnemyHp(enemyHp - basicAttacks[1].damage);
-        setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina);
-
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
-
-        if (enemyHp - basicAttacks[1].damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          setWinnerOpen(true);
-        }
-      } else if (attackType === "health") {
-        setStarterOneHp(starterOneHp + 25);
-
-        if (starterOneHp + 25 > starterOne.hp) {
-          setStarterOneHp(starterOne.hp);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 1,
-          },
-        });
-      } else if (attackType === "stamina") {
-        setStarterOneStamina(starterOneStamina + 30);
-
-        if (starterOneStamina + 30 > starterOne.stamina) {
-          setStarterOneStamina(starterOne.stamina);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 2,
-          },
-        });
-      } else if (attackType === "max") {
-        setStarterOneHp(starterOneHp + 20);
-        setStarterOneStamina(starterOneStamina + 25);
-
-        if (starterOneHp + 20 > starterOne.hp) {
-          setStarterOneHp(starterOne.hp);
-        } else if (starterOneStamina + 25 > starterOne.stamina) {
-          setStarterOneStamina(starterOne.stamina);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 3,
-          },
-        });
-      } else if (attackType === "starterTwo") {
-        setCurrentId(starterTwo.id);
-        setCurrentSpeed(starterTwo.speed);
-        setMaxHp(starterTwo.hp);
-        setMaxStamina(starterTwo.stamina);
-        setCharacterPicture(starterTwo.battle_pic);
-        setSwitchOpen(false);
       }
-    } else if (currentId === starterTwo.id) {
-      if (attackType === "unique") {
-        setEnemyHp(enemyHp - starterTwo.unique_damage);
-        setStarterTwoStamina(starterTwoStamina - starterTwo.unique_stamina);
+    } else if (starter.length === 2) {
+      if (currentId === starterOne.id) {
+        if (attackType === "unique") {
+          setEnemyHp(enemyHp - starterOne.unique_damage);
+          setStarterOneStamina(starterOneStamina - starterOne.unique_stamina);
 
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
 
-        if (enemyHp - starterTwo.unique_damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          return setWinnerOpen(true);
+          if (enemyHp - starterOne.unique_damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "punch") {
+          setEnemyHp(enemyHp - basicAttacks[0].damage);
+          setStarterOneStamina(starterOneStamina - basicAttacks[0].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[0].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "poke") {
+          setEnemyHp(enemyHp - basicAttacks[1].damage);
+          setStarterOneStamina(starterOneStamina - basicAttacks[1].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[1].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "health") {
+          setStarterOneHp(starterOneHp + 25);
+
+          if (starterOneHp + 25 > starterOne.hp) {
+            setStarterOneHp(starterOne.hp);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 1,
+            },
+          });
+        } else if (attackType === "stamina") {
+          setStarterOneStamina(starterOneStamina + 30);
+
+          if (starterOneStamina + 30 > starterOne.stamina) {
+            setStarterOneStamina(starterOne.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 2,
+            },
+          });
+        } else if (attackType === "max") {
+          setStarterOneHp(starterOneHp + 20);
+          setStarterOneStamina(starterOneStamina + 25);
+
+          if (starterOneHp + 20 > starterOne.hp) {
+            setStarterOneHp(starterOne.hp);
+          } else if (starterOneStamina + 25 > starterOne.stamina) {
+            setStarterOneStamina(starterOne.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 3,
+            },
+          });
+        } else if (attackType === "starterTwo") {
+          setCurrentId(starterTwo.id);
+          setCurrentSpeed(starterTwo.speed);
+          setMaxHp(starterTwo.hp);
+          setMaxStamina(starterTwo.stamina);
+          setCharacterPicture(starterTwo.battle_pic);
+          setSwitchOpen(false);
         }
-      } else if (attackType === "punch") {
-        setEnemyHp(enemyHp - basicAttacks[0].damage);
-        setStarterTwoStamina(starterTwoStamina - basicAttacks[0].stamina);
+      } else if (currentId === starterTwo.id) {
+        if (attackType === "unique") {
+          setEnemyHp(enemyHp - starterTwo.unique_damage);
+          setStarterTwoStamina(starterTwoStamina - starterTwo.unique_stamina);
 
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
 
-        if (enemyHp - basicAttacks[0].damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          setWinnerOpen(true);
+          if (enemyHp - starterTwo.unique_damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            return setWinnerOpen(true);
+          }
+        } else if (attackType === "punch") {
+          setEnemyHp(enemyHp - basicAttacks[0].damage);
+          setStarterTwoStamina(starterTwoStamina - basicAttacks[0].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[0].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "poke") {
+          setEnemyHp(enemyHp - basicAttacks[1].damage);
+          setStarterTwoStamina(starterTwoStamina - basicAttacks[1].stamina);
+
+          setCharacterPicAttack("chacracterPicAttack");
+          setShakeTheScreen("shakeTheScreen");
+
+          if (enemyHp - basicAttacks[1].damage <= 0) {
+            setEnemyHp(0);
+            clearTimeout(enemyAttackTimeOut);
+            setWinnerOpen(true);
+          }
+        } else if (attackType === "health") {
+          setStarterTwoHp(starterTwoHp + 25);
+
+          if (starterTwoHp + 25 > starterTwo.hp) {
+            setStarterTwoHp(starterTwo.hp);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 1,
+            },
+          });
+        } else if (attackType === "stamina") {
+          setStarterTwoStamina(starterTwoStamina + 30);
+
+          if (starterTwoStamina + 30 > starterTwo.stamina) {
+            setStarterTwoStamina(starterTwo.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 2,
+            },
+          });
+        } else if (attackType === "max") {
+          setStarterTwoHp(starterTwoHp + 20);
+          setStarterTwoStamina(starterTwoStamina + 25);
+
+          if (starterTwoHp + 20 > starterTwo.hp) {
+            setStarterTwoHp(starterTwo.hp);
+          }
+          if (starterTwoStamina + 25 > starterTwo.stamina) {
+            setStarterTwoStamina(starterTwo.stamina);
+          }
+
+          setInventoryOpen(false);
+
+          dispatch({
+            type: "SAGA_USE_POTION",
+            payload: {
+              potionId: 3,
+            },
+          });
+        } else if (attackType === "starterOne") {
+          setCurrentId(starterOne.id);
+          setCurrentSpeed(starterOne.speed);
+          setMaxHp(starterOne.hp);
+          setMaxStamina(starterOne.stamina);
+          setCharacterPicture(starterOne.battle_pic);
+          setSwitchOpen(false);
         }
-      } else if (attackType === "poke") {
-        setEnemyHp(enemyHp - basicAttacks[1].damage);
-        setStarterTwoStamina(starterTwoStamina - basicAttacks[1].stamina);
-
-        setCharacterPicAttack("chacracterPicAttack");
-        setShakeTheScreen("shakeTheScreen");
-
-        if (enemyHp - basicAttacks[1].damage <= 0) {
-          setEnemyHp(0);
-          clearTimeout(enemyAttackTimeOut);
-          setWinnerOpen(true);
-        }
-      } else if (attackType === "health") {
-        setStarterTwoHp(starterTwoHp + 25);
-
-        if (starterTwoHp + 25 > starterTwo.hp) {
-          setStarterTwoHp(starterTwo.hp);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 1,
-          },
-        });
-      } else if (attackType === "stamina") {
-        setStarterTwoStamina(starterTwoStamina + 30);
-
-        if (starterTwoStamina + 30 > starterTwo.stamina) {
-          setStarterTwoStamina(starterTwo.stamina);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 2,
-          },
-        });
-      } else if (attackType === "max") {
-        setStarterTwoHp(starterTwoHp + 20);
-        setStarterTwoStamina(starterTwoStamina + 25);
-
-        if (starterTwoHp + 20 > starterTwo.hp) {
-          setStarterTwoHp(starterTwo.hp);
-        }
-        if (starterTwoStamina + 25 > starterTwo.stamina) {
-          setStarterTwoStamina(starterTwo.stamina);
-        }
-
-        setInventoryOpen(false);
-
-        dispatch({
-          type: "SAGA_USE_POTION",
-          payload: {
-            potionId: 3,
-          },
-        });
-      } else if (attackType === "starterOne") {
-        setCurrentId(starterOne.id);
-        setCurrentSpeed(starterOne.speed);
-        setMaxHp(starterOne.hp);
-        setMaxStamina(starterOne.stamina);
-        setCharacterPicture(starterOne.battle_pic);
-        setSwitchOpen(false);
       }
     }
 
@@ -399,61 +490,99 @@ function Battle() {
 
   // after an action it reads it and puts it on the screen
   const characterTextBox = (attackType, basicAttacks, starterOne) => {
-    if (currentId === starterOne.id) {
-      if (attackType === "unique") {
-        setTextBox(
-          `${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
-        );
-      } else if (attackType === "punch") {
-        setTextBox(
-          `${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
-        );
-      } else if (attackType === "poke") {
-        setTextBox(
-          `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
-        );
-      } else if (attackType === "health") {
-        setTextBox(
-          `${starterOne.name} used a health potion and it healed 25 hp.`
-        );
-      } else if (attackType === "stamina") {
-        setTextBox(
-          `${starterOne.name} used a stamina potion and it gave 30 stamina back.`
-        );
-      } else if (attackType === "max") {
-        setTextBox(
-          `${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
-        );
-      } else if (attackType === "starterTwo") {
-        setTextBox(`${starterOne.name} switched out into ${starterTwo.name}.`);
+    if (starter.length === 1) {
+      if (currentId === starterOne.id) {
+        if (attackType === "unique") {
+          setTextBox(
+            `${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+          );
+        } else if (attackType === "punch") {
+          setTextBox(
+            `${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+          );
+        } else if (attackType === "poke") {
+          setTextBox(
+            `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+          );
+        } else if (attackType === "health") {
+          setTextBox(
+            `${starterOne.name} used a health potion and it healed 25 hp.`
+          );
+        } else if (attackType === "stamina") {
+          setTextBox(
+            `${starterOne.name} used a stamina potion and it gave 30 stamina back.`
+          );
+        } else if (attackType === "max") {
+          setTextBox(
+            `${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+          );
+        } else if (attackType === "starterTwo") {
+          setTextBox(
+            `${starterOne.name} switched out into ${starterTwo.name}.`
+          );
+        }
       }
-    } else if (currentId === starterTwo.id) {
-      if (attackType === "unique") {
-        setTextBox(
-          `${starterTwo.name} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`
-        );
-      } else if (attackType === "punch") {
-        setTextBox(
-          `${starterTwo.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
-        );
-      } else if (attackType === "poke") {
-        setTextBox(
-          `${starterTwo.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
-        );
-      } else if (attackType === "health") {
-        setTextBox(
-          `${starterTwo.name} used a health potion and it healed 25 hp.`
-        );
-      } else if (attackType === "stamina") {
-        setTextBox(
-          `${starterTwo.name} used a stamina potion and it gave 30 stamina back.`
-        );
-      } else if (attackType === "max") {
-        setTextBox(
-          `${starterTwo.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
-        );
-      } else if (attackType === "starterOne") {
-        setTextBox(`${starterTwo.name} switched out into ${starterOne.name}.`);
+    } else if (starter.length === 2) {
+      if (currentId === starterOne.id) {
+        if (attackType === "unique") {
+          setTextBox(
+            `${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+          );
+        } else if (attackType === "punch") {
+          setTextBox(
+            `${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+          );
+        } else if (attackType === "poke") {
+          setTextBox(
+            `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+          );
+        } else if (attackType === "health") {
+          setTextBox(
+            `${starterOne.name} used a health potion and it healed 25 hp.`
+          );
+        } else if (attackType === "stamina") {
+          setTextBox(
+            `${starterOne.name} used a stamina potion and it gave 30 stamina back.`
+          );
+        } else if (attackType === "max") {
+          setTextBox(
+            `${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+          );
+        } else if (attackType === "starterTwo") {
+          setTextBox(
+            `${starterOne.name} switched out into ${starterTwo.name}.`
+          );
+        }
+      } else if (currentId === starterTwo.id) {
+        if (attackType === "unique") {
+          setTextBox(
+            `${starterTwo.name} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`
+          );
+        } else if (attackType === "punch") {
+          setTextBox(
+            `${starterTwo.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+          );
+        } else if (attackType === "poke") {
+          setTextBox(
+            `${starterTwo.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+          );
+        } else if (attackType === "health") {
+          setTextBox(
+            `${starterTwo.name} used a health potion and it healed 25 hp.`
+          );
+        } else if (attackType === "stamina") {
+          setTextBox(
+            `${starterTwo.name} used a stamina potion and it gave 30 stamina back.`
+          );
+        } else if (attackType === "max") {
+          setTextBox(
+            `${starterTwo.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+          );
+        } else if (attackType === "starterOne") {
+          setTextBox(
+            `${starterTwo.name} switched out into ${starterOne.name}.`
+          );
+        }
       }
     }
   };
@@ -466,482 +595,641 @@ function Battle() {
     characterAttackTimeOut
   ) => {
     setTimeout(() => {
-      if (currentId === starterOne.id) {
-        if (enemyStamina >= enemyOne.unique_stamina) {
-          if (attackType === "health") {
-            if (starterOneHp + 25 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
+      if (starter.length === 1) {
+        if (currentId === starterOne.id) {
+          if (enemyStamina >= enemyOne.unique_stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
+
+              if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
+
+              if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
             } else {
-              setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage);
+              setStarterOneHp(starterOneHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (starterOneHp - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
             }
 
-            if (
-              starterOneHp + 25 - enemyOne.unique_damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterOneHp + 20 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
-              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[0].stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
             } else {
-              setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage);
-              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              setStarterOneHp(starterOneHp - basicAttacks[0].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (starterOneHp - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
             }
 
-            if (
-              starterOneHp + 20 - enemyOne.unique_damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterTwo") {
-            setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
-            setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[1].stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterTwoHp - enemyOne.unique_damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterOneHp(starterOneHp - enemyOne.unique_damage);
-            setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterOneHp - enemyOne.unique_damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - enemyOne.unique_damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
+              if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
+            } else {
+              setStarterOneHp(starterOneHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (starterOneHp - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              }
             }
+
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
           }
-
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
-        } else if (enemyStamina >= basicAttacks[0].stamina) {
-          if (attackType === "health") {
-            if (starterOneHp + 25 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-            } else {
-              setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-            }
-
-            if (
-              starterOneHp + 25 - basicAttacks[0].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterOneHp + 20 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-            } else {
-              setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-            }
-
-            if (
-              starterOneHp + 20 - basicAttacks[0].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterTwo") {
-            setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-
-            if (
-              starterTwoHp - basicAttacks[0].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterOneHp(starterOneHp - basicAttacks[0].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
-
-            if (
-              starterOneHp - basicAttacks[0].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - basicAttacks[0].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          }
-
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
-        } else if (enemyStamina >= basicAttacks[1].stamina) {
-          if (attackType === "health") {
-            if (starterOneHp + 25 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            } else {
-              setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            }
-
-            if (
-              starterOneHp + 25 - basicAttacks[1].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterOneHp + 20 > starterOne.hp) {
-              setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            } else {
-              setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            }
-
-            if (
-              starterOneHp + 20 - basicAttacks[1].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterTwo") {
-            setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-
-            if (
-              starterTwoHp - basicAttacks[1].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterOneHp(starterOneHp - basicAttacks[1].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-
-            if (
-              starterOneHp - basicAttacks[1].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - basicAttacks[1].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          }
-
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
         }
-      } else if (currentId === starterTwo.id) {
-        if (enemyStamina >= enemyOne.unique_stamina) {
-          if (attackType === "health") {
-            if (starterTwoHp + 25 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage);
+      } else if (starter.length === 2) {
+        if (currentId === starterOne.id) {
+          if (enemyStamina >= enemyOne.unique_stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
+
+              if (
+                starterOneHp + 25 - enemyOne.unique_damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 25 - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
+
+              if (
+                starterOneHp + 20 - enemyOne.unique_damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 20 - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (
+                starterTwoHp - enemyOne.unique_damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             } else {
-              setStarterTwoHp(starterTwoHp + 25 - enemyOne.unique_damage);
+              setStarterOneHp(starterOneHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (
+                starterOneHp - enemyOne.unique_damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
 
-            if (
-              starterTwoHp + 25 - enemyOne.unique_damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterTwoHp + 20 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage);
-              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[0].stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (
+                starterOneHp + 25 - basicAttacks[0].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 25 - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (
+                starterOneHp + 20 - basicAttacks[0].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 20 - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (
+                starterTwoHp - basicAttacks[0].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             } else {
-              setStarterTwoHp(starterTwoHp + 20 - enemyOne.unique_damage);
-              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              setStarterOneHp(starterOneHp - basicAttacks[0].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (
+                starterOneHp - basicAttacks[0].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
 
-            if (
-              starterTwoHp + 20 - enemyOne.unique_damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterOne") {
-            setStarterOneHp(starterOneHp - enemyOne.unique_damage);
-            setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[1].stamina) {
+            if (attackType === "health") {
+              if (starterOneHp + 25 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 25 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterOneHp - enemyOne.unique_damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - enemyOne.unique_damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
-            setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              if (
+                starterOneHp + 25 - basicAttacks[1].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 25 - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterOneHp + 20 > starterOne.hp) {
+                setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterOneHp(starterOneHp + 20 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterTwoHp - enemyOne.unique_damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
+              if (
+                starterOneHp + 20 - basicAttacks[1].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp + 20 - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterTwo") {
+              setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (
+                starterTwoHp - basicAttacks[1].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else {
+              setStarterOneHp(starterOneHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (
+                starterOneHp - basicAttacks[1].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
+
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
           }
+        } else if (currentId === starterTwo.id) {
+          if (enemyStamina >= enemyOne.unique_stamina) {
+            if (attackType === "health") {
+              if (starterTwoHp + 25 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 25 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
 
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
-        } else if (enemyStamina >= basicAttacks[0].stamina) {
-          if (attackType === "health") {
-            if (starterTwoHp + 25 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              if (
+                starterTwoHp + 25 - enemyOne.unique_damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 25 - enemyOne.unique_damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterTwoHp + 20 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 20 - enemyOne.unique_damage);
+                setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+              }
+
+              if (
+                starterTwoHp + 20 - enemyOne.unique_damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 20 - enemyOne.unique_damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterOne") {
+              setStarterOneHp(starterOneHp - enemyOne.unique_damage);
+              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (
+                starterOneHp - enemyOne.unique_damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - enemyOne.unique_damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             } else {
-              setStarterTwoHp(starterTwoHp + 25 - basicAttacks[0].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
+              setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
+
+              if (
+                starterTwoHp - enemyOne.unique_damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - enemyOne.unique_damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
 
-            if (
-              starterTwoHp + 25 - basicAttacks[0].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterTwoHp + 20 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[0].stamina) {
+            if (attackType === "health") {
+              if (starterTwoHp + 25 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 25 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (
+                starterTwoHp + 25 - basicAttacks[0].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 25 - basicAttacks[0].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterTwoHp + 20 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 20 - basicAttacks[0].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              }
+
+              if (
+                starterTwoHp + 20 - basicAttacks[0].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterOne") {
+              setStarterOneHp(starterOneHp - basicAttacks[0].damage);
               setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (
+                starterOneHp - basicAttacks[0].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - basicAttacks[0].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             } else {
-              setStarterTwoHp(starterTwoHp + 20 - basicAttacks[0].damage);
+              setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
               setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+
+              if (
+                starterTwoHp - basicAttacks[0].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
 
-            if (
-              starterTwoHp + 20 - basicAttacks[0].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 20 - basicAttacks[0].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterOne") {
-            setStarterOneHp(starterOneHp - basicAttacks[0].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
+          } else if (enemyStamina >= basicAttacks[1].stamina) {
+            if (attackType === "health") {
+              if (starterTwoHp + 25 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 25 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterOneHp - basicAttacks[0].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - basicAttacks[0].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
+              if (
+                starterTwoHp + 25 - basicAttacks[1].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "max") {
+              if (starterTwoHp + 20 > starterTwo.hp) {
+                setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              } else {
+                setStarterTwoHp(starterTwoHp + 20 - basicAttacks[1].damage);
+                setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+              }
 
-            if (
-              starterTwoHp - basicAttacks[0].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - basicAttacks[0].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
+              if (
+                starterTwoHp + 20 - basicAttacks[1].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else if (attackType === "starterOne") {
+              setStarterOneHp(starterOneHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (
+                starterOneHp - basicAttacks[1].damage <= 0 &&
+                starterTwoHp <= 0
+              ) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterOneHp - basicAttacks[1].damage <= 0) {
+                setStarterOneHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
+            } else {
+              setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
+              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
+
+              if (
+                starterTwoHp - basicAttacks[1].damage <= 0 &&
+                starterOneHp <= 0
+              ) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                setLoserOpen(true);
+              } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
+                setStarterTwoHp(0);
+                clearTimeout(characterAttackTimeOut);
+                handleDeadOpen();
+              }
             }
+            setEnemyPicAttack("enemyPicAttack");
+            setEnemyClassName("shake");
           }
-
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
-        } else if (enemyStamina >= basicAttacks[1].stamina) {
-          if (attackType === "health") {
-            if (starterTwoHp + 25 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            } else {
-              setStarterTwoHp(starterTwoHp + 25 - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            }
-
-            if (
-              starterTwoHp + 25 - basicAttacks[1].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 25 - basicAttacks[1].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "max") {
-            if (starterTwoHp + 20 > starterTwo.hp) {
-              setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            } else {
-              setStarterTwoHp(starterTwoHp + 20 - basicAttacks[1].damage);
-              setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-            }
-
-            if (
-              starterTwoHp + 20 - basicAttacks[1].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp + 20 - basicAttacks[1].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else if (attackType === "starterOne") {
-            setStarterOneHp(starterOneHp - basicAttacks[1].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-
-            if (
-              starterOneHp - basicAttacks[1].damage <= 0 &&
-              starterTwoHp <= 0
-            ) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterOneHp - basicAttacks[1].damage <= 0) {
-              setStarterOneHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          } else {
-            setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
-            setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
-
-            if (
-              starterTwoHp - basicAttacks[1].damage <= 0 &&
-              starterOneHp <= 0
-            ) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              setLoserOpen(true);
-            } else if (starterTwoHp - basicAttacks[1].damage <= 0) {
-              setStarterTwoHp(0);
-              clearTimeout(characterAttackTimeOut);
-              handleDeadOpen();
-            }
-          }
-          setEnemyPicAttack("enemyPicAttack");
-          setEnemyClassName("shake");
         }
       }
     }, 200);
@@ -1108,7 +1396,7 @@ function Battle() {
         <button
           onClick={handleSwitchOpen}
           className="switch"
-          disabled={isDisabled}
+          disabled={starter.length === 1 ? true : isDisabled}
         >
           Switch
         </button>
@@ -1129,15 +1417,7 @@ function Battle() {
         </button>
 
         {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
-
-        {/* <div className='uniqueStatInfo'>
-                    <h3>{currentId === starterOne.id ? starterOne.unique_attack : starterTwo.unique_attack}</h3>
-                    <p>{currentId === starterOne.id ? starterOne.unique_damage : starterTwo.unique_damage} damage</p>
-                    <p>{currentId === starterOne.id ? starterOne.unique_stamina : starterTwo.unique_stamina} stamina</p>
-                </div> */}
       </div>
-
-      {/* <InfoIcon className='uniqueButtonInfo' /> */}
 
       {/* back button */}
       <div className="backButton">

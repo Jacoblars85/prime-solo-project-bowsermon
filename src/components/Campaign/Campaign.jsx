@@ -53,11 +53,11 @@ function Campaign() {
             <Nav />
 
             <div className='warning'>
-                {starter.length === 1 || starter.length === 0 ? "Must Have 2 Starters to Play Level 1" : ""}
+                {starter.length === 0 ? "Must Have 1 Starters to Play Level 1" : ""}
             </div>
 
             <div className='levelOne'>
-                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 1 || starter.length === 0 ? true : false}>1</button>
+                <button onClick={() => goToTheBattle(1)} disabled={starter.length === 0 ? true : false}>1</button>
             </div>
 
             <div className='levelTwo'>
