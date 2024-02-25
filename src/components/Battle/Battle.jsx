@@ -179,7 +179,7 @@ function Battle() {
   const [characterPicAttack, setCharacterPicAttack] = useState("");
 
   // All the inventory dialog functions
-  const [inventoryOpen, setInventoryOpen] = useState(null);
+  const [inventoryOpen, setInventoryOpen] = useState(false);
 
   const handleInventoryOpen = () => {
     setInventoryOpen(true);
@@ -190,7 +190,7 @@ function Battle() {
   };
 
   // All of the Switch dialog functions
-  const [switchOpen, setSwitchOpen] = useState(null);
+  const [switchOpen, setSwitchOpen] = useState(false);
 
   const handleSwitchOpen = () => {
     setSwitchOpen(true);
@@ -200,7 +200,7 @@ function Battle() {
     setSwitchOpen(false);
   };
 
-  const [deadOpen, setDeadOpen] = useState(null);
+  const [deadOpen, setDeadOpen] = useState(false);
 
   const handleDeadOpen = () => {
     setDeadOpen(true);
