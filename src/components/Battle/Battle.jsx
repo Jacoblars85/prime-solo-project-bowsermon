@@ -28,6 +28,7 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import InfoIcon from "@mui/icons-material/Info";
+import axios from 'axios';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -61,12 +62,22 @@ function Battle() {
     dispatch({ type: "SAGA_FETCH_IVENTORY" });
   }, []);
 
+  useEffect(() => {
+    getStarters()
+  }, []);
+
   const basicAttacks = useSelector((store) => store.character.basicAttacks);
   const characters = useSelector((store) => store.character.characters);
   const starter = useSelector((store) => store.character.starter);
   const levelEnemy = useSelector((store) => store.character.levelEnemy);
   const user = useSelector((store) => store.user.userReducer);
   const inventory = useSelector((store) => store.inventory.inventory);
+
+
+
+
+
+
 
   // setting each starter/enemy to a varriable
   let enemyOne = levelEnemy[0];
@@ -79,15 +90,44 @@ function Battle() {
   let maxPot = inventory[2];
 
   // starter one hp and stamina
-  const [starterOneHp, setStarterOneHp] = useState(starterOne.hp);
+  const [starterOneHp, setStarterOneHp] = useState(0);
   const [starterOneStamina, setStarterOneStamina] = useState(
-    starterOne.stamina
+    0
   );
   // starter two hp and stamina
-  const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
+  const [starterTwoHp, setStarterTwoHp] = useState(0);
   const [starterTwoStamina, setStarterTwoStamina] = useState(
-    starterTwo.stamina
+    0
   );
+
+
+  const getStarters = () => {
+    axios({
+        method: 'GET',
+        url: '/api/characters/starter',
+    }).then((response) => {
+    console.log('response', response.data);
+    
+    if (response.data.length === 1) {
+    console.log('has 1 starters');
+    
+    setStarterOneHp(response.data[0].hp)
+    setStarterOneStamina(response.data[0].stamina)
+    
+    } else if (response.data.length === 2) {
+    
+    setStarterOneHp(response.data[0].hp)
+    setStarterOneStamina(response.data[0].stamina)
+    setStarterTwoHp(response.data[1].hp)
+    setStarterTwoStamina(response.data[1].stamina)
+    
+    }
+    
+    }).catch((err) => {
+        console.log(err);
+    });
+  }; 
+
 
   // Starter picture on the screen
   const [characterPicture, setCharacterPicture] = useState(
