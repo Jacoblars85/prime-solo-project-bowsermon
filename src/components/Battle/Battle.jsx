@@ -56,6 +56,7 @@ function Battle() {
       type: "SAGA_FETCH_LEVEL_ENEMY",
       payload: id,
     });
+    
   }, []);
 
   useEffect(() => {
@@ -64,6 +65,7 @@ function Battle() {
 
   useEffect(() => {
     getStarters()
+    getEnemy()
   }, []);
 
   const basicAttacks = useSelector((store) => store.character.basicAttacks);
@@ -72,12 +74,6 @@ function Battle() {
   const levelEnemy = useSelector((store) => store.character.levelEnemy);
   const user = useSelector((store) => store.user.userReducer);
   const inventory = useSelector((store) => store.inventory.inventory);
-
-
-
-
-
-
 
   // setting each starter/enemy to a varriable
   let enemyOne = levelEnemy[0];
@@ -91,14 +87,21 @@ function Battle() {
 
   // starter one hp and stamina
   const [starterOneHp, setStarterOneHp] = useState(0);
-  const [starterOneStamina, setStarterOneStamina] = useState(
-    0
-  );
+  const [starterOneStamina, setStarterOneStamina] = useState(0);
   // starter two hp and stamina
   const [starterTwoHp, setStarterTwoHp] = useState(0);
-  const [starterTwoStamina, setStarterTwoStamina] = useState(
-    0
-  );
+  const [starterTwoStamina, setStarterTwoStamina] = useState(0);
+
+    // Starter picture on the screen
+    const [characterPicture, setCharacterPicture] = useState();
+      const [currentId, setCurrentId] = useState(0);
+      const [currentSpeed, setCurrentSpeed] = useState(0);
+      const [maxHp, setMaxHp] = useState(0);
+      const [maxStamina, setMaxStamina] = useState(0);
+    
+      // enemy hp and stamina
+      const [enemyHp, setEnemyHp] = useState(0);
+      const [enemyStamina, setEnemyStamina] = useState(0);
 
 
   const getStarters = () => {
@@ -113,11 +116,23 @@ function Battle() {
     
     setStarterOneHp(response.data[0].hp)
     setStarterOneStamina(response.data[0].stamina)
+    setCurrentId(response.data[0].id)
+    setCurrentSpeed(response.data[0].speed)
+    setMaxHp(response.data[0].hp)
+    setMaxStamina(response.data[0].stamina)
+    setCharacterPicture(response.data[0].battle_pic)
     
     } else if (response.data.length === 2) {
     
     setStarterOneHp(response.data[0].hp)
     setStarterOneStamina(response.data[0].stamina)
+    setCurrentId(response.data[0].id)
+    setCurrentSpeed(response.data[0].speed)
+    setMaxHp(response.data[0].hp)
+    setMaxStamina(response.data[0].stamina)
+
+    setCharacterPicture(response.data[0].battle_pic)
+
     setStarterTwoHp(response.data[1].hp)
     setStarterTwoStamina(response.data[1].stamina)
     
@@ -128,19 +143,23 @@ function Battle() {
     });
   }; 
 
+  const getEnemy = () => {
+    axios({
+        method: 'GET',
+        url: `/api/characters/enemy/${id}`,
+    }).then((response) => {
+    console.log('response', response.data);
+    
+    setEnemyHp(response.data[0].hp)
+    setEnemyStamina(response.data[0].stamina)
+    
+    }).catch((err) => {
+        console.log(err);
+    });
+  }; 
 
-  // Starter picture on the screen
-  const [characterPicture, setCharacterPicture] = useState(
-    starterOne.battle_pic
-  );
-  const [currentId, setCurrentId] = useState(starterOne.id);
-  const [currentSpeed, setCurrentSpeed] = useState(starterOne.speed);
-  const [maxHp, setMaxHp] = useState(starterOne.hp);
-  const [maxStamina, setMaxStamina] = useState(starterOne.stamina);
 
-  // enemy hp and stamina
-  const [enemyHp, setEnemyHp] = useState(enemyOne.hp);
-  const [enemyStamina, setEnemyStamina] = useState(enemyOne.stamina);
+
   // text box for actions
   const [textBox, setTextBox] = useState("");
   // when set, it will shake the screen
