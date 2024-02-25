@@ -52,15 +52,15 @@ function SecretCampaign() {
             <Nav />
 
             <div className='warning'>
-                {starter.length === 1 || starter.length === 0 ? "Must Have 2 Starters to Play Level 1" : ""}
+                {starter.length === 0 ? "Must Have a Starter to Play Level 1" : ""}
             </div>
 
             <div className='secretLevelOne'>
-                <button onClick={() => goToTheBattle(11)} disabled={starter.length === 1 || starter.length === 0 ? true : false}>1</button>
+                <button onClick={() => goToTheBattle(11)} disabled={starter.length === 0 ? true : false}>1</button>
             </div>
 
             <div className='secretLevelTwo'>
-                <button onClick={() => goToTheBattle(12)} disabled={starter.length === 1 || starter.length === 0 ? true : user.secret_level_1_completed ? false : true}>2</button>
+                <button onClick={() => goToTheBattle(12)} disabled={starter.length === 0 ? true : user.secret_level_1_completed ? false : true}>2</button>
             </div>
 
        

@@ -84,10 +84,10 @@ function Battle() {
     starterOne.stamina
   );
   // starter two hp and stamina
-  const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
-  const [starterTwoStamina, setStarterTwoStamina] = useState(
-    starterTwo.stamina
-  );
+//   const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
+//   const [starterTwoStamina, setStarterTwoStamina] = useState(
+//     starterTwo.stamina
+//   );
 
   // Starter picture on the screen
   const [characterPicture, setCharacterPicture] = useState(
@@ -1314,22 +1314,22 @@ function Battle() {
       <div className="character">
         <p className="hp-text">
           {" "}
-          hp: {currentId === starterOne.id ? starterOneHp : starterTwoHp}
+          hp: {starter.length === 1 ? starterOneHp : currentId === starterOne.id ? starterOneHp : starterTwoHp}
         </p>
         <p className="stamina-text">
           {" "}
           stamina:{" "}
-          {currentId === starterOne.id ? starterOneStamina : starterTwoStamina}
+          {starter.length === 1 ? starterOneStamina : currentId === starterOne.id ? starterOneStamina : starterTwoStamina}
         </p>
 
         <progress
           className="hp-meter"
-          value={currentId === starterOne.id ? starterOneHp : starterTwoHp}
+          value={starter.length === 1 ? starterOneHp : currentId === starterOne.id ? starterOneHp : starterTwoHp}
           max={maxHp}
         ></progress>
         <progress
           className="stamina-meter"
-          value={
+          value={ starter.length === 1 ? starterOneStamina :
             currentId === starterOne.id ? starterOneStamina : starterTwoStamina
           }
           max={maxStamina}
@@ -1362,7 +1362,6 @@ function Battle() {
         />
       </div>
 
-      {/* text box position */}
       <div className="textBox">
         <p>{textBox}</p>
       </div>
@@ -1379,8 +1378,8 @@ function Battle() {
         <button
           onClick={() => battle("unique")}
           className="uniqueAttack"
-          disabled={
-            currentId === starterOne.id
+          disabled={starter.length === 1 ? starterOneStamina < starterOne.unique_stamina ? true : isDisabled :
+            currentId === starterOne.id  
               ? starterOneStamina < starterOne.unique_stamina
                 ? true
                 : isDisabled
@@ -1389,21 +1388,21 @@ function Battle() {
               : isDisabled
           }
         >
-          {currentId === starterOne.id
+          {starter.length === 1 ? starterOne.unique_attack : currentId === starterOne.id
             ? starterOne.unique_attack
             : starterTwo.unique_attack}
         </button>
         <button
           onClick={handleSwitchOpen}
           className="switch"
-          disabled={starter.length === 1 ? true : isDisabled}
+          disabled={isDisabled}
         >
           Switch
         </button>
         <button
           onClick={() => battle("punch")}
           className="kickAttack"
-          disabled={
+          disabled={starter.length === 1 ? starterOneStamina < basicAttacks[0].stamina ? true : isDisabled :
             currentId === starterOne.id
               ? starterOneStamina < basicAttacks[0].stamina
                 ? true
@@ -1534,8 +1533,101 @@ function Battle() {
               </Typography>
             </Toolbar>
           </AppBar>
-          <List>
+         
+
+
+
+            {starter.length === 1 ? 
+             <List>
             <ListItem>
+            <img height={200} width={200} src={starterOne.profile_pic} />
+            <ListItemText
+              sx={{ ml: 55 }}
+              primary={`starter 1: ${starterOne.name}`}
+              secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+            />
+            <Button
+              sx={{
+                color: "black",
+                fontSize: 20,
+                fontFamily: "New Super Mario Font U",
+              }}
+              disabled={
+                currentId === starterOne.id
+                  ? true
+                  : starterOneHp <= 0
+                  ? true
+                  : false
+              }
+              onClick={() => battle("starterOne")}
+            >
+              Change Starter
+            </Button>
+          </ListItem> 
+          <Divider />
+          </List>
+          
+          : 
+
+<List>
+        <ListItem>
+        <img height={200} width={200} src={starterOne.profile_pic} />
+        <ListItemText
+          sx={{ ml: 55 }}
+          primary={`starter 1: ${starterOne.name}`}
+          secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+        />
+        <Button
+          sx={{
+            color: "black",
+            fontSize: 20,
+            fontFamily: "New Super Mario Font U",
+          }}
+          disabled={
+            currentId === starterOne.id
+              ? true
+              : starterOneHp <= 0
+              ? true
+              : false
+          }
+          onClick={() => battle("starterOne")}
+        >
+          Change Starter
+        </Button>
+      </ListItem>
+
+      <Divider />
+
+      <ListItem>
+        <img height={200} width={200} src={starterTwo.profile_pic} />
+        <ListItemText
+          sx={{ ml: 55 }}
+          primary={`starter 2: ${starterTwo.name}`}
+          secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
+        />
+        <Button
+          sx={{
+            color: "black",
+            fontSize: 20,
+            fontFamily: "New Super Mario Font U",
+          }}
+          disabled={
+            currentId === starterTwo.id
+              ? true
+              : starterTwoHp <= 0
+              ? true
+              : false
+          }
+          onClick={() => battle("starterTwo")}
+        >
+          Change Starter
+        </Button>
+      </ListItem>
+      <Divider />
+      </List>
+
+        }
+            {/* <ListItem>
               <img height={200} width={200} src={starterOne.profile_pic} />
               <ListItemText
                 sx={{ ml: 55 }}
@@ -1587,10 +1679,10 @@ function Battle() {
               >
                 Change Starter
               </Button>
-            </ListItem>
+            </ListItem> */}
 
-            <Divider />
-          </List>
+            
+          
         </Dialog>
       </Fragment>
 
@@ -1625,7 +1717,41 @@ function Battle() {
               </Typography>
             </Toolbar>
           </AppBar>
-          <List>
+
+{starter.length === 1 ? 
+
+<List>
+            <ListItem>
+              <img height={200} width={200} src={starterOne.profile_pic} />
+              <ListItemText
+                sx={{ ml: 55 }}
+                primary={`starter 1: ${starterOne.name}`}
+                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+              />
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 20,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                disabled={
+                  currentId === starterOne.id
+                    ? true
+                    : starterOneHp <= 0
+                    ? true
+                    : false
+                }
+                onClick={() => deadSwitch("starterOne")}
+              >
+                Change Starter
+              </Button>
+            </ListItem>
+            <Divider />
+          </List>
+
+            :
+
+            <List>
             <ListItem>
               <img height={200} width={200} src={starterOne.profile_pic} />
               <ListItemText
@@ -1682,6 +1808,66 @@ function Battle() {
 
             <Divider />
           </List>
+
+}
+
+          {/* <List>
+            <ListItem>
+              <img height={200} width={200} src={starterOne.profile_pic} />
+              <ListItemText
+                sx={{ ml: 55 }}
+                primary={`starter 1: ${starterOne.name}`}
+                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+              />
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 20,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                disabled={
+                  currentId === starterOne.id
+                    ? true
+                    : starterOneHp <= 0
+                    ? true
+                    : false
+                }
+                onClick={() => deadSwitch("starterOne")}
+              >
+                Change Starter
+              </Button>
+            </ListItem>
+
+            <Divider />
+
+            <ListItem>
+              <img height={200} width={200} src={starterTwo.profile_pic} />
+              <ListItemText
+                sx={{ ml: 55 }}
+                primary={`starter 2: ${starterTwo.name}`}
+                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
+              />
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 20,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                disabled={
+                  currentId === starterTwo.id
+                    ? true
+                    : starterTwoHp <= 0
+                    ? true
+                    : false
+                }
+                onClick={() => deadSwitch("starterTwo")}
+              >
+                Change Starter
+              </Button>
+            </ListItem>
+
+            <Divider />
+          </List> */}
         </Dialog>
       </Fragment>
 
