@@ -28,7 +28,7 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import InfoIcon from "@mui/icons-material/Info";
-import axios from 'axios';
+import axios from "axios";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -56,7 +56,6 @@ function Battle() {
       type: "SAGA_FETCH_LEVEL_ENEMY",
       payload: id,
     });
-    
   }, []);
 
   useEffect(() => {
@@ -64,9 +63,9 @@ function Battle() {
   }, []);
 
   useEffect(() => {
-    getStarters()
-    getEnemy()
-    getBasicAttacks()
+    getStarters();
+    getEnemy();
+    getBasicAttacks();
   }, []);
 
   const basicAttacks = useSelector((store) => store.character.basicAttacks);
@@ -93,87 +92,80 @@ function Battle() {
   const [starterTwoHp, setStarterTwoHp] = useState(0);
   const [starterTwoStamina, setStarterTwoStamina] = useState(0);
 
-    // Starter picture on the screen
-    const [characterPicture, setCharacterPicture] = useState();
-      const [currentId, setCurrentId] = useState(0);
-      const [currentSpeed, setCurrentSpeed] = useState(0);
-      const [maxHp, setMaxHp] = useState(0);
-      const [maxStamina, setMaxStamina] = useState(0);
-    
-      // enemy hp and stamina
-      const [enemyHp, setEnemyHp] = useState(0);
-      const [enemyStamina, setEnemyStamina] = useState(0);
+  // Starter picture on the screen
+  const [characterPicture, setCharacterPicture] = useState();
+  const [currentId, setCurrentId] = useState(0);
+  const [currentSpeed, setCurrentSpeed] = useState(0);
+  const [maxHp, setMaxHp] = useState(0);
+  const [maxStamina, setMaxStamina] = useState(0);
 
-    // kick attack name and stamina
-    const [kickAttack, setKickAttack] = useState("");
-    const [kickStamina, setKickStamina] = useState(0);
+  // enemy hp and stamina
+  const [enemyHp, setEnemyHp] = useState(0);
+  const [enemyStamina, setEnemyStamina] = useState(0);
 
+  // kick attack name and stamina
+  const [kickAttack, setKickAttack] = useState("");
+  const [kickStamina, setKickStamina] = useState(0);
 
   const getStarters = () => {
     axios({
-        method: 'GET',
-        url: '/api/characters/starter',
-    }).then((response) => {
-    
-    if (response.data.length === 1) {
-    
-    setStarterOneHp(response.data[0].hp)
-    setStarterOneStamina(response.data[0].stamina)
-    setCurrentId(response.data[0].id)
-    setCurrentSpeed(response.data[0].speed)
-    setMaxHp(response.data[0].hp)
-    setMaxStamina(response.data[0].stamina)
-    setCharacterPicture(response.data[0].battle_pic)
-    
-    } else if (response.data.length === 2) {
-    
-    setStarterOneHp(response.data[0].hp)
-    setStarterOneStamina(response.data[0].stamina)
-    setCurrentId(response.data[0].id)
-    setCurrentSpeed(response.data[0].speed)
-    setMaxHp(response.data[0].hp)
-    setMaxStamina(response.data[0].stamina)
-    setCharacterPicture(response.data[0].battle_pic)
+      method: "GET",
+      url: "/api/characters/starter",
+    })
+      .then((response) => {
+        if (response.data.length === 1) {
+          setStarterOneHp(response.data[0].hp);
+          setStarterOneStamina(response.data[0].stamina);
+          setCurrentId(response.data[0].id);
+          setCurrentSpeed(response.data[0].speed);
+          setMaxHp(response.data[0].hp);
+          setMaxStamina(response.data[0].stamina);
+          setCharacterPicture(response.data[0].battle_pic);
+        } else if (response.data.length === 2) {
+          setStarterOneHp(response.data[0].hp);
+          setStarterOneStamina(response.data[0].stamina);
+          setCurrentId(response.data[0].id);
+          setCurrentSpeed(response.data[0].speed);
+          setMaxHp(response.data[0].hp);
+          setMaxStamina(response.data[0].stamina);
+          setCharacterPicture(response.data[0].battle_pic);
 
-    setStarterTwoHp(response.data[1].hp)
-    setStarterTwoStamina(response.data[1].stamina)
-    
-    }
-    
-    }).catch((err) => {
+          setStarterTwoHp(response.data[1].hp);
+          setStarterTwoStamina(response.data[1].stamina);
+        }
+      })
+      .catch((err) => {
         console.log(err);
-    });
-  }; 
+      });
+  };
 
   const getEnemy = () => {
     axios({
-        method: 'GET',
-        url: `/api/characters/enemy/${id}`,
-    }).then((response) => {
-    
-    setEnemyHp(response.data[0].hp)
-    setEnemyStamina(response.data[0].stamina)
-    
-    }).catch((err) => {
+      method: "GET",
+      url: `/api/characters/enemy/${id}`,
+    })
+      .then((response) => {
+        setEnemyHp(response.data[0].hp);
+        setEnemyStamina(response.data[0].stamina);
+      })
+      .catch((err) => {
         console.log(err);
-    });
-  }; 
+      });
+  };
 
   const getBasicAttacks = () => {
     axios({
-        method: 'GET',
-        url: `/api/characters/basic`,
-    }).then((response) => {
-    
-    setKickAttack(response.data[0].attack)
-    setKickStamina(response.data[0].stamina)
-    
-    }).catch((err) => {
+      method: "GET",
+      url: `/api/characters/basic`,
+    })
+      .then((response) => {
+        setKickAttack(response.data[0].attack);
+        setKickStamina(response.data[0].stamina);
+      })
+      .catch((err) => {
         console.log(err);
-    });
-  }; 
-
-
+      });
+  };
 
   // text box for actions
   const [textBox, setTextBox] = useState("");
@@ -662,7 +654,12 @@ function Battle() {
   };
 
   // after 3.5 seconds after user attacks, this will do all of the enemys attacks
-  const enemyAttack = (attackType, enemyOne, basicAttacks, characterAttackTimeOut) => {
+  const enemyAttack = (
+    attackType,
+    enemyOne,
+    basicAttacks,
+    characterAttackTimeOut
+  ) => {
     setTimeout(() => {
       if (starter.length === 1) {
         if (currentId === starterOne.id) {
@@ -1382,23 +1379,42 @@ function Battle() {
       <div className="character">
         <p className="hp-text">
           {" "}
-          hp: {starter.length === 1 ? starterOneHp : currentId === starterOne.id ? starterOneHp : starterTwoHp}
+          hp:{" "}
+          {starter.length === 1
+            ? starterOneHp
+            : currentId === starterOne.id
+            ? starterOneHp
+            : starterTwoHp}
         </p>
         <p className="stamina-text">
           {" "}
           stamina:{" "}
-          {starter.length === 1 ? starterOneStamina : currentId === starterOne.id ? starterOneStamina : starterTwoStamina}
+          {starter.length === 1
+            ? starterOneStamina
+            : currentId === starterOne.id
+            ? starterOneStamina
+            : starterTwoStamina}
         </p>
 
         <progress
           className="hp-meter"
-          value={starter.length === 1 ? starterOneHp : currentId === starterOne.id ? starterOneHp : starterTwoHp}
+          value={
+            starter.length === 1
+              ? starterOneHp
+              : currentId === starterOne.id
+              ? starterOneHp
+              : starterTwoHp
+          }
           max={maxHp}
         ></progress>
         <progress
           className="stamina-meter"
-          value={ starter.length === 1 ? starterOneStamina :
-            currentId === starterOne.id ? starterOneStamina : starterTwoStamina
+          value={
+            starter.length === 1
+              ? starterOneStamina
+              : currentId === starterOne.id
+              ? starterOneStamina
+              : starterTwoStamina
           }
           max={maxStamina}
         ></progress>
@@ -1444,8 +1460,12 @@ function Battle() {
         <button
           onClick={() => battle("unique")}
           className="uniqueAttack"
-          disabled={starter.length === 1 ? starterOneStamina < starterOne.unique_stamina ? true : isDisabled :
-            currentId === starterOne.id  
+          disabled={
+            starter.length === 1
+              ? starterOneStamina < starterOne.unique_stamina
+                ? true
+                : isDisabled
+              : currentId === starterOne.id
               ? starterOneStamina < starterOne.unique_stamina
                 ? true
                 : isDisabled
@@ -1454,7 +1474,9 @@ function Battle() {
               : isDisabled
           }
         >
-          {starter.length === 1 ? starterOne.unique_attack : currentId === starterOne.id
+          {starter.length === 1
+            ? starterOne.unique_attack
+            : currentId === starterOne.id
             ? starterOne.unique_attack
             : starterTwo.unique_attack}
         </button>
@@ -1468,8 +1490,12 @@ function Battle() {
         <button
           onClick={() => battle("punch")}
           className="kickAttack"
-          disabled={starter.length === 1 ? starterOneStamina < kickStamina ? true : isDisabled :
-            currentId === starterOne.id
+          disabled={
+            starter.length === 1
+              ? starterOneStamina < kickStamina
+                ? true
+                : isDisabled
+              : currentId === starterOne.id
               ? starterOneStamina < basicAttacks[0].stamina
                 ? true
                 : isDisabled
@@ -1598,96 +1624,94 @@ function Battle() {
               </Typography>
             </Toolbar>
           </AppBar>
-         
-            {starter.length === 1 ? 
-             <List>
-            <ListItem>
-            <img height={200} width={200} src={starterOne.profile_pic} />
-            <ListItemText
-              sx={{ ml: 55 }}
-              primary={`starter 1: ${starterOne.name}`}
-              secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-            />
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 20,
-                fontFamily: "New Super Mario Font U",
-              }}
-              disabled={
-                currentId === starterOne.id
-                  ? true
-                  : starterOneHp <= 0
-                  ? true
-                  : false
-              }
-              onClick={() => battle("starterOne")}
-            >
-              Change Starter
-            </Button>
-          </ListItem> 
-          <Divider />
-          </List>
-          
-          : 
 
-<List>
-        <ListItem>
-        <img height={200} width={200} src={starterOne.profile_pic} />
-        <ListItemText
-          sx={{ ml: 55 }}
-          primary={`starter 1: ${starterOne.name}`}
-          secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-        />
-        <Button
-          sx={{
-            color: "black",
-            fontSize: 20,
-            fontFamily: "New Super Mario Font U",
-          }}
-          disabled={
-            currentId === starterOne.id
-              ? true
-              : starterOneHp <= 0
-              ? true
-              : false
-          }
-          onClick={() => battle("starterOne")}
-        >
-          Change Starter
-        </Button>
-      </ListItem>
+          {starter.length === 1 ? (
+            <List>
+              <ListItem>
+                <img height={200} width={200} src={starterOne.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 1: ${starterOne.name}`}
+                  secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterOne.id
+                      ? true
+                      : starterOneHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => battle("starterOne")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
+              <Divider />
+            </List>
+          ) : (
+            <List>
+              <ListItem>
+                <img height={200} width={200} src={starterOne.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 1: ${starterOne.name}`}
+                  secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterOne.id
+                      ? true
+                      : starterOneHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => battle("starterOne")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
 
-      <Divider />
+              <Divider />
 
-      <ListItem>
-        <img height={200} width={200} src={starterTwo.profile_pic} />
-        <ListItemText
-          sx={{ ml: 55 }}
-          primary={`starter 2: ${starterTwo.name}`}
-          secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
-        />
-        <Button
-          sx={{
-            color: "black",
-            fontSize: 20,
-            fontFamily: "New Super Mario Font U",
-          }}
-          disabled={
-            currentId === starterTwo.id
-              ? true
-              : starterTwoHp <= 0
-              ? true
-              : false
-          }
-          onClick={() => battle("starterTwo")}
-        >
-          Change Starter
-        </Button>
-      </ListItem>
-      <Divider />
-      </List>
-        } 
+              <ListItem>
+                <img height={200} width={200} src={starterTwo.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 2: ${starterTwo.name}`}
+                  secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterTwo.id
+                      ? true
+                      : starterTwoHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => battle("starterTwo")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
+              <Divider />
+            </List>
+          )}
         </Dialog>
       </Fragment>
 
@@ -1723,97 +1747,94 @@ function Battle() {
             </Toolbar>
           </AppBar>
 
-{starter.length === 1 ? 
-
-<List>
-            <ListItem>
-              <img height={200} width={200} src={starterOne.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 1: ${starterOne.name}`}
-                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterOne.id
-                    ? true
-                    : starterOneHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => deadSwitch("starterOne")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
-            <Divider />
-          </List>
-
-            :
-
+          {starter.length === 1 ? (
             <List>
-            <ListItem>
-              <img height={200} width={200} src={starterOne.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 1: ${starterOne.name}`}
-                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterOne.id
-                    ? true
-                    : starterOneHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => deadSwitch("starterOne")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
+              <ListItem>
+                <img height={200} width={200} src={starterOne.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 1: ${starterOne.name}`}
+                  secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterOne.id
+                      ? true
+                      : starterOneHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => deadSwitch("starterOne")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
+              <Divider />
+            </List>
+          ) : (
+            <List>
+              <ListItem>
+                <img height={200} width={200} src={starterOne.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 1: ${starterOne.name}`}
+                  secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterOne.id
+                      ? true
+                      : starterOneHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => deadSwitch("starterOne")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
 
-            <Divider />
+              <Divider />
 
-            <ListItem>
-              <img height={200} width={200} src={starterTwo.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 2: ${starterTwo.name}`}
-                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterTwo.id
-                    ? true
-                    : starterTwoHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => deadSwitch("starterTwo")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
+              <ListItem>
+                <img height={200} width={200} src={starterTwo.profile_pic} />
+                <ListItemText
+                  sx={{ ml: 55 }}
+                  primary={`starter 2: ${starterTwo.name}`}
+                  secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
+                />
+                <Button
+                  sx={{
+                    color: "black",
+                    fontSize: 20,
+                    fontFamily: "New Super Mario Font U",
+                  }}
+                  disabled={
+                    currentId === starterTwo.id
+                      ? true
+                      : starterTwoHp <= 0
+                      ? true
+                      : false
+                  }
+                  onClick={() => deadSwitch("starterTwo")}
+                >
+                  Change Starter
+                </Button>
+              </ListItem>
 
-            <Divider />
-          </List>
-}
+              <Divider />
+            </List>
+          )}
         </Dialog>
       </Fragment>
 
