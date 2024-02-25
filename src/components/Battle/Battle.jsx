@@ -66,6 +66,7 @@ function Battle() {
   useEffect(() => {
     getStarters()
     getEnemy()
+    getBasicAttacks()
   }, []);
 
   const basicAttacks = useSelector((store) => store.character.basicAttacks);
@@ -102,6 +103,10 @@ function Battle() {
       // enemy hp and stamina
       const [enemyHp, setEnemyHp] = useState(0);
       const [enemyStamina, setEnemyStamina] = useState(0);
+
+    // kick attack name and stamina
+    const [kickAttack, setKickAttack] = useState("");
+    const [kickStamina, setKickStamina] = useState(0);
 
 
   const getStarters = () => {
@@ -152,6 +157,21 @@ function Battle() {
     
     setEnemyHp(response.data[0].hp)
     setEnemyStamina(response.data[0].stamina)
+    
+    }).catch((err) => {
+        console.log(err);
+    });
+  }; 
+
+  const getBasicAttacks = () => {
+    axios({
+        method: 'GET',
+        url: `/api/characters/basic`,
+    }).then((response) => {
+    console.log('response', response.data);
+    
+    setKickAttack(response.data[0].attack)
+    setKickStamina(response.data[0].stamina)
     
     }).catch((err) => {
         console.log(err);
@@ -647,12 +667,7 @@ function Battle() {
   };
 
   // after 3.5 seconds after user attacks, this will do all of the enemys attacks
-  const enemyAttack = (
-    attackType,
-    enemyOne,
-    basicAttacks,
-    characterAttackTimeOut
-  ) => {
+  const enemyAttack = (attackType, enemyOne, basicAttacks, characterAttackTimeOut) => {
     setTimeout(() => {
       if (starter.length === 1) {
         if (currentId === starterOne.id) {
@@ -1458,7 +1473,7 @@ function Battle() {
         <button
           onClick={() => battle("punch")}
           className="kickAttack"
-          disabled={starter.length === 1 ? starterOneStamina < basicAttacks[0].stamina ? true : isDisabled :
+          disabled={starter.length === 1 ? starterOneStamina < kickStamina ? true : isDisabled :
             currentId === starterOne.id
               ? starterOneStamina < basicAttacks[0].stamina
                 ? true
@@ -1468,7 +1483,7 @@ function Battle() {
               : isDisabled
           }
         >
-          {basicAttacks[0].attack}
+          {kickAttack}
         </button>
 
         {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
