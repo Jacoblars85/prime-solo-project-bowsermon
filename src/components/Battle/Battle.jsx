@@ -114,10 +114,8 @@ function Battle() {
         method: 'GET',
         url: '/api/characters/starter',
     }).then((response) => {
-    console.log('response', response.data);
     
     if (response.data.length === 1) {
-    console.log('has 1 starters');
     
     setStarterOneHp(response.data[0].hp)
     setStarterOneStamina(response.data[0].stamina)
@@ -135,7 +133,6 @@ function Battle() {
     setCurrentSpeed(response.data[0].speed)
     setMaxHp(response.data[0].hp)
     setMaxStamina(response.data[0].stamina)
-
     setCharacterPicture(response.data[0].battle_pic)
 
     setStarterTwoHp(response.data[1].hp)
@@ -153,7 +150,6 @@ function Battle() {
         method: 'GET',
         url: `/api/characters/enemy/${id}`,
     }).then((response) => {
-    console.log('response', response.data);
     
     setEnemyHp(response.data[0].hp)
     setEnemyStamina(response.data[0].stamina)
@@ -168,7 +164,6 @@ function Battle() {
         method: 'GET',
         url: `/api/characters/basic`,
     }).then((response) => {
-    console.log('response', response.data);
     
     setKickAttack(response.data[0].attack)
     setKickStamina(response.data[0].stamina)
