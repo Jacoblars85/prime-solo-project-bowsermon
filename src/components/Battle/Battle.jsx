@@ -1534,9 +1534,6 @@ function Battle() {
             </Toolbar>
           </AppBar>
          
-
-
-
             {starter.length === 1 ? 
              <List>
             <ListItem>
@@ -1625,64 +1622,7 @@ function Battle() {
       </ListItem>
       <Divider />
       </List>
-
-        }
-            {/* <ListItem>
-              <img height={200} width={200} src={starterOne.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 1: ${starterOne.name}`}
-                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterOne.id
-                    ? true
-                    : starterOneHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => battle("starterOne")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
-
-            <Divider />
-
-            <ListItem>
-              <img height={200} width={200} src={starterTwo.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 2: ${starterTwo.name}`}
-                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterTwo.id
-                    ? true
-                    : starterTwoHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => battle("starterTwo")}
-              >
-                Change Starter
-              </Button>
-            </ListItem> */}
-
-            
-          
+        } 
         </Dialog>
       </Fragment>
 
@@ -1808,66 +1748,7 @@ function Battle() {
 
             <Divider />
           </List>
-
 }
-
-          {/* <List>
-            <ListItem>
-              <img height={200} width={200} src={starterOne.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 1: ${starterOne.name}`}
-                secondary={`${starterOneHp}/${starterOne.hp} hp | ${starterOneStamina}/${starterOne.stamina} stamina | ${starterOne.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterOne.id
-                    ? true
-                    : starterOneHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => deadSwitch("starterOne")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
-
-            <Divider />
-
-            <ListItem>
-              <img height={200} width={200} src={starterTwo.profile_pic} />
-              <ListItemText
-                sx={{ ml: 55 }}
-                primary={`starter 2: ${starterTwo.name}`}
-                secondary={`${starterTwoHp}/${starterTwo.hp} hp | ${starterTwoStamina}/${starterTwo.stamina} stamina | ${starterTwo.speed} speed`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={
-                  currentId === starterTwo.id
-                    ? true
-                    : starterTwoHp <= 0
-                    ? true
-                    : false
-                }
-                onClick={() => deadSwitch("starterTwo")}
-              >
-                Change Starter
-              </Button>
-            </ListItem>
-
-            <Divider />
-          </List> */}
         </Dialog>
       </Fragment>
 
