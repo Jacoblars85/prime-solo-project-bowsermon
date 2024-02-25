@@ -1310,7 +1310,6 @@ function Battle() {
     >
       <div className={shakeTheScreen}></div>
 
-      {/* Character position */}
       <div className="character">
         <p className="hp-text">
           {" "}
@@ -1338,7 +1337,6 @@ function Battle() {
         <img className={characterPicAttack} src={characterPicture} />
       </div>
 
-      {/* enmey position */}
       <div className={enemyClassName}>
         <p className="hp-text"> hp: {enemyHp}</p>
         <p className="stamina-text">stamina: {enemyStamina}</p>
@@ -1366,7 +1364,6 @@ function Battle() {
         <p>{textBox}</p>
       </div>
 
-      {/* attack buttons position */}
       <div className="attacks">
         <button
           onClick={handleInventoryOpen}
@@ -1418,7 +1415,6 @@ function Battle() {
         {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
       </div>
 
-      {/* back button */}
       <div className="backButton">
         <BackButton />
       </div>
