@@ -84,10 +84,10 @@ function Battle() {
     starterOne.stamina
   );
   // starter two hp and stamina
-//   const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
-//   const [starterTwoStamina, setStarterTwoStamina] = useState(
-//     starterTwo.stamina
-//   );
+  const [starterTwoHp, setStarterTwoHp] = useState(starterTwo.hp);
+  const [starterTwoStamina, setStarterTwoStamina] = useState(
+    starterTwo.stamina
+  );
 
   // Starter picture on the screen
   const [characterPicture, setCharacterPicture] = useState(
