@@ -140,12 +140,19 @@ function Shop() {
 
 
   return (
-    <div className="shop">
+    <div>
       <Nav />
+      <div className="shop">
 
       <h2 className="shopHeader">Shop</h2>
 
-      <div className="randomCharacter">
+<div className="bigBox">
+
+<div className="consumablesBox">
+        <Consumables />
+        </div>
+        
+        <div className="randomCharacter">
         <h4>Random Character Box</h4>
 
         <h5>
@@ -158,14 +165,26 @@ function Shop() {
           />
         </h5>
 
-        <Fragment>
           <img
             onClick={handleRandomClickOpen}
             height={200}
             width={200}
             src="images/1200px-ItemBoxMK8.webp"
           />
-          <Dialog
+      </div>
+
+<div className="itemsBox">
+        <Items />
+        </div>
+
+        </div>
+
+        <div className="backButton">
+        <BackButton />
+      </div>
+
+{/* random character dialog */}
+      <Dialog
             open={randomOpen}
             onClose={handleRandomClose}
             aria-labelledby="alert-dialog-title"
@@ -218,9 +237,6 @@ function Shop() {
               </Button>
             </DialogActions>
           </Dialog>
-        </Fragment>
-      </div>
-
 
         {/* <Button onClick={handleRandomSnackClick}>Open simple snackbar</Button> */}
         <Snackbar
@@ -228,19 +244,8 @@ function Shop() {
           autoHideDuration={6000}
           onClose={handleRandomSnackClose}
           message="Random Character Is Added"
-          // action={action}
-          // key={vertical + horizontal}
         />
-
-        <Consumables />
-
-        <Items />
-
-
-        <div className="backButton">
-        <BackButton />
-      </div>
-          
+         </div> 
     </div>
   );
 }

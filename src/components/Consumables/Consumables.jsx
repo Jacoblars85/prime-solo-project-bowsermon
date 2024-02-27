@@ -270,62 +270,15 @@ function Consumables() {
           />{" "}
         </h5>
 
-        <Fragment>
+     
           <img
             onClick={handleHealthClickOpen}
-            height={200}
-            width={200}
+            height={100}
+            width={100}
             src="images/redMushroomPic.webp"
           />
-          <Dialog
-            open={healthOpen}
-            onClose={handleHealthClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle
-              id="alert-dialog-title"
-              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
-            >
-              {`Are you sure you want ${healthValue} of the Health Potions?`}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText
-                id="alert-dialog-description"
-                sx={{
-                  fontFamily: "New Super Mario Font U",
-                  textAlign: "center",
-                }}
-              >
-                This will cost {healthValue * 10} coins and you can not get a
-                refund.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 16,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                onClick={() => buyHealthPot(healthValue)}
-                autoFocus
-              >
-                Buy
-              </Button>
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 16,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                onClick={handleHealthClose}
-              >
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </Fragment>
+
+
 
         <Box sx={{ width: 200 }}>
           <Slider
@@ -392,62 +345,13 @@ function Consumables() {
           />
         </h5>
 
-        <Fragment>
+   
           <img
             onClick={handleStaminaClickOpen}
-            height={200}
-            width={200}
+            height={100}
+            width={100}
             src="images/greenMushroomPic.webp"
           />
-          <Dialog
-            open={staminaOpen}
-            onClose={handleStaminaClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle
-              id="alert-dialog-title"
-              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
-            >
-              {`Are you sure you want ${staminaValue} of the Stamina Potions?`}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText
-                id="alert-dialog-description"
-                sx={{
-                  fontFamily: "New Super Mario Font U",
-                  textAlign: "center",
-                }}
-              >
-                This will cost {staminaValue * 10} coins and you can not get a
-                refund.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 16,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                onClick={() => buyStaminaPot(staminaValue)}
-                autoFocus
-              >
-                Buy
-              </Button>
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 16,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                onClick={handleStaminaClose}
-              >
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </Fragment>
 
         <Box sx={{ width: 200 }}>
           <Slider
@@ -465,6 +369,7 @@ function Consumables() {
           />
         </Box>
       </div>
+
 
       <div className="maxPot">
         <h4>Max Pot</h4>
@@ -526,13 +431,134 @@ function Consumables() {
           />
         </h5>
 
-        <Fragment>
+
           <img
             onClick={handleMaxClickOpen}
-            height={200}
-            width={200}
+            height={100}
+            width={100}
             src="images/megaMushroomPic.webp"
           />
+
+
+        <Box sx={{ width: 200 }}>
+          <Slider
+            aria-label="Temperature"
+            defaultValue={1}
+            value={maxValue}
+            onChange={handleMaxChange}
+            getAriaValueText={maxValuetext}
+            valueLabelDisplay="auto"
+            step={1}
+            marks
+            min={0}
+            max={5}
+            sx={{ color: "white" }}
+          />
+        </Box>
+      </div>
+
+
+{/* health dialog */}
+      <Dialog
+            open={healthOpen}
+            onClose={handleHealthClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle
+              id="alert-dialog-title"
+              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+            >
+              {`Are you sure you want ${healthValue} of the Health Potions?`}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                id="alert-dialog-description"
+                sx={{
+                  fontFamily: "New Super Mario Font U",
+                  textAlign: "center",
+                }}
+              >
+                This will cost {healthValue * 10} coins and you can not get a
+                refund.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 16,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                onClick={() => buyHealthPot(healthValue)}
+                autoFocus
+              >
+                Buy
+              </Button>
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 16,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                onClick={handleHealthClose}
+              >
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+{/* stamina dialog */}
+          <Dialog
+            open={staminaOpen}
+            onClose={handleStaminaClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle
+              id="alert-dialog-title"
+              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+            >
+              {`Are you sure you want ${staminaValue} of the Stamina Potions?`}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText
+                id="alert-dialog-description"
+                sx={{
+                  fontFamily: "New Super Mario Font U",
+                  textAlign: "center",
+                }}
+              >
+                This will cost {staminaValue * 10} coins and you can not get a
+                refund.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 16,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                onClick={() => buyStaminaPot(staminaValue)}
+                autoFocus
+              >
+                Buy
+              </Button>
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 16,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                onClick={handleStaminaClose}
+              >
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+{/* max dialog */}
           <Dialog
             open={maxOpen}
             onClose={handleMaxClose}
@@ -581,29 +607,9 @@ function Consumables() {
               </Button>
             </DialogActions>
           </Dialog>
-        </Fragment>
 
-        <Box sx={{ width: 200 }}>
-          <Slider
-            aria-label="Temperature"
-            defaultValue={1}
-            value={maxValue}
-            onChange={handleMaxChange}
-            getAriaValueText={maxValuetext}
-            valueLabelDisplay="auto"
-            step={1}
-            marks
-            min={0}
-            max={5}
-            sx={{ color: "white" }}
-          />
-        </Box>
-      </div>
 
-     
-
-      <div>
-
+ 
         {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
         <Snackbar
           open={openHealthSnack}
@@ -629,7 +635,6 @@ function Consumables() {
           message="The Max Potion has been Sent to Your Inventory"
           // action={action}
         />
-      </div>
     </div>
   );
 }
