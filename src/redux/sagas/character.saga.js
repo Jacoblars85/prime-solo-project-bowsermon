@@ -53,7 +53,7 @@ function* fetchLevelEnemy(action) {
 
 
 function* postNewUserCharacter(action) {
-  console.log('action', action.payloaad);
+  // console.log('action', action.payloaad);
   try {
     const response = yield axios({
       method: 'POST',
@@ -185,7 +185,7 @@ function* changeNewStatus(action) {
 }
 
 function* clearStarter(action) {
-  console.log('action.payload', action.payload);
+  // console.log('action.payload', action.payload);
   try {
     const response = yield axios({
       method: 'PUT',
