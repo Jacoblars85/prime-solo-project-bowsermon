@@ -20,7 +20,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
-import { put } from 'redux-saga/effects';
+import { put } from "redux-saga/effects";
 
 function Shop() {
   const dispatch = useDispatch();
@@ -67,51 +67,58 @@ function Shop() {
 
       setRandomOpen(false);
 
+      dispatch({
+        type: "SAGA_POST_NEW_CHARACTER",
+        payload: {
+          characterID: randomNum,
+        },
+      });
 
     //   axios({
-    //     method: "PUT",
-    //     url: "/api/characters/buy",
+    //     method: "POST",
+    //     url: "/api/characters",
+    //     data: {
+    //       characterID: randomNum,
+    //     },
     //   })
     //     .then((responses) => {
-    //       dispatch({
-    //         type: "FETCH_USER",
-    //       });
+    //       setOpenRandomSnack(true);
     //     })
     //     .catch((err) => {
     //       console.log(err);
     //     });
 
-    //   axios({
-    //       method: 'POST',
-    //       url: '/api/characters',
-    //       data: {
-    //           characterID: randomNum
-    //       }
-    //   })
-    //       axios({
-    //         method: "PUT",
-    //         url: "/api/characters/buy",
-    //       })
-    //         .then((response) => {
-    //           dispatch({
-    //             type: "FETCH_USER",
-    //           });
-   
-    //   }).then((response) => {
+      //   axios({
+      //       method: 'POST',
+      //       url: '/api/characters',
+      //       data: {
+      //           characterID: randomNum
+      //       }
+      //   })
+      //       axios({
+      //         method: "PUT",
+      //         url: "/api/characters/buy",
+      //       })
+      //         .then((response) => {
+      //           dispatch({
+      //             type: "FETCH_USER",
+      //           });
 
-    //       setOpenRandomSnack(true)
+      //   }).then((response) => {
 
-    //   }).catch((err) => {
-    //       console.log(err);
-    //   });
+      //       setOpenRandomSnack(true)
 
-      dispatch({
-          type: 'SAGA_POST_NEW_CHARACTER',
-          payload: {
-              characterID: randomNum,
-          }
-      });
-      setOpenRandomSnack(true)
+      //   }).catch((err) => {
+      //       console.log(err);
+      //   });
+
+      //   dispatch({
+      //       type: 'SAGA_POST_NEW_CHARACTER',
+      //       payload: {
+      //           characterID: randomNum,
+      //       }
+      //   });
+      setOpenRandomSnack(true);
     }
   };
 
