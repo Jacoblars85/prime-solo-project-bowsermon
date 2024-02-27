@@ -457,7 +457,7 @@ function Shop() {
             onClick={handleHealthClickOpen}
             height={200}
             width={200}
-            src="images/healthPotion.png"
+            src="images/redMushroomPic.webp"
           />
           <Dialog
             open={healthOpen}
@@ -579,7 +579,7 @@ function Shop() {
             onClick={handleStaminaClickOpen}
             height={200}
             width={200}
-            src="images/staminaPotion.png"
+            src="images/greenMushroomPic.webp"
           />
           <Dialog
             open={staminaOpen}
@@ -713,7 +713,7 @@ function Shop() {
             onClick={handleMaxClickOpen}
             height={200}
             width={200}
-            src="images/maxPotion.png"
+            src="images/megaMushroomPic.webp"
           />
           <Dialog
             open={maxOpen}
