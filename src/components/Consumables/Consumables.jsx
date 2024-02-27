@@ -2,8 +2,6 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
-import "./Shop.css";
-import Nav from "../Nav/Nav";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -221,7 +219,7 @@ function Consumables() {
   };
 
   return (
-    <div className="shop">
+    <div >
 
 
       <div className="healthPot">
@@ -602,20 +600,9 @@ function Consumables() {
         </Box>
       </div>
 
-      <div className="backButton">
-        <BackButton />
-      </div>
+     
 
       <div>
-        {/* <Button onClick={handleRandomSnackClick}>Open simple snackbar</Button> */}
-        <Snackbar
-          open={openRandomSnack}
-          autoHideDuration={6000}
-          onClose={handleRandomSnackClose}
-          message="Random Character Is Added"
-          // action={action}
-          // key={vertical + horizontal}
-        />
 
         {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
         <Snackbar
@@ -647,4 +634,4 @@ function Consumables() {
   );
 }
 
-export default Shop;
+export default Consumables;
