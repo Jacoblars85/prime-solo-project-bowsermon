@@ -142,9 +142,7 @@ function Shop() {
   return (
     <div>
 
-<div className="shopNav">
       <Nav />
-      </div>
 
       <h2 className="shopHeader">Shop</h2>
 
@@ -155,6 +153,8 @@ function Shop() {
 <div className="bigBox">
 
 <div className="consumablesBox">
+
+<h3 className="">Consumables Items</h3>
         <Consumables />
         </div>
 
@@ -180,6 +180,7 @@ function Shop() {
       </div>
 
 <div className="itemsBox">
+<h3 className="">Held Items</h3>
         <Items />
         </div>
 

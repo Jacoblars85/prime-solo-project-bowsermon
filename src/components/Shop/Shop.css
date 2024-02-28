@@ -1,36 +1,46 @@
 .shop {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     height: 100vh;
     width: 100vw;
-    border: 3px solid black;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-
-.bigBox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: 95%;
-    width: 95%;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     justify-content: center;
     align-items: flex-start;
     text-align: center;
 }
 
-.consumablesBox {
+.shopHeader {
+    font-size: 40px;
+    /* border-bottom: 3px solid black; */
+    text-shadow: 1px 1.8px white;
+    text-align: center;
+    margin: 1%;
+}
+
+
+.bigBox {
+    /* position: relative; */
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 35%;
+    flex-wrap: nowrap;
+    height: 75%;
+    width: 95%;
     border: 3px solid black;
     justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    /* column-gap: 3%; */
+}
+
+.consumablesBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    width: 35%;
+    border-right: 3px solid black;
+    justify-content: baseline;
     align-items: center;
     text-align: center;
 }
@@ -39,23 +49,25 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: 50%;
-    width: 35%;
-    border: 3px solid black;
-    justify-content: center;
+    height: 100%;
+    width: 30%;
+    /* border-right: 3px solid black; */
+    /* border-left: 3px solid black; */
+    justify-content: baseline;
     align-items: center;
     text-align: center;
 }
 
 .itemsBox {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
     height: 100%;
     width: 35%;
-    border: 3px solid black;
-    justify-content: center;
+    border-left: 3px solid black;
+    justify-content:baseline;
     align-items: center;
+    align-content: flex-start;
     text-align: center;
 }
 
@@ -122,9 +134,9 @@
     text-shadow: 2px 2px black;
 }
 
-.healthPotCoin {
+/* .healthPotCoin {
     padding-bottom: 12px;
-}
+} */
 
 .healthPotInfo {
     /* position: absolute; */
@@ -160,9 +172,9 @@
     text-shadow: 2px 2px black;
 }
 
-.staminaPotCoin {
+/* .staminaPotCoin {
     padding-bottom: 12px;
-}
+} */
 
 .staminaPotInfo {
     /* position: absolute; */
@@ -207,53 +219,21 @@
     right: 3%;
 }
 
-
-
-.shopHeader {
-    /* position: absolute; */
-    top: 6.5%;
-    left: 46.5%;
-    font-size: 40px;
-    border-bottom: 3px solid black;
-    text-shadow: 1px 1.8px white;
-    text-align: center;
-    padding-top: 0px;
-    margin: 0px;
-}
-
-.shopNav {
-    margin: 0px;
-}
-
 .randomCharacter img {
     cursor: pointer;
     padding-top: 10px;
     
 }
 
-.healthPot img {
+.healthPot img, .staminaPot img, .maxPot img  {
     cursor: pointer;
-    margin-bottom: -15px;
-}
-
-.staminaPot img {
-    cursor: pointer;
-    margin-bottom: -15px;
-
-}
-
-.maxPot img {
-    cursor: pointer;
-    margin-bottom: -15px;
+    /* margin-bottom: -15px; */
 
 }
 
 .shop h4 {
     margin-bottom: 0px;
 }
-
-
-
 
 
 
