@@ -43,9 +43,6 @@ function Consumables({ consumableItem }) {
     if (user.coins < consumableAmount * consumableItem.cost) {
         setConsumableOpen(false);
       return alert("you are broke broke, sorry");
-    } else if (characters.length === 1) {
-        setConsumableOpen(false);
-      return alert("you must buy a character first, sorry");
     } else {
 
       setOpenConsumableSnack(true);
@@ -92,48 +89,6 @@ function Consumables({ consumableItem }) {
     }
     setOpenConsumableSnack(false);
   };
-
-
-
-//   const buyStaminaPot = (staminaValue) => {
-//     if (user.coins < staminaValue * 10) {
-//       setStaminaOpen(false);
-//       return alert("you are broke broke, sorry");
-//     } else if (characters.length === 1) {
-//       setStaminaOpen(false);
-//       return alert("you must buy a character first, sorry");
-//     } else {
-//       setOpenStaminaSnack(true);
-
-//       dispatch({
-//         type: "SAGA_BUY_POTION",
-//         payload: {
-//           potionId: 2,
-//           amountNum: staminaValue,
-//         },
-//       });
-//     }
-//   };
-
-//   const buyMaxPot = (maxValue) => {
-//     if (user.coins < maxValue * 20) {
-//       setMaxOpen(false);
-//       return alert("you are broke, sorry");
-//     } else if (characters.length === 1) {
-//       setMaxOpen(false);
-//       return alert("you must buy a character first, sorry");
-//     } else {
-//       setOpenMaxSnack(true);
-
-//       dispatch({
-//         type: "SAGA_BUY_POTION",
-//         payload: {
-//           potionId: 3,
-//           amountNum: maxValue,
-//         },
-//       });
-//     }
-//   };
 
   return (
     <>
