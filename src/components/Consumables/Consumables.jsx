@@ -27,68 +27,70 @@ function Consumables({ consumableItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.characters);
 
-  const [healthOpen, setHealthOpen] = useState(false);
+  console.log('consumableItem', consumableItem );
 
-  const handleHealthClickOpen = () => {
-    setHealthOpen(true);
+  const [consumableOpen, setConsumableOpen] = useState(false);
+
+  const handleConsumableClickOpen = () => {
+    setConsumableOpen(true);
   };
 
-  const handleHealthClose = () => {
-    setHealthOpen(false);
+  const handleConsumableClose = () => {
+    setConsumableOpen(false);
   };
 
-  const buyHealthPot = (healthValue) => {
-    if (user.coins < healthValue * 10) {
-      setHealthOpen(false);
+  const buyConsumable = (consumableAmount) => {
+    if (user.coins < consumableAmount * consumableItem.cost) {
+        setConsumableOpen(false);
       return alert("you are broke broke, sorry");
     } else if (characters.length === 1) {
-      setHealthOpen(false);
+        setConsumableOpen(false);
       return alert("you must buy a character first, sorry");
     } else {
-      setOpenHealthSnack(true);
+
+      setOpenConsumableSnack(true);
 
       dispatch({
         type: "SAGA_BUY_POTION",
         payload: {
-          potionId: 1,
-          amountNum: healthValue,
+          potionId: consumableItem.id,
+          amountNum: consumableAmount,
         },
       });
     }
   };
 
-  const healthValuetext = (healthvalues) => {
-    return healthvalues;
+  const consumableValuetext = (consumablevalues) => {
+    return consumablevalues;
   };
 
-  const [healthValue, setHealthValue] = useState(0);
+  const [consumableValue, setConsumableValue] = useState(0);
 
-  const handleHealthChange = (event, newHealthValue) => {
-    setHealthValue(newHealthValue);
+  const handleConsumableChange = (event, newConsumableValue) => {
+    setConsumableValue(newConsumableValue);
   };
 
-  const [anchorElHealth, setAnchorElHealth] = useState(null);
-  const openHealthInfo = Boolean(anchorElHealth);
+  const [anchorElConsumable, setAnchorElConsumable] = useState(null);
+  const openConsumableInfo = Boolean(anchorElConsumable);
 
-  const handleInfoHealthClick = (event) => {
-    setAnchorElHealth(event.currentTarget);
+  const handleConsumableInfoClick = (event) => {
+    setAnchorElConsumable(event.currentTarget);
   };
-  const handleHealthInfoClose = () => {
-    setAnchorElHealth(null);
-  };
-
-  const [openHealthSnack, setOpenHealthSnack] = useState(false);
-
-  const handleHealthSnackClick = () => {
-    setOpenHealthSnack(true);
+  const handleConsumableInfoClose = () => {
+    setAnchorElConsumable(null);
   };
 
-  const handleHealthSnackClose = (event, reason) => {
+  const [openConsumableSnack, setOpenConsumableSnack] = useState(false);
+
+  const handleConsumableSnackClick = () => {
+    setOpenConsumableSnack(true);
+  };
+
+  const handleConsumableSnackClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpenHealthSnack(false);
+    setOpenConsumableSnack(false);
   };
 
 
@@ -133,33 +135,38 @@ function Consumables({ consumableItem }) {
 //     }
 //   };
 
-
-
-
-console.log('consumableItem', consumableItem );
-
   return (
-    <div >
-
-
+    <>
       <div className="consumables">
-        <h4 color={consumableItem.color}>{consumableItem.name}</h4>
+
+<div>
+<h4 style={{color: consumableItem.color }} >{consumableItem.name}</h4>
+      <img
+            onClick={handleConsumableClickOpen}
+            height={70}
+            width={70}
+            src={consumableItem.pic}
+          />
+
+    
+
+        </div>
 
           <Button
             id="basic-button"
-            aria-controls={openHealthInfo ? "basic-menu" : undefined}
+            aria-controls={openConsumableInfo ? "basic-menu" : undefined}
             aria-haspopup="true"
-            aria-expanded={openHealthInfo ? "true" : undefined}
-            onClick={handleInfoHealthClick}
+            aria-expanded={openConsumableInfo ? "true" : undefined}
+            onClick={handleConsumableInfoClick}
             sx={{ color: "white" }}
           >
             <InfoIcon />
           </Button>
           <Menu
             id="basic-menu"
-            anchorEl={anchorElHealth}
-            open={openHealthInfo}
-            onClose={handleHealthInfoClose}
+            anchorEl={anchorElConsumable}
+            open={openConsumableInfo}
+            onClose={handleConsumableInfoClose}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -172,13 +179,25 @@ console.log('consumableItem', consumableItem );
                 fontWeight: "bold",
                 fontFamily: "New Super Mario Font U",
               }}
-              onClick={handleHealthInfoClose}
+              onClick={handleConsumableInfoClose}
             >
-              +25 HP
+              +{consumableItem.hp} HP
+            </MenuItem>
+            <MenuItem
+              sx={{
+                color: "limegreen",
+                textShadow: "1px 1px black",
+                fontSize: "20px",
+                fontWeight: "bold",
+                fontFamily: "New Super Mario Font U",
+              }}
+              onClick={handleConsumableInfoClose}
+            >
+              +{consumableItem.stamina} stamina
             </MenuItem>
           </Menu>
 
-        <h5 sx={{ color: consumableItem.color, }}  >
+        <h5 style={{color: consumableItem.color, fontSize: 30  }}  >
           {consumableItem.cost}x {" "}
           <img
             height={20}
@@ -187,23 +206,15 @@ console.log('consumableItem', consumableItem );
           />{" "}
         </h5>
 
-     
-          <img
-            onClick={handleHealthClickOpen}
-            height={100}
-            width={100}
-            src={consumableItem.pic}
-          />
-
-
+          
 
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Amount"
             defaultValue={1}
-            value={healthValue}
-            onChange={handleHealthChange}
-            getAriaValueText={healthValuetext}
+            value={consumableValue}
+            onChange={handleConsumableChange}
+            getAriaValueText={consumableValuetext}
             valueLabelDisplay="auto"
             step={1}
             marks
@@ -215,10 +226,10 @@ console.log('consumableItem', consumableItem );
       </div>
 
 
-{/* health dialog */}
+{/* Consumable dialog */}
       <Dialog
-            open={healthOpen}
-            onClose={handleHealthClose}
+            open={consumableOpen}
+            onClose={handleConsumableClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -226,7 +237,7 @@ console.log('consumableItem', consumableItem );
               id="alert-dialog-title"
               sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
             >
-              {`Are you sure you want ${healthValue} of the Health Potions?`}
+              {`Are you sure you want ${consumableValue} of the ${consumableItem.name}?`}
             </DialogTitle>
             <DialogContent>
               <DialogContentText
@@ -236,7 +247,7 @@ console.log('consumableItem', consumableItem );
                   textAlign: "center",
                 }}
               >
-                This will cost {healthValue * 10} coins and you can not get a
+                This will cost {consumableValue * consumableItem.cost} coins and you can not get a
                 refund.
               </DialogContentText>
             </DialogContent>
@@ -247,7 +258,7 @@ console.log('consumableItem', consumableItem );
                   fontSize: 16,
                   fontFamily: "New Super Mario Font U",
                 }}
-                onClick={() => buyHealthPot(healthValue)}
+                onClick={() => buyConsumable(consumableValue)}
                 autoFocus
               >
                 Buy
@@ -258,22 +269,22 @@ console.log('consumableItem', consumableItem );
                   fontSize: 16,
                   fontFamily: "New Super Mario Font U",
                 }}
-                onClick={handleHealthClose}
+                onClick={handleConsumableClose}
               >
                 Close
               </Button>
             </DialogActions>
           </Dialog>
 
-        {/* <Button onClick={handleClick}>Open simple snackbar</Button> */}
+        {/* <Button onClick={handleConsumableSnackClick}>Open simple snackbar</Button> */}
         <Snackbar
-          open={openHealthSnack}
+          open={openConsumableSnack}
           autoHideDuration={4000}
-          onClose={handleHealthSnackClose}
-          message="Your Health Potion has been Sent to Your Inventory"
+          onClose={handleConsumableSnackClose}
+          message={`Your ${consumableItem.name} has been Sent to Your Inventory`}
           // action={action}
         />
-    </div>
+    </>
   );
 }
 

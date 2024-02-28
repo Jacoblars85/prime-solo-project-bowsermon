@@ -38,6 +38,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-margin: 0px;
     scroll-padding: 0px;
     scroll-snap-type: y mandatory;
@@ -45,7 +46,7 @@
     width: 35%;
     border-right: 3px solid black;
     justify-content: baseline;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
 }
 
@@ -91,8 +92,7 @@
     color: #7CEBFD;
     text-shadow: 2px 2px black;
     border-bottom: 3px solid black;
-    /* margin-bottom: 0px;
-    margin-left: -35px; */
+    margin-bottom: 0px;
 }
 
 .randomCharacter h5 {
@@ -103,47 +103,33 @@
     text-shadow: 2px 2px black;
 }
 
-.randomCharacterCoins {
-    padding-bottom: 0px;
-}
-
 .consumables {
-    /* position: absolute; */
-    /* border: 3px solid black; */
-    height: 300px;
-    width: 200px;
-    top: 14.5%;
-    left: 12.5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-top: 3px solid black;
+    height: 120px;
+    width: 100%;
+    justify-content: baseline;
+    align-items: center;
     text-align: center;
 }
 
 .consumables h4 {
-    font-size: 25px;
-    /* color: #F02F38; */
+    margin: 0px;
     text-shadow: 2px 2px black;
     border-bottom: 3px solid black;
-    
-
 }
 
 .consumables h5 {
     margin-top: 5px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    /* color: #F02F38; */
+    margin: 0px;
     text-shadow: 2px 2px black;
 }
 
-.randomCharacter img, .healthPot img, .staminaPot img, .maxPot img  {
+.randomCharacter img, .consumables img  {
     cursor: pointer;
 }
-
-.shop h4 {
-    margin-bottom: 0px;
-}
-
-
-
 
 .backButton {
     position: absolute;
