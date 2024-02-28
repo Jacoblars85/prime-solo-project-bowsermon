@@ -28,9 +28,6 @@ function Consumables({ consumableItem }) {
   const characters = useSelector((store) => store.character.characters);
 
   const [healthOpen, setHealthOpen] = useState(false);
-//   const [staminaOpen, setStaminaOpen] = useState(false);
-//   const [maxOpen, setMaxOpen] = useState(false);
- 
 
   const handleHealthClickOpen = () => {
     setHealthOpen(true);
@@ -94,13 +91,7 @@ function Consumables({ consumableItem }) {
     setOpenHealthSnack(false);
   };
 
-//   const handleStaminaClickOpen = () => {
-//     setStaminaOpen(true);
-//   };
 
-//   const handleStaminaClose = () => {
-//     setStaminaOpen(false);
-//   };
 
 //   const buyStaminaPot = (staminaValue) => {
 //     if (user.coins < staminaValue * 10) {
@@ -120,48 +111,6 @@ function Consumables({ consumableItem }) {
 //         },
 //       });
 //     }
-//   };
-
-//   const staminaValuetext = (value) => {
-//     return value;
-//   };
-
-//   const [staminaValue, setStaminaValue] = useState(0);
-
-//   const handleStaminaChange = (event, newStaminaValue) => {
-//     setStaminaValue(newStaminaValue);
-//   };
-
-//   const [anchorElStamina, setAnchorElStamina] = useState(null);
-//   const openStaminaInfo = Boolean(anchorElStamina);
-
-//   const handleInfoStaminaClick = (event) => {
-//     setAnchorElStamina(event.currentTarget);
-//   };
-//   const handleStaminaInfoClose = () => {
-//     setAnchorElStamina(null);
-//   };
-
-//   const [openStaminaSnack, setOpenStaminaSnack] = useState(false);
-
-//   const handleStaminaSnackClick = () => {
-//     setOpenStaminaSnack(true);
-//   };
-
-//   const handleStaminaSnackClose = (event, reason) => {
-//     if (reason === "clickaway") {
-//       return;
-//     }
-
-//     setOpenStaminaSnack(false);
-//   };
-
-//   const handleMaxClickOpen = () => {
-//     setMaxOpen(true);
-//   };
-
-//   const handleMaxClose = () => {
-//     setMaxOpen(false);
 //   };
 
 //   const buyMaxPot = (maxValue) => {
@@ -184,41 +133,11 @@ function Consumables({ consumableItem }) {
 //     }
 //   };
 
-//   const maxValuetext = (value) => {
-//     return value;
-//   };
 
-//   const [maxValue, setMaxValue] = useState(0);
 
-//   const handleMaxChange = (event, newMaxValue) => {
-//     setMaxValue(newMaxValue);
-//   };
-
-//   const [anchorElMax, setAnchorElMax] = useState(null);
-//   const openMaxInfo = Boolean(anchorElMax);
-
-//   const handleInfoMaxClick = (event) => {
-//     setAnchorElMax(event.currentTarget);
-//   };
-//   const handleMaxInfoClose = () => {
-//     setAnchorElMax(null);
-//   };
-
-//   const [openMaxSnack, setOpenMaxSnack] = useState(false);
-
-//   const handleMaxSnackClick = () => {
-//     setOpenMaxSnack(true);
-//   };
-
-//   const handleMaxSnackClose = (event, reason) => {
-//     if (reason === "clickaway") {
-//       return;
-//     }
-
-//     setOpenMaxSnack(false);
-//   };
 
 console.log('consumableItem', consumableItem );
+
   return (
     <div >
 
