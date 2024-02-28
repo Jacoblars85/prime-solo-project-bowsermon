@@ -20,7 +20,7 @@ import axios from "axios";
 
 import { put } from "redux-saga/effects";
 
-function Consumables() {
+function Consumables({ consumableItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 

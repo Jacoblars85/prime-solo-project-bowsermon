@@ -19,9 +19,7 @@ router.get('/items', (req, res) => {
         WHERE "type" = 'consumable';
   `;
 
-  const sqlValues = [req.user.id];
-
-    pool.query(query, sqlValues)
+    pool.query(query)
         .then(result => {
             res.send(result.rows);
         })
