@@ -141,17 +141,23 @@ function Shop() {
 
   return (
     <div>
+
+<div className="shopNav">
       <Nav />
-      <div className="shop">
+      </div>
 
       <h2 className="shopHeader">Shop</h2>
+
+      <div className="shop">
+
+
 
 <div className="bigBox">
 
 <div className="consumablesBox">
         <Consumables />
         </div>
-        
+
         <div className="randomCharacter">
         <h4>Random Character Box</h4>
 
