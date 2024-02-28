@@ -3,6 +3,34 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
+router.get('/items', (req, res) => {
+
+    const query = `
+    SELECT "id",
+ 		"name",
+ 		"type",
+        "hp",
+        "stamina",
+        "speed",
+        "pic",
+        "cost",
+        "color"
+    FROM "items"
+        WHERE "type" = 'consumable';
+  `;
+
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all users inventory', err);
+            res.sendStatus(500)
+        })
+});
+
 
 router.get('/inventory', (req, res) => {
 
@@ -32,7 +60,6 @@ router.get('/inventory', (req, res) => {
             console.log('ERROR: Get all users inventory', err);
             res.sendStatus(500)
         })
-
 });
 
 

@@ -2,18 +2,18 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 
-// function* fetchAllItems() {
-//     // console.log('action.payload', action.payload);
-//     try {
-//       const itemsResponse = yield axios.get(`/api/inventory/items`);
-//       yield put({
-//         type: 'SET_ITEMS',
-//         payload: itemsResponse.data
-//       });
-//     } catch (error) {
-//       console.log('fetchAllItems error:', error);
-//     }
-//   }
+function* fetchAllItems() {
+    // console.log('action.payload', action.payload);
+    try {
+      const itemsResponse = yield axios.get(`/api/inventory/items`);
+      yield put({
+        type: 'SET_ITEMS',
+        payload: itemsResponse.data
+      });
+    } catch (error) {
+      console.log('fetchAllItems error:', error);
+    }
+  }
 
 
   function* fetchInventory() {
@@ -88,7 +88,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
   function* inventorySaga() {
-    // yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
+    yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_POTION', buyPotion);
     yield takeLatest('SAGA_SELL_POTION', sellPotion);
