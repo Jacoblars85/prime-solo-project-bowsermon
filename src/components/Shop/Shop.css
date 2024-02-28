@@ -38,8 +38,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    scroll-margin: 1px;
-    scroll-padding: 1px;
+    scroll-margin: 0px;
+    scroll-padding: 0px;
     scroll-snap-type: y mandatory;
     height: 100%;
     width: 35%;
@@ -54,8 +54,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    scroll-margin: 1px;
-    scroll-padding: 1px;
+    scroll-margin: 0px;
+    scroll-padding: 0px;
     scroll-snap-type: y mandatory;
     height: 100%;
     width: 30%;
@@ -71,8 +71,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    scroll-margin: 1px;
-    scroll-padding: 1px;
+    scroll-margin: 0px;
+    scroll-padding: 0px;
     scroll-snap-type: y mandatory;
     height: 100%;
     width: 35%;
@@ -83,18 +83,6 @@
     text-align: center;
 }
 
-
-
-
-.randomCharacter {
-    /* position: absolute; */
-    /* border: 3px solid black; */
-    /* height: 300px;
-    width: 200px; */
-    top: 57%;
-    left: 43.5%;
-    text-align: center;
-}
 
 .randomCharacter h4 {
     text-align: center;
@@ -119,7 +107,7 @@
     padding-bottom: 0px;
 }
 
-.healthPot {
+.consumables {
     /* position: absolute; */
     /* border: 3px solid black; */
     height: 300px;
@@ -129,7 +117,7 @@
     text-align: center;
 }
 
-.healthPot h4 {
+.consumables h4 {
     font-size: 25px;
     /* color: #F02F38; */
     text-shadow: 2px 2px black;
@@ -138,7 +126,7 @@
 
 }
 
-.healthPot h5 {
+.consumables h5 {
     margin-top: 5px;
     margin-bottom: 0px;
     font-size: 30px;
@@ -146,96 +134,8 @@
     text-shadow: 2px 2px black;
 }
 
-/* .healthPotCoin {
-    padding-bottom: 12px;
-} */
-
-.healthPotInfo {
-    /* position: absolute; */
-    top: 10%;
-    right: -6%;
-}
-
-
-
-.staminaPot {
-    /* position: absolute; */
-    /* border: 3px solid black; */
-    height: 300px;
-    width: 200px;
-    top: 14.5%;
-    left: 43.5%;
-    text-align: center;
-}
-
-.staminaPot h4 {
-    font-size: 25px;
-    color: #00D400;
-    text-shadow: 2px 1px black;
-    border-bottom: 3px solid black;
-
-}
-
-.staminaPot h5 {
-    margin-top: 5px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    color: #00D400;
-    text-shadow: 2px 2px black;
-}
-
-/* .staminaPotCoin {
-    padding-bottom: 12px;
-} */
-
-.staminaPotInfo {
-    /* position: absolute; */
-    top: 10%;
-    right: -10%;
-}
-
-
-.maxPot {
-    /* position: absolute; */
-    /* border: 3px solid black; */
-    height: 300px;
-    width: 200px;
-    top: 14.5%;
-    left: 75%;
-    text-align: center;
-}
-
-.maxPot h4 {
-    font-size: 25px;
-    color: #FFD42A;
-    text-shadow: 2px 1px black;
-    border-bottom: 3px solid black;
-
-}
-
-.maxPot h5 {
-    margin-top: 5px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    color: #FFD42A;
-    text-shadow: 2px 2px black;
-}
-
-.maxPotCoins {
-    /* padding-bottom: 12px; */
-}
-
-.maxPotInfo {
-    /* position: absolute; */
-    top: 10%;
-    right: 3%;
-}
-
-
 .randomCharacter img, .healthPot img, .staminaPot img, .maxPot img  {
     cursor: pointer;
-    /* margin-bottom: -15px; */
-
 }
 
 .shop h4 {

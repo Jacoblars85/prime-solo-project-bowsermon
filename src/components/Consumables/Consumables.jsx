@@ -223,10 +223,9 @@ console.log('consumableItem', consumableItem );
     <div >
 
 
-      <div className="healthPot">
-        <h4 color={consumableItem.color}>Health Pot</h4>
+      <div className="consumables">
+        <h4 color={consumableItem.color}>{consumableItem.name}</h4>
 
-        <div className="healthPotInfo">
           <Button
             id="basic-button"
             aria-controls={openHealthInfo ? "basic-menu" : undefined}
@@ -259,12 +258,10 @@ console.log('consumableItem', consumableItem );
               +25 HP
             </MenuItem>
           </Menu>
-        </div>
 
-        <h5 color={consumableItem.color}  >
-          10x{" "}
+        <h5 sx={{ color: consumableItem.color, }}  >
+          {consumableItem.cost}x {" "}
           <img
-            className="healthPotCoin"
             height={20}
             width={20}
             src="/images/Coin_-_New_Super_Mario_Bros.webp"
