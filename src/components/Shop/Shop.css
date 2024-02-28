@@ -131,7 +131,7 @@
 
 .healthPot h4 {
     font-size: 25px;
-    color: #F02F38;
+    /* color: #F02F38; */
     text-shadow: 2px 2px black;
     border-bottom: 3px solid black;
     
@@ -142,7 +142,7 @@
     margin-top: 5px;
     margin-bottom: 0px;
     font-size: 30px;
-    color: #F02F38;
+    /* color: #F02F38; */
     text-shadow: 2px 2px black;
 }
 
