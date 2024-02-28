@@ -131,7 +131,7 @@
 
 .healthPot h4 {
     font-size: 25px;
-    color: #D40000;
+    color: #F02F38;
     text-shadow: 2px 2px black;
     border-bottom: 3px solid black;
     
@@ -140,9 +140,9 @@
 
 .healthPot h5 {
     margin-top: 5px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
     font-size: 30px;
-    color: #D40000;
+    color: #F02F38;
     text-shadow: 2px 2px black;
 }
 
@@ -178,7 +178,7 @@
 
 .staminaPot h5 {
     margin-top: 5px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
     font-size: 30px;
     color: #00D400;
     text-shadow: 2px 2px black;
@@ -215,14 +215,14 @@
 
 .maxPot h5 {
     margin-top: 5px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
     font-size: 30px;
     color: #FFD42A;
     text-shadow: 2px 2px black;
 }
 
 .maxPotCoins {
-    padding-bottom: 12px;
+    /* padding-bottom: 12px; */
 }
 
 .maxPotInfo {
@@ -231,13 +231,8 @@
     right: 3%;
 }
 
-.randomCharacter img {
-    cursor: pointer;
-    padding-top: 10px;
-    
-}
 
-.healthPot img, .staminaPot img, .maxPot img  {
+.randomCharacter img, .healthPot img, .staminaPot img, .maxPot img  {
     cursor: pointer;
     /* margin-bottom: -15px; */
 
