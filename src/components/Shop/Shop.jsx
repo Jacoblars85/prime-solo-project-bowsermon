@@ -152,7 +152,7 @@ function Shop() {
 
             {consumables && consumables.map(consumableItem => {
                         return (
-                            <div key={consumableItem.id}>
+                            <div div className="consumables" key={consumableItem.id}>
                                 <Consumables consumableItem={consumableItem} />
                             </div>
                         )

@@ -107,12 +107,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    border-top: 3px solid black;
+    border: 3px solid black;
     height: 120px;
     width: 100%;
     justify-content: baseline;
     align-items: center;
     text-align: center;
+    
 }
 
 .consumables h4 {

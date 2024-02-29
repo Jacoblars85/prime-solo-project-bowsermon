@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
@@ -14,11 +14,168 @@ import InfoIcon from "@mui/icons-material/Info";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
+// import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
 import { put } from "redux-saga/effects";
+
+import {
+  Unstable_NumberInput as BaseNumberInput,
+  numberInputClasses,
+} from '@mui/base/Unstable_NumberInput';
+import { styled } from '@mui/system';
+
+const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
+  return (
+    <BaseNumberInput
+      slots={{
+        root: StyledInputRoot,
+        input: StyledInputElement,
+        incrementButton: StyledButton,
+        decrementButton: StyledButton,
+      }}
+      slotProps={{
+        incrementButton: {
+          children: '▴',
+        },
+        decrementButton: {
+          children: '▾',
+        },
+      }}
+      {...props}
+      ref={ref}
+    />
+  );
+});
+
+const grey = {
+  50: '#F3F6F9',
+  100: '#E5EAF2',
+  200: '#DAE2ED',
+  300: '#C7D0DD',
+  400: '#B0B8C4',
+  500: '#9DA8B7',
+  600: '#6B7A90',
+  700: '#434D5B',
+  800: '#303740',
+  900: '#1C2025',
+};
+
+const StyledInputRoot = styled('div')(
+  ({ theme }) => `
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  
+  color: ${grey[900]};
+  background: ${'#b'};
+  border: 1px solid ${grey[200]};
+
+  display: grid;
+  grid-template-columns: 22px 1px;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+ 
+  padding: 0px;
+  width: 40px;
+  height: 35px;
+
+  &.${numberInputClasses.focused} {
+
+  }
+
+  &:hover {
+  
+  }
+
+  // firefox
+  &:focus-visible {
+    outline: 0;
+  }
+`,
+);
+
+const StyledInputElement = styled('input')(
+  ({ theme }) => `
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.5;
+  grid-column: 1/2;
+  grid-row: 1/3;
+  color: ${grey[900]};
+  background: inherit;
+  border: none;
+  border-radius: inherit;
+  outline: 0;
+`,
+);
+
+const StyledButton = styled('button')(
+  ({ theme }) => `
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  padding: 0;
+  width: 19px;
+  height: 19px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1;
+  box-sizing: border-box;
+  background: ${'#fff'};
+  border: 0;
+  color: ${grey[900]};
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 120ms;
+
+  &:hover {
+    background: ${grey[50]};
+    border-color: ${grey[300]};
+    cursor: pointer;
+  }
+
+  &.${numberInputClasses.incrementButton} {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    border: 1px solid;
+    border-bottom: 0;
+    &:hover {
+      cursor: pointer;
+      background: ${grey[400]};
+      color: ${grey[50]};
+    }
+
+  border-color: ${grey[200]};
+  background: ${grey[50]};
+  color: ${grey[900]};
+  }
+
+  &.${numberInputClasses.decrementButton} {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: 1px solid;
+    &:hover {
+      cursor: pointer;
+      background: ${grey[400]};
+      color: ${grey[50]};
+    }
+
+  border-color: ${grey[200]};
+  background: ${grey[50]};
+  color: ${grey[900]};
+  }
+  & .arrow {
+    transform: translateY(-1px);
+  }
+`,
+);
 
 function Consumables({ consumableItem }) {
   const dispatch = useDispatch();
@@ -89,9 +246,11 @@ function Consumables({ consumableItem }) {
     setOpenConsumableSnack(false);
   };
 
+  const [value, setValue] = useState(0);
+
   return (
     <>
-      <div className="consumables">
+      {/* <div className="consumables"> */}
         <div>
           <h4 style={{ color: consumableItem.color }}>{consumableItem.name}</h4>
           <img
@@ -156,7 +315,7 @@ function Consumables({ consumableItem }) {
           />{" "}
         </h5>
 
-        <Box sx={{ width: 200 }}>
+        {/* <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Amount"
             defaultValue={1}
@@ -170,8 +329,23 @@ function Consumables({ consumableItem }) {
             max={5}
             sx={{ color: "white" }}
           />
-        </Box>
-      </div>
+        </Box> */}
+  <div>
+
+      <NumberInput
+        aria-label="Compact number input"
+        placeholder="Type a number…"
+        readOnly
+        value={value}
+        onChange={(event, val) => setValue(val)}
+        min={0} 
+      max={5}
+      />
+
+
+        {/* <button>Buy</button> */}
+        </div>
+      {/* </div> */}
 
       {/* Consumable dialog */}
       <Dialog
