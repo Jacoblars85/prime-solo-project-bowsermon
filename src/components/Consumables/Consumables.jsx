@@ -69,7 +69,7 @@ const StyledInputRoot = styled('div')(
   font-weight: 400;
   
   color: ${grey[900]};
-  background: ${'#b'};
+  background: #b;
   border: 1px solid ${grey[200]};
 
   display: grid;
@@ -126,7 +126,7 @@ const StyledButton = styled('button')(
   font-size: 0.875rem;
   line-height: 1;
   box-sizing: border-box;
-  background: ${'#fff'};
+  background: inherit;
   border: 0;
   color: ${grey[900]};
   transition-property: all;
@@ -134,8 +134,8 @@ const StyledButton = styled('button')(
   transition-duration: 120ms;
 
   &:hover {
-    background: ${grey[50]};
-    border-color: ${grey[300]};
+    background: #b;
+    border-color: black;
     cursor: pointer;
   }
 
@@ -146,12 +146,12 @@ const StyledButton = styled('button')(
     border-bottom: 0;
     &:hover {
       cursor: pointer;
-      background: ${grey[400]};
+      background: inherit;
       color: ${grey[50]};
     }
 
   border-color: ${grey[200]};
-  background: ${grey[50]};
+  background: inherit;
   color: ${grey[900]};
   }
 
@@ -163,12 +163,12 @@ const StyledButton = styled('button')(
     border: 1px solid;
     &:hover {
       cursor: pointer;
-      background: ${grey[400]};
+      background: inherit;
       color: ${grey[50]};
     }
 
   border-color: ${grey[200]};
-  background: ${grey[50]};
+  background: inherit;
   color: ${grey[900]};
   }
   & .arrow {
