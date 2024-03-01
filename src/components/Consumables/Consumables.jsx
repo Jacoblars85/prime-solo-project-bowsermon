@@ -250,7 +250,6 @@ function Consumables({ consumableItem }) {
 
   return (
     <>
-      {/* <div className="consumables"> */}
         <div>
           <h4 style={{ color: consumableItem.color }}>{consumableItem.name}</h4>
           <img
@@ -345,7 +344,6 @@ function Consumables({ consumableItem }) {
 
         {/* <button>Buy</button> */}
         </div>
-      {/* </div> */}
 
       {/* Consumable dialog */}
       <Dialog
