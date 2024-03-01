@@ -50,49 +50,20 @@ const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
   );
 });
 
-const grey = {
-  50: '#F3F6F9',
-  100: '#E5EAF2',
-  200: '#DAE2ED',
-  300: '#C7D0DD',
-  400: '#B0B8C4',
-  500: '#9DA8B7',
-  600: '#6B7A90',
-  700: '#434D5B',
-  800: '#303740',
-  900: '#1C2025',
-};
-
 const StyledInputRoot = styled('div')(
   ({ theme }) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
-  
-  color: ${grey[900]};
+  color: black;
   background: #b;
-  border: 1px solid ${grey[200]};
-
+  border: 1px solid black;
   display: grid;
   grid-template-columns: 22px 1px;
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
- 
   padding: 0px;
   width: 40px;
   height: 35px;
-
-  &.${numberInputClasses.focused} {
-
-  }
-
-  &:hover {
-  
-  }
-
-  // firefox
-  &:focus-visible {
-    outline: 0;
-  }
 `,
 );
 
@@ -104,7 +75,7 @@ const StyledInputElement = styled('input')(
   line-height: 1.5;
   grid-column: 1/2;
   grid-row: 1/3;
-  color: ${grey[900]};
+  color: black;
   background: inherit;
   border: none;
   border-radius: inherit;
@@ -120,56 +91,40 @@ const StyledButton = styled('button')(
   align-items: center;
   appearance: none;
   padding: 0;
-  width: 19px;
-  height: 19px;
+  margin: 0px
+  width: 20px;
+  height: 20px;
   font-family: system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-size: 30px;
   line-height: 1;
   box-sizing: border-box;
   background: inherit;
   border: 0;
-  color: ${grey[900]};
+  color: black;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 120ms;
 
-  &:hover {
-    background: #b;
-    border-color: black;
-    cursor: pointer;
-  }
-
   &.${numberInputClasses.incrementButton} {
     grid-column: 2/3;
     grid-row: 1/2;
-    border: 1px solid;
-    border-bottom: 0;
     &:hover {
       cursor: pointer;
-      background: inherit;
-      color: ${grey[50]};
+      color: grey;
     }
-
-  border-color: ${grey[200]};
   background: inherit;
-  color: ${grey[900]};
+  color: black;
   }
 
   &.${numberInputClasses.decrementButton} {
     grid-column: 2/3;
     grid-row: 2/3;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border: 1px solid;
     &:hover {
       cursor: pointer;
-      background: inherit;
-      color: ${grey[50]};
+      color: grey;
     }
-
-  border-color: ${grey[200]};
   background: inherit;
-  color: ${grey[900]};
+  color: black;
   }
   & .arrow {
     transform: translateY(-1px);
