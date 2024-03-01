@@ -110,7 +110,7 @@
     border: 3px solid black;
     height: 120px;
     width: 100%;
-    justify-content: baseline;
+    justify-content:center;
     align-items: center;
     text-align: center;
     

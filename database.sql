@@ -47,6 +47,18 @@ CREATE TABLE "characters" (
 	"unique_stamina" INT,
 	"battle_pic" VARCHAR(100));
 	
+CREATE TABLE "items" (
+	"id" SERIAL PRIMARY KEY,
+	"name" VARCHAR(100),
+	"type" VARCHAR(100),
+	"hp" INT,
+	"stamina" INT, 
+	"speed" INT,
+	"attack" INT,
+	"pic" VARCHAR(100),
+	"cost" INT,
+	"color" VARCHAR(25));
+	
 	
 CREATE TABLE "user_characters" (
 	"id" SERIAL PRIMARY KEY,
@@ -55,7 +67,8 @@ CREATE TABLE "user_characters" (
 	"starter_1" BOOLEAN DEFAULT FALSE,
 	"starter_2" BOOLEAN DEFAULT FALSE,
 	"starter_3" BOOLEAN DEFAULT FALSE,
-	"new" BOOLEAN DEFAULT TRUE);
+	"new" BOOLEAN DEFAULT TRUE,
+	"item" INT DEFAULT NULL REFERENCES "items");
 	
 	
 CREATE TABLE "basic_attacks" (
@@ -70,14 +83,6 @@ CREATE TABLE "levels" (
 	"name" VARCHAR(20),
 	"enemy_id" INT NOT NULL REFERENCES "characters");
 	
-
-CREATE TABLE "items" (
-	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR(100),
-	"hp" INT,
-	"stamina" INT, 
-	"pic" VARCHAR(100));
-	
 	
 CREATE TABLE "user_inventory" (
 	"id" SERIAL PRIMARY KEY,
@@ -86,6 +91,8 @@ CREATE TABLE "user_inventory" (
 	"number" INT);
 	
 	
+	
+
 INSERT INTO "characters" 
 	("name", "profile_pic", "hp", "stamina", "speed", "unique_attack", "unique_damage", "unique_stamina", "battle_pic")
 	VALUES 
@@ -98,20 +105,18 @@ INSERT INTO "characters"
 	('Chain Chomp', 'images/ChainChompProfilePic.webp', 20, 25, 65, 'bite', 65, 25, 'images/chainChompBattlePic2.png'),
 	('Roy', 'images/RoyProfilePic.webp', 55, 25, 20, 'large pipe', 75, 15, 'images/RoyBattlePic.webp'),
 	('Morton', 'images/MortonProfilePic.webp', 100, 25, 5, 'body slam', 45, 20, 'images/MortonBattlePic.webp'),
-	('Toad', '', 50, 55, 70, 'headbutt', 25, 10, 'images/Toad_Portal.webp'),
-	('Toadett', '', 80, 50, 60, 'slap', 30, 10, 'images/ToadetteBattlePic.png'),
-	('Toadsworth', '', 90, 40, 30, 'cane wack', 35, 15, 'images/ToadsworthBattlePic.webp'),
-	('Diddy Kong', '', 85, 50, 85, 'banana shot', 55, 10, 'images/diddyKongBattleKong.webp'),
-	('Rosalina', '', 95, 40, 60, 'ice blast', 65, 10, 'images/RosalinaBattlePic.webp'),
-	('Daisy', '', 105, 40, 50, 'arm bar', 100, 10, 'images/daisyBattlePic.png'),
-	('Yoshi', '', 110, 50, 75, 'stomp', 40, 10, 'images/YoshiBattlePic.webp'),
-	('Donkey Kong', '', 135, 50, 10, 'giant punch', 70, 20, 'images/donkeyKongBattlePic.webp'),
-	('Luigi', '', 80, 100, 80, 'punch', 100, 25, 'images/LuigiBattlePic.png'),
-	('Mario', '', 125, 150, 50, 'upper cut', 65, 25, 'images/MarioBattlePic.png'),
-	('Waluigi', '', 90, 10, 100, 'stab', 70, 10, 'images/waluigiBattlePic.webp'),
-	('Wario', '', 140, 50, 10, 'belly flop', 70, 10, 'images/warioBattlePic.png'); 
-
-	
+	('Toad', '', 100, 55, 70, 'headbutt', 12, 10, 'images/Toad_Portal.webp'),
+	('Toadett', '', 160, 50, 60, 'slap', 15, 10, 'images/ToadetteBattlePic.png'),
+	('Toadsworth', '', 180, 40, 30, 'cane wack', 17, 15, 'images/ToadsworthBattlePic.webp'),
+	('Diddy Kong', '', 170, 50, 85, 'banana shot', 55, 10, 'images/diddyKongBattleKong.webp'),
+	('Rosalina', '', 190, 40, 60, 'ice blast', 32, 10, 'images/RosalinaBattlePic.webp'),
+	('Daisy', '', 210, 50, 50, 'arm bar', 50, 10, 'images/daisyBattlePic.png'),
+	('Yoshi', '', 220, 60, 75, 'stomp', 20, 10, 'images/YoshiBattlePic.webp'),
+	('Donkey Kong', '', 270, 50, 10, 'giant punch', 35, 20, 'images/donkeyKongBattlePic.webp'),
+	('Luigi', '', 160, 100, 80, 'punch', 50, 25, 'images/LuigiBattlePic.png'),
+	('Mario', '', 250, 150, 50, 'upper cut', 32, 25, 'images/MarioBattlePic.png'),
+	('Waluigi', '', 180, 100, 100, 'stab', 35, 10, 'images/waluigiBattlePic.webp'),
+	('Wario', '', 280, 55, 10, 'belly flop', 35, 10, 'images/warioBattlePic.png'); 
 	
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
@@ -138,12 +143,12 @@ INSERT INTO "levels"
 	
 	
 INSERT INTO "items" 
-	("name", "hp", "stamina", "pic")
+	("name", "type", "hp", "stamina", "speed", "attack", "pic", "cost", "color")
 	VALUES 
-	('health pot', 25, 0, 'images/healthPotion.png'),
-	('stamina pot', 0, 30, 'images/staminaPotion.png'),
-	('max pot', 20, 25, 'images/maxPotion.png');
+	('healing mushroom', 'consumable', 25, 0, 0, 0, 'images/redMushroomPic.webp', 10, '#F02F38'),
+	('stamina mushroom', 'consumable', 0, 30, 0, 0, 'images/greenMushroomPic.webp', 10, '#00D400'),
+	('max mushroom', 'consumable', 20, 25, 0, 0, 'images/megaMushroomPic.webp', 40, '#FFD42A'),
+	('mega healing mushroom', 'consumable', 80, 0, 0, 0, 'images/bigRedMushroomPic.webp', 75, '#F02F38'),
+	('super star', 'consumable', 50, 50, 0, 0, 'images/starPic.webp', 100, '#FFD42A');
 	
-	
-
 
