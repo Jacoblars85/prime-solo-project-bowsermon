@@ -197,13 +197,11 @@ function Consumables({ consumableItem }) {
     setOpenConsumableSnack(false);
   };
 
-  const [value, setValue] = useState(0);
-
   return (
     <>
       <div style={{ marginLeft:"10px" }}>
         <img
-          onClick={handleConsumableClickOpen}
+        //   onClick={handleConsumableClickOpen}
           height={70}
           width={70}
           src={consumableItem.pic}
@@ -298,7 +296,7 @@ function Consumables({ consumableItem }) {
             sx={{ color: "white" }}
           />
         </Box> */}
-      <button>Buy</button>
+      <button onClick={handleConsumableClickOpen}>Buy</button>
 
       <div style={{ marginRight:"10px" }}>
 
@@ -306,8 +304,8 @@ function Consumables({ consumableItem }) {
           aria-label="Compact number input"
           placeholder="Type a number…"
           readOnly
-          value={value}
-          onChange={(event, val) => setValue(val)}
+          value={consumableValue}
+          onChange={(event, val) => setConsumableValue(val)}
           min={0}
           max={Math.floor(user.coins / consumableItem.cost)}
         />
