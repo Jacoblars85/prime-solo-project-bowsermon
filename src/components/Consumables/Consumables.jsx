@@ -57,14 +57,13 @@ const StyledInputRoot = styled('div')(
   color: black;
   border: 2px solid black;
   display: grid;
-  grid-template-columns: 20px 1px;
+  grid-template-columns: 23px 5px;
   grid-template-rows: 20px 27.5px;
   overflow: hidden;
   padding: 0px;
   margin: 0px;
   width: 35px;
   height: 45px;
-  
 `,
 );
 
@@ -78,8 +77,12 @@ const StyledInputElement = styled('input')(
   grid-row: 1/3;
   color: black;
   background: inherit;
-  border: none;
-  
+  border: 0px;
+  &:focus {
+    border-color: none;
+    box-shadow: none;
+    outline-width: 0;
+  }
 `,
 );
 
@@ -112,7 +115,6 @@ const StyledButton = styled('button')(
     }
   background: inherit;
   color: black;
-  
   }
 
   &.${numberInputClasses.decrementButton} {
@@ -138,7 +140,7 @@ function Consumables({ consumableItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.characters);
 
-  console.log("consumableItem", consumableItem);
+//   console.log("consumableItem", consumableItem);
 
   const [consumableOpen, setConsumableOpen] = useState(false);
 
