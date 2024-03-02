@@ -24,8 +24,8 @@ import { put } from "redux-saga/effects";
 import {
   Unstable_NumberInput as BaseNumberInput,
   numberInputClasses,
-} from "@mui/base/Unstable_NumberInput";
-import { styled } from "@mui/system";
+} from '@mui/base/Unstable_NumberInput';
+import { styled } from '@mui/system';
 
 const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
   return (
@@ -38,10 +38,10 @@ const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
       }}
       slotProps={{
         incrementButton: {
-          children: "▴",
+          children: '▴',
         },
         decrementButton: {
-          children: "▾",
+          children: '▾',
         },
       }}
       {...props}
@@ -50,43 +50,45 @@ const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
   );
 });
 
-const StyledInputRoot = styled("div")(
+const StyledInputRoot = styled('div')(
   ({ theme }) => `
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 400;
-  color: black;
   border: 2px solid black;
   display: grid;
-  grid-template-columns: 23px 5px;
-  grid-template-rows: 20px 27.5px;
+  grid-template-columns: 10.5px 0px;
+  grid-template-rows: 25px 20px;
   overflow: hidden;
   padding: 0px;
   margin: 0px;
-  width: 35px;
-  height: 45px;
-`
+  width: 20px;
+  height: 40px;
+  background: gray;
+`,
 );
 
-const StyledInputElement = styled("input")(
+const StyledInputElement = styled('input')(
   ({ theme }) => `
   font-size: 1rem;
-  font-family: inherit;
-  font-weight: 550;
-  line-height: 1.5;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  width: 12px;
+  height: 10px;
   grid-column: 1/2;
   grid-row: 1/3;
   color: black;
   background: inherit;
   border: 0px;
+  margin-top: 13.7px;
+  margin-left: 4px;
   &:focus {
-    border-color: none;
-    box-shadow: none;
     outline-width: 0;
   }
-`
+  &:hover {
+    cursor: default;
+  }
+`,
 );
 
-const StyledButton = styled("button")(
+const StyledButton = styled('button')(
   ({ theme }) => `
   display: flex;
   flex-flow: row nowrap;
@@ -94,43 +96,36 @@ const StyledButton = styled("button")(
   align-items: center;
   padding: 0px;
   margin: 0px
-  width: 20px;
-  height: 20px;
+  width: 5px;
+  height: 10px;
   font-family: system-ui, sans-serif;
   font-size: 30px;
-  line-height: 1;
+  line-height: 1.5;
   border: 0;
   color: black;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 120ms;
-  
-
   &.${numberInputClasses.incrementButton} {
     grid-column: 2/3;
     grid-row: 1/2;
     &:hover {
       cursor: pointer;
-      color: grey;
+      color: lightgrey;
     }
-  background: inherit;
-  color: black;
   }
-
   &.${numberInputClasses.decrementButton} {
     grid-column: 2/3;
     grid-row: 2/3;
     &:hover {
       cursor: pointer;
-      color: grey;
+      color: lightgrey;
     }
-  background: inherit;
-  color: black;
   }
   & .arrow {
     transform: translateY(-1px);
   }
-`
+`,
 );
 
 function Consumables({ consumableItem }) {
@@ -140,7 +135,7 @@ function Consumables({ consumableItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.characters);
 
-  //   console.log("consumableItem", consumableItem);
+//   console.log("consumableItem", consumableItem);
 
   const [consumableOpen, setConsumableOpen] = useState(false);
 
@@ -206,71 +201,71 @@ function Consumables({ consumableItem }) {
 
   return (
     <>
-      <div>
-        <h4 style={{ color: consumableItem.color }}>{consumableItem.name}</h4>
-        <img
-          onClick={handleConsumableClickOpen}
-          height={70}
-          width={70}
-          src={consumableItem.pic}
-        />
-      </div>
+        <div>
+          <h4 style={{ color: consumableItem.color }}>{consumableItem.name}</h4>
+          <img
+            onClick={handleConsumableClickOpen}
+            height={70}
+            width={70}
+            src={consumableItem.pic}
+          />
+        </div>
 
-      <Button
-        id="basic-button"
-        aria-controls={openConsumableInfo ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={openConsumableInfo ? "true" : undefined}
-        onClick={handleConsumableInfoClick}
-        sx={{ color: "white" }}
-      >
-        <InfoIcon />
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorElConsumable}
-        open={openConsumableInfo}
-        onClose={handleConsumableInfoClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        <MenuItem
-          sx={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-          }}
-          onClick={handleConsumableInfoClose}
+        <Button
+          id="basic-button"
+          aria-controls={openConsumableInfo ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={openConsumableInfo ? "true" : undefined}
+          onClick={handleConsumableInfoClick}
+          sx={{ color: "white" }}
         >
-          +{consumableItem.hp} HP
-        </MenuItem>
-        <MenuItem
-          sx={{
-            color: "limegreen",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
+          <InfoIcon />
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorElConsumable}
+          open={openConsumableInfo}
+          onClose={handleConsumableInfoClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
           }}
-          onClick={handleConsumableInfoClose}
         >
-          +{consumableItem.stamina} stamina
-        </MenuItem>
-      </Menu>
+          <MenuItem
+            sx={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleConsumableInfoClose}
+          >
+            +{consumableItem.hp} HP
+          </MenuItem>
+          <MenuItem
+            sx={{
+              color: "limegreen",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleConsumableInfoClose}
+          >
+            +{consumableItem.stamina} stamina
+          </MenuItem>
+        </Menu>
 
-      <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
-        {consumableItem.cost}x{" "}
-        <img
-          height={20}
-          width={20}
-          src="/images/Coin_-_New_Super_Mario_Bros.webp"
-        />{" "}
-      </h5>
+        <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
+          {consumableItem.cost}x{" "}
+          <img
+            height={20}
+            width={20}
+            src="/images/Coin_-_New_Super_Mario_Bros.webp"
+          />{" "}
+        </h5>
 
-      {/* <Box sx={{ width: 200 }}>
+        {/* <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Amount"
             defaultValue={1}
@@ -285,19 +280,21 @@ function Consumables({ consumableItem }) {
             sx={{ color: "white" }}
           />
         </Box> */}
-      <div>
-        <NumberInput
-          aria-label="Compact number input"
-          placeholder="Type a number…"
-          readOnly
-          value={value}
-          onChange={(event, val) => setValue(val)}
-          min={0}
-          max={5}
-        />
+  <div>
+
+      <NumberInput
+        aria-label="Compact number input"
+        placeholder="Type a number…"
+        readOnly
+        value={value}
+        onChange={(event, val) => setValue(val)}
+        min={0} 
+      max={5}
+      />
+
 
         {/* <button>Buy</button> */}
-      </div>
+        </div>
 
       {/* Consumable dialog */}
       <Dialog
