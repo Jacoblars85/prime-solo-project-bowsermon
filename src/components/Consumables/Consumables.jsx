@@ -24,8 +24,8 @@ import { put } from "redux-saga/effects";
 import {
   Unstable_NumberInput as BaseNumberInput,
   numberInputClasses,
-} from '@mui/base/Unstable_NumberInput';
-import { styled } from '@mui/system';
+} from "@mui/base/Unstable_NumberInput";
+import { styled } from "@mui/system";
 
 const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
   return (
@@ -38,10 +38,10 @@ const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
       }}
       slotProps={{
         incrementButton: {
-          children: '▴',
+          children: "▴",
         },
         decrementButton: {
-          children: '▾',
+          children: "▾",
         },
       }}
       {...props}
@@ -50,7 +50,7 @@ const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
   );
 });
 
-const StyledInputRoot = styled('div')(
+const StyledInputRoot = styled("div")(
   ({ theme }) => `
   border: 2px solid black;
   display: grid;
@@ -62,10 +62,10 @@ const StyledInputRoot = styled('div')(
   width: 20px;
   height: 40px;
   background: gray;
-`,
+`
 );
 
-const StyledInputElement = styled('input')(
+const StyledInputElement = styled("input")(
   ({ theme }) => `
   font-size: 1rem;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -85,10 +85,10 @@ const StyledInputElement = styled('input')(
   &:hover {
     cursor: default;
   }
-`,
+`
 );
 
-const StyledButton = styled('button')(
+const StyledButton = styled("button")(
   ({ theme }) => `
   display: flex;
   flex-flow: row nowrap;
@@ -125,7 +125,7 @@ const StyledButton = styled('button')(
   & .arrow {
     transform: translateY(-1px);
   }
-`,
+`
 );
 
 function Consumables({ consumableItem }) {
@@ -135,7 +135,7 @@ function Consumables({ consumableItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.characters);
 
-//   console.log("consumableItem", consumableItem);
+  //   console.log("consumableItem", consumableItem);
 
   const [consumableOpen, setConsumableOpen] = useState(false);
 
@@ -174,7 +174,7 @@ function Consumables({ consumableItem }) {
     setConsumableValue(newConsumableValue);
   };
 
-  const [anchorElConsumable, setAnchorElConsumable] = useState(null);
+  const [anchorElConsumable, setAnchorElConsumable] = useState(false);
   const openConsumableInfo = Boolean(anchorElConsumable);
 
   const handleConsumableInfoClick = (event) => {
@@ -201,71 +201,89 @@ function Consumables({ consumableItem }) {
 
   return (
     <>
-        <div>
-          <h4 style={{ color: consumableItem.color }}>{consumableItem.name}</h4>
-          <img
-            onClick={handleConsumableClickOpen}
-            height={70}
-            width={70}
-            src={consumableItem.pic}
-          />
-        </div>
+      <div style={{ marginLeft:"10px" }}>
+        <img
+          onClick={handleConsumableClickOpen}
+          height={70}
+          width={70}
+          src={consumableItem.pic}
+        />
+      </div>
 
-        <Button
-          id="basic-button"
-          aria-controls={openConsumableInfo ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={openConsumableInfo ? "true" : undefined}
-          onClick={handleConsumableInfoClick}
-          sx={{ color: "white" }}
-        >
-          <InfoIcon />
-        </Button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorElConsumable}
-          open={openConsumableInfo}
-          onClose={handleConsumableInfoClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
+<div style={{ width: "150px", marginLeft:"10px" }}>
+      <h4 style={{ color: consumableItem.color, width: "150px" }}>{consumableItem.name}</h4>
+
+      <p style={{ color: "red", textShadow: "1px 1px black",
+            fontSize: "15px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            marginTop: 10,
+            marginBottom: 0,
+             }}>+{consumableItem.hp} hp</p>
+
+      <p style={{ color: "limegreen", textShadow: "1px 1px black",
+            fontSize: "15px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            marginTop: 0 }}>+{consumableItem.stamina} stamina</p>
+
+      
+      </div>
+      {/* <Button
+        id="basic-button"
+        aria-controls={openConsumableInfo ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={openConsumableInfo ? "true" : undefined}
+        onClick={handleConsumableInfoClick}
+        sx={{ color: "white" }}
+      >
+        <InfoIcon />
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorElConsumable}
+        open={openConsumableInfo}
+        onClose={handleConsumableInfoClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem
+          sx={{
+            color: "red",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
           }}
+          onClick={handleConsumableInfoClose}
         >
-          <MenuItem
-            sx={{
-              color: "red",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-            }}
-            onClick={handleConsumableInfoClose}
-          >
-            +{consumableItem.hp} HP
-          </MenuItem>
-          <MenuItem
-            sx={{
-              color: "limegreen",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-            }}
-            onClick={handleConsumableInfoClose}
-          >
-            +{consumableItem.stamina} stamina
-          </MenuItem>
-        </Menu>
+          +{consumableItem.hp} HP
+        </MenuItem>
+        <MenuItem
+          sx={{
+            color: "limegreen",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+          }}
+          onClick={handleConsumableInfoClose}
+        >
+          +{consumableItem.stamina} stamina
+        </MenuItem>
+      </Menu> */}
 
-        <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
-          {consumableItem.cost}x{" "}
-          <img
-            height={20}
-            width={20}
-            src="/images/Coin_-_New_Super_Mario_Bros.webp"
-          />{" "}
-        </h5>
+      <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
+        {consumableItem.cost}x{" "}
+        <img
+          height={20}
+          width={20}
+          src="/images/Coin_-_New_Super_Mario_Bros.webp"
+        />{" "}
+      </h5>
 
-        {/* <Box sx={{ width: 200 }}>
+      {/* <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Amount"
             defaultValue={1}
@@ -280,21 +298,21 @@ function Consumables({ consumableItem }) {
             sx={{ color: "white" }}
           />
         </Box> */}
-  <div>
+      <button>Buy</button>
 
-      <NumberInput
-        aria-label="Compact number input"
-        placeholder="Type a number…"
-        readOnly
-        value={value}
-        onChange={(event, val) => setValue(val)}
-        min={0} 
-      max={Math.floor(user.coins / consumableItem.cost)}
-      />
+      <div style={{ marginRight:"10px" }}>
 
+        <NumberInput
+          aria-label="Compact number input"
+          placeholder="Type a number…"
+          readOnly
+          value={value}
+          onChange={(event, val) => setValue(val)}
+          min={0}
+          max={Math.floor(user.coins / consumableItem.cost)}
+        />
 
-        {/* <button>Buy</button> */}
-        </div>
+      </div>
 
       {/* Consumable dialog */}
       <Dialog
