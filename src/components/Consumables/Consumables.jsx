@@ -289,7 +289,7 @@ function Consumables({ consumableItem }) {
         value={value}
         onChange={(event, val) => setValue(val)}
         min={0} 
-      max={5}
+      max={Math.floor(user.coins / consumableItem.cost)}
       />
 
 
