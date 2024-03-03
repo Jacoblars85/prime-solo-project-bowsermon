@@ -24,7 +24,7 @@ router.get('/consumable', (req, res) => {
             res.send(result.rows);
         })
         .catch(err => {
-            console.log('ERROR: Get all users inventory', err);
+            console.log('ERROR: Get all consumable items', err);
             res.sendStatus(500)
         })
 });
@@ -50,7 +50,7 @@ router.get('/held', (req, res) => {
             res.send(result.rows);
         })
         .catch(err => {
-            console.log('ERROR: Get all users inventory', err);
+            console.log('ERROR: Get all held items', err);
             res.sendStatus(500)
         })
 });
