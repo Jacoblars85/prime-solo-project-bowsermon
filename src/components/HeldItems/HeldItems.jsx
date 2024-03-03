@@ -18,7 +18,7 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 
 
-function Items() {
+function HeldItems() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -35,4 +35,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default HeldItems;

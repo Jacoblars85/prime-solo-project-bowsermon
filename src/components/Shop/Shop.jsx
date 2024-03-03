@@ -18,7 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import Consumables from "../Consumables/Consumables";
-import Items from "../Items/Items";
+import HeldItems from "../HeldItems/HeldItems";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
@@ -180,7 +180,14 @@ function Shop() {
           <div className="itemsBox">
             <h3 className="">Held Items</h3>
 
-            <Items />
+
+            {held && held.map(heldItem => {
+                        return (
+                            <div div className="held" key={heldItem.id}>
+                                <HeldItems heldItem={heldItem} />
+                            </div>
+                        )
+                    })}
           </div>
         </div>
 
