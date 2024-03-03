@@ -31,7 +31,8 @@ function Shop() {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.characters);
   const starter = useSelector((store) => store.character.starter);
-  const consumables = useSelector((store) => store.inventory.items);
+  const consumables = useSelector((store) => store.inventory.consumables);
+  const held = useSelector((store) => store.inventory.held);
 
   useEffect(() => {
     dispatch({ type: "SAGA_FETCH_ITEMS" });

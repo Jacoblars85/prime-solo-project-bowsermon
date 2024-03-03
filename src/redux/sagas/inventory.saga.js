@@ -5,10 +5,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchAllItems() {
     // console.log('action.payload', action.payload);
     try {
-      const itemsResponse = yield axios.get(`/api/inventory/items`);
+      const itemsResponse = yield axios.get(`/api/inventory/consumable`);
+      const heldResponse = yield axios.get(`/api/inventory/held`);
       yield put({
-        type: 'SET_ITEMS',
+        type: 'SET_CONSUMABLE_ITEMS',
         payload: itemsResponse.data
+      });
+      yield put({
+        type: 'SET_HELD_ITEMS',
+        payload: heldResponse.data
       });
     } catch (error) {
       console.log('fetchAllItems error:', error);

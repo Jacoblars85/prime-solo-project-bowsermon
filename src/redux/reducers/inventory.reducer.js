@@ -1,9 +1,18 @@
 import { combineReducers } from 'redux';
 
 
-const items = (state = [], action) => {
+const consumables = (state = [], action) => {
     switch (action.type) {
-      case 'SET_ITEMS':
+      case 'SET_CONSUMABLE_ITEMS':
+        return action.payload;
+      default:
+        return state;
+    }
+  }
+
+  const held = (state = [], action) => {
+    switch (action.type) {
+      case 'SET_HELD_ITEMS':
         return action.payload;
       default:
         return state;
@@ -23,7 +32,8 @@ const items = (state = [], action) => {
 
 
 export default combineReducers({
-    items,
+  consumables,
+  held,
     inventory,
 
   });

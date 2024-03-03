@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
-router.get('/items', (req, res) => {
+router.get('/consumable', (req, res) => {
 
     const query = `
     SELECT "id",
@@ -17,6 +17,32 @@ router.get('/items', (req, res) => {
         "color"
     FROM "items"
         WHERE "type" = 'consumable';
+  `;
+
+    pool.query(query)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all users inventory', err);
+            res.sendStatus(500)
+        })
+});
+
+router.get('/held', (req, res) => {
+
+    const query = `
+    SELECT "id",
+ 		"name",
+ 		"type",
+        "hp",
+        "stamina",
+        "speed",
+        "pic",
+        "cost",
+        "color"
+    FROM "items"
+        WHERE "type" = 'held';
   `;
 
     pool.query(query)
