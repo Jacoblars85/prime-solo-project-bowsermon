@@ -43,11 +43,6 @@ function Shop() {
   }, []);
 
   const [randomOpen, setRandomOpen] = useState(false);
-  const [healthOpen, setHealthOpen] = useState(false);
-  const [staminaOpen, setStaminaOpen] = useState(false);
-  const [maxOpen, setMaxOpen] = useState(false);
-
-  // const [prizeOpen, setPrizeOpen] = useState(false);
 
   const handleRandomClickOpen = () => {
     setRandomOpen(true);

@@ -19,7 +19,6 @@ const consumables = (state = [], action) => {
     }
   }
 
-
   const inventory = (state = [{}], action) => {
     switch (action.type) {
       case 'SET_USERS_INVENTORY':
@@ -34,7 +33,7 @@ const consumables = (state = [], action) => {
 export default combineReducers({
   consumables,
   held,
-    inventory,
+  inventory,
 
   });
   
