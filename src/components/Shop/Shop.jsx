@@ -144,7 +144,7 @@ function Shop() {
       <div className="shop">
         <div className="bigBox">
           <div className="consumablesBox">
-            <h3 className="">Consumables Items</h3>
+            <h3 className="consumableHeader">Consumables Items</h3>
 
             {consumables && consumables.map(consumableItem => {
                         return (
@@ -177,8 +177,8 @@ function Shop() {
             />
           </div>
 
-          <div className="itemsBox">
-            <h3 className="">Held Items</h3>
+          <div className="heldBox">
+            <h3 className="heldHeader" >Held Items</h3>
 
 
             {held && held.map(heldItem => {

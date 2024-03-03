@@ -67,20 +67,20 @@
     text-align: center;
 }
 
-.itemsBox {
+.heldBox {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-margin: 0px;
     scroll-padding: 0px;
     scroll-snap-type: y mandatory;
     height: 100%;
     width: 35%;
     border-left: 3px solid black;
-    justify-content:baseline;
-    align-items: center;
-    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
     text-align: center;
 }
 
@@ -107,7 +107,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    border: 3px solid black;
+    border-top: 3px solid black;
     height: 120px;
     width: 100%;
     justify-content: space-between;
@@ -131,7 +131,42 @@
     text-shadow: 2px 2px black;
 }
 
-.randomCharacter img, .consumables img  {
+.held {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-top: 3px solid black;
+    height: 120px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+}
+
+.held h4 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-shadow: 1px 2px white;
+    /* border-bottom: 3px solid black; */
+    
+}
+
+.held h5 {
+    margin-top: 5px;
+    margin: 0px;
+    text-shadow: 1px 2px white;
+}
+
+.heldHeader, .consumableHeader {
+    font-size: 25px;
+    align-self: center;
+    text-shadow: 1px 1.8px white;
+    
+}
+
+.randomCharacter img, .consumables img, .held img  {
     cursor: pointer;
 }
 
