@@ -225,7 +225,7 @@ function HeldItems({ heldItem }) {
       
       </div>
 
-      <h5 style={{ color: heldItem.color, fontSize: 30 }}>
+      <h5 style={{ color: "#FEF202", fontSize: 30, textShadow: "2px 2px black" }}>
         {heldItem.cost}x{" "}
         <img
           height={20}
@@ -250,7 +250,7 @@ function HeldItems({ heldItem }) {
 
       </div>
 
-      {/* Consumable dialog */}
+      {/* held item dialog */}
       <Dialog
         open={consumableOpen}
         onClose={handleConsumableClose}
