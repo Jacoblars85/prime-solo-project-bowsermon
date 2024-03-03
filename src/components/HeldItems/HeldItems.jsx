@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
@@ -18,13 +18,182 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 
 
+import {
+  Unstable_NumberInput as BaseNumberInput,
+  numberInputClasses,
+} from "@mui/base/Unstable_NumberInput";
+import { styled } from "@mui/system";
+
+const NumberInput = forwardRef(function CustomNumberInput(props, ref) {
+  return (
+    <BaseNumberInput
+      slots={{
+        root: StyledInputRoot,
+        input: StyledInputElement,
+        incrementButton: StyledButton,
+        decrementButton: StyledButton,
+      }}
+      slotProps={{
+        incrementButton: {
+          children: "▴",
+        },
+        decrementButton: {
+          children: "▾",
+        },
+      }}
+      {...props}
+      ref={ref}
+    />
+  );
+});
+
+const StyledInputRoot = styled("div")(
+  ({ theme }) => `
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 10.5px 0px;
+  grid-template-rows: 25px 20px;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+  width: 20px;
+  height: 40px;
+  background: gray;
+`
+);
+
+const StyledInputElement = styled("input")(
+  ({ theme }) => `
+  font-size: 1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  width: 12px;
+  height: 10px;
+  grid-column: 1/2;
+  grid-row: 1/3;
+  color: black;
+  background: inherit;
+  border: 0px;
+  margin-top: 13.7px;
+  margin-left: 4px;
+  &:focus {
+    outline-width: 0;
+  }
+  &:hover {
+    cursor: default;
+  }
+`
+);
+
+const StyledButton = styled("button")(
+  ({ theme }) => `
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px
+  width: 5px;
+  height: 10px;
+  font-family: system-ui, sans-serif;
+  font-size: 30px;
+  line-height: 1.5;
+  border: 0;
+  color: black;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 120ms;
+  &.${numberInputClasses.incrementButton} {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    &:hover {
+      cursor: pointer;
+      color: lightgrey;
+    }
+  }
+  &.${numberInputClasses.decrementButton} {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    &:hover {
+      cursor: pointer;
+      color: lightgrey;
+    }
+  }
+  & .arrow {
+    transform: translateY(-1px);
+  }
+`
+);
+
+
+
 function HeldItems({ heldItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
 
+  //   console.log("heldItem", heldItem);
 
+  const [consumableOpen, setConsumableOpen] = useState(false);
+
+  const handleConsumableClickOpen = () => {
+    setConsumableOpen(true);
+  };
+
+  const handleConsumableClose = () => {
+    setConsumableOpen(false);
+  };
+
+  const buyConsumable = (consumableAmount) => {
+    if (user.coins < consumableAmount * heldItem.cost) {
+      setConsumableOpen(false);
+      return alert("you are broke broke, sorry");
+    } else {
+      setOpenConsumableSnack(true);
+
+      dispatch({
+        type: "SAGA_BUY_POTION",
+        payload: {
+          potionId: heldItem.id,
+          amountNum: consumableAmount,
+        },
+      });
+    }
+  };
+
+  const consumableValuetext = (consumablevalues) => {
+    return consumablevalues;
+  };
+
+  const [consumableValue, setConsumableValue] = useState(0);
+
+  const handleConsumableChange = (event, newConsumableValue) => {
+    setConsumableValue(newConsumableValue);
+  };
+
+  const [anchorElConsumable, setAnchorElConsumable] = useState(false);
+  const openConsumableInfo = Boolean(anchorElConsumable);
+
+  const handleConsumableInfoClick = (event) => {
+    setAnchorElConsumable(event.currentTarget);
+  };
+  const handleConsumableInfoClose = () => {
+    setAnchorElConsumable(null);
+  };
+
+  const [openConsumableSnack, setOpenConsumableSnack] = useState(false);
+
+  const handleConsumableSnackClick = () => {
+    setOpenConsumableSnack(true);
+  };
+
+  const handleConsumableSnackClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenConsumableSnack(false);
+  };
 
   return (
     <>
@@ -65,21 +234,6 @@ function HeldItems({ heldItem }) {
         />{" "}
       </h5>
 
-      {/* <Box sx={{ width: 200 }}>
-          <Slider
-            aria-label="Amount"
-            defaultValue={1}
-            value={consumableValue}
-            onChange={handleConsumableChange}
-            getAriaValueText={consumableValuetext}
-            valueLabelDisplay="auto"
-            step={1}
-            marks
-            min={0}
-            max={5}
-            sx={{ color: "white" }}
-          />
-        </Box> */}
       <button onClick={handleConsumableClickOpen}>Buy</button>
 
       <div style={{ marginRight:"10px" }}>
@@ -107,7 +261,7 @@ function HeldItems({ heldItem }) {
           id="alert-dialog-title"
           sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
         >
-          {`Are you sure you want ${consumableValue} of the ${consumableItem.name}?`}
+          {`Are you sure you want ${consumableValue} of the ${heldItem.name}?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -117,7 +271,7 @@ function HeldItems({ heldItem }) {
               textAlign: "center",
             }}
           >
-            This will cost {consumableValue * consumableItem.cost} coins and you
+            This will cost {consumableValue * heldItem.cost} coins and you
             can not get a refund.
           </DialogContentText>
         </DialogContent>
@@ -151,7 +305,7 @@ function HeldItems({ heldItem }) {
         open={openConsumableSnack}
         autoHideDuration={4000}
         onClose={handleConsumableSnackClose}
-        message={`Your ${consumableItem.name} has been Sent to Your Inventory`}
+        message={`Your ${heldItem.name} has been Sent to Your Inventory`}
         // action={action}
       />
     </>
