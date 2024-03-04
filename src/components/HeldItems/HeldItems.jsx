@@ -163,7 +163,7 @@ function HeldItems({ heldItem }) {
     return consumablevalues;
   };
 
-  const [consumableValue, setConsumableValue] = useState(0);
+  const [consumableValue, setConsumableValue] = useState(1);
 
   const handleConsumableChange = (event, newConsumableValue) => {
     setConsumableValue(newConsumableValue);
@@ -284,7 +284,7 @@ function HeldItems({ heldItem }) {
           readOnly
           value={consumableValue}
           onChange={(event, val) => setConsumableValue(val)}
-          min={0}
+          min={1}
           max={Math.floor(user.coins / heldItem.cost)}
         />
           <Button
