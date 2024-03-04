@@ -200,11 +200,7 @@ function Consumables({ consumableItem }) {
   return (
     <>
       <div style={{ marginLeft: "10px" }}>
-        <img
-          height={70}
-          width={70}
-          src={consumableItem.pic}
-        />
+        <img height={70} width={70} src={consumableItem.pic} />
       </div>
 
       <div style={{ width: "150px", marginLeft: "10px" }}>
@@ -218,7 +214,7 @@ function Consumables({ consumableItem }) {
           style={{
             color: "red",
             textShadow: "1px 1px black",
-            fontSize: "15px",
+            fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
             marginTop: 10,
@@ -232,7 +228,7 @@ function Consumables({ consumableItem }) {
           style={{
             color: "limegreen",
             textShadow: "1px 1px black",
-            fontSize: "15px",
+            fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
             marginTop: 0,
@@ -304,7 +300,7 @@ function Consumables({ consumableItem }) {
         </Box> */}
 
       <div style={{ marginRight: "10px" }}>
-        <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
+        <h5 style={{ color: consumableItem.color, fontSize: 25 }}>
           {consumableItem.cost}x{" "}
           <img
             height={20}

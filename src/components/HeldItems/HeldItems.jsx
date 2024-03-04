@@ -17,7 +17,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 
-
 import {
   Unstable_NumberInput as BaseNumberInput,
   numberInputClasses,
@@ -125,8 +124,6 @@ const StyledButton = styled("button")(
 `
 );
 
-
-
 function HeldItems({ heldItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -197,57 +194,62 @@ function HeldItems({ heldItem }) {
 
   return (
     <>
-      <div style={{ marginLeft:"10px" }}>
-        <img
-          height={70}
-          width={70}
-          src={heldItem.pic}
-        />
+      <div style={{ marginLeft: "10px" }}>
+        <img height={70} width={70} src={heldItem.pic} />
       </div>
 
-<div style={{ width: "150px", marginLeft:"10px" }}>
-      <h4 style={{ color: heldItem.color, width: "150px" }}>{heldItem.name}</h4>
+      <div style={{ width: "150px", marginLeft: "10px" }}>
+        <h4 style={{ color: heldItem.color, width: "150px" }}>
+          {heldItem.name}
+        </h4>
+      </div>
 
-      <p style={{ color: "red", textShadow: "1px 1px black",
-            fontSize: "15px",
+      <div style={{ width: "100px" }}>
+        <p
+          style={{
+            color: "red",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
             marginTop: 10,
             marginBottom: 0,
-             }}>+{heldItem.hp} hp</p>
+          }}
+        >
+          +{heldItem.hp} hp
+        </p>
 
-      <p style={{ color: "limegreen", textShadow: "1px 1px black",
-            fontSize: "15px",
+        <p
+          style={{
+            color: "limegreen",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0 }}>+{heldItem.stamina} stamina</p>
-
-      
+            marginTop: 0,
+          }}
+        >
+          +{heldItem.stamina} stamina
+        </p>
       </div>
 
-      <h5 style={{ color: "#FEF202", fontSize: 30, textShadow: "2px 2px black" }}>
-        {heldItem.cost}x{" "}
-        <img
-          height={20}
-          width={20}
-          src="/images/Coin_-_New_Super_Mario_Bros.webp"
-        />{" "}
-      </h5>
+      <div style={{ marginRight: "10px" }}>
+        <h5
+          style={{
+            color: "#FEF202",
+            fontSize: 25,
+            textShadow: "2px 2px black",
+          }}
+        >
+          {heldItem.cost}x{" "}
+          <img
+            height={20}
+            width={20}
+            src="/images/Coin_-_New_Super_Mario_Bros.webp"
+          />{" "}
+        </h5>
 
-      <button onClick={handleConsumableClickOpen}>Buy</button>
-
-      <div style={{ marginRight:"10px" }}>
-
-        <NumberInput
-          aria-label="Compact number input"
-          placeholder="Type a number…"
-          readOnly
-          value={consumableValue}
-          onChange={(event, val) => setConsumableValue(val)}
-          min={0}
-          max={Math.floor(user.coins / heldItem.cost)}
-        />
-
+        <button onClick={handleConsumableClickOpen}>Buy</button>
       </div>
 
       {/* held item dialog */}
@@ -271,10 +273,20 @@ function HeldItems({ heldItem }) {
               textAlign: "center",
             }}
           >
-            This will cost {consumableValue * heldItem.cost} coins and you
-            can not get a refund.
+            This will cost {consumableValue * heldItem.cost} coins and you can
+            not get a refund.
           </DialogContentText>
         </DialogContent>
+        <NumberInput
+          aria-label="Compact number input"
+          placeholder="Type a number…"
+          readOnly
+          value={consumableValue}
+          onChange={(event, val) => setConsumableValue(val)}
+          min={0}
+          max={Math.floor(user.coins / heldItem.cost)}
+        />
+
         <DialogActions>
           <Button
             sx={{
