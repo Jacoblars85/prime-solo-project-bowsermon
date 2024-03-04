@@ -249,7 +249,7 @@ function HeldItems({ heldItem }) {
           />{" "}
         </h5>
 
-        <button onClick={handleConsumableClickOpen}>Buy</button>
+        <button disabled={user.coins < heldItem.cost ? true : false} onClick={handleConsumableClickOpen}>Buy</button>
       </div>
 
       {/* held item dialog */}
@@ -277,6 +277,7 @@ function HeldItems({ heldItem }) {
             not get a refund.
           </DialogContentText>
         </DialogContent>
+        <DialogActions sx={{justifyContent: "center" }}>
         <NumberInput
           aria-label="Compact number input"
           placeholder="Type a number…"
@@ -286,8 +287,6 @@ function HeldItems({ heldItem }) {
           min={0}
           max={Math.floor(user.coins / heldItem.cost)}
         />
-
-        <DialogActions>
           <Button
             sx={{
               color: "black",

@@ -309,7 +309,7 @@ function Consumables({ consumableItem }) {
           />{" "}
         </h5>
 
-        <button onClick={handleConsumableClickOpen}>Buy</button>
+        <button disabled={user.coins < consumableItem.cost ? true : false} onClick={handleConsumableClickOpen}>Buy</button>
       </div>
 
       {/* Consumable dialog */}
@@ -337,6 +337,8 @@ function Consumables({ consumableItem }) {
             can not get a refund.
           </DialogContentText>
         </DialogContent>
+       
+        <DialogActions sx={{justifyContent: "center" }}>
         <NumberInput
           aria-label="Compact number input"
           placeholder="Type a number…"
@@ -346,12 +348,11 @@ function Consumables({ consumableItem }) {
           min={0}
           max={Math.floor(user.coins / consumableItem.cost)}
         />
-        <DialogActions>
-          <Button
+        <Button
             sx={{
               color: "black",
               fontSize: 16,
-              fontFamily: "New Super Mario Font U",
+              fontFamily: "New Super Mario Font U"
             }}
             onClick={() => buyConsumable(consumableValue)}
             autoFocus
