@@ -199,34 +199,49 @@ function Consumables({ consumableItem }) {
 
   return (
     <>
-      <div style={{ marginLeft:"10px" }}>
+      <div style={{ marginLeft: "10px" }}>
         <img
-        //   onClick={handleConsumableClickOpen}
           height={70}
           width={70}
           src={consumableItem.pic}
         />
       </div>
 
-<div style={{ width: "150px", marginLeft:"10px" }}>
-      <h4 style={{ color: consumableItem.color, width: "150px" }}>{consumableItem.name}</h4>
+      <div style={{ width: "150px", marginLeft: "10px" }}>
+        <h4 style={{ color: consumableItem.color, width: "150px" }}>
+          {consumableItem.name}
+        </h4>
+      </div>
 
-      <p style={{ color: "red", textShadow: "1px 1px black",
+      <div style={{ width: "100px" }}>
+        <p
+          style={{
+            color: "red",
+            textShadow: "1px 1px black",
             fontSize: "15px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
             marginTop: 10,
             marginBottom: 0,
-             }}>+{consumableItem.hp} hp</p>
+          }}
+        >
+          +{consumableItem.hp} hp
+        </p>
 
-      <p style={{ color: "limegreen", textShadow: "1px 1px black",
+        <p
+          style={{
+            color: "limegreen",
+            textShadow: "1px 1px black",
             fontSize: "15px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0 }}>+{consumableItem.stamina} stamina</p>
-
-      
+            marginTop: 0,
+          }}
+        >
+          +{consumableItem.stamina} stamina
+        </p>
       </div>
+
       {/* <Button
         id="basic-button"
         aria-controls={openConsumableInfo ? "basic-menu" : undefined}
@@ -272,15 +287,6 @@ function Consumables({ consumableItem }) {
         </MenuItem>
       </Menu> */}
 
-      <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
-        {consumableItem.cost}x{" "}
-        <img
-          height={20}
-          width={20}
-          src="/images/Coin_-_New_Super_Mario_Bros.webp"
-        />{" "}
-      </h5>
-
       {/* <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Amount"
@@ -296,20 +302,18 @@ function Consumables({ consumableItem }) {
             sx={{ color: "white" }}
           />
         </Box> */}
-      <button onClick={handleConsumableClickOpen}>Buy</button>
 
-      <div style={{ marginRight:"10px" }}>
+      <div style={{ marginRight: "10px" }}>
+        <h5 style={{ color: consumableItem.color, fontSize: 30 }}>
+          {consumableItem.cost}x{" "}
+          <img
+            height={20}
+            width={20}
+            src="/images/Coin_-_New_Super_Mario_Bros.webp"
+          />{" "}
+        </h5>
 
-        <NumberInput
-          aria-label="Compact number input"
-          placeholder="Type a number…"
-          readOnly
-          value={consumableValue}
-          onChange={(event, val) => setConsumableValue(val)}
-          min={0}
-          max={Math.floor(user.coins / consumableItem.cost)}
-        />
-
+        <button onClick={handleConsumableClickOpen}>Buy</button>
       </div>
 
       {/* Consumable dialog */}
@@ -337,6 +341,15 @@ function Consumables({ consumableItem }) {
             can not get a refund.
           </DialogContentText>
         </DialogContent>
+        <NumberInput
+          aria-label="Compact number input"
+          placeholder="Type a number…"
+          readOnly
+          value={consumableValue}
+          onChange={(event, val) => setConsumableValue(val)}
+          min={0}
+          max={Math.floor(user.coins / consumableItem.cost)}
+        />
         <DialogActions>
           <Button
             sx={{
