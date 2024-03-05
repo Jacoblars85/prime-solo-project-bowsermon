@@ -154,6 +154,7 @@ function HeldItems({ heldItem }) {
         payload: {
           itemId: heldItem.id,
           amountNum: heldAmount,
+          totalCoins: heldAmount * heldItem.cost
         },
       });
     }
