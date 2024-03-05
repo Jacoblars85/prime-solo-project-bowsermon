@@ -34,12 +34,12 @@ function* fetchAllItems() {
   }
 
   function* buyItem(action) {
-    // console.log('action.payload', action.payload.itemId);
+    console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
         url: `/api/inventory/buy/item/${action.payload.itemId}`,
-        data: {amountNum: action.payload.amountNum}
+        data: action.payload
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
@@ -58,7 +58,7 @@ function* fetchAllItems() {
       const response = yield axios({
         method: 'PUT',
         url: `/api/inventory/sell/item/${action.payload.itemId}`,
-        data: {amountNum: action.payload.amountNum}
+        data: action.payload
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
@@ -76,8 +76,7 @@ function* fetchAllItems() {
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/use/item/${action.payload.itemId}`,
-        data: {amountNum: action.payload.amountNum}
+        url: `/api/inventory/use/item/${action.payload.itemId}`
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',

@@ -154,11 +154,14 @@ function Consumables({ consumableItem }) {
     } else {
       setOpenConsumableSnack(true);
 
+
+
       dispatch({
         type: "SAGA_BUY_ITEM",
         payload: {
           itemId: consumableItem.id,
           amountNum: consumableAmount,
+          totalCoins: consumableAmount * consumableItem.cost
         },
       });
     }

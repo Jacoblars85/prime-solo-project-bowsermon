@@ -88,7 +88,8 @@ router.get('/inventory', (req, res) => {
 
 
 router.put("/buy/item/:id", (req, res) => {
-    // console.log(req.body.amountNum);
+    console.log('req.body', req.body);
+    
     const sqlText = `
     UPDATE "user_inventory"
     SET "number" = "number" + $1
