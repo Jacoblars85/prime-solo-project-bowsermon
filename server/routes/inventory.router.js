@@ -66,11 +66,15 @@ router.get('/inventory', (req, res) => {
             "items"."name",
             "items"."hp",
             "items"."stamina",
-            "items"."pic"
+            "items"."pic",
+            "items"."type",
+            "items"."speed",
+            "items"."cost",
+            "items"."color"
     FROM "user_inventory"
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"
-        WHERE "user_id" = $1
+        WHERE "user_id" = $1 AND "user_inventory"."number" > 0 
         ORDER BY "items_id" ASC;
   `;
 
@@ -88,7 +92,7 @@ router.get('/inventory', (req, res) => {
 
 
 router.put("/buy/item/:id", (req, res) => {
-    console.log('req.body', req.body);
+    // console.log('req.body', req.body);
 
     const sqlText = `
     UPDATE "user_inventory"
@@ -126,7 +130,7 @@ router.put("/buy/item/:id", (req, res) => {
 
 
 router.put("/sell/item/:id", (req, res) => {
-    // console.log(req.body.amountNum);
+ console.log('req.body', req.body);
     const sqlText = `
         UPDATE "user_inventory"
         SET "number" = "number" - $1
@@ -134,7 +138,6 @@ router.put("/sell/item/:id", (req, res) => {
           `;
 
     const insertValue = [req.body.amountNum, req.user.id, req.params.id]
-
 
     pool.query(sqlText, insertValue)
         .then((result) => {

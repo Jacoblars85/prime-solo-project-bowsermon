@@ -10,25 +10,28 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
 function InventoryItem({ inventoryItem }) {
-  const [isPicture, setIsPicture] = useState(false);
+  const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector((store) => store.character.starter);
 
-  const dispatch = useDispatch();
-
+  const [isPicture, setIsPicture] = useState(false);
   const [open, setOpen] = useState(false);
+
+  console.log('inventoryItem', inventoryItem);
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const sellPot = (potValue) => {
+
     dispatch({
       type: "SAGA_SELL_ITEM",
       payload: {
         itemId: inventoryItem.id,
         amountNum: potValue,
+        totalCoins: potValue * inventoryItem.cost / 2
       },
     });
     setOpen(false);
