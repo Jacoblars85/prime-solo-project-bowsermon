@@ -130,7 +130,8 @@ router.put("/buy/item/:id", (req, res) => {
 
 
 router.put("/sell/item/:id", (req, res) => {
- console.log('req.body', req.body);
+//  console.log('req.body', req.body);
+
     const sqlText = `
         UPDATE "user_inventory"
         SET "number" = "number" - $1
@@ -164,8 +165,6 @@ router.put("/sell/item/:id", (req, res) => {
             res.sendStatus(500);
         });
 });
-
-
 
 router.put("/use/item/:id", (req, res) => {
     // console.log(req.body.amountNum);
