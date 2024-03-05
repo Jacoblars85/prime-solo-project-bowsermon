@@ -132,64 +132,64 @@ function HeldItems({ heldItem }) {
 
   //   console.log("heldItem", heldItem);
 
-  const [consumableOpen, setConsumableOpen] = useState(false);
+  const [heldOpen, setHeldOpen] = useState(false);
 
-  const handleConsumableClickOpen = () => {
-    setConsumableOpen(true);
+  const handleHeldClickOpen = () => {
+    setHeldOpen(true);
   };
 
-  const handleConsumableClose = () => {
-    setConsumableOpen(false);
+  const handleHeldClose = () => {
+    setHeldOpen(false);
   };
 
-  const buyConsumable = (consumableAmount) => {
-    if (user.coins < consumableAmount * heldItem.cost) {
-      setConsumableOpen(false);
+  const buyHeld = (heldAmount) => {
+    if (user.coins < heldAmount * heldItem.cost) {
+      setHeldOpen(false);
       return alert("you are broke broke, sorry");
     } else {
-      setOpenConsumableSnack(true);
+      setOpenHeldSnack(true);
 
       dispatch({
         type: "SAGA_BUY_POTION",
         payload: {
           potionId: heldItem.id,
-          amountNum: consumableAmount,
+          amountNum: heldAmount,
         },
       });
     }
   };
 
-  const consumableValuetext = (consumablevalues) => {
-    return consumablevalues;
+  const heldValuetext = (heldvalues) => {
+    return heldvalues;
   };
 
-  const [consumableValue, setConsumableValue] = useState(1);
+  const [heldValue, setHeldValue] = useState(1);
 
-  const handleConsumableChange = (event, newConsumableValue) => {
-    setConsumableValue(newConsumableValue);
+  const handleHeldChange = (event, newHeldValue) => {
+    setHeldValue(newHeldValue);
   };
 
-  const [anchorElConsumable, setAnchorElConsumable] = useState(false);
-  const openConsumableInfo = Boolean(anchorElConsumable);
+  const [anchorElHeld, setAnchorElHeld] = useState(false);
+  const openHeldInfo = Boolean(anchorElHeld);
 
-  const handleConsumableInfoClick = (event) => {
-    setAnchorElConsumable(event.currentTarget);
+  const handleHeldInfoClick = (event) => {
+    setAnchorElHeld(event.currentTarget);
   };
-  const handleConsumableInfoClose = () => {
-    setAnchorElConsumable(null);
-  };
-
-  const [openConsumableSnack, setOpenConsumableSnack] = useState(false);
-
-  const handleConsumableSnackClick = () => {
-    setOpenConsumableSnack(true);
+  const handleHeldInfoClose = () => {
+    setAnchorElHeld(null);
   };
 
-  const handleConsumableSnackClose = (event, reason) => {
+  const [openHeldSnack, setOpenHeldSnack] = useState(false);
+
+  const handleHeldSnackClick = () => {
+    setOpenHeldSnack(true);
+  };
+
+  const handleHeldSnackClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpenConsumableSnack(false);
+    setOpenHeldSnack(false);
   };
 
   return (
@@ -249,13 +249,13 @@ function HeldItems({ heldItem }) {
           />{" "}
         </h5>
 
-        <button disabled={user.coins < heldItem.cost ? true : false} onClick={handleConsumableClickOpen}>Buy</button>
+        <button disabled={user.coins < heldItem.cost ? true : false} onClick={handleHeldClickOpen}>Buy</button>
       </div>
 
       {/* held item dialog */}
       <Dialog
-        open={consumableOpen}
-        onClose={handleConsumableClose}
+        open={heldOpen}
+        onClose={handleHeldClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -263,7 +263,7 @@ function HeldItems({ heldItem }) {
           id="alert-dialog-title"
           sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
         >
-          {`Are you sure you want ${consumableValue} of the ${heldItem.name}?`}
+          {`Are you sure you want ${heldValue} of the ${heldItem.name}?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -273,7 +273,7 @@ function HeldItems({ heldItem }) {
               textAlign: "center",
             }}
           >
-            This will cost {consumableValue * heldItem.cost} coins and you can
+            This will cost {heldValue * heldItem.cost} coins and you can
             not get a refund.
           </DialogContentText>
         </DialogContent>
@@ -282,8 +282,8 @@ function HeldItems({ heldItem }) {
           aria-label="Compact number input"
           placeholder="Type a number…"
           readOnly
-          value={consumableValue}
-          onChange={(event, val) => setConsumableValue(val)}
+          value={heldValue}
+          onChange={(event, val) => setHeldValue(val)}
           min={1}
           max={Math.floor(user.coins / heldItem.cost)}
         />
@@ -293,7 +293,7 @@ function HeldItems({ heldItem }) {
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
             }}
-            onClick={() => buyConsumable(consumableValue)}
+            onClick={() => buyHeld(heldValue)}
             autoFocus
           >
             Buy
@@ -304,18 +304,18 @@ function HeldItems({ heldItem }) {
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
             }}
-            onClick={handleConsumableClose}
+            onClick={handleHeldClose}
           >
             Close
           </Button>
         </DialogActions>
       </Dialog>
 
-      {/* <Button onClick={handleConsumableSnackClick}>Open simple snackbar</Button> */}
+      {/* <Button onClick={handleHeldSnackClick}>Open simple snackbar</Button> */}
       <Snackbar
-        open={openConsumableSnack}
+        open={openHeldSnack}
         autoHideDuration={4000}
-        onClose={handleConsumableSnackClose}
+        onClose={handleHeldSnackClose}
         message={`Your ${heldItem.name} has been Sent to Your Inventory`}
         // action={action}
       />

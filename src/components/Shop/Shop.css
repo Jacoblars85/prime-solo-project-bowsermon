@@ -166,7 +166,7 @@
     
 }
 
-.randomCharacter img, .consumables img, .held img  {
+.randomCharacter img {
     cursor: pointer;
 }
 
