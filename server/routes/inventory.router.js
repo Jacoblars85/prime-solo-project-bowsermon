@@ -87,7 +87,7 @@ router.get('/inventory', (req, res) => {
 });
 
 
-router.put("/buy/potion/:id", (req, res) => {
+router.put("/buy/item/:id", (req, res) => {
     // console.log(req.body.amountNum);
     const sqlText = `
     UPDATE "user_inventory"
@@ -143,7 +143,7 @@ router.put("/buy/potion/:id", (req, res) => {
 });
 
 
-router.put("/sell/potion/:id", (req, res) => {
+router.put("/sell/item/:id", (req, res) => {
     // console.log(req.body.amountNum);
     const sqlText = `
         UPDATE "user_inventory"
@@ -201,7 +201,7 @@ router.put("/sell/potion/:id", (req, res) => {
 
 
 
-router.put("/use/potion/:id", (req, res) => {
+router.put("/use/item/:id", (req, res) => {
     // console.log(req.body.amountNum);
     const sqlText = `
             UPDATE "user_inventory"

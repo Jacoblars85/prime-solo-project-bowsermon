@@ -38,7 +38,7 @@ function* fetchAllItems() {
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/buy/potion/${action.payload.itemId}`,
+        url: `/api/inventory/buy/item/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -48,16 +48,16 @@ function* fetchAllItems() {
         type: 'FETCH_USER',
       })
     } catch (error) {
-      console.log('Unable to put potion into server', error);
+      console.log('Unable to put item into server', error);
     }
   }
 
-  function* sellPotion(action) {
+  function* sellItem(action) {
     // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/sell/potion/${action.payload.itemId}`,
+        url: `/api/inventory/sell/item/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -67,23 +67,23 @@ function* fetchAllItems() {
         type: 'FETCH_USER',
       })
     } catch (error) {
-      console.log('Unable to sell potion from server', error);
+      console.log('Unable to sell item from server', error);
     }
   }
 
-  function* usePotion(action) {
+  function* useItem(action) {
     // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/use/potion/${action.payload.itemId}`,
+        url: `/api/inventory/use/item/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
       })
     } catch (error) {
-      console.log('Unable to use potion server', error);
+      console.log('Unable to use item server', error);
     }
   }
 
@@ -93,8 +93,8 @@ function* fetchAllItems() {
     yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_ITEM', buyItem);
-    yield takeLatest('SAGA_SELL_POTION', sellPotion);
-    yield takeLatest('SAGA_USE_POTION', usePotion);
+    yield takeLatest('SAGA_SELL_ITEM', sellItem);
+    yield takeLatest('SAGA_USE_ITEM', useItem);
   
   }
   

@@ -25,7 +25,7 @@ function InventoryItem({ inventoryItem }) {
 
   const sellPot = (potValue) => {
     dispatch({
-      type: "SAGA_SELL_POTION",
+      type: "SAGA_SELL_ITEM",
       payload: {
         itemId: inventoryItem.id,
         amountNum: potValue,

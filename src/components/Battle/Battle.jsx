@@ -320,7 +320,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 1,
             },
@@ -335,7 +335,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 2,
             },
@@ -353,7 +353,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 3,
             },
@@ -408,7 +408,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 1,
             },
@@ -423,7 +423,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 2,
             },
@@ -441,7 +441,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 3,
             },
@@ -501,7 +501,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 1,
             },
@@ -516,7 +516,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 2,
             },
@@ -535,7 +535,7 @@ function Battle() {
           setInventoryOpen(false);
 
           dispatch({
-            type: "SAGA_USE_POTION",
+            type: "SAGA_USE_ITEM",
             payload: {
               itemId: 3,
             },
