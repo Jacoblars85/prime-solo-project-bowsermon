@@ -89,7 +89,7 @@ router.get('/inventory', (req, res) => {
 
 router.put("/buy/item/:id", (req, res) => {
     console.log('req.body', req.body);
-    
+
     const sqlText = `
     UPDATE "user_inventory"
     SET "number" = "number" + $1
@@ -98,35 +98,16 @@ router.put("/buy/item/:id", (req, res) => {
 
     const insertValue = [req.body.amountNum, req.user.id, req.params.id]
 
-
     pool.query(sqlText, insertValue)
         .then((result) => {
-            let insertNewUserQuery;
-
-            let healthNum = req.body.amountNum * 10;
-
-            let maxNum = req.body.amountNum * 20;
-
-            // console.log(healthNum);
-
-
-            if (req.params.id === '1' || req.params.id === '2') {
-                insertNewUserQuery = `
+            const insertNewUserQuery = `
                     UPDATE "user"
-                      SET "coins" = "coins" - ${healthNum}
-                      WHERE "id" = $1
+                      SET "coins" = "coins" - $1
+                      WHERE "id" = $2
                       RETURNING "coins";
                       `;
-            } else if (req.params.id === '3') {
-                insertNewUserQuery = `
-                    UPDATE "user"
-                      SET "coins" = "coins" - ${maxNum}
-                      WHERE "id" = $1
-                      RETURNING "coins";
-                      `;
-            }
-
-            const insertValue = [req.user.id]
+            
+            const insertValue = [req.body.totalCoins, req.user.id]
 
             pool.query(insertNewUserQuery, insertValue)
                 .then(result => {
@@ -157,33 +138,14 @@ router.put("/sell/item/:id", (req, res) => {
 
     pool.query(sqlText, insertValue)
         .then((result) => {
-            let insertNewUserQuery;
-
-            let healthNum = req.body.amountNum * 5;
-
-            let maxNum = req.body.amountNum * 10;
-
-            console.log(healthNum);
-
-
-            if (req.params.id === '1' || req.params.id === '2') {
-                insertNewUserQuery = `
-                        UPDATE "user"
-                          SET "coins" = "coins" + ${healthNum}
-                          WHERE "id" = $1
-                          RETURNING "coins";
-                          `;
-            } else if (req.params.id === '3') {
-                insertNewUserQuery = `
-                        UPDATE "user"
-                          SET "coins" = "coins" + ${maxNum}
-                          WHERE "id" = $1
-                          RETURNING "coins";
-                          `;
-            }
-
-    const insertValue = [req.user.id]
-
+            const insertNewUserQuery = `
+            UPDATE "user"
+            SET "coins" = "coins" + $1
+            WHERE "id" = $2
+            RETURNING "coins";
+            `;
+            
+            const insertValue = [req.body.totalCoins, req.user.id]
 
             pool.query(insertNewUserQuery, insertValue)
                 .then(result => {

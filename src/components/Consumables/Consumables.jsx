@@ -154,8 +154,6 @@ function Consumables({ consumableItem }) {
     } else {
       setOpenConsumableSnack(true);
 
-
-
       dispatch({
         type: "SAGA_BUY_ITEM",
         payload: {
