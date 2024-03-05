@@ -155,9 +155,9 @@ function Consumables({ consumableItem }) {
       setOpenConsumableSnack(true);
 
       dispatch({
-        type: "SAGA_BUY_POTION",
+        type: "SAGA_BUY_ITEM",
         payload: {
-          potionId: consumableItem.id,
+          itemId: consumableItem.id,
           amountNum: consumableAmount,
         },
       });

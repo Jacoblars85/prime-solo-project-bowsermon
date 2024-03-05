@@ -322,7 +322,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 1,
+              itemId: 1,
             },
           });
         } else if (attackType === "stamina") {
@@ -337,7 +337,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 2,
+              itemId: 2,
             },
           });
         } else if (attackType === "max") {
@@ -355,7 +355,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 3,
+              itemId: 3,
             },
           });
         }
@@ -410,7 +410,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 1,
+              itemId: 1,
             },
           });
         } else if (attackType === "stamina") {
@@ -425,7 +425,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 2,
+              itemId: 2,
             },
           });
         } else if (attackType === "max") {
@@ -443,7 +443,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 3,
+              itemId: 3,
             },
           });
         } else if (attackType === "starterTwo") {
@@ -503,7 +503,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 1,
+              itemId: 1,
             },
           });
         } else if (attackType === "stamina") {
@@ -518,7 +518,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 2,
+              itemId: 2,
             },
           });
         } else if (attackType === "max") {
@@ -537,7 +537,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_POTION",
             payload: {
-              potionId: 3,
+              itemId: 3,
             },
           });
         } else if (attackType === "starterOne") {

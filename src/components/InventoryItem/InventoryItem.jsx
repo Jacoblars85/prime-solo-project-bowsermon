@@ -27,7 +27,7 @@ function InventoryItem({ inventoryItem }) {
     dispatch({
       type: "SAGA_SELL_POTION",
       payload: {
-        potionId: inventoryItem.id,
+        itemId: inventoryItem.id,
         amountNum: potValue,
       },
     });

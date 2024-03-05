@@ -20,7 +20,6 @@ function* fetchAllItems() {
     }
   }
 
-
   function* fetchInventory() {
     // console.log('action.payload', action.payload);
     try {
@@ -34,12 +33,12 @@ function* fetchAllItems() {
     }
   }
 
-  function* buyPotion(action) {
-    // console.log('action.payload', action.payload.potionId);
+  function* buyItem(action) {
+    // console.log('action.payload', action.payload.itemId);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/buy/potion/${action.payload.potionId}`,
+        url: `/api/inventory/buy/potion/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -53,13 +52,12 @@ function* fetchAllItems() {
     }
   }
 
-
   function* sellPotion(action) {
     // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/sell/potion/${action.payload.potionId}`,
+        url: `/api/inventory/sell/potion/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -73,13 +71,12 @@ function* fetchAllItems() {
     }
   }
 
-
   function* usePotion(action) {
     // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/use/potion/${action.payload.potionId}`,
+        url: `/api/inventory/use/potion/${action.payload.itemId}`,
         data: {amountNum: action.payload.amountNum}
       })
       yield put({
@@ -95,7 +92,7 @@ function* fetchAllItems() {
   function* inventorySaga() {
     yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
-    yield takeLatest('SAGA_BUY_POTION', buyPotion);
+    yield takeLatest('SAGA_BUY_ITEM', buyItem);
     yield takeLatest('SAGA_SELL_POTION', sellPotion);
     yield takeLatest('SAGA_USE_POTION', usePotion);
   

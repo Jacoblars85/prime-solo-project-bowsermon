@@ -150,9 +150,9 @@ function HeldItems({ heldItem }) {
       setOpenHeldSnack(true);
 
       dispatch({
-        type: "SAGA_BUY_POTION",
+        type: "SAGA_BUY_ITEM",
         payload: {
-          potionId: heldItem.id,
+          itemId: heldItem.id,
           amountNum: heldAmount,
         },
       });
