@@ -130,7 +130,7 @@ function HeldItems({ heldItem }) {
 
   const user = useSelector((store) => store.user.userReducer);
 
-  //   console.log("heldItem", heldItem);
+    console.log("heldItem", heldItem);
 
   const [heldOpen, setHeldOpen] = useState(false);
 
@@ -217,7 +217,7 @@ function HeldItems({ heldItem }) {
             marginBottom: 0,
           }}
         >
-          +{heldItem.hp} hp
+          {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`} 
         </p>
 
         <p
@@ -230,7 +230,33 @@ function HeldItems({ heldItem }) {
             marginTop: 0,
           }}
         >
-          +{heldItem.stamina} stamina
+                   {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`} 
+        </p>
+
+        <p
+          style={{
+            color: "yellow",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            marginTop: 0,
+          }}
+        >
+                   {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`} 
+        </p>
+
+        <p
+          style={{
+            color: "red",
+            textShadow: "1px 1px black",
+            fontSize: "20px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            marginTop: 0,
+          }}
+        >
+                   {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`} 
         </p>
       </div>
 

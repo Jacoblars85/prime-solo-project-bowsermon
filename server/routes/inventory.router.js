@@ -15,7 +15,6 @@ router.get('/consumable', (req, res) => {
         "pic",
         "cost",
         "color",
-        "description"
     FROM "items"
         WHERE "type" = 'consumable';
   `;
@@ -39,10 +38,10 @@ router.get('/held', (req, res) => {
         "hp",
         "stamina",
         "speed",
+        "attack",
         "pic",
         "cost",
         "color",
-        "description"
     FROM "items"
         WHERE "type" = 'held';
   `;
@@ -71,9 +70,9 @@ router.get('/inventory', (req, res) => {
             "items"."pic",
             "items"."type",
             "items"."speed",
+            "items"."attack",
             "items"."cost",
             "items"."color",
-            "items"."description"
     FROM "user_inventory"
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"

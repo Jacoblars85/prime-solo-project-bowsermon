@@ -222,7 +222,7 @@ function Consumables({ consumableItem }) {
             marginBottom: 0,
           }}
         >
-          +{consumableItem.hp} hp
+         {consumableItem.hp === 0 ? "" : `+${consumableItem.hp} hp`} 
         </p>
 
         <p
@@ -235,7 +235,7 @@ function Consumables({ consumableItem }) {
             marginTop: 0,
           }}
         >
-          +{consumableItem.stamina} stamina
+         {consumableItem.stamina === 0 ? "" : `+${consumableItem.stamina} stamina`} 
         </p>
       </div>
 
