@@ -148,7 +148,6 @@ router.put("/sell/character", (req, res) => {
 
           const sqlValues = [req.user.id];
 
-
     pool
         .query(sqlText, sqlValues)
         .then((result) => {
@@ -243,7 +242,6 @@ router.put("/starter/one/:id", (req, res) => {
 
             pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
-
                     res.sendStatus(201);
                 })
         }).catch(err => {
@@ -281,7 +279,6 @@ router.put("/starter/two/:id", (req, res) => {
 
             pool.query(insertNewUserQuery, sqlValues)
                 .then(result => {
-
                     res.sendStatus(201);
                 })
         }).catch(err => {
