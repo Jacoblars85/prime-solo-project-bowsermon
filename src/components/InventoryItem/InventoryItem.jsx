@@ -18,7 +18,7 @@ function InventoryItem({ inventoryItem }) {
   const [isPicture, setIsPicture] = useState(false);
   const [open, setOpen] = useState(false);
 
-  console.log('inventoryItem', inventoryItem);
+  // console.log('inventoryItem', inventoryItem);
 
   const handleClose = () => {
     setOpen(false);

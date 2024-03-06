@@ -236,7 +236,7 @@ router.put("/starter/one/:id", (req, res) => {
             const insertNewUserQuery = `
         UPDATE "user_characters"
           SET "starter_1" = TRUE
-          WHERE "id" = $1 AND "user_id" = $1;
+          WHERE "id" = $1 AND "user_id" = $2;
           `;
 
             const sqlValues = [req.params.id, req.user.id]

@@ -17,6 +17,8 @@ function CharacterItem({ character }) {
 
   const [open, setOpen] = useState(false);
 
+  console.log('character', character);
+
   const handleClose = () => {
     setOpen(false);
   };
