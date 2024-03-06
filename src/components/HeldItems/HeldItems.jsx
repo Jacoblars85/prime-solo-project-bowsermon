@@ -130,7 +130,7 @@ function HeldItems({ heldItem }) {
 
   const user = useSelector((store) => store.user.userReducer);
 
-    console.log("heldItem", heldItem);
+  // console.log("heldItem", heldItem);
 
   const [heldOpen, setHeldOpen] = useState(false);
 
@@ -154,7 +154,7 @@ function HeldItems({ heldItem }) {
         payload: {
           itemId: heldItem.id,
           amountNum: heldAmount,
-          totalCoins: heldAmount * heldItem.cost
+          totalCoins: heldAmount * heldItem.cost,
         },
       });
     }
@@ -217,7 +217,7 @@ function HeldItems({ heldItem }) {
             marginBottom: 0,
           }}
         >
-          {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`} 
+          {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
         </p>
 
         <p
@@ -230,7 +230,7 @@ function HeldItems({ heldItem }) {
             marginTop: 0,
           }}
         >
-                   {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`} 
+          {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`}
         </p>
 
         <p
@@ -243,7 +243,7 @@ function HeldItems({ heldItem }) {
             marginTop: 0,
           }}
         >
-                   {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`} 
+          {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
         </p>
 
         <p
@@ -256,7 +256,7 @@ function HeldItems({ heldItem }) {
             marginTop: 0,
           }}
         >
-                   {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`} 
+          {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`}
         </p>
       </div>
 
@@ -276,7 +276,12 @@ function HeldItems({ heldItem }) {
           />{" "}
         </h5>
 
-        <button disabled={user.coins < heldItem.cost ? true : false} onClick={handleHeldClickOpen}>Buy</button>
+        <button
+          disabled={user.coins < heldItem.cost ? true : false}
+          onClick={handleHeldClickOpen}
+        >
+          Buy
+        </button>
       </div>
 
       {/* held item dialog */}
@@ -300,20 +305,20 @@ function HeldItems({ heldItem }) {
               textAlign: "center",
             }}
           >
-            This will cost {heldValue * heldItem.cost} coins and you can
-            not get a refund.
+            This will cost {heldValue * heldItem.cost} coins and you can not get
+            a refund.
           </DialogContentText>
         </DialogContent>
-        <DialogActions sx={{justifyContent: "center" }}>
-        <NumberInput
-          aria-label="Compact number input"
-          placeholder="Type a number…"
-          readOnly
-          value={heldValue}
-          onChange={(event, val) => setHeldValue(val)}
-          min={1}
-          max={Math.floor(user.coins / heldItem.cost)}
-        />
+        <DialogActions sx={{ justifyContent: "center" }}>
+          <NumberInput
+            aria-label="Compact number input"
+            placeholder="Type a number…"
+            readOnly
+            value={heldValue}
+            onChange={(event, val) => setHeldValue(val)}
+            min={1}
+            max={Math.floor(user.coins / heldItem.cost)}
+          />
           <Button
             sx={{
               color: "black",

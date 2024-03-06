@@ -5,8 +5,6 @@ import './HomePage.css';
 import Nav from '../Nav/Nav';
 import StarterItem from '../StarterItem/StarterItem';
 
-
-
 function HomePage() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,7 +25,6 @@ function HomePage() {
     <div>
 
       <Nav />
-
 
       <div className="homePage">
 

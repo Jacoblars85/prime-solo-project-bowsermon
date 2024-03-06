@@ -227,7 +227,6 @@ function* setStarterConditionally(action) {
 
 
 
-
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchBasicAttacks);
