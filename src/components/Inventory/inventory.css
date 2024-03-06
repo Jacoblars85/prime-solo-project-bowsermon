@@ -1,25 +1,40 @@
-.potionView {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 3px solid black;
-    justify-content: space-around;
-    row-gap: 10px;
-    column-gap: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 1400px;
-    height: 560px;
-    margin-top: 10px;
+.inventory {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
+    width: 100vw;
+    /* border: 3px solid black; */
+    justify-content: flex-start;
     align-items: center;
+    text-align: center;
+    row-gap: 0px;
+}
+
+.itemView {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-margin: 0px;
+  scroll-padding: 0px;
+  scroll-snap-type: y mandatory;
+  height: 75%;
+  width: 95%;
+  column-gap: 10px;
+  border: 3px solid black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   }
 
   .item_box {
     /* display: flex; */
     flex-direction: column;
     border: 3px solid white;
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     justify-content: center;
     text-align: center;
     /* padding-left: 0px; */
@@ -29,27 +44,27 @@
 
   .item_box h3 {
     margin: 0;
-    margin-top: -10px;
+    /* margin-top: -10px; */
     font-size: 25px;
     border-bottom: 3px solid black;
     text-shadow: 1px 1px white;
   }
 
   .potionImg {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     /* margin-top: -15px; */
     /* padding-left: 10px; */
   }
 
 .slider {
     /* margin-top: -11px; */
-    padding-left: 60px;
+    padding-left: 10px;
 }
 
 .singleItemBoxUl {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     margin: 0px;
     padding: 0px;
     text-align: center;
@@ -82,7 +97,7 @@
 
 
 .statDescription {
-    font-size: 30px;
+    font-size: 20px;
     /* padding: 0px; */
     margin: 0px;
     text-align: center;
@@ -134,6 +149,4 @@
     font-size: 40px;
     margin: 0px;
     text-shadow: 1px 1px white;
-    /* padding-bottom: 10px; */
-    margin-top: -20px;
   }

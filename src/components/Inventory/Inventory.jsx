@@ -28,9 +28,8 @@ function Inventory() {
 
                 <h2>Inventory</h2>
 
-                
+                <div className="itemView">
 
-                <div className="potionView">
                 {inventory.length === 0 ? `go to the shop to get more items` : ""}
                 {inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
 
