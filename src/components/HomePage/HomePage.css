@@ -26,7 +26,7 @@ body {
 
 .shopButton {
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 0.1%;
     height: 50px;
     width: 300px;
@@ -44,7 +44,7 @@ body {
 
 .inventoryButton {
     position: absolute;
-    top: 45%;
+    top: 35%;
     left: 0.1%;
     height: 50px;
     width: 300px;
