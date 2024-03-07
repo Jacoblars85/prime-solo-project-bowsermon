@@ -43,20 +43,7 @@
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    /* padding-left: 0px; */
-    /* background-color: black; */
-    
   }
-
-  .item_box h3 {
-    margin: 0;
-    /* margin-top: -10px; */
-    font-size: 25px;
-    /* border-bottom: 3px solid black; */
-    text-shadow: 1px 1px white;
-  }
-
-
 
 .singleItemBoxUl {
     height: 125px;
@@ -64,9 +51,7 @@
     margin: 0px;
     padding: 0px;
     text-align: center;
-    /* padding-left: 50px; */
     cursor: pointer;
-
 }
 
 .sellButton {
@@ -82,39 +67,7 @@
   text-decoration: none;
 }
 
-
-.statDescription {
-    font-size: 20px;
-    height: 125px;
-    width: 125px;
-    /* padding: 0px; */
-    margin: 0px;
-    text-align: center;
-}
-
-.statDescription p {
-    /* margin-top: 0px; */
-    /* padding-top: 30px; */
-    text-align: center;
-}
-
-
-.statHpText {
-    color: red;
-    text-shadow: 2px 2px black;
-}
-
-.statStaminaText {
-    color: limegreen;
-    text-shadow: 2px 2px black;
-}
-
-
-
   .amountOfItems {
-    /* position: relative;
-    top: -240%;
-    right: -90%; */
     background-color: white;
     border: 3px solid black;
     border-radius: 50%;
@@ -123,17 +76,14 @@
     text-align: center;
     font-size: 30px;
     margin: 0px;
-    /* align-self: flex-end; */
-    /* margin-top: -32px; */
-
   }
 
   .headerLine h3 {
     width: 160px;
     height: 54px;
-    /* align-items: center; */
-    /* text-align:; */
-    /* align-self: center; */
+    margin: 0;
+    font-size: 25px;
+    text-shadow: 1px 1px white;
   }
 
   .headerLine {

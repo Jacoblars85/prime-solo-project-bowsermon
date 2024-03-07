@@ -57,7 +57,11 @@ function InventoryItem({ inventoryItem }) {
   const displayText = () => {
     if (isPicture) {
       return (
-        <div className="statDescription">
+        <div style={{
+          height: "125px",
+          width: "125px"
+        }}
+        >
           <p
             style={{
               color: "red",
