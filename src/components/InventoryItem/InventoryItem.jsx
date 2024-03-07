@@ -59,8 +59,58 @@ function InventoryItem({ inventoryItem }) {
     if (isPicture) {
       return (
         <div className="statDescription">
-          <p className="statHpText">{inventoryItem.hp} hp</p>
-          <p className="statStaminaText">{inventoryItem.stamina} stamina</p>
+<p
+          style={{
+            color: "red",
+            textShadow: "1px 1px black",
+            fontSize: "25px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            // marginTop: 10,
+            // marginBottom: 0,
+          }}
+        >
+          {inventoryItem.hp === 0 ? "" : `+${inventoryItem.hp} hp`}
+        </p>
+
+        <p
+          style={{
+            color: "limegreen",
+            textShadow: "1px 1px black",
+            fontSize: "22px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            // marginTop: 0,
+          }}
+        >
+          {inventoryItem.stamina === 0 ? "" : `+${inventoryItem.stamina} stamina`}
+        </p>
+
+        <p
+          style={{
+            color: "yellow",
+            textShadow: "1px 1px black",
+            fontSize: "25px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            // marginTop: 0,
+          }}
+        >
+          {inventoryItem.speed === 0 ? "" : `+${inventoryItem.speed} speed`}
+        </p>
+
+        <p
+          style={{
+            color: "red",
+            textShadow: "1px 1px black",
+            fontSize: "23px",
+            fontWeight: "bold",
+            fontFamily: "New Super Mario Font U",
+            // marginTop: 0,
+          }}
+        >
+          {inventoryItem.attack === 0 ? "" : `+${inventoryItem.attack} damage`}
+        </p>
         </div>
       );
     } else {
