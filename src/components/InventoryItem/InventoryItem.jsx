@@ -83,8 +83,6 @@ function InventoryItem({ inventoryItem }) {
 
       </div>
 
-      {/* <h3>{inventoryItem.name}</h3> */}
-
       <ul className="singleItemBoxUl" onClick={togglePicture}>
         {" "}
         {displayText()}{" "}

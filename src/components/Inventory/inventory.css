@@ -25,6 +25,7 @@
   column-gap: 50px;
   row-gap: 40px;
   padding-top: 10px;
+  padding-bottom: 10px;
   border: 3px solid black;
   justify-content: center;
   align-items: center;
@@ -84,6 +85,8 @@
 
 .statDescription {
     font-size: 20px;
+    height: 125px;
+    width: 125px;
     /* padding: 0px; */
     margin: 0px;
     text-align: center;
@@ -127,10 +130,10 @@
 
   .headerLine h3 {
     width: 160px;
-    height: 57px;
-    /* align-items: center;
-    text-align: center; */
-    align-self: center;
+    height: 54px;
+    /* align-items: center; */
+    text-align:justify;
+    /* align-self: center; */
   }
 
   .headerLine {
@@ -140,8 +143,9 @@
     width: 100%;
     column-gap: 10px;
     justify-content: flex-end;
-    align-items: center;
+    align-items:end;
     text-align: center;
+    border-bottom: 3px solid black;
   }
 
   .backButton:hover {
