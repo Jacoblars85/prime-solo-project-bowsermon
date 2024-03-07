@@ -25,13 +25,12 @@ function InventoryItem({ inventoryItem }) {
   };
 
   const sellPot = (potValue) => {
-
     dispatch({
       type: "SAGA_SELL_ITEM",
       payload: {
         itemId: inventoryItem.id,
         amountNum: potValue,
-        totalCoins: potValue * inventoryItem.cost / 2
+        totalCoins: (potValue * inventoryItem.cost) / 2,
       },
     });
     setOpen(false);
@@ -59,58 +58,62 @@ function InventoryItem({ inventoryItem }) {
     if (isPicture) {
       return (
         <div className="statDescription">
-<p
-          style={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "25px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            // marginTop: 10,
-            // marginBottom: 0,
-          }}
-        >
-          {inventoryItem.hp === 0 ? "" : `+${inventoryItem.hp} hp`}
-        </p>
+          <p
+            style={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "25px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              // marginTop: 10,
+              // marginBottom: 0,
+            }}
+          >
+            {inventoryItem.hp === 0 ? "" : `+${inventoryItem.hp} hp`}
+          </p>
 
-        <p
-          style={{
-            color: "limegreen",
-            textShadow: "1px 1px black",
-            fontSize: "22px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            // marginTop: 0,
-          }}
-        >
-          {inventoryItem.stamina === 0 ? "" : `+${inventoryItem.stamina} stamina`}
-        </p>
+          <p
+            style={{
+              color: "limegreen",
+              textShadow: "1px 1px black",
+              fontSize: "22px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              // marginTop: 0,
+            }}
+          >
+            {inventoryItem.stamina === 0
+              ? ""
+              : `+${inventoryItem.stamina} stamina`}
+          </p>
 
-        <p
-          style={{
-            color: "yellow",
-            textShadow: "1px 1px black",
-            fontSize: "25px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            // marginTop: 0,
-          }}
-        >
-          {inventoryItem.speed === 0 ? "" : `+${inventoryItem.speed} speed`}
-        </p>
+          <p
+            style={{
+              color: "yellow",
+              textShadow: "1px 1px black",
+              fontSize: "25px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              // marginTop: 0,
+            }}
+          >
+            {inventoryItem.speed === 0 ? "" : `+${inventoryItem.speed} speed`}
+          </p>
 
-        <p
-          style={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "23px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            // marginTop: 0,
-          }}
-        >
-          {inventoryItem.attack === 0 ? "" : `+${inventoryItem.attack} damage`}
-        </p>
+          <p
+            style={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "23px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              // marginTop: 0,
+            }}
+          >
+            {inventoryItem.attack === 0
+              ? ""
+              : `+${inventoryItem.attack} damage`}
+          </p>
         </div>
       );
     } else {
@@ -124,13 +127,10 @@ function InventoryItem({ inventoryItem }) {
 
   return (
     <div className={"item_box"}>
-      
       <div className="headerLine">
-        
-      <h3 >{inventoryItem.name}</h3>
+        <h3>{inventoryItem.name}</h3>
 
         <p className="amountOfItems">{inventoryItem.number}X</p>
-
       </div>
 
       <ul className="singleItemBoxUl" onClick={togglePicture}>
@@ -157,10 +157,7 @@ function InventoryItem({ inventoryItem }) {
         </Box>
       </div>
 
-      <button
-        className="sellButton"
-        onClick={confirmSale}
-      >
+      <button className="sellButton" onClick={confirmSale}>
         Sell
       </button>
 
@@ -182,8 +179,8 @@ function InventoryItem({ inventoryItem }) {
               id="alert-dialog-description"
               sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
             >
-              You will receive {potValue * inventoryItem.cost / 2} coins if you sell{" "}
-              {inventoryItem.name}s.
+              You will receive {(potValue * inventoryItem.cost) / 2} coins if
+              you sell {inventoryItem.name}s.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
