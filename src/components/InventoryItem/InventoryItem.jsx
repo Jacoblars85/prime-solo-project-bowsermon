@@ -65,8 +65,6 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "25px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
-              // marginTop: 10,
-              // marginBottom: 0,
             }}
           >
             {inventoryItem.hp === 0 ? "" : `+${inventoryItem.hp} hp`}
@@ -79,7 +77,6 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "22px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
-              // marginTop: 0,
             }}
           >
             {inventoryItem.stamina === 0
@@ -94,7 +91,6 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "25px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
-              // marginTop: 0,
             }}
           >
             {inventoryItem.speed === 0 ? "" : `+${inventoryItem.speed} speed`}
@@ -107,7 +103,6 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "23px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
-              // marginTop: 0,
             }}
           >
             {inventoryItem.attack === 0
@@ -142,7 +137,7 @@ function InventoryItem({ inventoryItem }) {
         <Box sx={{ width: 170 }}>
           <Slider
             aria-label="Temperature"
-            defaultValue={0}
+            defaultValue={1}
             value={potValue}
             onChange={handlePotChange}
             getAriaValueText={potValuetext}
@@ -151,8 +146,7 @@ function InventoryItem({ inventoryItem }) {
             marks
             min={1}
             max={inventoryItem.number}
-            disabled={inventoryItem.number === 0 ? true : false}
-            sx={{ color: "blue" }}
+            sx={{ color: inventoryItem.color }}
           />
         </Box>
       </div>
@@ -161,7 +155,6 @@ function InventoryItem({ inventoryItem }) {
         Sell
       </button>
 
-      <Fragment>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -207,7 +200,6 @@ function InventoryItem({ inventoryItem }) {
             </Button>
           </DialogActions>
         </Dialog>
-      </Fragment>
     </div>
   );
 }
