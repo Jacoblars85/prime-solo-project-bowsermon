@@ -41,7 +41,7 @@ function InventoryItem({ inventoryItem }) {
     return value;
   };
 
-  const [potValue, setPotValue] = useState(0);
+  const [potValue, setPotValue] = useState(1);
 
   const handlePotChange = (event, newPotValue) => {
     setPotValue(newPotValue);
@@ -99,7 +99,7 @@ function InventoryItem({ inventoryItem }) {
             valueLabelDisplay="auto"
             step={1}
             marks
-            min={0}
+            min={1}
             max={inventoryItem.number}
             disabled={inventoryItem.number === 0 ? true : false}
             sx={{ color: "blue" }}
@@ -132,7 +132,7 @@ function InventoryItem({ inventoryItem }) {
               id="alert-dialog-description"
               sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
             >
-              You will receive {potValue * 5} coins if you sell{" "}
+              You will receive {potValue * inventoryItem.cost / 2} coins if you sell{" "}
               {inventoryItem.name}s.
             </DialogContentText>
           </DialogContent>
