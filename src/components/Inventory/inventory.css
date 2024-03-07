@@ -45,6 +45,38 @@
     text-align: center;
   }
 
+  .headerLine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    column-gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    border-bottom: 3px solid black;
+  }
+
+  .headerLine h3 {
+    width: 160px;
+    height: 54px;
+    margin: 0;
+    font-size: 25px;
+    text-shadow: 1px 1px white;
+  }
+
+  .amountOfItems {
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 30px;
+    margin: 0px;
+  }
+
+
 .singleItemBoxUl {
     height: 125px;
     width: 125px;
@@ -67,36 +99,6 @@
   text-decoration: none;
 }
 
-  .amountOfItems {
-    background-color: white;
-    border: 3px solid black;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    font-size: 30px;
-    margin: 0px;
-  }
-
-  .headerLine h3 {
-    width: 160px;
-    height: 54px;
-    margin: 0;
-    font-size: 25px;
-    text-shadow: 1px 1px white;
-  }
-
-  .headerLine {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    column-gap: 10px;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: center;
-    border-bottom: 3px solid black;
-  }
 
   .backButton:hover {
     background-color: #777878;
