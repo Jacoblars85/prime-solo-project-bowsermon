@@ -22,7 +22,9 @@
   scroll-snap-type: y mandatory;
   height: 75%;
   width: 95%;
-  column-gap: 10px;
+  column-gap: 50px;
+  row-gap: 40px;
+  padding-top: 10px;
   border: 3px solid black;
   justify-content: center;
   align-items: center;
@@ -30,12 +32,15 @@
   }
 
   .item_box {
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     border: 3px solid white;
-    height: 200px;
-    width: 200px;
-    justify-content: center;
+    height: 250px;
+    width: 250px;
+    row-gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
     /* padding-left: 0px; */
     /* background-color: black; */
@@ -46,33 +51,22 @@
     margin: 0;
     /* margin-top: -10px; */
     font-size: 25px;
-    border-bottom: 3px solid black;
+    /* border-bottom: 3px solid black; */
     text-shadow: 1px 1px white;
   }
 
-  .potionImg {
-    height: 100px;
-    width: 100px;
-    /* margin-top: -15px; */
-    /* padding-left: 10px; */
-  }
 
-.slider {
-    /* margin-top: -11px; */
-    padding-left: 10px;
-}
 
 .singleItemBoxUl {
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     margin: 0px;
     padding: 0px;
     text-align: center;
-    padding-left: 50px;
+    /* padding-left: 50px; */
     cursor: pointer;
 
 }
-
 
 .sellButton {
     height: auto;
@@ -88,14 +82,6 @@
 }
 
 
-
-.sellButton:disabled {
-    cursor:default;
-  background-color: #c2c9c9;
-
-}
-
-
 .statDescription {
     font-size: 20px;
     /* padding: 0px; */
@@ -104,8 +90,8 @@
 }
 
 .statDescription p {
-    margin-top: 0px;
-    padding-top: 30px;
+    /* margin-top: 0px; */
+    /* padding-top: 30px; */
     text-align: center;
 }
 
@@ -122,10 +108,10 @@
 
 
 
-  .amountOfItems p{
-    position: relative;
+  .amountOfItems {
+    /* position: relative;
     top: -240%;
-    right: -90%;
+    right: -90%; */
     background-color: white;
     border: 3px solid black;
     border-radius: 50%;
@@ -134,8 +120,28 @@
     text-align: center;
     font-size: 30px;
     margin: 0px;
-    margin-top: -32px;
+    /* align-self: flex-end; */
+    /* margin-top: -32px; */
 
+  }
+
+  .headerLine h3 {
+    width: 160px;
+    height: 57px;
+    /* align-items: center;
+    text-align: center; */
+    align-self: center;
+  }
+
+  .headerLine {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    column-gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
   }
 
   .backButton:hover {

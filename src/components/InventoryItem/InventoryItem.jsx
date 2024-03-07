@@ -65,20 +65,25 @@ function InventoryItem({ inventoryItem }) {
       );
     } else {
       return (
-        <div className="potionImg">
-          <img src={inventoryItem.pic} />
-        </div>
+        <>
+          <img height={125} width={125} src={inventoryItem.pic} />
+        </>
       );
     }
   };
 
   return (
     <div className={"item_box"}>
-      <div className="amountOfItems">
-        <p>{inventoryItem.number}X</p>
+      
+      <div className="headerLine">
+        
+      <h3 >{inventoryItem.name}</h3>
+
+        <p className="amountOfItems">{inventoryItem.number}X</p>
+
       </div>
 
-      <h3>{inventoryItem.name}</h3>
+      {/* <h3>{inventoryItem.name}</h3> */}
 
       <ul className="singleItemBoxUl" onClick={togglePicture}>
         {" "}
@@ -107,7 +112,6 @@ function InventoryItem({ inventoryItem }) {
       <button
         className="sellButton"
         onClick={confirmSale}
-        disabled={inventoryItem.number === 0 ? true : false}
       >
         Sell
       </button>
