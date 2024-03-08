@@ -145,10 +145,20 @@ INSERT INTO "levels"
 INSERT INTO "items" 
 	("name", "type", "hp", "stamina", "speed", "attack", "pic", "cost", "color")
 	VALUES 
-	('healing mushroom', 'consumable', 25, 0, 0, 0, 'images/redMushroomPic.webp', 10, '#F02F38'),
+	('healing mushroom', 'consumable', 25, 0, 0, 0, 'images/redMushroomPic.webp', 10, '#FF0100'),
 	('stamina mushroom', 'consumable', 0, 30, 0, 0, 'images/greenMushroomPic.webp', 10, '#00D400'),
 	('max mushroom', 'consumable', 20, 25, 0, 0, 'images/megaMushroomPic.webp', 40, '#FFD42A'),
-	('mega healing mushroom', 'consumable', 80, 0, 0, 0, 'images/bigRedMushroomPic.webp', 75, '#F02F38'),
-	('super star', 'consumable', 50, 50, 0, 0, 'images/starPic.webp', 100, '#FFD42A');
-	
+	('mega healing mushroom', 'consumable', 80, 0, 0, 0, 'images/bigRedMushroomPic.webp', 75, '#FF0100'),
+	('super star', 'consumable', 50, 50, 0, 0, 'images/starPic.webp', 100, '#FEF202'),
+	('shield', 'held', 20, 0, 0, 0, 'images/linkShieldPic.png', 150, '#000000'),
+	('boots', 'held', 0, 0, 10, 0, 'images/bootsPic.webp', 100, '#000000'),
+	('hammer', 'held', 0, 0, 0, 10, 'images/hammerPic.png', 150, '#000000'),
+	('boomarang', 'held', 0, 0, 0, 5, 'images/boomarangPic.webp', 100, '#000000');
+
+
+
+
+
+
+
 
