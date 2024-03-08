@@ -21,7 +21,8 @@ function Characters() {
     <div>
       <Nav />
 
-      <div className="scroll">
+<div className="characters">
+      <div className="bigbox">
         <div className="characterBox">
           <h2>Characters</h2>
 
@@ -33,15 +34,15 @@ function Characters() {
             );
           })}
         </div>
-      </div>
+   
 
-      <div className="starterOneHeader">
+      {/* <div className="starterOneHeader">
         <h2>Starter 1</h2>
-      </div>
+      </div> */}
 
-      <div className="starterTwoHeader">
+      {/* <div className="starterTwoHeader">
         <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
-      </div>
+      </div> */}
 
       <div className="starterCharacterView">
         {starter.map((start) => {
@@ -51,6 +52,8 @@ function Characters() {
             </div>
           );
         })}
+      </div>
+      </div>
       </div>
 
       <div className="backButton">

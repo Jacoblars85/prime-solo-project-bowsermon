@@ -14,11 +14,41 @@
   } 
 } 
 
+.characters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100vh;
+  width: 100vw;
+  /* border: 3px solid black; */
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.bigBox {
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 75%;
+  width: 95%;
+  border: 3px solid black;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  /* column-gap: 3%; */
+}
+
 .characterBox {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* border: 3px solid black; */
+  overflow-y: scroll;
+  scroll-margin: 10px;
+  scroll-padding: 10px;
+  scroll-snap-type: y mandatory;
+  border: 3px solid black;
   justify-content: space-around;
   align-items: flex-start;
   align-content: flex-start;
@@ -42,7 +72,7 @@
 }
 
 .characterBox h2 {
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   margin-top: -77px;
   font-size: 40px;
@@ -249,7 +279,7 @@
 
 
 .starterCharacterView {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -305,7 +335,7 @@
   
 
 .starterOneHeader {
-  position: absolute;
+  /* position: absolute; */
   top: 11%;
   right: 2.6%;
   z-index: 1;
@@ -316,8 +346,7 @@
 }
 
 .starterTwoHeader {
-  position: absolute;
-  position: absolute;
+  /* position: absolute; */
   top: 51%;
   right: 2.6%;
   z-index: 1;
