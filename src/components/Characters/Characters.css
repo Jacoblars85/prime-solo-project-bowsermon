@@ -37,38 +37,38 @@
   justify-content: center;
   align-items: flex-start;
   text-align: center;
-  /* column-gap: 3%; */
+  column-gap: 3%;
 }
 
 .characterBox {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  overflow-y: scroll;
+  /* overflow-y: scroll;
   overflow-x: hidden;
   scroll-margin: 0px;
   scroll-padding: 0px;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory; */
   height: 100%;
   width: 35%;
-  border-right: 3px solid black;
+  border: 3px solid black;
   justify-content: baseline;
   align-items: flex-start;
   text-align: center;
 }
 
-.starterCharacterBox {
+.starterBox {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  overflow-y: scroll;
+  /* overflow-y: scroll;
   overflow-x: hidden;
   scroll-margin: 0px;
   scroll-padding: 0px;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory; */
   height: 100%;
   width: 35%;
-  border-right: 3px solid black;
+  border: 3px solid black;
   justify-content: baseline;
   align-items: flex-start;
   text-align: center;
@@ -89,7 +89,7 @@
 .characterBox h2 {
   /* position: absolute; */
   text-align: center;
-  margin-top: -77px;
+  /* margin-top: -77px; */
   font-size: 40px;
   text-shadow: 1px 1px white;
 }
@@ -109,7 +109,7 @@
 }
 
 .single-box h5 {
-  margin: -5px;
+  /* margin: -5px; */
   margin-top: 10px;
   color: white;
   font-size: larger;
@@ -125,7 +125,7 @@
   height: 140px;
   width: 140px;
   text-align: center;
-  margin-left: 29px;
+  /* margin-left: 29px; */
   color: white;
   cursor: pointer;
   padding: 0px;
@@ -141,7 +141,7 @@
 .descriptionForCharacterSingle {
   width: 190px;
   height: 114px;
-  margin-left: -29px;
+  /* margin-left: -29px; */
   padding-left: 0px;
 }
 
@@ -255,7 +255,7 @@
 
 .starterPTag {
   position: relative;
-  margin-top: -60px;
+  /* margin-top: -60px; */
   padding-bottom: 6px;
   width: 190px;
   height: 15px;
@@ -290,17 +290,17 @@
 
 .starterCharacterBo {
   /* position: absolute; */
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+  /* flex-direction: row;
   flex-wrap: wrap;
   top: 15.8%;
-  left: 81%;
-  border: 3px solid black;
+  left: 81%; */
+  /* border: 3px solid black;
   width: 250px;
   height: 617px;
   justify-content: center;
   background-color: rgb(56, 188, 233);
-  padding-top: 20px;
+  padding-top: 20px; */
 }
 
 .starter-single-box {
@@ -317,7 +317,7 @@
   height: 250px;
   width: 250px;
   text-align: center;
-  padding-left: 37px;
+  /* padding-left: 37px; */
   /* color: black; */
   cursor: pointer;
   padding-left: 0px;
@@ -338,16 +338,16 @@
   cursor: pointer;
   height: 200px;
   width: 200px;
-  padding-left: 6px;
-  margin-top: -6px;
+  /* padding-left: 6px; */
+  /* margin-top: -6px; */
   
 }
   
 
 .starterOneHeader {
   /* position: absolute; */
-  top: 11%;
-  right: 2.6%;
+  /* top: 11%;
+  right: 2.6%; */
   z-index: 1;
   height: 50px;
   width: 200px;
@@ -357,8 +357,8 @@
 
 .starterTwoHeader {
   /* position: absolute; */
-  top: 51%;
-  right: 2.6%;
+  /* top: 51%;
+  right: 2.6%; */
   z-index: 1;
   height: 50px;
   width: 200px;

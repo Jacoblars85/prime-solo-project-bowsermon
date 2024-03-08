@@ -23,9 +23,8 @@ function Characters() {
 
       <div className="characters">
         <div className="bigbox">
+          <h2>Characters</h2>
           <div className="characterBox">
-            <h2>Characters</h2>
-
             {characters.map((character) => {
               return (
                 <div key={character.id}>
@@ -43,7 +42,8 @@ function Characters() {
         <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
       </div> */}
 
-          <div className="starterCharacterBox">
+          <div className="starterBox">
+
             {starter.map((start) => {
               return (
                 <div key={start.id}>
