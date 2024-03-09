@@ -7,6 +7,21 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function CharacterItem({ character }) {
   const [isPicture, setIsPicture] = useState(false);
 
@@ -15,12 +30,16 @@ function CharacterItem({ character }) {
 
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
+  const [openSell, setOpenSell] = useState(false);
 
-  console.log('character', character);
+  // console.log('character', character);
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleSellClose = () => {
+    setOpenSell(false);
+  };
+
+  const confirmSale = () => {
+    setOpenSell(true);
   };
 
   const setStarterOne = () => {
@@ -148,10 +167,6 @@ function CharacterItem({ character }) {
     setOpen(false);
   };
 
-  const confirmSale = () => {
-    setOpen(true);
-  };
-
   const togglePicture = () => {
     setIsPicture(!isPicture);
   };
@@ -193,6 +208,19 @@ function CharacterItem({ character }) {
     }
   };
 
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
   return (
     <div
       className={character.new ? "new" : "single-box"}
@@ -226,10 +254,11 @@ function CharacterItem({ character }) {
         </button>
       </div>
 
-      <Fragment>
+
+{/* sell conformation dialog */}
         <Dialog
-          open={open}
-          onClose={handleClose}
+          open={openSell}
+          onClose={handleSellClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
@@ -267,15 +296,60 @@ function CharacterItem({ character }) {
                 fontSize: 20,
                 fontFamily: "New Super Mario Font U",
               }}
-              onClick={handleClose}
+              onClick={handleSellClose}
             >
               Close
             </Button>
           </DialogActions>
         </Dialog>
-      </Fragment>
+
+
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Open full-screen dialog
+      </Button>
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar sx={{ position: 'relative' }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Sound
+            </Typography>
+            <Button autoFocus color="inherit" onClick={handleClose}>
+              save
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <List>
+          <ListItemButton>
+            <ListItemText primary="Phone ringtone" secondary="Titania" />
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <ListItemText
+              primary="Default notification ringtone"
+              secondary="Tethys"
+            />
+          </ListItemButton>
+        </List>
+      </Dialog>
     </div>
   );
 }
 
 export default CharacterItem;
+
+  
+
+      
