@@ -22,17 +22,18 @@ function Characters() {
       <Nav />
 
       <div className="characters">
-        <div className="bigbox">
-          <h2>Characters</h2>
-          <div className="characterBox">
+      <h2>Characters</h2>
+        <div className="bigCharacterBox">
+          
+         
             {characters.map((character) => {
               return (
-                <div key={character.id}>
+                <div className="characterBox" key={character.id}>
                   <CharacterItem character={character} />
                 </div>
               );
             })}
-          </div>
+   
 
           {/* <div className="starterOneHeader">
         <h2>Starter 1</h2>
@@ -42,16 +43,16 @@ function Characters() {
         <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
       </div> */}
 
-          <div className="starterBox">
+          {/* <div className="starterBox"> */}
 
             {starter.map((start) => {
               return (
-                <div key={start.id}>
+                <div className="starterBox" key={start.id}>
                   <StarterItem start={start} />
                 </div>
               );
             })}
-          </div>
+          {/* </div> */}
         </div>
       </div>
 
