@@ -25,14 +25,15 @@ function Characters() {
       <h2>Characters</h2>
         <div className="bigCharacterBox">
           
-         
+         <div className="characterBox">
             {characters.map((character) => {
               return (
-                <div className="characterBox" key={character.id}>
+                <div  key={character.id}>
                   <CharacterItem character={character} />
                 </div>
               );
             })}
+            </div>
    
 
           {/* <div className="starterOneHeader">
@@ -43,16 +44,16 @@ function Characters() {
         <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
       </div> */}
 
-          {/* <div className="starterBox"> */}
+          <div className="starterBox">
 
             {starter.map((start) => {
               return (
-                <div className="starterBox" key={start.id}>
+                <div key={start.id}>
                   <StarterItem start={start} />
                 </div>
               );
             })}
-          {/* </div> */}
+          </div>
         </div>
       </div>
 
