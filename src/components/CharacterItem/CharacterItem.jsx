@@ -18,7 +18,7 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 
-const Transition = forwardRef(function Transition(props, ref) {
+const InfoTransition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
@@ -209,14 +209,14 @@ function CharacterItem({ character }) {
   };
 
 
-  const [open, setOpen] = useState(false);
+  const [openInfo, setOpenInfo] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleInfoClickOpen = () => {
+    setOpenInfo(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleInfoClose = () => {
+    setOpenInfo(false);
   };
 
 
@@ -304,21 +304,21 @@ function CharacterItem({ character }) {
         </Dialog>
 
 
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleInfoClickOpen}>
         Open full-screen dialog
       </Button>
       <Dialog
         fullScreen
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Transition}
+        open={openInfo}
+        onClose={handleInfoClose}
+        TransitionComponent={InfoTransition}
       >
         <AppBar sx={{ position: 'relative' }}>
           <Toolbar>
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={handleInfoClose}
               aria-label="close"
             >
               <CloseIcon />
@@ -326,7 +326,7 @@ function CharacterItem({ character }) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               Sound
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+            <Button autoFocus color="inherit" onClick={handleInfoClose}>
               save
             </Button>
           </Toolbar>
