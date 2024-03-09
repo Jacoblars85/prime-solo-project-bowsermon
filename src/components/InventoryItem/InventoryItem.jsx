@@ -30,7 +30,7 @@ function InventoryItem({ inventoryItem }) {
       payload: {
         itemId: inventoryItem.id,
         amountNum: potValue,
-        totalCoins: (potValue * inventoryItem.cost) / 2,
+        totalCoins: Math.floor(potValue * inventoryItem.cost / 2),
       },
     });
     setOpen(false);
@@ -176,7 +176,7 @@ function InventoryItem({ inventoryItem }) {
               id="alert-dialog-description"
               sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
             >
-              You will receive {(potValue * inventoryItem.cost) / 2} coins if
+              You will receive {Math.floor(potValue * inventoryItem.cost / 2)} coins if
               you sell {inventoryItem.name}s.
             </DialogContentText>
           </DialogContent>
