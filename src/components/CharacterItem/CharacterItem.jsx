@@ -332,6 +332,7 @@ function CharacterItem({ character }) {
           </Toolbar>
         </AppBar>
         <List>
+        <img src={character.profile_pic} height={200} width={200} />
           <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
