@@ -6,7 +6,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import List from '@mui/material/List';
@@ -332,7 +331,12 @@ function CharacterItem({ character }) {
           </Toolbar>
         </AppBar>
         <List>
-        <img src={character.profile_pic} height={200} width={200} />
+        <img src={character.profile_pic} height={350} width={350} />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+
           <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
