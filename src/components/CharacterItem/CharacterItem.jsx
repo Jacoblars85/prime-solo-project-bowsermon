@@ -339,8 +339,7 @@ function CharacterItem({ character }) {
             display="flex"
             flexDirection="row"
             justifyContent="space-around"
-            borderBottom="3px solid black"
-            paddingBottom={5}
+            paddingBottom={3}
           >
             <Box borderRight="2px solid black">
               <img src={character.profile_pic} height={350} width={350} />
@@ -373,7 +372,22 @@ function CharacterItem({ character }) {
 
             <Divider />
           </Box>
+          <Divider />
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-around"
+            alignItems="center"
+            paddingBottom={2}
+            paddingTop={2}
 
+          >
+            <Button>Sell</Button>
+            <Button>Starter 1</Button>
+            <Button>Starter 2</Button>
+            <Button>Remove</Button>
+          </Box>
+          <Divider />
           <Box>
             {held &&
               held.map((heldItem) => {
