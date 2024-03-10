@@ -324,7 +324,7 @@ function CharacterItem({ character }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Sound
+              {character.name}
             </Typography>
             <Button autoFocus color="inherit" onClick={handleInfoClose}>
               save
@@ -332,20 +332,25 @@ function CharacterItem({ character }) {
           </Toolbar>
         </AppBar>
         <List>
-          <Box display="flex" flexDirection="row">
+          <Box display="flex" flexDirection="row" justifyContent="space-around">
         <img src={character.profile_pic} height={350} width={350} />
 
         <Box display="flex" flexDirection="column">
-
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
         <Divider />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Hp" secondary={character.hp} />
         <Divider />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Stamina" secondary={character.stamina} />
         <Divider />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <ListItemText primary="Speed" secondary={character.speed} />
+        <Divider />
+        <ListItemText primary="Special Attack" secondary={character.unique_attack} />
+        <Divider />
+        <ListItemText primary="Special Attack Damage" secondary={character.unique_damage} />
+        <Divider />
+        <ListItemText primary="Special Attack Cost" secondary={character.unique_stamina} />
+        <Divider />
         </Box>
-        
+
         <Divider />
 
         </Box>
