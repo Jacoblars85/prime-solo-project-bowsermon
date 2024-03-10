@@ -339,16 +339,22 @@ function CharacterItem({ character }) {
             justifyContent="space-around"
             paddingBottom={3}
           >
-            <Box display="flex"
-            flexDirection="row"
-            justifyContent="space-around"
-            columnGap={2}
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-around"
+              columnGap={2}
             >
               <img src={character.profile_pic} height={350} width={350} />
 
-              <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
-              <img src={character.profile_pic} height={100} width={100} />
-            </Box>
+              <Box
+                alignSelf="flex-end"
+                height={100}
+                width={100}
+                border="1px solid black"
+              >
+                <img src={character.profile_pic} height={100} width={100} />
+              </Box>
             </Box>
 
             {/* <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
@@ -381,11 +387,10 @@ function CharacterItem({ character }) {
             </Box>
 
             <Divider />
-
           </Box>
 
           <Divider />
-          
+
           <Box
             display="flex"
             flexDirection="row"
@@ -406,79 +411,83 @@ function CharacterItem({ character }) {
                 return (
                   <>
                     <ListItemButton>
-                    <Box
-            display="flex"
-            flexDirection="row"
-            columnGap={20}
-            justifyContent="space-around"
-            alignItems="center"
-
-          >
-                 
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        columnGap={20}
+                        justifyContent="space-around"
+                        alignItems="center"
+                      >
                         <img height={70} width={70} src={heldItem.pic} />
-             
-                        <h4 style={{ color: heldItem.color, fontSize: "25px", width: "100px"}}>
+
+                        <h4
+                          style={{
+                            color: heldItem.color,
+                            fontSize: "25px",
+                            width: "100px",
+                          }}
+                        >
                           {heldItem.name}
                         </h4>
-        <div>
-                        <p
-                          style={{
-                            color: "red",
-                            textShadow: "1px 1px black",
-                            fontSize: "25px",
-                            fontWeight: "bold",
-                            fontFamily: "New Super Mario Font U",
-                            marginTop: 10,
-                            marginBottom: 0,
-                          }}
-                        >
-                          {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
-                        </p>
+                        <div>
+                          <p
+                            style={{
+                              color: "red",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 10,
+                              marginBottom: 0,
+                            }}
+                          >
+                            {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
+                          </p>
 
-                        <p
-                          style={{
-                            color: "limegreen",
-                            textShadow: "1px 1px black",
-                            fontSize: "25px",
-                            fontWeight: "bold",
-                            fontFamily: "New Super Mario Font U",
-                            marginTop: 0,
-                          }}
-                        >
-                          {heldItem.stamina === 0
-                            ? ""
-                            : `+${heldItem.stamina} stamina`}
-                        </p>
+                          <p
+                            style={{
+                              color: "limegreen",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {heldItem.stamina === 0
+                              ? ""
+                              : `+${heldItem.stamina} stamina`}
+                          </p>
 
-                        <p
-                          style={{
-                            color: "yellow",
-                            textShadow: "1px 1px black",
-                            fontSize: "25px",
-                            fontWeight: "bold",
-                            fontFamily: "New Super Mario Font U",
-                            marginTop: 0,
-                          }}
-                        >
-                          {heldItem.speed === 0
-                            ? ""
-                            : `+${heldItem.speed} speed`}
-                        </p>
+                          <p
+                            style={{
+                              color: "yellow",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {heldItem.speed === 0
+                              ? ""
+                              : `+${heldItem.speed} speed`}
+                          </p>
 
-                        <p
-                          style={{
-                            color: "red",
-                            textShadow: "1px 1px black",
-                            fontSize: "25px",
-                            fontWeight: "bold",
-                            fontFamily: "New Super Mario Font U",
-                            marginTop: 0,
-                          }}
-                        >
-                          {heldItem.attack === 0
-                            ? ""
-                            : `+${heldItem.attack} damage`}
-                        </p>
+                          <p
+                            style={{
+                              color: "red",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {heldItem.attack === 0
+                              ? ""
+                              : `+${heldItem.attack} damage`}
+                          </p>
                         </div>
                       </Box>
                     </ListItemButton>
