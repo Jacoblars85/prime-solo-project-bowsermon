@@ -135,7 +135,7 @@ function CharacterItem({ character }) {
   const sellCharacter = () => {
     if (starter.length === 2) {
       if (character.id === starter[0].id || character.id === starter[1].id) {
-        setOpen(false);
+        setOpenSell(false);
         return alert("you can't sell your starter");
       } else {
         dispatch({
@@ -147,7 +147,7 @@ function CharacterItem({ character }) {
       }
     } else if (starter.length === 1) {
       if (character.id === starter[0].id) {
-        setOpen(false);
+        setOpenSell(false);
         return alert("you can't sell your starter");
       } else {
         dispatch({
@@ -165,7 +165,7 @@ function CharacterItem({ character }) {
         },
       });
     }
-    setOpen(false);
+    setOpenSell(false);
   };
 
   const togglePicture = () => {
@@ -329,9 +329,6 @@ function CharacterItem({ character }) {
                 ? "Starter 2"
                 : ""}
             </Typography>
-            {/* <Button autoFocus color="inherit" onClick={handleInfoClose}>
-              save
-            </Button> */}
           </Toolbar>
         </AppBar>
         <List>
@@ -382,7 +379,7 @@ function CharacterItem({ character }) {
             paddingTop={2}
 
           >
-            <Button>Sell</Button>
+            <Button onClick={confirmSale}>Sell</Button>
             <Button>Starter 1</Button>
             <Button>Starter 2</Button>
             <Button>Remove</Button>
