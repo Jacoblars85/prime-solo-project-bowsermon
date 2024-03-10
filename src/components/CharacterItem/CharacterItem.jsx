@@ -354,7 +354,7 @@ function CharacterItem({ character }) {
         <Divider />
 
         </Box>
-          <ListItemButton>
+          {/* <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
           <Divider />
@@ -363,7 +363,7 @@ function CharacterItem({ character }) {
               primary="Default notification ringtone"
               secondary="Tethys"
             />
-          </ListItemButton>
+          </ListItemButton> */}
         </List>
       </Dialog>
     </div>
