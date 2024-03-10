@@ -308,8 +308,6 @@ function CharacterItem({ character }) {
         open={openInfo}
         onClose={handleInfoClose}
         TransitionComponent={InfoTransition}
-        // backgroundColor="inherit"
-        sx={{ background: "inherit" }}
       >
         <AppBar sx={{ position: "relative" }}>
           <Toolbar sx={{ backgroundColor: "gray" }}>
