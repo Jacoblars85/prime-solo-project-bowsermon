@@ -341,8 +341,11 @@ function CharacterItem({ character }) {
           >
             <Box display="flex"
             flexDirection="row"
-            justifyContent="space-around">
+            justifyContent="space-around"
+            columnGap={2}
+            >
               <img src={character.profile_pic} height={350} width={350} />
+
               <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
               <img src={character.profile_pic} height={100} width={100} />
             </Box>
