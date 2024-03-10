@@ -357,10 +357,6 @@ function CharacterItem({ character }) {
               </Box>
             </Box>
 
-            {/* <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
-              <img src={character.profile_pic} height={100} width={100} />
-            </Box> */}
-
             <Box display="flex" flexDirection="column" border="2px solid black">
               <Divider />
               <ListItemText primary="Hp" secondary={character.hp} />
