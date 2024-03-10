@@ -6,17 +6,17 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import Box from '@mui/material/Box';
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
+import Box from "@mui/material/Box";
 
 const InfoTransition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -208,7 +208,6 @@ function CharacterItem({ character }) {
     }
   };
 
-
   const [openInfo, setOpenInfo] = useState(false);
 
   const handleInfoClickOpen = () => {
@@ -218,8 +217,6 @@ function CharacterItem({ character }) {
   const handleInfoClose = () => {
     setOpenInfo(false);
   };
-
-
 
   return (
     <div
@@ -254,55 +251,53 @@ function CharacterItem({ character }) {
         </button>
       </div>
 
-
-{/* sell conformation dialog */}
-        <Dialog
-          open={openSell}
-          onClose={handleSellClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+      {/* sell conformation dialog */}
+      <Dialog
+        open={openSell}
+        onClose={handleSellClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
         >
-          <DialogTitle
-            id="alert-dialog-title"
+          {`Are you sure you want to sell ${character.name}`}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
             sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
           >
-            {`Are you sure you want to sell ${character.name}`}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText
-              id="alert-dialog-description"
-              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
-            >
-              You will receive 10 coins if you sell {character.name}. You will
-              have to buy the new character box to have the chance to get{" "}
-              {character.name} back.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 20,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={sellCharacter}
-              autoFocus
-            >
-              Sell
-            </Button>
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 20,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={handleSellClose}
-            >
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-
+            You will receive 10 coins if you sell {character.name}. You will
+            have to buy the new character box to have the chance to get{" "}
+            {character.name} back.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 20,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={sellCharacter}
+            autoFocus
+          >
+            Sell
+          </Button>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 20,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleSellClose}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <Button variant="outlined" onClick={handleInfoClickOpen}>
         Open full-screen dialog
@@ -312,9 +307,11 @@ function CharacterItem({ character }) {
         open={openInfo}
         onClose={handleInfoClose}
         TransitionComponent={InfoTransition}
+        // backgroundColor="inherit"
+        sx={{ background: "inherit" }}
       >
-        <AppBar sx={{ position: 'relative' }}>
-          <Toolbar>
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar sx={{ backgroundColor: "gray" }}>
             <IconButton
               edge="start"
               color="inherit"
@@ -332,28 +329,42 @@ function CharacterItem({ character }) {
           </Toolbar>
         </AppBar>
         <List>
-          <Box display="flex" flexDirection="row" justifyContent="space-around">
-        <img src={character.profile_pic} height={350} width={350} />
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-around"
+            borderBottom="3px solid black"
+          >
+            <Box borderRight="2px solid black">
+              <img src={character.profile_pic} height={350} width={350} />
+            </Box>
+            <Box display="flex" flexDirection="column" border="2px solid black">
+              <Divider />
+              <ListItemText primary="Hp" secondary={character.hp} />
+              <Divider />
+              <ListItemText primary="Stamina" secondary={character.stamina} />
+              <Divider />
+              <ListItemText primary="Speed" secondary={character.speed} />
+              <Divider />
+              <ListItemText
+                primary="Special Attack"
+                secondary={character.unique_attack}
+              />
+              <Divider />
+              <ListItemText
+                primary="Special Attack Damage"
+                secondary={character.unique_damage}
+              />
+              <Divider />
+              <ListItemText
+                primary="Special Attack Cost"
+                secondary={character.unique_stamina}
+              />
+              <Divider />
+            </Box>
 
-        <Box display="flex" flexDirection="column">
-        <Divider />
-        <ListItemText primary="Hp" secondary={character.hp} />
-        <Divider />
-        <ListItemText primary="Stamina" secondary={character.stamina} />
-        <Divider />
-        <ListItemText primary="Speed" secondary={character.speed} />
-        <Divider />
-        <ListItemText primary="Special Attack" secondary={character.unique_attack} />
-        <Divider />
-        <ListItemText primary="Special Attack Damage" secondary={character.unique_damage} />
-        <Divider />
-        <ListItemText primary="Special Attack Cost" secondary={character.unique_stamina} />
-        <Divider />
-        </Box>
-
-        <Divider />
-
-        </Box>
+            <Divider />
+          </Box>
           {/* <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
@@ -371,7 +382,3 @@ function CharacterItem({ character }) {
 }
 
 export default CharacterItem;
-
-  
-
-      
