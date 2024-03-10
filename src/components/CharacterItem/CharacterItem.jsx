@@ -392,9 +392,9 @@ function CharacterItem({ character }) {
             paddingTop={2}
           >
             <Button onClick={confirmSale}>Sell</Button>
-            <Button>Starter 1</Button>
-            <Button>Starter 2</Button>
-            <Button>Remove</Button>
+            <Button onClick={setStarterOne}>Starter 1</Button>
+            <Button onClick={setStarterTwo}>Starter 2</Button>
+            <Button onClick={clearStarter}>Remove</Button>
           </Box>
           <Divider />
           <Box>
