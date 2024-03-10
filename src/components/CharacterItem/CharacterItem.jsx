@@ -300,6 +300,7 @@ function CharacterItem({ character }) {
         </DialogActions>
       </Dialog>
 
+      {/* Full screen dialog */}
       <Button variant="outlined" onClick={handleInfoClickOpen}>
         Open full-screen dialog
       </Button>
@@ -377,7 +378,6 @@ function CharacterItem({ character }) {
             alignItems="center"
             paddingBottom={2}
             paddingTop={2}
-
           >
             <Button onClick={confirmSale}>Sell</Button>
             <Button>Starter 1</Button>
