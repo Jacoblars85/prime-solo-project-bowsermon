@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
+import Box from '@mui/material/Box';
 
 const InfoTransition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -331,12 +332,23 @@ function CharacterItem({ character }) {
           </Toolbar>
         </AppBar>
         <List>
+          <Box display="flex" flexDirection="row">
         <img src={character.profile_pic} height={350} width={350} />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
 
+        <Box display="flex" flexDirection="column">
+
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <Divider />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <Divider />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        <Divider />
+        <ListItemText primary="Phone ringtone" secondary="Titania" />
+        </Box>
+        
+        <Divider />
+
+        </Box>
           <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
