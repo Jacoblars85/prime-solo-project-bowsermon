@@ -33,7 +33,7 @@ function CharacterItem({ character }) {
 
   const [openSell, setOpenSell] = useState(false);
 
-  // console.log('character', character);
+  console.log('character', character);
 
   const handleSellClose = () => {
     setOpenSell(false);
@@ -322,6 +322,9 @@ function CharacterItem({ character }) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.name}
             </Typography>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              {character.starter_1 === true ? "Starter 1" : character.starter_2 === true ? "Starter 2" : ""}
+            </Typography>
             {/* <Button autoFocus color="inherit" onClick={handleInfoClose}>
               save
             </Button> */}
@@ -338,6 +341,7 @@ function CharacterItem({ character }) {
             <Box borderRight="2px solid black">
               <img src={character.profile_pic} height={350} width={350} />
             </Box>
+
             <Box display="flex" flexDirection="column" border="2px solid black">
               <Divider />
               <ListItemText primary="Hp" secondary={character.hp} />
@@ -364,11 +368,13 @@ function CharacterItem({ character }) {
             </Box>
 
             <Divider />
+
           </Box>
+
           <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
+            // display="flex"
+            // flexDirection="row"
+            // justifyContent="space-between"
             borderBottom="3px solid black"
             paddingBottom={5}
           >
@@ -376,10 +382,12 @@ function CharacterItem({ character }) {
               held.map((heldItem) => {
                 return (
                   <>
+                  <ListItemButton>
+
                     <div style={{ marginLeft: "10px" }}>
                       <img height={70} width={70} src={heldItem.pic} />
                     </div>
-
+                    
                     <div style={{ width: "150px", marginLeft: "10px" }}>
                       <h4 style={{ color: heldItem.color, width: "150px" }}>
                         {heldItem.name}
@@ -444,11 +452,14 @@ function CharacterItem({ character }) {
                           : `+${heldItem.attack} damage`}
                       </p>
                     </div>
+
+          </ListItemButton>
+          <Divider />
                   </>
                 );
               })}
           </Box>
-          {/* <ListItemButton>
+          <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton>
           <Divider />
@@ -457,7 +468,7 @@ function CharacterItem({ character }) {
               primary="Default notification ringtone"
               secondary="Tethys"
             />
-          </ListItemButton> */}
+          </ListItemButton>
         </List>
       </Dialog>
     </div>
