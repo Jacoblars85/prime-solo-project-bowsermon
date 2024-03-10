@@ -27,6 +27,7 @@ function CharacterItem({ character }) {
 
   const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector((store) => store.character.starter);
+  const held = useSelector((store) => store.inventory.held);
 
   const dispatch = useDispatch();
 
@@ -334,6 +335,7 @@ function CharacterItem({ character }) {
             flexDirection="row"
             justifyContent="space-around"
             borderBottom="3px solid black"
+            paddingBottom={5}
           >
             <Box borderRight="2px solid black">
               <img src={character.profile_pic} height={350} width={350} />
@@ -364,6 +366,89 @@ function CharacterItem({ character }) {
             </Box>
 
             <Divider />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-around"
+            borderBottom="3px solid black"
+            paddingBottom={5}
+          >
+            {held &&
+              held.map((heldItem) => {
+                return (
+                  <>
+                    <div style={{ marginLeft: "10px" }}>
+                      <img height={70} width={70} src={heldItem.pic} />
+                    </div>
+
+                    <div style={{ width: "150px", marginLeft: "10px" }}>
+                      <h4 style={{ color: heldItem.color, width: "150px" }}>
+                        {heldItem.name}
+                      </h4>
+                    </div>
+
+                    <div style={{ width: "100px" }}>
+                      <p
+                        style={{
+                          color: "red",
+                          textShadow: "1px 1px black",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          fontFamily: "New Super Mario Font U",
+                          marginTop: 10,
+                          marginBottom: 0,
+                        }}
+                      >
+                        {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
+                      </p>
+
+                      <p
+                        style={{
+                          color: "limegreen",
+                          textShadow: "1px 1px black",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          fontFamily: "New Super Mario Font U",
+                          marginTop: 0,
+                        }}
+                      >
+                        {heldItem.stamina === 0
+                          ? ""
+                          : `+${heldItem.stamina} stamina`}
+                      </p>
+
+                      <p
+                        style={{
+                          color: "yellow",
+                          textShadow: "1px 1px black",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          fontFamily: "New Super Mario Font U",
+                          marginTop: 0,
+                        }}
+                      >
+                        {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
+                      </p>
+
+                      <p
+                        style={{
+                          color: "red",
+                          textShadow: "1px 1px black",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          fontFamily: "New Super Mario Font U",
+                          marginTop: 0,
+                        }}
+                      >
+                        {heldItem.attack === 0
+                          ? ""
+                          : `+${heldItem.attack} damage`}
+                      </p>
+                    </div>
+                  </>
+                );
+              })}
           </Box>
           {/* <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
