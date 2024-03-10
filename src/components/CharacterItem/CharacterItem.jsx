@@ -339,9 +339,18 @@ function CharacterItem({ character }) {
             justifyContent="space-around"
             paddingBottom={3}
           >
-            <Box borderRight="2px solid black">
+            <Box display="flex"
+            flexDirection="row"
+            justifyContent="space-around">
               <img src={character.profile_pic} height={350} width={350} />
+              <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
+              <img src={character.profile_pic} height={100} width={100} />
             </Box>
+            </Box>
+
+            {/* <Box alignSelf="flex-end" height={100} width={100} border="1px solid black">
+              <img src={character.profile_pic} height={100} width={100} />
+            </Box> */}
 
             <Box display="flex" flexDirection="column" border="2px solid black">
               <Divider />
@@ -391,22 +400,26 @@ function CharacterItem({ character }) {
                 return (
                   <>
                     <ListItemButton>
-                      <div style={{ marginLeft: "10px" }}>
-                        <img height={70} width={70} src={heldItem.pic} />
-                      </div>
+                    <Box
+            display="flex"
+            flexDirection="row"
+            columnGap={20}
+            justifyContent="space-around"
+            alignItems="center"
 
-                      <div style={{ marginLeft: "50px" }}>
-                        <h4 style={{ color: heldItem.color, width: "150px" }}>
+          >
+                 
+                        <img height={70} width={70} src={heldItem.pic} />
+             
+                        <h4 style={{ color: heldItem.color, fontSize: "25px", width: "100px"}}>
                           {heldItem.name}
                         </h4>
-                      </div>
-
-                      <div>
+        <div>
                         <p
                           style={{
                             color: "red",
                             textShadow: "1px 1px black",
-                            fontSize: "20px",
+                            fontSize: "25px",
                             fontWeight: "bold",
                             fontFamily: "New Super Mario Font U",
                             marginTop: 10,
@@ -420,7 +433,7 @@ function CharacterItem({ character }) {
                           style={{
                             color: "limegreen",
                             textShadow: "1px 1px black",
-                            fontSize: "20px",
+                            fontSize: "25px",
                             fontWeight: "bold",
                             fontFamily: "New Super Mario Font U",
                             marginTop: 0,
@@ -435,7 +448,7 @@ function CharacterItem({ character }) {
                           style={{
                             color: "yellow",
                             textShadow: "1px 1px black",
-                            fontSize: "20px",
+                            fontSize: "25px",
                             fontWeight: "bold",
                             fontFamily: "New Super Mario Font U",
                             marginTop: 0,
@@ -450,7 +463,7 @@ function CharacterItem({ character }) {
                           style={{
                             color: "red",
                             textShadow: "1px 1px black",
-                            fontSize: "20px",
+                            fontSize: "25px",
                             fontWeight: "bold",
                             fontFamily: "New Super Mario Font U",
                             marginTop: 0,
@@ -460,16 +473,17 @@ function CharacterItem({ character }) {
                             ? ""
                             : `+${heldItem.attack} damage`}
                         </p>
-                      </div>
+                        </div>
+                      </Box>
                     </ListItemButton>
                     <Divider />
                   </>
                 );
               })}
           </Box>
-          <ListItemButton>
+          {/* <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItemButton>
+          </ListItemButton> */}
         </List>
       </Dialog>
     </div>
