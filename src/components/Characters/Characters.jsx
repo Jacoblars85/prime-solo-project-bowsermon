@@ -17,6 +17,10 @@ function Characters() {
     dispatch({ type: "SAGA_FETCH_CHARACTERS" });
   }, []);
 
+  useEffect(() => {
+    dispatch({ type: "SAGA_FETCH_ITEMS" });
+  }, []);
+
   return (
     <div>
       <Nav />

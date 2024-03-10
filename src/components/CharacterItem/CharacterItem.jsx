@@ -370,7 +370,7 @@ function CharacterItem({ character }) {
           <Box
             display="flex"
             flexDirection="row"
-            justifyContent="space-around"
+            justifyContent="space-between"
             borderBottom="3px solid black"
             paddingBottom={5}
           >
