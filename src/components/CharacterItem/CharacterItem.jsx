@@ -203,7 +203,7 @@ function CharacterItem({ character }) {
     } else {
       return (
         <div className="characterPictures">
-          <img src={character.profile_pic} />
+          <img onClick={handleInfoClickOpen} src={character.profile_pic} />
         </div>
       );
     }
@@ -381,8 +381,11 @@ function CharacterItem({ character }) {
             </Box>
 
             <Divider />
+
           </Box>
+
           <Divider />
+          
           <Box
             display="flex"
             flexDirection="row"
