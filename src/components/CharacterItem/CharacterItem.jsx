@@ -326,9 +326,9 @@ function CharacterItem({ character }) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.name}
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleInfoClose}>
+            {/* <Button autoFocus color="inherit" onClick={handleInfoClose}>
               save
-            </Button>
+            </Button> */}
           </Toolbar>
         </AppBar>
         <List>
