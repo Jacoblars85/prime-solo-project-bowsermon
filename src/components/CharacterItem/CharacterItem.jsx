@@ -367,10 +367,10 @@ function CharacterItem({ character }) {
             paddingBottom={2}
             paddingTop={2}
           >
-            <Button onClick={confirmSale}>Sell</Button>
-            <Button onClick={setStarterOne}>Starter 1</Button>
-            <Button onClick={setStarterTwo}>Starter 2</Button>
-            <Button onClick={clearStarter}>Remove</Button>
+            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={confirmSale}>Sell</Button>
+            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={setStarterOne}>Starter 1</Button>
+            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={setStarterTwo}>Starter 2</Button>
+            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={clearStarter}>Remove</Button>
           </Box>
           <Divider />
           <Box>
