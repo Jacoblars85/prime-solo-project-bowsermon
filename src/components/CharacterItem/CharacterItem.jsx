@@ -206,7 +206,7 @@ function CharacterItem({ character }) {
         <h5>{character.name}</h5>
 
         <img
-          cursor="pointer"
+          style={{ cursor: "pointer" }}
           height="140px"
           width="140px"
           onClick={handleInfoClickOpen}
