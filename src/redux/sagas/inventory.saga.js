@@ -2,9 +2,12 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 
-function* fetchAllItems() {
+  function* fetchInventory() {
     // console.log('action.payload', action.payload);
     try {
+      const usersInventoryResponse = yield axios.get(`/api/inventory/user/inventory`);
+      const usersHeldResponse = yield axios.get(`/api/inventory/user/held`);
+      const usersConsumableResponse = yield axios.get(`/api/inventory/user/consumable`);
       const itemsResponse = yield axios.get(`/api/inventory/consumable`);
       const heldResponse = yield axios.get(`/api/inventory/held`);
       yield put({
@@ -15,17 +18,6 @@ function* fetchAllItems() {
         type: 'SET_HELD_ITEMS',
         payload: heldResponse.data
       });
-    } catch (error) {
-      console.log('fetchAllItems error:', error);
-    }
-  }
-
-  function* fetchInventory() {
-    // console.log('action.payload', action.payload);
-    try {
-      const usersInventoryResponse = yield axios.get(`/api/inventory/user/inventory`);
-      const usersHeldResponse = yield axios.get(`/api/inventory/user/held`);
-      const usersConsumableResponse = yield axios.get(`/api/inventory/user/consumable`);
       yield put({
         type: 'SET_USERS_INVENTORY',
         payload: usersInventoryResponse.data
@@ -99,7 +91,7 @@ function* fetchAllItems() {
 
 
   function* inventorySaga() {
-    yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
+    // yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_ITEM', buyItem);
     yield takeLatest('SAGA_SELL_ITEM', sellItem);

@@ -35,7 +35,7 @@ function Shop() {
   const held = useSelector((store) => store.inventory.held);
 
   useEffect(() => {
-    dispatch({ type: "SAGA_FETCH_ITEMS" });
+    dispatch({ type: "SAGA_FETCH_IVENTORY" });
   }, []);
 
   useEffect(() => {

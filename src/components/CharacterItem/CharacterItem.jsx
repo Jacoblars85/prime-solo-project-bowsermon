@@ -25,14 +25,14 @@ const InfoTransition = forwardRef(function Transition(props, ref) {
 function CharacterItem({ character }) {
   const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector((store) => store.character.starter);
-  const held = useSelector((store) => store.inventory.held);
+  const usersHeldItems = useSelector((store) => store.inventory.usersHeldItems);
 
   const dispatch = useDispatch();
 
   const [openSell, setOpenSell] = useState(false);
 
   // console.log("character", character);
-  //  console.log("held", held);
+   console.log("usersHeldItems", usersHeldItems);
 
   const handleSellClose = () => {
     setOpenSell(false);
@@ -374,8 +374,8 @@ function CharacterItem({ character }) {
           </Box>
           <Divider />
           <Box>
-            {held &&
-              held.map((heldItem) => {
+            {usersHeldItems &&
+              usersHeldItems.map((heldItem) => {
                 return (
                   <>
                     <ListItemButton>
