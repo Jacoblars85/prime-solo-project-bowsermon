@@ -32,6 +32,7 @@ function CharacterItem({ character }) {
   const [openSell, setOpenSell] = useState(false);
 
   // console.log("character", character);
+  //  console.log("held", held);
 
   const handleSellClose = () => {
     setOpenSell(false);
@@ -385,6 +386,7 @@ function CharacterItem({ character }) {
                         justifyContent="space-around"
                         alignItems="center"
                       >
+                        {/* <p>{heldItem.number}X</p> */}
                         <img height={70} width={70} src={heldItem.pic} />
 
                         <h4
