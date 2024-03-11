@@ -259,23 +259,39 @@ router.put("/use/item/:id", (req, res) => {
 });
 
 router.put("/equip/item", (req, res) => {
-    // console.log(req.body.amountNum);
+    //  console.log('req.body', req.body);
+        
     const sqlText = `
-            UPDATE "user_inventory"
-            SET "number" = "number" - 1
-              WHERE "user_id" = $1 AND "items_id" = $2;
-              `;
+        UPDATE "user_inventory"
+        SET "number" = "number" - 1
+            WHERE "user_id" = $1 AND "items_id" = $2;
+            `;
 
-    const insertValue = [req.user.id, req.params.id]
+    const insertValue = [req.user.id, req.body.itemId]
 
     pool.query(sqlText, insertValue)
-        .then(result => {
-            res.sendStatus(201);
-        })
-        .catch((err) => {
-            console.log("Error in inventory.router /use PUT,", err);
-            res.sendStatus(500);
-        });
+    .then((result) => {
+        const insertNewUserQuery = `
+        UPDATE "user_characters"
+        SET "item" = $1
+        WHERE "user_id" = $2 AND "id" = $3
+        `;
+        
+        const insertValue = [req.body.itemId, req.user.id, req.body.characterID]
+
+        pool.query(insertNewUserQuery, insertValue)
+            .then(result => {
+                res.sendStatus(201);
+            })
+    }).catch(err => {
+        // catch for second query
+        console.log('in the second', err);
+        res.sendStatus(500)
+    })
+    .catch((err) => {
+        console.log("Error in inventory.router /sell PUT,", err);
+        res.sendStatus(500);
+    });
 });
 
 
