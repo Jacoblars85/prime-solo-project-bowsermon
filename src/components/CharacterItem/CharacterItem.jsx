@@ -191,6 +191,7 @@ function CharacterItem({ character }) {
         type: "SAGA_EQUIP_ITEM",
         payload: {
           itemId: itemId,
+          characterID: character.id,
         },
       });
 

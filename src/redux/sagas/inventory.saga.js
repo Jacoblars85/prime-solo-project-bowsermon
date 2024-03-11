@@ -93,7 +93,8 @@ import { put, takeLatest } from 'redux-saga/effects';
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/equip/item`
+        url: `/api/inventory/equip/item`,
+        data: action.payload
       })
       yield put({
         type: 'SAGA_FETCH_IVENTORY',
