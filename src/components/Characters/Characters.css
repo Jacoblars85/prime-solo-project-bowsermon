@@ -69,10 +69,11 @@
   text-align: center;
 }
 
-.characterBox h2 {
+.characters h2 {
   text-align: center;
   font-size: 40px;
   text-shadow: 1px 1px white;
+  margin: 0px;
 }
 
 .singleArea {
@@ -123,7 +124,6 @@
   flex-wrap: wrap;
   width: inherit;
   height: 40px;
-  /* padding-top: 6px; */
   justify-content: center;
   align-items: baseline;
 }
