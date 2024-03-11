@@ -187,10 +187,8 @@ function CharacterItem({ character }) {
   };
 
   return (
-    <>
-
+    <div>
         <p className="starterPTag">{character.new ? "new" : character.starter_1 ? "Starter 1" : character.starter_2 ? "Starter 2" : ""}</p>
-  
 
     <div
       className={character.new ? "new" : "single-box"}
@@ -200,7 +198,7 @@ function CharacterItem({ character }) {
       <h5>{character.name}</h5>
 
       <div className="characterPictures">
-          <img onClick={handleInfoClickOpen} src={character.profile_pic} />
+          <img cursor="pointer" height="140px" width="140px" onClick={handleInfoClickOpen} src={character.profile_pic} />
         </div>
 
 
@@ -459,7 +457,7 @@ function CharacterItem({ character }) {
         </List>
       </Dialog>
     </div>
-    </>
+    </div>
   );
 }
 
