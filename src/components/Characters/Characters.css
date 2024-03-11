@@ -51,11 +51,10 @@
   height: 100%;
   width: 77.5%;
   column-gap: 30px;
-  row-gap: 20px;
-  padding-top: 10px;
+  row-gap: 50px;
   /* padding-bottom: 10px; */
   border: 3px solid black;
-  justify-content: baseline;
+  justify-content: center;
   align-items: flex-start;
   text-align: center;
 }
@@ -76,18 +75,6 @@
   align-items: flex-start;
   text-align: center;
 }
-
-/* .scroll {
-  overflow-y: scroll;
-  scroll-margin: 10px;
-  scroll-padding: 10px;
-  scroll-snap-type: y mandatory;
-  width: 1120px;
-  height: 634px;
-  margin-left: 20px;
-  border: 3px solid black;
-  margin-top: 40px;
-} */
 
 .characterBox h2 {
   /* position: absolute; */
