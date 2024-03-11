@@ -289,7 +289,7 @@ router.put("/equip/item", (req, res) => {
         res.sendStatus(500)
     })
     .catch((err) => {
-        console.log("Error in inventory.router /sell PUT,", err);
+        console.log("Error in inventory.router /equip PUT,", err);
         res.sendStatus(500);
     });
 });
