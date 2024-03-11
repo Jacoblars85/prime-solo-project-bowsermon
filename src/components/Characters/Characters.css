@@ -98,11 +98,46 @@
   background-position-y: 150px;
 }
 
+.starterPTag {
+  /* position: relative; */
+  /* margin-top: -60px; */
+  /* padding-bottom: 20px; */
+  margin: 0px;
+  width: 195px;
+  height: 30px;
+  text-align: center;
+  text-shadow: 1px 1px white;
+  font-size: 28px;
+}
+
 .single-box h5 {
   /* margin: -5px; */
   margin: 10px;
   color: white;
   font-size: larger;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 190px;
+  height: 40px;
+  padding-top: 6px;
+  justify-content: center;
+}
+
+.buttonBox button:hover {
+  background-color: #757777;
+  text-decoration: none;
+}
+
+.buttonBox button{
+  width: 95px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+
 }
 
 
@@ -142,41 +177,6 @@
 
   color: white;
   font-size: larger;
-}
-
-.starterPTag {
-  /* position: relative; */
-  /* margin-top: -60px; */
-  /* padding-bottom: 20px; */
-  margin: 0px;
-  width: 195px;
-  height: 30px;
-  text-align: center;
-  text-shadow: 1px 1px white;
-  font-size: 28px;
-}
-
-.buttonBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 190px;
-  height: 40px;
-  padding-top: 6px;
-  justify-content: center;
-}
-
-.buttonBox button:hover {
-  background-color: #757777;
-  text-decoration: none;
-}
-
-.buttonBox button{
-  width: 95px;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-
 }
 
 
