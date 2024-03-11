@@ -33,7 +33,7 @@ function CharacterItem({ character }) {
 
   const [openSell, setOpenSell] = useState(false);
 
-  console.log("character", character);
+  // console.log("character", character);
 
   const handleSellClose = () => {
     setOpenSell(false);
@@ -182,31 +182,31 @@ function CharacterItem({ character }) {
   const doNothing = () => {};
 
   const displayText = () => {
-    if (isPicture) {
-      return (
-        <div className="descriptionForCharacterSingle">
-          <div className="mainStatText">
-            <p className="characterTextTotalHp">{character.hp} hp</p>
-            <p className="characterTextStamina">{character.stamina} stamina</p>
-            <p className="characterTextSpeed">{character.speed} speed</p>
-          </div>
+    // if (isPicture) {
+    //   return (
+    //     <div className="descriptionForCharacterSingle">
+    //       <div className="mainStatText">
+    //         <p className="characterTextTotalHp">{character.hp} hp</p>
+    //         <p className="characterTextStamina">{character.stamina} stamina</p>
+    //         <p className="characterTextSpeed">{character.speed} speed</p>
+    //       </div>
 
-          <div className="attackStatText">
-            <p className="characterTextBoxAttack">{character.unique_attack}</p>
-            <p className="characterTextHp">{character.unique_damage} damage</p>
-            <p className="characterTextStamina">
-              {character.unique_stamina} stamina
-            </p>
-          </div>
-        </div>
-      );
-    } else {
+    //       <div className="attackStatText">
+    //         <p className="characterTextBoxAttack">{character.unique_attack}</p>
+    //         <p className="characterTextHp">{character.unique_damage} damage</p>
+    //         <p className="characterTextStamina">
+    //           {character.unique_stamina} stamina
+    //         </p>
+    //       </div>
+    //     </div>
+    //   );
+    // } else {
       return (
         <div className="characterPictures">
           <img onClick={handleInfoClickOpen} src={character.profile_pic} />
         </div>
       );
-    }
+    // }
   };
 
   const [openInfo, setOpenInfo] = useState(false);
