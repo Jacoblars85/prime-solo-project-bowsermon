@@ -367,10 +367,38 @@ function CharacterItem({ character }) {
             paddingBottom={2}
             paddingTop={2}
           >
-            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={confirmSale}>Sell</Button>
-            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={setStarterOne}>Starter 1</Button>
-            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={setStarterTwo}>Starter 2</Button>
-            <Button style={{ color: "black" }} variant="contained" color="inherit" onClick={clearStarter}>Remove</Button>
+            <Button
+              style={{ color: "black" }}
+              variant="contained"
+              color="inherit"
+              onClick={confirmSale}
+            >
+              Sell
+            </Button>
+            <Button
+              style={{ color: "black" }}
+              variant="contained"
+              color="inherit"
+              onClick={setStarterOne}
+            >
+              Starter 1
+            </Button>
+            <Button
+              style={{ color: "black" }}
+              variant="contained"
+              color="inherit"
+              onClick={setStarterTwo}
+            >
+              Starter 2
+            </Button>
+            <Button
+              style={{ color: "black" }}
+              variant="contained"
+              color="inherit"
+              onClick={clearStarter}
+            >
+              Remove
+            </Button>
           </Box>
           <Divider />
           <Box>
@@ -388,17 +416,21 @@ function CharacterItem({ character }) {
                         height={75}
                       >
                         <Box
-                        display="flex"
-                        flexDirection="row"
-                        columnGap={5}
-                        justifyContent="space-around"
-                        alignItems="center"
-                      >
-                        <p style={{
-                            color: usersHeld.color,
-                            fontSize: "25px",
-                          }}>{usersHeld.number}X</p>
-                        <img height={70} width={70} src={usersHeld.pic} />
+                          display="flex"
+                          flexDirection="row"
+                          columnGap={5}
+                          justifyContent="space-around"
+                          alignItems="center"
+                        >
+                          <p
+                            style={{
+                              color: usersHeld.color,
+                              fontSize: "25px",
+                            }}
+                          >
+                            {usersHeld.number}X
+                          </p>
+                          <img height={70} width={70} src={usersHeld.pic} />
                         </Box>
                         <h4
                           style={{
@@ -476,9 +508,6 @@ function CharacterItem({ character }) {
                 );
               })}
           </Box>
-          {/* <ListItemButton>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItemButton> */}
         </List>
       </Dialog>
     </div>
