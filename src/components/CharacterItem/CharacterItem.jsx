@@ -186,6 +186,17 @@ function CharacterItem({ character }) {
     setOpenInfo(false);
   };
 
+  const equipItem = (itemId) => {
+  //  console.log('itemId', itemId);
+      dispatch({
+        type: "SAGA_EQUIP_ITEM",
+        payload: {
+          itemId: itemId,
+        },
+      });
+
+  };
+
   return (
     <div className="singleArea">
       <div>
@@ -406,7 +417,7 @@ function CharacterItem({ character }) {
               usersHeldItems.map((usersHeld) => {
                 return (
                   <>
-                    <ListItemButton>
+                    <ListItemButton onClick={()=> equipItem(usersHeld.id)}>
                       <Box
                         display="flex"
                         flexDirection="row"
