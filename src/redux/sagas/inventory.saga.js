@@ -91,7 +91,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
   function* inventorySaga() {
-    // yield takeLatest('SAGA_FETCH_ITEMS', fetchAllItems);
     yield takeLatest('SAGA_FETCH_IVENTORY', fetchInventory);
     yield takeLatest('SAGA_BUY_ITEM', buyItem);
     yield takeLatest('SAGA_SELL_ITEM', sellItem);
