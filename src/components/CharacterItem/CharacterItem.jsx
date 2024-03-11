@@ -385,10 +385,21 @@ function CharacterItem({ character }) {
                         columnGap={20}
                         justifyContent="space-around"
                         alignItems="center"
+                        height={75}
                       >
-                        <p>{usersHeld.number}X</p>
+                        <Box
+                        display="flex"
+                        flexDirection="row"
+                        columnGap={5}
+                        justifyContent="space-around"
+                        alignItems="center"
+                      >
+                        <p style={{
+                            color: usersHeld.color,
+                            fontSize: "25px",
+                          }}>{usersHeld.number}X</p>
                         <img height={70} width={70} src={usersHeld.pic} />
-
+                        </Box>
                         <h4
                           style={{
                             color: usersHeld.color,
