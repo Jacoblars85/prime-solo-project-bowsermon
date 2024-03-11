@@ -140,7 +140,6 @@
 }
 
 
-
 .new {
   animation-name: blink ;
   animation-duration: .9s ;
@@ -148,11 +147,13 @@
   animation-iteration-count: infinite ;
   border: 3px solid yellow;
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   height: 190px;
   width: 190px;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
-  /* padding-left: 0px; */
   background-color: black;
   background-image: url('/public/images/bowserBlock.png');
   background-repeat: repeat-x;
@@ -161,19 +162,23 @@
 
 }
 
-.new p {
+.newPTag {
   animation-name: animate ;
   animation-duration: .9s ;
   animation-timing-function: step-end ;
   animation-iteration-count: infinite ;
   color: yellow;
   text-shadow: black;
+  margin: 0px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  text-shadow: 1px 1px white;
+  font-size: 28px;
 }
 
 .new h5 {
-  /* margin: -5px; */
   margin: 10px;
-
   color: white;
   font-size: larger;
 }

@@ -188,7 +188,7 @@ function CharacterItem({ character }) {
   return (
     <div className="singleArea">
       <div>
-        <p className="starterPTag">
+        <p className={character.new ? "newPTag" : "starterPTag"}>
           {character.new
             ? "new"
             : character.starter_1
@@ -205,7 +205,6 @@ function CharacterItem({ character }) {
       >
         <h5>{character.name}</h5>
 
-        <div className="characterPictures">
           <img
             cursor="pointer"
             height="140px"
@@ -213,7 +212,6 @@ function CharacterItem({ character }) {
             onClick={handleInfoClickOpen}
             src={character.profile_pic}
           />
-        </div>
 
         <div className="buttonBox">
           <button id={character.id} onClick={setStarterOne}>
