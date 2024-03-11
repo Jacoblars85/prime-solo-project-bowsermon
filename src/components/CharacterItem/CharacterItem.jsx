@@ -247,9 +247,6 @@ function CharacterItem({ character }) {
         <button id={character.id} onClick={clearStarter}>
           Remove
         </button>
-        <button id={character.id} onClick={confirmSale}>
-          Sell
-        </button>
       </div>
 
       {/* sell conformation dialog */}
@@ -301,9 +298,6 @@ function CharacterItem({ character }) {
       </Dialog>
 
       {/* Full screen dialog */}
-      <Button variant="outlined" onClick={handleInfoClickOpen}>
-        Open full-screen dialog
-      </Button>
       <Dialog
         fullScreen
         open={openInfo}
