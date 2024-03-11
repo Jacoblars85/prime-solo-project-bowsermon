@@ -23,10 +23,20 @@ function* fetchAllItems() {
   function* fetchInventory() {
     // console.log('action.payload', action.payload);
     try {
-      const inventoryResponse = yield axios.get(`/api/inventory/inventory`);
+      const usersInventoryResponse = yield axios.get(`/api/inventory/user/inventory`);
+      const usersHeldResponse = yield axios.get(`/api/inventory/user/held`);
+      const usersConsumableResponse = yield axios.get(`/api/inventory/user/consumable`);
       yield put({
         type: 'SET_USERS_INVENTORY',
-        payload: inventoryResponse.data
+        payload: usersInventoryResponse.data
+      });
+      yield put({
+        type: 'SET_USERS_HELD',
+        payload: usersHeldResponse.data
+      });
+      yield put({
+        type: 'SET_USERS_CONSUMABLE',
+        payload: usersConsumableResponse.data
       });
     } catch (error) {
       console.log('fetchInventory error:', error);

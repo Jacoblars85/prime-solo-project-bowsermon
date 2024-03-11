@@ -57,7 +57,7 @@ router.get('/held', (req, res) => {
 });
 
 
-router.get('/inventory', (req, res) => {
+router.get('/user/inventory', (req, res) => {
 
     const query = `
     SELECT "user_inventory"."id" as "id",
@@ -77,6 +77,76 @@ router.get('/inventory', (req, res) => {
         INNER JOIN "items"
     ON "user_inventory"."items_id" = "items"."id"
         WHERE "user_id" = $1 AND "user_inventory"."number" > 0 
+        ORDER BY "items_id" ASC;
+  `;
+
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all users inventory', err);
+            res.sendStatus(500)
+        })
+});
+
+router.get('/user/held', (req, res) => {
+
+    const query = `
+    SELECT "user_inventory"."id" as "id",
+            "user_inventory"."user_id" as "user_id",
+            "user_inventory"."items_id" as "items_id",
+            "user_inventory"."number" as "number",
+            "items"."name",
+            "items"."hp",
+            "items"."stamina",
+            "items"."pic",
+            "items"."type",
+            "items"."speed",
+            "items"."attack",
+            "items"."cost",
+            "items"."color"
+    FROM "user_inventory"
+        INNER JOIN "items"
+    ON "user_inventory"."items_id" = "items"."id"
+        WHERE "user_id" = $1 AND "user_inventory"."number" > 0 AND "items"."type" = 'held'
+        ORDER BY "items_id" ASC;
+  `;
+
+  const sqlValues = [req.user.id];
+
+    pool.query(query, sqlValues)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all users inventory', err);
+            res.sendStatus(500)
+        })
+});
+
+router.get('/user/consumable', (req, res) => {
+
+    const query = `
+    SELECT "user_inventory"."id" as "id",
+            "user_inventory"."user_id" as "user_id",
+            "user_inventory"."items_id" as "items_id",
+            "user_inventory"."number" as "number",
+            "items"."name",
+            "items"."hp",
+            "items"."stamina",
+            "items"."pic",
+            "items"."type",
+            "items"."speed",
+            "items"."attack",
+            "items"."cost",
+            "items"."color"
+    FROM "user_inventory"
+        INNER JOIN "items"
+    ON "user_inventory"."items_id" = "items"."id"
+        WHERE "user_id" = $1 AND "user_inventory"."number" > 0 AND "items"."type" = 'consumable'
         ORDER BY "items_id" ASC;
   `;
 
