@@ -26,21 +26,19 @@ function Characters() {
       <Nav />
 
       <div className="characters">
-      <h2>Characters</h2>
+        <h2>Characters</h2>
         <div className="bigCharacterBox">
-          
-         <div className="characterBox">
+          <div className="characterBox">
             {characters.map((character) => {
               return (
-                <div  key={character.id}>
+                <div key={character.id}>
                   <CharacterItem character={character} />
                 </div>
               );
             })}
-            </div>
+          </div>
 
           <div className="starterBox">
-
             {starter.map((start) => {
               return (
                 <div key={start.id}>
