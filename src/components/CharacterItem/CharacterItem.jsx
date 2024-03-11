@@ -187,16 +187,18 @@ function CharacterItem({ character }) {
   };
 
   return (
-    <div
-      className={character.new ? "new" : "single-box"}
-      onMouseOver={character.new ? toggleNewClass : doNothing}
-    >
-      <div className="starterPTag">
+    <>
+    <div className="starterPTag">
         <p>{character.new ? "new" : character.starter_1 ? "Starter 1" : ""}</p>
 
         <p>{character.starter_2 ? "Starter 2" : ""}</p>
       </div>
 
+    <div
+      className={character.new ? "new" : "single-box"}
+      onMouseOver={character.new ? toggleNewClass : doNothing}
+    >
+      
       <h5>{character.name}</h5>
 
       <div className="characterPictures">
@@ -459,6 +461,7 @@ function CharacterItem({ character }) {
         </List>
       </Dialog>
     </div>
+    </>
   );
 }
 
