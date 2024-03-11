@@ -32,7 +32,7 @@ function CharacterItem({ character }) {
   const [openSell, setOpenSell] = useState(false);
 
   // console.log("character", character);
-   console.log("usersHeldItems", usersHeldItems);
+  //  console.log("usersHeldItems", usersHeldItems);
 
   const handleSellClose = () => {
     setOpenSell(false);
@@ -375,7 +375,7 @@ function CharacterItem({ character }) {
           <Divider />
           <Box>
             {usersHeldItems &&
-              usersHeldItems.map((heldItem) => {
+              usersHeldItems.map((usersHeld) => {
                 return (
                   <>
                     <ListItemButton>
@@ -386,17 +386,17 @@ function CharacterItem({ character }) {
                         justifyContent="space-around"
                         alignItems="center"
                       >
-                        {/* <p>{heldItem.number}X</p> */}
-                        <img height={70} width={70} src={heldItem.pic} />
+                        <p>{usersHeld.number}X</p>
+                        <img height={70} width={70} src={usersHeld.pic} />
 
                         <h4
                           style={{
-                            color: heldItem.color,
+                            color: usersHeld.color,
                             fontSize: "25px",
                             width: "100px",
                           }}
                         >
-                          {heldItem.name}
+                          {usersHeld.name}
                         </h4>
                         <div>
                           <p
@@ -410,7 +410,7 @@ function CharacterItem({ character }) {
                               marginBottom: 0,
                             }}
                           >
-                            {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
+                            {usersHeld.hp === 0 ? "" : `+${usersHeld.hp} hp`}
                           </p>
 
                           <p
@@ -423,9 +423,9 @@ function CharacterItem({ character }) {
                               marginTop: 0,
                             }}
                           >
-                            {heldItem.stamina === 0
+                            {usersHeld.stamina === 0
                               ? ""
-                              : `+${heldItem.stamina} stamina`}
+                              : `+${usersHeld.stamina} stamina`}
                           </p>
 
                           <p
@@ -438,9 +438,9 @@ function CharacterItem({ character }) {
                               marginTop: 0,
                             }}
                           >
-                            {heldItem.speed === 0
+                            {usersHeld.speed === 0
                               ? ""
-                              : `+${heldItem.speed} speed`}
+                              : `+${usersHeld.speed} speed`}
                           </p>
 
                           <p
@@ -453,9 +453,9 @@ function CharacterItem({ character }) {
                               marginTop: 0,
                             }}
                           >
-                            {heldItem.attack === 0
+                            {usersHeld.attack === 0
                               ? ""
-                              : `+${heldItem.attack} damage`}
+                              : `+${usersHeld.attack} damage`}
                           </p>
                         </div>
                       </Box>
