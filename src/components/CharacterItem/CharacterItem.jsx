@@ -189,9 +189,7 @@ function CharacterItem({ character }) {
   return (
     <>
     <div className="starterPTag">
-        <p>{character.new ? "new" : character.starter_1 ? "Starter 1" : ""}</p>
-
-        <p>{character.starter_2 ? "Starter 2" : ""}</p>
+        <p>{character.new ? "new" : character.starter_1 ? "Starter 1" : character.starter_2 ? "Starter 2" : ""}</p>
       </div>
 
     <div
