@@ -187,9 +187,11 @@ function CharacterItem({ character }) {
   };
 
   return (
-    <div>
+    <div className="singleArea">
+      <div>
         <p className="starterPTag">{character.new ? "new" : character.starter_1 ? "Starter 1" : character.starter_2 ? "Starter 2" : ""}</p>
-
+        </div>
+        
     <div
       className={character.new ? "new" : "single-box"}
       onMouseOver={character.new ? toggleNewClass : doNothing}
@@ -200,7 +202,6 @@ function CharacterItem({ character }) {
       <div className="characterPictures">
           <img cursor="pointer" height="140px" width="140px" onClick={handleInfoClickOpen} src={character.profile_pic} />
         </div>
-
 
       <div className="buttonBox">
         <button id={character.id} onClick={setStarterOne}>

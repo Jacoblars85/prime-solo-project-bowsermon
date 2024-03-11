@@ -83,14 +83,27 @@
   font-size: 40px;
   text-shadow: 1px 1px white;
 }
+
+.singleArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* height: 100%;
+  width: 77.5%; */
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
   
 .single-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   border: 3px solid white;
   height: 190px;
   width: 190px;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
-  /* padding-left: 0px; */
   background-color: black;
   background-image: url('/public/images/bowserBlock.png');
   background-repeat: repeat-x;
