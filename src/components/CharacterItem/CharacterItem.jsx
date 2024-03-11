@@ -212,6 +212,7 @@ function CharacterItem({ character }) {
             onClick={handleInfoClickOpen}
             src={character.profile_pic}
           />
+</div>
 
         <div className="buttonBox">
           <button id={character.id} onClick={setStarterOne}>
@@ -471,7 +472,7 @@ function CharacterItem({ character }) {
           </ListItemButton> */}
           </List>
         </Dialog>
-      </div>
+      
     </div>
   );
 }
