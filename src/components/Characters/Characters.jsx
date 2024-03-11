@@ -38,15 +38,6 @@ function Characters() {
               );
             })}
             </div>
-   
-
-          {/* <div className="starterOneHeader">
-        <h2>Starter 1</h2>
-      </div> */}
-
-          {/* <div className="starterTwoHeader">
-        <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
-      </div> */}
 
           <div className="starterBox">
 
