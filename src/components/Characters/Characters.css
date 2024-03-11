@@ -86,8 +86,8 @@
 
 .singleArea {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   /* height: 100%;
   width: 77.5%; */
   justify-content: center;

@@ -23,7 +23,6 @@ const InfoTransition = forwardRef(function Transition(props, ref) {
 });
 
 function CharacterItem({ character }) {
-
   const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector((store) => store.character.starter);
   const held = useSelector((store) => store.inventory.held);
@@ -189,275 +188,292 @@ function CharacterItem({ character }) {
   return (
     <div className="singleArea">
       <div>
-        <p className="starterPTag">{character.new ? "new" : character.starter_1 ? "Starter 1" : character.starter_2 ? "Starter 2" : ""}</p>
-        </div>
-        
-    <div
-      className={character.new ? "new" : "single-box"}
-      onMouseOver={character.new ? toggleNewClass : doNothing}
-    >
-      
-      <h5>{character.name}</h5>
-
-      <div className="characterPictures">
-          <img cursor="pointer" height="140px" width="140px" onClick={handleInfoClickOpen} src={character.profile_pic} />
-        </div>
-
-      <div className="buttonBox">
-        <button id={character.id} onClick={setStarterOne}>
-          Set Starter 1
-        </button>
-        <button id={character.id} onClick={setStarterTwo}>
-          Set Starter 2
-        </button>
-        <button id={character.id} onClick={clearStarter}>
-          Remove
-        </button>
+        <p className="starterPTag">
+          {character.new
+            ? "new"
+            : character.starter_1
+            ? "Starter 1"
+            : character.starter_2
+            ? "Starter 2"
+            : ""}
+        </p>
       </div>
 
-      {/* sell conformation dialog */}
-      <Dialog
-        open={openSell}
-        onClose={handleSellClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+      <div
+        className={character.new ? "new" : "single-box"}
+        onMouseOver={character.new ? toggleNewClass : doNothing}
       >
-        <DialogTitle
-          id="alert-dialog-title"
-          sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+        <h5>{character.name}</h5>
+
+        <div className="characterPictures">
+          <img
+            cursor="pointer"
+            height="140px"
+            width="140px"
+            onClick={handleInfoClickOpen}
+            src={character.profile_pic}
+          />
+        </div>
+
+        <div className="buttonBox">
+          <button id={character.id} onClick={setStarterOne}>
+            Set Starter 1
+          </button>
+          <button id={character.id} onClick={setStarterTwo}>
+            Set Starter 2
+          </button>
+          <button id={character.id} onClick={clearStarter}>
+            Remove
+          </button>
+        </div>
+
+        {/* sell conformation dialog */}
+        <Dialog
+          open={openSell}
+          onClose={handleSellClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
         >
-          {`Are you sure you want to sell ${character.name}`}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText
-            id="alert-dialog-description"
+          <DialogTitle
+            id="alert-dialog-title"
             sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
           >
-            You will receive 10 coins if you sell {character.name}. You will
-            have to buy the new character box to have the chance to get{" "}
-            {character.name} back.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            sx={{
-              color: "black",
-              fontSize: 20,
-              fontFamily: "New Super Mario Font U",
-            }}
-            onClick={sellCharacter}
-            autoFocus
-          >
-            Sell
-          </Button>
-          <Button
-            sx={{
-              color: "black",
-              fontSize: 20,
-              fontFamily: "New Super Mario Font U",
-            }}
-            onClick={handleSellClose}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Full screen dialog */}
-      <Dialog
-        fullScreen
-        open={openInfo}
-        onClose={handleInfoClose}
-        TransitionComponent={InfoTransition}
-      >
-        <AppBar sx={{ position: "relative" }}>
-          <Toolbar sx={{ backgroundColor: "gray" }}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleInfoClose}
-              aria-label="close"
+            {`Are you sure you want to sell ${character.name}`}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText
+              id="alert-dialog-description"
+              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
             >
-              <CloseIcon />
-            </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.name}
-            </Typography>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.starter_1 === true
-                ? "Starter 1"
-                : character.starter_2 === true
-                ? "Starter 2"
-                : ""}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <List>
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-around"
-            paddingBottom={3}
-          >
+              You will receive 10 coins if you sell {character.name}. You will
+              have to buy the new character box to have the chance to get{" "}
+              {character.name} back.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: 20,
+                fontFamily: "New Super Mario Font U",
+              }}
+              onClick={sellCharacter}
+              autoFocus
+            >
+              Sell
+            </Button>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: 20,
+                fontFamily: "New Super Mario Font U",
+              }}
+              onClick={handleSellClose}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Full screen dialog */}
+        <Dialog
+          fullScreen
+          open={openInfo}
+          onClose={handleInfoClose}
+          TransitionComponent={InfoTransition}
+        >
+          <AppBar sx={{ position: "relative" }}>
+            <Toolbar sx={{ backgroundColor: "gray" }}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleInfoClose}
+                aria-label="close"
+              >
+                <CloseIcon />
+              </IconButton>
+              <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                {character.name}
+              </Typography>
+              <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                {character.starter_1 === true
+                  ? "Starter 1"
+                  : character.starter_2 === true
+                  ? "Starter 2"
+                  : ""}
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <List>
             <Box
               display="flex"
               flexDirection="row"
               justifyContent="space-around"
-              columnGap={2}
+              paddingBottom={3}
             >
-              <img src={character.profile_pic} height={350} width={350} />
+              <Box
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-around"
+                columnGap={2}
+              >
+                <img src={character.profile_pic} height={350} width={350} />
+
+                <Box
+                  alignSelf="flex-end"
+                  height={100}
+                  width={100}
+                  border="1px solid black"
+                >
+                  <img src={character.profile_pic} height={100} width={100} />
+                </Box>
+              </Box>
 
               <Box
-                alignSelf="flex-end"
-                height={100}
-                width={100}
-                border="1px solid black"
+                display="flex"
+                flexDirection="column"
+                border="2px solid black"
               >
-                <img src={character.profile_pic} height={100} width={100} />
+                <Divider />
+                <ListItemText primary="Hp" secondary={character.hp} />
+                <Divider />
+                <ListItemText primary="Stamina" secondary={character.stamina} />
+                <Divider />
+                <ListItemText primary="Speed" secondary={character.speed} />
+                <Divider />
+                <ListItemText
+                  primary="Special Attack"
+                  secondary={character.unique_attack}
+                />
+                <Divider />
+                <ListItemText
+                  primary="Special Attack Damage"
+                  secondary={character.unique_damage}
+                />
+                <Divider />
+                <ListItemText
+                  primary="Special Attack Cost"
+                  secondary={character.unique_stamina}
+                />
+                <Divider />
               </Box>
-            </Box>
 
-            <Box display="flex" flexDirection="column" border="2px solid black">
-              <Divider />
-              <ListItemText primary="Hp" secondary={character.hp} />
-              <Divider />
-              <ListItemText primary="Stamina" secondary={character.stamina} />
-              <Divider />
-              <ListItemText primary="Speed" secondary={character.speed} />
-              <Divider />
-              <ListItemText
-                primary="Special Attack"
-                secondary={character.unique_attack}
-              />
-              <Divider />
-              <ListItemText
-                primary="Special Attack Damage"
-                secondary={character.unique_damage}
-              />
-              <Divider />
-              <ListItemText
-                primary="Special Attack Cost"
-                secondary={character.unique_stamina}
-              />
               <Divider />
             </Box>
 
             <Divider />
-          </Box>
 
-          <Divider />
-
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-around"
-            alignItems="center"
-            paddingBottom={2}
-            paddingTop={2}
-          >
-            <Button onClick={confirmSale}>Sell</Button>
-            <Button onClick={setStarterOne}>Starter 1</Button>
-            <Button onClick={setStarterTwo}>Starter 2</Button>
-            <Button onClick={clearStarter}>Remove</Button>
-          </Box>
-          <Divider />
-          <Box>
-            {held &&
-              held.map((heldItem) => {
-                return (
-                  <>
-                    <ListItemButton>
-                      <Box
-                        display="flex"
-                        flexDirection="row"
-                        columnGap={20}
-                        justifyContent="space-around"
-                        alignItems="center"
-                      >
-                        <img height={70} width={70} src={heldItem.pic} />
-
-                        <h4
-                          style={{
-                            color: heldItem.color,
-                            fontSize: "25px",
-                            width: "100px",
-                          }}
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-around"
+              alignItems="center"
+              paddingBottom={2}
+              paddingTop={2}
+            >
+              <Button onClick={confirmSale}>Sell</Button>
+              <Button onClick={setStarterOne}>Starter 1</Button>
+              <Button onClick={setStarterTwo}>Starter 2</Button>
+              <Button onClick={clearStarter}>Remove</Button>
+            </Box>
+            <Divider />
+            <Box>
+              {held &&
+                held.map((heldItem) => {
+                  return (
+                    <>
+                      <ListItemButton>
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          columnGap={20}
+                          justifyContent="space-around"
+                          alignItems="center"
                         >
-                          {heldItem.name}
-                        </h4>
-                        <div>
-                          <p
-                            style={{
-                              color: "red",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 10,
-                              marginBottom: 0,
-                            }}
-                          >
-                            {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
-                          </p>
+                          <img height={70} width={70} src={heldItem.pic} />
 
-                          <p
+                          <h4
                             style={{
-                              color: "limegreen",
-                              textShadow: "1px 1px black",
+                              color: heldItem.color,
                               fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
+                              width: "100px",
                             }}
                           >
-                            {heldItem.stamina === 0
-                              ? ""
-                              : `+${heldItem.stamina} stamina`}
-                          </p>
+                            {heldItem.name}
+                          </h4>
+                          <div>
+                            <p
+                              style={{
+                                color: "red",
+                                textShadow: "1px 1px black",
+                                fontSize: "25px",
+                                fontWeight: "bold",
+                                fontFamily: "New Super Mario Font U",
+                                marginTop: 10,
+                                marginBottom: 0,
+                              }}
+                            >
+                              {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
+                            </p>
 
-                          <p
-                            style={{
-                              color: "yellow",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
-                            }}
-                          >
-                            {heldItem.speed === 0
-                              ? ""
-                              : `+${heldItem.speed} speed`}
-                          </p>
+                            <p
+                              style={{
+                                color: "limegreen",
+                                textShadow: "1px 1px black",
+                                fontSize: "25px",
+                                fontWeight: "bold",
+                                fontFamily: "New Super Mario Font U",
+                                marginTop: 0,
+                              }}
+                            >
+                              {heldItem.stamina === 0
+                                ? ""
+                                : `+${heldItem.stamina} stamina`}
+                            </p>
 
-                          <p
-                            style={{
-                              color: "red",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
-                            }}
-                          >
-                            {heldItem.attack === 0
-                              ? ""
-                              : `+${heldItem.attack} damage`}
-                          </p>
-                        </div>
-                      </Box>
-                    </ListItemButton>
-                    <Divider />
-                  </>
-                );
-              })}
-          </Box>
-          {/* <ListItemButton>
+                            <p
+                              style={{
+                                color: "yellow",
+                                textShadow: "1px 1px black",
+                                fontSize: "25px",
+                                fontWeight: "bold",
+                                fontFamily: "New Super Mario Font U",
+                                marginTop: 0,
+                              }}
+                            >
+                              {heldItem.speed === 0
+                                ? ""
+                                : `+${heldItem.speed} speed`}
+                            </p>
+
+                            <p
+                              style={{
+                                color: "red",
+                                textShadow: "1px 1px black",
+                                fontSize: "25px",
+                                fontWeight: "bold",
+                                fontFamily: "New Super Mario Font U",
+                                marginTop: 0,
+                              }}
+                            >
+                              {heldItem.attack === 0
+                                ? ""
+                                : `+${heldItem.attack} damage`}
+                            </p>
+                          </div>
+                        </Box>
+                      </ListItemButton>
+                      <Divider />
+                    </>
+                  );
+                })}
+            </Box>
+            {/* <ListItemButton>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItemButton> */}
-        </List>
-      </Dialog>
-    </div>
+          </List>
+        </Dialog>
+      </div>
     </div>
   );
 }
