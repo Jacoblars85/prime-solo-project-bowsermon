@@ -23,7 +23,6 @@ const InfoTransition = forwardRef(function Transition(props, ref) {
 });
 
 function CharacterItem({ character }) {
-  const [isPicture, setIsPicture] = useState(false);
 
   const user = useSelector((store) => store.user.userReducer);
   const starter = useSelector((store) => store.character.starter);
@@ -168,10 +167,6 @@ function CharacterItem({ character }) {
     setOpenSell(false);
   };
 
-  const togglePicture = () => {
-    setIsPicture(!isPicture);
-  };
-
   const toggleNewClass = () => {
     dispatch({
       type: "SAGA_SET_OLD",
@@ -180,34 +175,6 @@ function CharacterItem({ character }) {
   };
 
   const doNothing = () => {};
-
-  const displayText = () => {
-    // if (isPicture) {
-    //   return (
-    //     <div className="descriptionForCharacterSingle">
-    //       <div className="mainStatText">
-    //         <p className="characterTextTotalHp">{character.hp} hp</p>
-    //         <p className="characterTextStamina">{character.stamina} stamina</p>
-    //         <p className="characterTextSpeed">{character.speed} speed</p>
-    //       </div>
-
-    //       <div className="attackStatText">
-    //         <p className="characterTextBoxAttack">{character.unique_attack}</p>
-    //         <p className="characterTextHp">{character.unique_damage} damage</p>
-    //         <p className="characterTextStamina">
-    //           {character.unique_stamina} stamina
-    //         </p>
-    //       </div>
-    //     </div>
-    //   );
-    // } else {
-      return (
-        <div className="characterPictures">
-          <img onClick={handleInfoClickOpen} src={character.profile_pic} />
-        </div>
-      );
-    // }
-  };
 
   const [openInfo, setOpenInfo] = useState(false);
 
@@ -232,10 +199,10 @@ function CharacterItem({ character }) {
 
       <h5>{character.name}</h5>
 
-      <ul className="singleBoxUl" onClick={togglePicture}>
-        {" "}
-        {displayText()}{" "}
-      </ul>
+      <div className="characterPictures">
+          <img onClick={handleInfoClickOpen} src={character.profile_pic} />
+        </div>
+
 
       <div className="buttonBox">
         <button id={character.id} onClick={setStarterOne}>
