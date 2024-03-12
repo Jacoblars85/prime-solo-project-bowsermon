@@ -416,7 +416,7 @@ function CharacterItem({ character }) {
             {usersHeldItems &&
               usersHeldItems.map((usersHeld) => {
                 return (
-                  <>
+                  <div key={usersHeld.id}>
                     <ListItemButton onClick={()=> equipItem(usersHeld.id)}>
                       <Box
                         display="flex"
@@ -515,7 +515,7 @@ function CharacterItem({ character }) {
                       </Box>
                     </ListItemButton>
                     <Divider />
-                  </>
+                  </div>
                 );
               })}
           </Box>
