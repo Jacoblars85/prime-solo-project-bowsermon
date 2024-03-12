@@ -336,7 +336,7 @@ function CharacterItem({ character }) {
                 width={100}
                 border="1px solid black"
               >
-                <img src={character.profile_pic} height={100} width={100} />
+                <img src={character.item_id === 1 ? "" : character.item_pic} height={100} width={100} />
               </Box>
             </Box>
 
