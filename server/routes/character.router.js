@@ -49,6 +49,7 @@ ORDER BY "character_id", "id" ASC;
                 starter.hp += starter.item_hp
                 starter.stamina += starter.item_stamina
                 starter.speed += starter.item_speed
+                starter.unique_damage += starter.item_attack
                 }
             }
             res.send(result.rows);
@@ -161,6 +162,7 @@ router.get('/starter', (req, res) => {
                 starter.hp += starter.item_hp
                 starter.stamina += starter.item_stamina
                 starter.speed += starter.item_speed
+                starter.unique_damage += starter.item_attack
                 }
             }
             res.send(result.rows);
