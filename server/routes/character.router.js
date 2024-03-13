@@ -44,12 +44,12 @@ ORDER BY "character_id", "id" ASC;
     pool.query(query, sqlValues)
         .then(result => {
 
-            for (const starter of result.rows) {
-                if (starter.item_id !== null) {
-                starter.hp += starter.item_hp
-                starter.stamina += starter.item_stamina
-                starter.speed += starter.item_speed
-                starter.unique_damage += starter.item_attack
+            for (const character of result.rows) {
+                if (character.item_id !== null) {
+                    character.hp += character.item_hp
+                    character.stamina += character.item_stamina
+                    character.speed += character.item_speed
+                    character.unique_damage += character.item_attack
                 }
             }
             res.send(result.rows);
