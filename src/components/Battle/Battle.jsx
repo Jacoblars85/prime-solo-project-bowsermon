@@ -76,7 +76,9 @@ function Battle() {
   const levelEnemy = useSelector((store) => store.character.levelEnemy);
   const user = useSelector((store) => store.user.userReducer);
   const inventory = useSelector((store) => store.inventory.inventory);
-  const usersConsumableItems = useSelector((store) => store.inventory.usersConsumableItems);
+  const usersConsumableItems = useSelector(
+    (store) => store.inventory.usersConsumableItems
+  );
 
   // setting each starter/enemy to a varriable
   let enemyOne = levelEnemy[0];
@@ -1876,37 +1878,43 @@ function Battle() {
             </Toolbar>
           </AppBar>
           <List>
-          <Box>
-            {usersConsumableItems &&
-              usersConsumableItems.map((usersConsumables) => {
-                return (
-                  <div key={usersConsumables.id}>
-                    <ListItemButton onClick={()=> battle(usersConsumables)}>
-
-                    <ListItem>
-              <img height={125} width={125} src={usersConsumables.pic} />
-              <ListItemText
-                sx={{ ml: 55, fontFamily: "New Super Mario Font U" }}
-                primary={usersConsumables.name}
-                secondary={`${usersConsumables.hp} hp | ${usersConsumables.stamina} stamina`}
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                onClick={() => battle(usersConsumables)}
-              >
-                Use Potion
-              </Button>
-            </ListItem>        
-                    </ListItemButton>
-                    <Divider />
-                  </div>
-                );
-              })}
-          </Box>
+            <Box>
+              {usersConsumableItems &&
+                usersConsumableItems.map((usersConsumables) => {
+                  return (
+                    <div key={usersConsumables.id}>
+                      <ListItemButton onClick={() => battle(usersConsumables)}>
+                        <ListItem>
+                          <img
+                            height={125}
+                            width={125}
+                            src={usersConsumables.pic}
+                          />
+                          <ListItemText
+                            sx={{
+                              ml: 55,
+                              fontFamily: "New Super Mario Font U",
+                            }}
+                            primary={usersConsumables.name}
+                            secondary={`${usersConsumables.hp} hp | ${usersConsumables.stamina} stamina`}
+                          />
+                          <Button
+                            sx={{
+                              color: "black",
+                              fontSize: 20,
+                              fontFamily: "New Super Mario Font U",
+                            }}
+                            onClick={() => battle(usersConsumables)}
+                          >
+                            Use Potion
+                          </Button>
+                        </ListItem>
+                      </ListItemButton>
+                      <Divider />
+                    </div>
+                  );
+                })}
+            </Box>
           </List>
         </Dialog>
       </Fragment>
