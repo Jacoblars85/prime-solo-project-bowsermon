@@ -374,25 +374,13 @@ function Battle() {
             clearTimeout(enemyAttackTimeOut);
             setWinnerOpen(true);
           }
-        } else if (attackType === "health") {
-          setStarterOneHp(starterOneHp + 25);
+        }  else if (attackType.type == "consumable") {
+          setStarterOneHp(starterOneHp + attackType.hp);
+          setStarterOneStamina(starterOneStamina + attackType.stamina);
 
-          if (starterOneHp + 25 > starterOne.hp) {
+          if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 1,
-            },
-          });
-        } else if (attackType === "stamina") {
-          setStarterOneStamina(starterOneStamina + 30);
-
-          if (starterOneStamina + 30 > starterOne.stamina) {
+          } else if (starterOneStamina + attackType.stamina > starterOne.stamina) {
             setStarterOneStamina(starterOne.stamina);
           }
 
@@ -401,25 +389,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_ITEM",
             payload: {
-              itemId: 2,
-            },
-          });
-        } else if (attackType === "max") {
-          setStarterOneHp(starterOneHp + 20);
-          setStarterOneStamina(starterOneStamina + 25);
-
-          if (starterOneHp + 20 > starterOne.hp) {
-            setStarterOneHp(starterOne.hp);
-          } else if (starterOneStamina + 25 > starterOne.stamina) {
-            setStarterOneStamina(starterOne.stamina);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 3,
+              itemId: attackType.id,
             },
           });
         } else if (attackType === "starterTwo") {
@@ -467,25 +437,13 @@ function Battle() {
             clearTimeout(enemyAttackTimeOut);
             setWinnerOpen(true);
           }
-        } else if (attackType === "health") {
-          setStarterTwoHp(starterTwoHp + 25);
+        }  else if (attackType.type == "consumable") {
+          setStarterTwoHp(starterTwoHp + attackType.hp);
+          setStarterTwoStamina(starterTwoStamina + attackType.stamina);
 
-          if (starterTwoHp + 25 > starterTwo.hp) {
+          if (starterTwoHp + attackType.hp > starterTwo.hp) {
             setStarterTwoHp(starterTwo.hp);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 1,
-            },
-          });
-        } else if (attackType === "stamina") {
-          setStarterTwoStamina(starterTwoStamina + 30);
-
-          if (starterTwoStamina + 30 > starterTwo.stamina) {
+          } else if (starterTwoStamina + attackType.stamina > starterTwo.stamina) {
             setStarterTwoStamina(starterTwo.stamina);
           }
 
@@ -494,26 +452,7 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_ITEM",
             payload: {
-              itemId: 2,
-            },
-          });
-        } else if (attackType === "max") {
-          setStarterTwoHp(starterTwoHp + 20);
-          setStarterTwoStamina(starterTwoStamina + 25);
-
-          if (starterTwoHp + 20 > starterTwo.hp) {
-            setStarterTwoHp(starterTwo.hp);
-          }
-          if (starterTwoStamina + 25 > starterTwo.stamina) {
-            setStarterTwoStamina(starterTwo.stamina);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 3,
+              itemId: attackType.id,
             },
           });
         } else if (attackType === "starterOne") {
