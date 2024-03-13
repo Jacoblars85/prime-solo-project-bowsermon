@@ -36,13 +36,21 @@ INNER JOIN "characters"
 LEFT JOIN "items"
     ON "user_characters"."item_id" = "items"."id"
 WHERE "user_id" = $1
-ORDER BY "character_id", "id" DESC;
+ORDER BY "character_id", "id" ASC;
   `;
 
   const sqlValues = [req.user.id];
 
     pool.query(query, sqlValues)
         .then(result => {
+
+            for (const starter of result.rows) {
+                if (starter.item_id !== null) {
+                starter.hp += starter.item_hp
+                starter.stamina += starter.item_stamina
+                starter.speed += starter.item_speed
+                }
+            }
             res.send(result.rows);
         })
         .catch(err => {
@@ -139,7 +147,7 @@ router.get('/starter', (req, res) => {
     LEFT JOIN "items"
     	ON "user_characters"."item_id" = "items"."id"
     WHERE "user_characters"."starter_1" = TRUE AND "user_id" = $1 OR "user_characters"."starter_2" = TRUE AND "user_id" = $1
-    ORDER BY "starter_1", "id" DESC;
+    ORDER BY "starter_1" DESC;
   `;
 
 
@@ -147,10 +155,18 @@ router.get('/starter', (req, res) => {
 
     pool.query(query, sqlValues)
         .then(result => {
+
+            for (const starter of result.rows) {
+                if (starter.item_id !== null) {
+                starter.hp += starter.item_hp
+                starter.stamina += starter.item_stamina
+                starter.speed += starter.item_speed
+                }
+            }
             res.send(result.rows);
         })
         .catch(err => {
-            console.log('ERROR: Get all characters', err);
+            console.log('ERROR: Get all starters', err);
             res.sendStatus(500)
         })
 
