@@ -279,6 +279,12 @@ if (req.body.oldItemId != 1) {
         SET "number" = "number" + 1
             WHERE "user_id" = $1 AND "items_id" = $2;
         `;
+} else {
+    insertNewUserQuery = `
+          UPDATE "user_inventory"
+        SET "number" = "number"
+            WHERE "user_id" = $1 AND "items_id" = $2;
+        `;
 }
         const insertValue = [req.user.id, req.body.oldItemId]
 
