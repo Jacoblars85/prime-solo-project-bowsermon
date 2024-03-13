@@ -259,8 +259,7 @@ router.put("/use/item/:id", (req, res) => {
 });
 
 router.put("/equip/item", (req, res) => {
-    //  console.log('req.body', req.body);
-    console.log('in the 1');
+     console.log('req.body', req.body);
         
     const sqlText = `
         UPDATE "user_inventory"
@@ -272,22 +271,19 @@ router.put("/equip/item", (req, res) => {
 
     pool.query(sqlText, insertValue)
     .then((result) => {
-        console.log('in the 2');
-// let insertNewUserQuery;
+let insertNewUserQuery;
 
-// if (req.body.oldItemId ==! 1) {
-// console.log('its not mushy');
-    const insertNewUserQuery = `
+if (req.body.oldItemId != 1) {
+    insertNewUserQuery = `
           UPDATE "user_inventory"
         SET "number" = "number" + 1
             WHERE "user_id" = $1 AND "items_id" = $2;
         `;
-// }
+}
         const insertValue = [req.user.id, req.body.oldItemId]
 
         pool.query(insertNewUserQuery, insertValue)
         .then(result => {
-                console.log('in the 3');
         const insertNewUserQuery = `
         UPDATE "user_characters"
         SET "item" = $1
