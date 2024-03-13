@@ -260,6 +260,7 @@ router.put("/use/item/:id", (req, res) => {
 
 router.put("/equip/item", (req, res) => {
     //  console.log('req.body', req.body);
+    console.log('in the 1');
         
     const sqlText = `
         UPDATE "user_inventory"
@@ -271,6 +272,22 @@ router.put("/equip/item", (req, res) => {
 
     pool.query(sqlText, insertValue)
     .then((result) => {
+        console.log('in the 2');
+// let insertNewUserQuery;
+
+// if (req.body.oldItemId ==! 1) {
+// console.log('its not mushy');
+    const insertNewUserQuery = `
+          UPDATE "user_inventory"
+        SET "number" = "number" + 1
+            WHERE "user_id" = $1 AND "items_id" = $2;
+        `;
+// }
+        const insertValue = [req.user.id, req.body.oldItemId]
+
+        pool.query(insertNewUserQuery, insertValue)
+        .then(result => {
+                console.log('in the 3');
         const insertNewUserQuery = `
         UPDATE "user_characters"
         SET "item" = $1
@@ -280,10 +297,17 @@ router.put("/equip/item", (req, res) => {
         const insertValue = [req.body.itemId, req.user.id, req.body.characterID]
 
         pool.query(insertNewUserQuery, insertValue)
-            .then(result => {
-                res.sendStatus(201);
-            })
-    }).catch(err => {
+        .then(result => {
+            res.sendStatus(201);
+        })
+        })
+    
+        .catch(err => {
+            // catch for third query
+            console.log('in the third', err);
+            res.sendStatus(500)
+    })
+    .catch(err => {
         // catch for second query
         console.log('in the second', err);
         res.sendStatus(500)
@@ -293,7 +317,7 @@ router.put("/equip/item", (req, res) => {
         res.sendStatus(500);
     });
 });
-
+});
 
 
 

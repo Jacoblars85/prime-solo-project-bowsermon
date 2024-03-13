@@ -192,6 +192,7 @@ function CharacterItem({ character }) {
         payload: {
           itemId: itemId,
           characterID: character.id,
+          oldItemId: character.item_id
         },
       });
 
