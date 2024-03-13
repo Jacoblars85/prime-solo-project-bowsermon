@@ -186,16 +186,29 @@ function CharacterItem({ character }) {
     setOpenInfo(false);
   };
 
-  const equipItem = (itemId) => {
+  const [openEquip, setOpenEquip] = useState(false);
+
+  const [newItemId, setNewItemId] = useState(0);
+
+  const handleEquipClickOpen = (newItem) => {
+    setNewItemId(newItem)
+    setOpenEquip(true);
+  };
+
+  const handleEquipClose = () => {
+    setOpenEquip(false);
+  };
+
+  const equipItem = () => {
       dispatch({
         type: "SAGA_EQUIP_ITEM",
         payload: {
-          itemId: itemId,
+          itemId: newItemId,
           characterID: character.id,
           oldItemId: character.item_id
         },
       });
-
+      setOpenEquip(false)
   };
 
   return (
@@ -287,6 +300,52 @@ function CharacterItem({ character }) {
         </DialogActions>
       </Dialog>
 
+      {/* item conformation dialog */}
+      <Dialog
+        open={openEquip}
+        onClose={handleEquipClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+        >
+          {`Are you sure you want to equip the ${character.item_name}`}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
+            sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+          >
+            You can change the item at any time.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 20,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={equipItem}
+            autoFocus
+          >
+            Equip
+          </Button>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 20,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleEquipClose}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {/* Full screen dialog */}
       <Dialog
         fullScreen
@@ -330,7 +389,6 @@ function CharacterItem({ character }) {
               columnGap={2}
             >
               <img src={character.profile_pic} height={350} width={350} />
-
               <Box
                 alignSelf="flex-end"
                 height={100}
@@ -418,7 +476,7 @@ function CharacterItem({ character }) {
               usersHeldItems.map((usersHeld) => {
                 return (
                   <div key={usersHeld.id}>
-                    <ListItemButton onClick={()=> equipItem(usersHeld.id)}>
+                    <ListItemButton onClick={()=> handleEquipClickOpen(usersHeld.id)}>
                       <Box
                         display="flex"
                         flexDirection="row"
