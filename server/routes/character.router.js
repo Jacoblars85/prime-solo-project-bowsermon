@@ -107,7 +107,6 @@ router.get('/enemy/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-
     // console.log('req.body', req.body);
 
     const insertCharacterQuery = `
@@ -351,8 +350,6 @@ router.put("/starter/clear/:id", (req, res) => {
 
     pool.query(sqlText, sqlValues)
         .then(result => {
-
-            console.log(req.params.id);
 
             const sqlText = `
     UPDATE "user_characters"
