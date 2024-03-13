@@ -107,6 +107,25 @@ import { put, takeLatest } from 'redux-saga/effects';
     }
   }
 
+  function* removeItem(action) {
+    // console.log('action.payload', action.payload);
+    try {
+      const response = yield axios({
+        method: 'PUT',
+        url: `/api/inventory/remove/item`,
+        data: action.payload
+      })
+      yield put({
+        type: 'SAGA_FETCH_IVENTORY',
+      })
+      yield put({
+        type: 'SAGA_FETCH_CHARACTERS',
+      })
+    } catch (error) {
+      console.log('Unable to equip item to server', error);
+    }
+  }
+
 
 
   function* inventorySaga() {
@@ -115,6 +134,7 @@ import { put, takeLatest } from 'redux-saga/effects';
     yield takeLatest('SAGA_SELL_ITEM', sellItem);
     yield takeLatest('SAGA_USE_ITEM', useItem);
     yield takeLatest('SAGA_EQUIP_ITEM', equipItem);
+    yield takeLatest('SAGA_REMOVE_ITEM', removeItem);
   }
   
   export default inventorySaga;
