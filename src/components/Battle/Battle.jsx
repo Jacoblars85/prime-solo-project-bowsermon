@@ -29,6 +29,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import InfoIcon from "@mui/icons-material/Info";
 import axios from "axios";
+import Box from "@mui/material/Box";
+import ListItemButton from "@mui/material/ListItemButton";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -1874,6 +1876,116 @@ function Battle() {
             </Toolbar>
           </AppBar>
           <List>
+          <Box>
+            {usersConsumableItems &&
+              usersConsumableItems.map((usersConsumables) => {
+                return (
+                  <div key={usersConsumables.id}>
+                    <ListItemButton onClick={()=> handleEquipClickOpen(usersConsumables.id)}>
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        columnGap={20}
+                        justifyContent="space-around"
+                        alignItems="center"
+                        height={75}
+                      >
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          columnGap={5}
+                          justifyContent="space-around"
+                          alignItems="center"
+                        >
+                          <p
+                            style={{
+                              color: usersConsumables.color,
+                              fontSize: "25px",
+                            }}
+                          >
+                            {usersConsumables.number}X
+                          </p>
+                          <img height={70} width={70} src={usersConsumables.pic} />
+                        </Box>
+                        <h4
+                          style={{
+                            color: usersConsumables.color,
+                            fontSize: "25px",
+                            width: "100px",
+                          }}
+                        >
+                          {usersConsumables.name}
+                        </h4>
+                        <div>
+                          <p
+                            style={{
+                              color: "red",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 10,
+                              marginBottom: 0,
+                            }}
+                          >
+                            {usersConsumables.hp === 0 ? "" : `+${usersConsumables.hp} hp`}
+                          </p>
+
+                          <p
+                            style={{
+                              color: "limegreen",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {usersConsumables.stamina === 0
+                              ? ""
+                              : `+${usersConsumables.stamina} stamina`}
+                          </p>
+
+                          <p
+                            style={{
+                              color: "yellow",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {usersConsumables.speed === 0
+                              ? ""
+                              : `+${usersConsumables.speed} speed`}
+                          </p>
+
+                          <p
+                            style={{
+                              color: "red",
+                              textShadow: "1px 1px black",
+                              fontSize: "25px",
+                              fontWeight: "bold",
+                              fontFamily: "New Super Mario Font U",
+                              marginTop: 0,
+                            }}
+                          >
+                            {usersConsumables.attack === 0
+                              ? ""
+                              : `+${usersConsumables.attack} damage`}
+                          </p>
+                        </div>
+                      </Box>
+                    </ListItemButton>
+                    <Divider />
+                  </div>
+                );
+              })}
+          </Box>
+
+
+
             <ListItem>
               <img height={200} width={200} src="images/healthPotion.png" />
               <ListItemText
