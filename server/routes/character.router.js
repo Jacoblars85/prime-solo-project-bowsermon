@@ -33,8 +33,8 @@ router.get('/character', (req, res) => {
 FROM "user_characters" 
 INNER JOIN "characters"
     ON "user_characters"."character_id" = "characters"."id"
-INNER JOIN "items"
-    ON "user_characters"."item" = "items"."id"
+LEFT JOIN "items"
+    ON "user_characters"."item_id" = "items"."id"
 WHERE "user_id" = $1
 ORDER BY "character_id", "id" DESC;
   `;
@@ -223,8 +223,8 @@ router.get('/starter', (req, res) => {
  FROM "user_characters" 
 	INNER JOIN "characters"
     	ON "user_characters"."character_id" = "characters"."id"
-    INNER JOIN "items"
-    	ON "user_characters"."item" = "items"."id"
+    LEFT JOIN "items"
+    	ON "user_characters"."item_id" = "items"."id"
     WHERE "user_characters"."starter_1" = TRUE AND "user_id" = $1 OR "user_characters"."starter_2" = TRUE AND "user_id" = $1
     ORDER BY "starter_1", "id" DESC;
   `;
