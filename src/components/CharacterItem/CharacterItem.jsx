@@ -337,7 +337,7 @@ function CharacterItem({ character }) {
                 width={100}
                 border="1px solid black"
               >
-                <img src={character.item_id === 1 ? "" : character.item_pic} height={100} width={100} />
+                {character.item_id === 1 ? <CloseIcon sx={{ height: "100%", width: "100%", color: "grey" }} fontSize="100px" /> : <img src={character.item_pic} height={100} width={100} />}
               </Box>
             </Box>
 
