@@ -213,14 +213,12 @@ function CharacterItem({ character }) {
 
   const removeItem = () => {
     dispatch({
-      type: "SAGA_EQUIP_ITEM",
+      type: "SAGA_REMOVE_ITEM",
       payload: {
-        itemId: newItemId,
         characterID: character.id,
         oldItemId: character.item_id
       },
     });
-    setOpenEquip(false)
 };
 
   return (
@@ -408,7 +406,7 @@ function CharacterItem({ character }) {
                 border="1px solid black"
               >
                 {character.item_id === 1 ? <CloseIcon sx={{ height: "100%", width: "100%", color: "grey" }} fontSize="100px" /> : <img src={character.item_pic} height={100} width={100} />}
-                <button>Remove Item</button>
+                <button onClick={removeItem}>Remove Item</button>
               </Box>
             </Box>
 
