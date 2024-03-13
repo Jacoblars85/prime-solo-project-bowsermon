@@ -334,54 +334,6 @@ function Battle() {
               itemId: attackType.id,
             },
           });
-          
-          // setStarterOneHp(starterOneHp + 25);
-
-          // if (starterOneHp + 25 > starterOne.hp) {
-          //   setStarterOneHp(starterOne.hp);
-          // }
-
-          // setInventoryOpen(false);
-
-          // dispatch({
-          //   type: "SAGA_USE_ITEM",
-          //   payload: {
-          //     itemId: 1,
-          //   },
-          // });
-        } else if (attackType === "stamina") {
-          setStarterOneStamina(starterOneStamina + 30);
-
-          if (starterOneStamina + 30 > starterOne.stamina) {
-            setStarterOneStamina(starterOne.stamina);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 2,
-            },
-          });
-        } else if (attackType === "max") {
-          setStarterOneHp(starterOneHp + 20);
-          setStarterOneStamina(starterOneStamina + 25);
-
-          if (starterOneHp + 20 > starterOne.hp) {
-            setStarterOneHp(starterOne.hp);
-          } else if (starterOneStamina + 25 > starterOne.stamina) {
-            setStarterOneStamina(starterOne.stamina);
-          }
-
-          setInventoryOpen(false);
-
-          dispatch({
-            type: "SAGA_USE_ITEM",
-            payload: {
-              itemId: 3,
-            },
-          });
         }
       }
     } else if (starter.length === 2) {
@@ -1876,7 +1828,6 @@ function Battle() {
                 usersConsumableItems.map((usersConsumables) => {
                   return (
                     <div key={usersConsumables.id}>
-                      <ListItemButton onClick={() => battle(usersConsumables)}>
                         <ListItem>
                           <img
                             height={125}
@@ -1897,12 +1848,12 @@ function Battle() {
                               fontSize: 20,
                               fontFamily: "New Super Mario Font U",
                             }}
+                            disabled={usersConsumables.number <= 0 ? true : false}
                             onClick={() => battle(usersConsumables)}
                           >
                             Use Consumable
                           </Button>
                         </ListItem>
-                      </ListItemButton>
                       <Divider />
                     </div>
                   );
