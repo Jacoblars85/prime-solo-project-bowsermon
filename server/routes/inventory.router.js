@@ -336,7 +336,7 @@ router.put("/remove/item", (req, res) => {
             .then((result) => {
                 const insertNewUserQuery = `
                 UPDATE "user_characters"
-                SET "item_id" = 1
+                SET "item_id" = NULL
                 WHERE "user_id" = $1 AND "id" = $2
                 `;
                 
