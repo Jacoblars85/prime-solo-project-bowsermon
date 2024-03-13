@@ -321,6 +321,41 @@ if (req.body.oldItemId != 1) {
 });
 });
 
+router.put("/remove/item", (req, res) => {
+    //  console.log('req.body', req.body);
+    
+        const sqlText = `
+        UPDATE "user_inventory"
+        SET "number" = "number" + 1
+            WHERE "user_id" = $1 AND "items_id" = $2;
+              `;
+    
+        const insertValue = [req.user.id, req.body.oldItemId]
+    
+        pool.query(sqlText, insertValue)
+            .then((result) => {
+                const insertNewUserQuery = `
+                UPDATE "user_characters"
+                SET "item" = 1
+                WHERE "user_id" = $1 AND "id" = $2
+                `;
+                
+                const insertValue = [req.user.id, req.body.characterID]
+    
+                pool.query(insertNewUserQuery, insertValue)
+                    .then(result => {
+                        res.sendStatus(201);
+                    })
+            }).catch(err => {
+                // catch for second query
+                console.log('in the second', err);
+                res.sendStatus(500)
+            })
+            .catch((err) => {
+                console.log("Error in inventory.router /sell PUT,", err);
+                res.sendStatus(500);
+            });
+    });
 
 
 
