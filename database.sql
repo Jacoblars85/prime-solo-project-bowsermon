@@ -68,7 +68,7 @@ CREATE TABLE "user_characters" (
 	"starter_2" BOOLEAN DEFAULT FALSE,
 	"starter_3" BOOLEAN DEFAULT FALSE,
 	"new" BOOLEAN DEFAULT TRUE,
-	"item" INT DEFAULT NULL REFERENCES "items");
+	"item_id" INT DEFAULT NULL REFERENCES "items");
 	
 	
 CREATE TABLE "basic_attacks" (
@@ -117,7 +117,7 @@ INSERT INTO "characters"
 	('Mario', '', 250, 150, 50, 'upper cut', 32, 25, 'images/MarioBattlePic.png'),
 	('Waluigi', '', 180, 100, 100, 'stab', 35, 10, 'images/waluigiBattlePic.webp'),
 	('Wario', '', 280, 55, 10, 'belly flop', 35, 10, 'images/warioBattlePic.png'); 
-	
+
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
 	VALUES 
@@ -148,17 +148,10 @@ INSERT INTO "items"
 	('healing mushroom', 'consumable', 25, 0, 0, 0, 'images/redMushroomPic.webp', 10, '#FF0100'),
 	('stamina mushroom', 'consumable', 0, 30, 0, 0, 'images/greenMushroomPic.webp', 10, '#00D400'),
 	('max mushroom', 'consumable', 20, 25, 0, 0, 'images/megaMushroomPic.webp', 40, '#FFD42A'),
-	('mega healing mushroom', 'consumable', 80, 0, 0, 0, 'images/bigRedMushroomPic.webp', 75, '#FF0100'),
+	('mega healing mushroom', 'consumable', 80, 0, 0, 0, 'images/bigRedMushroomPic.webp', 80, '#FF0100'),
 	('super star', 'consumable', 50, 50, 0, 0, 'images/starPic.webp', 100, '#FEF202'),
 	('shield', 'held', 20, 0, 0, 0, 'images/linkShieldPic.png', 150, '#000000'),
 	('boots', 'held', 0, 0, 10, 0, 'images/bootsPic.webp', 100, '#000000'),
 	('hammer', 'held', 0, 0, 0, 10, 'images/hammerPic.png', 150, '#000000'),
 	('boomarang', 'held', 0, 0, 0, 5, 'images/boomarangPic.webp', 100, '#000000');
-
-
-
-
-
-
-
 

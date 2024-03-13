@@ -292,7 +292,7 @@ if (req.body.oldItemId != 1) {
         .then(result => {
         const insertNewUserQuery = `
         UPDATE "user_characters"
-        SET "item" = $1
+        SET "item_id" = $1
         WHERE "user_id" = $2 AND "id" = $3
         `;
         
@@ -336,7 +336,7 @@ router.put("/remove/item", (req, res) => {
             .then((result) => {
                 const insertNewUserQuery = `
                 UPDATE "user_characters"
-                SET "item" = 1
+                SET "item_id" = 1
                 WHERE "user_id" = $1 AND "id" = $2
                 `;
                 
