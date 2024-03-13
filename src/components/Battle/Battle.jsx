@@ -1881,175 +1881,32 @@ function Battle() {
               usersConsumableItems.map((usersConsumables) => {
                 return (
                   <div key={usersConsumables.id}>
-                    <ListItemButton onClick={()=> handleEquipClickOpen(usersConsumables.id)}>
-                      <Box
-                        display="flex"
-                        flexDirection="row"
-                        columnGap={20}
-                        justifyContent="space-around"
-                        alignItems="center"
-                        height={75}
-                      >
-                        <Box
-                          display="flex"
-                          flexDirection="row"
-                          columnGap={5}
-                          justifyContent="space-around"
-                          alignItems="center"
-                        >
-                          <p
-                            style={{
-                              color: usersConsumables.color,
-                              fontSize: "25px",
-                            }}
-                          >
-                            {usersConsumables.number}X
-                          </p>
-                          <img height={70} width={70} src={usersConsumables.pic} />
-                        </Box>
-                        <h4
-                          style={{
-                            color: usersConsumables.color,
-                            fontSize: "25px",
-                            width: "100px",
-                          }}
-                        >
-                          {usersConsumables.name}
-                        </h4>
-                        <div>
-                          <p
-                            style={{
-                              color: "red",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 10,
-                              marginBottom: 0,
-                            }}
-                          >
-                            {usersConsumables.hp === 0 ? "" : `+${usersConsumables.hp} hp`}
-                          </p>
+                    <ListItemButton onClick={()=> battle(usersConsumables)}>
 
-                          <p
-                            style={{
-                              color: "limegreen",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
-                            }}
-                          >
-                            {usersConsumables.stamina === 0
-                              ? ""
-                              : `+${usersConsumables.stamina} stamina`}
-                          </p>
-
-                          <p
-                            style={{
-                              color: "yellow",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
-                            }}
-                          >
-                            {usersConsumables.speed === 0
-                              ? ""
-                              : `+${usersConsumables.speed} speed`}
-                          </p>
-
-                          <p
-                            style={{
-                              color: "red",
-                              textShadow: "1px 1px black",
-                              fontSize: "25px",
-                              fontWeight: "bold",
-                              fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
-                            }}
-                          >
-                            {usersConsumables.attack === 0
-                              ? ""
-                              : `+${usersConsumables.attack} damage`}
-                          </p>
-                        </div>
-                      </Box>
+                    <ListItem>
+              <img height={125} width={125} src={usersConsumables.pic} />
+              <ListItemText
+                sx={{ ml: 55, fontFamily: "New Super Mario Font U" }}
+                primary={usersConsumables.name}
+                secondary={`${usersConsumables.hp} hp | ${usersConsumables.stamina} stamina`}
+              />
+              <Button
+                sx={{
+                  color: "black",
+                  fontSize: 20,
+                  fontFamily: "New Super Mario Font U",
+                }}
+                onClick={() => battle(usersConsumables)}
+              >
+                Use Potion
+              </Button>
+            </ListItem>        
                     </ListItemButton>
                     <Divider />
                   </div>
                 );
               })}
           </Box>
-
-
-
-            <ListItem>
-              <img height={200} width={200} src="images/healthPotion.png" />
-              <ListItemText
-                sx={{ ml: 55, fontFamily: "New Super Mario Font U" }}
-                primary="Health Potion"
-                secondary="25 hp | 0 stamina"
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={healthPot && healthPot.number == 0 ? true : false}
-                onClick={() => battle("health")}
-              >
-                Use Potion
-              </Button>
-            </ListItem>
-
-            <Divider />
-
-            <ListItem>
-              <img height={200} width={200} src="images/staminaPotion.png" />
-              <ListItemText
-                sx={{ ml: 55, fontFamily: "New Super Mario Font U" }}
-                primary="Stamina Potion"
-                secondary="0 hp | 30 stamina"
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={staminaPot && staminaPot.number == 0 ? true : false}
-                onClick={() => battle("stamina")}
-              >
-                Use Potion
-              </Button>
-            </ListItem>
-
-            <Divider />
-
-            <ListItem>
-              <img height={200} width={200} src="images/maxPotion.png" />
-              <ListItemText
-                sx={{ ml: 55, fontFamily: "New Super Mario Font U" }}
-                primary="Max Potion"
-                secondary="20 hp | 25 stamina"
-              />
-              <Button
-                sx={{
-                  color: "black",
-                  fontSize: 20,
-                  fontFamily: "New Super Mario Font U",
-                }}
-                disabled={maxPot && maxPot.number == 0 ? true : false}
-                onClick={() => battle("max")}
-              >
-                Use Potion
-              </Button>
-            </ListItem>
-            <Divider />
           </List>
         </Dialog>
       </Fragment>
