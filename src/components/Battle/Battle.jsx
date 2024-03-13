@@ -272,6 +272,7 @@ function Battle() {
 
   // this is for the users attacks or actions
   const attack = (attackType, basicAttacks, starterOne, enemyAttackTimeOut) => {
+    console.log('attackType', attackType);
     setTimeout(() => {
       setCharacterPicAttack("");
       setShakeTheScreen("");
@@ -315,11 +316,14 @@ function Battle() {
             clearTimeout(enemyAttackTimeOut);
             setWinnerOpen(true);
           }
-        } else if (attackType === "health") {
-          setStarterOneHp(starterOneHp + 25);
+        } else if (attackType.type == "consumable") {
+          setStarterOneHp(starterOneHp + attackType.hp);
+          setStarterOneStamina(starterOneStamina + attackType.stamina);
 
-          if (starterOneHp + 25 > starterOne.hp) {
+          if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
+          } else if (starterOneStamina + attackType.stamina > starterOne.stamina) {
+            setStarterOneStamina(starterOne.stamina);
           }
 
           setInventoryOpen(false);
@@ -327,9 +331,24 @@ function Battle() {
           dispatch({
             type: "SAGA_USE_ITEM",
             payload: {
-              itemId: 1,
+              itemId: attackType.id,
             },
           });
+          
+          // setStarterOneHp(starterOneHp + 25);
+
+          // if (starterOneHp + 25 > starterOne.hp) {
+          //   setStarterOneHp(starterOne.hp);
+          // }
+
+          // setInventoryOpen(false);
+
+          // dispatch({
+          //   type: "SAGA_USE_ITEM",
+          //   payload: {
+          //     itemId: 1,
+          //   },
+          // });
         } else if (attackType === "stamina") {
           setStarterOneStamina(starterOneStamina + 30);
 
@@ -575,17 +594,9 @@ function Battle() {
           setTextBox(
             `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
-        } else if (attackType === "health") {
+        } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.name} used a health potion and it healed 25 hp.`
-          );
-        } else if (attackType === "stamina") {
-          setTextBox(
-            `${starterOne.name} used a stamina potion and it gave 30 stamina back.`
-          );
-        } else if (attackType === "max") {
-          setTextBox(
-            `${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+            `${starterOne.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
@@ -607,17 +618,9 @@ function Battle() {
           setTextBox(
             `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
-        } else if (attackType === "health") {
+        } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.name} used a health potion and it healed 25 hp.`
-          );
-        } else if (attackType === "stamina") {
-          setTextBox(
-            `${starterOne.name} used a stamina potion and it gave 30 stamina back.`
-          );
-        } else if (attackType === "max") {
-          setTextBox(
-            `${starterOne.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+            `${starterOne.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
@@ -637,17 +640,9 @@ function Battle() {
           setTextBox(
             `${starterTwo.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
-        } else if (attackType === "health") {
+        } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterTwo.name} used a health potion and it healed 25 hp.`
-          );
-        } else if (attackType === "stamina") {
-          setTextBox(
-            `${starterTwo.name} used a stamina potion and it gave 30 stamina back.`
-          );
-        } else if (attackType === "max") {
-          setTextBox(
-            `${starterTwo.name} used a max potion. It healed 20 hp and gave 25 stamina back.`
+            `${starterTwo.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterOne") {
           setTextBox(
@@ -1344,9 +1339,7 @@ function Battle() {
       currentSpeed >= enemyOne.speed ||
       attackType === "starterOne" ||
       attackType === "starterTwo" ||
-      attackType === "health" ||
-      attackType === "stamina" ||
-      attackType === "max"
+      attackType.type == "consumable"
     ) {
       const enemyAttackTimeOut = setTimeout(() => {
         enemyAttack(attackType, enemyOne, basicAttacks);
@@ -1896,7 +1889,7 @@ function Battle() {
                               fontFamily: "New Super Mario Font U",
                             }}
                             primary={usersConsumables.name}
-                            secondary={`${usersConsumables.hp} hp | ${usersConsumables.stamina} stamina`}
+                            secondary={`+${usersConsumables.hp} hp | +${usersConsumables.stamina} stamina`}
                           />
                           <Button
                             sx={{
@@ -1906,7 +1899,7 @@ function Battle() {
                             }}
                             onClick={() => battle(usersConsumables)}
                           >
-                            Use Potion
+                            Use Consumable
                           </Button>
                         </ListItem>
                       </ListItemButton>
