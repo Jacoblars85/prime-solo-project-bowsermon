@@ -74,6 +74,7 @@ function Battle() {
   const levelEnemy = useSelector((store) => store.character.levelEnemy);
   const user = useSelector((store) => store.user.userReducer);
   const inventory = useSelector((store) => store.inventory.inventory);
+  const usersConsumableItems = useSelector((store) => store.inventory.usersConsumableItems);
 
   // setting each starter/enemy to a varriable
   let enemyOne = levelEnemy[0];
