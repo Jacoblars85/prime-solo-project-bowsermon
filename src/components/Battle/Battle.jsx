@@ -272,7 +272,6 @@ function Battle() {
 
   // this is for the users attacks or actions
   const attack = (attackType, basicAttacks, starterOne, enemyAttackTimeOut) => {
-    console.log('attackType', attackType);
     setTimeout(() => {
       setCharacterPicAttack("");
       setShakeTheScreen("");
