@@ -322,7 +322,8 @@ function Battle() {
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
-          } else if (starterOneStamina + attackType.stamina > starterOne.stamina) {
+          } 
+          if (starterOneStamina + attackType.stamina > starterOne.stamina) {
             setStarterOneStamina(starterOne.stamina);
           }
 
@@ -380,7 +381,8 @@ function Battle() {
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
-          } else if (starterOneStamina + attackType.stamina > starterOne.stamina) {
+          } 
+          if (starterOneStamina + attackType.stamina > starterOne.stamina) {
             setStarterOneStamina(starterOne.stamina);
           }
 
@@ -443,7 +445,8 @@ function Battle() {
 
           if (starterTwoHp + attackType.hp > starterTwo.hp) {
             setStarterTwoHp(starterTwo.hp);
-          } else if (starterTwoStamina + attackType.stamina > starterTwo.stamina) {
+          } 
+          if (starterTwoStamina + attackType.stamina > starterTwo.stamina) {
             setStarterTwoStamina(starterTwo.stamina);
           }
 
