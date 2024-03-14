@@ -321,7 +321,7 @@ function Battle() {
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
-          } 
+          }
           if (starterOneStamina + attackType.stamina > starterOne.stamina) {
             setStarterOneStamina(starterOne.stamina);
           }
@@ -374,13 +374,13 @@ function Battle() {
             clearTimeout(enemyAttackTimeOut);
             setWinnerOpen(true);
           }
-        }  else if (attackType.type == "consumable") {
+        } else if (attackType.type == "consumable") {
           setStarterOneHp(starterOneHp + attackType.hp);
           setStarterOneStamina(starterOneStamina + attackType.stamina);
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
-          } 
+          }
           if (starterOneStamina + attackType.stamina > starterOne.stamina) {
             setStarterOneStamina(starterOne.stamina);
           }
@@ -438,13 +438,13 @@ function Battle() {
             clearTimeout(enemyAttackTimeOut);
             setWinnerOpen(true);
           }
-        }  else if (attackType.type == "consumable") {
+        } else if (attackType.type == "consumable") {
           setStarterTwoHp(starterTwoHp + attackType.hp);
           setStarterTwoStamina(starterTwoStamina + attackType.stamina);
 
           if (starterTwoHp + attackType.hp > starterTwo.hp) {
             setStarterTwoHp(starterTwo.hp);
-          } 
+          }
           if (starterTwoStamina + attackType.stamina > starterTwo.stamina) {
             setStarterTwoStamina(starterTwo.stamina);
           }
@@ -562,7 +562,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - enemyOne.unique_damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - enemyOne.unique_damage
+                );
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               }
 
@@ -571,7 +573,6 @@ function Battle() {
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
               }
-           
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
@@ -600,7 +601,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - basicAttacks[0].damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - basicAttacks[0].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               }
 
@@ -609,7 +612,6 @@ function Battle() {
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
               }
-           
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
               setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
@@ -638,7 +640,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - basicAttacks[1].damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - basicAttacks[1].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               }
 
@@ -647,7 +651,6 @@ function Battle() {
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
               }
-            
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
               setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
@@ -680,7 +683,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - enemyOne.unique_damage);
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - enemyOne.unique_damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - enemyOne.unique_damage
+                );
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               }
 
@@ -691,12 +696,14 @@ function Battle() {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterOneHp + attackType.hp - enemyOne.unique_damage <= 0) {
+              } else if (
+                starterOneHp + attackType.hp - enemyOne.unique_damage <=
+                0
+              ) {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-            
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
@@ -739,7 +746,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - basicAttacks[0].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - basicAttacks[0].damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - basicAttacks[0].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               }
 
@@ -750,12 +759,14 @@ function Battle() {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterOneHp + attackType.hp - basicAttacks[0].damage <= 0) {
+              } else if (
+                starterOneHp + attackType.hp - basicAttacks[0].damage <=
+                0
+              ) {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-            
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - basicAttacks[0].damage);
               setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
@@ -798,7 +809,9 @@ function Battle() {
                 setStarterOneHp(starterOne.hp - basicAttacks[1].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               } else {
-                setStarterOneHp(starterOneHp + attackType.hp - basicAttacks[1].damage);
+                setStarterOneHp(
+                  starterOneHp + attackType.hp - basicAttacks[1].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               }
 
@@ -809,12 +822,14 @@ function Battle() {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterOneHp + attackType.hp - basicAttacks[1].damage <= 0) {
+              } else if (
+                starterOneHp + attackType.hp - basicAttacks[1].damage <=
+                0
+              ) {
                 setStarterOneHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-            
             } else if (attackType === "starterTwo") {
               setStarterTwoHp(starterTwoHp - basicAttacks[1].damage);
               setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
@@ -859,7 +874,9 @@ function Battle() {
                 setStarterTwoHp(starterTwo.hp - enemyOne.unique_damage);
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               } else {
-                setStarterTwoHp(starterTwoHp + attackType.hp - enemyOne.unique_damage);
+                setStarterTwoHp(
+                  starterTwoHp + attackType.hp - enemyOne.unique_damage
+                );
                 setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
               }
 
@@ -870,12 +887,14 @@ function Battle() {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterTwoHp + attackType.hp - enemyOne.unique_damage <= 0) {
+              } else if (
+                starterTwoHp + attackType.hp - enemyOne.unique_damage <=
+                0
+              ) {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-           
             } else if (attackType === "starterOne") {
               setStarterOneHp(starterOneHp - enemyOne.unique_damage);
               setEnemyStamina(enemyStamina - enemyOne.unique_stamina);
@@ -918,7 +937,9 @@ function Battle() {
                 setStarterTwoHp(starterTwo.hp - basicAttacks[0].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               } else {
-                setStarterTwoHp(starterTwoHp + attackType.hp - basicAttacks[0].damage);
+                setStarterTwoHp(
+                  starterTwoHp + attackType.hp - basicAttacks[0].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
               }
 
@@ -929,12 +950,14 @@ function Battle() {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterTwoHp + attackType.hp - basicAttacks[0].damage <= 0) {
+              } else if (
+                starterTwoHp + attackType.hp - basicAttacks[0].damage <=
+                0
+              ) {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-            
             } else if (attackType === "starterOne") {
               setStarterOneHp(starterOneHp - basicAttacks[0].damage);
               setEnemyStamina(enemyStamina - basicAttacks[0].stamina);
@@ -977,7 +1000,9 @@ function Battle() {
                 setStarterTwoHp(starterTwo.hp - basicAttacks[1].damage);
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               } else {
-                setStarterTwoHp(starterTwoHp + attackType.hp - basicAttacks[1].damage);
+                setStarterTwoHp(
+                  starterTwoHp + attackType.hp - basicAttacks[1].damage
+                );
                 setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
               }
 
@@ -988,12 +1013,14 @@ function Battle() {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 setLoserOpen(true);
-              } else if (starterTwoHp + attackType.hp - basicAttacks[1].damage <= 0) {
+              } else if (
+                starterTwoHp + attackType.hp - basicAttacks[1].damage <=
+                0
+              ) {
                 setStarterTwoHp(0);
                 clearTimeout(characterAttackTimeOut);
                 handleDeadOpen();
               }
-           
             } else if (attackType === "starterOne") {
               setStarterOneHp(starterOneHp - basicAttacks[1].damage);
               setEnemyStamina(enemyStamina - basicAttacks[1].stamina);
@@ -1610,32 +1637,32 @@ function Battle() {
                 usersConsumableItems.map((usersConsumables) => {
                   return (
                     <div key={usersConsumables.id}>
-                        <ListItem>
-                          <img
-                            height={125}
-                            width={125}
-                            src={usersConsumables.pic}
-                          />
-                          <ListItemText
-                            sx={{
-                              ml: 55,
-                              fontFamily: "New Super Mario Font U",
-                            }}
-                            primary={usersConsumables.name}
-                            secondary={`+${usersConsumables.hp} hp | +${usersConsumables.stamina} stamina`}
-                          />
-                          <Button
-                            sx={{
-                              color: "black",
-                              fontSize: 20,
-                              fontFamily: "New Super Mario Font U",
-                            }}
-                            disabled={usersConsumables.number <= 0 ? true : false}
-                            onClick={() => battle(usersConsumables)}
-                          >
-                            Use Consumable
-                          </Button>
-                        </ListItem>
+                      <ListItem>
+                        <img
+                          height={125}
+                          width={125}
+                          src={usersConsumables.pic}
+                        />
+                        <ListItemText
+                          sx={{
+                            ml: 55,
+                            fontFamily: "New Super Mario Font U",
+                          }}
+                          primary={usersConsumables.name}
+                          secondary={`+${usersConsumables.hp} hp | +${usersConsumables.stamina} stamina`}
+                        />
+                        <Button
+                          sx={{
+                            color: "black",
+                            fontSize: 20,
+                            fontFamily: "New Super Mario Font U",
+                          }}
+                          disabled={usersConsumables.number <= 0 ? true : false}
+                          onClick={() => battle(usersConsumables)}
+                        >
+                          Use Consumable
+                        </Button>
+                      </ListItem>
                       <Divider />
                     </div>
                   );
