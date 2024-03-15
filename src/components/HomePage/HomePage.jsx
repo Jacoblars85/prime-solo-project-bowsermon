@@ -28,19 +28,11 @@ function HomePage() {
 
       <div className="homePage">
 
-        <div className='starterOneHomeHeader'>
-          <h2>Starter 1</h2>
-        </div>
-
-        <div className='starterTwoHomeHeader'>
-          <h2>{starter.length < 2 ? "" : "Starter 2"}</h2>
-        </div>
-
         <div className="starterHomeView">
 
           {starter.map(start => {
             return (
-              <div key={start.id}>
+              <div className="starter-single-box" key={start.id}>
                 <StarterItem key={start.id} start={start} />
               </div>
 
