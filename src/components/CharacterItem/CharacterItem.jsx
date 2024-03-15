@@ -191,7 +191,7 @@ function CharacterItem({ character }) {
   const [newItemId, setNewItemId] = useState(0);
 
   const handleEquipClickOpen = (newItem) => {
-    setNewItemId(newItem)
+    setNewItemId(newItem);
     setOpenEquip(true);
   };
 
@@ -200,15 +200,15 @@ function CharacterItem({ character }) {
   };
 
   const equipItem = () => {
-      dispatch({
-        type: "SAGA_EQUIP_ITEM",
-        payload: {
-          itemId: newItemId,
-          characterID: character.id,
-          oldItemId: character.item_id
-        },
-      });
-      setOpenEquip(false)
+    dispatch({
+      type: "SAGA_EQUIP_ITEM",
+      payload: {
+        itemId: newItemId,
+        characterID: character.id,
+        oldItemId: character.item_id,
+      },
+    });
+    setOpenEquip(false);
   };
 
   const removeItem = () => {
@@ -216,10 +216,10 @@ function CharacterItem({ character }) {
       type: "SAGA_REMOVE_ITEM",
       payload: {
         characterID: character.id,
-        oldItemId: character.item_id
+        oldItemId: character.item_id,
       },
     });
-};
+  };
 
   return (
     <div className="singleArea">
@@ -240,15 +240,34 @@ function CharacterItem({ character }) {
         onMouseOver={character.new ? toggleNewClass : doNothing}
       >
         <Box
-                        display="flex"
-                        flexDirection="row"
-                        flexWrap="nowrap"
-                        justifyContent="flex-end"
-                        alignItems="center"
-                        width="100%"
-                      >
-        <h5 style={{ width: "130px", marginRight: "0px",  }} >{character.name}</h5>
-        {character.item_id === null ? <CloseIcon sx={{ height: "35px", width: "35px", color: "grey", paddingRight: "3px" }} fontSize="100px" /> : <img src={character.item_pic} height={35} width={35} style={{ paddingRight: "3px" }} />}
+          display="flex"
+          flexDirection="row"
+          flexWrap="nowrap"
+          justifyContent="flex-end"
+          alignItems="center"
+          width="100%"
+        >
+          <h5 style={{ width: "130px", marginRight: "0px" }}>
+            {character.name}
+          </h5>
+          {character.item_id === null ? (
+            <CloseIcon
+              sx={{
+                height: "35px",
+                width: "35px",
+                color: "grey",
+                paddingRight: "3px",
+              }}
+              fontSize="100px"
+            />
+          ) : (
+            <img
+              src={character.item_pic}
+              height={35}
+              width={35}
+              style={{ paddingRight: "3px" }}
+            />
+          )}
         </Box>
 
         <img
@@ -410,23 +429,30 @@ function CharacterItem({ character }) {
             >
               <img src={character.profile_pic} height={350} width={350} />
               <Box
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-around"
-              alignItems="center"
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-around"
+                alignItems="center"
                 alignSelf="flex-end"
                 height={140}
                 width={100}
               >
-                <h4 style={{ margin: "0px", fontSize: "20px"}}>Held Item</h4>
-                <Box
-                height={100}
-                width={100}
-                border="1px solid black"
-              >
-                {character.item_id === null ? <CloseIcon sx={{ height: "100%", width: "100%", color: "grey" }} fontSize="100px" /> : <img src={character.item_pic} height={100} width={100} />}
-              </Box>
-                {character.item_id === null ? "" : <button onClick={removeItem}>Remove Item</button>}
+                <h4 style={{ margin: "0px", fontSize: "20px" }}>Held Item</h4>
+                <Box height={100} width={100} border="1px solid black">
+                  {character.item_id === null ? (
+                    <CloseIcon
+                      sx={{ height: "100%", width: "100%", color: "grey" }}
+                      fontSize="100px"
+                    />
+                  ) : (
+                    <img src={character.item_pic} height={100} width={100} />
+                  )}
+                </Box>
+                {character.item_id === null ? (
+                  ""
+                ) : (
+                  <button onClick={removeItem}>Remove Item</button>
+                )}
               </Box>
             </Box>
 
@@ -502,12 +528,20 @@ function CharacterItem({ character }) {
             </Button>
           </Box>
           <Divider />
-          <Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-around"
+          >
+            <h1 style={{ paddingLeft: "10px" }}>Held Items</h1>
+            <Divider />
             {usersHeldItems &&
               usersHeldItems.map((usersHeld) => {
                 return (
                   <div key={usersHeld.id}>
-                    <ListItemButton onClick={()=> handleEquipClickOpen(usersHeld.id)}>
+                    <ListItemButton
+                      onClick={() => handleEquipClickOpen(usersHeld.id)}
+                    >
                       <Box
                         display="flex"
                         flexDirection="row"
