@@ -218,28 +218,6 @@
 }
   
 
-.starterOneHeader {
-  /* position: absolute; */
-  /* top: 11%;
-  right: 2.6%; */
-  z-index: 1;
-  height: 50px;
-  width: 200px;
-  text-align: center;
-  font-size: 28px;
-}
-
-.starterTwoHeader {
-  /* position: absolute; */
-  /* top: 51%;
-  right: 2.6%; */
-  z-index: 1;
-  height: 50px;
-  width: 200px;
-  text-align: center;
-  font-size: 28px;
-}
-
 .mainStatTextForStarter {
   display: flex;
   flex-direction: row;
