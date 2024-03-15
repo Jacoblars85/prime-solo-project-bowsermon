@@ -211,8 +211,8 @@
 
 .starterPictures img {
   cursor: pointer;
-  height: 60%;
-  width: 80%;
+  height: auto;
+  width: 61%;
   
 }
   
@@ -234,7 +234,7 @@
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
-  width: 200px;
+  width: 100%;
 }
 
 .starterTextStamina {
@@ -242,7 +242,7 @@
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
-  width: 120px;
+  width: 100%;
 }
 
 .starterTextSpeed {
@@ -250,7 +250,7 @@
   text-shadow: 1px 1px black;
   font-size: 20px;
   margin: 0px;
-  width: 120px;
+  width: 100%;
 }
 
 .starterTextAttack {
