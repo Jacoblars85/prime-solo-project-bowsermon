@@ -42,7 +42,7 @@ function Characters() {
             {starter.map((start) => {
               return (
                 <div key={start.id}>
-                  <h2>Starter </h2>
+                  <h2>Starter {start.starter_1 === true ? "1" : start.starter_2 ? "2" : ""}</h2>
                   <StarterItem start={start} />
                 </div>
               );
