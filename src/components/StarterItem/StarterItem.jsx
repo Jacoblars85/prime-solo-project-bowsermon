@@ -34,9 +34,9 @@ function StarterItem({ start }) {
   };
 
   return (
-    <div >
+    <div className="starterSingleBoxUl" >
       <h5>{start.name}</h5>
-      <h4 className="starterSingleBoxUl" onClick={togglePicture}>
+      <h4 onClick={togglePicture}>
         {" "}
         {displayText()}{" "}
       </h4>
