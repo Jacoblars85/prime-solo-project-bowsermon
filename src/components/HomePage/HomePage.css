@@ -138,14 +138,15 @@ body {
  
   
      */
+
 .starterHomeView {
   position: absolute;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  top: 13%;
+  top: 15%;
   left: 81%;
-  height: 85%;
+  height: 80%;
   width: 18%;
   border: 3px solid black;
   background-color: rgb(56, 188, 233);
@@ -154,46 +155,46 @@ body {
   text-align: center;
 }
 
-     .starter-single-box {
-      height: 50%;
-      width: 100%;
-      /* background-image: url(/public/images/pixelGrassBlock.jpeg); */
-      background-image: url('/public/images/brickBlock.png');
-      background-repeat: repeat-x;
-      background-size: 8.7vh;
-      background-position-y: bottom;
-    }
-    
-    .starterSingleBoxUl {
-      height: 50%;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-    
-    }
-      
-    .starterHomeView h5 {
-      margin: 0px;
-      color: black;
-      font-size: 24px;
-      text-align: center;
-      text-shadow: 1px 1px white;
-    }
+.starter-single-box {
+height: 50%;
+width: 100%;
+/* background-image: url(/public/images/pixelGrassBlock.jpeg); */
+background-image: url('/public/images/brickBlock.png');
+background-repeat: repeat-x;
+background-size: 8.7vh;
+background-position-y: bottom;
+}
 
-    .starterHomeView h2 {
-      text-align: center;
-      font-size: 40px;
-      text-shadow: 1px 1px white;
-      margin: 0px;
-    }
-    
-    
-    .starterPictures img {
-      cursor: pointer;
-      height: 185px;
-      width: fit-content;
-      
-    }
+.starterSingleBoxUl {
+height: 50%;
+width: 100%;
+text-align: center;
+cursor: pointer;
+
+}
+
+.starterHomeView h5 {
+margin: 0px;
+color: black;
+font-size: 24px;
+text-align: center;
+text-shadow: 1px 1px white;
+}
+
+.starterHomeView h2 {
+text-align: center;
+font-size: 40px;
+text-shadow: 1px 1px white;
+margin: 0px;
+}
+
+
+.starterPictures img {
+cursor: pointer;
+height: 185px;
+width: fit-content;
+
+}
   
 
   
