@@ -211,8 +211,8 @@
 
 .starterPictures img {
   cursor: pointer;
-  height: auto;
-  width: 61%;
+  height: 185px;
+  width: fit-content;
   
 }
   

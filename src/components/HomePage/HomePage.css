@@ -135,45 +135,8 @@ body {
     padding-top: 20px;
   }
   
-  .starter-single-box {
-    height: 328.8px;
-    width: 250px;
-    background-image: url(/public/images/pixelGrassBlock.jpeg);
-    background-image: url('/public/images/brickBlock.png');
-    background-repeat: repeat-x;
-    background-size: 8.7vh;
-    background-position-y: 220px;
-  }
+ 
   
-  .starterSingleBoxUl {
-    height: 250px;
-    width: 250px;
-    text-align: center;
-    padding-left: 37px;
-    color: black;
-    cursor: pointer;
-    padding-left: 0px;
-  
-  }
-    
-  .starterHomeView h5 {
-    margin: 0px;
-    color: black;
-    font-size: 24px;
-    text-align: center;
-    padding-top: 14px;
-    text-shadow: 1px 1px white;
-  }
-  
-  
-  .starterPictures img {
-    cursor: pointer;
-    height: 200px;
-    width: 200px;
-    padding-left: 6px;
-    margin-top: -6px;
-    
-  }
      */
 .starterHomeView {
   position: absolute;
@@ -205,7 +168,6 @@ body {
       height: 50%;
       width: 100%;
       text-align: center;
-      /* color: black; */
       cursor: pointer;
     
     }
@@ -228,8 +190,8 @@ body {
     
     .starterPictures img {
       cursor: pointer;
-      height: auto;
-      width: 61%;
+      height: 185px;
+      width: fit-content;
       
     }
   
