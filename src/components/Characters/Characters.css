@@ -182,16 +182,6 @@
 }
 
 
-.starterCharacterBo {
-
-  border: 3px solid black;
-  width: 250px;
-  height: 617px;
-  justify-content: center;
-  background-color: rgb(56, 188, 233);
-  padding-top: 20px;
-}
-
 .starter-single-box {
   height: 50%;
   width: 100%;

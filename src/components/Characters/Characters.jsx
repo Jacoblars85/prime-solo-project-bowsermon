@@ -42,7 +42,7 @@ function Characters() {
             {starter.map((start) => {
               return (
                 <div key={start.id}>
-                  
+                  <h2>Starter </h2>
                   <StarterItem start={start} />
                 </div>
               );
