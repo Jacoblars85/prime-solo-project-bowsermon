@@ -239,7 +239,17 @@ function CharacterItem({ character }) {
         className={character.new ? "new" : "single-box"}
         onMouseOver={character.new ? toggleNewClass : doNothing}
       >
-        <h5>{character.name}</h5>
+        <Box
+                        display="flex"
+                        flexDirection="row"
+                        flexWrap="nowrap"
+                        justifyContent="flex-end"
+                        alignItems="center"
+                        width="100%"
+                      >
+        <h5 style={{ width: "130px", marginRight: "0px",  }} >{character.name}</h5>
+        {character.item_id === null ? <CloseIcon sx={{ height: "35px", width: "35px", color: "grey", paddingRight: "3px" }} fontSize="100px" /> : <img src={character.item_pic} height={35} width={35} style={{ paddingRight: "3px" }} />}
+        </Box>
 
         <img
           style={{ cursor: "pointer" }}
