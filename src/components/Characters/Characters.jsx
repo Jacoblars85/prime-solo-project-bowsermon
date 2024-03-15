@@ -42,6 +42,7 @@ function Characters() {
             {starter.map((start) => {
               return (
                 <div key={start.id}>
+                  
                   <StarterItem start={start} />
                 </div>
               );

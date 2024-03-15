@@ -197,8 +197,9 @@
 /* } */
 
 .starter-single-box {
-  height: 328.8px;
-  width: 250px;
+  height: 50%;
+  width: 100%;
+  border: 1px solid black;
   /* background-image: url(/public/images/pixelGrassBlock.jpeg); */
   background-image: url('/public/images/brickBlock.png');
   background-repeat: repeat-x;
@@ -207,8 +208,8 @@
 }
 
 .starterSingleBoxUl {
-  height: 250px;
-  width: 250px;
+  height: 50%;
+  width: 100%;
   text-align: center;
   /* padding-left: 37px; */
   /* color: black; */
@@ -222,15 +223,15 @@
   color: black;
   font-size: 24px;
   text-align: center;
-  padding-top: 14px;
+  /* padding-top: 14px; */
   text-shadow: 1px 1px white;
 }
 
 
 .starterPictures img {
   cursor: pointer;
-  height: 200px;
-  width: 200px;
+  height: 40%;
+  width: 80%;
   /* padding-left: 6px; */
   /* margin-top: -6px; */
   
