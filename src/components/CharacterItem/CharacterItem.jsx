@@ -410,12 +410,22 @@ function CharacterItem({ character }) {
             >
               <img src={character.profile_pic} height={350} width={350} />
               <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-around"
+              alignItems="center"
                 alignSelf="flex-end"
+                height={140}
+                width={100}
+              >
+                <h4 style={{ margin: "0px", fontSize: "20px"}}>Held Item</h4>
+                <Box
                 height={100}
                 width={100}
                 border="1px solid black"
               >
                 {character.item_id === null ? <CloseIcon sx={{ height: "100%", width: "100%", color: "grey" }} fontSize="100px" /> : <img src={character.item_pic} height={100} width={100} />}
+              </Box>
                 {character.item_id === null ? "" : <button onClick={removeItem}>Remove Item</button>}
               </Box>
             </Box>
