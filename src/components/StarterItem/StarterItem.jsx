@@ -36,10 +36,10 @@ function StarterItem({ start }) {
   return (
     <div className="starter-single-box">
       <h5>{start.name}</h5>
-      <ul className="starterSingleBoxUl" onClick={togglePicture}>
+      <h4 className="starterSingleBoxUl" onClick={togglePicture}>
         {" "}
         {displayText()}{" "}
-      </ul>
+      </h4>
     </div>
   );
 }

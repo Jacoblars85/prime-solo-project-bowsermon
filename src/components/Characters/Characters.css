@@ -187,7 +187,7 @@
   /* background-image: url(/public/images/pixelGrassBlock.jpeg); */
   background-image: url('/public/images/brickBlock.png');
   background-repeat: repeat-x;
-  background-size: 8.7vh;
+  /* background-size: 8.7vh; */
   background-position-y: 220px;
 }
 
@@ -197,7 +197,6 @@
   text-align: center;
   /* color: black; */
   cursor: pointer;
-  padding-left: 0px;
 
 }
   
@@ -217,6 +216,7 @@
   
 }
   
+
 
 .mainStatTextForStarter {
   display: flex;
