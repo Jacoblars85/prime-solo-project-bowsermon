@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Box from "@mui/material/Box";
+import CloseIcon from "@mui/icons-material/Close";
 
 function StarterItem({ start }) {
   const [isPicture, setIsPicture] = useState(false);
@@ -35,7 +37,37 @@ function StarterItem({ start }) {
 
   return (
     <div className="starterSingleBoxUl" >
-      <h5>{start.name}</h5>
+      {/* <h5>{start.name}</h5> */}
+      <Box
+          display="flex"
+          flexDirection="row"
+          flexWrap="nowrap"
+          justifyContent="flex-end"
+          alignItems="center"
+          width="100%"
+        >
+          <h5 style={{ width: "170px", marginRight: "0px" }}>
+            {start.name}
+          </h5>
+          {start.item_id === null ? (
+            <CloseIcon
+              sx={{
+                height: "35px",
+                width: "35px",
+                color: "grey",
+                paddingRight: "3px",
+              }}
+              fontSize="100px"
+            />
+          ) : (
+            <img
+              src={start.item_pic}
+              height={35}
+              width={35}
+              style={{ paddingRight: "3px" }}
+            />
+          )}
+        </Box>
       <h4  onClick={togglePicture}>
         {" "}
         {displayText()}{" "}
