@@ -206,19 +206,17 @@
   height: 50%;
   width: 100%;
   text-align: center;
-  /* padding-left: 37px; */
   /* color: black; */
   cursor: pointer;
   padding-left: 0px;
 
 }
   
-.starterCharacterView h5 {
+.starterBox h5 {
   margin: 0px;
   color: black;
   font-size: 24px;
   text-align: center;
-  /* padding-top: 14px; */
   text-shadow: 1px 1px white;
 }
 
@@ -227,8 +225,6 @@
   cursor: pointer;
   height: 60%;
   width: 80%;
-  /* padding-left: 6px; */
-  /* margin-top: -6px; */
   
 }
   
