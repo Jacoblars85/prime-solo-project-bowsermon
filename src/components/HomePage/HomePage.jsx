@@ -33,6 +33,7 @@ function HomePage() {
           {starter.map(start => {
             return (
               <div className="starter-single-box" key={start.id}>
+                                  <h2>Starter {start.starter_1 === true ? "1" : start.starter_2 ? "2" : ""}</h2>
                 <StarterItem key={start.id} start={start} />
               </div>
 
