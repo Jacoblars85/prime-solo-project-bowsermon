@@ -29,7 +29,7 @@ router.post('/register', (req, res, next) => {
     // new stuff to add basic character to new user
     .then(result => {
       // ID IS HERE!
-      console.log('New user Id:', result.rows[0].id);
+      // console.log('New user Id:', result.rows[0].id);
       const createdUserId = result.rows[0].id
 
       // Now handle the user_characters reference:
@@ -45,7 +45,7 @@ router.post('/register', (req, res, next) => {
       pool.query(insertNewUserQuery, insertNewUserValues)
         .then(result => {
           // ID IS HERE!
-          console.log('New user Id:', result.rows[0].user_id);
+          // console.log('New user Id:', result.rows[0].user_id);
           const createdUserId = result.rows[0].user_id
 
           // Now handle the user_characters reference:

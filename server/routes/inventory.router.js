@@ -259,7 +259,7 @@ router.put("/use/item/:id", (req, res) => {
 });
 
 router.put("/equip/item", (req, res) => {
-     console.log('req.body', req.body);
+    //  console.log('req.body', req.body);
         
     const sqlText = `
         UPDATE "user_inventory"
