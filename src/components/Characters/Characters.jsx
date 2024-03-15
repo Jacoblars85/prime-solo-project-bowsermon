@@ -41,7 +41,7 @@ function Characters() {
           <div className="starterBox">
             {starter.map((start) => {
               return (
-                <div key={start.id}>
+                <div className="starter-single-box" key={start.id}>
                   <h2>Starter {start.starter_1 === true ? "1" : start.starter_2 ? "2" : ""}</h2>
                   <StarterItem start={start} />
                 </div>
