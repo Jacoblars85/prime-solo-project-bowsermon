@@ -219,8 +219,7 @@ function Consumables({ consumableItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0,
-            marginBottom: 0,
+            margin: 0,
           }}
         >
          {consumableItem.hp === 0 ? "" : `+${consumableItem.hp} hp`} 

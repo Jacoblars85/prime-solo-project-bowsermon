@@ -205,60 +205,67 @@ function HeldItems({ heldItem }) {
         </h4>
       </div>
 
-      <div style={{ width: "150px", height: "122px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div
+        style={{
+          width: "150px",
+          height: "122px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         <div>
-        <p
-          style={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-            marginBottom: 0,
-          }}
-        >
-          {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
-        </p>
+          <p
+            style={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
+          </p>
 
-        <p
-          style={{
-            color: "limegreen",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-          }}
-        >
-          {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`}
-        </p>
+          <p
+            style={{
+              color: "limegreen",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`}
+          </p>
 
-        <p
-          style={{
-            color: "yellow",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-          }}
-        >
-          {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
-        </p>
+          <p
+            style={{
+              color: "yellow",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
+          </p>
 
-        <p
-          style={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-          }}
-        >
-          {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`}
-        </p>
+          <p
+            style={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`}
+          </p>
         </div>
       </div>
 
