@@ -159,7 +159,7 @@ function Consumables({ consumableItem }) {
         payload: {
           itemId: consumableItem.id,
           amountNum: consumableAmount,
-          totalCoins: consumableAmount * consumableItem.cost
+          totalCoins: consumableAmount * consumableItem.cost,
         },
       });
     }
@@ -210,35 +210,45 @@ function Consumables({ consumableItem }) {
         </h4>
       </div>
 
-      <div style={{ width: "150px", height: "122px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div
+        style={{
+          width: "150px",
+          height: "122px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         <div>
-        <p
-          style={{
-            color: "red",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-          }}
-        >
-         {consumableItem.hp === 0 ? "" : `+${consumableItem.hp} hp`} 
-        </p>
+          <p
+            style={{
+              color: "red",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {consumableItem.hp === 0 ? "" : `+${consumableItem.hp} hp`}
+          </p>
 
-        <p
-          style={{
-            color: "limegreen",
-            textShadow: "1px 1px black",
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: "New Super Mario Font U",
-            margin: 0,
-          }}
-        >
-         {consumableItem.stamina === 0 ? "" : `+${consumableItem.stamina} stamina`} 
-        </p>
+          <p
+            style={{
+              color: "limegreen",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+              margin: 0,
+            }}
+          >
+            {consumableItem.stamina === 0
+              ? ""
+              : `+${consumableItem.stamina} stamina`}
+          </p>
 
-        <p
+          <p
             style={{
               color: "yellow",
               textShadow: "1px 1px black",
@@ -250,7 +260,7 @@ function Consumables({ consumableItem }) {
           >
             {consumableItem.speed === 0 ? "" : `+${consumableItem.speed} speed`}
           </p>
-          </div>
+        </div>
       </div>
 
       {/* <Button
@@ -324,7 +334,12 @@ function Consumables({ consumableItem }) {
           />{" "}
         </h5>
 
-        <button disabled={user.coins < consumableItem.cost ? true : false} onClick={handleConsumableClickOpen}>Buy</button>
+        <button
+          disabled={user.coins < consumableItem.cost ? true : false}
+          onClick={handleConsumableClickOpen}
+        >
+          Buy
+        </button>
       </div>
 
       {/* Consumable dialog */}
@@ -352,22 +367,22 @@ function Consumables({ consumableItem }) {
             can not get a refund.
           </DialogContentText>
         </DialogContent>
-       
-        <DialogActions sx={{justifyContent: "center" }}>
-        <NumberInput
-          aria-label="Compact number input"
-          placeholder="Type a number…"
-          readOnly
-          value={consumableValue}
-          onChange={(event, val) => setConsumableValue(val)}
-          min={1}
-          max={Math.floor(user.coins / consumableItem.cost)}
-        />
-        <Button
+
+        <DialogActions sx={{ justifyContent: "center" }}>
+          <NumberInput
+            aria-label="Compact number input"
+            placeholder="Type a number…"
+            readOnly
+            value={consumableValue}
+            onChange={(event, val) => setConsumableValue(val)}
+            min={1}
+            max={Math.floor(user.coins / consumableItem.cost)}
+          />
+          <Button
             sx={{
               color: "black",
               fontSize: 16,
-              fontFamily: "New Super Mario Font U"
+              fontFamily: "New Super Mario Font U",
             }}
             onClick={() => buyConsumable(consumableValue)}
             autoFocus
