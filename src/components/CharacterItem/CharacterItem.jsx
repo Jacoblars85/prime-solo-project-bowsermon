@@ -309,7 +309,7 @@ function CharacterItem({ character }) {
             id="alert-dialog-description"
             sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
           >
-            You will receive 10 coins if you sell {character.name}. You will
+            You will receive 10 coins if you sell {character.name}. If you have an item on this character, the item will be lost too. You will
             have to buy the new character box to have the chance to get{" "}
             {character.name} back.
           </DialogContentText>
