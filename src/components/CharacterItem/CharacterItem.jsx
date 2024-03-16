@@ -576,17 +576,16 @@ function CharacterItem({ character }) {
                         >
                           {usersHeld.name}
                         </h4>
-                        
+
                         <Box
-                        display="flex"
-                        flexDirection="column"
-                        flexWrap="wrap"
-                        columnGap={3}
-                        justifyContent="center"
-                        alignItems="space-around"
-                        height={75}
-                      >
-{/* <div> */}
+                          display="flex"
+                          flexDirection="column"
+                          flexWrap="wrap"
+                          columnGap={3}
+                          justifyContent="center"
+                          alignItems="space-around"
+                          height={75}
+                        >
                           <p
                             style={{
                               color: "red",
@@ -644,7 +643,6 @@ function CharacterItem({ character }) {
                               ? ""
                               : `+${usersHeld.attack} damage`}
                           </p>
-                          {/* </div> */}
                         </Box>
                       </Box>
                     </ListItemButton>
