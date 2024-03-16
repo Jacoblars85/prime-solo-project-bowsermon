@@ -199,13 +199,14 @@ function HeldItems({ heldItem }) {
         <img height={70} width={70} src={heldItem.pic} />
       </div>
 
-      <div style={{ width: "150px", marginLeft: "10px" }}>
-        <h4 style={{ color: heldItem.color, width: "150px" }}>
+      <div style={{ width: "100px", marginLeft: "5px" }}>
+        <h4 style={{ color: heldItem.color, width: "100px" }}>
           {heldItem.name}
         </h4>
       </div>
 
-      <div style={{ width: "100px" }}>
+      <div style={{ width: "150px", height: "122px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div>
         <p
           style={{
             color: "red",
@@ -213,7 +214,7 @@ function HeldItems({ heldItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 10,
+            margin: 0,
             marginBottom: 0,
           }}
         >
@@ -227,7 +228,7 @@ function HeldItems({ heldItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0,
+            margin: 0,
           }}
         >
           {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`}
@@ -240,7 +241,7 @@ function HeldItems({ heldItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0,
+            margin: 0,
           }}
         >
           {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
@@ -253,11 +254,12 @@ function HeldItems({ heldItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0,
+            margin: 0,
           }}
         >
           {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`}
         </p>
+        </div>
       </div>
 
       <div style={{ marginRight: "10px" }}>
