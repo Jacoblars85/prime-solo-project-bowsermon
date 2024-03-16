@@ -576,7 +576,17 @@ function CharacterItem({ character }) {
                         >
                           {usersHeld.name}
                         </h4>
-                        <div>
+                        
+                        <Box
+                        display="flex"
+                        flexDirection="column"
+                        flexWrap="wrap"
+                        columnGap={3}
+                        justifyContent="center"
+                        alignItems="space-around"
+                        height={75}
+                      >
+{/* <div> */}
                           <p
                             style={{
                               color: "red",
@@ -584,8 +594,7 @@ function CharacterItem({ character }) {
                               fontSize: "25px",
                               fontWeight: "bold",
                               fontFamily: "New Super Mario Font U",
-                              marginTop: 10,
-                              marginBottom: 0,
+                              margin: 0,
                             }}
                           >
                             {usersHeld.hp === 0 ? "" : `+${usersHeld.hp} hp`}
@@ -598,7 +607,7 @@ function CharacterItem({ character }) {
                               fontSize: "25px",
                               fontWeight: "bold",
                               fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
+                              margin: 0,
                             }}
                           >
                             {usersHeld.stamina === 0
@@ -613,7 +622,7 @@ function CharacterItem({ character }) {
                               fontSize: "25px",
                               fontWeight: "bold",
                               fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
+                              margin: 0,
                             }}
                           >
                             {usersHeld.speed === 0
@@ -628,14 +637,15 @@ function CharacterItem({ character }) {
                               fontSize: "25px",
                               fontWeight: "bold",
                               fontFamily: "New Super Mario Font U",
-                              marginTop: 0,
+                              margin: 0,
                             }}
                           >
                             {usersHeld.attack === 0
                               ? ""
                               : `+${usersHeld.attack} damage`}
                           </p>
-                        </div>
+                          {/* </div> */}
+                        </Box>
                       </Box>
                     </ListItemButton>
                     <Divider />
