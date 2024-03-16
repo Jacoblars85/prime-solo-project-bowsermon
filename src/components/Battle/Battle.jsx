@@ -1336,7 +1336,12 @@ function Battle() {
           </DialogContent>
           <DialogActions>
             <Button
-              sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+            sx={{
+              fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              color: "black",
+              fontSize: 16,
+            }}
               onClick={handleLoserClose}
               autoFocus
             >
