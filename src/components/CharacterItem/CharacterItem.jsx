@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
+import EditIcon from '@mui/icons-material/Edit';
 
 const InfoTransition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -221,6 +222,16 @@ function CharacterItem({ character }) {
     });
   };
 
+  const editCharacterName = () => {
+    dispatch({
+      type: "SAGA_EDIT_CHARACTERS_NAME",
+      payload: {
+        characterID: character.id,
+        newCharacterName: newName
+      },
+    });
+  };
+
   return (
     <div className="singleArea">
       <div>
@@ -403,7 +414,7 @@ function CharacterItem({ character }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.name}
+              {character.name} {" "}<EditIcon fontSize="small" onClick={editCharacterName}/>
             </Typography>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.starter_1 === true
