@@ -424,9 +424,9 @@ function CharacterItem({ character }) {
           },
         }}
       >
-        <DialogTitle>Do you want to give {character.name} a nickname?</DialogTitle>
+        <DialogTitle sx={{ fontFamily: "New Super Mario Font U", textAlign: "center", fontSize: "25px" }}>Do you want to give {character.name} a nickname?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}>
             To give {character.name} a new name, fill out textfield below with the name you want to give it and click submit. You can always change it later.
           </DialogContentText>
           <TextField
@@ -442,8 +442,18 @@ function CharacterItem({ character }) {
           />
         </DialogContent>
         <DialogActions>
-        <Button type="submit">Submit</Button>
-          <Button onClick={handleNicknameClose}>Cancel</Button>
+        <Button sx={{
+              fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              color: "black",
+              fontSize: 16,
+            }} type="submit">Submit</Button>
+          <Button sx={{
+              fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              color: "black",
+              fontSize: 16,
+            }} onClick={handleNicknameClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
 
@@ -465,7 +475,7 @@ function CharacterItem({ character }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.name} {" "}<EditIcon fontSize="small" onClick={handleClickOpenNickname}/>
+              {character.name} {" "} <EditIcon fontSize="small" onClick={handleClickOpenNickname} sx={{ cursor: "pointer"}}/>
             </Typography>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.starter_1 === true
