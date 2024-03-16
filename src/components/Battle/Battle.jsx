@@ -313,6 +313,7 @@ function Battle() {
         } else if (attackType.type == "consumable") {
           setStarterOneHp(starterOneHp + attackType.hp);
           setStarterOneStamina(starterOneStamina + attackType.stamina);
+          setCurrentSpeed(starterOne.speed + attackType.speed);
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
@@ -372,6 +373,7 @@ function Battle() {
         } else if (attackType.type == "consumable") {
           setStarterOneHp(starterOneHp + attackType.hp);
           setStarterOneStamina(starterOneStamina + attackType.stamina);
+          setCurrentSpeed(starterOne.speed + attackType.speed);
 
           if (starterOneHp + attackType.hp > starterOne.hp) {
             setStarterOneHp(starterOne.hp);
@@ -436,6 +438,7 @@ function Battle() {
         } else if (attackType.type == "consumable") {
           setStarterTwoHp(starterTwoHp + attackType.hp);
           setStarterTwoStamina(starterTwoStamina + attackType.stamina);
+          setCurrentSpeed(starterTwo.speed + attackType.speed);
 
           if (starterTwoHp + attackType.hp > starterTwo.hp) {
             setStarterTwoHp(starterTwo.hp);
