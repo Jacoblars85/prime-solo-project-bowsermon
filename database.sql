@@ -119,6 +119,7 @@ INSERT INTO "characters"
 	('Waluigi', '', 180, 100, 100, 'stab', 35, 10, 'images/waluigiBattlePic.webp'),
 	('Wario', '', 280, 55, 10, 'belly flop', 35, 10, 'images/warioBattlePic.png'); 
 	
+	
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
 	VALUES 
@@ -148,16 +149,17 @@ INSERT INTO "items"
 	VALUES 
 	('healing mushroom', 'consumable', 25, 0, 0, 0, 'images/redMushroomPic.webp', 10, '#FF0100'),
 	('stamina mushroom', 'consumable', 0, 30, 0, 0, 'images/greenMushroomPic.webp', 10, '#00D400'),
-	('mega mushroom', 'consumable', 25, 30, 0, 0, 'images/megaMushroomPic.webp', 40, '#FFD42A'),
-	('propeller mushroom', 'consumable', 0, 50, 10, 0, 'images/propelerMushroomPic.webp', 40, '#FFD42A'),
-	('mega healing mushroom', 'consumable', 75, 0, 0, 0, 'images/bigRedMushroomPic.webp', 60, '#FF0100'),
+	('propeller mushroom', 'consumable', 0, 50, 10, 0, 'images/propelerMushroomPic.webp', 40, '#FF9A1E'),
+	('mega mushroom', 'consumable', 40, 40, 0, 0, 'images/megaMushroomPic.webp', 50, '#FFD42A'),
+	('mega healing mushroom', 'consumable', 75, 0, 0, 0, 'images/bigRedMushroomPic.webp', 70, '#FF0100'),
 	('golden mushroom', 'consumable', 100, 100, 0, 0, 'images/goldMushroomPic.webp', 120, '#FEF202'),
 	('fire flower', 'held', 10, 0, 0, 5, 'images/fireFlowerPic.webp', 100, '#000000'),
 	('shield', 'held', 20, 0, 0, 0, 'images/linkShieldPic.png', 150, '#000000'),
-	('feather', 'held', 0, 10, 5, 0, 'images/featherPic.webp', 100, '#000000'),
+	('feather', 'held', 0, 10, 5, 0, 'images/featherPic.webp', 80, '#000000'),
 	('boots', 'held', 0, 10, 10, 0, 'images/bootsPic.webp', 150, '#000000'),
 	('cloud flower', 'held', 0, 30, 0, 0, 'images/cloudFlowerPic.webp', 80, '#000000'),
 	('boomerang', 'held', 0, 0, 0, 5, 'images/boomarangPic.webp', 100, '#000000'),
 	('hammer', 'held', 0, 0, 0, 10, 'images/hammerPic.png', 150, '#000000'),
 	('gold flower', 'held', 20, 0, 0, 10, 'images/goldFlowerPic.webp', 200, '#000000'),
-	('super star', 'held', 10, 15, 10, 10, 'images/starPic.webp', 250, '#FEF202');
+	('super star', 'held', 10, 15, 10, 10, 'images/starPic.webp', 250, '#000000');
+	
