@@ -204,13 +204,14 @@ function Consumables({ consumableItem }) {
         <img height={70} width={70} src={consumableItem.pic} />
       </div>
 
-      <div style={{ width: "150px", marginLeft: "10px" }}>
-        <h4 style={{ color: consumableItem.color, width: "150px" }}>
+      <div style={{ width: "100px", marginLeft: "5px" }}>
+        <h4 style={{ color: consumableItem.color, width: "100px" }}>
           {consumableItem.name}
         </h4>
       </div>
 
-      <div style={{ width: "100px" }}>
+      <div style={{ width: "150px", height: "122px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div>
         <p
           style={{
             color: "red",
@@ -218,7 +219,7 @@ function Consumables({ consumableItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 10,
+            marginTop: 0,
             marginBottom: 0,
           }}
         >
@@ -232,7 +233,7 @@ function Consumables({ consumableItem }) {
             fontSize: "20px",
             fontWeight: "bold",
             fontFamily: "New Super Mario Font U",
-            marginTop: 0,
+            margin: 0,
           }}
         >
          {consumableItem.stamina === 0 ? "" : `+${consumableItem.stamina} stamina`} 
@@ -245,10 +246,12 @@ function Consumables({ consumableItem }) {
               fontSize: "20px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
+              margin: 0,
             }}
           >
             {consumableItem.speed === 0 ? "" : `+${consumableItem.speed} speed`}
           </p>
+          </div>
       </div>
 
       {/* <Button
