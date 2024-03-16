@@ -430,12 +430,13 @@ function CharacterItem({ character }) {
             To give {character.name} a new name, fill out textfield below with the name you want to give it and click submit. You can always change it later.
           </DialogContentText>
           <TextField
+            color="info"
             autoFocus
             required
             margin="dense"
             id="name"
             name="nickname"
-            label="Nickname"
+            label="nickname"
             type="nickname"
             fullWidth
             variant="standard"
