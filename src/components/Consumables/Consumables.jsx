@@ -237,6 +237,18 @@ function Consumables({ consumableItem }) {
         >
          {consumableItem.stamina === 0 ? "" : `+${consumableItem.stamina} stamina`} 
         </p>
+
+        <p
+            style={{
+              color: "yellow",
+              textShadow: "1px 1px black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              fontFamily: "New Super Mario Font U",
+            }}
+          >
+            {consumableItem.speed === 0 ? "" : `+${consumableItem.speed} speed`}
+          </p>
       </div>
 
       {/* <Button
