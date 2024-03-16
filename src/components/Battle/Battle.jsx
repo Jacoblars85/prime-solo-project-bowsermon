@@ -85,11 +85,6 @@ function Battle() {
   let starterOne = starter[0];
   let starterTwo = starter[1];
 
-  // setting names for each item in the array
-  let healthPot = inventory[0];
-  let staminaPot = inventory[1];
-  let maxPot = inventory[2];
-
   // starter one hp and stamina
   const [starterOneHp, setStarterOneHp] = useState(0);
   const [starterOneStamina, setStarterOneStamina] = useState(0);
