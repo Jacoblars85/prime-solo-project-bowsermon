@@ -500,7 +500,7 @@ function CharacterItem({ character }) {
               color="inherit"
               onClick={confirmSale}
             >
-              Sell
+              Sell Character
             </Button>
             <Button
               style={{ color: "black" }}
@@ -508,7 +508,7 @@ function CharacterItem({ character }) {
               color="inherit"
               onClick={setStarterOne}
             >
-              Starter 1
+              Set Starter 1
             </Button>
             <Button
               style={{ color: "black" }}
@@ -516,7 +516,7 @@ function CharacterItem({ character }) {
               color="inherit"
               onClick={setStarterTwo}
             >
-              Starter 2
+              Set Starter 2
             </Button>
             <Button
               style={{ color: "black" }}
@@ -524,7 +524,7 @@ function CharacterItem({ character }) {
               color="inherit"
               onClick={clearStarter}
             >
-              Remove
+              Remove Starter
             </Button>
           </Box>
           <Divider />
