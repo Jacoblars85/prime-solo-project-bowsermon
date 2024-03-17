@@ -143,6 +143,7 @@ function Shop() {
 
       <div className="shop">
         <div className="bigBox">
+
           <div className="consumablesBox">
             <h3 className="consumableHeader">Consumables Items</h3>
 
@@ -175,6 +176,19 @@ function Shop() {
               width={200}
               src="images/1200px-ItemBoxMK8.webp"
             />
+
+            <div className="allCharacterBox">
+            <h3 className="characterHeader" >All Characters</h3>
+
+
+            {/* {held && held.map(heldItem => {
+                        return (
+                            <div div className="held" key={heldItem.id}>
+                                <HeldItems heldItem={heldItem} />
+                            </div>
+                        )
+                    })} */}
+          </div>
           </div>
 
           <div className="heldBox">
