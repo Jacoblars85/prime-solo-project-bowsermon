@@ -225,6 +225,7 @@ function CharacterItem({ character }) {
 
 
   const [openNickname, setOpenNickname] = useState(false);
+  const [newNickname, setNewNickname] = useState(character.name);
 
   const handleClickOpenNickname = () => {
     setOpenNickname(true);
@@ -239,7 +240,7 @@ function CharacterItem({ character }) {
       type: "SAGA_EDIT_CHARACTERS_NAME",
       payload: {
         characterID: character.id,
-        newCharacterName: newName
+        newCharacterName: newNickname
       },
     });
   };
@@ -412,17 +413,17 @@ function CharacterItem({ character }) {
       <Dialog
         open={openNickname}
         onClose={handleNicknameClose}
-        PaperProps={{
-          component: 'form',
-          onSubmit: (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const newName = formJson.nickname;
-            console.log(newName);
-            handleNicknameClose();
-          },
-        }}
+        // PaperProps={{
+        //   component: 'form',
+        //   onSubmit: (event) => {
+        //     event.preventDefault();
+        //     const formData = new FormData(event.currentTarget);
+        //     const formJson = Object.fromEntries(formData.entries());
+        //     const newName = formJson.nickname;
+        //     console.log(newName);
+        //     handleNicknameClose();
+        //   },
+        // }}
       >
         <DialogTitle sx={{ fontFamily: "New Super Mario Font U", textAlign: "center", fontSize: "25px" }}>Do you want to give {character.name} a nickname?</DialogTitle>
         <DialogContent>
@@ -440,6 +441,8 @@ function CharacterItem({ character }) {
             type="nickname"
             fullWidth
             variant="standard"
+            onChange={(e) => setNewNickname(e.target.value)}
+            value={newNickname}
           />
         </DialogContent>
         <DialogActions>
@@ -448,7 +451,9 @@ function CharacterItem({ character }) {
               textAlign: "center",
               color: "black",
               fontSize: 16,
-            }} type="submit">Submit</Button>
+            }} 
+            onClick={editCharacterName}
+            >Submit</Button>
           <Button sx={{
               fontFamily: "New Super Mario Font U",
               textAlign: "center",
