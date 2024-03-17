@@ -475,23 +475,23 @@ function Battle() {
       if (currentId === starterOne.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
-            `${starterOne.name} switched out into ${starterTwo.name}.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} switched out into ${starterTwo.name}.`
           );
         }
       }
@@ -499,45 +499,45 @@ function Battle() {
       if (currentId === starterOne.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterOne.name} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterOne.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterOne.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
-            `${starterOne.name} switched out into ${starterTwo.name}.`
+            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} switched out into ${starterTwo.name}.`
           );
         }
       } else if (currentId === starterTwo.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterTwo.name} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`
+            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterTwo.name} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterTwo.name} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterTwo.name} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterOne") {
           setTextBox(
-            `${starterTwo.name} switched out into ${starterOne.name}.`
+            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} switched out into ${starterOne.name}.`
           );
         }
       }
