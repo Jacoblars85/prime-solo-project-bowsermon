@@ -235,14 +235,18 @@ function CharacterItem({ character }) {
   };
 
   const editCharacterName = () => {
-    dispatch({
-      type: "SAGA_EDIT_CHARACTERS_NAME",
-      payload: {
-        characterID: character.id,
-        newCharacterName: newNickname,
-      },
-    });
-    setOpenNickname(false);
+    if (newNickname.length >= 15) {
+      alert("The nickname cannot be longer than 15 characters")
+    } else {
+      dispatch({
+        type: "SAGA_EDIT_CHARACTERS_NAME",
+        payload: {
+          characterID: character.id,
+          newCharacterName: newNickname,
+        },
+      });
+      setOpenNickname(false);
+    }
   };
 
   return (
