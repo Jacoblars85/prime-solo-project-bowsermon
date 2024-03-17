@@ -17,8 +17,8 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
-import EditIcon from '@mui/icons-material/Edit';
-import TextField from '@mui/material/TextField';
+import EditIcon from "@mui/icons-material/Edit";
+import TextField from "@mui/material/TextField";
 
 const InfoTransition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -223,7 +223,6 @@ function CharacterItem({ character }) {
     });
   };
 
-
   const [openNickname, setOpenNickname] = useState(false);
   const [newNickname, setNewNickname] = useState(character.name);
 
@@ -240,7 +239,7 @@ function CharacterItem({ character }) {
       type: "SAGA_EDIT_CHARACTERS_NAME",
       payload: {
         characterID: character.id,
-        newCharacterName: newNickname
+        newCharacterName: newNickname,
       },
     });
     setOpenNickname(false);
@@ -273,7 +272,7 @@ function CharacterItem({ character }) {
           width="100%"
         >
           <h5 style={{ width: "130px", marginRight: "0px" }}>
-          {character.nickname === null ? character.name : character.nickname}
+            {character.nickname === null ? character.name : character.nickname}
           </h5>
           {character.item_id === null ? (
             <CloseIcon
@@ -334,8 +333,9 @@ function CharacterItem({ character }) {
             id="alert-dialog-description"
             sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
           >
-            You will receive 10 coins if you sell {character.name}. If you have an item on this character, the item will be lost too. You will
-            have to buy the new character box to have the chance to get{" "}
+            You will receive 10 coins if you sell {character.name}. If you have
+            an item on this character, the item will be lost too. You will have
+            to buy the new character box to have the chance to get{" "}
             {character.name} back.
           </DialogContentText>
         </DialogContent>
@@ -410,7 +410,7 @@ function CharacterItem({ character }) {
         </DialogActions>
       </Dialog>
 
-{/* nickname form dialog */}
+      {/* nickname form dialog */}
       <Dialog
         open={openNickname}
         onClose={handleNicknameClose}
@@ -426,10 +426,22 @@ function CharacterItem({ character }) {
         //   },
         // }}
       >
-        <DialogTitle sx={{ fontFamily: "New Super Mario Font U", textAlign: "center", fontSize: "25px" }}>Do you want to give {character.name} a nickname?</DialogTitle>
+        <DialogTitle
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "25px",
+          }}
+        >
+          Do you want to give {character.name} a nickname?
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}>
-            To give {character.name} a new name, fill out textfield below with the name you want to give it and click submit. You can always change it later.
+          <DialogContentText
+            sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
+          >
+            To give {character.name} a new name, fill out textfield below with
+            the name you want to give it and click submit. You can always change
+            it later.
           </DialogContentText>
           <TextField
             color="info"
@@ -447,20 +459,28 @@ function CharacterItem({ character }) {
           />
         </DialogContent>
         <DialogActions>
-        <Button sx={{
+          <Button
+            sx={{
               fontFamily: "New Super Mario Font U",
               textAlign: "center",
               color: "black",
               fontSize: 16,
-            }} 
+            }}
             onClick={editCharacterName}
-            >Submit</Button>
-          <Button sx={{
+          >
+            Submit
+          </Button>
+          <Button
+            sx={{
               fontFamily: "New Super Mario Font U",
               textAlign: "center",
               color: "black",
               fontSize: 16,
-            }} onClick={handleNicknameClose}>Cancel</Button>
+            }}
+            onClick={handleNicknameClose}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
 
@@ -482,7 +502,14 @@ function CharacterItem({ character }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.nickname === null ? character.name : character.nickname} {" "} <EditIcon fontSize="small" onClick={handleClickOpenNickname} sx={{ cursor: "pointer"}}/>
+              {character.nickname === null
+                ? character.name
+                : character.nickname}{" "}
+              <EditIcon
+                fontSize="small"
+                onClick={handleClickOpenNickname}
+                sx={{ cursor: "pointer" }}
+              />
             </Typography>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.starter_1 === true
@@ -737,4 +764,3 @@ function CharacterItem({ character }) {
 }
 
 export default CharacterItem;
- 
