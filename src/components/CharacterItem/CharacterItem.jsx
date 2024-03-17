@@ -494,7 +494,7 @@ function CharacterItem({ character }) {
             >
               <CloseIcon />
             </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+            <Typography sx={{ ml: 2, flex: 1, fontFamily: "New Super Mario Font U", }} variant="h6" component="div">
               {character.nickname === null
                 ? character.name
                 : character.nickname}{" "}
@@ -504,7 +504,7 @@ function CharacterItem({ character }) {
                 sx={{ cursor: "pointer" }}
               />
             </Typography>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+            <Typography sx={{ ml: 2, flex: 1, fontFamily: "New Super Mario Font U", }} variant="h6" component="div">
               {character.starter_1 === true
                 ? "Starter 1"
                 : character.starter_2 === true
@@ -594,7 +594,7 @@ function CharacterItem({ character }) {
             paddingTop={2}
           >
             <Button
-              style={{ color: "black" }}
+              style={{ color: "black", fontFamily: "New Super Mario Font U", }}
               variant="contained"
               color="inherit"
               onClick={confirmSale}
@@ -602,7 +602,7 @@ function CharacterItem({ character }) {
               Sell Character
             </Button>
             <Button
-              style={{ color: "black" }}
+              style={{ color: "black", fontFamily: "New Super Mario Font U", }}
               variant="contained"
               color="inherit"
               onClick={setStarterOne}
@@ -610,7 +610,7 @@ function CharacterItem({ character }) {
               Set Starter 1
             </Button>
             <Button
-              style={{ color: "black" }}
+              style={{ color: "black", fontFamily: "New Super Mario Font U", }}
               variant="contained"
               color="inherit"
               onClick={setStarterTwo}
@@ -618,7 +618,7 @@ function CharacterItem({ character }) {
               Set Starter 2
             </Button>
             <Button
-              style={{ color: "black" }}
+              style={{ color: "black", fontFamily: "New Super Mario Font U", }}
               variant="contained"
               color="inherit"
               onClick={clearStarter}
