@@ -444,7 +444,26 @@ router.put("/starter/conditional/:id", (req, res) => {
         });
 });
 
+router.put("/edit/nickname", (req, res) => {
 
+    const sqlText = `
+        UPDATE "user"
+          SET "nickname" = $1
+          WHERE "id" = $2 AND "user_id" = $3;
+          `;
+
+          const sqlValues = [req.body.newCharacterName, req.body.characterID, req.user.id];
+
+    pool
+        .query(sqlText, sqlValues)
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log("Error in character.router /sell PUT,", err);
+            res.sendStatus(500);
+        });
+});
 
 
 module.exports = router;

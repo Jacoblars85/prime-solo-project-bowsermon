@@ -231,7 +231,7 @@ function* changeCharactersNickname(action) {
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/edit/nickname/`,
+      url: `/api/characters/edit/nickname`,
       data: action.payload
     })
     yield put({
