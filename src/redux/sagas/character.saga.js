@@ -226,6 +226,26 @@ function* setStarterConditionally(action) {
 }
 
 
+function* changeCharactersNickname(action) {
+  // console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/edit/nickname/`,
+      data: action.payload
+    })
+    yield put({
+      type: 'SAGA_FETCH_STARTER',
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put change nickname to server', error);
+  }
+}
+
+
 
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
@@ -241,7 +261,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
   yield takeLatest('SAGA_CLEAR_STARTER', clearStarter);
   yield takeLatest('SAGA_SET_STARTER_CONDITIONALLY', setStarterConditionally);
-
+  yield takeLatest('SAGA_EDIT_CHARACTERS_NAME', changeCharactersNickname);
 }
 
 export default characterSaga;
