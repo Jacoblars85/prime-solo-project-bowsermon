@@ -481,7 +481,7 @@ function CharacterItem({ character }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {character.name} {" "} <EditIcon fontSize="small" onClick={handleClickOpenNickname} sx={{ cursor: "pointer"}}/>
+              {character.nickname === null ? character.name : character.nickname} {" "} <EditIcon fontSize="small" onClick={handleClickOpenNickname} sx={{ cursor: "pointer"}}/>
             </Typography>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               {character.starter_1 === true
