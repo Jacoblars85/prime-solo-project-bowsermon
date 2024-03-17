@@ -37,7 +37,6 @@ function StarterItem({ start }) {
 
   return (
     <div className="starterSingleBoxUl" >
-      {/* <h5>{start.name}</h5> */}
       <Box
           display="flex"
           flexDirection="row"
