@@ -418,17 +418,6 @@ function CharacterItem({ character }) {
       <Dialog
         open={openNickname}
         onClose={handleNicknameClose}
-        // PaperProps={{
-        //   component: 'form',
-        //   onSubmit: (event) => {
-        //     event.preventDefault();
-        //     const formData = new FormData(event.currentTarget);
-        //     const formJson = Object.fromEntries(formData.entries());
-        //     const newName = formJson.nickname;
-        //     console.log(newName);
-        //     handleNicknameClose();
-        //   },
-        // }}
       >
         <DialogTitle
           sx={{
