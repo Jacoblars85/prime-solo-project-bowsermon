@@ -243,6 +243,7 @@ function CharacterItem({ character }) {
         newCharacterName: newNickname
       },
     });
+    setOpenNickname(false);
   };
 
   return (
@@ -272,7 +273,7 @@ function CharacterItem({ character }) {
           width="100%"
         >
           <h5 style={{ width: "130px", marginRight: "0px" }}>
-            {character.name}
+          {character.nickname === null ? character.name : character.nickname}
           </h5>
           {character.item_id === null ? (
             <CloseIcon
@@ -409,7 +410,7 @@ function CharacterItem({ character }) {
         </DialogActions>
       </Dialog>
 
-
+{/* nickname form dialog */}
       <Dialog
         open={openNickname}
         onClose={handleNicknameClose}
