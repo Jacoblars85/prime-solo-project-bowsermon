@@ -47,7 +47,7 @@ function StarterItem({ start }) {
           width="100%"
         >
           <h5 style={{ width: "170px", marginRight: "0px" }}>
-            {start.name}
+          {start.nickname === null ? start.name : start.nickname}
           </h5>
           {start.item_id === null ? (
             <CloseIcon
