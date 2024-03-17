@@ -447,7 +447,7 @@ router.put("/starter/conditional/:id", (req, res) => {
 router.put("/edit/nickname", (req, res) => {
 
     const sqlText = `
-        UPDATE "user"
+        UPDATE "user_characters"
           SET "nickname" = $1
           WHERE "id" = $2 AND "user_id" = $3;
           `;
@@ -460,7 +460,7 @@ router.put("/edit/nickname", (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log("Error in character.router /sell PUT,", err);
+            console.log("Error in character.router /edit/nickname PUT,", err);
             res.sendStatus(500);
         });
 });
