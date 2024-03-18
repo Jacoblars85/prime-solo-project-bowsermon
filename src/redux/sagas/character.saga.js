@@ -5,20 +5,25 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchAllCharacters() {
   // console.log('action.payload', action.payload);
   try {
-    const characterResponse = yield axios.get(`/api/characters/user/characters`);
+    const userCharacterResponse = yield axios.get(`/api/characters/user/characters`);
     const starterResponse = yield axios.get(`/api/characters/starter`);
     const basicResponse = yield axios.get('/api/characters/basic');
+    const allCharacterResponse = yield axios.get(`/api/characters/all/characters`);
     yield put({
       type: 'SET_BASIC_ATTACKS',
       payload: basicResponse.data
     });
     yield put({
       type: 'SET_CHARACTERS',
-      payload: characterResponse.data
+      payload: userCharacterResponse.data
     });
     yield put({
       type: 'SET_STARTER',
       payload: starterResponse.data
+    });
+    yield put({
+      type: 'SET_ALL_CHARACTERS',
+      payload: allCharacterResponse.data
     });
   } catch (error) {
     console.log('fetchAllCharacters error:', error);
