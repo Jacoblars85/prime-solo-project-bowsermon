@@ -235,7 +235,7 @@ function CharacterItem({ character }) {
   };
 
   const editCharacterName = () => {
-    if (newNickname.length >= 15) {
+    if (newNickname.length >= 15 || newNickname.length === 0) {
       alert("The nickname cannot be longer than 15 characters")
     } else {
       dispatch({
