@@ -5,7 +5,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchAllCharacters() {
   // console.log('action.payload', action.payload);
   try {
-    const characterResponse = yield axios.get(`/api/characters/user/character`);
+    const characterResponse = yield axios.get(`/api/characters/user/characters`);
     const starterResponse = yield axios.get(`/api/characters/starter`);
     yield put({
       type: 'SET_CHARACTERS',
