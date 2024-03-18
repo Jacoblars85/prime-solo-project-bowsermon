@@ -184,7 +184,7 @@ function Shop() {
 
             {allCharacters && allCharacters.map(allCharactersItem => {
                         return (
-                            <div div className="held" key={allCharactersItem.id}>
+                            <div div className="allCharacters" key={allCharactersItem.id}>
                                 <HeldItems allCharactersItem={allCharactersItem} />
                             </div>
                         )
