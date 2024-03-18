@@ -19,6 +19,7 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import Consumables from "../Consumables/Consumables";
 import HeldItems from "../HeldItems/HeldItems";
+import AllCharactersItem from "../AllCharactersItem/AllCharactersItem";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
@@ -185,7 +186,7 @@ function Shop() {
             {allCharacters && allCharacters.map(allCharactersItem => {
                         return (
                             <div div className="allCharacters" key={allCharactersItem.id}>
-                                <HeldItems allCharactersItem={allCharactersItem} />
+                                <AllCharactersItem allCharactersItem={allCharactersItem} />
                             </div>
                         )
                     })}

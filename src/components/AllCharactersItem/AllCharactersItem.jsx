@@ -10,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
 
 
-function AllCharactersItem({ heldItem }) {
+function AllCharactersItem({ allCharactersItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,7 +36,7 @@ function AllCharactersItem({ heldItem }) {
       dispatch({
         type: "SAGA_BUY_ITEM",
         payload: {
-          itemId: heldItem.id,
+          characterId: allCharactersItem.id,
           amountNum: heldAmount,
           totalCoins: heldAmount * heldItem.cost,
         },
@@ -47,12 +47,12 @@ function AllCharactersItem({ heldItem }) {
   return (
     <>
       <div style={{ marginLeft: "10px" }}>
-        <img height={70} width={70} src={heldItem.pic} />
+        <img height={70} width={70} src={allCharactersItem.profile_pic} />
       </div>
 
       <div style={{ width: "100px", marginLeft: "5px" }}>
-        <h4 style={{ color: heldItem.color, width: "100px" }}>
-          {heldItem.name}
+        <h4 style={{ color: "black", width: "100px" }}>
+          {allCharactersItem.name}
         </h4>
       </div>
 {/* 
@@ -137,7 +137,7 @@ function AllCharactersItem({ heldItem }) {
         </h5>
 
         <button
-          disabled={user.coins < heldItem.cost ? true : false}
+          disabled={user.coins < 100 ? true : false}
           onClick={handleHeldClickOpen}
         >
           Buy
@@ -155,7 +155,7 @@ function AllCharactersItem({ heldItem }) {
           id="alert-dialog-title"
           sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
         >
-          {`Are you sure you want ${heldValue} of the ${heldItem.name}?`}
+          {`Are you sure you want to buy ${allCharactersItem.name}?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -165,27 +165,18 @@ function AllCharactersItem({ heldItem }) {
               textAlign: "center",
             }}
           >
-            This will cost {heldValue * heldItem.cost} coins and you can not get
+            This will cost 100 coins and you can not get
             a refund.
           </DialogContentText>
         </DialogContent>
         <DialogActions sx={{ justifyContent: "center" }}>
-          <NumberInput
-            aria-label="Compact number input"
-            placeholder="Type a number…"
-            readOnly
-            value={heldValue}
-            onChange={(event, val) => setHeldValue(val)}
-            min={1}
-            max={Math.floor(user.coins / heldItem.cost)}
-          />
           <Button
             sx={{
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
             }}
-            onClick={() => buyHeld(heldValue)}
+            onClick={buyHeld}
             autoFocus
           >
             Buy
