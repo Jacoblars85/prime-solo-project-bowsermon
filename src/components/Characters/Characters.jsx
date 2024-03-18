@@ -9,7 +9,7 @@ import StarterItem from "../StarterItem/StarterItem";
 function Characters() {
   const dispatch = useDispatch();
 
-  const characters = useSelector((store) => store.character.characters);
+  const userCharacters = useSelector((store) => store.character.userCharacters);
   const starter = useSelector((store) => store.character.starter);
   const user = useSelector((store) => store.user.userReducer);
 
@@ -29,7 +29,7 @@ function Characters() {
         <h2>Characters</h2>
         <div className="bigCharacterBox">
           <div className="characterBox">
-            {characters.map((character) => {
+            {userCharacters.map((character) => {
               return (
                 <div key={character.id}>
                   <CharacterItem character={character} />

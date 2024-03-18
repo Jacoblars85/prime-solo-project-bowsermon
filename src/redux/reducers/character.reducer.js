@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 
-// Used to store all the characters
-const characters = (state = [{}], action) => {
+
+const userCharacters = (state = [{}], action) => {
   switch (action.type) {
     case 'SET_CHARACTERS':
       return action.payload;
@@ -40,7 +40,7 @@ const levelEnemy = (state = [{}], action) => {
 
 
 export default combineReducers({
-  characters,
+  userCharacters,
   basicAttacks,
   levelEnemy,
   starter,

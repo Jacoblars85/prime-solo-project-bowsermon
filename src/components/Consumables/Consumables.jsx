@@ -133,7 +133,7 @@ function Consumables({ consumableItem }) {
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
-  const characters = useSelector((store) => store.character.characters);
+  const characters = useSelector((store) => store.character.userCharacters);
 
   //   console.log("consumableItem", consumableItem);
 

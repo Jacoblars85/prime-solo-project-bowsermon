@@ -29,7 +29,7 @@ function Shop() {
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
-  const characters = useSelector((store) => store.character.characters);
+  const characters = useSelector((store) => store.character.userCharacters);
   const starter = useSelector((store) => store.character.starter);
   const consumables = useSelector((store) => store.inventory.consumables);
   const held = useSelector((store) => store.inventory.held);
