@@ -84,7 +84,8 @@ router.get('/all/characters', (req, res) => {
     // console.log('im in character route');
 
     const query = `
-      SELECT * FROM "characters";
+      SELECT * FROM "characters"
+      WHERE "id" <= 9;
     `;
 
     pool.query(query)
