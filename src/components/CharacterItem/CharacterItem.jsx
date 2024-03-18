@@ -634,6 +634,7 @@ function CharacterItem({ character }) {
           >
             <h1 style={{ paddingLeft: "10px" }}>Held Items</h1>
             <Divider />
+            {usersHeldItems.length === 0 ? "You do not have any held items, go to the shop to buy held items" : ""}
             {usersHeldItems &&
               usersHeldItems.map((usersHeld) => {
                 return (
