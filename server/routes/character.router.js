@@ -56,7 +56,7 @@ ORDER BY "character_id", "id" ASC;
             res.send(result.rows);
         })
         .catch(err => {
-            console.log('ERROR: Get all characters', err);
+            console.log('ERROR: Get all user characters', err);
             res.sendStatus(500)
         })
 });
@@ -75,6 +75,24 @@ router.get('/basic', (req, res) => {
         })
         .catch(err => {
             console.log('ERROR: Get all basic attacks', err);
+            res.sendStatus(500)
+        })
+
+});
+
+router.get('/all/characters', (req, res) => {
+    // console.log('im in basic route');
+
+    const query = `
+      SELECT * FROM "characters";
+    `;
+
+    pool.query(query)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all charcters', err);
             res.sendStatus(500)
         })
 
