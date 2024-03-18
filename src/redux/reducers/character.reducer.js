@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 
 const userCharacters = (state = [{}], action) => {
   switch (action.type) {
-    case 'SET_CHARACTERS':
+    case 'SET_USER_CHARACTERS':
       return action.payload;
     default:
       return state;

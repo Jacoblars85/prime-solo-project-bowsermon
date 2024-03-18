@@ -14,7 +14,7 @@ function* fetchAllCharacters() {
       payload: basicResponse.data
     });
     yield put({
-      type: 'SET_CHARACTERS',
+      type: 'SET_USER_CHARACTERS',
       payload: userCharacterResponse.data
     });
     yield put({
