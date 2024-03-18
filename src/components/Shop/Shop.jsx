@@ -33,6 +33,7 @@ function Shop() {
   const starter = useSelector((store) => store.character.starter);
   const consumables = useSelector((store) => store.inventory.consumables);
   const held = useSelector((store) => store.inventory.held);
+  const allCharacters = useSelector((store) => store.character.allCharacters);
 
   useEffect(() => {
     dispatch({ type: "SAGA_FETCH_IVENTORY" });
@@ -181,13 +182,13 @@ function Shop() {
             <h3 className="characterHeader" >All Characters</h3>
 
 
-            {/* {held && held.map(heldItem => {
+            {allCharacters && allCharacters.map(allCharactersItem => {
                         return (
-                            <div div className="held" key={heldItem.id}>
-                                <HeldItems heldItem={heldItem} />
+                            <div div className="held" key={allCharactersItem.id}>
+                                <HeldItems allCharactersItem={allCharactersItem} />
                             </div>
                         )
-                    })} */}
+                    })}
           </div>
           </div>
 
