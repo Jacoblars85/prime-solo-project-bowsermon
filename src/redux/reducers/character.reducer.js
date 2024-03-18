@@ -37,7 +37,7 @@ const levelEnemy = (state = [{}], action) => {
 
 const allCharacters = (state = [{}], action) => {
   switch (action.type) {
-    case 'SET_CHARACTERS':
+    case 'SET_ALL_CHARACTERS':
       return action.payload;
     default:
       return state;
