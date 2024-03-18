@@ -35,6 +35,15 @@ const levelEnemy = (state = [{}], action) => {
   return state;
 }
 
+const allCharacters = (state = [{}], action) => {
+  switch (action.type) {
+    case 'SET_CHARACTERS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 
 
 
@@ -44,4 +53,5 @@ export default combineReducers({
   basicAttacks,
   levelEnemy,
   starter,
+  allCharacters,
 });
