@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/character', (req, res) => {
+router.get('/user/character', (req, res) => {
     // console.log('im in character get');
     const query = `
     SELECT "user_characters"."id" as "id",
@@ -81,7 +81,7 @@ router.get('/basic', (req, res) => {
 });
 
 router.get('/all/characters', (req, res) => {
-    // console.log('im in basic route');
+    // console.log('im in character route');
 
     const query = `
       SELECT * FROM "characters";
