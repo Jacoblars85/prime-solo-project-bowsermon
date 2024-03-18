@@ -26,22 +26,6 @@ function* fetchAllCharacters() {
 }
 
 
-function* fetchBasicAttacks() {
-  try {
-    const basicResponse = yield axios.get('/api/characters/basic');
-    yield put({
-      type: 'SET_BASIC_ATTACKS',
-      payload: basicResponse.data
-    });
-    yield put({
-      type: 'SAGA_FETCH_CHARACTERS',
-    });
-  } catch (error) {
-    console.log('fetchBasicAttacks error:', error);
-  }
-}
-
-
 function* fetchLevelEnemy(action) {
   // console.log('action. payloaad in level', action.payload);
   try {
@@ -254,7 +238,6 @@ function* changeCharactersNickname(action) {
 
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
-  // yield takeLatest('SAGA_FETCH_BATTLE_INFO', fetchBasicAttacks);
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
