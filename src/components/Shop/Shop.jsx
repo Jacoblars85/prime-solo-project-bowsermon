@@ -39,7 +39,7 @@ function Shop() {
   }, []);
 
   useEffect(() => {
-    dispatch({ type: "SAGA_FETCH_BATTLE_INFO" });
+    dispatch({ type: "SAGA_FETCH_CHARACTERS" });
   }, []);
 
   const [randomOpen, setRandomOpen] = useState(false);

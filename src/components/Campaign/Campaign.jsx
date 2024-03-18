@@ -18,7 +18,7 @@ function Campaign() {
 
 
     useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_BATTLE_INFO' });
+        dispatch({ type: 'SAGA_FETCH_CHARACTERS' });
     }, []);
 
     useEffect(() => {

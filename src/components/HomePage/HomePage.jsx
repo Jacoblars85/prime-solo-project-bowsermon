@@ -13,7 +13,7 @@ function HomePage() {
   const starter = useSelector((store) => store.character.starter);
 
   useEffect(() => {
-    dispatch({ type: "SAGA_FETCH_BATTLE_INFO" });
+    dispatch({ type: "SAGA_FETCH_CHARACTERS" });
   }, []);
 
   useEffect(() => {
