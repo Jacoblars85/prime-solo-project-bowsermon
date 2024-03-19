@@ -177,9 +177,9 @@ function Shop() {
               width={200}
               src="images/1200px-ItemBoxMK8.webp"
             />
-
+<h3 className="characterHeader">All Characters</h3>
             <div className="allCharacterBox">
-              <h3 className="characterHeader">All Characters</h3>
+              
 
               {allCharacters &&
                 allCharacters.map((allCharactersItem) => {

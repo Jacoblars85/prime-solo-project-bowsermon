@@ -84,6 +84,16 @@
     text-align: center;
 }
 
+.allCharacterBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: baseline;
+    align-items: center;
+    text-align: center;
+}
 
 .randomCharacter h4 {
     text-align: center;
