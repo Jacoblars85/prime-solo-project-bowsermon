@@ -49,10 +49,18 @@ function* fetchLevelEnemy(action) {
 function* postNewUserCharacter(action) {
   // console.log('action', action.payloaad);
   try {
-    const response = yield axios({
+    const postResponse = yield axios({
       method: 'POST',
       url: '/api/characters/new/character',
       data: action.payload
+    })
+    const putResponse = yield axios({
+      method: 'PUT',
+      url: `/api/characters/buy`,
+      data: action.payload
+    })
+    yield put({
+      type: 'FETCH_USER',
     })
   } catch (error) {
     console.log('Unable to posting new character to server', error);
@@ -243,7 +251,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
-  yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
+  // yield takeLatest('SAGA_POST_NEW_CHARACTER', takeCoinsAway);
   yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);
   yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
   yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
