@@ -72,6 +72,7 @@ function Shop() {
         type: "SAGA_POST_NEW_CHARACTER",
         payload: {
           characterID: randomNum,
+          characterCost: 15
         },
       });
 

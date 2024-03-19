@@ -15,6 +15,7 @@ function AllCharactersItem({ allCharactersItem }) {
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
+  const characters = useSelector((store) => store.character.userCharacters);
 
   const [heldOpen, setHeldOpen] = useState(false);
 
@@ -26,23 +27,25 @@ function AllCharactersItem({ allCharactersItem }) {
     setHeldOpen(false);
   };
 
-  const buyHeld = (heldAmount) => {
-    if (user.coins < heldAmount * heldItem.cost) {
+  const buyHeld = () => {
+    if (user.coins < 100) {
       setHeldOpen(false);
       return alert("you are broke broke, sorry");
+    }  else if (characters.length >= 20) {
+      setHeldOpen(false);
+      return alert("you can only have 20 characters");
     } else {
-      setOpenHeldSnack(true);
+      setHeldOpen(false);
 
       dispatch({
-        type: "SAGA_BUY_ITEM",
+        type: "SAGA_POST_NEW_CHARACTER",
         payload: {
-          characterId: allCharactersItem.id,
-          amountNum: heldAmount,
-          totalCoins: heldAmount * heldItem.cost,
+          characterID: allCharactersItem.id,
+          characterCost: 100
         },
       });
-    }
   };
+};
 
   return (
     <>
