@@ -211,7 +211,7 @@ router.post('/new/character', (req, res) => {
         .then(result => {
             res.sendStatus(201);
         }).catch(err => {
-            console.log('err in post route', err);
+            console.log('err in sending new character POST route', err);
             res.sendStatus(500)
         })
 })
@@ -220,11 +220,11 @@ router.put("/buy", (req, res) => {
 
     const sqlText = `
         UPDATE "user"
-          SET "coins" = "coins" - 15
-          WHERE "id" = $1;
+          SET "coins" = "coins" - $1
+          WHERE "id" = $2;
           `;
 
-          const sqlValues = [req.user.id];
+          const sqlValues = [req.body.characterCost, req.user.id];
 
     pool
         .query(sqlText, sqlValues)
@@ -232,7 +232,7 @@ router.put("/buy", (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log("Error in character.router PUT,", err);
+            console.log("Error in character.router /buy PUT,", err);
             res.sendStatus(500);
         });
 });
