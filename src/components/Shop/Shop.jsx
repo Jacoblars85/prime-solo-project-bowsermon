@@ -160,6 +160,7 @@ function Shop() {
           </div>
 
           <div className="randomCharacter">
+            
             <h4>Random Character Box</h4>
 
             <h5>

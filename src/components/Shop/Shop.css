@@ -159,10 +159,10 @@
     text-shadow: 1px 2px white;
 }
 
-.heldHeader, .consumableHeader {
+.heldHeader, .consumableHeader, .characterHeader {
     font-size: 25px;
     align-self: center;
-    text-shadow: 1px 1.8px white;
+    text-shadow: 1px 1px white;
     
 }
 
