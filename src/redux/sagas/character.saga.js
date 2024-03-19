@@ -92,25 +92,6 @@ function* sellCharacter() {
 }
 
 
-function* deleteCharacter(action) {
-  // console.log('action.payload', action.payload);
-  try {
-    const response = yield axios({
-      method: 'DELETE',
-      url: `/api/characters/sell`,
-      data: {
-        characterID: action.payload.characterID
-      }
-    })
-    yield put({
-      type: 'SAGA_FETCH_CHARACTERS',
-    })
-  } catch (error) {
-    console.log('Unable to delete character from server', error);
-  }
-}
-
-
 function* fetchStarter() {
   // console.log('action.payload', action.payload);
   try {
@@ -244,7 +225,6 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_SELL_CHARACTER', sellCharacter);
-  // yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
   yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
   yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
   yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);
