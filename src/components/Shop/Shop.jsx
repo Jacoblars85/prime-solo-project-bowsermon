@@ -177,10 +177,12 @@ function Shop() {
               width={200}
               src="images/1200px-ItemBoxMK8.webp"
             />
+            <div className="allCharacterArea">
+
 <h3 className="characterHeader">All Characters</h3>
+
             <div className="allCharacterBox">
               
-
               {allCharacters &&
                 allCharacters.map((allCharactersItem) => {
                   return (
@@ -196,6 +198,7 @@ function Shop() {
                   );
                 })}
             </div>
+          </div>
           </div>
 
           <div className="heldBox">
