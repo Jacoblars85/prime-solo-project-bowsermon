@@ -194,7 +194,7 @@ function* changeCharactersNickname(action) {
 function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
-  yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
+  yield takeLatest('SAGA_BUY_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_SELL_CHARACTER', sellCharacter);
   yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
   yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);

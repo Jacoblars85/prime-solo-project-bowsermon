@@ -38,7 +38,7 @@ function AllCharactersItem({ allCharactersItem }) {
       setOpenCharacter(false);
 
       dispatch({
-        type: "SAGA_POST_NEW_CHARACTER",
+        type: "SAGA_BUY_NEW_CHARACTER",
         payload: {
           characterID: allCharactersItem.id,
           characterCost: 100

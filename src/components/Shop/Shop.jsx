@@ -69,7 +69,7 @@ function Shop() {
       setRandomOpen(false);
 
       dispatch({
-        type: "SAGA_POST_NEW_CHARACTER",
+        type: "SAGA_BUY_NEW_CHARACTER",
         payload: {
           characterID: randomNum,
           characterCost: 15
@@ -115,7 +115,7 @@ function Shop() {
       //   });
 
       //   dispatch({
-      //       type: 'SAGA_POST_NEW_CHARACTER',
+      //       type: 'SAGA_BUY_NEW_CHARACTER',
       //       payload: {
       //           characterID: randomNum,
       //       }
