@@ -51,10 +51,8 @@ function* postNewUserCharacter(action) {
   try {
     const response = yield axios({
       method: 'POST',
-      url: '/api/characters',
-      data: {
-        characterID: action.payload.characterID
-      }
+      url: '/api/characters/new/character',
+      data: action.payload
     })
   } catch (error) {
     console.log('Unable to posting new character to server', error);

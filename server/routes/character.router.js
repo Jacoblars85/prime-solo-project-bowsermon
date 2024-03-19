@@ -196,7 +196,7 @@ router.get('/starter', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/new/character', (req, res) => {
     // console.log('req.body', req.body);
 
     const insertCharacterQuery = `
