@@ -35,7 +35,6 @@ function* fetchLevelEnemy(action) {
   // console.log('action. payloaad in level', action.payload);
   try {
     const enemyResponse = yield axios.get(`/api/characters/enemy/${action.payload}`);
-    // console.log('enemy response', enemyResponse);
     yield put({
       type: 'SET_LEVEL_ENEMY',
       payload: enemyResponse.data
