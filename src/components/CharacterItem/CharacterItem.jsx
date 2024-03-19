@@ -556,28 +556,29 @@ function CharacterItem({ character }) {
             </Box>
 
             <Box display="flex" flexDirection="column" border="2px solid black">
-              <Divider />
-              <ListItemText primary="Hp" secondary={character.hp} />
-              <Divider />
-              <ListItemText primary="Stamina" secondary={character.stamina} />
-              <Divider />
-              <ListItemText primary="Speed" secondary={character.speed} />
-              <Divider />
+              <ListItemText primary="Hp" secondary={character.hp} sx={{ backgroundColor: "whitesmoke", margin: 0 }} />
+              {/* <Divider /> */}
+              <ListItemText primary="Stamina" secondary={character.stamina} sx={{ backgroundColor: "lightgrey", margin: 0 }} />
+              {/* <Divider /> */}
+              <ListItemText primary="Speed" secondary={character.speed} sx={{ backgroundColor: "whitesmoke", margin: 0 }} />
+              {/* <Divider /> */}
               <ListItemText
                 primary="Special Attack"
                 secondary={character.unique_attack}
+                sx={{ backgroundColor: "lightgrey", margin: 0  }}
               />
-              <Divider />
+              {/* <Divider /> */}
               <ListItemText
                 primary="Special Attack Damage"
                 secondary={character.unique_damage}
+                sx={{ backgroundColor: "whitesmoke", margin: 0 }}
               />
-              <Divider />
+              {/* <Divider /> */}
               <ListItemText
                 primary="Special Attack Cost"
                 secondary={character.unique_stamina}
+                sx={{ backgroundColor: "lightgrey", margin: 0 }}
               />
-              <Divider />
             </Box>
 
             <Divider />
