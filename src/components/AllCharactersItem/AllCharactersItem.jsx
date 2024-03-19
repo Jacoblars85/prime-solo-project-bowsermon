@@ -47,7 +47,7 @@ function AllCharactersItem({ allCharactersItem }) {
   return (
     <>
     <div style={{ width: "100px", }}>
-        <h4 style={{ color: "white", width: "100px" }}>
+        <h4 style={{ color: "white", width: "100px", height: "auto", margin: 0 }}>
           {allCharactersItem.name}
         </h4>
       </div>
