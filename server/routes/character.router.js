@@ -254,7 +254,7 @@ router.put("/sell/character", (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log("Error in character.router /sell PUT,", err);
+            console.log("Error in character.router /sell/character PUT,", err);
             res.sendStatus(500);
         });
 });
@@ -275,7 +275,7 @@ router.delete("/sell/character", (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log("Error in user.router DELETE, deleting account", err);
+            console.log("Error in character.router DELETE, deleting character", err);
             res.sendStatus(500);
         });
 });
