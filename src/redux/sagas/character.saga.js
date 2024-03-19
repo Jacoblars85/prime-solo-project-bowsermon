@@ -68,7 +68,7 @@ function* postNewUserCharacter(action) {
 }
 
 
-function* giveUserCoins() {
+function* sellCharacter() {
   // console.log('action.payload', action.payload);
   try {
     const putResponse = yield axios({
@@ -87,7 +87,7 @@ function* giveUserCoins() {
       type: 'FETCH_USER',
     })
   } catch (error) {
-    console.log('Unable to put coins to server', error);
+    console.log('sellCharacter Unable to sell character to server', error);
   }
 }
 
@@ -243,7 +243,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_CHARACTERS', fetchAllCharacters);
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
-  yield takeLatest('SAGA_SELL_CHARACTER', giveUserCoins);
+  yield takeLatest('SAGA_SELL_CHARACTER', sellCharacter);
   // yield takeLatest('SAGA_SELL_CHARACTER', deleteCharacter);
   yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
   yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
