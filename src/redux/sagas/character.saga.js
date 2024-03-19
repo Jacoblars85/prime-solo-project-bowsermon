@@ -92,20 +92,6 @@ function* sellCharacter() {
 }
 
 
-function* fetchStarter() {
-  // console.log('action.payload', action.payload);
-  try {
-    const starterResponse = yield axios.get(`/api/characters/starter`);
-    yield put({
-      type: 'SET_STARTER',
-      payload: starterResponse.data
-    });
-  } catch (error) {
-    console.log('FETCHSTARTER error:', error);
-  }
-}
-
-
 function* setStarterOne(action) {
   // console.log('action.payload', action.payload);
   try {
@@ -113,9 +99,6 @@ function* setStarterOne(action) {
       method: 'PUT',
       url: `/api/characters/starter/one/${action.payload}`
     })
-    // yield put({
-    //   type: 'SAGA_FETCH_STARTER',
-    // })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
     })
@@ -131,9 +114,6 @@ function* setStarterTwo(action) {
       method: 'PUT',
       url: `/api/characters/starter/two/${action.payload}`
     })
-    // yield put({
-    //   type: 'SAGA_FETCH_STARTER',
-    // })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
     })
@@ -164,9 +144,6 @@ function* clearStarter(action) {
       method: 'PUT',
       url: `/api/characters/starter/clear/${action.payload}`
     })
-    // yield put({
-    //   type: 'SAGA_FETCH_STARTER',
-    // })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
     })
@@ -187,9 +164,6 @@ function* setStarterConditionally(action) {
           otherStarter: action.payload.otherStarter
       }
     })
-    // yield put({
-    //   type: 'SAGA_FETCH_STARTER',
-    // })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
     })
@@ -207,9 +181,6 @@ function* changeCharactersNickname(action) {
       url: `/api/characters/edit/nickname`,
       data: action.payload
     })
-    // yield put({
-    //   type: 'SAGA_FETCH_STARTER',
-    // })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
     })
@@ -225,7 +196,6 @@ function* characterSaga() {
   yield takeLatest('SAGA_FETCH_LEVEL_ENEMY', fetchLevelEnemy);
   yield takeLatest('SAGA_POST_NEW_CHARACTER', postNewUserCharacter);
   yield takeLatest('SAGA_SELL_CHARACTER', sellCharacter);
-  // yield takeLatest('SAGA_FETCH_STARTER', fetchStarter);
   yield takeLatest('SAGA_SET_STARTER_ONE', setStarterOne);
   yield takeLatest('SAGA_SET_STARTER_TWO', setStarterTwo);
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
