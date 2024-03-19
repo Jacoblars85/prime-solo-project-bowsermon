@@ -46,13 +46,13 @@ function AllCharactersItem({ allCharactersItem }) {
 
   return (
     <>
-    <div style={{ width: "100px", marginLeft: "5px" }}>
+    <div style={{ width: "100px", }}>
         <h4 style={{ color: "white", width: "100px" }}>
           {allCharactersItem.name}
         </h4>
       </div>
 
-      <div style={{ marginLeft: "10px" }}>
+      <div >
         <img height={70} width={70} src={allCharactersItem.profile_pic} />
       </div>
 
@@ -122,7 +122,6 @@ function AllCharactersItem({ allCharactersItem }) {
         </div>
       </div> */}
 
-      <div style={{ marginRight: "10px" }}>
         <h5
           style={{
             color: "#FEF202",
@@ -144,7 +143,7 @@ function AllCharactersItem({ allCharactersItem }) {
         >
           Buy
         </button>
-      </div>
+
 
       {/* held item dialog */}
       <Dialog

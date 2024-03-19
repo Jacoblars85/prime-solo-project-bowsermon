@@ -188,7 +188,7 @@ function Shop() {
                   return (
                     <div
                       div
-                      className="allCharacters"
+                      className="allCharactersSingleBox"
                       key={allCharactersItem.id}
                     >
                       <AllCharactersItem

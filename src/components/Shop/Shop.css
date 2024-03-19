@@ -84,6 +84,13 @@
     text-align: center;
 }
 
+
+.allCharacterArea {
+    border-top: 3px solid black;
+    width: 100%;
+    margin-top: 20px;
+}
+
 .allCharacterBox {
     display: flex;
     flex-direction: row;
@@ -94,6 +101,19 @@
     align-items: center;
     text-align: center;
 }
+
+.allCharactersSingleBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* height: 100%; */
+    width: 50%;
+    row-gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 
 .randomCharacter h4 {
     text-align: center;
@@ -111,12 +131,6 @@
     font-size: 30px;
     color: #7CEBFD;
     text-shadow: 2px 2px black;
-}
-
-.allCharacterArea {
-border-top: 3px solid black;
-width: 100%;
-margin-top: 20px;
 }
 
 
