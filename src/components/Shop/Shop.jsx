@@ -145,22 +145,20 @@ function Shop() {
 
       <div className="shop">
         <div className="bigBox">
-
           <div className="consumablesBox">
             <h3 className="consumableHeader">Consumables Items</h3>
 
-            {consumables && consumables.map(consumableItem => {
-                        return (
-                            <div div className="consumables" key={consumableItem.id}>
-                                <Consumables consumableItem={consumableItem} />
-                            </div>
-                        )
-                    })}
-
+            {consumables &&
+              consumables.map((consumableItem) => {
+                return (
+                  <div div className="consumables" key={consumableItem.id}>
+                    <Consumables consumableItem={consumableItem} />
+                  </div>
+                );
+              })}
           </div>
 
           <div className="randomCharacter">
-            
             <h4>Random Character Box</h4>
 
             <h5>
@@ -181,30 +179,36 @@ function Shop() {
             />
 
             <div className="allCharacterBox">
-            <h3 className="characterHeader" >All Characters</h3>
+              <h3 className="characterHeader">All Characters</h3>
 
-
-            {allCharacters && allCharacters.map(allCharactersItem => {
-                        return (
-                            <div div className="allCharacters" key={allCharactersItem.id}>
-                                <AllCharactersItem allCharactersItem={allCharactersItem} />
-                            </div>
-                        )
-                    })}
-          </div>
+              {allCharacters &&
+                allCharacters.map((allCharactersItem) => {
+                  return (
+                    <div
+                      div
+                      className="allCharacters"
+                      key={allCharactersItem.id}
+                    >
+                      <AllCharactersItem
+                        allCharactersItem={allCharactersItem}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
           </div>
 
           <div className="heldBox">
-            <h3 className="heldHeader" >Held Items</h3>
+            <h3 className="heldHeader">Held Items</h3>
 
-
-            {held && held.map(heldItem => {
-                        return (
-                            <div div className="held" key={heldItem.id}>
-                                <HeldItems heldItem={heldItem} />
-                            </div>
-                        )
-                    })}
+            {held &&
+              held.map((heldItem) => {
+                return (
+                  <div div className="held" key={heldItem.id}>
+                    <HeldItems heldItem={heldItem} />
+                  </div>
+                );
+              })}
           </div>
         </div>
 
