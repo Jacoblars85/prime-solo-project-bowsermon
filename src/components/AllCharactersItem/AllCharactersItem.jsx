@@ -17,25 +17,25 @@ function AllCharactersItem({ allCharactersItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.userCharacters);
 
-  const [heldOpen, setHeldOpen] = useState(false);
+  const [openCharacter, setOpenCharacter] = useState(false);
 
-  const handleHeldClickOpen = () => {
-    setHeldOpen(true);
+  const handleCharacterClickOpen = () => {
+    setOpenCharacter(true);
   };
 
-  const handleHeldClose = () => {
-    setHeldOpen(false);
+  const handleCharacterClose = () => {
+    setOpenCharacter(false);
   };
 
-  const buyHeld = () => {
+  const buyCharacter = () => {
     if (user.coins < 100) {
-      setHeldOpen(false);
+      setOpenCharacter(false);
       return alert("you are broke broke, sorry");
     }  else if (characters.length >= 20) {
-      setHeldOpen(false);
+      setOpenCharacter(false);
       return alert("you can only have 20 characters");
     } else {
-      setHeldOpen(false);
+      setOpenCharacter(false);
 
       dispatch({
         type: "SAGA_POST_NEW_CHARACTER",
@@ -142,16 +142,16 @@ function AllCharactersItem({ allCharactersItem }) {
 
         <button
           disabled={user.coins < 100 ? true : false}
-          onClick={handleHeldClickOpen}
+          onClick={handleCharacterClickOpen}
         >
           Buy
         </button>
 
 
-      {/* held item dialog */}
+      {/* Character item dialog */}
       <Dialog
-        open={heldOpen}
-        onClose={handleHeldClose}
+        open={openCharacter}
+        onClose={handleCharacterClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -180,7 +180,7 @@ function AllCharactersItem({ allCharactersItem }) {
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
             }}
-            onClick={buyHeld}
+            onClick={buyCharacter}
             autoFocus
           >
             Buy
@@ -191,7 +191,7 @@ function AllCharactersItem({ allCharactersItem }) {
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
             }}
-            onClick={handleHeldClose}
+            onClick={handleCharacterClose}
           >
             Close
           </Button>
