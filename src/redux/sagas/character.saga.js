@@ -77,7 +77,7 @@ function* giveUserCoins() {
     })
     const deleteResponse = yield axios({
       method: 'DELETE',
-      url: `/api/characters/sell`,
+      url: `/api/characters/sell/character`,
       data: action.payload
     })
     yield put({

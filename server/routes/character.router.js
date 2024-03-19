@@ -260,7 +260,7 @@ router.put("/sell/character", (req, res) => {
 });
 
 
-router.delete("/sell", (req, res) => {
+router.delete("/sell/character", (req, res) => {
 
     const sqlText = `
     DELETE FROM "user_characters"
