@@ -46,15 +46,17 @@ function AllCharactersItem({ allCharactersItem }) {
 
   return (
     <>
+    <div style={{ width: "100px", marginLeft: "5px" }}>
+        <h4 style={{ color: "white", width: "100px" }}>
+          {allCharactersItem.name}
+        </h4>
+      </div>
+
       <div style={{ marginLeft: "10px" }}>
         <img height={70} width={70} src={allCharactersItem.profile_pic} />
       </div>
 
-      <div style={{ width: "100px", marginLeft: "5px" }}>
-        <h4 style={{ color: "black", width: "100px" }}>
-          {allCharactersItem.name}
-        </h4>
-      </div>
+      
 {/* 
       <div
         style={{
