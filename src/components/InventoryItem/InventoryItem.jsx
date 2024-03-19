@@ -58,8 +58,12 @@ function InventoryItem({ inventoryItem }) {
     if (isPicture) {
       return (
         <div style={{
+          display: "flex",
+          flexDirection: "column",
+          flexWrap:"nowrap",
+          justifyContent: "center",
           height: "125px",
-          width: "125px"
+          width: "125px",
         }}
         >
           <p
@@ -69,6 +73,7 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "25px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
+              margin: 0,
             }}
           >
             {inventoryItem.hp === 0 ? "" : `+${inventoryItem.hp} hp`}
@@ -81,6 +86,7 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "22px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
+              margin: 0,
             }}
           >
             {inventoryItem.stamina === 0
@@ -95,6 +101,7 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "25px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
+              margin: 0,
             }}
           >
             {inventoryItem.speed === 0 ? "" : `+${inventoryItem.speed} speed`}
@@ -107,6 +114,7 @@ function InventoryItem({ inventoryItem }) {
               fontSize: "23px",
               fontWeight: "bold",
               fontFamily: "New Super Mario Font U",
+              margin: 0,
             }}
           >
             {inventoryItem.attack === 0
