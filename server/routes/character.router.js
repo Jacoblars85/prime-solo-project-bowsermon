@@ -216,7 +216,7 @@ router.post('/new/character', (req, res) => {
         })
 })
 
-router.put("/buy", (req, res) => {
+router.put("/buy/new/character", (req, res) => {
 
     const sqlText = `
         UPDATE "user"

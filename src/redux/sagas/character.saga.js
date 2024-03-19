@@ -56,7 +56,7 @@ function* postNewUserCharacter(action) {
     })
     const putResponse = yield axios({
       method: 'PUT',
-      url: `/api/characters/buy`,
+      url: `/api/characters/buy/new/character`,
       data: action.payload
     })
     yield put({
