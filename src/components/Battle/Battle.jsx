@@ -265,6 +265,106 @@ function Battle() {
     }, 4500);
   };
 
+  const [displayAttacks, setDisplayAttacks] = useState(false);
+  const toggleButtons = () => {
+    if (displayAttacks) {
+      return (
+        <>
+        <button
+          onClick={() => battle("unique")}
+          className="uniqueAttack"
+          disabled={
+            starter.length === 1
+              ? starterOneStamina < starterOne.unique_stamina
+                ? true
+                : isDisabled
+              : currentId === starterOne.id
+              ? starterOneStamina < starterOne.unique_stamina
+                ? true
+                : isDisabled
+              : starterTwoStamina < starterTwo.unique_stamina
+              ? true
+              : isDisabled
+          }
+        >
+          {starter.length === 1
+            ? starterOne.unique_attack
+            : currentId === starterOne.id
+            ? starterOne.unique_attack
+            : starterTwo.unique_attack}
+        </button>
+
+        <button
+          onClick={() => setDisplayAttacks(false)}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Back
+        </button>
+
+        <button
+          onClick={() => battle("punch")}
+          className="kickAttack"
+          disabled={
+            starter.length === 1
+              ? starterOneStamina < kickStamina
+                ? true
+                : isDisabled
+              : currentId === starterOne.id
+              ? starterOneStamina < basicAttacks[0].stamina
+                ? true
+                : isDisabled
+              : starterTwoStamina < basicAttacks[0].stamina
+              ? true
+              : isDisabled
+          }
+        >
+          {kickAttack}
+        </button>
+
+        <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
+      </>
+      )
+    } else {
+return( 
+  <>
+  <button
+          onClick={handleInventoryOpen}
+          className="inventoryMove"
+          disabled={isDisabled}
+        >
+          Inventory
+        </button>
+
+ <button
+          onClick={handleSwitchOpen}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Switch
+        </button>
+
+        <button
+          onClick={() => history.push('home')}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Run
+        </button>
+
+        <button
+          onClick={() => setDisplayAttacks(true)}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Attack
+        </button>
+        </>
+)
+    }
+  };
+
+
   // this is for the users attacks or actions
   const attack = (attackType, basicAttacks, starterOne, enemyAttackTimeOut) => {
     setTimeout(() => {
