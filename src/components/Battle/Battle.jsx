@@ -345,7 +345,7 @@ return(
         </button>
 
         <button
-          onClick={() => history.push('home')}
+          onClick={() => history.push('/home')}
           className="switch"
           disabled={isDisabled}
         >
