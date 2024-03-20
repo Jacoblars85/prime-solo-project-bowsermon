@@ -295,14 +295,6 @@ function Battle() {
         </button>
 
         <button
-          onClick={() => setDisplayAttacks(false)}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Back
-        </button>
-
-        <button
           onClick={() => battle("punch")}
           className="kickAttack"
           disabled={
@@ -320,6 +312,14 @@ function Battle() {
           }
         >
           {kickAttack}
+        </button>
+
+        <button
+          onClick={() => setDisplayAttacks(false)}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Back
         </button>
 
         <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
@@ -1307,83 +1307,9 @@ return(
       </div>
 
       <div className="attacks">
-        <button
-          onClick={handleInventoryOpen}
-          className="inventoryMove"
-          disabled={isDisabled}
-        >
-          Inventory
-        </button>
+        
+      {toggleButtons()}
 
-        {/* <button
-          onClick={() => battle("unique")}
-          className="uniqueAttack"
-          disabled={
-            starter.length === 1
-              ? starterOneStamina < starterOne.unique_stamina
-                ? true
-                : isDisabled
-              : currentId === starterOne.id
-              ? starterOneStamina < starterOne.unique_stamina
-                ? true
-                : isDisabled
-              : starterTwoStamina < starterTwo.unique_stamina
-              ? true
-              : isDisabled
-          }
-        >
-          {starter.length === 1
-            ? starterOne.unique_attack
-            : currentId === starterOne.id
-            ? starterOne.unique_attack
-            : starterTwo.unique_attack}
-        </button> */}
-
-        <button
-          onClick={handleSwitchOpen}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Switch
-        </button>
-
-        <button
-          onClick={handleSwitchOpen}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Run
-        </button>
-
-        {/* <button
-          onClick={() => battle("punch")}
-          className="kickAttack"
-          disabled={
-            starter.length === 1
-              ? starterOneStamina < kickStamina
-                ? true
-                : isDisabled
-              : currentId === starterOne.id
-              ? starterOneStamina < basicAttacks[0].stamina
-                ? true
-                : isDisabled
-              : starterTwoStamina < basicAttacks[0].stamina
-              ? true
-              : isDisabled
-          }
-        >
-          {kickAttack}
-        </button> */}
-
-        <button
-          onClick={handleSwitchOpen}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Attack
-        </button>
-
-        {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
       </div>
 
       <div className="backButton">
