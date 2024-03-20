@@ -1214,7 +1214,8 @@ function Battle() {
         >
           Inventory
         </button>
-        <button
+
+        {/* <button
           onClick={() => battle("unique")}
           className="uniqueAttack"
           disabled={
@@ -1236,7 +1237,8 @@ function Battle() {
             : currentId === starterOne.id
             ? starterOne.unique_attack
             : starterTwo.unique_attack}
-        </button>
+        </button> */}
+
         <button
           onClick={handleSwitchOpen}
           className="switch"
@@ -1244,7 +1246,16 @@ function Battle() {
         >
           Switch
         </button>
+
         <button
+          onClick={handleSwitchOpen}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Run
+        </button>
+
+        {/* <button
           onClick={() => battle("punch")}
           className="kickAttack"
           disabled={
@@ -1262,6 +1273,14 @@ function Battle() {
           }
         >
           {kickAttack}
+        </button> */}
+
+        <button
+          onClick={handleSwitchOpen}
+          className="switch"
+          disabled={isDisabled}
+        >
+          Attack
         </button>
 
         {/* <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button> */}
