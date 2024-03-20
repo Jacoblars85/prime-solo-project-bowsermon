@@ -1307,13 +1307,7 @@ return(
       </div>
 
       <div className="attacks">
-        
       {toggleButtons()}
-
-      </div>
-
-      <div className="backButton">
-        <BackButton />
       </div>
 
       {/* for the winner  */}
