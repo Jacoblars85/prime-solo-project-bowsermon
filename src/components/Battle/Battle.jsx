@@ -270,100 +270,107 @@ function Battle() {
     if (displayAttacks) {
       return (
         <>
-        <button
-          onClick={() => battle("unique")}
-          className="uniqueAttack"
-          disabled={
-            starter.length === 1
-              ? starterOneStamina < starterOne.unique_stamina
+          <button
+            onClick={() => battle("unique")}
+            className="uniqueAttack"
+            disabled={
+              starter.length === 1
+                ? starterOneStamina < starterOne.unique_stamina
+                  ? true
+                  : isDisabled
+                : currentId === starterOne.id
+                ? starterOneStamina < starterOne.unique_stamina
+                  ? true
+                  : isDisabled
+                : starterTwoStamina < starterTwo.unique_stamina
                 ? true
                 : isDisabled
+            }
+          >
+            {starter.length === 1
+              ? starterOne.unique_attack
               : currentId === starterOne.id
-              ? starterOneStamina < starterOne.unique_stamina
+              ? starterOne.unique_attack
+              : starterTwo.unique_attack}
+          </button>
+
+          <button
+            onClick={() => battle("punch")}
+            className="kickAttack"
+            disabled={
+              starter.length === 1
+                ? starterOneStamina < kickStamina
+                  ? true
+                  : isDisabled
+                : currentId === starterOne.id
+                ? starterOneStamina < basicAttacks[0].stamina
+                  ? true
+                  : isDisabled
+                : starterTwoStamina < basicAttacks[0].stamina
                 ? true
                 : isDisabled
-              : starterTwoStamina < starterTwo.unique_stamina
-              ? true
-              : isDisabled
-          }
-        >
-          {starter.length === 1
-            ? starterOne.unique_attack
-            : currentId === starterOne.id
-            ? starterOne.unique_attack
-            : starterTwo.unique_attack}
-        </button>
+            }
+          >
+            {kickAttack}
+          </button>
 
-        <button
-          onClick={() => battle("punch")}
-          className="kickAttack"
-          disabled={
-            starter.length === 1
-              ? starterOneStamina < kickStamina
-                ? true
-                : isDisabled
-              : currentId === starterOne.id
-              ? starterOneStamina < basicAttacks[0].stamina
-                ? true
-                : isDisabled
-              : starterTwoStamina < basicAttacks[0].stamina
-              ? true
-              : isDisabled
-          }
-        >
-          {kickAttack}
-        </button>
+          <button
+            onClick={() => setDisplayAttacks(false)}
+            className="switch"
+            disabled={isDisabled}
+          >
+            Back
+          </button>
 
-        <button
-          onClick={() => setDisplayAttacks(false)}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Back
-        </button>
-
-        <button onClick={() => battle('poke')} className='pokeAttack' disabled={starterOneStamina < basicAttacks[1].stamina ? true : isDisabled} >{basicAttacks[1].attack}</button>
-      </>
-      )
-    } else {
-return( 
-  <>
-  <button
-          onClick={handleInventoryOpen}
-          className="inventoryMove"
-          disabled={isDisabled}
-        >
-          Inventory
-        </button>
-
- <button
-          onClick={handleSwitchOpen}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Switch
-        </button>
-
-        <button
-          onClick={() => history.push('/home')}
-          className="switch"
-          disabled={isDisabled}
-        >
-          Run
-        </button>
-
-        <button
-          onClick={() => setDisplayAttacks(true)}
-          className="uniqueAttack"
-          disabled={isDisabled}
-        >
-          Attack
-        </button>
+          <button
+            onClick={() => battle("poke")}
+            className="pokeAttack"
+            disabled={
+              starterOneStamina < basicAttacks[1].stamina ? true : isDisabled
+            }
+          >
+            {basicAttacks[1].attack}
+          </button>
         </>
-)
+      );
+    } else {
+      return (
+        <>
+          <button
+            onClick={handleInventoryOpen}
+            className="inventoryMove"
+            disabled={isDisabled}
+          >
+            Inventory
+          </button>
+
+          <button
+            onClick={handleSwitchOpen}
+            className="switch"
+            disabled={isDisabled}
+          >
+            Switch
+          </button>
+
+          <button
+            onClick={() => history.push("/home")}
+            className="switch"
+            disabled={isDisabled}
+          >
+            Run
+          </button>
+
+          <button
+            onClick={() => setDisplayAttacks(true)}
+            className="uniqueAttack"
+            disabled={isDisabled}
+          >
+            Attack
+          </button>
+        </>
+      );
     }
   };
-
 
   // this is for the users attacks or actions
   const attack = (attackType, basicAttacks, starterOne, enemyAttackTimeOut) => {
@@ -575,23 +582,51 @@ return(
       if (currentId === starterOne.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${starterOne.unique_attack}. It did ${
+              starterOne.unique_damage
+            } damage and took ${starterOne.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${basicAttacks[0].attack}. It did ${
+              basicAttacks[0].damage
+            } damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${basicAttacks[1].attack}. It did ${
+              basicAttacks[1].damage
+            } damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used a ${attackType.name} and it healed ${
+              attackType.hp
+            } hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} switched out into ${starterTwo.name}.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } switched out into ${starterTwo.name}.`
           );
         }
       }
@@ -599,45 +634,101 @@ return(
       if (currentId === starterOne.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${starterOne.unique_attack}. It did ${starterOne.unique_damage} damage and took ${starterOne.unique_stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${starterOne.unique_attack}. It did ${
+              starterOne.unique_damage
+            } damage and took ${starterOne.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${basicAttacks[0].attack}. It did ${
+              basicAttacks[0].damage
+            } damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used ${basicAttacks[1].attack}. It did ${
+              basicAttacks[1].damage
+            } damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } used a ${attackType.name} and it healed ${
+              attackType.hp
+            } hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterTwo") {
           setTextBox(
-            `${starterOne.nickname === null ? starterOne.name : starterOne.nickname} switched out into ${starterTwo.name}.`
+            `${
+              starterOne.nickname === null
+                ? starterOne.name
+                : starterOne.nickname
+            } switched out into ${starterTwo.name}.`
           );
         }
       } else if (currentId === starterTwo.id) {
         if (attackType === "unique") {
           setTextBox(
-            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${starterTwo.unique_attack}. It did ${starterTwo.unique_damage} damage and took ${starterTwo.unique_stamina} stamina.`
+            `${
+              starterTwo.nickname === null
+                ? starterTwo.name
+                : starterTwo.nickname
+            } used ${starterTwo.unique_attack}. It did ${
+              starterTwo.unique_damage
+            } damage and took ${starterTwo.unique_stamina} stamina.`
           );
         } else if (attackType === "punch") {
           setTextBox(
-            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${basicAttacks[0].attack}. It did ${basicAttacks[0].damage} damage and took ${basicAttacks[0].stamina} stamina.`
+            `${
+              starterTwo.nickname === null
+                ? starterTwo.name
+                : starterTwo.nickname
+            } used ${basicAttacks[0].attack}. It did ${
+              basicAttacks[0].damage
+            } damage and took ${basicAttacks[0].stamina} stamina.`
           );
         } else if (attackType === "poke") {
           setTextBox(
-            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used ${basicAttacks[1].attack}. It did ${basicAttacks[1].damage} damage and took ${basicAttacks[1].stamina} stamina.`
+            `${
+              starterTwo.nickname === null
+                ? starterTwo.name
+                : starterTwo.nickname
+            } used ${basicAttacks[1].attack}. It did ${
+              basicAttacks[1].damage
+            } damage and took ${basicAttacks[1].stamina} stamina.`
           );
         } else if (attackType.type == "consumable") {
           setTextBox(
-            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} used a ${attackType.name} and it healed ${attackType.hp} hp and added ${attackType.stamina} stamina.`
+            `${
+              starterTwo.nickname === null
+                ? starterTwo.name
+                : starterTwo.nickname
+            } used a ${attackType.name} and it healed ${
+              attackType.hp
+            } hp and added ${attackType.stamina} stamina.`
           );
         } else if (attackType === "starterOne") {
           setTextBox(
-            `${starterTwo.nickname === null ? starterTwo.name : starterTwo.nickname} switched out into ${starterOne.name}.`
+            `${
+              starterTwo.nickname === null
+                ? starterTwo.name
+                : starterTwo.nickname
+            } switched out into ${starterOne.name}.`
           );
         }
       }
@@ -1306,9 +1397,7 @@ return(
         <p>{textBox}</p>
       </div>
 
-      <div className="attacks">
-      {toggleButtons()}
-      </div>
+      <div className="attacks">{toggleButtons()}</div>
 
       {/* for the winner  */}
       <Fragment>
@@ -1375,12 +1464,12 @@ return(
           </DialogContent>
           <DialogActions>
             <Button
-            sx={{
-              fontFamily: "New Super Mario Font U",
-              textAlign: "center",
-              color: "black",
-              fontSize: 16,
-            }}
+              sx={{
+                fontFamily: "New Super Mario Font U",
+                textAlign: "center",
+                color: "black",
+                fontSize: 16,
+              }}
               onClick={handleLoserClose}
               autoFocus
             >
