@@ -354,7 +354,7 @@ return(
 
         <button
           onClick={() => setDisplayAttacks(true)}
-          className="switch"
+          className="uniqueAttack"
           disabled={isDisabled}
         >
           Attack
