@@ -316,7 +316,7 @@ function Battle() {
 
           <button
             onClick={() => setDisplayAttacks(false)}
-            className="switch"
+            className="backButtonAttack"
             disabled={isDisabled}
           >
             Back
@@ -354,7 +354,7 @@ function Battle() {
 
           <button
             onClick={() => history.push("/home")}
-            className="switch"
+            className="runButton"
             disabled={isDisabled}
           >
             Run
