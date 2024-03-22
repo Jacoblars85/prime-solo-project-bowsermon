@@ -212,8 +212,6 @@ background: limegreen;
 
 .attacks {
     position: absolute;
-    /* top: 67%; */
-    /* left: 81.7%; */
     right: 0.5%;
     bottom: 0.5%;
     display: grid;
@@ -221,10 +219,6 @@ background: limegreen;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
-    /* width: 260px; */
-    /* flex-wrap: wrap;
-    justify-content: flex-end;
-    align-content: space-around; */
     /* border: 1px solid blue; */
 }
 
@@ -263,16 +257,15 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.inventoryMove:hover:not(:disabled) {
+.inventoryMove:hover:not(:disabled), .uniqueAttack:hover:not(:disabled), .attackToggleButton:hover:not(:disabled), .kickAttack:hover:not(:disabled), .pokeAttack:hover:not(:disabled), .backButtonAttack:hover:not(:disabled), .runButton:hover:not(:disabled) {
     background-color: white;
     text-decoration: none;
   }
 
-  .inventoryMove:disabled {
+  .inventoryMove:disabled, .uniqueAttack:disabled, .attackToggleButton:disabled, .switch:disabled, .kickAttack:disabled, .pokeAttack:disabled, .backButtonAttack:disabled, .runButton:disabled {
     cursor: default;
     opacity: 50%;
 }
-
 
 .uniqueAttack {
     grid-column: 1 / 2;
@@ -287,17 +280,6 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.uniqueAttack:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
-
-  .uniqueAttack:disabled {
-    cursor: default;
-    opacity: 50%;
-}
-
-
 .attackToggleButton {
     grid-column: 2 / 2;
     grid-row: 2;
@@ -310,26 +292,6 @@ background: limegreen;
     color: white;
     border: 3px solid black;
 }
-
-.attackToggleButton:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
-
-  .attackToggleButton:disabled {
-    cursor: default;
-    opacity: 50%;
-}
-
-/* .uniqueButtonInfo {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-    z-index: 1;
-  } */
-
 
 .switch {
     grid-column: 2 / 2;
@@ -352,12 +314,6 @@ background: limegreen;
     text-decoration: none;
   }
 
-.switch:disabled {
-    cursor: default;
-    opacity: 50%;
-}
-
-
 .kickAttack {
     grid-column: 2 / 2;
     grid-row: 1;
@@ -369,16 +325,6 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
-}
-
-.kickAttack:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
-
-  .kickAttack:disabled {
-    cursor: default;
-    opacity: 50%;
 }
 
 .pokeAttack {
@@ -394,16 +340,6 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.pokeAttack:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
-
-  .pokeAttack:disabled {
-    cursor: default;
-    opacity: 50%;
-}
-
 .backButtonAttack {
     grid-column: 1 / 2;
     grid-row: 2;
@@ -415,16 +351,6 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
-}
-
-.backButtonAttack:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
-
-  .backButtonAttack:disabled {
-    cursor: default;
-    opacity: 50%;
 }
 
 .runButton {
@@ -440,15 +366,7 @@ background: limegreen;
     border: 3px solid black;
 }
 
-.runButton:hover:not(:disabled) {
-    background-color: white;
-    text-decoration: none;
-  }
 
-  .runButton:disabled {
-    cursor: default;
-    opacity: 50%;
-}
 
 
 .textBox {
