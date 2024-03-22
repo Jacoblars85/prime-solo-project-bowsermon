@@ -212,13 +212,19 @@ background: limegreen;
 
 .attacks {
     position: absolute;
-    top: 67%;
-    left: 81.7%;
-    display: flex;
-    width: 260px;
-    flex-wrap: wrap;
+    /* top: 67%; */
+    /* left: 81.7%; */
+    right: 0.5%;
+    bottom: 0.5%;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /* width: 260px; */
+    /* flex-wrap: wrap;
     justify-content: flex-end;
-    align-content: space-around;
+    align-content: space-around; */
     /* border: 1px solid blue; */
 }
 
@@ -245,6 +251,8 @@ background: limegreen;
 }
 
 .inventoryMove {
+    grid-column: 1 / 2;
+    grid-row: 1;
     background-image: url('/public/images/InventoryButtonPic.png');
     background-color: #b0b3b3; 
     background-repeat: no-repeat;
@@ -267,6 +275,8 @@ background: limegreen;
 
 
 .uniqueAttack {
+    grid-column: 1 / 2;
+    grid-row: 1;
     background-image: url("/public/images/uniqueAttackButtonPic.png");
     background-color: #b0b3b3;
     background-repeat: no-repeat;
@@ -287,6 +297,30 @@ background: limegreen;
     opacity: 50%;
 }
 
+
+.attackToggleButton {
+    grid-column: 2 / 2;
+    grid-row: 2;
+    background-image: url("/public/images/uniqueAttackButtonPic.png");
+    background-color: #b0b3b3;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+}
+
+.attackToggleButton:hover:not(:disabled) {
+    background-color: white;
+    text-decoration: none;
+  }
+
+  .attackToggleButton:disabled {
+    cursor: default;
+    opacity: 50%;
+}
+
 /* .uniqueButtonInfo {
     height: 30px;
     width: 30px;
@@ -298,6 +332,8 @@ background: limegreen;
 
 
 .switch {
+    grid-column: 2 / 2;
+    grid-row: 1;
     background-image: url('/public/images/switchButtonPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
@@ -323,6 +359,8 @@ background: limegreen;
 
 
 .kickAttack {
+    grid-column: 2 / 2;
+    grid-row: 1;
     background-image: url('/public/images/kickAttackButtonPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
@@ -344,6 +382,8 @@ background: limegreen;
 }
 
 .pokeAttack {
+    grid-column: 2 / 2;
+    grid-row: 2;
     background-image: url('/public/images/pokeIconPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
@@ -365,6 +405,8 @@ background: limegreen;
 }
 
 .backButtonAttack {
+    grid-column: 1 / 2;
+    grid-row: 2;
     background-image: url('/public/images/backButtonIconPic.png');
     background-color: #b0b3b3;
     background-repeat: no-repeat;
@@ -386,6 +428,8 @@ background: limegreen;
 }
 
 .runButton {
+    grid-column: 1 / 2;
+    grid-row: 2;
     background-image: url('/public/images/runningIconPic.svg');
     background-color: #b0b3b3;
     background-repeat: no-repeat;

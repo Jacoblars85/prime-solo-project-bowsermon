@@ -362,7 +362,7 @@ function Battle() {
 
           <button
             onClick={() => setDisplayAttacks(true)}
-            className="uniqueAttack"
+            className="attackToggleButton"
             disabled={isDisabled}
           >
             Attack
