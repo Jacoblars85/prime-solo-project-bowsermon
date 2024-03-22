@@ -30,6 +30,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color:rgb(152, 151, 151);
+  box-shadow: 1px 1px 1px 1px black;
   }
 
   .item_box {

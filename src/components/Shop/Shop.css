@@ -31,6 +31,8 @@
     align-items: flex-start;
     text-align: center;
     /* column-gap: 3%; */
+    background-color:rgb(152, 151, 151);
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .consumablesBox {
