@@ -366,17 +366,16 @@ background: limegreen;
     border: 3px solid black;
 }
 
-
-
-
 .textBox {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 70.5%;
-    left: 49%;
-    width: 450px;
+    bottom: 0.5%;
+    right: 20%;
+    /* top: 70.5%; */
+    /* left: 49%; */
+    width: 33%;
     height: 205px;
     background-color: #b0b3b3;
     border: 3px solid black;

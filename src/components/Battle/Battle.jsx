@@ -266,6 +266,7 @@ function Battle() {
   };
 
   const [displayAttacks, setDisplayAttacks] = useState(false);
+  
   const toggleButtons = () => {
     if (displayAttacks) {
       return (
