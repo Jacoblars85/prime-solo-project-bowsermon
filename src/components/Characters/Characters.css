@@ -134,15 +134,16 @@
 }
 
 .buttonBox button:hover {
-  background-color: #757777;
+  /* background-color: #757777; */
   text-decoration: none;
 }
 
 .buttonBox button{
-  width: 50%;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
+  width: 47.9%;
+  font-size: 13px;
+  /* background-color: black; */
+  /* color: white; */
+  border: 2px solid black;
 
 }
 
