@@ -5,25 +5,6 @@ body {
     width: 100%;
 }
 
-
-/* Make the screen shake when you click on it
-  (for attacks)
- */
-/* body:has(.uniqueAttack:active:not(:disabled)) {
-    animation: shake 0.6s;
-    animation-iteration-count: infinite;
-}
-
-body:has(.kickAttack:active:not(:disabled)) {
-    animation: shake 0.6s;
-    animation-iteration-count: infinite;
-}
-
-body:has(.pokeAttack:active:not(:disabled)) {
-    animation: shake 0.6s;
-    animation-iteration-count: infinite;
-} */
-
 body:has(.shakeTheScreen ) {
     animation: shake 0.6s;
     animation-iteration-count: infinite;
@@ -172,8 +153,6 @@ background: limegreen;
     top: 34%;
     left: 17%;
     /* border: 1px solid blue; */
-    /* width: 400px;
-    height: 400px; */
     width: 30%;
     height: 45%;
     justify-content: center;
@@ -184,8 +163,6 @@ background: limegreen;
     position: absolute;
     top: 23%;
     /* border: 1px solid blue; */
-    /* width: 300px;
-    height: 300px; */
     width: 60%;
     height: 75%;
     animation: MoveUpDown .8s linear infinite;
@@ -218,8 +195,6 @@ background: limegreen;
     position: absolute;
     right: 0.5%;
     bottom: 0.5%;
-    /* width: 20%;
-    height: 30%; */
     display: grid;
     gap: 6px;
     grid-column-start: 1;
@@ -233,9 +208,6 @@ background: limegreen;
     position: relative;
     width: 125px;
     height: 125px;
-    /* margin-bottom: 3px;
-    margin-left: 3px;
-    margin-right: 2px; */
     background-size: cover;
     cursor: pointer;
 }
@@ -244,9 +216,6 @@ background: limegreen;
     position: relative;
     width: 125px;
     height: 125px;
-    /* margin-bottom: 3px;
-    margin-left: 3px;
-    margin-right: 2px; */
     background-size: cover;
     cursor: default;
 }
@@ -380,8 +349,6 @@ background: limegreen;
     position: absolute;
     bottom: 0.5%;
     right: 20%;
-    /* top: 70.5%; */
-    /* left: 49%; */
     width: 33%;
     height: 205px;
     background-color: #b0b3b3;
