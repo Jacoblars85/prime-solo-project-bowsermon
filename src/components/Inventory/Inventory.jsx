@@ -47,9 +47,7 @@ function Inventory() {
 
             </div>
 
-            <div className='backButton'>
                 <BackButton />
-            </div>
 
         </div>
     );

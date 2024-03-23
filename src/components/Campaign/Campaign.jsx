@@ -96,10 +96,7 @@ function Campaign() {
                 <button onClick={() => goToTheBattle(10)} disabled={starter.length === 0 ? true : user.level_9_completed ? false : true}>10</button>
             </div>
 
-
-            <div className='backButton'>
                 <BackButton />
-            </div>
 
             <div className='secretButton'>
                 {user.level_10_completed ? <button onClick={() => history.push(`/secretCampaign`)}><EastIcon fontSize='large' /> </button> : ""}

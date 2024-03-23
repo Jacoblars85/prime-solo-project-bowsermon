@@ -216,9 +216,7 @@ function Shop() {
           </div>
         </div>
 
-        <div className="backButton">
           <BackButton />
-        </div>
 
         {/* random character dialog */}
         <Dialog
