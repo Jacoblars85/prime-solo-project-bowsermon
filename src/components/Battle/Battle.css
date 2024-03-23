@@ -122,7 +122,7 @@ background: limegreen;
 
 .hp-text {
     position: absolute;
-    top: -1.5%;
+    top: 5%;
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
@@ -135,7 +135,7 @@ background: limegreen;
 
 .stamina-text {
     position: absolute;
-    top: 9.5%;
+    top: 15%;
     width: 100%;
     /* color: white; */
     font-family: sans-serif;
