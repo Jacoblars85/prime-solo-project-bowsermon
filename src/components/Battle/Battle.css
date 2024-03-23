@@ -252,8 +252,8 @@ background: limegreen;
 }
 
 .inventoryMove {
-    grid-column: 1 / 2;
-    grid-row: 1;
+    grid-column: 2 / 2;
+    grid-row: 2;
     background-image: url('/public/images/InventoryButtonPic.png');
     background-color: #b0b3b3; 
     background-repeat: no-repeat;
@@ -288,8 +288,8 @@ background: limegreen;
 }
 
 .attackToggleButton {
-    grid-column: 2 / 2;
-    grid-row: 2;
+    grid-column: 1 / 2;
+    grid-row: 1;
     background-image: url("/public/images/uniqueAttackButtonPic.png");
     background-color: #b0b3b3;
     background-repeat: no-repeat;
