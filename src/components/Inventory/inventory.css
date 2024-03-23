@@ -39,7 +39,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     border: 3px solid white;
-    height: 250px;
+    height: 262px;
     width: 250px;
     row-gap: 5px;
     justify-content: flex-start;
@@ -91,9 +91,6 @@
 .sellButton {
     height: auto;
     width: 50px;
-    background-color: black;
-    border: 1px solid white;
-    color: white;
 }
 
 .sellButton:hover:not(:disabled) {
