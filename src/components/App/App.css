@@ -134,32 +134,7 @@ input {
   }
 }
 
-button {
-  cursor: pointer;
-
-}
-
 .button:hover {
-  background-color: #a1a3a3;
-}
-
-
-.backButton {
-  position: absolute;
-  bottom: 1%;
-  left: 1%;
-  width: 5%;
-  height: 5%;
-  z-index: 1;
-}
-
-.backButton button {
-  border: 1px solid black;
-  /* width: 5%;
-    height: 7.5%; */
-}
-
-.backButton button:hover {
   background-color: #a1a3a3;
 }
 
@@ -234,7 +209,24 @@ button {
   }
 }
 
+.backButton {
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+  width: 4%;
+  height: 6%;
+  z-index: 1;
+}
 
+.backButton button {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.backButton button:hover {
+  background-color: #a1a3a3;
+}
 
 
 
