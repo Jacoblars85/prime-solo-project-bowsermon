@@ -51,9 +51,8 @@ function Characters() {
         </div>
       </div>
 
-      <div className="backButton">
         <BackButton />
-      </div>
+
     </div>
   );
 }

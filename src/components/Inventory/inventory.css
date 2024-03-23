@@ -102,12 +102,6 @@
 }
 
 
-  .backButton:hover {
-    background-color: #777878;
-    text-decoration: none;
-  }
-
-
   .inventory h2 {
     text-align: center;
     font-size: 40px;
