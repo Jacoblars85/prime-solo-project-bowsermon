@@ -67,7 +67,7 @@ function* postNewUserCharacter(action) {
 }
 
 
-function* sellCharacter() {
+function* sellCharacter(action) {
   // console.log('action.payload', action.payload);
   try {
     const putResponse = yield axios({
