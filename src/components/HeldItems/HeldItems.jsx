@@ -286,6 +286,7 @@ function HeldItems({ heldItem }) {
         </h5>
 
         <button
+        style={{ width: "100%"}}
           disabled={user.coins < heldItem.cost ? true : false}
           onClick={handleHeldClickOpen}
         >

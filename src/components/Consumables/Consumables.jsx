@@ -335,6 +335,7 @@ function Consumables({ consumableItem }) {
         </h5>
 
         <button
+        style={{ width: "100%"}}
           disabled={user.coins < consumableItem.cost ? true : false}
           onClick={handleConsumableClickOpen}
         >

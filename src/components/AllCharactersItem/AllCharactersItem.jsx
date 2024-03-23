@@ -141,6 +141,7 @@ function AllCharactersItem({ allCharactersItem }) {
         </h5>
 
         <button
+        style={{ width: "35%"}}
           disabled={user.coins < 100 ? true : false}
           onClick={handleCharacterClickOpen}
         >
