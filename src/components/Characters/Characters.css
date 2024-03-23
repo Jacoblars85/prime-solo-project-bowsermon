@@ -277,21 +277,3 @@
   font-size: 20px;
   margin: 0px;
 }
-
-
-
-.backButton {
-  position: absolute;
-  top: 94%;
-  left: -17%;
-  display: flex;
-  width: 360px;
-  justify-content: flex-end;
-  cursor: pointer;
-
-}
-
-.backButton:hover {
-  background-color: #777878;
-  /* text-decoration: none; */
-}
