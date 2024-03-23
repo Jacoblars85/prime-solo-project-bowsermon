@@ -139,12 +139,6 @@ input {
 }
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 @font-face {
   font-family: 'Seurat';
   src: url('https://assets.codepen.io/4175254/FOT-Seurat+Pro+DB.otf') format('opentype');
