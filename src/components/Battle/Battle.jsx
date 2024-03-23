@@ -266,7 +266,7 @@ function Battle() {
   };
 
   const [displayAttacks, setDisplayAttacks] = useState(false);
-  
+
   const toggleButtons = () => {
     if (displayAttacks) {
       return (
@@ -1750,7 +1750,7 @@ function Battle() {
                 color="inherit"
                 onClick={handleInventoryClose}
                 aria-label="close"
-                // aria-expanded
+                aria-expanded
               >
                 <CloseIcon />
               </IconButton>
@@ -1781,7 +1781,7 @@ function Battle() {
                             fontFamily: "New Super Mario Font U",
                           }}
                           primary={usersConsumables.name}
-                          secondary={`+${usersConsumables.hp} hp | +${usersConsumables.stamina} stamina`}
+                          secondary={`${usersConsumables.hp === 0 ? "" : `+${usersConsumables.hp} hp`} ${usersConsumables.stamina === 0 ? "" : usersConsumables.hp === 0 ? `+${usersConsumables.stamina} stamina` : `| +${usersConsumables.stamina} stamina`} ${usersConsumables.speed === 0 ? "" : `| +${usersConsumables.speed} speed`}`}
                         />
                         <Button
                           sx={{
