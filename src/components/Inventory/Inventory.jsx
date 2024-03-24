@@ -60,7 +60,7 @@ function Inventory() {
     dispatch({ type: "SAGA_FETCH_IVENTORY" });
   }, []);
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,18 +71,22 @@ function Inventory() {
       <Nav />
 
       <div className="inventory">
-        <h2>Inventory</h2>
+        {/* <h2>Inventory</h2> */}
 
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", justifyContent: "center" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
+              textColor="black"
+        indicatorColor="white"
+        centered
             >
-              <Tab label="Inventory" {...a11yProps(0)} />
-              <Tab label="Consumables" {...a11yProps(1)} />
-              <Tab label="Held Items" {...a11yProps(2)} />
+                              <Tab label="Consumables" {...a11yProps(0)} disabled={usersConsumableItems.length === 0 ? true : false} />
+              <Tab label="Inventory" {...a11yProps(1)} />
+
+              <Tab label="Held Items" {...a11yProps(2)} disabled={usersHeldItems.length === 0 ? true : false} />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
@@ -94,7 +98,7 @@ function Inventory() {
                 ""
               )}
 
-              {inventory.map((inventoryItem) => {
+              {usersConsumableItems.map((inventoryItem) => {
                 return (
                   <div key={inventoryItem.id}>
                     <InventoryItem inventoryItem={inventoryItem} />
@@ -112,7 +116,7 @@ function Inventory() {
                 ""
               )}
 
-              {usersConsumableItems.map((inventoryItem) => {
+              {inventory.map((inventoryItem) => {
                 return (
                   <div key={inventoryItem.id}>
                     <InventoryItem inventoryItem={inventoryItem} />
