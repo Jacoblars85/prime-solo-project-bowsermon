@@ -157,6 +157,21 @@ function HeldItems({ heldItem }) {
           totalCoins: heldAmount * heldItem.cost,
         },
       });
+
+            //   axios({
+      //     method: "POST",
+      //     url: "/api/characters",
+      //     data: {
+      //       characterID: randomNum,
+      //     },
+      //   })
+      //     .then((responses) => {
+      //       setOpenRandomSnack(true);
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      
     }
   };
 

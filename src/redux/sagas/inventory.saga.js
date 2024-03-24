@@ -36,11 +36,11 @@ import { put, takeLatest } from 'redux-saga/effects';
   }
 
   function* buyItem(action) {
-    console.log('action.payload', action.payload);
+    // console.log('action.payload', action.payload);
     try {
       const response = yield axios({
         method: 'PUT',
-        url: `/api/inventory/buy/item/${action.payload.itemId}`,
+        url: `/api/inventory/buy/item`,
         data: action.payload
       })
       yield put({
