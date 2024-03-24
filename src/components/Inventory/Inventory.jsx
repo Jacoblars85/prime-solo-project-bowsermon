@@ -99,13 +99,6 @@ function Inventory() {
           </Box>
           <CustomTabPanel value={value} index={0}>
             <div className="itemView">
-              {inventory.length === 0 ? `go to the shop to get more items` : ""}
-              {inventory.length === 0 ? (
-                <button onClick={() => history.push(`/shop`)}>Shop</button>
-              ) : (
-                ""
-              )}
-
               {usersConsumableItems.map((inventoryItem) => {
                 return (
                   <div key={inventoryItem.id}>
@@ -135,13 +128,6 @@ function Inventory() {
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
             <div className="itemView">
-              {inventory.length === 0 ? `go to the shop to get more items` : ""}
-              {inventory.length === 0 ? (
-                <button onClick={() => history.push(`/shop`)}>Shop</button>
-              ) : (
-                ""
-              )}
-
               {usersHeldItems.map((inventoryItem) => {
                 return (
                   <div key={inventoryItem.id}>
