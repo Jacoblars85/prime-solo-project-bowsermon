@@ -80,13 +80,21 @@ function Inventory() {
               onChange={handleChange}
               aria-label="basic tabs example"
               textColor="black"
-        indicatorColor="white"
-        centered
+              indicatorColor="white"
+              centered
             >
-                              <Tab label="Consumables" {...a11yProps(0)} disabled={usersConsumableItems.length === 0 ? true : false} />
+              <Tab
+                label="Consumables"
+                {...a11yProps(0)}
+                disabled={usersConsumableItems.length === 0 ? true : false}
+              />
               <Tab label="Inventory" {...a11yProps(1)} />
 
-              <Tab label="Held Items" {...a11yProps(2)} disabled={usersHeldItems.length === 0 ? true : false} />
+              <Tab
+                label="Held Items"
+                {...a11yProps(2)}
+                disabled={usersHeldItems.length === 0 ? true : false}
+              />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
