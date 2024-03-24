@@ -73,14 +73,14 @@ function Inventory() {
       <div className="inventory">
         {/* <h2>Inventory</h2> */}
 
-        <Box sx={{ width: "100%", justifyContent: "center" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider", fontFamily: "New Super Mario Font U", }}>
             <Tabs
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
               textColor="black"
-              indicatorColor="white"
+              indicatorColor="primary"
               centered
             >
               <Tab
@@ -89,7 +89,6 @@ function Inventory() {
                 disabled={usersConsumableItems.length === 0 ? true : false}
               />
               <Tab label="Inventory" {...a11yProps(1)} />
-
               <Tab
                 label="Held Items"
                 {...a11yProps(2)}
@@ -139,20 +138,6 @@ function Inventory() {
           </CustomTabPanel>
         </Box>
 
-        {/* <div className="itemView">
-
-                {inventory.length === 0 ? `go to the shop to get more items` : ""}
-                {inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
-
-                    {inventory.map(inventoryItem => {
-                        return (
-                            <div key={inventoryItem.id}>
-                                <InventoryItem inventoryItem={inventoryItem} />
-                            </div>
-                        )
-                    })}
-
-                </div> */}
       </div>
 
       <BackButton />
