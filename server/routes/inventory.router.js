@@ -163,7 +163,7 @@ router.get('/user/consumable', (req, res) => {
 });
 
 
-router.put("/buy/item/:id", (req, res) => {
+router.put("/buy/item", (req, res) => {
     // console.log('req.body', req.body);
 
     const sqlText = `
@@ -172,7 +172,7 @@ router.put("/buy/item/:id", (req, res) => {
       WHERE "user_id" = $2 AND "items_id" = $3;
       `;
 
-    const insertValue = [req.body.amountNum, req.user.id, req.params.id]
+    const insertValue = [req.body.amountNum, req.user.id, req.body.itemId]
 
     pool.query(sqlText, insertValue)
         .then((result) => {
