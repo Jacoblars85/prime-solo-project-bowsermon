@@ -23,8 +23,6 @@ import AllCharactersItem from "../AllCharactersItem/AllCharactersItem";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
-import { put } from "redux-saga/effects";
-
 function Shop() {
   const dispatch = useDispatch();
   const history = useHistory();

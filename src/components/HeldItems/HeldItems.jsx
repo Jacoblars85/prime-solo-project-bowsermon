@@ -16,6 +16,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
+import axios from "axios";
 
 import {
   Unstable_NumberInput as BaseNumberInput,
@@ -158,20 +159,27 @@ function HeldItems({ heldItem }) {
         },
       });
 
-            //   axios({
-      //     method: "POST",
-      //     url: "/api/characters",
+      //         axios({
+      //     method: "PUT",
+      //     url: "/api/inventory/buy/item",
       //     data: {
-      //       characterID: randomNum,
+      //       itemId: heldItem.id,
+      //     amountNum: heldAmount,
+      //     totalCoins: heldAmount * heldItem.cost,
       //     },
       //   })
       //     .then((responses) => {
-      //       setOpenRandomSnack(true);
+      //         dispatch({
+      //   type: "FETCH_USER",
+      // });
+      //     })
+      //     .then((responses) => {
+      //       setOpenHeldSnack(true);
       //     })
       //     .catch((err) => {
       //       console.log(err);
       //     });
-      
+
     }
   };
 
