@@ -1,136 +1,147 @@
-import React, { useEffect, useState } from 'react';
-import BackButton from '../BackButton/BackButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import Nav from '../Nav/Nav';
-import InventoryItem from '../InventoryItem/InventoryItem';
-import './inventory.css';
+import React, { useEffect, useState } from "react";
+import BackButton from "../BackButton/BackButton";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Nav from "../Nav/Nav";
+import InventoryItem from "../InventoryItem/InventoryItem";
+import "./inventory.css";
 
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-  
-  CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
-  
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
+  const { children, value, index, ...other } = props;
 
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 function Inventory() {
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    const user = useSelector((store) => store.user.userReducer);
-    const inventory = useSelector((store) => store.inventory.inventory);
-    const usersConsumableItems = useSelector((store) => store.inventory.usersConsumableItems);
-    const usersHeldItems = useSelector((store) => store.inventory.usersHeldItems);
+  const user = useSelector((store) => store.user.userReducer);
+  const inventory = useSelector((store) => store.inventory.inventory);
+  const usersConsumableItems = useSelector(
+    (store) => store.inventory.usersConsumableItems
+  );
+  const usersHeldItems = useSelector((store) => store.inventory.usersHeldItems);
 
-    useEffect(() => {
-        dispatch({ type: 'SAGA_FETCH_IVENTORY' });
-    }, []);
+  useEffect(() => {
+    dispatch({ type: "SAGA_FETCH_IVENTORY" });
+  }, []);
 
-    const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0);
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-    return (
-        <div >
+  return (
+    <div>
+      <Nav />
 
-            <Nav />
+      <div className="inventory">
+        <h2>Inventory</h2>
 
-            <div className="inventory">
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Inventory" {...a11yProps(0)} />
+              <Tab label="Consumables" {...a11yProps(1)} />
+              <Tab label="Held Items" {...a11yProps(2)} />
+            </Tabs>
+          </Box>
+          <CustomTabPanel value={value} index={0}>
+            <div className="itemView">
+              {inventory.length === 0 ? `go to the shop to get more items` : ""}
+              {inventory.length === 0 ? (
+                <button onClick={() => history.push(`/shop`)}>Shop</button>
+              ) : (
+                ""
+              )}
 
-                <h2>Inventory</h2>
-
-                <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Inventory" {...a11yProps(0)} />
-          <Tab label="Consumables" {...a11yProps(1)} />
-          <Tab label="Held Items" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <CustomTabPanel value={value} index={0}>
-      <div className="itemView">
-
-{inventory.length === 0 ? `go to the shop to get more items` : ""}
-{inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
-
-    {inventory.map(inventoryItem => {
-        return (
-            <div key={inventoryItem.id}>
-                <InventoryItem inventoryItem={inventoryItem} />
+              {inventory.map((inventoryItem) => {
+                return (
+                  <div key={inventoryItem.id}>
+                    <InventoryItem inventoryItem={inventoryItem} />
+                  </div>
+                );
+              })}
             </div>
-        )
-    })}
-    </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-      <div className="itemView">
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            <div className="itemView">
+              {inventory.length === 0 ? `go to the shop to get more items` : ""}
+              {inventory.length === 0 ? (
+                <button onClick={() => history.push(`/shop`)}>Shop</button>
+              ) : (
+                ""
+              )}
 
-{inventory.length === 0 ? `go to the shop to get more items` : ""}
-{inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
-
-    {usersConsumableItems.map(inventoryItem => {
-        return (
-            <div key={inventoryItem.id}>
-                <InventoryItem inventoryItem={inventoryItem} />
+              {usersConsumableItems.map((inventoryItem) => {
+                return (
+                  <div key={inventoryItem.id}>
+                    <InventoryItem inventoryItem={inventoryItem} />
+                  </div>
+                );
+              })}
             </div>
-        )
-    })}
-    </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-      <div className="itemView">
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={2}>
+            <div className="itemView">
+              {inventory.length === 0 ? `go to the shop to get more items` : ""}
+              {inventory.length === 0 ? (
+                <button onClick={() => history.push(`/shop`)}>Shop</button>
+              ) : (
+                ""
+              )}
 
-{inventory.length === 0 ? `go to the shop to get more items` : ""}
-{inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
-
-    {usersHeldItems.map(inventoryItem => {
-        return (
-            <div key={inventoryItem.id}>
-                <InventoryItem inventoryItem={inventoryItem} />
+              {usersHeldItems.map((inventoryItem) => {
+                return (
+                  <div key={inventoryItem.id}>
+                    <InventoryItem inventoryItem={inventoryItem} />
+                  </div>
+                );
+              })}
             </div>
-        )
-    })}
-    </div>
-      </CustomTabPanel>
-    </Box>
+          </CustomTabPanel>
+        </Box>
 
-                {/* <div className="itemView">
+        {/* <div className="itemView">
 
                 {inventory.length === 0 ? `go to the shop to get more items` : ""}
                 {inventory.length === 0 ? <button onClick={() => history.push(`/shop`)}>Shop</button> : ""}
@@ -144,18 +155,11 @@ function Inventory() {
                     })}
 
                 </div> */}
+      </div>
 
-     
-
-                
-
-            </div>
-
-                <BackButton />
-
-        </div>
-    );
+      <BackButton />
+    </div>
+  );
 }
 
 export default Inventory;
-    
