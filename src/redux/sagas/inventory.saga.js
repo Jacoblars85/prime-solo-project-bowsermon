@@ -43,9 +43,6 @@ import { put, takeLatest } from 'redux-saga/effects';
         url: `/api/inventory/buy/item`,
         data: action.payload
       })
-      // yield put({
-      //   type: 'SAGA_FETCH_IVENTORY',
-      // })
       yield put({
         type: 'FETCH_USER',
       })
