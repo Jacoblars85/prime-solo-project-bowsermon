@@ -186,39 +186,22 @@ router.delete("/", (req, res) => {
 });
 
 
-router.put("/won/:id", (req, res) => {
+router.put("/won/battle", (req, res) => {
 
   const sqlText = `
   UPDATE "user"
-        SET "coins" = "coins" + 10
+        SET "coins" = "coins" + 10, "level_${req.body.levelId}_completed" = TRUE, "xp_level" = "xp_level" + $2
         WHERE "id" = $1;
     `;
 
-    const sqlValues = [req.user.id];
+    const sqlValues = [req.user.id, req.body.xp];
 
   pool.query(sqlText, sqlValues)
-    .then((result) => {
-
-      const insertNewUserQuery = `
-      UPDATE "user"
-        SET "level_${req.params.id}_completed" = TRUE
-        WHERE "id" = $1;
-        `;
-
-        const sqlValues = [req.user.id];
-
-      pool.query(insertNewUserQuery, sqlValues)
         .then(result => {
-
           res.sendStatus(201);
         })
-    }).catch(err => {
-      // catch for second query
-      console.log('in the second', err);
-      res.sendStatus(500)
-    })
     .catch((err) => {
-      console.log("Error in user.router /won PUT,", err);
+      console.log("Error in user.router /won/battle PUT,", err);
       res.sendStatus(500);
     });
 });
