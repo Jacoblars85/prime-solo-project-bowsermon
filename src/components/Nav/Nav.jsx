@@ -4,12 +4,10 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import Settings from '../Settings/Settings';
-
 import PropTypes from 'prop-types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
 function CircularProgressWithLabel(props) {
   const user = useSelector((store) => store.user.userReducer);
@@ -50,8 +48,6 @@ CircularProgressWithLabel.propTypes = {
 function Nav(props) {
   const user = useSelector((store) => store.user.userReducer);
 
-  // console.log('user', user);
-
   const normalise = () => ((user.xp_level - Math.floor(user.xp_level ) - 0) * 100) / (1 - 0);
 
   return (
@@ -82,30 +78,9 @@ function Nav(props) {
 
           </>
         )}
-
-        {/* <Link className="navLink" to="/about">
-          About
-        </Link> */}
       </div>
     </div>
   );
 }
 
 export default Nav;
-
-
-
-// export default function CircularWithValueLabel() {
-//   const [progress, setProgress] = React.useState(10);
-
-//   React.useEffect(() => {
-//     const timer = setInterval(() => {
-//       setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-//     }, 800);
-//     return () => {
-//       clearInterval(timer);
-//     };
-//   }, []);
-
-//   return <CircularProgressWithLabel value={progress} />;
-// }
