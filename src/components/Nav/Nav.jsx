@@ -13,8 +13,8 @@ function CircularProgressWithLabel(props) {
   const user = useSelector((store) => store.user.userReducer);
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex', }}>
-      <CircularProgress   size={50}
-        thickness={6} variant="determinate" {...props}  />
+      <CircularProgress size={50}
+        thickness={6} variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
@@ -74,10 +74,10 @@ function Nav(props) {
              justifyContent: 'center',
            }}
          >
-            <div style={{ padding: "10px 10px", color: "white", fontSize: "20px",}}><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</div>
+            <div style={{ padding: "10px 10px 10px 10px", color: "white", fontSize: "20px",}}><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</div>
 
-            <div style={{ padding: "5px 10px"}}>
-            <CircularProgressWithLabel  value={normalise(props.value)} />
+            <div style={{ padding: "5px 5px 10px 12px"}}>
+            <CircularProgressWithLabel value={normalise(props.value)} />
             </div>
 
             <div >
