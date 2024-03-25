@@ -238,13 +238,19 @@ function Battle() {
       history.push(`/credits`);
       dispatch({
         type: "SAGA_USER_WON_THE_BATTLE",
-        payload: { levelId: enemyOne.level_id },
+        payload: { levelId: enemyOne.level_id, xp: 1 },
+      });
+    } else if (user.level_1_completed === false || user.level_2_completed === false || user.level_3_completed === false || user.level_4_completed === false || user.level_5_completed === false || user.level_6_completed === false || user.level_7_completed === false || user.level_8_completed === false || user.level_9_completed === false || user.level_11_completed === false || user.level_12_completed === false) {
+      history.push(`/campaign`);
+      dispatch({
+        type: "SAGA_USER_WON_THE_BATTLE",
+        payload: { levelId: enemyOne.level_id, xp: 0.5 },
       });
     } else {
       history.push(`/campaign`);
       dispatch({
         type: "SAGA_USER_WON_THE_BATTLE",
-        payload: { levelId: enemyOne.level_id },
+        payload: { levelId: enemyOne.level_id, xp: 0.20 },
       });
     }
   };
