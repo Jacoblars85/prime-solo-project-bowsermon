@@ -67,7 +67,11 @@ function* deleteAccount() {
 function* giveUserAllForWinning(action) {
   // console.log('action.payload', action.payload);
   try {
-    const response = yield axios.put(`/api/user/won/${action.payload.levelId}`);
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/user/won/battle`,
+      data: action.payload
+  })
     yield put({
       type: 'FETCH_USER',
     })
