@@ -12,8 +12,9 @@ import Box from '@mui/material/Box';
 function CircularProgressWithLabel(props) {
   const user = useSelector((store) => store.user.userReducer);
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} />
+    <Box sx={{ position: 'relative', display: 'inline-flex', }}>
+      <CircularProgress   size={50}
+        thickness={6} variant="determinate" {...props}  />
       <Box
         sx={{
           top: 0,
@@ -26,7 +27,7 @@ function CircularProgressWithLabel(props) {
           justifyContent: 'center',
         }}
       >
-        <Typography variant="caption" component="div" color="text.secondary">
+        <Typography variant="caption" component="div" color="white" fontSize="20px">
           {Math.floor(user.xp_level)}
         </Typography>
       </Box>
@@ -56,7 +57,6 @@ function Nav(props) {
       <Link to="/home">
         <h2 className="nav-title">Bowsermon</h2>
       </Link>
-      <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
@@ -67,18 +67,27 @@ function Nav(props) {
 
         {/* If a user is logged in, show these links */}
         {user.id && (
-          <>
-            <span className='navLink'><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</span>
+           <Box
+           sx={{
+             display: 'flex',
+             alignItems: 'center',
+             justifyContent: 'center',
+           }}
+         >
+            <div style={{ padding: "10px 10px", color: "white", fontSize: "20px",}}><img height={20} width={20} src='/images/Coin_-_New_Super_Mario_Bros.webp'/> {user.coins}</div>
 
-            <CircularProgressWithLabel value={normalise(props.value)} />
+            <div style={{ padding: "5px 10px"}}>
+            <CircularProgressWithLabel  value={normalise(props.value)} />
+            </div>
 
-            <div className='navLink'>
+            <div >
               <Settings />
               </div>
-
-          </>
+           
+          </Box>
+          
         )}
-      </div>
+        
     </div>
   );
 }
