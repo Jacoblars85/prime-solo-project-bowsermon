@@ -71,7 +71,6 @@ function Inventory() {
       <Nav />
 
       <div className="inventory">
-        {/* <h2>Inventory</h2> */}
 
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider", fontFamily: "New Super Mario Font U", }}>
