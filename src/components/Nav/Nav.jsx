@@ -186,19 +186,7 @@ function Nav(props) {
             justifyContent="space-around"
             paddingBottom={3}
           > */}
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            height="85vh"
-            width="100%"
-            fontSize={25}
-          >
-            {userRewards.length === 0
-              ? "You do not have any rewards at this time, level up to receive more rewards!"
-              : ""}
-          </Box>
+          
           {userRewards &&
             userRewards.map((rewards) => {
               return (
@@ -246,6 +234,19 @@ function Nav(props) {
                 </div>
               );
             })}
+            <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            height="85vh"
+            width="100%"
+            fontSize={25}
+          >
+            {userRewards.length === 0
+              ? "You do not have any rewards at this time, level up to receive more rewards!"
+              : ""}
+          </Box>
           {/* </Box> */}
         </List>
       </Dialog>
