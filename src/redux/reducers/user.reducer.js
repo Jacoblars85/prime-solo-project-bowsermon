@@ -24,6 +24,15 @@ const editUsername = (state = {}, action) => {
   return state;
 }
 
+const userRewards = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_USER_REWARDS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 
 // user will be on the redux state at:
 // state.user
@@ -31,4 +40,5 @@ const editUsername = (state = {}, action) => {
 export default combineReducers({
   userReducer,
   editUsername,
+  userRewards,
 });
