@@ -82,11 +82,12 @@ router.post('/register', (req, res, next) => {
             // Now handle the user_characters reference:
             const insertNewUserQuery = `
             INSERT INTO "user_rewards" 
-              ("user_id", "name", "pic", "number")
+              ("user_id", "reward_id", "number")
               VALUES
-              ($1, 'character mystery box', 'images/1200px-ItemBoxMK8.webp', 1),
-              ($1, 'consumable mystery box', 'images/mysterBoxPic.webp', 0),
-              ($1, 'held item mystery box', 'images/mysterBoxPic.webp', 0);
+              ($1, 1, 1),
+              ($1, 2, 0),
+              ($1, 3, 0),
+              ($1, 4, 0);
           `;
             const insertNewUserValues = [createdUserId]
   
@@ -133,15 +134,21 @@ router.post('/logout', (req, res) => {
 router.get('/rewards', (req, res) => {
 
   const query = `
-  SELECT "id",
-      "name",
-      "pic",
-      "number"
-  FROM "user_rewards"
-      WHERE "number" > 0;
+  SELECT "user_rewards"."id" as "id",
+  "user_rewards"."user_id" as "user_id",
+  "user_rewards"."reward_id" as "reward_id",
+  "user_rewards"."number" as "number",
+  "rewards"."name",
+  "rewards"."pic"
+FROM "user_rewards"
+INNER JOIN "rewards"
+ON "user_rewards"."reward_id" = "rewards"."id"
+WHERE "user_id" = $1 AND "user_rewards"."number" > 0;
 `;
 
-  pool.query(query)
+const sqlValues = [req.user.id];
+
+  pool.query(query, sqlValues)
       .then(result => {
           res.send(result.rows);
       })
@@ -235,11 +242,11 @@ router.put("/won/battle", (req, res) => {
 
   const sqlText = `
   UPDATE "user"
-        SET "coins" = "coins" + 10, "level_${req.body.levelId}_completed" = TRUE, "xp_level" = "xp_level" + $2
-        WHERE "id" = $1;
+        SET "coins" = "coins" + 10, "level_${req.body.levelId}_completed" = TRUE, "xp_level" = "xp_level" + $1
+        WHERE "id" = $2;
     `;
 
-    const sqlValues = [req.user.id, req.body.xp];
+    const sqlValues = [req.body.xp, req.user.id];
 
   pool.query(sqlText, sqlValues)
         .then(result => {
@@ -247,6 +254,42 @@ router.put("/won/battle", (req, res) => {
         })
     .catch((err) => {
       console.log("Error in user.router /won/battle PUT,", err);
+      res.sendStatus(500);
+    });
+});
+
+
+router.put("/level/up", (req, res) => {
+
+  const sqlText = `
+  UPDATE "user"
+        SET "coins" = "coins" + 10, "level_${req.body.levelId}_completed" = TRUE, "xp_level" = "xp_level" + $1, "rewards_received" = "rewards_received" + 1
+        WHERE "id" = $2;
+    `;
+
+    const sqlValues = [req.body.xp, req.user.id];
+
+  pool.query(sqlText, sqlValues)
+        .then(result => {
+          const sqlText = `
+          UPDATE "user_rewards"
+                SET "number" = "number" + 1
+                WHERE "user_id" = $1 AND "reward_id" = $2;
+            `;
+        
+            const sqlValues = [req.user.id, req.body.rewardId];
+        
+          pool.query(sqlText, sqlValues)
+                .then(result => {
+          res.sendStatus(201);
+        })
+        .catch((err) => {
+          console.log("Error in user.router /level/up PUT,", err);
+          res.sendStatus(500);
+        })
+      })
+    .catch((err) => {
+      console.log("Error in user.router /level/up PUT,", err);
       res.sendStatus(500);
     });
 });
