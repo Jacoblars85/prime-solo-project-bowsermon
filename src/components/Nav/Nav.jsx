@@ -72,6 +72,7 @@ CircularProgressWithLabel.propTypes = {
 
 function Nav(props) {
   const user = useSelector((store) => store.user.userReducer);
+  const userRewards = useSelector((store) => store.user.userRewards);
 
   const normalise = () =>
     ((user.xp_level - Math.floor(user.xp_level) - 0) * 100) / (1 - 0);
@@ -126,8 +127,8 @@ function Nav(props) {
           </div>
 
           <div style={{ paddingLeft: "12px", cursor: "pointer" }}>
-            <RedeemRoundedIcon onClick={handleClickOpenReward} sx={{ color: "white"}}  />
-            <NewReleasesIcon onClick={handleClickOpenReward} sx={{ color: "yellow"}} />
+            {userRewards.length === 0 ? <RedeemRoundedIcon onClick={handleClickOpenReward} sx={{ color: "white"}}  /> : <NewReleasesIcon onClick={handleClickOpenReward} sx={{ color: "yellow"}} />}
+
           </div>
 
           <div style={{ padding: "10px 5px 10px 12px", }}>
@@ -140,14 +141,15 @@ function Nav(props) {
         </Box>
       )}
 
-<Dialog
+      {/* Full screen dialog */}
+      <Dialog
         fullScreen
         open={openReward}
         onClose={handleCloseReward}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
-          <Toolbar>
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar sx={{ backgroundColor: "gray" }}>
             <IconButton
               edge="start"
               color="inherit"
@@ -156,25 +158,79 @@ function Nav(props) {
             >
               <CloseIcon />
             </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Sound
+            <Typography sx={{ ml: 2, flex: 1, fontFamily: "New Super Mario Font U", textAlign: "center" }} variant="h6" component="div">
+            Collect your rewards
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleCloseReward}>
-              save
-            </Button>
           </Toolbar>
         </AppBar>
         <List>
-          <ListItemButton>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItemButton>
-          <Divider />
-          <ListItemButton>
-            <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
-            />
-          </ListItemButton>
+        {/* <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-around"
+            paddingBottom={3}
+          > */}
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            // paddingBottom={3}
+            height="85vh"
+            width="100%"
+            fontSize={25}
+          >
+
+{userRewards.length === 0 ? "You do not have any rewards at this time, level up to receive more rewards!" : ""}
+</Box>
+            {userRewards &&
+              userRewards.map((rewards) => {
+                return (
+                  <div key={rewards.id}>
+                    <ListItemButton
+                      onClick={() => handleEquipClickOpen(rewards.id)}
+                    >
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        columnGap={20}
+                        justifyContent="space-around"
+                        alignItems="center"
+                        height={75}
+                      >
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          columnGap={5}
+                          justifyContent="space-around"
+                          alignItems="center"
+                        >
+                          <p
+                            style={{
+                              color: "black",
+                              fontSize: "25px",
+                            }}
+                          >
+                            {rewards.number}X
+                          </p>
+                          <img height={100} width={100} src={rewards.pic} />
+                        </Box>
+                        <h4
+                          style={{
+                            color: "black",
+                            fontSize: "25px",
+                            width: "100px",
+                          }}
+                        >
+                          {rewards.name}
+                        </h4>
+                      </Box>
+                    </ListItemButton>
+                    <Divider />
+                  </div>
+                );
+              })}
+          {/* </Box> */}
         </List>
       </Dialog>
 
