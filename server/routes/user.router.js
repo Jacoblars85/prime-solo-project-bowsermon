@@ -130,6 +130,27 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/rewards', (req, res) => {
+
+  const query = `
+  SELECT "id",
+      "name",
+      "pic",
+      "number"
+  FROM "user_rewards"
+      WHERE "number" > 0;
+`;
+
+  pool.query(query)
+      .then(result => {
+          res.send(result.rows);
+      })
+      .catch(err => {
+          console.log('ERROR: Get all rewards for user', err);
+          res.sendStatus(500)
+      })
+});
+
 
 router.put("/change", (req, res) => {
   // console.log('req.body', req.body.newName);
