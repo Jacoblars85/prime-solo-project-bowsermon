@@ -236,22 +236,55 @@ function Battle() {
   const handleWinnerClose = () => {
     if (id == 10 && user.credit_video_completed === false) {
       history.push(`/credits`);
-      dispatch({
-        type: "SAGA_USER_WON_THE_BATTLE",
-        payload: { levelId: enemyOne.level_id, xp: 1 },
-      });
+
+      if (user.rewards_received + 1 <= user.xp_level + 1) {
+        
+        dispatch({
+          type: "SAGA_WON_AND_LEVELED_UP",
+          payload: { levelId: enemyOne.level_id, xp: 1 },
+        });
+
+      } else {
+        dispatch({
+          type: "SAGA_USER_WON_THE_BATTLE",
+          payload: { levelId: enemyOne.level_id, xp: 1 },
+        });
+      }
+      
     } else if (id == 1 && user.level_1_completed === false || id == 2 && user.level_2_completed === false || id == 3 && user.level_3_completed === false || id == 4 && user.level_4_completed === false || id == 5 && user.level_5_completed === false || id == 6 && user.level_6_completed === false || id == 7 && user.level_7_completed === false || id == 8 && user.level_8_completed === false || id == 9 && user.level_9_completed === false || id == 11 && user.level_11_completed === false || id == 12 && user.level_12_completed === false) {
       history.push(`/campaign`);
-      dispatch({
-        type: "SAGA_USER_WON_THE_BATTLE",
-        payload: { levelId: enemyOne.level_id, xp: 0.5 },
-      });
+
+      if (user.rewards_received + 1 <= user.xp_level + 0.5) {
+        
+        dispatch({
+          type: "SAGA_WON_AND_LEVELED_UP",
+          payload: { levelId: enemyOne.level_id, xp: 0.5 },
+        });
+
+      } else {
+        dispatch({
+          type: "SAGA_USER_WON_THE_BATTLE",
+          payload: { levelId: enemyOne.level_id, xp: 0.5 },
+        });
+      }
+      
     } else {
       history.push(`/campaign`);
-      dispatch({
-        type: "SAGA_USER_WON_THE_BATTLE",
-        payload: { levelId: enemyOne.level_id, xp: 0.20 },
-      });
+
+      if (user.rewards_received + 1 <= user.xp_level + 0.20) {
+        
+        dispatch({
+          type: "SAGA_WON_AND_LEVELED_UP",
+          payload: { levelId: enemyOne.level_id, xp: 0.20 },
+        });
+
+      } else {
+        dispatch({
+          type: "SAGA_USER_WON_THE_BATTLE",
+          payload: { levelId: enemyOne.level_id, xp: 0.20 },
+        });
+      }
+      
     }
   };
 
