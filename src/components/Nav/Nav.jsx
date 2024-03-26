@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
@@ -8,6 +8,23 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import RedeemRoundedIcon from '@mui/icons-material/RedeemRounded';
+import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function CircularProgressWithLabel(props) {
   const user = useSelector((store) => store.user.userReducer);
@@ -59,6 +76,18 @@ function Nav(props) {
   const normalise = () =>
     ((user.xp_level - Math.floor(user.xp_level) - 0) * 100) / (1 - 0);
 
+
+    const [openReward, setOpenReward] = useState(false);
+
+    const handleClickOpenReward = () => {
+      setOpenReward(true);
+    };
+  
+    const handleCloseReward = () => {
+      setOpenReward(false);
+    };
+
+
   return (
     <div className="nav">
       <Link to="/home">
@@ -96,7 +125,12 @@ function Nav(props) {
             {user.coins}
           </div>
 
-          <div style={{ padding: "5px 5px 10px 12px" }}>
+          <div style={{ paddingLeft: "12px", cursor: "pointer" }}>
+            <RedeemRoundedIcon onClick={handleClickOpenReward} sx={{ color: "white"}}  />
+            <NewReleasesIcon onClick={handleClickOpenReward} sx={{ color: "yellow"}} />
+          </div>
+
+          <div style={{ padding: "10px 5px 10px 12px", }}>
             <CircularProgressWithLabel value={normalise(props.value)} />
           </div>
 
@@ -105,8 +139,48 @@ function Nav(props) {
           </div>
         </Box>
       )}
+
+<Dialog
+        fullScreen
+        open={openReward}
+        onClose={handleCloseReward}
+        TransitionComponent={Transition}
+      >
+        <AppBar sx={{ position: 'relative' }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleCloseReward}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Sound
+            </Typography>
+            <Button autoFocus color="inherit" onClick={handleCloseReward}>
+              save
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <List>
+          <ListItemButton>
+            <ListItemText primary="Phone ringtone" secondary="Titania" />
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <ListItemText
+              primary="Default notification ringtone"
+              secondary="Tethys"
+            />
+          </ListItemButton>
+        </List>
+      </Dialog>
+
     </div>
   );
 }
 
 export default Nav;
+
