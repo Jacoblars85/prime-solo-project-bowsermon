@@ -81,6 +81,23 @@ function* giveUserAllForWinning(action) {
 }
 
 
+function* userLeveledUp(action) {
+  // console.log('action.payload', action.payload);
+  try {
+  const levelUpResponse = yield axios({
+    method: 'PUT',
+    url: `/api/user/level/up`,
+    data: action.payload
+})
+    yield put({
+      type: 'FETCH_USER',
+    })
+  } catch (error) {
+    console.log('Unable to put reward from level up to server', error);
+  }
+}
+
+
 //turns watched credits to true
 function* completeWatchingCredits(action) {
   // console.log('action.payload', action.payload);
@@ -101,6 +118,7 @@ function* userSaga() {
   yield takeLatest('SAGA_CHANGE_USERNAME', changeUsername);
   yield takeLatest('SAGA_DELETE_ACCOUNT', deleteAccount);
   yield takeLatest('SAGA_USER_WON_THE_BATTLE', giveUserAllForWinning);
+  yield takeLatest('SAGA_WON_AND_LEVELED_UP', userLeveledUp);
   yield takeLatest('SAGA_USER_WATCHED_CREDITS', completeWatchingCredits);
 
 }
