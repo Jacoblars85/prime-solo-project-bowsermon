@@ -8,19 +8,19 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import RedeemRoundedIcon from '@mui/icons-material/RedeemRounded';
-import NewReleasesIcon from '@mui/icons-material/NewReleases';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
+import RedeemRoundedIcon from "@mui/icons-material/RedeemRounded";
+import NewReleasesIcon from "@mui/icons-material/NewReleases";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -77,17 +77,15 @@ function Nav(props) {
   const normalise = () =>
     ((user.xp_level - Math.floor(user.xp_level) - 0) * 100) / (1 - 0);
 
+  const [openReward, setOpenReward] = useState(false);
 
-    const [openReward, setOpenReward] = useState(false);
+  const handleClickOpenReward = () => {
+    setOpenReward(true);
+  };
 
-    const handleClickOpenReward = () => {
-      setOpenReward(true);
-    };
-  
-    const handleCloseReward = () => {
-      setOpenReward(false);
-    };
-
+  const handleCloseReward = () => {
+    setOpenReward(false);
+  };
 
   return (
     <div className="nav">
@@ -127,11 +125,20 @@ function Nav(props) {
           </div>
 
           <div style={{ paddingLeft: "12px", cursor: "pointer" }}>
-            {userRewards.length === 0 ? <RedeemRoundedIcon onClick={handleClickOpenReward} sx={{ color: "white"}}  /> : <NewReleasesIcon onClick={handleClickOpenReward} sx={{ color: "yellow"}} />}
-
+            {userRewards.length === 0 ? (
+              <RedeemRoundedIcon
+                onClick={handleClickOpenReward}
+                sx={{ color: "white" }}
+              />
+            ) : (
+              <NewReleasesIcon
+                onClick={handleClickOpenReward}
+                sx={{ color: "yellow" }}
+              />
+            )}
           </div>
 
-          <div style={{ padding: "10px 5px 10px 12px", }}>
+          <div style={{ padding: "10px 5px 10px 12px" }}>
             <CircularProgressWithLabel value={normalise(props.value)} />
           </div>
 
@@ -158,13 +165,22 @@ function Nav(props) {
             >
               <CloseIcon />
             </IconButton>
-            <Typography sx={{ ml: 2, flex: 1, fontFamily: "New Super Mario Font U", textAlign: "center" }} variant="h6" component="div">
-            Collect your rewards
+            <Typography
+              sx={{
+                ml: 2,
+                flex: 1,
+                fontFamily: "New Super Mario Font U",
+                textAlign: "center",
+              }}
+              variant="h6"
+              component="div"
+            >
+              Collect your rewards
             </Typography>
           </Toolbar>
         </AppBar>
         <List>
-        {/* <Box
+          {/* <Box
             display="flex"
             flexDirection="row"
             justifyContent="space-around"
@@ -175,68 +191,66 @@ function Nav(props) {
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
-            // paddingBottom={3}
             height="85vh"
             width="100%"
             fontSize={25}
           >
-
-{userRewards.length === 0 ? "You do not have any rewards at this time, level up to receive more rewards!" : ""}
-</Box>
-            {userRewards &&
-              userRewards.map((rewards) => {
-                return (
-                  <div key={rewards.id}>
-                    <ListItemButton
-                      onClick={() => handleEquipClickOpen(rewards.id)}
+            {userRewards.length === 0
+              ? "You do not have any rewards at this time, level up to receive more rewards!"
+              : ""}
+          </Box>
+          {userRewards &&
+            userRewards.map((rewards) => {
+              return (
+                <div key={rewards.id}>
+                  <ListItemButton
+                    onClick={() => handleEquipClickOpen(rewards.id)}
+                  >
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      columnGap={20}
+                      justifyContent="space-around"
+                      alignItems="center"
+                      height={75}
                     >
                       <Box
                         display="flex"
                         flexDirection="row"
-                        columnGap={20}
+                        columnGap={5}
                         justifyContent="space-around"
                         alignItems="center"
-                        height={75}
                       >
-                        <Box
-                          display="flex"
-                          flexDirection="row"
-                          columnGap={5}
-                          justifyContent="space-around"
-                          alignItems="center"
-                        >
-                          <p
-                            style={{
-                              color: "black",
-                              fontSize: "25px",
-                            }}
-                          >
-                            {rewards.number}X
-                          </p>
-                          <img height={100} width={100} src={rewards.pic} />
-                        </Box>
-                        <h4
+                        <p
                           style={{
                             color: "black",
                             fontSize: "25px",
-                            width: "100px",
                           }}
                         >
-                          {rewards.name}
-                        </h4>
+                          {rewards.number}X
+                        </p>
+                        <img height={100} width={100} src={rewards.pic} />
                       </Box>
-                    </ListItemButton>
-                    <Divider />
-                  </div>
-                );
-              })}
+                      <h4
+                        style={{
+                          color: "black",
+                          fontSize: "25px",
+                          width: "100px",
+                        }}
+                      >
+                        {rewards.name}
+                      </h4>
+                    </Box>
+                  </ListItemButton>
+                  <Divider />
+                </div>
+              );
+            })}
           {/* </Box> */}
         </List>
       </Dialog>
-
     </div>
   );
 }
 
 export default Nav;
-
