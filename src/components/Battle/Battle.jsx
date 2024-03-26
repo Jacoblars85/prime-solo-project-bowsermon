@@ -232,16 +232,18 @@ function Battle() {
   const [openWinner, setWinnerOpen] = useState(false);
   const [openLoser, setLoserOpen] = useState(false);
 
+  console.log('user', user);
+
   // gives money to user and sends you to the campaign page
   const handleWinnerClose = () => {
     if (id == 10 && user.credit_video_completed === false) {
       history.push(`/credits`);
 
-      if (user.rewards_received + 1 <= user.xp_level + 1) {
+      if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 1) {
         
         dispatch({
           type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 1 },
+          payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
         });
 
       } else {
@@ -254,11 +256,11 @@ function Battle() {
     } else if (id == 1 && user.level_1_completed === false || id == 2 && user.level_2_completed === false || id == 3 && user.level_3_completed === false || id == 4 && user.level_4_completed === false || id == 5 && user.level_5_completed === false || id == 6 && user.level_6_completed === false || id == 7 && user.level_7_completed === false || id == 8 && user.level_8_completed === false || id == 9 && user.level_9_completed === false || id == 11 && user.level_11_completed === false || id == 12 && user.level_12_completed === false) {
       history.push(`/campaign`);
 
-      if (user.rewards_received + 1 <= user.xp_level + 0.5) {
+      if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.5) {
         
         dispatch({
           type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 0.5 },
+          payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 1 },
         });
 
       } else {
@@ -271,11 +273,10 @@ function Battle() {
     } else {
       history.push(`/campaign`);
 
-      if (user.rewards_received + 1 <= user.xp_level + 0.20) {
-        
+      if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.20) {
         dispatch({
           type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 0.20 },
+          payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 1 },
         });
 
       } else {
