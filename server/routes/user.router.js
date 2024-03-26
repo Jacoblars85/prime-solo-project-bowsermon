@@ -67,13 +67,37 @@ router.post('/register', (req, res, next) => {
             ($1, 12, 0),
             ($1, 13, 0),
             ($1, 14, 0),
-            ($1, 15, 0);
+            ($1, 15, 0)
+            RETURNING user_id;;
         `;
           const insertNewUserValues = [createdUserId]
 
           pool.query(insertNewUserQuery, insertNewUserValues)
+
+          .then(result => {
+            // ID IS HERE!
+            // console.log('New user Id:', result.rows[0].user_id);
+            const createdUserId = result.rows[0].user_id
+  
+            // Now handle the user_characters reference:
+            const insertNewUserQuery = `
+            INSERT INTO "user_rewards" 
+              ("user_id", "name", "pic", "number")
+              VALUES
+              ($1, 'character mystery box', 'images/1200px-ItemBoxMK8.webp', 1),
+              ($1, 'consumable mystery box', 'images/mysterBoxPic.webp', 0),
+              ($1, 'held item mystery box', 'images/mysterBoxPic.webp', 0);
+          `;
+            const insertNewUserValues = [createdUserId]
+  
+            pool.query(insertNewUserQuery, insertNewUserValues)
             // was here for basic
             .then(() => res.sendStatus(201))
+          }).catch(err => {
+            // catch for third query
+            console.log(err);
+            res.sendStatus(500)
+          })
         }).catch(err => {
           // catch for third query
           console.log(err);
