@@ -146,6 +146,16 @@ function Nav(props) {
     });
   };
 
+  const [openAnimation, setOpenAnimation] = useState(false);
+
+  const handleClickOpenAnimation = () => {
+    setOpenAnimation(true);
+  };
+
+  const handleCloseAnimation = () => {
+    setOpenAnimation(false);
+  };
+
   return (
     <div className="nav">
       <Link to="/home">
@@ -315,6 +325,50 @@ function Nav(props) {
           {/* </Box> */}
         </List>
       </Dialog>
+
+              {/* box animation dialog */}
+              <Dialog
+          open={openAnimation}
+          onClose={handleCloseAnimation}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle
+            id="alert-dialog-title"
+            sx={{
+              fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              fontSize: "30px",
+            }}
+          >
+            {"Congrats!!!!"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText
+              id="alert-dialog-description"
+              sx={{
+                fontFamily: "New Super Mario Font U",
+                textAlign: "center",
+                fontSize: "18px",
+              }}
+            >
+              This will cost 15 coins and you may get multiple of the same
+              character.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              sx={{
+                color: "black",
+                fontSize: 16,
+                fontFamily: "New Super Mario Font U",
+              }}
+              onClick={handleCloseAnimation}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
     </div>
   );
 }
