@@ -56,6 +56,32 @@ router.get('/held', (req, res) => {
         })
 });
 
+router.get('/all/items', (req, res) => {
+
+    const query = `
+    SELECT "id",
+ 		"name",
+ 		"type",
+        "hp",
+        "stamina",
+        "speed",
+        "attack",
+        "pic",
+        "cost",
+        "color"
+    FROM "items";
+  `;
+
+    pool.query(query)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('ERROR: Get all held items', err);
+            res.sendStatus(500)
+        })
+});
+
 
 router.get('/user/inventory', (req, res) => {
 
