@@ -2,7 +2,7 @@ import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Settings from "../Settings/Settings";
 import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -71,6 +71,8 @@ CircularProgressWithLabel.propTypes = {
 };
 
 function Nav(props) {
+  const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user.userReducer);
   const userRewards = useSelector((store) => store.user.userRewards);
 
@@ -85,6 +87,15 @@ function Nav(props) {
 
   const handleCloseReward = () => {
     setOpenReward(false);
+  };
+
+  const openBox = (rewardId) => {
+    console.log('reward id', rewardId);
+
+    dispatch({
+      type: "SAGA_WON_AND_LEVELED_UP",
+      payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
+    });
   };
 
   return (
@@ -192,7 +203,7 @@ function Nav(props) {
               return (
                 <div key={rewards.id}>
                   <ListItemButton
-                    onClick={() => handleEquipClickOpen(rewards.id)}
+                    // onClick={() => handleEquipClickOpen(rewards.id)}
                   >
                     <Box
                       display="flex"
@@ -200,7 +211,7 @@ function Nav(props) {
                       columnGap={20}
                       justifyContent="space-around"
                       alignItems="center"
-                      height={75}
+                      height={125}
                     >
                       <Box
                         display="flex"
@@ -217,17 +228,22 @@ function Nav(props) {
                         >
                           {rewards.number}X
                         </p>
-                        <img height={100} width={100} src={rewards.pic} />
+                        
                       </Box>
                       <h4
                         style={{
                           color: "black",
                           fontSize: "25px",
-                          width: "100px",
+                          width: "200px",
+                          textAlign: "center"
                         }}
                       >
                         {rewards.name}
                       </h4>
+
+                      <img height={100} width={100} src={rewards.pic} />
+
+                      <button onClick={() => openBox(rewards.id)}>Open Box</button>
                     </Box>
                   </ListItemButton>
                   <Divider />
