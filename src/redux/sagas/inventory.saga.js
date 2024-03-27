@@ -8,16 +8,21 @@ import { put, takeLatest } from 'redux-saga/effects';
       const usersInventoryResponse = yield axios.get(`/api/inventory/user/inventory`);
       const usersHeldResponse = yield axios.get(`/api/inventory/user/held`);
       const usersConsumableResponse = yield axios.get(`/api/inventory/user/consumable`);
-      const itemsResponse = yield axios.get(`/api/inventory/consumable`);
+      const consumableResponse = yield axios.get(`/api/inventory/consumable`);
       const heldResponse = yield axios.get(`/api/inventory/held`);
       const rewardResponse = yield axios.get(`/api/user/rewards`);
+      const allItemsResponse = yield axios.get(`/api/inventory/all/items`);
+      yield put({
+        type: 'SET_ALL_ITEMS',
+        payload: allItemsResponse.data
+      });
       yield put({
         type: 'SET_USER_REWARDS',
         payload: rewardResponse.data
       });
       yield put({
         type: 'SET_CONSUMABLE_ITEMS',
-        payload: itemsResponse.data
+        payload: consumableResponse.data
       });
       yield put({
         type: 'SET_HELD_ITEMS',
