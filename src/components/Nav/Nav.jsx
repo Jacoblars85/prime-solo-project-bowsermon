@@ -95,28 +95,62 @@ function Nav(props) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
+      dispatch({
+        type: "SAGA_BUY_NEW_CHARACTER",
+        payload: {
+          characterID: randomNum,
+          characterCost: 0
+        },
+      });
+
       // console.log("randomNum in held", randomNum);
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
+
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: randomNum,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
 
       // console.log("randomNum in held", randomNum);
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
 
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: randomNum,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
+
       // console.log("randomNum in held", randomNum);
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: randomNum,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
       // console.log("randomNum in held", randomNum);
     }
 
-    // dispatch({
-    //   type: "SAGA_OPEN_BOX",
-    //   payload: { rewardId: rewardId, randomNum: randomNum, },
-    // });
+    dispatch({
+      type: "SAGA_OPEN_BOX",
+      payload: { rewardId: rewardId },
+    });
   };
 
   return (
