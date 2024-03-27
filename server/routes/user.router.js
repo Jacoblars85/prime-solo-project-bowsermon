@@ -317,6 +317,26 @@ router.put("/credits", (req, res) => {
     });
 });
 
+router.put("/reward/open", (req, res) => {
+
+  const sqlText = `
+  UPDATE "user_rewards"
+        SET "number" = "number" - 1
+        WHERE "id" = $1 AND "user_id" = $2
+    `;
+
+    const sqlValues = [req.body.rewardId, req.user.id];
+
+  pool.query(sqlText, sqlValues)
+        .then(result => {
+          res.sendStatus(201);
+        })
+    .catch((err) => {
+      console.log("Error in user.router /won/battle PUT,", err);
+      res.sendStatus(500);
+    });
+});
+
 
 
 
