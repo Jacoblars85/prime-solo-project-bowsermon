@@ -2,11 +2,15 @@ DROP TABLE IF EXISTS user_inventory;
 
 DROP TABLE IF EXISTS user_characters;
 
+DROP TABLE IF EXISTS user_rewards;
+
 DROP TABLE IF EXISTS "user";
 
 DROP TABLE IF EXISTS levels;
 
 DROP TABLE IF EXISTS items;
+
+DROP TABLE IF EXISTS rewards;
 
 DROP TABLE IF EXISTS characters;
 
@@ -18,6 +22,7 @@ CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (16) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
+    "xp_level" DEC DEFAULT 1,
 	"coins" INT DEFAULT 30,
 	"level_1_completed" BOOLEAN DEFAULT FALSE,
 	"level_2_completed" BOOLEAN DEFAULT FALSE,
@@ -30,8 +35,9 @@ CREATE TABLE "user" (
 	"level_9_completed" BOOLEAN DEFAULT FALSE,
 	"level_10_completed" BOOLEAN DEFAULT FALSE,
 	"credit_video_completed" BOOLEAN DEFAULT FALSE,
-	"secret_level_1_completed" BOOLEAN DEFAULT FALSE,
-	"secret_level_2_completed" BOOLEAN DEFAULT FALSE
+	"level_11_completed" BOOLEAN DEFAULT FALSE,
+	"level_12_completed" BOOLEAN DEFAULT FALSE, 
+	"rewards_received" INT DEFAULT 1
 );
 
 	
@@ -59,17 +65,22 @@ CREATE TABLE "items" (
 	"cost" INT,
 	"color" VARCHAR(25));
 	
+CREATE TABLE "rewards" (
+	"id" SERIAL PRIMARY KEY,
+	"name" VARCHAR(100),
+	"pic" VARCHAR(100));
+	
 	
 CREATE TABLE "user_characters" (
 	"id" SERIAL PRIMARY KEY,
-	"user_id" INT NOT NULL REFERENCES "user",
-	"character_id" INT NOT NULL REFERENCES "characters",
+	"user_id" INT NOT NULL REFERENCES "user" ON DELETE CASCADE,
+	"character_id" INT NOT NULL REFERENCES "characters" ON DELETE CASCADE,
 	"starter_1" BOOLEAN DEFAULT FALSE,
 	"starter_2" BOOLEAN DEFAULT FALSE,
 	"starter_3" BOOLEAN DEFAULT FALSE,
 	"nickname" VARCHAR(20) DEFAULT NULL,
 	"new" BOOLEAN DEFAULT TRUE,
-	"item_id" INT DEFAULT NULL REFERENCES "items");
+	"item_id" INT DEFAULT NULL REFERENCES "items" ON DELETE CASCADE);
 	
 	
 CREATE TABLE "basic_attacks" (
@@ -82,13 +93,19 @@ CREATE TABLE "basic_attacks" (
 CREATE TABLE "levels" (
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR(20),
-	"enemy_id" INT NOT NULL REFERENCES "characters");
+	"enemy_id" INT NOT NULL REFERENCES "characters" ON DELETE CASCADE);
 	
 	
 CREATE TABLE "user_inventory" (
 	"id" SERIAL PRIMARY KEY,
-	"user_id" INT NOT NULL REFERENCES "user",
-	"items_id" INT NOT NULL REFERENCES "items",
+	"user_id" INT NOT NULL REFERENCES "user" ON DELETE CASCADE,
+	"items_id" INT NOT NULL REFERENCES "items" ON DELETE CASCADE,
+	"number" INT);
+	
+CREATE TABLE "user_rewards" (
+	"id" SERIAL PRIMARY KEY,
+	"user_id" INT NOT NULL REFERENCES "user" ON DELETE CASCADE,
+	"reward_id" INT NOT NULL REFERENCES "rewards" ON DELETE CASCADE,
 	"number" INT);
 	
 	
@@ -98,28 +115,27 @@ INSERT INTO "characters"
 	("name", "profile_pic", "hp", "stamina", "speed", "unique_attack", "unique_damage", "unique_stamina", "battle_pic")
 	VALUES 
 	('Goomba', 'images/Masthead_Goomba.png', 30, 50, 80, 'charge', 40, 10, 'images/Masthead_Goomba.png'),
-	('Koopa Troopa', 'images/koopaTroopaProfilePic.webp', 60, 50, 55, 'shell smash', 35, 20, 'images/koopaTroopaBattlePic.webp'),
-	('Dry Bones', 'images/Drybones.webp', 50, 50, 50, 'bone swing', 50, 20, 'images/Drybones.webp'),
-	('Shy Guy', 'images/ShyGuyProfilePic.webp', 85, 20, 10, 'slap', 55, 15, 'images/shyGuyBattlePic.webp'),
+	('Koopa Troopa', 'images/koopaTroopaProfilePic.webp', 60, 60, 55, 'shell smash', 35, 10, 'images/koopaTroopaBattlePic.webp'),
+	('Dry Bones', 'images/Drybones.webp', 50, 70, 50, 'bone swing', 50, 15, 'images/Drybones.webp'),
+	('Shy Guy', 'images/ShyGuyProfilePic.webp', 85, 40, 10, 'slap', 55, 15, 'images/shyGuyBattlePic.webp'),
 	('Boo', 'images/BooProfilePic.webp', 40, 60, 60, 'lick', 50, 20, 'images/BooProfilePic.webp'),
-	('Hammer Bro', 'images/hammerBroProfilePic.webp', 55, 60, 50, 'hammer bash', 45, 25, 'images/Hammer_BroBattlePic.webp'),
-	('Chain Chomp', 'images/ChainChompProfilePic.webp', 20, 25, 65, 'bite', 65, 25, 'images/chainChompBattlePic2.png'),
-	('Roy', 'images/RoyProfilePic.webp', 55, 25, 20, 'large pipe', 75, 15, 'images/RoyBattlePic.webp'),
-	('Morton', 'images/MortonProfilePic.webp', 100, 25, 5, 'body slam', 45, 20, 'images/MortonBattlePic.webp'),
-	('Toad', '', 100, 55, 70, 'headbutt', 12, 10, 'images/Toad_Portal.webp'),
+	('Hammer Bro', 'images/hammerBroProfilePic.webp', 55, 60, 50, 'hammer bash', 45, 10, 'images/Hammer_BroBattlePic.webp'),
+	('Chain Chomp', 'images/ChainChompProfilePic.webp', 20, 25, 65, 'bite', 65, 10, 'images/chainChompBattlePic2.png'),
+	('Roy', 'images/RoyProfilePic.webp', 55, 35, 20, 'large pipe', 75, 15, 'images/RoyBattlePic.webp'),
+	('Morton', 'images/MortonProfilePic.webp', 100, 25, 5, 'body slam', 45, 10, 'images/MortonBattlePic.webp'),
+	('Toad', '', 100, 55, 70, 'headbutt', 10, 10, 'images/Toad_Portal.webp'),
 	('Toadett', '', 160, 50, 60, 'slap', 15, 10, 'images/ToadetteBattlePic.png'),
-	('Toadsworth', '', 180, 40, 30, 'cane wack', 17, 15, 'images/ToadsworthBattlePic.webp'),
+	('Toadsworth', '', 180, 40, 30, 'cane wack', 20, 15, 'images/ToadsworthBattlePic.webp'),
 	('Diddy Kong', '', 170, 50, 85, 'banana shot', 55, 10, 'images/diddyKongBattleKong.webp'),
-	('Rosalina', '', 190, 40, 60, 'ice blast', 32, 10, 'images/RosalinaBattlePic.webp'),
+	('Rosalina', '', 190, 60, 60, 'ice blast', 35, 10, 'images/RosalinaBattlePic.webp'),
 	('Daisy', '', 210, 50, 50, 'arm bar', 50, 10, 'images/daisyBattlePic.png'),
-	('Yoshi', '', 220, 60, 75, 'stomp', 20, 10, 'images/YoshiBattlePic.webp'),
-	('Donkey Kong', '', 270, 50, 10, 'giant punch', 35, 20, 'images/donkeyKongBattlePic.webp'),
-	('Luigi', '', 160, 100, 80, 'punch', 50, 25, 'images/LuigiBattlePic.png'),
-	('Mario', '', 250, 150, 50, 'upper cut', 32, 25, 'images/MarioBattlePic.png'),
+	('Yoshi', '', 240, 100, 75, 'stomp', 20, 10, 'images/YoshiBattlePic.webp'),
+	('Donkey Kong', '', 300, 70, 10, 'giant punch', 35, 10, 'images/donkeyKongBattlePic.webp'),
+	('Luigi', '', 80, 60, 85, 'punch', 150, 25, 'images/LuigiBattlePic.png'),
+	('Mario', '', 250, 150, 50, 'upper cut', 40, 20, 'images/MarioBattlePic.png'),
 	('Waluigi', '', 180, 100, 100, 'stab', 35, 10, 'images/waluigiBattlePic.webp'),
-	('Wario', '', 280, 55, 10, 'belly flop', 35, 10, 'images/warioBattlePic.png'); 
-	
-	
+	('Wario', '', 280, 65, 10, 'belly flop', 45, 10, 'images/warioBattlePic.png'); 
+
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
 	VALUES 
@@ -163,3 +179,12 @@ INSERT INTO "items"
 	('gold flower', 'held', 20, 0, 0, 10, 'images/goldFlowerPic.webp', 200, '#000000'),
 	('super star', 'held', 10, 15, 10, 10, 'images/starPic.webp', 250, '#000000');
 	
+	
+INSERT INTO "rewards" 
+	  ("name", "pic")
+	  VALUES
+	  ('character mystery box', 'images/1200px-ItemBoxMK8.webp'),
+	  ('held item mystery box', 'images/mysterBoxPic.webp'),
+	  ('consumable item mystery box', 'images/mysterBoxPic.webp'),
+	  ('item mystery box', 'images/mysterBoxPic.webp');
+	  
