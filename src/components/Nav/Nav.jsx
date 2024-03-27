@@ -90,11 +90,26 @@ function Nav(props) {
   };
 
   const openBox = (rewardId) => {
-    console.log('reward id', rewardId);
+
+    let randomNum;
+
+    if (rewardId === 1) {
+      // character box
+      randomNum = Math.floor(Math.random() * 9 + 1);
+    } else if (rewardId === 2) {
+      // held item box
+      randomNum = Math.floor(Math.random() * 9 + 1);
+    } else if (rewardId === 3) {
+      // consumable box
+      randomNum = Math.floor(Math.random() * 9 + 1);
+    } else if (rewardId === 4) {
+      // all item box
+      randomNum = Math.floor(Math.random() * 9 + 1);
+    }
 
     dispatch({
-      type: "SAGA_WON_AND_LEVELED_UP",
-      payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
+      type: "SAGA_OPEN_BOX",
+      payload: { rewardId: 1, randomNum },
     });
   };
 
