@@ -113,8 +113,18 @@ function Nav(props) {
         (Characters) => Characters.id === randomNum
       );
 
-      setNewRewardPic(newCharacter.profile_pic);
-      setNewRewardName(newCharacter.name);
+      setNewRewardPic("images/mysteryBoxGif.gif");
+      setNewRewardName("...");
+
+      // setTimeout(() => {
+      //   setNewRewardPic("images/fadingLightGif.gif");
+      // }, 2000);
+
+      setTimeout(() => {
+        setNewRewardPic(newCharacter.profile_pic);
+        setNewRewardName(newCharacter.name);
+      }, 2500);
+
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
 
@@ -125,8 +135,14 @@ function Nav(props) {
 
       const newHeld = held.find((heldItem) => heldItem.id === randomNum);
 
-      setNewRewardPic(newHeld.pic);
-      setNewRewardName(newHeld.name);
+      setNewRewardPic("images/mysteryBoxGif2.gif");
+      setNewRewardName("...");
+
+      setTimeout(() => {
+        setNewRewardPic(newHeld.pic);
+        setNewRewardName(newHeld.name);
+      }, 2500);
+
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
 
@@ -139,8 +155,14 @@ function Nav(props) {
         (consumableItem) => consumableItem.id === randomNum
       );
 
-      setNewRewardPic(newConsumable.pic);
-      setNewRewardName(newConsumable.name);
+      setNewRewardPic("images/mysteryBoxGif2.gif");
+      setNewRewardName("...");
+
+      setTimeout(() => {
+        setNewRewardPic(newConsumable.pic);
+        setNewRewardName(newConsumable.name);
+      }, 2500);
+
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
 
@@ -151,8 +173,14 @@ function Nav(props) {
 
       const newItem = allItems.find((item) => item.id === randomNum);
 
-      setNewRewardPic(newItem.pic);
-      setNewRewardName(newItem.name);
+      setNewRewardPic("images/mysteryBoxGif2.gif");
+      setNewRewardName("...");
+
+      setTimeout(() => {
+        setNewRewardPic(newItem.pic);
+        setNewRewardName(newItem.name);
+      }, 2500);
+
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
 
@@ -397,6 +425,9 @@ function Nav(props) {
         onClose={handleCloseAnimation}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{
+          textAlign: "center",
+        }}
       >
         <DialogTitle
           id="alert-dialog-title"
@@ -404,6 +435,8 @@ function Nav(props) {
             fontFamily: "New Super Mario Font U",
             textAlign: "center",
             fontSize: "30px",
+            width: "420px",
+            marginBottom: "20px"
           }}
         >
           {`Congrats, you got ${newRewardName}`}
@@ -411,7 +444,11 @@ function Nav(props) {
         <DialogContent>
           <img height={200} width={200} src={newRewardPic} />
         </DialogContent>
-        <DialogActions>
+        <DialogActions
+         sx={{
+          textAlign: "center",
+          justifyContent: "center"
+        }}>
           <Button
             sx={{
               color: "black",
