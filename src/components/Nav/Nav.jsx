@@ -96,21 +96,32 @@ function Nav(props) {
     if (rewardId === 1) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
+
+      console.log('randomNum in held', randomNum);
+
     } else if (rewardId === 2) {
       // held item box
-      randomNum = Math.floor(Math.random() * 9 + 1);
+      randomNum = Math.floor(Math.random() * (16 - 7) + 7);
+
+      console.log('randomNum in held', randomNum);
+
     } else if (rewardId === 3) {
       // consumable box
-      randomNum = Math.floor(Math.random() * 9 + 1);
+      randomNum = Math.floor(Math.random() * 6 + 1);
+
+      console.log('randomNum in held', randomNum);
+
     } else if (rewardId === 4) {
       // all item box
-      randomNum = Math.floor(Math.random() * 9 + 1);
+      randomNum = Math.floor(Math.random() * 15 + 1);
+
+      console.log('randomNum in held', randomNum);
     }
 
-    dispatch({
-      type: "SAGA_OPEN_BOX",
-      payload: { rewardId: 1, randomNum },
-    });
+    // dispatch({
+    //   type: "SAGA_OPEN_BOX",
+    //   payload: { rewardId: rewardId, randomNum: randomNum, },
+    // });
   };
 
   return (
