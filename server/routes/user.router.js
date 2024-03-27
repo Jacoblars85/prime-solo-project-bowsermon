@@ -332,7 +332,7 @@ router.put("/reward/open", (req, res) => {
           res.sendStatus(201);
         })
     .catch((err) => {
-      console.log("Error in user.router /won/battle PUT,", err);
+      console.log("Error in user.router /reward/open PUT,", err);
       res.sendStatus(500);
     });
 });

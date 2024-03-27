@@ -122,7 +122,7 @@ function* userOpenReward(action) {
       type: 'SAGA_FETCH_IVENTORY',
     })
   } catch (error) {
-    console.log('Unable to put reward from level up to server', error);
+    console.log('Unable to put open reward to server', error);
   }
 }
 
