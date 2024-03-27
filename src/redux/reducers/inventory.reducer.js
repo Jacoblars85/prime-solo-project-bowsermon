@@ -19,6 +19,15 @@ const consumables = (state = [], action) => {
     }
   }
 
+  const allItems = (state = [], action) => {
+    switch (action.type) {
+      case 'SET_ALL_ITEMS':
+        return action.payload;
+      default:
+        return state;
+    }
+  }
+
   const inventory = (state = [{}], action) => {
     switch (action.type) {
       case 'SET_USERS_INVENTORY':
@@ -51,6 +60,7 @@ const consumables = (state = [], action) => {
 export default combineReducers({
   consumables,
   held,
+  allItems,
   inventory,
   usersConsumableItems,
   usersHeldItems,
