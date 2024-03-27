@@ -82,6 +82,7 @@ function Nav(props) {
   const allCharacters = useSelector((store) => store.character.allCharacters);
   const consumables = useSelector((store) => store.inventory.consumables);
   const held = useSelector((store) => store.inventory.held);
+  const allItems = useSelector((store) => store.inventory.allItems);
 
   const normalise = () =>
     ((user.xp_level - Math.floor(user.xp_level) - 0) * 100) / (1 - 0);
@@ -124,7 +125,7 @@ function Nav(props) {
 
       const newHeld = held.find((heldItem) => heldItem.id === randomNum);
 
-      setNewRewardPic(newHeld.profile_pic);
+      setNewRewardPic(newHeld.pic);
       setNewRewardName(newHeld.name);
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
@@ -138,7 +139,7 @@ function Nav(props) {
         (consumableItem) => consumableItem.id === randomNum
       );
 
-      setNewRewardPic(newConsumable.profile_pic);
+      setNewRewardPic(newConsumable.pic);
       setNewRewardName(newConsumable.name);
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
@@ -148,9 +149,9 @@ function Nav(props) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
-      // const newItem = held.find((heldItem) => heldItem.id === randomNum);
+      const newItem = allItems.find((item) => item.id === randomNum);
 
-      setNewRewardPic(newItem.profile_pic);
+      setNewRewardPic(newItem.pic);
       setNewRewardName(newItem.name);
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
@@ -217,6 +218,7 @@ function Nav(props) {
     });
 
     setOpenAnimation(false);
+    setOpenReward(false);
   };
 
   return (
