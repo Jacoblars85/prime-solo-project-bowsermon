@@ -90,32 +90,28 @@ function Nav(props) {
   };
 
   const openBox = (rewardId) => {
-
     let randomNum;
 
     if (rewardId === 1) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
-      console.log('randomNum in held', randomNum);
-
+      console.log("randomNum in held", randomNum);
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
 
-      console.log('randomNum in held', randomNum);
-
+      console.log("randomNum in held", randomNum);
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
 
-      console.log('randomNum in held', randomNum);
-
+      console.log("randomNum in held", randomNum);
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
-      console.log('randomNum in held', randomNum);
+      console.log("randomNum in held", randomNum);
     }
 
     // dispatch({
@@ -223,13 +219,13 @@ function Nav(props) {
             justifyContent="space-around"
             paddingBottom={3}
           > */}
-          
+
           {userRewards &&
             userRewards.map((rewards) => {
               return (
                 <div key={rewards.id}>
                   <ListItemButton
-                    // onClick={() => handleEquipClickOpen(rewards.id)}
+                  // onClick={() => handleEquipClickOpen(rewards.id)}
                   >
                     <Box
                       display="flex"
@@ -254,14 +250,13 @@ function Nav(props) {
                         >
                           {rewards.number}X
                         </p>
-                        
                       </Box>
                       <h4
                         style={{
                           color: "black",
                           fontSize: "25px",
                           width: "200px",
-                          textAlign: "center"
+                          textAlign: "center",
                         }}
                       >
                         {rewards.name}
@@ -269,14 +264,16 @@ function Nav(props) {
 
                       <img height={100} width={100} src={rewards.pic} />
 
-                      <button onClick={() => openBox(rewards.id)}>Open Box</button>
+                      <button onClick={() => openBox(rewards.id)}>
+                        Open Box
+                      </button>
                     </Box>
                   </ListItemButton>
                   <Divider />
                 </div>
               );
             })}
-            <Box
+          <Box
             display="flex"
             flexDirection="row"
             justifyContent="center"
