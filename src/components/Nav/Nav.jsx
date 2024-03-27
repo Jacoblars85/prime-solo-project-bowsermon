@@ -96,22 +96,22 @@ function Nav(props) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
-      console.log("randomNum in held", randomNum);
+      // console.log("randomNum in held", randomNum);
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
 
-      console.log("randomNum in held", randomNum);
+      // console.log("randomNum in held", randomNum);
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
 
-      console.log("randomNum in held", randomNum);
+      // console.log("randomNum in held", randomNum);
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
-      console.log("randomNum in held", randomNum);
+      // console.log("randomNum in held", randomNum);
     }
 
     // dispatch({
