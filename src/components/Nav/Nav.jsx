@@ -102,8 +102,6 @@ function Nav(props) {
           characterCost: 0
         },
       });
-
-      // console.log("randomNum in held", randomNum);
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
@@ -115,9 +113,7 @@ function Nav(props) {
           amountNum: 1,
           totalCoins: 0,
         },
-      });
-
-      // console.log("randomNum in held", randomNum);
+      })
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
@@ -130,8 +126,6 @@ function Nav(props) {
           totalCoins: 0,
         },
       });
-
-      // console.log("randomNum in held", randomNum);
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
@@ -144,7 +138,6 @@ function Nav(props) {
           totalCoins: 0,
         },
       });
-      // console.log("randomNum in held", randomNum);
     }
 
     dispatch({
