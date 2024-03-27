@@ -232,8 +232,6 @@ function Battle() {
   const [openWinner, setWinnerOpen] = useState(false);
   const [openLoser, setLoserOpen] = useState(false);
 
-  console.log('user', user);
-
   // gives money to user and sends you to the campaign page
   const handleWinnerClose = () => {
     if (id == 10 && user.credit_video_completed === false) {
@@ -241,10 +239,27 @@ function Battle() {
 
       if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 1) {
         
-        dispatch({
-          type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
-        });
+        if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 4 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 3 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 2 },
+          });
+        } else {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
+          });
+        }
 
       } else {
         dispatch({
@@ -257,11 +272,28 @@ function Battle() {
       history.push(`/campaign`);
 
       if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.5) {
-        
-        dispatch({
-          type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 1 },
-        });
+
+          if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
+            dispatch({
+              type: "SAGA_WON_AND_LEVELED_UP",
+              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 4 },
+            });
+          } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
+            dispatch({
+              type: "SAGA_WON_AND_LEVELED_UP",
+              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 3 },
+            });
+          } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
+            dispatch({
+              type: "SAGA_WON_AND_LEVELED_UP",
+              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 2 },
+            });
+          } else {
+            dispatch({
+              type: "SAGA_WON_AND_LEVELED_UP",
+              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 1 },
+            });
+          }
 
       } else {
         dispatch({
@@ -274,10 +306,28 @@ function Battle() {
       history.push(`/campaign`);
 
       if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.20) {
-        dispatch({
-          type: "SAGA_WON_AND_LEVELED_UP",
-          payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 1 },
-        });
+
+        if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 4 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 3 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 2 },
+          });
+        } else {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 1 },
+          });
+        }
 
       } else {
         dispatch({
