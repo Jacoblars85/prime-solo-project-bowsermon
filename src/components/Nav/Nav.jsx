@@ -21,6 +21,11 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -99,7 +104,7 @@ function Nav(props) {
         type: "SAGA_BUY_NEW_CHARACTER",
         payload: {
           characterID: randomNum,
-          characterCost: 0
+          characterCost: 0,
         },
       });
     } else if (rewardId === 2) {
@@ -113,7 +118,7 @@ function Nav(props) {
           amountNum: 1,
           totalCoins: 0,
         },
-      })
+      });
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
@@ -326,49 +331,39 @@ function Nav(props) {
         </List>
       </Dialog>
 
-              {/* box animation dialog */}
-              <Dialog
-          open={openAnimation}
-          onClose={handleCloseAnimation}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+      {/* box animation dialog */}
+      <Dialog
+        open={openAnimation}
+        onClose={handleCloseAnimation}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "30px",
+          }}
         >
-          <DialogTitle
-            id="alert-dialog-title"
+          {"Congrats!!!!"}
+        </DialogTitle>
+        <DialogContent>
+          <img height={200} width={200} />
+        </DialogContent>
+        <DialogActions>
+          <Button
             sx={{
+              color: "black",
+              fontSize: 16,
               fontFamily: "New Super Mario Font U",
-              textAlign: "center",
-              fontSize: "30px",
             }}
+            onClick={handleCloseAnimation}
           >
-            {"Congrats!!!!"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText
-              id="alert-dialog-description"
-              sx={{
-                fontFamily: "New Super Mario Font U",
-                textAlign: "center",
-                fontSize: "18px",
-              }}
-            >
-              This will cost 15 coins and you may get multiple of the same
-              character.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 16,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={handleCloseAnimation}
-            >
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
