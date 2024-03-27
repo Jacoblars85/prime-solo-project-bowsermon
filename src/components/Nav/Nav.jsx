@@ -79,6 +79,9 @@ function Nav(props) {
 
   const user = useSelector((store) => store.user.userReducer);
   const userRewards = useSelector((store) => store.user.userRewards);
+  const allCharacters = useSelector((store) => store.character.allCharacters);
+  const consumables = useSelector((store) => store.inventory.consumables);
+  const held = useSelector((store) => store.inventory.held);
 
   const normalise = () =>
     ((user.xp_level - Math.floor(user.xp_level) - 0) * 100) / (1 - 0);
@@ -93,6 +96,11 @@ function Nav(props) {
     setOpenReward(false);
   };
 
+  const [newRewardPic, setNewRewardPic] = useState("");
+  const [newRewardName, setNewRewardName] = useState("");
+  const [rewardBoxId, setRewardBoxId] = useState();
+  const [newRewardId, setNewRewardId] = useState();
+
   const openBox = (rewardId) => {
     let randomNum;
 
@@ -100,55 +108,54 @@ function Nav(props) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
-      dispatch({
-        type: "SAGA_BUY_NEW_CHARACTER",
-        payload: {
-          characterID: randomNum,
-          characterCost: 0,
-        },
-      });
+      const newCharacter = allCharacters.find((Characters) => Characters.id === randomNum);
+
+      setNewRewardPic(newCharacter.profile_pic)
+      setNewRewardName(newCharacter.name)
+      setNewRewardId(randomNum)
+      setRewardBoxId(rewardId)
+
+      setOpenAnimation(true);
+
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
 
-      dispatch({
-        type: "SAGA_BUY_ITEM",
-        payload: {
-          itemId: randomNum,
-          amountNum: 1,
-          totalCoins: 0,
-        },
-      });
+      const newHeld = held.find((heldItem) => heldItem.id === randomNum);
+
+      setNewRewardPic(newHeld.profile_pic)
+      setNewRewardName(newHeld.name)
+      setNewRewardId(randomNum)
+      setRewardBoxId(rewardId)
+
+      setOpenAnimation(true);
+
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
 
-      dispatch({
-        type: "SAGA_BUY_ITEM",
-        payload: {
-          itemId: randomNum,
-          amountNum: 1,
-          totalCoins: 0,
-        },
-      });
+      const newConsumable = consumables.find((consumableItem) => consumableItem.id === randomNum);
+
+      setNewRewardPic(newConsumable.profile_pic)
+      setNewRewardName(newConsumable.name)
+      setNewRewardId(randomNum)
+      setRewardBoxId(rewardId)
+
+      setOpenAnimation(true);
+
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
-      dispatch({
-        type: "SAGA_BUY_ITEM",
-        payload: {
-          itemId: randomNum,
-          amountNum: 1,
-          totalCoins: 0,
-        },
-      });
-    }
+      // const newItem = held.find((heldItem) => heldItem.id === randomNum);
 
-    dispatch({
-      type: "SAGA_OPEN_BOX",
-      payload: { rewardId: rewardId },
-    });
+      setNewRewardPic(newItem.profile_pic)
+      setNewRewardName(newItem.name)
+      setNewRewardId(randomNum)
+      setRewardBoxId(rewardId)
+
+      setOpenAnimation(true);
+    }
   };
 
   const [openAnimation, setOpenAnimation] = useState(false);
@@ -158,8 +165,59 @@ function Nav(props) {
   };
 
   const handleCloseAnimation = () => {
+    if (rewardBoxId === 1) {
+      // character box
+
+      dispatch({
+        type: "SAGA_BUY_NEW_CHARACTER",
+        payload: {
+          characterID: newRewardId,
+          characterCost: 0,
+        },
+      });
+    } else if (rewardBoxId === 2) {
+      // held item box
+
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: newRewardId,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
+    } else if (rewardBoxId === 3) {
+      // consumable box
+
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: newRewardId,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
+    } else if (rewardBoxId === 4) {
+      // all item box
+
+      dispatch({
+        type: "SAGA_BUY_ITEM",
+        payload: {
+          itemId: newRewardId,
+          amountNum: 1,
+          totalCoins: 0,
+        },
+      });
+    }
+
+    dispatch({
+      type: "SAGA_OPEN_BOX",
+      payload: { rewardId: rewardBoxId },
+    });
+    
     setOpenAnimation(false);
   };
+
 
   return (
     <div className="nav">
@@ -346,10 +404,10 @@ function Nav(props) {
             fontSize: "30px",
           }}
         >
-          {"Congrats!!!!"}
+          {`Congrats, you got ${newRewardName}`}
         </DialogTitle>
         <DialogContent>
-          <img height={200} width={200} />
+          <img height={200} width={200} src={newRewardPic} />
         </DialogContent>
         <DialogActions>
           <Button
