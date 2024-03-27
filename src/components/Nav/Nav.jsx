@@ -108,51 +108,52 @@ function Nav(props) {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
-      const newCharacter = allCharacters.find((Characters) => Characters.id === randomNum);
+      const newCharacter = allCharacters.find(
+        (Characters) => Characters.id === randomNum
+      );
 
-      setNewRewardPic(newCharacter.profile_pic)
-      setNewRewardName(newCharacter.name)
-      setNewRewardId(randomNum)
-      setRewardBoxId(rewardId)
+      setNewRewardPic(newCharacter.profile_pic);
+      setNewRewardName(newCharacter.name);
+      setNewRewardId(randomNum);
+      setRewardBoxId(rewardId);
 
       setOpenAnimation(true);
-
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
 
       const newHeld = held.find((heldItem) => heldItem.id === randomNum);
 
-      setNewRewardPic(newHeld.profile_pic)
-      setNewRewardName(newHeld.name)
-      setNewRewardId(randomNum)
-      setRewardBoxId(rewardId)
+      setNewRewardPic(newHeld.profile_pic);
+      setNewRewardName(newHeld.name);
+      setNewRewardId(randomNum);
+      setRewardBoxId(rewardId);
 
       setOpenAnimation(true);
-
     } else if (rewardId === 3) {
       // consumable box
       randomNum = Math.floor(Math.random() * 6 + 1);
 
-      const newConsumable = consumables.find((consumableItem) => consumableItem.id === randomNum);
+      const newConsumable = consumables.find(
+        (consumableItem) => consumableItem.id === randomNum
+      );
 
-      setNewRewardPic(newConsumable.profile_pic)
-      setNewRewardName(newConsumable.name)
-      setNewRewardId(randomNum)
-      setRewardBoxId(rewardId)
+      setNewRewardPic(newConsumable.profile_pic);
+      setNewRewardName(newConsumable.name);
+      setNewRewardId(randomNum);
+      setRewardBoxId(rewardId);
 
       setOpenAnimation(true);
-
     } else if (rewardId === 4) {
       // all item box
       randomNum = Math.floor(Math.random() * 15 + 1);
 
       // const newItem = held.find((heldItem) => heldItem.id === randomNum);
 
-      setNewRewardPic(newItem.profile_pic)
-      setNewRewardName(newItem.name)
-      setNewRewardId(randomNum)
-      setRewardBoxId(rewardId)
+      setNewRewardPic(newItem.profile_pic);
+      setNewRewardName(newItem.name);
+      setNewRewardId(randomNum);
+      setRewardBoxId(rewardId);
 
       setOpenAnimation(true);
     }
@@ -214,10 +215,9 @@ function Nav(props) {
       type: "SAGA_OPEN_BOX",
       payload: { rewardId: rewardBoxId },
     });
-    
+
     setOpenAnimation(false);
   };
-
 
   return (
     <div className="nav">
