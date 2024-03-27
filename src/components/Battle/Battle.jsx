@@ -238,7 +238,6 @@ function Battle() {
       history.push(`/credits`);
 
       if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 1) {
-        
         if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
           dispatch({
             type: "SAGA_WON_AND_LEVELED_UP",
@@ -260,82 +259,92 @@ function Battle() {
             payload: { levelId: enemyOne.level_id, xp: 1, rewardId: 1 },
           });
         }
-
       } else {
         dispatch({
           type: "SAGA_USER_WON_THE_BATTLE",
           payload: { levelId: enemyOne.level_id, xp: 1 },
         });
       }
-      
-    } else if (id == 1 && user.level_1_completed === false || id == 2 && user.level_2_completed === false || id == 3 && user.level_3_completed === false || id == 4 && user.level_4_completed === false || id == 5 && user.level_5_completed === false || id == 6 && user.level_6_completed === false || id == 7 && user.level_7_completed === false || id == 8 && user.level_8_completed === false || id == 9 && user.level_9_completed === false || id == 11 && user.level_11_completed === false || id == 12 && user.level_12_completed === false) {
+    } else if (
+      (id == 1 && user.level_1_completed === false) ||
+      (id == 2 && user.level_2_completed === false) ||
+      (id == 3 && user.level_3_completed === false) ||
+      (id == 4 && user.level_4_completed === false) ||
+      (id == 5 && user.level_5_completed === false) ||
+      (id == 6 && user.level_6_completed === false) ||
+      (id == 7 && user.level_7_completed === false) ||
+      (id == 8 && user.level_8_completed === false) ||
+      (id == 9 && user.level_9_completed === false) ||
+      (id == 11 && user.level_11_completed === false) ||
+      (id == 12 && user.level_12_completed === false)
+    ) {
       history.push(`/campaign`);
 
-      if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.5) {
-
-          if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
-            dispatch({
-              type: "SAGA_WON_AND_LEVELED_UP",
-              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 4 },
-            });
-          } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
-            dispatch({
-              type: "SAGA_WON_AND_LEVELED_UP",
-              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 3 },
-            });
-          } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
-            dispatch({
-              type: "SAGA_WON_AND_LEVELED_UP",
-              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 2 },
-            });
-          } else {
-            dispatch({
-              type: "SAGA_WON_AND_LEVELED_UP",
-              payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 1 },
-            });
-          }
-
+      if (
+        Math.floor(Number(user.xp_level) + 1) <=
+        Number(user.xp_level) + 0.5
+      ) {
+        if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 4 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 3 },
+          });
+        } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 2 },
+          });
+        } else {
+          dispatch({
+            type: "SAGA_WON_AND_LEVELED_UP",
+            payload: { levelId: enemyOne.level_id, xp: 0.5, rewardId: 1 },
+          });
+        }
       } else {
         dispatch({
           type: "SAGA_USER_WON_THE_BATTLE",
           payload: { levelId: enemyOne.level_id, xp: 0.5 },
         });
       }
-      
     } else {
       history.push(`/campaign`);
 
-      if (Math.floor(Number(user.xp_level) + 1) <= Number(user.xp_level) + 0.20) {
-
+      if (
+        Math.floor(Number(user.xp_level) + 1) <=
+        Number(user.xp_level) + 0.2
+      ) {
         if (Math.floor(Number(user.xp_level) + 1) % 4 === 0) {
           dispatch({
             type: "SAGA_WON_AND_LEVELED_UP",
-            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 4 },
+            payload: { levelId: enemyOne.level_id, xp: 0.2, rewardId: 4 },
           });
         } else if (Math.floor(Number(user.xp_level) + 1) % 3 === 0) {
           dispatch({
             type: "SAGA_WON_AND_LEVELED_UP",
-            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 3 },
+            payload: { levelId: enemyOne.level_id, xp: 0.2, rewardId: 3 },
           });
         } else if (Math.floor(Number(user.xp_level) + 1) % 2 === 0) {
           dispatch({
             type: "SAGA_WON_AND_LEVELED_UP",
-            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 2 },
+            payload: { levelId: enemyOne.level_id, xp: 0.2, rewardId: 2 },
           });
         } else {
           dispatch({
             type: "SAGA_WON_AND_LEVELED_UP",
-            payload: { levelId: enemyOne.level_id, xp: 0.20, rewardId: 1 },
+            payload: { levelId: enemyOne.level_id, xp: 0.2, rewardId: 1 },
           });
         }
-
       } else {
         dispatch({
           type: "SAGA_USER_WON_THE_BATTLE",
-          payload: { levelId: enemyOne.level_id, xp: 0.20 },
+          payload: { levelId: enemyOne.level_id, xp: 0.2 },
         });
       }
-      
     }
   };
 
@@ -1871,7 +1880,21 @@ function Battle() {
                             fontFamily: "New Super Mario Font U",
                           }}
                           primary={usersConsumables.name}
-                          secondary={`${usersConsumables.hp === 0 ? "" : `+${usersConsumables.hp} hp`} ${usersConsumables.stamina === 0 ? "" : usersConsumables.hp === 0 ? `+${usersConsumables.stamina} stamina` : `| +${usersConsumables.stamina} stamina`} ${usersConsumables.speed === 0 ? "" : `| +${usersConsumables.speed} speed`}`}
+                          secondary={`${
+                            usersConsumables.hp === 0
+                              ? ""
+                              : `+${usersConsumables.hp} hp`
+                          } ${
+                            usersConsumables.stamina === 0
+                              ? ""
+                              : usersConsumables.hp === 0
+                              ? `+${usersConsumables.stamina} stamina`
+                              : `| +${usersConsumables.stamina} stamina`
+                          } ${
+                            usersConsumables.speed === 0
+                              ? ""
+                              : `| +${usersConsumables.speed} speed`
+                          }`}
                         />
                         <Button
                           sx={{
