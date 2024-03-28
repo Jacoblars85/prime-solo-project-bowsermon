@@ -78,6 +78,7 @@ function Nav(props) {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user.userReducer);
+  const characters = useSelector((store) => store.character.userCharacters);
   const userRewards = useSelector((store) => store.user.userRewards);
   const allCharacters = useSelector((store) => store.character.allCharacters);
   const consumables = useSelector((store) => store.inventory.consumables);
@@ -106,6 +107,9 @@ function Nav(props) {
     let randomNum;
 
     if (rewardId === 1) {
+      if (characters.length >= 20) {
+        return alert("you can only have 20 characters");
+      } else {
       // character box
       randomNum = Math.floor(Math.random() * 9 + 1);
 
@@ -129,6 +133,7 @@ function Nav(props) {
       setRewardBoxId(rewardId);
 
       setOpenAnimation(true);
+    }
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
