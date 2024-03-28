@@ -57,7 +57,6 @@ function Shop() {
   const [newRewardId, setNewRewardId] = useState();
 
   const openBox = (rewardId) => {
-
     if (user.coins < 15) {
       setRandomOpen(false);
       return alert("you are broke, sorry");
@@ -65,7 +64,6 @@ function Shop() {
       setRandomOpen(false);
       return alert("you can only have 20 characters");
     } else {
-
       let randomNum = Math.floor(Math.random() * 9 + 1);
 
       const newCharacter = allCharacters.find(
@@ -83,7 +81,6 @@ function Shop() {
       setNewRewardId(randomNum);
 
       setOpenAnimation(true);
-    
     }
   };
 
@@ -94,19 +91,17 @@ function Shop() {
   };
 
   const handleCloseAnimation = () => {
- 
     setRandomOpen(false);
 
     dispatch({
       type: "SAGA_BUY_NEW_CHARACTER",
       payload: {
         characterID: newRewardId,
-        characterCost: 15
+        characterCost: 15,
       },
     });
     setOpenAnimation(false);
   };
-  
 
   return (
     <div>
@@ -149,27 +144,25 @@ function Shop() {
               src="images/1200px-ItemBoxMK8.webp"
             />
             <div className="allCharacterArea">
+              <h3 className="characterHeader">All Characters</h3>
 
-<h3 className="characterHeader">All Characters</h3>
-
-            <div className="allCharacterBox">
-              
-              {allCharacters &&
-                allCharacters.map((allCharactersItem) => {
-                  return (
-                    <div
-                      div
-                      className="allCharactersSingleBox"
-                      key={allCharactersItem.id}
-                    >
-                      <AllCharactersItem
-                        allCharactersItem={allCharactersItem}
-                      />
-                    </div>
-                  );
-                })}
+              <div className="allCharacterBox">
+                {allCharacters &&
+                  allCharacters.map((allCharactersItem) => {
+                    return (
+                      <div
+                        div
+                        className="allCharactersSingleBox"
+                        key={allCharactersItem.id}
+                      >
+                        <AllCharactersItem
+                          allCharactersItem={allCharactersItem}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
-          </div>
           </div>
 
           <div className="heldBox">
@@ -186,7 +179,7 @@ function Shop() {
           </div>
         </div>
 
-          <BackButton />
+        <BackButton />
 
         {/* random character dialog */}
         <Dialog
@@ -244,48 +237,48 @@ function Shop() {
         </Dialog>
 
         {/* mystery box animation dialog */}
-      <Dialog
-        open={openAnimation}
-        onClose={handleCloseAnimation}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        sx={{
-          textAlign: "center",
-        }}
-      >
-        <DialogTitle
-          id="alert-dialog-title"
+        <Dialog
+          open={openAnimation}
+          onClose={handleCloseAnimation}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
           sx={{
-            fontFamily: "New Super Mario Font U",
             textAlign: "center",
-            fontSize: "30px",
-            width: "420px",
-            marginBottom: "20px"
           }}
         >
-          {`Congrats, you got ${newRewardName}`}
-        </DialogTitle>
-        <DialogContent>
-          <img height={200} width={200} src={newRewardPic} />
-        </DialogContent>
-        <DialogActions
-         sx={{
-          textAlign: "center",
-          justifyContent: "center"
-        }}>
-          <Button
+          <DialogTitle
+            id="alert-dialog-title"
             sx={{
-              color: "black",
-              fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              fontSize: "30px",
+              width: "420px",
+              marginBottom: "20px",
             }}
-            onClick={handleCloseAnimation}
           >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-
+            {`Congrats, you got ${newRewardName}`}
+          </DialogTitle>
+          <DialogContent>
+            <img height={200} width={200} src={newRewardPic} />
+          </DialogContent>
+          <DialogActions
+            sx={{
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              sx={{
+                color: "black",
+                fontSize: 16,
+                fontFamily: "New Super Mario Font U",
+              }}
+              onClick={handleCloseAnimation}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </div>
   );
