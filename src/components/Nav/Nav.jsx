@@ -435,6 +435,7 @@ function Nav(props) {
             textAlign: "center",
             fontSize: "30px",
             width: "420px",
+            height: "65px",
             marginBottom: "20px"
           }}
         >
