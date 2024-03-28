@@ -52,7 +52,12 @@ function Shop() {
     setRandomOpen(false);
   };
 
-  const getRandomCharacter = () => {
+  const [newRewardPic, setNewRewardPic] = useState("");
+  const [newRewardName, setNewRewardName] = useState("");
+  const [newRewardId, setNewRewardId] = useState();
+
+  const openBox = (rewardId) => {
+
     if (user.coins < 15) {
       setRandomOpen(false);
       return alert("you are broke, sorry");
@@ -60,81 +65,48 @@ function Shop() {
       setRandomOpen(false);
       return alert("you can only have 20 characters");
     } else {
+
       let randomNum = Math.floor(Math.random() * 9 + 1);
 
-      // console.log('random number', randomNum);
+      const newCharacter = allCharacters.find(
+        (Characters) => Characters.id === randomNum
+      );
 
-      setRandomOpen(false);
+      setNewRewardPic("images/mysteryBoxGif.gif");
+      setNewRewardName("...");
 
-      dispatch({
-        type: "SAGA_BUY_NEW_CHARACTER",
-        payload: {
-          characterID: randomNum,
-          characterCost: 15
-        },
-      });
+      setTimeout(() => {
+        setNewRewardPic(newCharacter.profile_pic);
+        setNewRewardName(newCharacter.name);
+      }, 2500);
 
-      //   axios({
-      //     method: "POST",
-      //     url: "/api/characters",
-      //     data: {
-      //       characterID: randomNum,
-      //     },
-      //   })
-      //     .then((responses) => {
-      //       setOpenRandomSnack(true);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      setNewRewardId(randomNum);
 
-      //   axios({
-      //       method: 'POST',
-      //       url: '/api/characters',
-      //       data: {
-      //           characterID: randomNum
-      //       }
-      //   })
-      //       axios({
-      //         method: "PUT",
-      //         url: "/api/characters/buy",
-      //       })
-      //         .then((response) => {
-      //           dispatch({
-      //             type: "FETCH_USER",
-      //           });
-
-      //   }).then((response) => {
-
-      //       setOpenRandomSnack(true)
-
-      //   }).catch((err) => {
-      //       console.log(err);
-      //   });
-
-      //   dispatch({
-      //       type: 'SAGA_BUY_NEW_CHARACTER',
-      //       payload: {
-      //           characterID: randomNum,
-      //       }
-      //   });
-      setOpenRandomSnack(true);
+      setOpenAnimation(true);
+    
     }
   };
 
-  const [openRandomSnack, setOpenRandomSnack] = useState(false);
+  const [openAnimation, setOpenAnimation] = useState(false);
 
-  const handleRandomSnackClick = () => {
-    setOpenRandomSnack(true);
+  const handleClickOpenAnimation = () => {
+    setOpenAnimation(true);
   };
 
-  const handleRandomSnackClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  const handleCloseAnimation = () => {
+ 
+    setRandomOpen(false);
 
-    setOpenRandomSnack(false);
+    dispatch({
+      type: "SAGA_BUY_NEW_CHARACTER",
+      payload: {
+        characterID: newRewardId,
+        characterCost: 15
+      },
+    });
+    setOpenAnimation(false);
   };
+  
 
   return (
     <div>
@@ -253,7 +225,7 @@ function Shop() {
                 fontSize: 16,
                 fontFamily: "New Super Mario Font U",
               }}
-              onClick={getRandomCharacter}
+              onClick={openBox}
               autoFocus
             >
               Buy
@@ -271,13 +243,49 @@ function Shop() {
           </DialogActions>
         </Dialog>
 
-        {/* <Button onClick={handleRandomSnackClick}>Open simple snackbar</Button> */}
-        <Snackbar
-          open={openRandomSnack}
-          autoHideDuration={6000}
-          onClose={handleRandomSnackClose}
-          message="Random Character Is Added"
-        />
+        {/* mystery box animation dialog */}
+      <Dialog
+        open={openAnimation}
+        onClose={handleCloseAnimation}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "30px",
+            width: "420px",
+            marginBottom: "20px"
+          }}
+        >
+          {`Congrats, you got ${newRewardName}`}
+        </DialogTitle>
+        <DialogContent>
+          <img height={200} width={200} src={newRewardPic} />
+        </DialogContent>
+        <DialogActions
+         sx={{
+          textAlign: "center",
+          justifyContent: "center"
+        }}>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleCloseAnimation}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       </div>
     </div>
   );
