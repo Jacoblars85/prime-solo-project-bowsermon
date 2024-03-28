@@ -353,9 +353,9 @@ function Nav(props) {
             userRewards.map((rewards) => {
               return (
                 <div key={rewards.id}>
-                  <ListItemButton
+                  {/* <ListItemButton
                   // onClick={() => handleEquipClickOpen(rewards.id)}
-                  >
+                  > */}
                     <Box
                       display="flex"
                       flexDirection="row"
@@ -379,6 +379,7 @@ function Nav(props) {
                         >
                           {rewards.number}X
                         </p>
+                        <img height={100} width={100} src={rewards.pic} />
                       </Box>
                       <h4
                         style={{
@@ -391,13 +392,11 @@ function Nav(props) {
                         {rewards.name}
                       </h4>
 
-                      <img height={100} width={100} src={rewards.pic} />
-
                       <button onClick={() => openBox(rewards.id)}>
                         Open Box
                       </button>
                     </Box>
-                  </ListItemButton>
+                  {/* </ListItemButton> */}
                   <Divider />
                 </div>
               );
