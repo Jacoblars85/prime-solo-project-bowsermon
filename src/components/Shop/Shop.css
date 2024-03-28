@@ -121,17 +121,19 @@
     text-align: center;
     font-size: 25px;
     width: 277px;
-    color: #7CEBFD;
+    color: #FED903;
     text-shadow: 2px 2px black;
     border-bottom: 3px solid black;
     margin-bottom: 0px;
 }
 
+/* 7CEBFD <-- for the mario cart box color */
+
 .randomCharacter h5 {
     margin: 0px;
     /* margin-bottom: -5px; */
     font-size: 30px;
-    color: #7CEBFD;
+    color: #FED903;
     text-shadow: 2px 2px black;
 }
 
