@@ -141,7 +141,7 @@ function Shop() {
               onClick={handleRandomClickOpen}
               height={200}
               width={200}
-              src="images/1200px-ItemBoxMK8.webp"
+              src="images/mysterBoxPic.webp"
             />
             <div className="allCharacterArea">
               <h3 className="characterHeader">All Characters</h3>
@@ -253,6 +253,7 @@ function Shop() {
               textAlign: "center",
               fontSize: "30px",
               width: "420px",
+              height: "65px",
               marginBottom: "20px",
             }}
           >
