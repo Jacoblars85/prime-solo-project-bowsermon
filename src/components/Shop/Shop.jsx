@@ -23,10 +23,10 @@ import AllCharactersItem from "../AllCharactersItem/AllCharactersItem";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,10 +57,9 @@ CustomTabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-
 
 function Shop() {
   const dispatch = useDispatch();
@@ -86,7 +85,6 @@ function Shop() {
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
   };
-
 
   const [randomOpen, setRandomOpen] = useState(false);
 
@@ -155,50 +153,30 @@ function Shop() {
 
       {/* <h2 className="shopHeader">Shop</h2> */}
 
-
-
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', fontFamily: "New Super Mario Font U", }}>
-        <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example" textColor="black" indicatorColor="primary" centered>
-          <Tab label="Consumable Items" {...a11yProps(0)} />
-          <Tab label="Held Items" {...a11yProps(1)} />
-          <Tab label="Shop" {...a11yProps(2)} />
-          <Tab label="Mystery Boxes" {...a11yProps(3)} />
-          <Tab label="Characters" {...a11yProps(4)} />
-        </Tabs>
-      </Box>
-      <CustomTabPanel value={tabValue} index={0}>
-      <div className="consumablesBox">
-            <h3 className="consumableHeader">Consumables Items</h3>
-
-            {consumables &&
-              consumables.map((consumableItem) => {
-                return (
-                  <div div className="consumables" key={consumableItem.id}>
-                    <Consumables consumableItem={consumableItem} />
-                  </div>
-                );
-              })}
-          </div>
-
-      </CustomTabPanel>
-      <CustomTabPanel value={tabValue} index={1}>
-      <div className="heldBox">
-            <h3 className="heldHeader">Held Items</h3>
-
-            {held &&
-              held.map((heldItem) => {
-                return (
-                  <div div className="held" key={heldItem.id}>
-                    <HeldItems heldItem={heldItem} />
-                  </div>
-                );
-              })}
-          </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={tabValue} index={2}>
-       {/* <div className="shop"> */}
-        <div className="bigBox">
+      <Box sx={{ width: "100%" }}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            fontFamily: "New Super Mario Font U",
+          }}
+        >
+          <Tabs
+            value={tabValue}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            textColor="black"
+            indicatorColor="primary"
+            centered
+          >
+            <Tab label="Consumable Items" {...a11yProps(0)} />
+            <Tab label="Held Items" {...a11yProps(1)} />
+            <Tab label="Shop" {...a11yProps(2)} />
+            <Tab label="Mystery Boxes" {...a11yProps(3)} />
+            <Tab label="Characters" {...a11yProps(4)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={tabValue} index={0}>
           <div className="consumablesBox">
             <h3 className="consumableHeader">Consumables Items</h3>
 
@@ -211,33 +189,8 @@ function Shop() {
                 );
               })}
           </div>
-
-          <div className="randomCharacter">
-            
-            <div className="allCharacterArea">
-              
-            <div className="characterHeader">
-              <h3>All Characters</h3>
-</div>
-              <div className="allCharacterBox">
-                {allCharacters &&
-                  allCharacters.map((allCharactersItem) => {
-                    return (
-                      <div
-                        div
-                        className="allCharactersSingleBox"
-                        key={allCharactersItem.id}
-                      >
-                        <AllCharactersItem
-                          allCharactersItem={allCharactersItem}
-                        />
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-
+        </CustomTabPanel>
+        <CustomTabPanel value={tabValue} index={1}>
           <div className="heldBox">
             <h3 className="heldHeader">Held Items</h3>
 
@@ -250,35 +203,87 @@ function Shop() {
                 );
               })}
           </div>
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={tabValue} index={3}>
-        Mystery Boxes
-      </CustomTabPanel>
-      <CustomTabPanel value={tabValue} index={4}>
-      <div className="allCharacterArea">
-              <h3 className="characterHeader">All Characters</h3>
+        </CustomTabPanel>
+        <CustomTabPanel value={tabValue} index={2}>
+          {/* <div className="shop"> */}
+          <div className="bigBox">
+            <div className="consumablesBox">
+              <h3 className="consumableHeader">Consumables Items</h3>
 
-              <div className="allCharacterBox">
-                {allCharacters &&
-                  allCharacters.map((allCharactersItem) => {
-                    return (
-                      <div
-                        div
-                        className="allCharactersSingleBox"
-                        key={allCharactersItem.id}
-                      >
-                        <AllCharactersItem
-                          allCharactersItem={allCharactersItem}
-                        />
-                      </div>
-                    );
-                  })}
+              {consumables &&
+                consumables.map((consumableItem) => {
+                  return (
+                    <div div className="consumables" key={consumableItem.id}>
+                      <Consumables consumableItem={consumableItem} />
+                    </div>
+                  );
+                })}
+            </div>
+
+            <div className="randomCharacter">
+              <div className="allCharacterArea">
+                <div className="characterHeader">
+                  <h3>All Characters</h3>
+                </div>
+                <div className="allCharacterBox">
+                  {allCharacters &&
+                    allCharacters.map((allCharactersItem) => {
+                      return (
+                        <div
+                          div
+                          className="allCharactersSingleBox"
+                          key={allCharactersItem.id}
+                        >
+                          <AllCharactersItem
+                            allCharactersItem={allCharactersItem}
+                          />
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
-      </CustomTabPanel>
-    </Box>
 
+            <div className="heldBox">
+              <h3 className="heldHeader">Held Items</h3>
+
+              {held &&
+                held.map((heldItem) => {
+                  return (
+                    <div div className="held" key={heldItem.id}>
+                      <HeldItems heldItem={heldItem} />
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </CustomTabPanel>
+        <CustomTabPanel value={tabValue} index={3}>
+          Mystery Boxes
+        </CustomTabPanel>
+        <CustomTabPanel value={tabValue} index={4}>
+          <div className="allCharacterArea">
+            <h3 className="characterHeader">All Characters</h3>
+
+            <div className="allCharacterBox">
+              {allCharacters &&
+                allCharacters.map((allCharactersItem) => {
+                  return (
+                    <div
+                      div
+                      className="allCharactersSingleBox"
+                      key={allCharactersItem.id}
+                    >
+                      <AllCharactersItem
+                        allCharactersItem={allCharactersItem}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </CustomTabPanel>
+      </Box>
 
       {/* <div className="shop">
         <div className="bigBox">
@@ -350,107 +355,107 @@ function Shop() {
           </div>
         </div> */}
 
-        <BackButton />
+      <BackButton />
 
-        {/* random character dialog */}
-        <Dialog
-          open={randomOpen}
-          onClose={handleRandomClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle
-            id="alert-dialog-title"
-            sx={{
-              fontFamily: "New Super Mario Font U",
-              textAlign: "center",
-              fontSize: "30px",
-            }}
-          >
-            {"Are you sure?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText
-              id="alert-dialog-description"
-              sx={{
-                fontFamily: "New Super Mario Font U",
-                textAlign: "center",
-                fontSize: "18px",
-              }}
-            >
-              This will cost 15 coins and you may get multiple of the same
-              character.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 16,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={openBox}
-              autoFocus
-            >
-              Buy
-            </Button>
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 16,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={handleRandomClose}
-            >
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-
-        {/* mystery box animation dialog */}
-        <Dialog
-          open={openAnimation}
-          onClose={handleCloseAnimation}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+      {/* random character dialog */}
+      <Dialog
+        open={randomOpen}
+        onClose={handleRandomClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle
+          id="alert-dialog-title"
           sx={{
+            fontFamily: "New Super Mario Font U",
             textAlign: "center",
+            fontSize: "30px",
           }}
         >
-          <DialogTitle
-            id="alert-dialog-title"
+          {"Are you sure?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
             sx={{
               fontFamily: "New Super Mario Font U",
               textAlign: "center",
-              fontSize: "30px",
-              width: "420px",
-              height: "65px",
-              marginBottom: "20px",
+              fontSize: "18px",
             }}
           >
-            {`Congrats, you got ${newRewardName}`}
-          </DialogTitle>
-          <DialogContent>
-            <img height={200} width={200} src={newRewardPic} />
-          </DialogContent>
-          <DialogActions
+            This will cost 15 coins and you may get multiple of the same
+            character.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
             sx={{
-              textAlign: "center",
-              justifyContent: "center",
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
             }}
+            onClick={openBox}
+            autoFocus
           >
-            <Button
-              sx={{
-                color: "black",
-                fontSize: 16,
-                fontFamily: "New Super Mario Font U",
-              }}
-              onClick={handleCloseAnimation}
-            >
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
+            Buy
+          </Button>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleRandomClose}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* mystery box animation dialog */}
+      <Dialog
+        open={openAnimation}
+        onClose={handleCloseAnimation}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "30px",
+            width: "420px",
+            height: "65px",
+            marginBottom: "20px",
+          }}
+        >
+          {`Congrats, you got ${newRewardName}`}
+        </DialogTitle>
+        <DialogContent>
+          <img height={200} width={200} src={newRewardPic} />
+        </DialogContent>
+        <DialogActions
+          sx={{
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleCloseAnimation}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
       {/* </div> */}
     </div>
   );
