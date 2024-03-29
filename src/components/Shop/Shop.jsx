@@ -253,7 +253,24 @@ function Shop() {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={3}>
-          Mystery Boxes
+        <h4>Random Character Box</h4>
+
+<h5>
+  15x{" "}
+  <img
+    className="randomCharacterCoins"
+    height={20}
+    width={20}
+    src="/images/Coin_-_New_Super_Mario_Bros.webp"
+  />
+</h5>
+
+<img
+  onClick={handleRandomClickOpen}
+  height={200}
+  width={200}
+  src="images/mysterBoxPic.webp"
+/>
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>
           <div className="allCharacterArea">
@@ -276,76 +293,6 @@ function Shop() {
           </div>
         </CustomTabPanel>
       </Box>
-
-      {/* <div className="shop">
-        <div className="bigBox">
-          <div className="consumablesBox">
-            <h3 className="consumableHeader">Consumables Items</h3>
-
-            {consumables &&
-              consumables.map((consumableItem) => {
-                return (
-                  <div div className="consumables" key={consumableItem.id}>
-                    <Consumables consumableItem={consumableItem} />
-                  </div>
-                );
-              })}
-          </div>
-
-          <div className="randomCharacter">
-            <h4>Random Character Box</h4>
-
-            <h5>
-              15x{" "}
-              <img
-                className="randomCharacterCoins"
-                height={20}
-                width={20}
-                src="/images/Coin_-_New_Super_Mario_Bros.webp"
-              />
-            </h5>
-
-            <img
-              onClick={handleRandomClickOpen}
-              height={200}
-              width={200}
-              src="images/mysterBoxPic.webp"
-            />
-            <div className="allCharacterArea">
-              <h3 className="characterHeader">All Characters</h3>
-
-              <div className="allCharacterBox">
-                {allCharacters &&
-                  allCharacters.map((allCharactersItem) => {
-                    return (
-                      <div
-                        div
-                        className="allCharactersSingleBox"
-                        key={allCharactersItem.id}
-                      >
-                        <AllCharactersItem
-                          allCharactersItem={allCharactersItem}
-                        />
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-
-          <div className="heldBox">
-            <h3 className="heldHeader">Held Items</h3>
-
-            {held &&
-              held.map((heldItem) => {
-                return (
-                  <div div className="held" key={heldItem.id}>
-                    <HeldItems heldItem={heldItem} />
-                  </div>
-                );
-              })}
-          </div>
-        </div> */}
 
       <BackButton />
 
