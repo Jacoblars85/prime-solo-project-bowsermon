@@ -153,12 +153,12 @@ function Shop() {
     <div>
       <Nav />
 
-      <h2 className="shopHeader">Shop</h2>
+      {/* <h2 className="shopHeader">Shop</h2> */}
 
 
 
       <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', fontFamily: "New Super Mario Font U", }}>
         <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example" textColor="black" indicatorColor="primary" centered>
           <Tab label="Consumable Items" {...a11yProps(0)} />
           <Tab label="Held Items" {...a11yProps(1)} />
@@ -168,24 +168,117 @@ function Shop() {
         </Tabs>
       </Box>
       <CustomTabPanel value={tabValue} index={0}>
-        Consumable Items
+      <div className="consumablesBox">
+            <h3 className="consumableHeader">Consumables Items</h3>
+
+            {consumables &&
+              consumables.map((consumableItem) => {
+                return (
+                  <div div className="consumables" key={consumableItem.id}>
+                    <Consumables consumableItem={consumableItem} />
+                  </div>
+                );
+              })}
+          </div>
+
       </CustomTabPanel>
       <CustomTabPanel value={tabValue} index={1}>
-        Held Items
+      <div className="heldBox">
+            <h3 className="heldHeader">Held Items</h3>
+
+            {held &&
+              held.map((heldItem) => {
+                return (
+                  <div div className="held" key={heldItem.id}>
+                    <HeldItems heldItem={heldItem} />
+                  </div>
+                );
+              })}
+          </div>
       </CustomTabPanel>
       <CustomTabPanel value={tabValue} index={2}>
-        Shop
+       {/* <div className="shop"> */}
+        <div className="bigBox">
+          <div className="consumablesBox">
+            <h3 className="consumableHeader">Consumables Items</h3>
+
+            {consumables &&
+              consumables.map((consumableItem) => {
+                return (
+                  <div div className="consumables" key={consumableItem.id}>
+                    <Consumables consumableItem={consumableItem} />
+                  </div>
+                );
+              })}
+          </div>
+
+          <div className="randomCharacter">
+            
+            <div className="allCharacterArea">
+              <h3 className="characterHeader">All Characters</h3>
+
+              <div className="allCharacterBox">
+                {allCharacters &&
+                  allCharacters.map((allCharactersItem) => {
+                    return (
+                      <div
+                        div
+                        className="allCharactersSingleBox"
+                        key={allCharactersItem.id}
+                      >
+                        <AllCharactersItem
+                          allCharactersItem={allCharactersItem}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+
+          <div className="heldBox">
+            <h3 className="heldHeader">Held Items</h3>
+
+            {held &&
+              held.map((heldItem) => {
+                return (
+                  <div div className="held" key={heldItem.id}>
+                    <HeldItems heldItem={heldItem} />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={tabValue} index={3}>
         Mystery Boxes
       </CustomTabPanel>
       <CustomTabPanel value={tabValue} index={4}>
-        Characters
+      <div className="allCharacterArea">
+              <h3 className="characterHeader">All Characters</h3>
+
+              <div className="allCharacterBox">
+                {allCharacters &&
+                  allCharacters.map((allCharactersItem) => {
+                    return (
+                      <div
+                        div
+                        className="allCharactersSingleBox"
+                        key={allCharactersItem.id}
+                      >
+                        <AllCharactersItem
+                          allCharactersItem={allCharactersItem}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
       </CustomTabPanel>
     </Box>
 
 
-      <div className="shop">
+      {/* <div className="shop">
         <div className="bigBox">
           <div className="consumablesBox">
             <h3 className="consumableHeader">Consumables Items</h3>
@@ -253,7 +346,7 @@ function Shop() {
                 );
               })}
           </div>
-        </div>
+        </div> */}
 
         <BackButton />
 
@@ -356,7 +449,7 @@ function Shop() {
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
