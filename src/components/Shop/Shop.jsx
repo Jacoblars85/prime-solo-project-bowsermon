@@ -23,6 +23,45 @@ import AllCharactersItem from "../AllCharactersItem/AllCharactersItem";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
 function Shop() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -41,6 +80,13 @@ function Shop() {
   useEffect(() => {
     dispatch({ type: "SAGA_FETCH_CHARACTERS" });
   }, []);
+
+  const [tabValue, setTabValue] = useState(2);
+
+  const handleChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
 
   const [randomOpen, setRandomOpen] = useState(false);
 
@@ -108,6 +154,36 @@ function Shop() {
       <Nav />
 
       <h2 className="shopHeader">Shop</h2>
+
+
+
+      <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example" textColor="black" indicatorColor="primary" centered>
+          <Tab label="Consumable Items" {...a11yProps(0)} />
+          <Tab label="Held Items" {...a11yProps(1)} />
+          <Tab label="Shop" {...a11yProps(2)} />
+          <Tab label="Mystery Boxes" {...a11yProps(3)} />
+          <Tab label="Characters" {...a11yProps(4)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={tabValue} index={0}>
+        Consumable Items
+      </CustomTabPanel>
+      <CustomTabPanel value={tabValue} index={1}>
+        Held Items
+      </CustomTabPanel>
+      <CustomTabPanel value={tabValue} index={2}>
+        Shop
+      </CustomTabPanel>
+      <CustomTabPanel value={tabValue} index={3}>
+        Mystery Boxes
+      </CustomTabPanel>
+      <CustomTabPanel value={tabValue} index={4}>
+        Characters
+      </CustomTabPanel>
+    </Box>
+
 
       <div className="shop">
         <div className="bigBox">
