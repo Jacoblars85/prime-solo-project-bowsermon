@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: flex-start;
     text-align: center;
+    
 }
 
 .shopHeader {
@@ -15,7 +16,8 @@
     /* border-bottom: 3px solid black; */
     text-shadow: 1px 1.8px white;
     text-align: center;
-    margin: .1%;
+    /* margin: .1%; */
+    font-family: 'New Super Mario Font U';
 }
 
 
@@ -24,8 +26,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    height: 73.8%;
-    width: 95%;
+    height: 72vh;
+    width: 100%;
     border: 3px solid black;
     justify-content: center;
     align-items: flex-start;
@@ -50,6 +52,7 @@
     justify-content: baseline;
     align-items: flex-start;
     text-align: center;
+    font-family: 'New Super Mario Font U';
 }
 
 .randomCharacter {
@@ -67,6 +70,7 @@
     justify-content: baseline;
     align-items: center;
     text-align: center;
+    font-family: 'New Super Mario Font U';
 }
 
 .heldBox {
@@ -84,13 +88,15 @@
     justify-content: flex-start;
     align-items: flex-start;
     text-align: center;
+    font-family: 'New Super Mario Font U';
 }
 
 
 .allCharacterArea {
-    border-top: 3px solid black;
+    /* border-top: 3px solid black; */
     width: 100%;
     margin-top: 20px;
+    font-family: 'New Super Mario Font U';
 }
 
 .allCharacterBox {
