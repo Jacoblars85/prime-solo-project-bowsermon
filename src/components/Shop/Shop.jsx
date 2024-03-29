@@ -215,8 +215,10 @@ function Shop() {
           <div className="randomCharacter">
             
             <div className="allCharacterArea">
-              <h3 className="characterHeader">All Characters</h3>
-
+              
+            <div className="characterHeader">
+              <h3>All Characters</h3>
+</div>
               <div className="allCharacterBox">
                 {allCharacters &&
                   allCharacters.map((allCharactersItem) => {

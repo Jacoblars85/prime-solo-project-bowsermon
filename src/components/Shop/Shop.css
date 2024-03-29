@@ -95,7 +95,7 @@
 .allCharacterArea {
     /* border-top: 3px solid black; */
     width: 100%;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-family: 'New Super Mario Font U';
 }
 
@@ -205,6 +205,13 @@
     align-self: center;
     text-shadow: 1px 1px white;
     
+}
+
+.characterHeader {
+    font-size: 22px;
+    align-self: center;
+    text-shadow: 1px 1px white;
+    border-bottom: 3px solid black;
 }
 
 .randomCharacter img {
