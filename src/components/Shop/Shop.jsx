@@ -151,8 +151,6 @@ function Shop() {
     <div>
       <Nav />
 
-      {/* <h2 className="shopHeader">Shop</h2> */}
-
       <Box sx={{ width: "100%" }}>
         <Box
           sx={{
