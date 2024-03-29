@@ -178,8 +178,6 @@ function Shop() {
         </Box>
         <CustomTabPanel value={tabValue} index={0}>
           <div className="consumablesBox">
-            <h3 className="consumableHeader">Consumables Items</h3>
-
             {consumables &&
               consumables.map((consumableItem) => {
                 return (
@@ -192,8 +190,6 @@ function Shop() {
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={1}>
           <div className="heldBox">
-            <h3 className="heldHeader">Held Items</h3>
-
             {held &&
               held.map((heldItem) => {
                 return (
@@ -263,8 +259,6 @@ function Shop() {
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>
           <div className="allCharacterArea">
-            <h3 className="characterHeader">All Characters</h3>
-
             <div className="allCharacterBox">
               {allCharacters &&
                 allCharacters.map((allCharactersItem) => {
