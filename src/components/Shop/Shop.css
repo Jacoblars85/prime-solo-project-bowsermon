@@ -56,6 +56,7 @@
     scroll-margin: 0px;
     scroll-padding: 0px;
     scroll-snap-type: y mandatory;
+        font-family: 'New Super Mario Font U';
 }
 
 .consumablesBox {
