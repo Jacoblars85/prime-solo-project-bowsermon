@@ -192,7 +192,7 @@ function Shop() {
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={3}>
         <div className="bigItemBox">
-          <div className="">
+          <div className="mysteryBoxBox">
         {/* {consumables &&
                 consumables.map((MysteryBoxItem) => {
                   return (
