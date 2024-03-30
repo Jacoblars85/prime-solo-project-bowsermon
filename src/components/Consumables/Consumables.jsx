@@ -19,8 +19,6 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
-import { put } from "redux-saga/effects";
-
 import {
   Unstable_NumberInput as BaseNumberInput,
   numberInputClasses,
