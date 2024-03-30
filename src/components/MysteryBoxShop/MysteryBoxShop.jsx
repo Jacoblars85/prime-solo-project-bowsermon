@@ -19,117 +19,196 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
 
-function MysteryBoxShop({ heldItem }) {
+function MysteryBoxShop({ MysteryBoxItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
 
+  
+  const [randomOpen, setRandomOpen] = useState(false);
 
+  const handleRandomClickOpen = () => {
+    setRandomOpen(true);
+  };
 
+  const handleRandomClose = () => {
+    setRandomOpen(false);
+  };
 
+  const [newRewardPic, setNewRewardPic] = useState("");
+  const [newRewardName, setNewRewardName] = useState("");
+  const [newRewardId, setNewRewardId] = useState();
+
+  const openBox = (rewardId) => {
+    if (user.coins < 15) {
+      setRandomOpen(false);
+      return alert("you are broke, sorry");
+    } else if (characters.length >= 20) {
+      setRandomOpen(false);
+      return alert("you can only have 20 characters");
+    } else {
+      let randomNum = Math.floor(Math.random() * 9 + 1);
+
+      const newCharacter = allCharacters.find(
+        (Characters) => Characters.id === randomNum
+      );
+
+      setNewRewardPic("images/mysteryBoxGif.gif");
+      setNewRewardName("...");
+
+      setTimeout(() => {
+        setNewRewardPic(newCharacter.profile_pic);
+        setNewRewardName(newCharacter.name);
+      }, 2500);
+
+      setNewRewardId(randomNum);
+
+      setOpenAnimation(true);
+    }
+  };
+
+  const [openAnimation, setOpenAnimation] = useState(false);
+
+  const handleClickOpenAnimation = () => {
+    setOpenAnimation(true);
+  };
+
+  const handleCloseAnimation = () => {
+    setRandomOpen(false);
+
+    dispatch({
+      type: "SAGA_BUY_NEW_CHARACTER",
+      payload: {
+        characterID: newRewardId,
+        characterCost: 15,
+      },
+    });
+    setOpenAnimation(false);
+  };
 
 
   return (
     <>
-      <div style={{ marginLeft: "10px" }}>
-        <img height={70} width={70} src={heldItem.pic} />
-      </div>
+             <h4>Random Character Box</h4>
 
-      <div style={{ width: "100px", marginLeft: "5px" }}>
-        <h4 style={{ color: heldItem.color, width: "100px" }}>
-          {heldItem.name}
-        </h4>
-      </div>
+<h5>
+  15x{" "}
+  <img
+    className="randomCharacterCoins"
+    height={20}
+    width={20}
+    src="/images/Coin_-_New_Super_Mario_Bros.webp"
+  />
+</h5>
 
-      <div
-        style={{
-          width: "150px",
-          height: "122px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
+<img
+  onClick={handleRandomClickOpen}
+  height={200}
+  width={200}
+  src="images/mysterBoxPic.webp"
+/>
+
+  {/* random character dialog */}
+  <Dialog
+        open={randomOpen}
+        onClose={handleRandomClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <div>
-          <p
-            style={{
-              color: "red",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-              margin: 0,
-            }}
-          >
-            {heldItem.hp === 0 ? "" : `+${heldItem.hp} hp`}
-          </p>
-
-          <p
-            style={{
-              color: "limegreen",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-              margin: 0,
-            }}
-          >
-            {heldItem.stamina === 0 ? "" : `+${heldItem.stamina} stamina`}
-          </p>
-
-          <p
-            style={{
-              color: "yellow",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-              margin: 0,
-            }}
-          >
-            {heldItem.speed === 0 ? "" : `+${heldItem.speed} speed`}
-          </p>
-
-          <p
-            style={{
-              color: "red",
-              textShadow: "1px 1px black",
-              fontSize: "20px",
-              fontWeight: "bold",
-              fontFamily: "New Super Mario Font U",
-              margin: 0,
-            }}
-          >
-            {heldItem.attack === 0 ? "" : `+${heldItem.attack} damage`}
-          </p>
-        </div>
-      </div>
-
-      <div style={{ marginRight: "10px" }}>
-        <h5
-          style={{
-            color: "#FEF202",
-            fontSize: 25,
-            textShadow: "2px 2px black",
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "30px",
           }}
         >
-          {heldItem.cost}x{" "}
-          <img
-            height={20}
-            width={20}
-            src="/images/Coin_-_New_Super_Mario_Bros.webp"
-          />{" "}
-        </h5>
+          {"Are you sure?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
+            sx={{
+              fontFamily: "New Super Mario Font U",
+              textAlign: "center",
+              fontSize: "18px",
+            }}
+          >
+            This will cost 15 coins and you may get multiple of the same
+            character.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={openBox}
+            autoFocus
+          >
+            Buy
+          </Button>
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleRandomClose}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
 
-        <button
-        style={{ width: "100%"}}
-          disabled={user.coins < heldItem.cost ? true : false}
-          onClick={handleHeldClickOpen}
+      {/* mystery box animation dialog */}
+      <Dialog
+        open={openAnimation}
+        onClose={handleCloseAnimation}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{
+            fontFamily: "New Super Mario Font U",
+            textAlign: "center",
+            fontSize: "30px",
+            width: "420px",
+            height: "65px",
+            marginBottom: "20px",
+          }}
         >
-          Buy
-        </button>
-      </div>
+          {`Congrats, you got ${newRewardName}`}
+        </DialogTitle>
+        <DialogContent>
+          <img height={200} width={200} src={newRewardPic} />
+        </DialogContent>
+        <DialogActions
+          sx={{
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Button
+            sx={{
+              color: "black",
+              fontSize: 16,
+              fontFamily: "New Super Mario Font U",
+            }}
+            onClick={handleCloseAnimation}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
     </>
   );
 }
