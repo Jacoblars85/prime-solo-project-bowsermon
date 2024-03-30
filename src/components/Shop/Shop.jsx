@@ -118,7 +118,7 @@ function Shop() {
             {consumables &&
               consumables.map((consumableItem) => {
                 return (
-                  <div div className="consumables" key={consumableItem.id}>
+                  <div className="consumables" key={consumableItem.id}>
                     <Consumables consumableItem={consumableItem} />
                   </div>
                 );
@@ -130,7 +130,7 @@ function Shop() {
             {held &&
               held.map((heldItem) => {
                 return (
-                  <div div className="held" key={heldItem.id}>
+                  <div className="held" key={heldItem.id}>
                     <HeldItems heldItem={heldItem} />
                   </div>
                 );
@@ -146,7 +146,7 @@ function Shop() {
               {consumables &&
                 consumables.map((consumableItem) => {
                   return (
-                    <div div className="consumables" key={consumableItem.id}>
+                    <div className="consumables" key={consumableItem.id}>
                       <Consumables consumableItem={consumableItem} />
                     </div>
                   );
@@ -163,7 +163,6 @@ function Shop() {
                     allCharacters.map((allCharactersItem) => {
                       return (
                         <div
-                          div
                           className="allCharactersSingleBox"
                           key={allCharactersItem.id}
                         >
@@ -183,7 +182,7 @@ function Shop() {
               {held &&
                 held.map((heldItem) => {
                   return (
-                    <div div className="held" key={heldItem.id}>
+                    <div className="held" key={heldItem.id}>
                       <HeldItems heldItem={heldItem} />
                     </div>
                   );
@@ -194,10 +193,10 @@ function Shop() {
         <CustomTabPanel value={tabValue} index={3}>
 
         {/* {consumables &&
-                consumables.map((consumableItem) => {
+                consumables.map((MysteryBoxItem) => {
                   return (
-                    <div div className="consumables" key={consumableItem.id}>
-                      <Consumables consumableItem={consumableItem} />
+                    <div className="consumables" key={MysteryBoxItem.id}>
+                      <MysteryBoxShop MysteryBoxItem={MysteryBoxItem} />
                     </div>
                   );
                 })} */}
@@ -211,7 +210,6 @@ function Shop() {
                 allCharacters.map((allCharactersItem) => {
                   return (
                     <div
-                      div
                       className="allCharactersSingleBox"
                       key={allCharactersItem.id}
                     >

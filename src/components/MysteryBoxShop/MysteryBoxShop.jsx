@@ -24,8 +24,9 @@ function MysteryBoxShop({ MysteryBoxItem }) {
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
+  const characters = useSelector((store) => store.character.userCharacters);
 
-  
+
   const [randomOpen, setRandomOpen] = useState(false);
 
   const handleRandomClickOpen = () => {
