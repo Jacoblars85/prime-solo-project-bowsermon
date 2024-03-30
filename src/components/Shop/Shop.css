@@ -37,6 +37,27 @@
     box-shadow: 1px 1px 1px 1px black;
 }
 
+.bigItemBox {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 72vh;
+    width: 100%;
+    border: 3px solid black;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    /* column-gap: 3%; */
+    background-color:rgb(152, 151, 151);
+    box-shadow: 1px 1px 1px 1px black;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-margin: 0px;
+    scroll-padding: 0px;
+    scroll-snap-type: y mandatory;
+}
+
 .consumablesBox {
     display: flex;
     flex-direction: column;
