@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import "./Shop.css";
 import Nav from "../Nav/Nav";
+import MysteryBoxShop from "../MysteryBoxShop/MysteryBoxShop";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -22,7 +23,6 @@ import HeldItems from "../HeldItems/HeldItems";
 import AllCharactersItem from "../AllCharactersItem/AllCharactersItem";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
-
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -85,8 +85,6 @@ function Shop() {
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
   };
-
-
 
   return (
     <div>
@@ -194,6 +192,16 @@ function Shop() {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={3}>
+
+        {/* {consumables &&
+                consumables.map((consumableItem) => {
+                  return (
+                    <div div className="consumables" key={consumableItem.id}>
+                      <Consumables consumableItem={consumableItem} />
+                    </div>
+                  );
+                })} */}
+        <MysteryBoxShop />
 
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>
