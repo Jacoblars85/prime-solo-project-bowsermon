@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import "./Shop.css";
 import Nav from "../Nav/Nav";
-import MysteryBoxShop from "../MysteryBoxShop/MysteryBoxShop";
+import MysteryBoxItem from "../MysteryBoxItem/MysteryBoxItem";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -196,11 +196,11 @@ function Shop() {
                 consumables.map((MysteryBoxItem) => {
                   return (
                     <div className="consumables" key={MysteryBoxItem.id}>
-                      <MysteryBoxShop MysteryBoxItem={MysteryBoxItem} />
+                      <MysteryBoxItem MysteryBoxItem={MysteryBoxItem} />
                     </div>
                   );
                 })} */}
-        <MysteryBoxShop />
+        <MysteryBoxItem />
 
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>

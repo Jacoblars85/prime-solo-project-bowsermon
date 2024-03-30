@@ -19,7 +19,7 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
 
-function MysteryBoxShop({ MysteryBoxItem }) {
+function MysteryBoxItem({ MysteryBoxItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -214,4 +214,4 @@ function MysteryBoxShop({ MysteryBoxItem }) {
   );
 }
 
-export default MysteryBoxShop;
+export default MysteryBoxItem;
