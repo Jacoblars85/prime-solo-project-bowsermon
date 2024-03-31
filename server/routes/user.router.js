@@ -159,6 +159,27 @@ const sqlValues = [req.user.id];
 });
 
 
+router.get('/all/rewards', (req, res) => {
+
+  const query = `
+  SELECT "id",
+  "name",
+  "pic",
+  "cost"
+FROM "rewards";
+`;
+
+  pool.query(query)
+      .then(result => {
+          res.send(result.rows);
+      })
+      .catch(err => {
+          console.log('ERROR: Get all rewards', err);
+          res.sendStatus(500)
+      })
+});
+
+
 router.put("/change", (req, res) => {
   // console.log('req.body', req.body.newName);
   const sqlText = `
