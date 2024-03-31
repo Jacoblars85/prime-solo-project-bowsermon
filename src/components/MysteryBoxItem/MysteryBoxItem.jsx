@@ -19,7 +19,7 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
 
-function MysteryBoxItem({ MysteryBoxItem }) {
+function MysteryBoxItem({ mysteryBoxItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -91,10 +91,10 @@ function MysteryBoxItem({ MysteryBoxItem }) {
 
   return (
     <>
-             <h4>Random Character Box</h4>
+             <h4>{mysteryBoxItem.name}</h4>
 
 <h5>
-  15x{" "}
+  {mysteryBoxItem.cost}x{" "}
   <img
     className="randomCharacterCoins"
     height={20}
@@ -107,10 +107,10 @@ function MysteryBoxItem({ MysteryBoxItem }) {
   onClick={handleRandomClickOpen}
   height={200}
   width={200}
-  src="images/mysterBoxPic.webp"
+  src={mysteryBoxItem.pic}
 />
 
-  {/* random character dialog */}
+  {/* random item dialog */}
   <Dialog
         open={randomOpen}
         onClose={handleRandomClose}
@@ -136,8 +136,8 @@ function MysteryBoxItem({ MysteryBoxItem }) {
               fontSize: "18px",
             }}
           >
-            This will cost 15 coins and you may get multiple of the same
-            character.
+            This will cost {mysteryBoxItem.cost} coins and you may get multiple of the same
+            {mysteryBoxItem.id === 1 ? "character" : "item"}.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
