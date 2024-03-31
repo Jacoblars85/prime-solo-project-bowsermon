@@ -71,6 +71,7 @@ function Shop() {
   const consumables = useSelector((store) => store.inventory.consumables);
   const held = useSelector((store) => store.inventory.held);
   const allCharacters = useSelector((store) => store.character.allCharacters);
+  const allRewards = useSelector((store) => store.user.allRewards);
 
   useEffect(() => {
     dispatch({ type: "SAGA_FETCH_IVENTORY" });
@@ -193,15 +194,15 @@ function Shop() {
         <CustomTabPanel value={tabValue} index={3}>
         <div className="bigItemBox">
           <div className="mysteryBoxBox">
-        {/* {consumables &&
-                consumables.map((MysteryBoxItem) => {
+        {allRewards &&
+                allRewards.map((mysteryBoxItem) => {
                   return (
-                    <div className="consumables" key={MysteryBoxItem.id}>
-                      <MysteryBoxItem MysteryBoxItem={MysteryBoxItem} />
+                    <div className="" key={mysteryBoxItem.id}>
+                      <MysteryBoxItem mysteryBoxItem={mysteryBoxItem} />
                     </div>
                   );
-                })} */}
-        <MysteryBoxItem />
+                })}
+        {/* <MysteryBoxItem /> */}
         </div>
 </div>
         </CustomTabPanel>
