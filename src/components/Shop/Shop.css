@@ -131,35 +131,33 @@
     font-family: 'New Super Mario Font U';
 }
 
-
-.allCharacterArea {
-    /* border-top: 3px solid black; */
-    width: 100%;
-    /* margin-top: 20px; */
-    font-family: 'New Super Mario Font U';
-}
-
 .allCharacterBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    scroll-margin: 0px;
+    scroll-padding: 0px;
+    scroll-snap-type: y mandatory;
     height: 100%;
     width: 100%;
-    justify-content: baseline;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     text-align: center;
+    font-family: 'New Super Mario Font U';
 }
 
 .allCharactersSingleBox {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: 232px;
-    width: 50%;
-    row-gap: 5px;
+    /* height: 30%; */
+    width: 45%;
+    /* row-gap: 5px; */
     justify-content: flex-end;
     align-items: center;
     text-align: center;
+    margin-top: 10px;
 }
 
 

@@ -207,7 +207,6 @@ function Shop() {
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>
         <div className="bigBox">
-          <div className="allCharacterArea">
             <div className="allCharacterBox">
               {allCharacters &&
                 allCharacters.map((allCharactersItem) => {
@@ -223,7 +222,6 @@ function Shop() {
                   );
                 })}
             </div>
-          </div>
           </div>
         </CustomTabPanel>
       </Box>
