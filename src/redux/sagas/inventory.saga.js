@@ -3,7 +3,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
   function* fetchInventory() {
-    // console.log('action.payload', action.payload);
     try {
       const usersInventoryResponse = yield axios.get(`/api/inventory/user/inventory`);
       const usersHeldResponse = yield axios.get(`/api/inventory/user/held`);
@@ -12,6 +11,11 @@ import { put, takeLatest } from 'redux-saga/effects';
       const heldResponse = yield axios.get(`/api/inventory/held`);
       const rewardResponse = yield axios.get(`/api/user/rewards`);
       const allItemsResponse = yield axios.get(`/api/inventory/all/items`);
+      const allRewardsResponse = yield axios.get(`/api/user/all/rewards`);
+      yield put({
+        type: 'SET_ALL_REWARDS',
+        payload: allRewardsResponse.data
+      });
       yield put({
         type: 'SET_ALL_ITEMS',
         payload: allItemsResponse.data
