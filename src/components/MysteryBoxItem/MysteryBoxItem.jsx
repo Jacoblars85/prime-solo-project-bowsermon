@@ -91,17 +91,19 @@ function MysteryBoxItem({ mysteryBoxItem }) {
 
   return (
     <>
-
+<div style={{ marginLeft: "10px" }}>
 <img
   onClick={handleRandomClickOpen}
   height={150}
   width={150}
   src={mysteryBoxItem.pic}
 />
+      </div>
+
 
              <h4 style={{ fontSize: "25px", textShadow: "1px 1px white", width: "40%" }}>{mysteryBoxItem.name}</h4>
 
-<div>
+<div style={{ marginRight: "10px" }}>
 <h5 style={{ fontSize: "25px", textShadow: "1px 1px black", color: "#FEF202", margin: 0 }}>
   {mysteryBoxItem.cost}x{" "}
   <img
