@@ -130,6 +130,7 @@ function AllCharactersItem({ allCharactersItem }) {
             color: "#FEF202",
             fontSize: 25,
             textShadow: "2px 2px black",
+            margin: 0
           }}
         >
           100x{" "}
