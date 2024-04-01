@@ -197,7 +197,7 @@ function Shop() {
         {allRewards &&
                 allRewards.map((mysteryBoxItem) => {
                   return (
-                    <div className="" key={mysteryBoxItem.id}>
+                    <div className="mysteryBoxSingleBox" key={mysteryBoxItem.id}>
                       <MysteryBoxItem mysteryBoxItem={mysteryBoxItem} />
                     </div>
                   );
