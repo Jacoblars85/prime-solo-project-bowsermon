@@ -250,7 +250,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     border-top: 3px solid black;
-    height: 40%;
+    /* height: 900px; */
     width: 100%;
     justify-content: space-between;
     align-items: center;
