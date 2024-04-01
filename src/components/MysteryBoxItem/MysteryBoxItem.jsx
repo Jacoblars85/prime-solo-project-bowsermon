@@ -91,9 +91,18 @@ function MysteryBoxItem({ mysteryBoxItem }) {
 
   return (
     <>
-             <h4>{mysteryBoxItem.name}</h4>
 
-<h5>
+<img
+  onClick={handleRandomClickOpen}
+  height={150}
+  width={150}
+  src={mysteryBoxItem.pic}
+/>
+
+             <h4 style={{ fontSize: "25px", textShadow: "1px 1px white", width: "40%" }}>{mysteryBoxItem.name}</h4>
+
+<div>
+<h5 style={{ fontSize: "25px", textShadow: "1px 1px black", color: "#FEF202", margin: 0 }}>
   {mysteryBoxItem.cost}x{" "}
   <img
     className="randomCharacterCoins"
@@ -103,12 +112,8 @@ function MysteryBoxItem({ mysteryBoxItem }) {
   />
 </h5>
 
-<img
-  onClick={handleRandomClickOpen}
-  height={200}
-  width={200}
-  src={mysteryBoxItem.pic}
-/>
+<button style={{ width: "100%" }}>Buy</button>
+</div>
 
   {/* random item dialog */}
   <Dialog
