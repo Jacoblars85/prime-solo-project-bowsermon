@@ -323,7 +323,7 @@ function Consumables({ consumableItem }) {
         </Box> */}
 
       <div style={{ marginRight: "10px" }}>
-        <h5 style={{ color: consumableItem.color, fontSize: 25 }}>
+        <h5 style={{ color: "#FEF202", fontSize: 25 }}>
           {consumableItem.cost}x{" "}
           <img
             height={20}
