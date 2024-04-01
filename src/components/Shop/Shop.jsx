@@ -192,21 +192,24 @@ function Shop() {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={3}>
-        <div className="bigItemBox">
-          <div className="mysteryBoxBox">
-        {allRewards &&
+          <div className="bigItemBox">
+            <div className="mysteryBoxBox">
+              {allRewards &&
                 allRewards.map((mysteryBoxItem) => {
                   return (
-                    <div className="mysteryBoxSingleBox" key={mysteryBoxItem.id}>
+                    <div
+                      className="mysteryBoxSingleBox"
+                      key={mysteryBoxItem.id}
+                    >
                       <MysteryBoxItem mysteryBoxItem={mysteryBoxItem} />
                     </div>
                   );
                 })}
-        </div>
-</div>
+            </div>
+          </div>
         </CustomTabPanel>
         <CustomTabPanel value={tabValue} index={4}>
-        <div className="bigBox">
+          <div className="bigBox">
             <div className="allCharacterBox">
               {allCharacters &&
                 allCharacters.map((allCharactersItem) => {
