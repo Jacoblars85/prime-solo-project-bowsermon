@@ -18,14 +18,12 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
-
 function MysteryBoxItem({ mysteryBoxItem }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.userCharacters);
-
 
   const [randomOpen, setRandomOpen] = useState(false);
 
@@ -88,37 +86,46 @@ function MysteryBoxItem({ mysteryBoxItem }) {
     setOpenAnimation(false);
   };
 
-
   return (
     <>
-<div style={{ marginLeft: "10px" }}>
-<img
-  onClick={handleRandomClickOpen}
-  height={150}
-  width={150}
-  src={mysteryBoxItem.pic}
-/>
+      <div style={{ marginLeft: "10px" }}>
+        <img
+          onClick={handleRandomClickOpen}
+          height={150}
+          width={150}
+          src={mysteryBoxItem.pic}
+        />
       </div>
 
+      <h4
+        style={{ fontSize: "25px", textShadow: "1px 1px white", width: "40%" }}
+      >
+        {mysteryBoxItem.name}
+      </h4>
 
-             <h4 style={{ fontSize: "25px", textShadow: "1px 1px white", width: "40%" }}>{mysteryBoxItem.name}</h4>
+      <div style={{ marginRight: "10px" }}>
+        <h5
+          style={{
+            fontSize: "25px",
+            textShadow: "1px 1px black",
+            color: "#FEF202",
+            margin: 0,
+          }}
+        >
+          {mysteryBoxItem.cost}x{" "}
+          <img
+            className="randomCharacterCoins"
+            height={20}
+            width={20}
+            src="/images/Coin_-_New_Super_Mario_Bros.webp"
+          />
+        </h5>
 
-<div style={{ marginRight: "10px" }}>
-<h5 style={{ fontSize: "25px", textShadow: "1px 1px black", color: "#FEF202", margin: 0 }}>
-  {mysteryBoxItem.cost}x{" "}
-  <img
-    className="randomCharacterCoins"
-    height={20}
-    width={20}
-    src="/images/Coin_-_New_Super_Mario_Bros.webp"
-  />
-</h5>
+        <button style={{ width: "100%" }}>Buy</button>
+      </div>
 
-<button style={{ width: "100%" }}>Buy</button>
-</div>
-
-  {/* random item dialog */}
-  <Dialog
+      {/* random item dialog */}
+      <Dialog
         open={randomOpen}
         onClose={handleRandomClose}
         aria-labelledby="alert-dialog-title"
@@ -143,7 +150,8 @@ function MysteryBoxItem({ mysteryBoxItem }) {
               fontSize: "18px",
             }}
           >
-            This will cost {mysteryBoxItem.cost} coins and you may get multiple of the same
+            This will cost {mysteryBoxItem.cost} coins and you may get multiple
+            of the same
             {mysteryBoxItem.id === 1 ? "character" : "item"}.
           </DialogContentText>
         </DialogContent>
@@ -216,7 +224,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
           </Button>
         </DialogActions>
       </Dialog>
-
     </>
   );
 }
