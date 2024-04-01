@@ -25,6 +25,9 @@ function MysteryBoxItem({ mysteryBoxItem }) {
   const user = useSelector((store) => store.user.userReducer);
   const characters = useSelector((store) => store.character.userCharacters);
   const allCharacters = useSelector((store) => store.character.allCharacters);
+  const consumables = useSelector((store) => store.inventory.consumables);
+  const held = useSelector((store) => store.inventory.held);
+  const allItems = useSelector((store) => store.inventory.allItems);
 
   const [randomOpen, setRandomOpen] = useState(false);
 
@@ -40,7 +43,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
   const [newRewardName, setNewRewardName] = useState("");
   const [newRewardId, setNewRewardId] = useState();
 
-
   const openBox = (rewardId) => {
     let randomNum;
 
@@ -48,24 +50,80 @@ function MysteryBoxItem({ mysteryBoxItem }) {
       setRandomOpen(false);
       return alert("you are broke, sorry");
     } else {
+      if (mysteryBoxItem.id === 1) {
+        if (characters.length >= 20) {
+          return alert("you can only have 20 characters");
+        } else {
+          // character box
+          randomNum = Math.floor(Math.random() * 9 + 1);
 
-    if (mysteryBoxItem.id === 1) {
-      if (characters.length >= 20) {
-        return alert("you can only have 20 characters");
-      } else {
-        // character box
-        randomNum = Math.floor(Math.random() * 9 + 1);
+          const newCharacter = allCharacters.find(
+            (Characters) => Characters.id === randomNum
+          );
 
-        const newCharacter = allCharacters.find(
-          (Characters) => Characters.id === randomNum
-        );
+          setNewRewardPic("images/mysteryBoxGif.gif");
+          setNewRewardName("...");
 
-        setNewRewardPic("images/mysteryBoxGif.gif");
+          setTimeout(() => {
+            setNewRewardPic(newCharacter.profile_pic);
+            setNewRewardName(newCharacter.name);
+          }, 2500);
+
+          setNewRewardId(randomNum);
+          setRewardBoxId(rewardId);
+
+          setOpenAnimation(true);
+        }
+      } else if (mysteryBoxItem.id === 2) {
+        // held item box
+        randomNum = Math.floor(Math.random() * (16 - 7) + 7);
+
+        const newHeld = held.find((heldItem) => heldItem.id === randomNum);
+
+        setNewRewardPic("images/mysteryBoxGif2.gif");
         setNewRewardName("...");
 
         setTimeout(() => {
-          setNewRewardPic(newCharacter.profile_pic);
-          setNewRewardName(newCharacter.name);
+          setNewRewardPic(newHeld.pic);
+          setNewRewardName(newHeld.name);
+        }, 2500);
+
+        setNewRewardId(randomNum);
+        setRewardBoxId(rewardId);
+
+        setOpenAnimation(true);
+      } else if (mysteryBoxItem.id === 3) {
+        // consumable box
+        randomNum = Math.floor(Math.random() * 6 + 1);
+
+        const newConsumable = consumables.find(
+          (consumableItem) => consumableItem.id === randomNum
+        );
+
+        setNewRewardPic("images/mysteryBoxGif2.gif");
+        setNewRewardName("...");
+
+        setTimeout(() => {
+          setNewRewardPic(newConsumable.pic);
+          setNewRewardName(newConsumable.name);
+        }, 2500);
+
+        setNewRewardId(randomNum);
+        setRewardBoxId(rewardId);
+
+        setOpenAnimation(true);
+      } else if (mysteryBoxItem.id === 4) {
+        // all item box
+        randomNum = Math.floor(Math.random() * 15 + 1);
+
+        const newItem = allItems.find((item) => item.id === randomNum);
+
+        setNewRewardPic("images/mysteryBoxGif2.gif");
+        setNewRewardName("...");
+
+        setTimeout(() => {
+          setNewRewardPic(newItem.pic);
+          setNewRewardName(newItem.name);
         }, 2500);
 
         setNewRewardId(randomNum);
@@ -73,64 +131,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
 
         setOpenAnimation(true);
       }
-    } else if (mysteryBoxItem.id === 2) {
-      // held item box
-      randomNum = Math.floor(Math.random() * (16 - 7) + 7);
-
-      const newHeld = held.find((heldItem) => heldItem.id === randomNum);
-
-      setNewRewardPic("images/mysteryBoxGif2.gif");
-      setNewRewardName("...");
-
-      setTimeout(() => {
-        setNewRewardPic(newHeld.pic);
-        setNewRewardName(newHeld.name);
-      }, 2500);
-
-      setNewRewardId(randomNum);
-      setRewardBoxId(rewardId);
-
-      setOpenAnimation(true);
-    } else if (mysteryBoxItem.id === 3) {
-      // consumable box
-      randomNum = Math.floor(Math.random() * 6 + 1);
-
-      const newConsumable = consumables.find(
-        (consumableItem) => consumableItem.id === randomNum
-      );
-
-      setNewRewardPic("images/mysteryBoxGif2.gif");
-      setNewRewardName("...");
-
-      setTimeout(() => {
-        setNewRewardPic(newConsumable.pic);
-        setNewRewardName(newConsumable.name);
-      }, 2500);
-
-      setNewRewardId(randomNum);
-      setRewardBoxId(rewardId);
-
-      setOpenAnimation(true);
-    } else if (mysteryBoxItem.id === 4) {
-      // all item box
-      randomNum = Math.floor(Math.random() * 15 + 1);
-
-      const newItem = allItems.find((item) => item.id === randomNum);
-
-      setNewRewardPic("images/mysteryBoxGif2.gif");
-      setNewRewardName("...");
-
-      setTimeout(() => {
-        setNewRewardPic(newItem.pic);
-        setNewRewardName(newItem.name);
-      }, 2500);
-
-      setNewRewardId(randomNum);
-      setRewardBoxId(rewardId);
-
-      setOpenAnimation(true);
     }
-  }
   };
 
   const [openAnimation, setOpenAnimation] = useState(false);
