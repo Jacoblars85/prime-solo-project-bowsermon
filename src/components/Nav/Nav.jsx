@@ -110,30 +110,30 @@ function Nav(props) {
       if (characters.length >= 20) {
         return alert("you can only have 20 characters");
       } else {
-      // character box
-      randomNum = Math.floor(Math.random() * 9 + 1);
+        // character box
+        randomNum = Math.floor(Math.random() * 9 + 1);
 
-      const newCharacter = allCharacters.find(
-        (Characters) => Characters.id === randomNum
-      );
+        const newCharacter = allCharacters.find(
+          (Characters) => Characters.id === randomNum
+        );
 
-      setNewRewardPic("images/mysteryBoxGif.gif");
-      setNewRewardName("...");
+        setNewRewardPic("images/mysteryBoxGif.gif");
+        setNewRewardName("...");
 
-      // setTimeout(() => {
-      //   setNewRewardPic("images/fadingLightGif.gif");
-      // }, 2000);
+        // setTimeout(() => {
+        //   setNewRewardPic("images/fadingLightGif.gif");
+        // }, 2000);
 
-      setTimeout(() => {
-        setNewRewardPic(newCharacter.profile_pic);
-        setNewRewardName(newCharacter.name);
-      }, 2500);
+        setTimeout(() => {
+          setNewRewardPic(newCharacter.profile_pic);
+          setNewRewardName(newCharacter.name);
+        }, 2500);
 
-      setNewRewardId(randomNum);
-      setRewardBoxId(rewardId);
+        setNewRewardId(randomNum);
+        setRewardBoxId(rewardId);
 
-      setOpenAnimation(true);
-    }
+        setOpenAnimation(true);
+      }
     } else if (rewardId === 2) {
       // held item box
       randomNum = Math.floor(Math.random() * (16 - 7) + 7);
@@ -361,46 +361,46 @@ function Nav(props) {
                   {/* <ListItemButton
                   // onClick={() => handleEquipClickOpen(rewards.id)}
                   > */}
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    columnGap={20}
+                    justifyContent="space-around"
+                    alignItems="center"
+                    height={125}
+                  >
                     <Box
                       display="flex"
                       flexDirection="row"
-                      columnGap={20}
+                      columnGap={5}
                       justifyContent="space-around"
                       alignItems="center"
-                      height={125}
                     >
-                      <Box
-                        display="flex"
-                        flexDirection="row"
-                        columnGap={5}
-                        justifyContent="space-around"
-                        alignItems="center"
-                      >
-                        <p
-                          style={{
-                            color: "black",
-                            fontSize: "25px",
-                          }}
-                        >
-                          {rewards.number}X
-                        </p>
-                        <img height={100} width={100} src={rewards.pic} />
-                      </Box>
-                      <h4
+                      <p
                         style={{
                           color: "black",
                           fontSize: "25px",
-                          width: "200px",
-                          textAlign: "center",
                         }}
                       >
-                        {rewards.name}
-                      </h4>
-
-                      <button onClick={() => openBox(rewards.id)}>
-                        Open Box
-                      </button>
+                        {rewards.number}X
+                      </p>
+                      <img height={100} width={100} src={rewards.pic} />
                     </Box>
+                    <h4
+                      style={{
+                        color: "black",
+                        fontSize: "25px",
+                        width: "200px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {rewards.name}
+                    </h4>
+
+                    <button onClick={() => openBox(rewards.id)}>
+                      Open Box
+                    </button>
+                  </Box>
                   {/* </ListItemButton> */}
                   <Divider />
                 </div>
@@ -441,7 +441,7 @@ function Nav(props) {
             fontSize: "30px",
             width: "420px",
             height: "65px",
-            marginBottom: "20px"
+            marginBottom: "20px",
           }}
         >
           {`Congrats, you got ${newRewardName}`}
@@ -450,10 +450,11 @@ function Nav(props) {
           <img height={200} width={200} src={newRewardPic} />
         </DialogContent>
         <DialogActions
-         sx={{
-          textAlign: "center",
-          justifyContent: "center"
-        }}>
+          sx={{
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
           <Button
             sx={{
               color: "black",
