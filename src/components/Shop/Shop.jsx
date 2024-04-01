@@ -202,7 +202,6 @@ function Shop() {
                     </div>
                   );
                 })}
-        {/* <MysteryBoxItem /> */}
         </div>
 </div>
         </CustomTabPanel>
