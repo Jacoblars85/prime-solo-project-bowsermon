@@ -70,7 +70,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
           }, 2500);
 
           setNewRewardId(randomNum);
-          setRewardBoxId(rewardId);
 
           setOpenAnimation(true);
         }
@@ -89,7 +88,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         }, 2500);
 
         setNewRewardId(randomNum);
-        setRewardBoxId(rewardId);
 
         setOpenAnimation(true);
       } else if (mysteryBoxItem.id === 3) {
@@ -109,7 +107,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         }, 2500);
 
         setNewRewardId(randomNum);
-        setRewardBoxId(rewardId);
 
         setOpenAnimation(true);
       } else if (mysteryBoxItem.id === 4) {
@@ -127,7 +124,6 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         }, 2500);
 
         setNewRewardId(randomNum);
-        setRewardBoxId(rewardId);
 
         setOpenAnimation(true);
       }
@@ -141,17 +137,17 @@ function MysteryBoxItem({ mysteryBoxItem }) {
   };
 
   const handleCloseAnimation = () => {
-    if (rewardBoxId === 1) {
+    if (mysteryBoxItem.id === 1) {
       // character box
 
       dispatch({
         type: "SAGA_BUY_NEW_CHARACTER",
         payload: {
           characterID: newRewardId,
-          characterCost: 0,
+          characterCost: mysteryBoxItem.cost,
         },
       });
-    } else if (rewardBoxId === 2) {
+    } else if (mysteryBoxItem.id === 2) {
       // held item box
 
       dispatch({
@@ -159,10 +155,10 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         payload: {
           itemId: newRewardId,
           amountNum: 1,
-          totalCoins: 0,
+          totalCoins: mysteryBoxItem.cost,
         },
       });
-    } else if (rewardBoxId === 3) {
+    } else if (mysteryBoxItem.id === 3) {
       // consumable box
 
       dispatch({
@@ -170,10 +166,10 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         payload: {
           itemId: newRewardId,
           amountNum: 1,
-          totalCoins: 0,
+          totalCoins: mysteryBoxItem.cost,
         },
       });
-    } else if (rewardBoxId === 4) {
+    } else if (mysteryBoxItem.id === 4) {
       // all item box
 
       dispatch({
@@ -181,18 +177,13 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         payload: {
           itemId: newRewardId,
           amountNum: 1,
-          totalCoins: 0,
+          totalCoins: mysteryBoxItem.cost,
         },
       });
     }
 
-    dispatch({
-      type: "SAGA_OPEN_BOX",
-      payload: { rewardId: rewardBoxId },
-    });
-
     setOpenAnimation(false);
-    setOpenReward(false);
+    setRandomOpen(false);
   };
 
   return (
@@ -230,7 +221,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
           />
         </h5>
 
-        <button style={{ width: "100%" }}>Buy</button>
+        <button onClick={() => setRandomOpen(true)} style={{ width: "100%" }}>Buy</button>
       </div>
 
       {/* random item dialog */}
@@ -260,8 +251,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
             }}
           >
             This will cost {mysteryBoxItem.cost} coins and you may get multiple
-            of the same
-            {mysteryBoxItem.id === 1 ? "character" : "item"}.
+            of the same {mysteryBoxItem.id === 1 ? "character" : "item"}.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
