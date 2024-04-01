@@ -221,7 +221,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
           />
         </h5>
 
-        <button onClick={() => setRandomOpen(true)} style={{ width: "100%" }}>Buy</button>
+        <button onClick={() => setRandomOpen(true)} disabled={user.coins >= mysteryBoxItem.cost ? false : true} style={{ width: "100%" }}>Buy</button>
       </div>
 
       {/* random item dialog */}
