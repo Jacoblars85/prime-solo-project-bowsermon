@@ -126,7 +126,7 @@ INSERT INTO "characters"
 	('Morton', 'images/MortonProfilePic.webp', 100, 25, 5, 'body slam', 45, 10, 'images/MortonBattlePic.webp'),
 	('Toad', '', 100, 55, 70, 'headbutt', 10, 10, 'images/Toad_Portal.webp'),
 	('Toadett', '', 160, 50, 60, 'slap', 15, 10, 'images/ToadetteBattlePic.png'),
-	('Toadsworth', '', 180, 40, 30, 'cane wack', 20, 15, 'images/ToadsworthBattlePic.webp'),
+	('Toadsworth', '', 180, 50, 30, 'cane wack', 20, 15, 'images/ToadsworthBattlePic.webp'),
 	('Diddy Kong', '', 170, 50, 85, 'banana shot', 55, 10, 'images/diddyKongBattleKong.webp'),
 	('Rosalina', '', 190, 60, 60, 'ice blast', 35, 10, 'images/RosalinaBattlePic.webp'),
 	('Daisy', '', 210, 50, 50, 'arm bar', 50, 10, 'images/daisyBattlePic.png'),
