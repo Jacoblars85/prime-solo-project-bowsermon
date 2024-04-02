@@ -169,7 +169,7 @@ button {
       opacity: 1;
     }
   }
-  
+  /* add disable look */
   &::after {
     content: '';
     position: absolute;
@@ -190,6 +190,15 @@ button {
     opacity: 1;
     animation: pulsate 1s infinite;
   }
+}
+
+.button:hover:not(:disabled) {
+  background-color: #8e8f90;
+}
+
+button:disabled {
+  background-color: #8e8f90;
+  cursor: default;
 }
 
 @keyframes pulsate {
