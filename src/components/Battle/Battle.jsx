@@ -1869,11 +1869,28 @@ function Battle() {
                   return (
                     <div key={usersConsumables.id}>
                       <ListItem>
-                        <img
+                      <Box
+                      display="flex"
+                      flexDirection="row"
+                      columnGap={5}
+                      justifyContent="space-around"
+                      alignItems="center"
+                    >
+                      <p
+                        style={{
+                          color: "black",
+                          fontSize: "25px",
+                        }}
+                      >
+                        {usersConsumables.number}X
+                      </p>
+                      <img
                           height={125}
                           width={125}
                           src={usersConsumables.pic}
                         />
+                    </Box>
+                       
                         <ListItemText
                           sx={{
                             ml: 55,
