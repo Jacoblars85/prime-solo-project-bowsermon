@@ -68,7 +68,8 @@ CREATE TABLE "items" (
 CREATE TABLE "rewards" (
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR(100),
-	"pic" VARCHAR(100));
+	"pic" VARCHAR(100),
+	"cost" INT);
 	
 	
 CREATE TABLE "user_characters" (
@@ -135,7 +136,7 @@ INSERT INTO "characters"
 	('Mario', '', 250, 150, 50, 'upper cut', 40, 20, 'images/MarioBattlePic.png'),
 	('Waluigi', '', 180, 100, 100, 'stab', 35, 10, 'images/waluigiBattlePic.webp'),
 	('Wario', '', 280, 65, 10, 'belly flop', 45, 10, 'images/warioBattlePic.png'); 
-
+	
 INSERT INTO "basic_attacks" 
 	("attack", "damage", "stamina")
 	VALUES 
@@ -181,10 +182,10 @@ INSERT INTO "items"
 	
 	
 INSERT INTO "rewards" 
-	  ("name", "pic")
+	  ("name", "pic", "cost")
 	  VALUES
-	  ('character mystery box', 'images/1200px-ItemBoxMK8.webp'),
-	  ('held item mystery box', 'images/mysterBoxPic.webp'),
-	  ('consumable item mystery box', 'images/mysterBoxPic.webp'),
-	  ('item mystery box', 'images/mysterBoxPic.webp');
+	  ('character mystery box', 'images/mysterBoxPic.webp', 15),
+	  ('held item mystery box', 'images/1200px-ItemBoxMK8.webp', 75),
+	  ('consumable item mystery box', 'images/1200px-ItemBoxMK8.webp', 25),
+	  ('item mystery box', 'images/1200px-ItemBoxMK8.webp', 50);
 	  
