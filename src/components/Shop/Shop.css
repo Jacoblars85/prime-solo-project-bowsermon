@@ -191,7 +191,7 @@
     border-top: 3px solid black;
     height: 120px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 
@@ -219,7 +219,7 @@
     border-top: 3px solid black;
     height: 120px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 
