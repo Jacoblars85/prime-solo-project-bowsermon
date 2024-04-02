@@ -201,6 +201,17 @@ button:disabled {
   cursor: default;
 }
 
+.tabsButton button:not(:disabled) {
+  background-color: inherit;
+  
+}
+
+.tabsButton button:disabled {
+  cursor: default;
+  background-color: inherit;
+}
+
+
 @keyframes pulsate {
   0% {
     transform: scale(1.04, 1.08);
