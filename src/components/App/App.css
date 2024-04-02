@@ -149,6 +149,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   column-gap: .5em;
   position: relative;
   border-radius: 50px;
