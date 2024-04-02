@@ -106,6 +106,7 @@ function Shop() {
             textColor="black"
             indicatorColor="primary"
             centered
+            className="tabsButton"
           >
             <Tab label="Consumable Items" {...a11yProps(0)} />
             <Tab label="Held Items" {...a11yProps(1)} />
