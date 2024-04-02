@@ -301,6 +301,7 @@ function Nav(props) {
               <RedeemRoundedIcon
                 onClick={handleClickOpenReward}
                 sx={{ color: "yellow" }}
+                className="cartBlink"
               />
             )}
           </div>
