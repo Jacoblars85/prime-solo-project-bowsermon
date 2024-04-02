@@ -72,7 +72,7 @@ function Inventory() {
 
       <div className="inventory">
 
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider", fontFamily: "New Super Mario Font U", }}>
             <Tabs
               value={value}
@@ -81,6 +81,7 @@ function Inventory() {
               textColor="black"
               indicatorColor="primary"
               centered
+              className="tabsButton"
             >
               <Tab
                 label="Consumables"
