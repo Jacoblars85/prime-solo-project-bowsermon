@@ -330,6 +330,7 @@ function Nav(props) {
               color="inherit"
               onClick={handleCloseReward}
               aria-label="close"
+              sx={{ boxShadow: "0px 0px 0px 0px"}}
             >
               <CloseIcon />
             </IconButton>
