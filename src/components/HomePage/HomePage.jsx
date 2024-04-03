@@ -24,6 +24,8 @@ function HomePage() {
     <div>
       <Nav />
 
+      <div className='bowserLogo'></div>
+      
       <div className="homePage">
         <div className="starterHomeView">
           {starter.map((start) => {
