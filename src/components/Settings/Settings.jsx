@@ -187,7 +187,7 @@ export default function Settings() {
     <div>
       {['right'].map((anchor) => (
         <Fragment key={anchor} >
-          <Button onClick={toggleDrawer(anchor, true)}><SettingsIcon /> </Button>
+          <p onClick={toggleDrawer(anchor, true)}><SettingsIcon color='primary' /> </p>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
