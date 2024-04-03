@@ -7,7 +7,7 @@ function LoginPage() {
 
   return (
     <>
-    <div className='bowserLogo'></div>
+    {/* <div className='bowserLogo'></div> */}
     <div>
 
 <h1 className='bowsermonMainHeader'>Bowsermon</h1>
