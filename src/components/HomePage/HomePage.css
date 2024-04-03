@@ -44,7 +44,7 @@
 .campaignButton {
     position: absolute;
     bottom: 1.5%;
-    left: 30%;
+    left: 0.5%;
     height: 10%;
     width: 30%;
     background-image: url('/public/images/campaignButtonPic.png');
