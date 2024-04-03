@@ -20,8 +20,11 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
 
-        <div className='bowserLogo'></div>
-        
+        <div className="bowsermonMainHeader">
+          <img src="images/bowserLogo2.png" height="150px" width="150px" />
+
+          <h1>Bowsermon</h1>
+        </div>
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
