@@ -310,7 +310,7 @@ function Nav(props) {
             <CircularProgressWithLabel value={normalise(props.value)} />
           </div>
 
-          <div>
+          <div style={{ padding: "10px 15px 10px 12px", cursor: "pointer" }}>
             <Settings />
           </div>
         </Box>
