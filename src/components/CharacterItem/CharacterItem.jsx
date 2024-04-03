@@ -491,6 +491,7 @@ function CharacterItem({ character }) {
               color="inherit"
               onClick={handleInfoClose}
               aria-label="close"
+              sx={{ boxShadow: "0px 0px 0px 0px"}}
             >
               <CloseIcon />
             </IconButton>
