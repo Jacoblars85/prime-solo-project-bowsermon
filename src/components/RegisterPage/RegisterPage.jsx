@@ -8,6 +8,9 @@ function RegisterPage() {
 
   return (
     <div>
+
+<div className='bowserLogo'></div>
+
       <RegisterForm />
 
       <center>
