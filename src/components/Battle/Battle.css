@@ -96,7 +96,7 @@ body:has(.shake ) {
     margin: 0px auto -30px auto;
     display: block;
     border: 2px solid black;
-
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .hp-meter::-webkit-progress-value {
@@ -113,7 +113,7 @@ body:has(.shake ) {
     margin: 0px auto -30px auto;
     display: block;
     border: 2px solid black;
-
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .stamina-meter::-webkit-progress-value {
@@ -231,6 +231,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .inventoryMove:hover:not(:disabled), .uniqueAttack:hover:not(:disabled), .attackToggleButton:hover:not(:disabled), .kickAttack:hover:not(:disabled), .pokeAttack:hover:not(:disabled), .backButtonAttack:hover:not(:disabled), .runButton:hover:not(:disabled) {
@@ -254,6 +255,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .attackToggleButton {
@@ -267,6 +269,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .switch {
@@ -281,7 +284,7 @@ background: limegreen;
     color: white;
     border: 3px solid black;
     /* text-shadow: 3px 3px white; */
-    
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .switch:hover:not(:disabled) {
@@ -301,6 +304,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .pokeAttack {
@@ -314,6 +318,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .backButtonAttack {
@@ -327,6 +332,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .runButton {
@@ -340,6 +346,7 @@ background: limegreen;
     font-size: 20px;
     color: white;
     border: 3px solid black;
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .textBox {
@@ -355,6 +362,6 @@ background: limegreen;
     border: 3px solid black;
     text-align: center;
     font-size: 30px;
-
+    box-shadow: 6px 4px 8px -2px;
 }
 
