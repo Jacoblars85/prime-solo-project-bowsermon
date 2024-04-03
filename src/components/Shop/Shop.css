@@ -194,7 +194,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
-
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .consumables h4 {
@@ -222,7 +222,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
-
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .held h4 {
@@ -257,7 +257,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
-
+    box-shadow: 6px 4px 8px -2px black;
 }
 
 .characterHeader {
