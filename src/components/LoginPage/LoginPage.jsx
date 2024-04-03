@@ -6,7 +6,12 @@ function LoginPage() {
   const history = useHistory();
 
   return (
+    <>
+    <div className='bowserLogo'></div>
     <div>
+
+<h1 className='bowsermonMainHeader'>Bowsermon</h1>
+
       <LoginForm />
 
       <center>
@@ -21,6 +26,7 @@ function LoginPage() {
         </button>
       </center>
     </div>
+    </>
   );
 }
 
