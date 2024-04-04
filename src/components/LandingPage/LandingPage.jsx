@@ -21,16 +21,17 @@ function LandingPage() {
         <div className="grid-col grid-col_8">
 
         <div className="bowsermonMainHeader">
-          <img src="images/bowserLogo2.png" height="150px" width="150px" />
+        <img src="images/bowserLogoRedCircle.webp" height="150px" width="150px" />
 
           <h1>Bowsermon</h1>
         </div>
+        
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
 
           <center>
-            <h4>Already a Member?</h4>
+            <h4>Already a User?</h4>
             <button className="btn btn_sizeSm" onClick={onLogin}>
               Login
             </button>
