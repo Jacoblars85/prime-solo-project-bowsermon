@@ -44,7 +44,7 @@ text-shadow: 1px 1px 1px black,
              1px 10px 5px white,
              1px 15px 10px white,
              1px 20px 30px white,
-             1px 25px 50px red;
+             1px 25px 50px white;
 
 margin-top: 0;
 }
@@ -83,7 +83,8 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-  /* margin-top: 0px; */
+  margin-top: 20px;
+  font-family: 'New Super Mario Font U';
 }
 
 .btn_sizeMin {
@@ -143,7 +144,7 @@ Alert
   border-radius: 3px;
   color: #e01616;
   font-size: 0.8rem;
-  height: 50px;
+  height: 25px;
   width: 100%;
 }
 
@@ -154,14 +155,17 @@ Form Treatment
 .formPanel {
   box-sizing: border-box;
   width: 600px;
-  height: 300px;
+  height: 325px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
   margin-top: 40px;
   background-color: #efefef;
+  border: 2px solid black;
+  box-shadow: 4px 8px 6px -2px black;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  /* box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4); */
+  box-shadow: 5px 3px 7px -2px black;
   text-align: center;
   z-index: 1;
 }
