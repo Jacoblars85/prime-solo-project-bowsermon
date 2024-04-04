@@ -10,7 +10,7 @@ function LoginPage() {
       {/* <div className='bowserLogo'></div> */}
       <div>
         <div className="bowsermonMainHeader">
-          <img src="images/bowserLogo2.png" height="150px" width="150px" />
+        <img src="images/bowserLogoRedCircle.webp" height="150px" width="150px" />
 
           <h1>Bowsermon</h1>
         </div>
