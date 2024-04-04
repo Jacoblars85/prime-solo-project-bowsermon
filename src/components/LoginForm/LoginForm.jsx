@@ -27,13 +27,14 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-          <h2 style={{ margin: "5px"}}>Login</h2>
+          <h2 style={{ margin: "5px", fontSize: "35px", textShadow: "2px 2px 2px gray"}}>Login</h2>
+          <div style={{ height: "25px", width: "100%"}}>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-
+</div>
       <div>
         <label htmlFor="username">
           <TextField
