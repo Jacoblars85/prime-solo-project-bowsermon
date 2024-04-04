@@ -1629,7 +1629,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                    borderColor: "black"
                   }}
+                  variant="outlined"
                   disabled={
                     currentId === starterOne.id
                       ? true
@@ -1658,7 +1660,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                    borderColor: "black"
                   }}
+                  variant="outlined"
                   disabled={
                     currentId === starterOne.id
                       ? true
@@ -1686,7 +1690,10 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                    borderColor: "black"
                   }}
+                  variant="outlined"
+                  
                   disabled={
                     currentId === starterTwo.id
                       ? true
@@ -1751,7 +1758,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                  borderColor: "black"
                   }}
+                  variant="outlined"
                   disabled={
                     currentId === starterOne.id
                       ? true
@@ -1780,7 +1789,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                    borderColor: "black"
                   }}
+                  variant="outlined"
                   disabled={
                     currentId === starterOne.id
                       ? true
@@ -1808,7 +1819,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
+                    borderColor: "black"
                   }}
+                  variant="outlined"
                   disabled={
                     currentId === starterTwo.id
                       ? true
@@ -1918,7 +1931,9 @@ function Battle() {
                             color: "black",
                             fontSize: 20,
                             fontFamily: "New Super Mario Font U",
+                            borderColor: "black"
                           }}
+                          variant="outlined"
                           disabled={usersConsumables.number <= 0 ? true : false}
                           onClick={() => battle(usersConsumables)}
                         >
