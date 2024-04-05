@@ -7,7 +7,6 @@ function LoginPage() {
 
   return (
     <>
-      {/* <div className='bowserLogo'></div> */}
       <div>
         <div className="bowsermonMainHeader">
           <img
