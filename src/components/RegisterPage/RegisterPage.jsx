@@ -8,8 +8,6 @@ function RegisterPage() {
 
   return (
     <div>
-      {/* <div className='bowserLogo'></div> */}
-
       <div className="bowsermonMainHeader">
         <img
           src="images/bowserLogoRedCircle.webp"
