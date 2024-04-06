@@ -462,7 +462,9 @@ function Nav(props) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleCloseAnimation}
           >
             Close
