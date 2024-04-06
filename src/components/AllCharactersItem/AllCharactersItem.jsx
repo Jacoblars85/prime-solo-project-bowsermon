@@ -181,7 +181,9 @@ function AllCharactersItem({ allCharactersItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={buyCharacter}
             autoFocus
           >
@@ -192,7 +194,9 @@ function AllCharactersItem({ allCharactersItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleCharacterClose}
           >
             Close
