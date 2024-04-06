@@ -260,7 +260,9 @@ function MysteryBoxItem({ mysteryBoxItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={openBox}
             autoFocus
           >
@@ -271,7 +273,9 @@ function MysteryBoxItem({ mysteryBoxItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleRandomClose}
           >
             Close
@@ -316,7 +320,9 @@ function MysteryBoxItem({ mysteryBoxItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleCloseAnimation}
           >
             Close
