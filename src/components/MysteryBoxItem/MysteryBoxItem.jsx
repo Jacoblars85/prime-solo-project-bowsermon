@@ -67,7 +67,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
           setTimeout(() => {
             setNewRewardPic(newCharacter.profile_pic);
             setNewRewardName(newCharacter.name);
-          }, 2500);
+          }, 2000);
 
           setNewRewardId(randomNum);
 
@@ -85,7 +85,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         setTimeout(() => {
           setNewRewardPic(newHeld.pic);
           setNewRewardName(newHeld.name);
-        }, 2500);
+        }, 2000);
 
         setNewRewardId(randomNum);
 
@@ -104,7 +104,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         setTimeout(() => {
           setNewRewardPic(newConsumable.pic);
           setNewRewardName(newConsumable.name);
-        }, 2500);
+        }, 2000);
 
         setNewRewardId(randomNum);
 
@@ -121,7 +121,7 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         setTimeout(() => {
           setNewRewardPic(newItem.pic);
           setNewRewardName(newItem.name);
-        }, 2500);
+        }, 2000);
 
         setNewRewardId(randomNum);
 
