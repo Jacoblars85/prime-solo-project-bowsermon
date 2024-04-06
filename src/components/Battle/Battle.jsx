@@ -1529,7 +1529,9 @@ function Battle() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
+                borderColor: "black"
               }}
+              variant="outlined"
               onClick={handleWinnerClose}
               autoFocus
             >
@@ -1569,7 +1571,9 @@ function Battle() {
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
+                borderColor: "black"
               }}
+              variant="outlined"
               onClick={handleLoserClose}
               autoFocus
             >
