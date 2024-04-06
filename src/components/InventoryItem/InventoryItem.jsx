@@ -194,7 +194,9 @@ function InventoryItem({ inventoryItem }) {
                 fontFamily: "New Super Mario Font U",
                 textAlign: "center",
                 color: "black",
+                borderColor: "black"
               }}
+              variant="outlined"
               onClick={() => sellPot(potValue)}
               autoFocus
             >
@@ -205,7 +207,9 @@ function InventoryItem({ inventoryItem }) {
                 fontFamily: "New Super Mario Font U",
                 textAlign: "center",
                 color: "black",
+                borderColor: "black"
               }}
+              variant="outlined"
               onClick={handleClose}
             >
               Close
