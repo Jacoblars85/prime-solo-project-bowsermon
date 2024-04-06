@@ -349,7 +349,9 @@ function CharacterItem({ character }) {
               color: "black",
               fontSize: 20,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={sellCharacter}
             autoFocus
           >
@@ -360,7 +362,9 @@ function CharacterItem({ character }) {
               color: "black",
               fontSize: 20,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleSellClose}
           >
             Close
@@ -395,7 +399,9 @@ function CharacterItem({ character }) {
               color: "black",
               fontSize: 20,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={equipItem}
             autoFocus
           >
@@ -406,7 +412,9 @@ function CharacterItem({ character }) {
               color: "black",
               fontSize: 20,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleEquipClose}
           >
             Close
@@ -458,7 +466,9 @@ function CharacterItem({ character }) {
               textAlign: "center",
               color: "black",
               fontSize: 16,
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={editCharacterName}
           >
             Submit
@@ -469,7 +479,9 @@ function CharacterItem({ character }) {
               textAlign: "center",
               color: "black",
               fontSize: 16,
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleNicknameClose}
           >
             Cancel
