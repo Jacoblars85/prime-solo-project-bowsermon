@@ -127,7 +127,7 @@ function Nav(props) {
         setTimeout(() => {
           setNewRewardPic(newCharacter.profile_pic);
           setNewRewardName(newCharacter.name);
-        }, 2500);
+        }, 2000);
 
         setNewRewardId(randomNum);
         setRewardBoxId(rewardId);
@@ -146,7 +146,7 @@ function Nav(props) {
       setTimeout(() => {
         setNewRewardPic(newHeld.pic);
         setNewRewardName(newHeld.name);
-      }, 2500);
+      }, 2000);
 
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
@@ -166,7 +166,7 @@ function Nav(props) {
       setTimeout(() => {
         setNewRewardPic(newConsumable.pic);
         setNewRewardName(newConsumable.name);
-      }, 2500);
+      }, 2000);
 
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
@@ -184,7 +184,7 @@ function Nav(props) {
       setTimeout(() => {
         setNewRewardPic(newItem.pic);
         setNewRewardName(newItem.name);
-      }, 2500);
+      }, 2000);
 
       setNewRewardId(randomNum);
       setRewardBoxId(rewardId);
