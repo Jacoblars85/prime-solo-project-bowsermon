@@ -357,7 +357,9 @@ function HeldItems({ heldItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={() => buyHeld(heldValue)}
             autoFocus
           >
@@ -368,7 +370,9 @@ function HeldItems({ heldItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleHeldClose}
           >
             Close
