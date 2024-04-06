@@ -382,7 +382,9 @@ function Consumables({ consumableItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={() => buyConsumable(consumableValue)}
             autoFocus
           >
@@ -393,7 +395,9 @@ function Consumables({ consumableItem }) {
               color: "black",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
+              borderColor: "black"
             }}
+            variant="outlined"
             onClick={handleConsumableClose}
           >
             Close
