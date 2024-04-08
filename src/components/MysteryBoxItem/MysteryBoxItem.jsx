@@ -260,12 +260,13 @@ function MysteryBoxItem({ mysteryBoxItem }) {
         }}>
           <Button
             sx={{
-              color: "black",
+              color: "whitesmoke",
               fontSize: 16,
               fontFamily: "New Super Mario Font U",
               borderColor: "black"
             }}
-            variant="outlined"
+            color="success"
+              variant="contained"
             onClick={openBox}
             autoFocus
           >
