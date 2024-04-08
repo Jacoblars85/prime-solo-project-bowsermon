@@ -237,7 +237,7 @@ export default function Settings() {
               gone for good. Thank You For Playing!
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions sx={{ justifyContent: "center" }}>
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
@@ -300,6 +300,7 @@ export default function Settings() {
               sx={{
                 fontFamily: "New Super Mario Font U",
                 fontSize: "16px",
+                color: "whitesmoke",
                 borderColor: "black"
               }}
               color="success"
