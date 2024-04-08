@@ -202,6 +202,7 @@ function CharacterItem({ character }) {
   };
 
   const equipItem = () => {
+    console.log('newItemId', newItemId);
     dispatch({
       type: "SAGA_EQUIP_ITEM",
       payload: {
@@ -666,7 +667,7 @@ function CharacterItem({ character }) {
                 return (
                   <div key={usersHeld.id}>
                     <ListItemButton
-                      onClick={() => handleEquipClickOpen(usersHeld.id)}
+                      onClick={() => handleEquipClickOpen(usersHeld.items_id)}
                     >
                       <Box
                         display="flex"

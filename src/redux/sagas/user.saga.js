@@ -111,7 +111,7 @@ function* completeWatchingCredits(action) {
 }
 
 function* userOpenReward(action) {
-  // console.log('action.payload', action.payload);
+  console.log('action.payload', action.payload);
   try {
   const levelUpResponse = yield axios({
     method: 'PUT',

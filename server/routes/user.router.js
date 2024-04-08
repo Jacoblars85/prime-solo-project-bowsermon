@@ -343,7 +343,7 @@ router.put("/reward/open", (req, res) => {
   const sqlText = `
   UPDATE "user_rewards"
         SET "number" = "number" - 1
-        WHERE "id" = $1 AND "user_id" = $2
+        WHERE "reward_id" = $1 AND "user_id" = $2
     `;
 
     const sqlValues = [req.body.rewardId, req.user.id];

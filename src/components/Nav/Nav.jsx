@@ -245,6 +245,8 @@ function Nav(props) {
       });
     }
 
+    console.log('rewardBoxId', rewardBoxId);
+
     dispatch({
       type: "SAGA_OPEN_BOX",
       payload: { rewardId: rewardBoxId },
@@ -399,7 +401,7 @@ function Nav(props) {
                       {rewards.name}
                     </h4>
 
-                    <button onClick={() => openBox(rewards.id)}>
+                    <button onClick={() => openBox(rewards.reward_id)}>
                       Open Box
                     </button>
                   </Box>
