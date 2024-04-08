@@ -343,7 +343,10 @@ function CharacterItem({ character }) {
             {character.name} back.
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions
+         sx={{
+          justifyContent: "center",
+        }}>
           <Button
             sx={{
               color: "black",
@@ -351,7 +354,8 @@ function CharacterItem({ character }) {
               fontFamily: "New Super Mario Font U",
               borderColor: "black"
             }}
-            variant="outlined"
+            color="error"
+              variant="contained"
             onClick={sellCharacter}
             autoFocus
           >
@@ -378,6 +382,9 @@ function CharacterItem({ character }) {
         onClose={handleEquipClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{
+          textAlign: "center",
+        }}
       >
         <DialogTitle
           id="alert-dialog-title"
@@ -393,7 +400,10 @@ function CharacterItem({ character }) {
             You can change the item at any time.
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions
+         sx={{
+          justifyContent: "center",
+        }}>
           <Button
             sx={{
               color: "black",
