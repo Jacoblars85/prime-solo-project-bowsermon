@@ -202,7 +202,6 @@ function CharacterItem({ character }) {
   };
 
   const equipItem = () => {
-    console.log('newItemId', newItemId);
     dispatch({
       type: "SAGA_EQUIP_ITEM",
       payload: {

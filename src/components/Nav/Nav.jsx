@@ -245,8 +245,6 @@ function Nav(props) {
       });
     }
 
-    console.log('rewardBoxId', rewardBoxId);
-
     dispatch({
       type: "SAGA_OPEN_BOX",
       payload: { rewardId: rewardBoxId },
