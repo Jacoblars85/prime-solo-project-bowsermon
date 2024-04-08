@@ -25,7 +25,6 @@ function InventoryItem({ inventoryItem }) {
   };
 
   const sellPot = (potValue) => {
-    console.log('inventoryItem', inventoryItem);
     dispatch({
       type: "SAGA_SELL_ITEM",
       payload: {
