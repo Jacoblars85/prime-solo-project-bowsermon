@@ -245,7 +245,8 @@ export default function Settings() {
                 fontSize: "16px",
                 borderColor: "black"
               }}
-              variant="outlined"
+              color="error"
+              variant="contained"
               onClick={deleteAccount}
               autoFocus
             >
@@ -298,11 +299,11 @@ export default function Settings() {
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
-                color: "black",
                 fontSize: "16px",
                 borderColor: "black"
               }}
-              variant="outlined"
+              color="success"
+              variant="contained"
               onClick={applyEdits}
             >
               Submit
