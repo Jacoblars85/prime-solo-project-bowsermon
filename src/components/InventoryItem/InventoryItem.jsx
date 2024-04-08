@@ -188,7 +188,10 @@ function InventoryItem({ inventoryItem }) {
               you sell {inventoryItem.name}s.
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions
+           sx={{
+            justifyContent: "center",
+          }}>
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
