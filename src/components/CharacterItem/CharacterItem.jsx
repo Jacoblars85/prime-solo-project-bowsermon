@@ -390,7 +390,7 @@ function CharacterItem({ character }) {
           id="alert-dialog-title"
           sx={{ fontFamily: "New Super Mario Font U", textAlign: "center" }}
         >
-          {`Are you sure you want to equip the ${character.item_name}`}
+          {`Are you sure you want to equip this item?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -406,12 +406,13 @@ function CharacterItem({ character }) {
         }}>
           <Button
             sx={{
-              color: "black",
+              color: "whitesmoke",
               fontSize: 20,
               fontFamily: "New Super Mario Font U",
               borderColor: "black"
             }}
-            variant="outlined"
+            color="success"
+              variant="contained"
             onClick={equipItem}
             autoFocus
           >
@@ -474,11 +475,12 @@ function CharacterItem({ character }) {
             sx={{
               fontFamily: "New Super Mario Font U",
               textAlign: "center",
-              color: "black",
+              color: "whitesmoke",
               fontSize: 16,
               borderColor: "black"
             }}
-            variant="outlined"
+            color="success"
+              variant="contained"
             onClick={editCharacterName}
           >
             Submit
