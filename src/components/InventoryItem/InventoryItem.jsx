@@ -25,10 +25,11 @@ function InventoryItem({ inventoryItem }) {
   };
 
   const sellPot = (potValue) => {
+    console.log('inventoryItem', inventoryItem);
     dispatch({
       type: "SAGA_SELL_ITEM",
       payload: {
-        itemId: inventoryItem.id,
+        itemId: inventoryItem.items_id,
         amountNum: potValue,
         totalCoins: Math.floor(potValue * inventoryItem.cost / 2),
       },
