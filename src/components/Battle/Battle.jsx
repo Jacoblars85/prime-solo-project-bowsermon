@@ -1522,7 +1522,10 @@ function Battle() {
               home and collect your 10 coins!
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions
+           sx={{
+            justifyContent: "center",
+          }}>
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
@@ -1564,7 +1567,10 @@ function Battle() {
               You Suck, click the close button to go home and try again!
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions
+           sx={{
+            justifyContent: "center",
+          }}>
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
