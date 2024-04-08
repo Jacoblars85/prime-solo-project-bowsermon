@@ -254,7 +254,10 @@ function MysteryBoxItem({ mysteryBoxItem }) {
             of the same {mysteryBoxItem.id === 1 ? "character" : "item"}.
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions
+         sx={{
+          justifyContent: "center",
+        }}>
           <Button
             sx={{
               color: "black",
