@@ -199,7 +199,8 @@ function InventoryItem({ inventoryItem }) {
                 color: "black",
                 borderColor: "black"
               }}
-              variant="outlined"
+              color="error"
+              variant="contained"
               onClick={() => sellPot(potValue)}
               autoFocus
             >
