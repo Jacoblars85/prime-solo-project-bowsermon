@@ -60,7 +60,7 @@ function SecretCampaign() {
             </div>
 
             <div className='secretLevelTwo'>
-                <button onClick={() => goToTheBattle(12)} disabled={starter.length === 0 ? true : user.secret_level_1_completed ? false : true}>2</button>
+                <button onClick={() => goToTheBattle(12)} disabled={starter.length === 0 ? true : user.level_11_completed ? false : true}>2</button>
             </div>
 
        
