@@ -426,7 +426,17 @@ function Battle() {
             onClick={() => battle("poke")}
             className="pokeAttack"
             disabled={
-              starterOneStamina < basicAttacks[1].stamina ? true : isDisabled
+              starter.length === 1
+                ? starterOneStamina < basicAttacks[1].stamina
+                  ? true
+                  : isDisabled
+                : currentId === starterOne.id
+                ? starterOneStamina < basicAttacks[1].stamina
+                  ? true
+                  : isDisabled
+                : starterTwoStamina < basicAttacks[1].stamina
+                ? true
+                : isDisabled
             }
           >
             {basicAttacks[1].attack}
