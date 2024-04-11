@@ -107,6 +107,7 @@ function Battle() {
   const [kickAttack, setKickAttack] = useState("");
   const [kickStamina, setKickStamina] = useState(0);
 
+  // axios functions
   const getStarters = () => {
     axios({
       method: "GET",
@@ -366,6 +367,7 @@ function Battle() {
 
   const [displayAttacks, setDisplayAttacks] = useState(false);
 
+// toggles attack buttons
   const toggleButtons = () => {
     if (displayAttacks) {
       return (
