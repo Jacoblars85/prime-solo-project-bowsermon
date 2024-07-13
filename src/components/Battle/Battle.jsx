@@ -367,7 +367,7 @@ function Battle() {
 
   const [displayAttacks, setDisplayAttacks] = useState(false);
 
-// toggles attack buttons
+  // toggles attack buttons
   const toggleButtons = () => {
     if (displayAttacks) {
       return (
@@ -1535,16 +1535,17 @@ function Battle() {
             </DialogContentText>
           </DialogContent>
           <DialogActions
-           sx={{
-            justifyContent: "center",
-          }}>
+            sx={{
+              justifyContent: "center",
+            }}
+          >
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                borderColor: "black"
+                borderColor: "black",
               }}
               variant="outlined"
               onClick={handleWinnerClose}
@@ -1580,16 +1581,17 @@ function Battle() {
             </DialogContentText>
           </DialogContent>
           <DialogActions
-           sx={{
-            justifyContent: "center",
-          }}>
+            sx={{
+              justifyContent: "center",
+            }}
+          >
             <Button
               sx={{
                 fontFamily: "New Super Mario Font U",
                 textAlign: "center",
                 color: "black",
                 fontSize: 16,
-                borderColor: "black"
+                borderColor: "black",
               }}
               variant="outlined"
               onClick={handleLoserClose}
@@ -1651,7 +1653,7 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                    borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
                   disabled={
@@ -1682,7 +1684,7 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                    borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
                   disabled={
@@ -1712,10 +1714,9 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                    borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
-                  
                   disabled={
                     currentId === starterTwo.id
                       ? true
@@ -1780,7 +1781,7 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                  borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
                   disabled={
@@ -1811,7 +1812,7 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                    borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
                   disabled={
@@ -1841,7 +1842,7 @@ function Battle() {
                     color: "black",
                     fontSize: 20,
                     fontFamily: "New Super Mario Font U",
-                    borderColor: "black"
+                    borderColor: "black",
                   }}
                   variant="outlined"
                   disabled={
@@ -1904,28 +1905,28 @@ function Battle() {
                   return (
                     <div key={usersConsumables.id}>
                       <ListItem>
-                      <Box
-                      display="flex"
-                      flexDirection="row"
-                      columnGap={5}
-                      justifyContent="space-around"
-                      alignItems="center"
-                    >
-                      <p
-                        style={{
-                          color: "black",
-                          fontSize: "25px",
-                        }}
-                      >
-                        {usersConsumables.number}X
-                      </p>
-                      <img
-                          height={125}
-                          width={125}
-                          src={usersConsumables.pic}
-                        />
-                    </Box>
-                       
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          columnGap={5}
+                          justifyContent="space-around"
+                          alignItems="center"
+                        >
+                          <p
+                            style={{
+                              color: "black",
+                              fontSize: "25px",
+                            }}
+                          >
+                            {usersConsumables.number}X
+                          </p>
+                          <img
+                            height={125}
+                            width={125}
+                            src={usersConsumables.pic}
+                          />
+                        </Box>
+
                         <ListItemText
                           sx={{
                             ml: 55,
@@ -1953,7 +1954,7 @@ function Battle() {
                             color: "black",
                             fontSize: 20,
                             fontFamily: "New Super Mario Font U",
-                            borderColor: "black"
+                            borderColor: "black",
                           }}
                           variant="outlined"
                           disabled={usersConsumables.number <= 0 ? true : false}
