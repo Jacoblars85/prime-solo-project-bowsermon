@@ -18,7 +18,6 @@ body:has(.shakeTheScreen ) {
 .chacracterPicAttack {
     margin-left: 700px;
     position: absolute;
-
 }
 
 body:has(.shake ) {
@@ -155,8 +154,7 @@ background: limegreen;
     /* border: 1px solid blue; */
     width: 30%;
     height: 45%;
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
 .character img {
@@ -166,7 +164,6 @@ background: limegreen;
     width: 60%;
     height: 75%;
     animation: MoveUpDown .8s linear infinite;
-
 }
 
 .enemy, .shake{
@@ -188,7 +185,6 @@ background: limegreen;
     width: 50%;
     height: 80%;
     animation: MoveUpDown .8s linear infinite;
-
 }
 
 .attacks {
