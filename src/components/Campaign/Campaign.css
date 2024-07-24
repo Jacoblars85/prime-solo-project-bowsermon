@@ -29,9 +29,6 @@ body {
     top: 90%;
     left: 32%;
 }
-  
-
-
 
 .levelOne button {
     position: absolute;
@@ -51,8 +48,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-
 
 .levelOne button:disabled {
     cursor: default;
@@ -152,8 +147,6 @@ body {
     font-size: 35px; */
     background-color: rgb(171, 6, 6);
 }
-
-
 
 .levelFive button {
     position: absolute;
@@ -330,7 +323,6 @@ body {
 
 }
 
-
   .secretButton button {
     position: absolute;
     bottom: 1%;
@@ -381,9 +373,7 @@ body {
     height: 45px;
     font-size: 35px; */
     background-color: rgb(171, 6, 6);
-
 }
-
 
 .secretLevelTwo button {
     position: absolute;
@@ -412,5 +402,4 @@ body {
     height: 45px;
     font-size: 35px; */
     background-color: rgb(171, 6, 6);
-
 }
