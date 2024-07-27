@@ -116,24 +116,24 @@ height: 170px;
 width: fit-content;
 }
   
-  .starterTextHp {
-    color: red;
-    text-shadow: 1px 1px black;
-    font-size: 20px;
-    margin: 0px;
-  }
-  
-  .starterTextStamina {
-    color: lime;
-    text-shadow: 1px 1px black;
-    font-size: 20px;
-    margin: 0px;
-  }
-  
-  .starterTextAttack {
-    text-shadow: 1px 1px white;
-    font-size: 20px;
-    margin-bottom: 0px;
-  }
+.starterTextHp {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.starterTextStamina {
+  color: lime;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.starterTextAttack {
+  text-shadow: 1px 1px white;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
 
   
