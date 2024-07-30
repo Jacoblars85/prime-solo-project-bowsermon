@@ -15,7 +15,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 0 10px;
   background-color: #353838;
   overflow: hidden;
@@ -38,7 +37,6 @@
   padding: 10px 10px;
   text-decoration: none;
   font-size: 15px;
-
   /* these last two make the logout button in
   the nav bar look like another link */
   border: none;
@@ -49,7 +47,6 @@
 .navLink:hover {
   background-color: #868a8a;
 }
-
 
 .cartBlink {
   animation-name: animate;
