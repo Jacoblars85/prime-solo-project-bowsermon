@@ -13,9 +13,14 @@ function SwitchStarterButton() {
     dispatch({ type: "SAGA_FETCH_CHARACTERS" });
   }, []);
 
+  function switchStarters() {
+    console.log('switching starters');
+    
+  }
+
   return (
     <div>
-<button>Switch</button>
+<button onClick={switchStarters}>Switch</button>
     </div>
   );
 }
