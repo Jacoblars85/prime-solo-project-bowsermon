@@ -5,6 +5,7 @@ import CharacterItem from "../CharacterItem/CharacterItem";
 import "./Characters.css";
 import Nav from "../Nav/Nav";
 import StarterItem from "../StarterItem/StarterItem";
+import SwitchStarterButton from "../SwitchStarterButton/SwitchStarterButton";
 
 function Characters() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function Characters() {
           </div>
 
           <div className="starterBox">
+
+          <SwitchStarterButton />
+
             {starter.map((start) => {
               return (
                 <div className="starter-single-box" key={start.id}>
