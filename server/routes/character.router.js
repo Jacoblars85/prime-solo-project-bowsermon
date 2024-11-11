@@ -466,22 +466,36 @@ router.put("/starter/conditional/:id", (req, res) => {
 });
 
 router.put("/starter/switch", (req, res) => {
-
+    // console.log('req.body',req.body);
     const sqlText = `
-    UPDATE "user_characters"
-    SET "new" = FALSE
-    WHERE "id" = $1;
-          `;
+ UPDATE "user_characters"
+    SET "starter_1" = FALSE, "starter_2" = TRUE
+    WHERE "id" = $1 AND "user_id" = $2;
+    `;
 
-    const insertValue = [req.params.id]
+    const sqlValues = [req.body.starterOneId, req.user.id]
 
-    pool
-        .query(sqlText, insertValue)
-        .then((result) => {
-            res.sendStatus(201);
+    pool.query(sqlText, sqlValues)
+        .then(result => {
+
+            const sqlText = `
+     UPDATE "user_characters"
+    SET "starter_2" = FALSE, "starter_1" = TRUE
+    WHERE "id" = $1 AND "user_id" = $2;
+    `;
+
+    const sqlValues = [req.body.starterTwoId, req.user.id]
+
+            pool.query(sqlText, sqlValues)
+                .then(result => {
+                    res.sendStatus(201);
+                })
+        }).catch(err => {
+            console.log("Error in 2nd character.router /starter/switch PUT,", err);
+            res.sendStatus(500);
         })
         .catch((err) => {
-            console.log("Error in character.router /new PUT,", err);
+            console.log("Error in character.router /starter/switch PUT,", err);
             res.sendStatus(500);
         });
 });
