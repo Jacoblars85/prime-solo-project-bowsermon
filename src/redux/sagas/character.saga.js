@@ -172,6 +172,22 @@ function* setStarterConditionally(action) {
 }
 
 
+function* switchStarters(action) {
+  console.log('action.payload', action.payload);
+  try {
+    const response = yield axios({
+      method: 'PUT',
+      url: `/api/characters/starter/switch/${action.payload}`
+    })
+    yield put({
+      type: 'SAGA_FETCH_CHARACTERS',
+    })
+  } catch (error) {
+    console.log('Unable to put switching starters server', error);
+  }
+}
+
+
 function* changeCharactersNickname(action) {
   // console.log('action.payload', action.payload);
   try {
@@ -200,6 +216,7 @@ function* characterSaga() {
   yield takeLatest('SAGA_SET_OLD', changeNewStatus);
   yield takeLatest('SAGA_CLEAR_STARTER', clearStarter);
   yield takeLatest('SAGA_SET_STARTER_CONDITIONALLY', setStarterConditionally);
+  yield takeLatest('SAGA_SWITCH_STARTERS', switchStarters);
   yield takeLatest('SAGA_EDIT_CHARACTERS_NAME', changeCharactersNickname);
 }
 
