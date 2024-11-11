@@ -177,7 +177,8 @@ function* switchStarters(action) {
   try {
     const response = yield axios({
       method: 'PUT',
-      url: `/api/characters/starter/switch/${action.payload}`
+      url: `/api/characters/starter/switch`,
+      data: action.payload
     })
     yield put({
       type: 'SAGA_FETCH_CHARACTERS',
