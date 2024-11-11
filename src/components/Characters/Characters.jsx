@@ -39,10 +39,12 @@ function Characters() {
             })}
           </div>
 
-          <div className="starterBox">
+          <div className="switchButtonBox">
 
           <SwitchStarterButton />
+           </div>
 
+          <div className="starterBox">
             {starter.map((start) => {
               return (
                 <div className="starter-single-box" key={start.id}>
