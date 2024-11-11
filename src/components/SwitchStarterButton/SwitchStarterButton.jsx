@@ -15,17 +15,17 @@ function SwitchStarterButton() {
 
   function switchStarters() {
     dispatch({
-        type: "SAGA_SWITCH_STARTERS",
-        payload: {
-          starterOneId: starter[0].id,
-          starterTwoId: starter[1].id,
-        },
-      });
+      type: "SAGA_SWITCH_STARTERS",
+      payload: {
+        starterOneId: starter[0].id,
+        starterTwoId: starter[1].id,
+      },
+    });
   }
 
   return (
     <div>
-<button onClick={switchStarters}>Switch</button>
+      <button onClick={switchStarters}>Switch</button>
     </div>
   );
 }
