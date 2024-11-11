@@ -61,15 +61,27 @@
   background-color: #a1a3a3;
 }
 
-.starterHomeView {
+.bigStarterHomeView {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  top: 15%;
+  left: 78%;
+  height: 80%;
+  width: 20%;
+  column-gap: 1%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.starterHomeView {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  top: 15%;
-  left: 81%;
-  height: 80%;
-  width: 18%;
+  height: 100%;
+  width: 98%;
   border: 3px solid black;
   background-color: rgb(56, 188, 233);
   box-shadow: 1px 1px 1px 1px black;
