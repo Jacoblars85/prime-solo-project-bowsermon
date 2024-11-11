@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import "./HomePage.css";
 import Nav from "../Nav/Nav";
 import StarterItem from "../StarterItem/StarterItem";
+import SwitchStarterButton from "../SwitchStarterButton/SwitchStarterButton";
+
 
 function HomePage() {
   const history = useHistory();
@@ -28,6 +30,7 @@ function HomePage() {
       
       <div className="homePage">
         <div className="starterHomeView">
+        <SwitchStarterButton />
           {starter.map((start) => {
             return (
               <div className="starter-single-box" key={start.id}>
