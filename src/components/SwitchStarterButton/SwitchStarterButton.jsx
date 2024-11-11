@@ -16,6 +16,13 @@ function SwitchStarterButton() {
   function switchStarters() {
     console.log('switching starters');
     
+    dispatch({
+        type: "SAGA_SWITCH_STARTERS",
+        payload: {
+          starterOneId: starter[0].id,
+          starterTwoId: starter[1].id,
+        },
+      });
   }
 
   return (
