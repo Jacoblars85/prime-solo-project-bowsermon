@@ -40,15 +40,21 @@ function Characters() {
           </div>
 
           <div className="switchButtonBox">
-
-          <SwitchStarterButton />
-           </div>
+            <SwitchStarterButton />
+          </div>
 
           <div className="starterBox">
             {starter.map((start) => {
               return (
                 <div className="starter-single-box" key={start.id}>
-                  <h2>Starter {start.starter_1 === true ? "1" : start.starter_2 ? "2" : ""}</h2>
+                  <h2>
+                    Starter{" "}
+                    {start.starter_1 === true
+                      ? "1"
+                      : start.starter_2
+                      ? "2"
+                      : ""}
+                  </h2>
                   <StarterItem start={start} />
                 </div>
               );
@@ -57,8 +63,7 @@ function Characters() {
         </div>
       </div>
 
-        <BackButton />
-
+      <BackButton />
     </div>
   );
 }
