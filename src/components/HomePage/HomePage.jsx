@@ -29,8 +29,13 @@ function HomePage() {
       <div className='bowserLogo'></div>
       
       <div className="homePage">
-        <div className="starterHomeView">
+
+        <div className="bigStarterHomeView">
+
         <SwitchStarterButton />
+        <div className="starterHomeView">
+
+
           {starter.map((start) => {
             return (
               <div className="starter-single-box" key={start.id}>
@@ -42,6 +47,7 @@ function HomePage() {
               </div>
             );
           })}
+        </div>
         </div>
 
         <button
