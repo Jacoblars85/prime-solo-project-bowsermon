@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function HomePage() {
+function SwitchStarterButton() {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,4 +20,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default SwitchStarterButton;
