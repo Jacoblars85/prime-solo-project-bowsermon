@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import SwapVerticalCircleOutlinedIcon from '@mui/icons-material/SwapVerticalCircleOutlined';
 
 function SwitchStarterButton() {
   const history = useHistory();
@@ -25,7 +26,7 @@ function SwitchStarterButton() {
 
   return (
     <div>
-      <button onClick={switchStarters}>Switch</button>
+      <button onClick={switchStarters}><SwapVerticalCircleOutlinedIcon fontSize="large"/></button>
     </div>
   );
 }
