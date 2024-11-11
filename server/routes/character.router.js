@@ -465,6 +465,27 @@ router.put("/starter/conditional/:id", (req, res) => {
         });
 });
 
+router.put("/starter/switch", (req, res) => {
+
+    const sqlText = `
+    UPDATE "user_characters"
+    SET "new" = FALSE
+    WHERE "id" = $1;
+          `;
+
+    const insertValue = [req.params.id]
+
+    pool
+        .query(sqlText, insertValue)
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log("Error in character.router /new PUT,", err);
+            res.sendStatus(500);
+        });
+});
+
 router.put("/edit/nickname", (req, res) => {
 
     const sqlText = `
