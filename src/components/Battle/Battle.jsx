@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import BackButton from "../BackButton/BackButton";
+// import BackButton from "../BackButton/BackButton";
 import "./Battle.css";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -27,10 +27,11 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import InfoIcon from "@mui/icons-material/Info";
+// import InfoIcon from "@mui/icons-material/Info";
 import axios from "axios";
 import Box from "@mui/material/Box";
-import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemButton from "@mui/material/ListItemButton";
+import battleMusic from "../../audio/battleMusic.mp3";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -1434,6 +1435,9 @@ function Battle() {
         width: `100vw`,
       }}
     >
+      
+      <audio src={battleMusic} autoPlay />
+
       <div className={shakeTheScreen}></div>
 
       <div className="character">
