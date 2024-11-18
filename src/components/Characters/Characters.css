@@ -62,6 +62,7 @@
 .switchButtonBox {
   display: flex;
   height: 100%;
+  width: 2.35%;
   justify-content: center;
   align-items: center;
   text-align: center;

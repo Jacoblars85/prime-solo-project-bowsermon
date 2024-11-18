@@ -40,7 +40,7 @@ function Characters() {
           </div>
 
           <div className="switchButtonBox">
-            <SwitchStarterButton />
+            {starter.length === 2 ? <SwitchStarterButton /> : ""}
           </div>
 
           <div className="starterBox">
