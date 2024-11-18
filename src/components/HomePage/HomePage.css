@@ -90,6 +90,10 @@
   text-align: center;
 }
 
+.switchButtonHomePage {
+  width: 15%;
+}
+
 .starter-single-box {
   height: 50%;
   width: 100%;
