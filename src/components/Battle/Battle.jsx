@@ -1435,7 +1435,6 @@ function Battle() {
         width: `100vw`,
       }}
     >
-      
       <audio src={battleMusic} autoPlay />
 
       <div className={shakeTheScreen}></div>
