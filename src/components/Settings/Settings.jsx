@@ -243,7 +243,7 @@ export default function Settings() {
                 fontFamily: "New Super Mario Font U",
                 color: "black",
                 fontSize: "16px",
-                borderColor: "black"
+                borderColor: "black",
               }}
               color="error"
               variant="contained"
@@ -257,7 +257,7 @@ export default function Settings() {
                 fontFamily: "New Super Mario Font U",
                 color: "black",
                 fontSize: "16px",
-                borderColor: "black"
+                borderColor: "black",
               }}
               variant="outlined"
               onClick={handleDeleteClose}
@@ -301,7 +301,7 @@ export default function Settings() {
                 fontFamily: "New Super Mario Font U",
                 fontSize: "16px",
                 color: "whitesmoke",
-                borderColor: "black"
+                borderColor: "black",
               }}
               color="success"
               variant="contained"
@@ -314,7 +314,7 @@ export default function Settings() {
                 fontFamily: "New Super Mario Font U",
                 color: "black",
                 fontSize: "16px",
-                borderColor: "black"
+                borderColor: "black",
               }}
               variant="outlined"
               onClick={resetNameChange}
