@@ -1,5 +1,7 @@
 # Bowsérmon
 
+This is a project I did at Prime Digital Academy. I worked on this project alone and finished it in a 4 week time frame. The goal was to make a project that includes CRUD and authentication. Also I did add some features and cleaned up some bugs after the deadline was up.
+
 A turn-based game, that is mixed between Mario and Pokemon. That has battles like Pokemon and has the characters of Mario. But the story isn't like the normal Mario games. Instead of playing as Mario while he saves the Princess. You will be playing as Bowser while he steals back the Princess. You will have to buy characters and go level by level until you beat Mario at the end. 
 
 ## Demo
